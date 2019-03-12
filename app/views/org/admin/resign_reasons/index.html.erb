@@ -22,7 +22,7 @@
   <tbody>
   <% @resign_reasons.each do |resign_reason| %>
     <%= render partial: 'resign_reason', locals: { node: resign_reason } %>
-    <%= draw_tree(resign_reason, partial: 'hr_admin/resign_reasons/resign_reason') %>
+    <%= draw_tree(resign_reason, partial: 'org/admin/resign_reasons/resign_reason') %>
   <% end %>
   </tbody>
 </table>

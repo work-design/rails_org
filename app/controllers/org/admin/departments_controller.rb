@@ -14,7 +14,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def my
-    @department = current_member.department
+    @department = current_user.department
     unless @department
       redirect_to admin_departments_url and return
     end
@@ -57,7 +57,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def new
-    @department = Department.new
+    @department = current_organ.departments.build
   end
 
   def edit
@@ -68,7 +68,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def create
-    @department = Department.new(department_params)
+    @department = current_organ.departments.build(department_params)
 
     if @department.save
       redirect_to admin_departments_url, notice: 'Department was successfully created.'
@@ -106,7 +106,6 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
       :parent_id,
       :parent_ancestors,
       :needed_member,
-      :night_shift
     )
   end
 

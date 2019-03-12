@@ -21,7 +21,7 @@
   <span class="header">HR</span>
   <div class="menu">
     <% unless Rails.env.production? %>
-      <%= link_to 'My Department', my_admin_departments_path, class: active_helper('hr_admin/departments': ['my']) %>
+      <%= link_to 'My Department', my_admin_departments_path, class: active_helper('org/admin/departments': ['my']) %>
       <%= link_to 'Job Transfer', my_job_transfers_path, class: active_helper(controllers: ['job_transfers']) %>
       <%= link_to 'Journal Transfer', my_journal_transfers_path, class: active_helper(controllers: ['journal_transfers']) %>
       <%= link_to 'Resign', my_resign_path, class: active_helper(controllers: ['resigns']) %>

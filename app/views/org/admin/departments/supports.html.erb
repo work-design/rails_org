@@ -20,7 +20,7 @@
   <tbody>
   <% @departments.each do |department| %>
     <%= render partial: 'department_support', locals: { node: department } %>
-    <%= draw_tree(department, partial: 'hr_admin/departments/department_support') %>
+    <%= draw_tree(department, partial: 'org/admin/departments/department_support') %>
   <% end %>
   </tbody>
 </table>

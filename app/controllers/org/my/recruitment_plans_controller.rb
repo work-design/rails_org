@@ -2,12 +2,12 @@ class Org::My::RecruitmentPlansController < Org::My::BaseController
   before_action :set_recruitment_plan, only: [:show, :edit, :update, :destroy, :comment, :handle, :confirm, :repropose]
 
   def index
-    @recruitment_plans = current_member.recruitment_plans.page(params[:page])
+    @recruitment_plans = current_user.recruitment_plans.page(params[:page])
   end
 
 
   def my
-    department = current_member.leading_highest_department
+    department = current_user.leading_highest_department
     if department
       q_params = {
           'member.department_id': department.self_and_descendant_ids,
@@ -20,11 +20,11 @@ class Org::My::RecruitmentPlansController < Org::My::BaseController
   end
 
   def new
-    @recruitment_plan = current_member.recruitment_plans.build
+    @recruitment_plan = current_user.recruitment_plans.build
   end
 
   def create
-    @recruitment_plan = current_member.recruitment_plans.build(recruitment_plan_params)
+    @recruitment_plan = current_user.recruitment_plans.build(recruitment_plan_params)
     if @recruitment_plan.save
       redirect_to my_recruitment_plans_url, notice: 'Recruitment plan was successfully created.'
     else

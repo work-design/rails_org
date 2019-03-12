@@ -1,4 +1,4 @@
-<%= form_with model: [:hr, @support], local: true do |f| %>
+<%= form_with model: [:admin, @support], local: true do |f| %>
   <%= render 'shared/error_messages', target: @support %>
   <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'department' } %>
   <%= f.collection_select :office_id, Office.all, :id, :name, { include_blank: true } %>

@@ -7,9 +7,9 @@ class Org::Admin::ResignsController < Org::Admin::BaseController
   end
 
   def my
-    if current_member.leading_office
+    if current_user.leading_office
       q_params = {
-        'member.office_id': current_member.leading_office.id,
+        'member.office_id': current_user.leading_office.id,
         state: Resign::states[:init]
       }.with_indifferent_access
       q_params.merge! params.permit!

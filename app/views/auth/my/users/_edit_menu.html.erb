@@ -2,7 +2,7 @@
   <%= link_to 'Base Info', edit_my_user_path, class: active_helper(controllers: ['users']) %>
   <%= link_to 'Personal Profile', edit_my_profile_path, class: active_helper(controllers: ['profiles']) %>
   <%= link_to 'MDPI Profile', edit_my_member_path, class: active_helper(controllers: ['members']) %>
-  <% if current_member.teacher %>
+  <% if current_user.teacher %>
     <%= link_to 'Teacher', edit_my_teacher_path, class: active_helper(controllers: ['teachers']) %>
   <% end %>
 </div>

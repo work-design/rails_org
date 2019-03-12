@@ -1,18 +1,9 @@
-<%= form_with model: [:hr, @office], local: true do |f| %>
+<%= form_with model: [:admin, @office], local: true do |f| %>
   <%= render 'shared/error_messages', target: @office %>
   <%= f.text_field :name, required: true %>
   <%= f.text_field :name_short %>
-  <%= f.text_field :absence_email %>
-  <%= f.select :country, options_for_select(Office.countries, @office.country) %>
-  <%= f.text_field :city %>
   <%= f.text_area :address %>
-  <%= f.text_area :address_cn %>
-  <%= f.text_field :lunch_time %>
   <%= f.time_zone_select :timezone %>
   <%= f.select :locale, options_for_select(I18n.available_locales.zip(I18n.available_locales), @office.locale) %>
-  <%= f.text_field :contact, required: true %>
-  <%= f.text_field :recruitment, required: true %>
-  <%= f.select :leader_id, options_for_select([[@office.leader&.name, @office.leader_id]], @office.leader_id), { include_blank: true, label: 'Leader' } %>
-  <%= f.select :deputy_leader_id, options_for_select([[@office.deputy_leader&.name, @office.deputy_leader_id]], @office.deputy_leader_id), { include_blank: true, label: 'Deputy Leader' } %>
   <%= f.submit %>
 <% end %>

@@ -29,7 +29,7 @@
       <td><%= job_transfer.transfer_on %></td>
       <td class="ui labels">
         <label class="ui label"><%= job_transfer.state_i18n %></label>
-        <% if job_transfer.next_operator == current_member %>
+        <% if job_transfer.next_operator == current_user %>
           <div class="ui mini buttons">
             <%= link_to 'Approve', new_check_path(JobTransfer.name, job_transfer.id, state: job_transfer.next_state_state), remote: true, class: 'ui positive button' %>
             <div class="or"></div>

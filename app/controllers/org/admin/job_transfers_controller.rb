@@ -8,14 +8,14 @@ class Org::Admin::JobTransfersController < Org::Admin::BaseController
   end
 
   def my
-    if current_member.leading_office
+    if current_user.leading_office
       q_params = {
-        from_office_id: current_member.leading_office.id,
+        from_office_id: current_user.leading_office.id,
         #state: JobTransfer::states[:approved_sl]
       }
-    elsif current_member.leading_section
+    elsif current_user.leading_section
       q_params = {
-        member_id: current_member.leading_section_members.map(&:id),
+        member_id: current_user.leading_section_members.map(&:id),
         #state: JobTransfer::states[:init]
       }
     end
@@ -60,7 +60,7 @@ class Org::Admin::JobTransfersController < Org::Admin::BaseController
   end
 
   def trigger
-    @job_transfer.do_trigger(state: params[:state], auditor_id: current_member.id)
+    @job_transfer.do_trigger(state: params[:state], auditor_id: current_user.id)
     redirect_to admin_job_transfers_url(member_id: @job_transfer.member_id)
   end
 

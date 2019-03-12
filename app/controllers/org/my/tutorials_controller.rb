@@ -7,12 +7,12 @@ class Org::My::TutorialsController < Org::My::BaseController
     }
     q_params = params.fetch(:q, {}).permit!
     default_params.merge! q_params
-    @tutorials = current_member.tutorials.default_where(default_params).page(params[:page])
+    @tutorials = current_user.tutorials.default_where(default_params).page(params[:page])
   end
 
   def tutorings
     q_params = params.fetch(:q, {}).permit!
-    @tutorials = current_member.tutorings.default_where(q_params).page(params[:page])
+    @tutorials = current_user.tutorings.default_where(q_params).page(params[:page])
   end
 
   def new

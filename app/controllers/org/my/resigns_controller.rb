@@ -35,7 +35,7 @@ class Org::My::ResignsController < Org::My::BaseController
 
   private
   def set_resign
-    @resign = current_member.resign || current_member.build_resign
+    @resign = current_user.resign || current_user.build_resign
   end
 
   def resign_params

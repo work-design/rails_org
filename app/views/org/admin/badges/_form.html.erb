@@ -1,4 +1,4 @@
-<%= form_with model: [:hr, @badge], local: true do |f| %>
+<%= form_with model: [:admin, @badge], local: true do |f| %>
   <%= render 'shared/error_messages', target: @badge %>
   <%= f.text_field :title %>
   <%= f.text_field :abbr %>

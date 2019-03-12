@@ -3,15 +3,15 @@ class Org::My::JobTransfersController < Org::My::BaseController
   skip_before_action :verify_authenticity_token, only: [:departments]
 
   def index
-    @job_transfers = current_member.job_transfers.page(params[:page])
+    @job_transfers = current_user.job_transfers.page(params[:page])
   end
 
   def new
-    @job_transfer = current_member.job_transfers.build
+    @job_transfer = current_user.job_transfers.build
   end
 
   def create
-    @job_transfer = current_member.job_transfers.build(job_transfer_params)
+    @job_transfer = current_user.job_transfers.build(job_transfer_params)
     @job_transfer.to_department_id = @job_transfer.department_ancestors&.values.to_a.compact.last
 
     if @job_transfer.save

@@ -9,7 +9,7 @@ class My::OrdersController < Org::My::BaseController
 
   def dinners
     dinners_params = {
-        office_id: [current_member.office_id, nil]
+        office_id: [current_user.office_id, nil]
     }
     q_params = params.fetch(:q, {}).permit!
     q_params.merge! dinners_params
@@ -34,7 +34,7 @@ class My::OrdersController < Org::My::BaseController
 
   def new
     dinners_params = {
-        office_id: [current_member.office_id, nil]
+        office_id: [current_user.office_id, nil]
     }
     if Dinner.enabled?
       @dinners = Dinner.default_where(dinners_params)
@@ -45,7 +45,7 @@ class My::OrdersController < Org::My::BaseController
 
   def create
     @dinner = Dinner.find(params[:dinner_id])
-    @order = @dinner.generate_order(current_member)
+    @order = @dinner.generate_order(current_user)
     @order.update(note: params[:note])
     redirect_to dinners_my_orders_url
   end

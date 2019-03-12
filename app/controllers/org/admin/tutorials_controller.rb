@@ -10,7 +10,7 @@ class Org::Admin::TutorialsController < Org::Admin::BaseController
 
   def my
     q_params = {
-      member_id: current_member.child_ids
+      member_id: current_user.child_ids
     }.with_indifferent_access
     q_params.merge! params.fetch(:q, {}).permit!
 

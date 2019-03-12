@@ -5,7 +5,7 @@
 </div>
 
 <div class="ui segment">
-  <%= form_with model: [:hr, @tutorial], local: true do |f| %>
+  <%= form_with model: [:admin, @tutorial], local: true do |f| %>
     <%= render 'shared/error_messages', target: @tutorial %>
     <%= f.select :tutor_id, options_for_select([[@tutorial.tutor&.name, @tutorial.tutor_id]], @tutorial.tutor_id) %>
     <%= f.select :kind, options_for_select(Tutorial.options_i18n(:kind), @tutorial.kind) %>

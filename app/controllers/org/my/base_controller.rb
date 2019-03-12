@@ -1,15 +1,15 @@
 class Org::My::BaseController < ApplicationController
   before_action :require_login
-  helper_method :current_member, :current_teacher
+  helper_method :current_user, :current_teacher
   default_form_builder 'MyFormBuilder' do |config|
 
   end
 
   def the_role_user
-    current_member || current_user
+    current_user || current_user
   end
 
-  def current_member
+  def current_user
     current_user&.member
   end
 
@@ -18,11 +18,11 @@ class Org::My::BaseController < ApplicationController
   end
 
   def current_teacher
-    current_member&.teacher
+    current_user&.teacher
   end
 
   def current_receiver
-    current_member
+    current_user
   end
 
 end

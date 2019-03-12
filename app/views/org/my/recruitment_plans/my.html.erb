@@ -26,12 +26,12 @@
       <td><%= recruitment_plan.ae_count %></td>
       <td><%= recruitment_plan.me_count %></td>
       <td class="ui labels">
-        <% if recruitment_plan.rejected && recruitment_plan.this_operator== current_member %>
+        <% if recruitment_plan.rejected && recruitment_plan.this_operator== current_user %>
           <label class="ui label">Rejected</label>
         <% else %>
           <label class="ui label"><%= recruitment_plan.state_i18n %></label>
         <% end %>
-        <% if !recruitment_plan.rejected && recruitment_plan.next_operator == current_member %>
+        <% if !recruitment_plan.rejected && recruitment_plan.next_operator == current_user %>
           <div class="ui mini buttons">
             <%= link_to 'Approve', handle_my_recruitment_plan_path(recruitment_plan.id, state: recruitment_plan.next_state_state), method: :patch, remote: true, class: 'ui mini positive button' %>
             <div class="or"></div>
@@ -41,7 +41,7 @@
       </td>
       <td><%= recruitment_plan.created_at %></td>
       <td class="ui labels">
-        <% if recruitment_plan.rejected && recruitment_plan.this_operator == current_member %>
+        <% if recruitment_plan.rejected && recruitment_plan.this_operator == current_user %>
           <%= link_to 'Comment', comment_my_recruitment_plan_path(recruitment_plan), method: :patch,  remote: true, class: 'ui green label' %>
           <%= link_to 'Edit', edit_my_recruitment_plan_path(recruitment_plan), class: 'ui pink label' %>
           <%= link_to 'Delete', my_recruitment_plan_path(recruitment_plan), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
