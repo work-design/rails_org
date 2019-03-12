@@ -1,4 +1,4 @@
-class Hr::Admin::RecruitmentPlansController < Hr::Admin::BaseController
+class Org::Admin::RecruitmentPlansController < Org::Admin::BaseController
   before_action :set_recruitment_plan, only: [:show, :edit, :update, :destroy]
 
   def index

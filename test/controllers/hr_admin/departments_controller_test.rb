@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::DepartmentsControllerTest < ActionDispatch::IntegrationTest
+class Org::DepartmentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @department = departments(:one)
   end

@@ -1,6 +1,5 @@
-class Hr::Admin::BaseController < ApplicationController
+class Org::Admin::BaseController < ApplicationController
   include RailsRoleController
-  layout 'hr'
   before_action :require_login
   before_action :require_role
   helper_method :current_member

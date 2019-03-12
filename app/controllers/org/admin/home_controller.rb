@@ -1,4 +1,4 @@
-class Hr::Admin::HomeController < Hr::Admin::BaseController
+class Org::Admin::HomeController < Org::Admin::BaseController
 
   def index
 

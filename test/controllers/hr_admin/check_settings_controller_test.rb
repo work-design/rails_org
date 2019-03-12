@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::CheckSettingsControllerTest < ActionDispatch::IntegrationTest
+class Org::CheckSettingsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @hr_check_setting = admin_check_settings(:one)
   end

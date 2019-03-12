@@ -1,0 +1,10 @@
+<div class="item">
+  <a class="<%= active_helper(controllers: ['users', 'oauth_users'], active_class: 'title active', item_class: 'title') %>">
+    <i class="address book outline icon"></i>
+    <span>Organ</span>
+    <i class="dropdown icon"></i>
+  </a>
+  <div class="<%= active_helper(controllers: ['organs'], active_class: 'menu content active', item_class: 'menu content') %>">
+    <%= link_to '组织列表', admin_organs_path, class: active_helper(paths: admin_organs_path) %>
+  </div>
+</div>

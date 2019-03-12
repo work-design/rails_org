@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::AbsenceStatsControllerTest < ActionDispatch::IntegrationTest
+class Org::AbsenceStatsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @hr_absence_stat = admin_absence_stats(:one)
   end

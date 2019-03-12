@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::JobDescriptionsControllerTest < ActionDispatch::IntegrationTest
+class Org::JobDescriptionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @job_description = job_descriptions(:one)
   end

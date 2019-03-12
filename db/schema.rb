@@ -12,50 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_03_04_134752) do
 
-
-
-  create_table "bands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-
-  create_table "department_journals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "department_id"
-    t.bigint "journal_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "present_member"
-    t.integer "needed_member"
-    t.index ["department_id"], name: "index_department_journals_on_department_id"
-    t.index ["journal_id"], name: "index_department_journals_on_journal_id"
-  end
-
-  create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.bigint "parent_id"
-    t.bigint "leader_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "present_member"
-    t.integer "needed_member"
-    t.string "collective_email"
-    t.integer "members_count", default: 0
-    t.string "type"
-    t.integer "old_section_id"
-    t.integer "old_group_id"
-    t.integer "old_department_id"
-    t.integer "old_parent_id"
-    t.boolean "enabled", default: true
-    t.string "kind"
-    t.boolean "night_shift", default: false
-    t.index ["leader_id"], name: "index_departments_on_leader_id"
-    t.index ["parent_id"], name: "index_departments_on_parent_id"
-  end
-
-
   create_table "job_descriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "department_id"
     t.text "requirements"
@@ -69,7 +25,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_134752) do
     t.integer "salary_max"
     t.index ["department_id"], name: "index_job_descriptions_on_department_id"
   end
-
 
   create_table "job_transfers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "member_id"
@@ -90,69 +45,34 @@ ActiveRecord::Schema.define(version: 2019_03_04_134752) do
     t.index ["to_office_id"], name: "index_job_transfers_on_to_office_id"
   end
 
-
-
-
-
   create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "parent_id"
     t.boolean "enabled", default: true
     t.string "type"
     t.string "title"
     t.date "join_on"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.bigint "office_id"
     t.bigint "department_id"
     t.string "name"
-    t.string "extra_parent_ids"
     t.string "attendance_number"
     t.string "email"
-    t.integer "old_group_id"
-    t.integer "old_section_id"
-    t.string "old_status_id"
     t.string "skype"
     t.text "profession"
     t.date "intern_begin_on"
-    t.date "probation_one_on"
-    t.date "probation_two_on"
     t.date "formal_on"
-    t.integer "children_count"
     t.string "join_status"
     t.string "number"
     t.text "experience"
-    t.integer "review_exams_count", default: 0
-    t.bigint "band_id"
-    t.integer "previous_months"
-    t.float "vacation_balances"
-    t.index ["band_id"], name: "index_members_on_band_id"
-    t.index ["department_id"], name: "index_members_on_department_id"
-    t.index ["email"], name: "index_members_on_email"
-    t.index ["office_id"], name: "index_members_on_office_id"
-    t.index ["parent_id"], name: "index_members_on_parent_id"
-    t.index ["user_id"], name: "index_members_on_user_id"
   end
-
-
-
-
-
-
 
   create_table "offices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address", limit: 512
-    t.string "address_cn", limit: 512
-    t.string "country"
-    t.string "city"
-    t.string "floor"
     t.string "absence_email"
     t.bigint "leader_id"
     t.integer "members_count", default: 0
-    t.string "lunch_time"
     t.integer "deputy_leader_id"
     t.string "name_short"
     t.string "timezone"
@@ -162,17 +82,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_134752) do
     t.index ["leader_id"], name: "index_offices_on_leader_id"
   end
 
-
-
-
-
-
-
-
-
-
-
-  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "profiles" do |t|
     t.bigint "user_id"
     t.string "title"
     t.string "real_name"
@@ -187,11 +97,8 @@ ActiveRecord::Schema.define(version: 2019_03_04_134752) do
     t.text "work_experience"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "resume_link"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
-
-
 
   create_table "resign_reason_hierarchies", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "ancestor_id", null: false
@@ -234,12 +141,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_134752) do
     t.index ["resign_reason_id"], name: "index_resigns_on_resign_reason_id"
   end
 
-
-
-
-
-
-
   create_table "sm_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "access_token"
     t.datetime "limit_at"
@@ -262,13 +163,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_134752) do
     t.index ["supporter_id"], name: "index_supports_on_supporter_id"
   end
 
-
-
-
-
-
-
-
   create_table "tutorials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "member_id"
     t.bigint "tutor_id"
@@ -287,7 +181,5 @@ ActiveRecord::Schema.define(version: 2019_03_04_134752) do
     t.index ["member_id"], name: "index_tutorials_on_member_id"
     t.index ["tutor_id"], name: "index_tutorials_on_tutor_id"
   end
-
-
 
 end

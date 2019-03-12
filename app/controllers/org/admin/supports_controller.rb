@@ -1,4 +1,4 @@
-class Hr::Admin::SupportsController < Hr::Admin::BaseController
+class Org::Admin::SupportsController < Org::Admin::BaseController
   before_action :set_support, only: [:show, :edit, :update, :destroy]
   before_action :set_from
 

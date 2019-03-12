@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::DocumentsControllerTest < ActionDispatch::IntegrationTest
+class Org::DocumentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @document = documents(:one)
   end

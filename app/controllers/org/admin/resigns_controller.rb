@@ -1,4 +1,4 @@
-class Hr::Admin::ResignsController < Hr::Admin::BaseController
+class Org::Admin::ResignsController < Org::Admin::BaseController
   before_action :set_resign, only: [:show, :edit, :update, :destroy]
 
   def index

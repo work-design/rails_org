@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::ExtraDaysControllerTest < ActionDispatch::IntegrationTest
+class Org::ExtraDaysControllerTest < ActionDispatch::IntegrationTest
   setup do
     @extra_day = extra_days(:one)
   end

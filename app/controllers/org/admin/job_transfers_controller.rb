@@ -1,4 +1,4 @@
-class Hr::Admin::JobTransfersController < Hr::Admin::BaseController
+class Org::Admin::JobTransfersController < Org::Admin::BaseController
   before_action :set_job_transfer, only: [:show, :edit, :update, :trigger, :destroy]
 
   def index

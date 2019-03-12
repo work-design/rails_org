@@ -1,0 +1,20 @@
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="six wide">
+        <%= link_to t('.edit'), edit_org_admin_organ_path(@organ), class: 'ui mini blue right floated button', remote: true %>
+      </th>
+      <th class="ten wide"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= Organ.human_attribute_name(:name) %></td>
+      <td><%= @organ.name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Organ.human_attribute_name(:organ_uuid) %></td>
+      <td><%= @organ.organ_uuid %></td>
+    </tr>
+  </tbody>
+</table>

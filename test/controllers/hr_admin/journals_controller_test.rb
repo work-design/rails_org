@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::JournalsControllerTest < ActionDispatch::IntegrationTest
+class Org::JournalsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @journal = journals(:one)
   end

@@ -27,6 +27,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :members_count, default: 0
       t.integer :needed_member
+      t.string :collective_email
       t.timestamps
     end
 
@@ -38,6 +39,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.string :email
       t.string :number
       t.date :join_on
+      t.boolean :enabled, default: true
       t.timestamps
     end
 

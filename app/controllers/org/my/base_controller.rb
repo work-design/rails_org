@@ -1,5 +1,4 @@
-class My::BaseController < ApplicationController
-  layout 'my'
+class Org::My::BaseController < ApplicationController
   before_action :require_login
   helper_method :current_member, :current_teacher
   default_form_builder 'MyFormBuilder' do |config|

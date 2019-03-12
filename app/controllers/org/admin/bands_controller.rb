@@ -1,4 +1,4 @@
-class Hr::Admin::BandsController < Hr::Admin::BaseController
+class Org::Admin::BandsController < Org::Admin::BaseController
   before_action :set_band, only: [:show, :edit, :update, :destroy]
 
   def index

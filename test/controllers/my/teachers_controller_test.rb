@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::My::TeachersControllerTest < ActionDispatch::IntegrationTest
+class Org::My::TeachersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @my_teacher = my_teachers(:one)
   end

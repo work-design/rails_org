@@ -1,4 +1,4 @@
-class Hr::My::TutorialsController < Hr::My::BaseController
+class Org::My::TutorialsController < Org::My::BaseController
   before_action :set_tutorial, only: [:show, :edit, :perform, :update, :destroy]
 
   def index

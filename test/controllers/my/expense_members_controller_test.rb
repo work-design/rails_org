@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::My::ExpenseMembersControllerTest < ActionDispatch::IntegrationTest
+class Org::My::ExpenseMembersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @my_expense_member = my_expense_members(:one)
   end

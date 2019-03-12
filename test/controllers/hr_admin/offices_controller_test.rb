@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::OfficesControllerTest < ActionDispatch::IntegrationTest
+class Org::OfficesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @office = offices(:one)
   end

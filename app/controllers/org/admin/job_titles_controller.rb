@@ -1,4 +1,4 @@
-class Hr::Admin::JobTitlesController < Hr::Admin::BaseController
+class Org::Admin::JobTitlesController < Org::Admin::BaseController
   before_action :set_job_title, only: [:show, :edit, :update, :destroy]
 
   def index

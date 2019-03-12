@@ -1,4 +1,4 @@
-class Hr::Admin::DocumentsController < Hr::Admin::BaseController
+class Org::Admin::DocumentsController < Org::Admin::BaseController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   def index

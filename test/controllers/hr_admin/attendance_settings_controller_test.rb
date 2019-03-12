@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hr::AttendanceSettingsControllerTest < ActionDispatch::IntegrationTest
+class Org::AttendanceSettingsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @hr_attendance_setting = admin_attendance_settings(:one)
   end

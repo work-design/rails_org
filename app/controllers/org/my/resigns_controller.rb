@@ -1,4 +1,4 @@
-class Hr::My::ResignsController < Hr::My::BaseController
+class Org::My::ResignsController < Org::My::BaseController
   before_action :set_resign, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def show
