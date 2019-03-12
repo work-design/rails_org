@@ -28,6 +28,11 @@ Rails.application.routes.draw do
   scope :admin, module: 'org/admin', as: 'admin' do
     root to: 'home#index'
 
+    resources :organs do
+      patch :token, on: :member
+      patch :mock, on: :member
+    end
+
     resources :offices
     resources :departments do
       get :supports, on: :collection

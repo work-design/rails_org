@@ -5,6 +5,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     create_table :organs do |t|
       t.string :name
       t.string :organ_uuid
+      t.string :token, null: false
       t.timestamps
     end
 

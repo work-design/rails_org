@@ -15,6 +15,7 @@
       <th><%= Organ.human_attribute_name(:id) %></th>
       <th><%= Organ.human_attribute_name(:name) %></th>
       <th><%= Organ.human_attribute_name(:organ_uuid) %></th>
+      <th><%= Organ.human_attribute_name(:token) %></th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
       <td><%= organ.id %></td>
       <td><%= organ.name %></td>
       <td><%= organ.organ_uuid %></td>
+      <td><%= organ.token %></td>
       <td class="ui labels">
         <%= link_to admin_organ_path(organ), data: { tooltip: t('.show') }, class: 'ui blue mini icon button', remote: true do %>
           <i class="location arrow icon"></i>
@@ -33,6 +35,12 @@
         <% end %>
         <%= link_to admin_organ_path(organ), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>
+        <% end %>
+        <%= link_to token_admin_organ_path(organ), method: :patch, data: { tooltip: '更新token' }, class: 'ui red mini icon button' do %>
+          <i class="redo icon"></i>
+        <% end %>
+        <%= link_to mock_admin_organ_path(organ), method: :patch, data: { tooltip: 'Mock' }, class: 'ui red mini icon button' do %>
+          <i class="hand point right icon"></i>
         <% end %>
       </td>
     </tr>

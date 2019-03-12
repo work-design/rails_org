@@ -1,22 +1,16 @@
-class Org::Admin::BaseController < ApplicationController
-  include RailsRoleController
-  before_action :require_login
-  before_action :require_role
-  helper_method :current_member
-  default_form_builder 'HrBuilder' do |config|
+class Org::Admin::BaseController < RailsOrg.config.admin_class.constantize
+  before_action :require_organ
 
+  def require_organ
+    binding.pry
+    return if current_organ
+
+    raise ActionController::UnauthorizedError
   end
 
-  def current_member
-    current_user&.member
-  end
-
-  def current_receiver
-    current_member
-  end
-
-  def the_role_user
-    current_member
+  def current_organ
+    binding.pry
+    @current_organ ||= Organ.find_by(token: session[:organ_token])
   end
 
 end

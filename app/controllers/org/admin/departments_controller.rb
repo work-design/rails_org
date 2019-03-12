@@ -1,6 +1,5 @@
 class Org::Admin::DepartmentsController < Org::Admin::BaseController
   before_action :set_department, only: [:show, :edit, :need, :update, :destroy]
-  skip_before_action :verify_authenticity_token, only: [:filter] #todo removed
 
   def index
     q_params = {}

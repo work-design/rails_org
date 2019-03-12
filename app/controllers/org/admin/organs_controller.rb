@@ -1,5 +1,5 @@
-class Org::Admin::OrgansController < Org::Admin::BaseController
-  before_action :set_organ, only: [:show, :edit, :update, :destroy]
+class Org::Admin::OrgansController < RailsOrg.config.admin_class.constantize
+  before_action :set_organ, only: [:show, :edit, :update, :mock, :token, :destroy]
 
   def index
     @organs = Organ.page(params[:page])
@@ -39,6 +39,16 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
     end
   end
 
+  def mock
+    session[:organ_token] = @organ.token
+    redirect_to admin_departments_url
+  end
+
+  def token
+    @organ.refresh_token!
+    redirect_to admin_organs_url
+  end
+
   def destroy
     @organ.destroy
     redirect_to admin_organs_url, notice: 'Organ was successfully destroyed.'
@@ -52,7 +62,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   def organ_params
     params.fetch(:organ, {}).permit(
       :name,
-      :organ_uuid,
+      :organ_uuid
     )
   end
 
