@@ -1,9 +1,0 @@
-<%= form_with model: [:hr, @email_template], local: true do |f| %>
-  <%= render 'shared/error_messages', target: @email_template %>
-  <%= f.text_field :name, required: true %>
-  <%= f.text_field :subject, required: true %>
-  <%= f.text_area :body, required: true %>
-  <%= f.text_field :category, required: true %>
-  <%= f.file_field :file, label: 'Attachments' %>
-  <%= f.submit %>
-<% end %>

@@ -1,5 +1,0 @@
-<%= render 'shared/error_messages', target: @job_title %>
-<%= f.text_field :name %>
-<%= f.select :grade, options_for_select(JobTitle.options_i18n(:grade), @job_title.grade) %>
-<%= f.submit %>
-

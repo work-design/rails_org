@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  scope module: 'hr' do
+  scope module: 'org' do
     resources :members, only: [:index, :show]
   end
 
-  scope :my, module: 'hr/my', as: 'my' do
+  scope :my, module: 'org/my', as: 'my' do
     resources :tutorials do
       get :tutorings, on: :collection
       get :perform, on: :member
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :documents
   end
 
-  scope :admin, module: 'hr/admin', as: 'admin' do
+  scope :admin, module: 'org/admin', as: 'admin' do
     root to: 'home#index'
 
     resources :offices
@@ -70,16 +70,8 @@ Rails.application.routes.draw do
     resources :resign_reasons do
       get :parents, on: :collection
     end
-    resources :interviewees do
-      get :email, on: :member
-      get :search, on: :member
-      post :send_to, on: :member
-      post :add_attach, on: :member
-      get :remove_attach, on: :member
-    end
     resources :documents
     resources :email_templates, except: :show
-    resources :recruitment_plans
     resources :bands
   end
 

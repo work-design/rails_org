@@ -1,9 +1,0 @@
-<p>Dear colleague,</p>
-
-<% if @lesson_member.lesson.is_a?(OnlineLesson) %>
-  <p>You have selected/been assigned the online lesson <%= link_to @lesson_member.lesson.title, my_lesson_url(@lesson_member.lesson_id) %></p>
-  <p>Please finish the study as soon as possible.</p>
-<% else %>
-  <p>You have selected/been assigned the offline lesson <%= link_to @lesson_member.lesson.title, my_lesson_url(@lesson_member.lesson_id) %>which will start at <%= @lesson_member.lesson.next_start_time.in_time_zone(@lesson_member.member.timezone) %>.</p>
-  <p>Please attend the course on time.</p>
-<% end %>
