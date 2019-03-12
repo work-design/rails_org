@@ -25,7 +25,7 @@
       <td><%= organ.name %></td>
       <td><%= organ.organ_uuid %></td>
       <td class="ui labels">
-        <%= link_to admin_organs_path(organ), data: { tooltip: t('.show') }, class: 'ui blue mini icon button', remote: true do %>
+        <%= link_to admin_organ_path(organ), data: { tooltip: t('.show') }, class: 'ui blue mini icon button', remote: true do %>
           <i class="location arrow icon"></i>
         <% end %>
         <%= link_to edit_admin_organ_path(organ), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button', remote: true do %>

@@ -4,7 +4,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
 
     create_table :organs do |t|
       t.string :name
-      t.references :area
       t.string :organ_uuid
       t.timestamps
     end
@@ -35,11 +34,13 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :user
       t.references :department
       t.references :office
+      t.string :type
       t.string :name
       t.string :email
       t.string :number
       t.date :join_on
       t.boolean :enabled, default: true
+      t.string :state
       t.timestamps
     end
 

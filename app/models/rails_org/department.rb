@@ -27,7 +27,6 @@ class Department < ApplicationRecord
     Member.find(self.leader_id) if self.leader_id
   end
 
-  SUPPORTS = Support.kinds.keys & ['editorial', 'hr', 'financial', 'marketing']
 
   def sync_type
     self.descendants.update_all type: self.type
@@ -50,9 +49,6 @@ class Department < ApplicationRecord
     self_and_ancestors.pluck(:name).reverse.join(' > ')
   end
 
-  def all_job_titles
-    JobTitle.where(department_id: self.self_and_ancestor_ids)
-  end
 
   def supports
     return @supports if @supports
@@ -62,11 +58,6 @@ class Department < ApplicationRecord
     end
   end
 
-  Support.kinds.keys.each do |role|
-    define_method("#{role}") do
-      supports.find { |i| i.kind == role.to_s }&.supporter
-    end
-  end
 
   def self.filter_options
     Department.leaves.map { |i| [i.full_name, i.id] }

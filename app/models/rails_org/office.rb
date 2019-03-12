@@ -7,13 +7,6 @@ class Office < ApplicationRecord
 
   validates :name, presence: true
 
-  SUPPORTS = Support.kinds.keys & ['hr', 'admin', 'accountant', 'cashier']
-
-  Support.kinds.keys.each do |role|
-    define_method("#{role}") do
-      supports.find { |i| i.kind == role.to_s }&.supporter
-    end
-  end
 
   def enabled_members_count
     Member.where(office: self).where(enabled: true).count
