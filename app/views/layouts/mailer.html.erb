@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      .ui.table{margin:1em 0;border:1px solid rgba(34,36,38,.15);box-shadow:none;border-radius:.28571429rem;text-align:left;color:rgba(0,0,0,.87);border-collapse:separate;border-spacing:0;}
+      .ui.table:first-child{margin-top:0;}
+      .ui.table:last-child{margin-bottom:0;}
+      .ui.table td{transition:background .1s ease,color .1s ease;}
+      .ui.table tr td{border-top:1px solid rgba(34,36,38,.1);}
+      .ui.table tr:first-child td{border-top:none;}
+      .ui.table td{padding:.78571429em;text-align:inherit;}
+      .ui.table [class*="right aligned"]{text-align:right;}
+      .ui.basic.table{background:transparent;border:1px solid rgba(34,36,38,.15);}
+      .ui.basic.table{box-shadow:none;}
+      .ui.basic.table tbody tr{border-bottom:1px solid rgba(0,0,0,.1);}
+      .ui.basic.table td{background:transparent;}
+      .ui[class*="very basic"].table{border:none;}
+      .ui[class*="very basic"].table:not(.sortable):not(.striped) td{padding:"";}
+      .ui[class*="very basic"].table:not(.sortable):not(.striped) td:first-child{padding-left:0;}
+      .ui[class*="very basic"].table:not(.sortable):not(.striped) td:last-child{padding-right:0;}
+      .ui.table{font-size:1em;}
+      .ui.large.table{font-size:1.1em;}
+      .ui.basic.table .right.aligned:after{content:":";color:#888;}
+    </style>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

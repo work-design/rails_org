@@ -1,0 +1,29 @@
+<div class="ui segment">
+  <%= render 'search_form' %>
+</div>
+
+<div class="ui six cards">
+  <% @members.each do |member| %>
+  <div class="card">
+    <%= link_to member_path(member), class: 'image' do %>
+      <% if member.user && member.user.avatar.attached? %>
+        <%= image_tag member.user.avatar.variant(resize: '150x150') %>
+      <% else %>
+        <%= image_tag 'default_avatar.jpg' %>
+      <% end %>
+    <% end %>
+    <div class="content">
+      <span>
+        <%= link_to member_path(member) do %>
+          <i class="user icon"></i><%= member.name %>
+        <% end %>
+      </span>
+    </div>
+    <div class="extra content">
+      <span><%= member.department&.full_name %></span>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<%= paginate @members %>

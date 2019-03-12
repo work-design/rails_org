@@ -1,0 +1,7 @@
+<%= search_form_with do |f| %>
+  <div class="fields">
+    <%= f.text_field 'private_email', placeholder: 'Email' %>
+    <%= f.submit 'Search' %>
+    <%= link_to 'Reset', admin_interviewees_path, class: 'ui grey button' %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<tr data-depth="<%= node.depth_str %>">
+  <td>
+    <span><%= ('&emsp;' * node.depth * 2).html_safe %></span>
+    <% if node.children.any? %>
+      <a onclick="collapse(this)" href="javascript:void(0)"><i class="grey caret down icon"></i></a>
+    <% end %>
+    <%= node.name %>
+  </td>
+  <td>
+    <%= link_to t('.edit'), edit_admin_resign_reason_path(node), class: 'ui pink label' %>
+    <%= link_to t('.destroy'), admin_resign_reason_path(node), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+  </td>
+</tr>

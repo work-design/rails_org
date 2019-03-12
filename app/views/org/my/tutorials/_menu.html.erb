@@ -1,0 +1,11 @@
+<div class="ui top attached borderless menu">
+  <%= link_to 'My Tutorial', my_tutorials_path, class: active_helper('my/tutorials': ['index']) %>
+  <%= link_to 'Tutor Application', my_admin_tutorials_path, class: active_helper('hr_admin/tutorials': ['my']) %>
+  <%= link_to 'Tutor Record', tutorings_my_tutorials_path, class: active_helper('my/tutorials': ['tutorings']) %>
+  <div class="right menu">
+    <div class="item"><%= link_to 'New Tutorial', new_admin_tutorial_path, class: 'ui teal button' %></div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,53 @@
+<% if params[:department_id] %>
+<% content_for :nav do %>
+  <%= render 'nav_show' %>
+<% end %>
+<% end %>
+
+<% if params[:department_id] %>
+  <%= render 'department_navbar' %>
+<% end %>
+
+<div class="ui top attached borderless menu">
+  <div class="header item">Crm Permits</div>
+  <div class="right menu">
+    <div class="item"><%= link_to 'New Crm Permit', new_admin_support_path(request.query_parameters), class: 'ui teal button' %></div>
+  </div>
+</div>
+
+<div class="ui attached segment">
+  <%= render 'search_form' %>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th><%= Support.human_attribute_name(:id) %></th>
+      <th><%= Support.human_attribute_name(:department) %></th>
+      <th><%= Support.human_attribute_name(:office) %></th>
+      <th><%= Support.human_attribute_name(:member) %></th>
+      <th><%= Support.human_attribute_name(:kind) %></th>
+      <th><%= Support.human_attribute_name(:supporter) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @supports.each do |support| %>
+    <tr>
+      <td><%= support.id %></td>
+      <td><%= support.department&.name %></td>
+      <td><%= support.office&.name %></td>
+      <td><%= support.member&.name %></td>
+      <td><%= support.kind %></td>
+      <td><%= support.supporter&.name %></td>
+      <td class="ui labels">
+        <%= link_to t('.edit'), edit_admin_support_path(support), class: 'ui pink label' %>
+        <%= link_to t('.destroy'), admin_support_path(support), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @supports unless params[:department_id] %>

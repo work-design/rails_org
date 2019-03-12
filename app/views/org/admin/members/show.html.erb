@@ -1,0 +1,82 @@
+<%= render 'menu' %>
+
+<table class="ui very basic large table">
+  <thead>
+  <tr>
+    <th class="three wide"></th>
+    <th>
+      <%= link_to 'Edit', edit_admin_member_path, class: 'ui mini blue right floated button' %>
+      <%= link_to 'Sync', sync_one_admin_member_path(@member), method: :patch, class: 'ui mini blue right floated button' %>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="right aligned"><%= Member.human_attribute_name(:roles) %></td>
+    <td class="ui labels">
+      <% @member.roles.each do |role| %>
+        <span class="ui green label"><%= role.name %></span>
+      <% end %>
+      <%= link_to admin_who_roles_path('Member', @member.id), target: '_blank' do %>
+        <i class="icon white pencil"></i>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td class="right aligned"><%= Member.human_attribute_name(:type) %></td>
+    <td><%= @member.type_i18n %></td>
+  </tr>
+  <tr>
+    <td class="right aligned"><%= Member.human_attribute_name(:email) %></td>
+    <td><%= @member.email %></td>
+  </tr>
+  <tr>
+    <td class="right aligned"><%= Profile.human_attribute_name(:department) %></td>
+    <td>
+      <% @member.department&.self_and_ancestors&.reverse_each do |department| %>
+        <%= link_to department.name, admin_department_path(department) %>
+        <span class="grey text"> > </span>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td class="right aligned"><%= Profile.human_attribute_name(:office) %></td>
+    <td><%= @member.office&.name %></td>
+  </tr>
+  <tr>
+    <td class="right aligned"><%= Profile.human_attribute_name(:join_on) %></td>
+    <td><%= @member.join_on %></td>
+  </tr>
+  <tr>
+    <td class="right aligned"><%= Profile.human_attribute_name(:tutorials) %></td>
+    <td>
+      <table class="ui very basic table">
+        <% @member.tutorials.each do |tutorial| %>
+        <tr>
+          <td><%= tutorial.id %></td>
+          <td><%= tutorial.kind_i18n %></td>
+          <td><%= tutorial.tutor&.name %></td>
+        </tr>
+        <% end %>
+        <tfoot>
+          <tr>
+            <td colspan="3">
+              <% Tutorial.options_i18n(:kind).each do |text, value| %>
+              <%= link_to text, new_admin_tutorial_path(kind: value, member_id: @member.id), remote: true, class: 'ui mini green button' %>
+              <% end %>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="right aligned"><%= Profile.human_attribute_name(:current_on_time) %></td>
+    <td><%= @member.on_time.to_s(:time) if @member.on_time %></td>
+  </tr>
+  <tr>
+    <td class="right aligned"><%= Profile.human_attribute_name(:current_off_time) %></td>
+    <td><%= @member.off_time.to_s(:time) if @member.off_time %></td>
+  </tr>
+  </tbody>
+</table>

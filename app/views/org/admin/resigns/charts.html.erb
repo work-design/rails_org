@@ -1,0 +1,19 @@
+<div class="ui top attached borderless menu">
+  <%= link_to 'Resigns', admin_resigns_path, class: 'item' %>
+  <%= link_to 'Resign Reason', admin_resign_reasons_path, class: 'item' %>
+  <div class="header item">Resign Charts</div>
+</div>
+
+  <div>
+    <div class="ui attached segment">
+      <%= render 'search_chart1_form' %>
+    </div>
+    <div style="width: 1200px; height: 500px; margin: auto">
+      <canvas id='chart1'></canvas>
+    </div>
+
+<!--      <canvas id="chart2"></canvas>-->
+  </div>
+<script>
+ var data = <%=raw @data %>;
+</script>

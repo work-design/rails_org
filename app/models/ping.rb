@@ -1,0 +1,4 @@
+class Ping < ApplicationRecord
+
+
+end

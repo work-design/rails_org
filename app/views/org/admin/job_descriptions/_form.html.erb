@@ -1,0 +1,9 @@
+<%= render 'shared/error_messages', target: @job_description %>
+<%= f.text_area :duties %>
+<%= f.text_area :requirements %>
+<%= f.text_area :advanced_requirements %>
+<%= f.text_field :english_requirement %>
+<%= f.text_field :degree_requirement %>
+<%= f.number_field :salary_min %>
+<%= f.number_field :salary_max %>
+<%= f.submit %>

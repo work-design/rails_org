@@ -1,0 +1,14 @@
+$('#modal').replaceWith('<%= j(render 'new') %>');
+$('#modal').modal('setting', {
+  autofocus: false
+}).modal('show');
+
+$('#tutorial_tutor_id').dropdown({
+  apiSettings: {
+    url: '/my/member/search?q={query}'
+  },
+  fields: {
+    name: 'name',
+    value: 'id'
+  }
+});

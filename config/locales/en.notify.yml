@@ -1,0 +1,38 @@
+en:
+  activerecord:
+    notify:
+      absence:
+        request:
+          title: '%{member_name} has requested %{type_i18n}'
+          body: '%{member_name} has requested %{type_i18n}'
+        default:
+          title: Your leave request has been %{state_i18n}
+          body: Your leave request has been %{state_i18n}
+      attendance_log:
+        request:
+          title: '%{member_name} has requested re-punch'
+          body: '%{member_name} has requested re-punch'
+        default:
+          title: Your attendance log request has been %{state_i18n}
+          body: Your attendance log request has been %{state_i18n}
+      expense:
+        request:
+          title: An expense request need your approve!
+          body: An expense request need your approve!
+        default:
+          title: Your expense request has been %{state_i18n}
+          body: Your expense request has been %{state_i18n}
+      expense_member:
+        request:
+          title: An expense request need your approve!
+          body: An expense request need your approve!
+        default:
+          title: Your expense request has been %{state_i18n}
+          body: Your expense request has been %{state_i18n}
+      overtime:
+        request:
+          title: '%{member_name} has requested Work overtime'
+          body: '%{member_name} has requested Work overtime'
+        default:
+          title: Your work overtime request has been %{state_i18n}
+          body: Your work overtime request has been %{state_i18n}

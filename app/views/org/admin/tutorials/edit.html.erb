@@ -1,0 +1,16 @@
+<div class="ui segment breadcrumb">
+  <%= link_to 'Back', admin_tutorials_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section">Edit</div>
+</div>
+
+<div class="ui segment">
+  <%= form_with model: [:hr, @tutorial], local: true do |f| %>
+    <%= render 'shared/error_messages', target: @tutorial %>
+    <%= f.select :tutor_id, options_for_select([[@tutorial.tutor&.name, @tutorial.tutor_id]], @tutorial.tutor_id) %>
+    <%= f.select :kind, options_for_select(Tutorial.options_i18n(:kind), @tutorial.kind) %>
+    <%= f.date_field :start_on %>
+    <%= f.date_field :finish_on %>
+    <%= f.submit %>
+  <% end %>
+</div>

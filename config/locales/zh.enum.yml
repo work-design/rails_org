@@ -1,0 +1,126 @@
+# Please order by a-z
+zh:
+  site_name: MDPI System
+  activerecord:
+    attributes:
+      absence/compensatory:
+        never: 不补班
+        previous: 提前补班
+        later: 补班
+      absence/type:
+        BusinessTrip: 出差
+        PersonalLeave: 事假
+        AnnualLeave: 年假
+        CompensatoryLeave: 调休
+        BereavementLeave: 丧假
+        ChildrenDayLeave: 儿童日
+        MarriageLeave: 婚假
+        MaternityLeave: 产假
+        ParentalLeave: 陪产假
+        PrenatalLeave: 产前假
+        SickLeave: 病假
+      absence/state:
+        init: 申请
+        approved: 批准
+        denied: 拒绝
+      attendance/kind:
+        start: Start
+        finish: Finish
+      attendance/status:
+        init: Pending
+      attendance_setting/state:
+        init: Pending
+        approved: Approved
+      crm_permit/kind:
+        editorial: ED
+        hr: HR
+        financial: 财务助理
+        #cashier: 出纳
+        #accountant: 会计
+        marketing: Marketing Assistant
+        #layout: 排版
+        #it: IT 支持
+        #admin: 行政
+      department/type:
+        EditDepartment: 编辑部门
+        NormalDepartment: 普通部门
+      expense/type:
+        BudgetExpense: 预算（采购）
+        PrepayExpense: 借支/报销
+        PayableExpense: 对公支付
+      expense/state:
+        init: 申请
+        rejected: 拒绝
+      extra_day/kind:
+        workday: 工作日
+        holiday: 假日
+      job_transfer/state:
+        init: 申请
+        approved: 批准
+        denied: 拒绝
+      lesson/compulsory:
+        true: 必修
+        false: 选修
+      lesson/repeat_type:
+        once: 一次
+        week: 每周
+        month: 每月
+      lesson/type:
+        OnlineLesson: 在线课程
+        OfflineLesson: 线下课程
+        ShareLesson: 分享
+        CaseStudy: 案例
+      lesson_member/state:
+        in_studying: In Studying
+        request_quit: Request quit
+        quitted: Quitted
+        in_evaluating: Reviewing
+        passed: Passed
+        failed: Failed
+      lesson_paper/type:
+        ExamPaper: 考卷
+        SurveyPaper: 调查问卷
+        CertifiablePaper: 认证考试
+      notification/receiver_type:
+        User: User
+      overtime/state:
+        init: 申请
+        approved: 批准
+        denied: 拒绝
+      payment_method/type:
+        CashMethod: 现金
+        BankMethod: 银行账号
+      profile/birthday_type:
+        gregorian: Gregorian
+        lunar: Lunar
+      profile/gender:
+        male: 男
+        female: 女
+      purchase/type:
+        BulkPurchase: 采购
+        PayoutPurchase: 对公支付
+      resign/state:
+        init: 申请
+        approved: 批准
+        denied: 拒绝
+      tutorial/accepted_status:
+        very_advance: Very advance
+        advance: 提前一个月转正
+        normal: 正常转正
+        overdue: 延期转正
+        very_overdue: Very overdue
+      tutorial/state:
+        init: Pending
+        interning: Interning Ⅰ
+        probation: Probation Ⅱ
+        added_probation: Probation
+        accepted: Accepted
+      tutorial/verified:
+        unverified: Unverified
+        superior_approved: Superior Approved
+        admin_approved: Hr Approved
+        md_approved: MD Approved
+      oauth_user/provider:
+        microsoft_v2_auth: Office365
+        developer: Developer
+        surveymonkey: SurveyMonkey

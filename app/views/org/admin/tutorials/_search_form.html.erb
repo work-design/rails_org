@@ -1,0 +1,9 @@
+<%= search_form_with do |f| %>
+  <div class="fields">
+    <%= f.text_field 'member.name', placeholder: 'Member Name' %>
+    <%= f.text_field 'tutor.name', placeholder: 'Tutor Name' %>
+    <%= f.submit 'Search' %>
+  </div>
+<% end %>
+
+

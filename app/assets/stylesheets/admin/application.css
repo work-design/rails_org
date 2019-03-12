@@ -1,0 +1,11 @@
+/*
+*= require yougexiangfa_ui/dist/stylesheets/semantic
+*= require flatpickr
+*= require site
+*= require_self
+*/
+
+.icon.link {
+  cursor: pointer;
+  font-size: 1.3em;
+}

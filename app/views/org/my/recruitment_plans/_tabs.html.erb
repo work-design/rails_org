@@ -1,0 +1,9 @@
+<div class="ui top attached borderless menu">
+  <%= link_to 'My Recruitment Plan', my_recruitment_plans_path, class: active_helper('my/recruitment_plans': ['index']) %>
+  <%= link_to 'Manage Recruitment Plan', my_my_recruitment_plans_path, class: active_helper('my/recruitment_plans': ['my']) %>
+  <div class="right menu">
+    <div class="item">
+      <%= link_to 'New Recruitment Plan', new_my_recruitment_plan_path, class: 'ui teal button' %>
+    </div>
+  </div>
+</div>

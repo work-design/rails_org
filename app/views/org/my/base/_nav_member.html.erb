@@ -1,0 +1,47 @@
+<div class="item">
+  <span class="header">Administration</span>
+  <div class="menu">
+    <%= link_to 'Attendance Setting', oa_attendance_settings_path, class: active_helper(controllers: 'attendance_settings') %>
+    <%= link_to 'Attendance', oa_attendances_path, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs']) %>
+    <% unless Rails.env.production? %>
+    <%= link_to 'Holiday application', oa_absences_path, class: active_helper(controllers: ['absences']) %>
+    <%= link_to 'Work Overtime', oa_overtimes_path, class: active_helper(controllers: ['overtimes']) %>
+    <%= link_to 'Dinner', dinners_my_orders_path, class: active_helper(controllers: ['dinners'], 'my/orders': ['dinners', 'new']) %>
+    <% end %>
+  </div>
+</div>
+<div class="item">
+  <span class="header">Training</span>
+  <div class="menu">
+    <%= link_to 'Lessons', my_lesson_members_path, class: active_helper(controllers: ['lesson_members', 'lessons'], 'train_admin/exams': ['todo', 'cert'], 'train_my/exams': ['index']) %>
+    <%= link_to 'Certification Test', certification_my_exams_path, class: active_helper('train_my/exams': 'certification') %>
+  </div>
+</div>
+<div class="item">
+  <span class="header">HR</span>
+  <div class="menu">
+    <% unless Rails.env.production? %>
+      <%= link_to 'My Department', my_admin_departments_path, class: active_helper('hr_admin/departments': ['my']) %>
+      <%= link_to 'Job Transfer', my_job_transfers_path, class: active_helper(controllers: ['job_transfers']) %>
+      <%= link_to 'Journal Transfer', my_journal_transfers_path, class: active_helper(controllers: ['journal_transfers']) %>
+      <%= link_to 'Resign', my_resign_path, class: active_helper(controllers: ['resigns']) %>
+      <%= link_to 'Tutorials', my_tutorials_path, class: active_helper(controllers: ['tutorials']) %>
+      <%= link_to 'Recruitment Plans', my_recruitment_plans_path, class: active_helper(controllers: ['recruitment_plans']) %>
+    <% end %>
+  </div>
+</div>
+<div class="item">
+  <span class="header">Financial</span>
+  <% unless Rails.env.production? %>
+  <div class="menu">
+    <%= link_to 'My Expenses', my_expense_members_path, class: active_helper(controllers: ['finance_my/expense_members', 'payment_methods']) %>
+    <%= link_to 'Admin Expenses', my_expenses_path, class: active_helper(controllers: ['finance_admin/expense_members', 'expenses']) %>
+  </div>
+  <% end %>
+</div>
+<div class="item">
+  <span class="header">Utils</span>
+  <div class="menu">
+    <%= link_to 'Documents', my_documents_path, class: active_helper(controllers: ['documents']) %>
+  </div>
+</div>

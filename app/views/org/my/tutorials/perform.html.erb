@@ -1,0 +1,21 @@
+<div class="ui segment breadcrumb">
+  <%= link_to 'Back', tutorings_my_tutorials_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section">Edit</div>
+</div>
+
+<div class="ui segment">
+  <%= form_with model: [:my, @tutorial], local: true do |f| %>
+    <%= render 'shared/error_messages', target: @tutorial %>
+    <%= f.text_field :member_id, value: @tutorial.member.name, disabled: true %>
+    <%= f.select :accepted_status, options_for_select(Tutorial.options_i18n(:accepted_status), @tutorial.accepted_status) %>
+    <%= f.date_field :tutor_begin_on %>
+    <%= f.text_field :performance %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+
+
+
+

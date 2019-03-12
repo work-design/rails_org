@@ -1,0 +1,6 @@
+<%= form_with model: [:hr, @band], local: true do |f| %>
+  <%= render 'shared/error_messages', target: @band %>
+  <%= f.text_field :name, required: true %>
+  <%= f.text_field :role, required: true %>
+  <%= f.submit %>
+<% end %>

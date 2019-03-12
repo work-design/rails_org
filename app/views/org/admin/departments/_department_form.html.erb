@@ -1,0 +1,8 @@
+<div class="two wide field" id="q_department_wrapper_<%= @department.id %>">
+<%= f.collection_select "department_ancestors(#{@department.depth}i)",
+                        @departments,
+                        :id,
+                        :name,
+                        { include_blank: true, selected: @department.id, label: false, on: { wrapper_all: false, wrapper_input: false } },
+                        { id: "q_department_id_#{params[:department_id]}", data: { id: @department.id, title: 'department_ancestors' } } %>
+</div>

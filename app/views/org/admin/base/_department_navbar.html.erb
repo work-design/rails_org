@@ -1,0 +1,22 @@
+<div class="ui top attached menu borderless">
+  <div class="header item">
+    <div class="ui breadcrumb">
+      <% @department.ancestors.reverse.each do |ancestor| %>
+        <% if controller_path == 'hr/departments' %>
+          <%= link_to ancestor.name, { id: ancestor.id }, { class: 'section' } %>
+        <% else %>
+          <%= link_to ancestor.name, { department_id: ancestor.id }, { class: 'section' } %>
+        <% end %>
+        <div class="divider">></div>
+      <% end %>
+      <div class="section"><%= @department.name %></div>
+    </div>
+  </div>
+  <%= link_to 'Members', admin_department_path(@department), class: active_helper('hr_admin/departments': ['show']) %>
+  <% if @department.is_a?(EditDepartment) %>
+    <%# link_to 'Journals', admin_department_journals_path(@department), class: active_helper(controllers: 'department_journals') %>
+  <% end %>
+  <%#= link_to 'Job Titles', admin_department_job_titles_path(@department), class: active_helper(controllers: 'job_titles') %>
+  <%#= link_to 'JD', admin_department_job_descriptions_path(@department), class: active_helper(controllers: 'job_descriptions') %>
+  <%= link_to 'Supports', admin_supports_path(department_id: @department.id), class: active_helper(controllers: 'supports') %>
+</div>

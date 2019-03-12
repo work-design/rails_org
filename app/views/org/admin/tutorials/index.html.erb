@@ -1,0 +1,15 @@
+<div class="ui top attached borderless menu">
+  <div class="header item">Tutorials</div>
+  <div class="right menu">
+    <div class="item"><%= link_to 'New Tutorial', new_admin_tutorial_path, class: 'ui teal button' %></div>
+  </div>
+</div>
+
+<div class="ui attached segment">
+  <%= render 'search_form' %>
+</div>
+
+<%= render 'list' %>
+
+<%= paginate @tutorials %>
+

@@ -1,0 +1,43 @@
+<%= render 'menu' %>
+
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="three wide"></th>
+      <th>
+        <%= link_to t('.edit'), edit_my_user_path, class: 'ui mini blue right floated button' %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>
+        <div class="ui image">
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar.variant(resize: '200x200') %>
+          <% else %>
+            <%= image_tag 'default_avatar.jpg', size: '200x200' %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:name) %></td>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:email) %></td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:mobile) %></td>
+      <td><%= @user.mobile %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:timezone) %></td>
+      <td><%= @user.timezone %></td>
+    </tr>
+  </tbody>
+</table>
+

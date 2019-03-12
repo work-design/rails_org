@@ -1,0 +1,39 @@
+<table class="ui very basic large table">
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:avatar) %></td>
+      <td>
+        <% if @member.user && @member.user.avatar.attached? %>
+          <%= image_tag @member.user.avatar %>
+        <% else %>
+          <%= image_tag 'default_avatar.jpg' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Member.human_attribute_name(:email) %></td>
+      <td><%= @member.email %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Member.human_attribute_name(:join_on) %></td>
+      <td><%= @member.join_on %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Member.human_attribute_name(:department) %></td>
+      <td>
+        <% @member.department&.self_and_ancestors&.reverse_each do |department| %>
+          <%= link_to department.name, member_path(department_id: department.id) %>
+          <span class="grey text"> > </span>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Member.human_attribute_name(:skype) %></td>
+      <td><%= @member.skype %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:work_experience) %></td>
+      <td><%= simple_format @member.profile&.work_experience %></td>
+    </tr>
+  </tbody>
+</table>

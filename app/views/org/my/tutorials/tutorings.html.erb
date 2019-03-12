@@ -1,0 +1,40 @@
+<%= render 'menu' %>
+
+<div class="ui attached segment">
+  <%= render 'search_form' %>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th><%= Tutorial.human_attribute_name(:member) %></th>
+      <th><%= Tutorial.human_attribute_name(:state) %></th>
+      <th><%= Tutorial.human_attribute_name(:accepted_status) %></th>
+      <th><%= Tutorial.human_attribute_name(:performance) %></th>
+      <th><%= Tutorial.human_attribute_name(:allowance) %></th>
+      <th><%= Tutorial.human_attribute_name(:verified) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @tutorials.each do |tutorial| %>
+    <tr>
+      <td><%= tutorial.id %></td>
+      <td><%= tutorial.member&.name %></td>
+      <td><%= tutorial.state_i18n %></td>
+      <td><%= tutorial.accepted_status_i18n %></td>
+      <td><%= tutorial.performance %></td>
+      <td><%= tutorial.allowance %></td>
+      <td><%= tutorial.verified_i18n %></td>
+      <td>
+        <%= link_to 'Show', my_tutorial_path(tutorial), class: 'ui blue label' %>
+        <%= link_to 'Perform', perform_my_tutorial_path(tutorial), class: 'ui pink label' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @tutorials %>

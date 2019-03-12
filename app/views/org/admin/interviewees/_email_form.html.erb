@@ -1,0 +1,20 @@
+<%= form_with model: @email_history, url: send_to_admin_interviewee_path, method: :post, multipart: true, local: true  do |f| %>
+  <%= render 'shared/error_messages', target: @email_history %>
+  <%= f.select :category, options_from_collection_for_select(EmailTemplate.select(:category).distinct, :category, :category), include_blank: true %>
+  <%= f.select :email_template, options_for_select([]) %>
+  <%= f.select :from, options_for_select([current_member.email], :email), required: true %>
+  <%= f.text_field :to, value: @interviewee.private_email, readonly: true, required: true %>
+  <%= f.select :cc, [], {}, {multiple: true, inlcude_blank: true} %>
+  <%= f.text_field :subject, required: true %>
+  <%= f.text_area :body, required: true %>
+  <%= f.file_field :attachments, multiple: true %>
+  <div class="inline fields">
+    <div class="six wide field"></div>
+    <div class="six wide field" id="attach-show" style="display: block"></div>
+  </div>
+  <div id="progress" class="inline fields">
+    <div class="six wide field"></div>
+    <div style="width:0%; background-color: #0d71bb; text-align: center; color: white" ></div>
+  </div>
+  <%= f.submit 'Send' %>
+<% end %>

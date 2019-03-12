@@ -1,0 +1,7 @@
+<%= render 'edit_menu' %>
+
+<div class="ui segment">
+  <%= form_with model: @member, as: :member, url: admin_member_path(@member), local: true do |f| %>
+    <%= render partial: 'form', locals: { f: f } %>
+  <% end %>
+</div>

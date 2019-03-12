@@ -1,0 +1,52 @@
+<div class="ui top attached borderless menu">
+  <div class="header item">Editing Badges</div>
+  <div class="right menu">
+    <div class="item">
+      <%= link_to 'New Editing Badge', new_admin_badge_path, class: 'ui teal button' %>
+    </div>
+  </div>
+</div>
+
+<div class="ui attached segment">
+  <%# render 'search_form' %>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th><%= Badge.human_attribute_name(:id) %></th>
+      <th><%= Badge.human_attribute_name(:title) %></th>
+      <th><%= Badge.human_attribute_name(:abbr) %></th>
+      <th><%= Badge.human_attribute_name(:level) %></th>
+      <th>
+        <p><%= Badge.human_attribute_name(:enabled_badge) %></p>
+        <p><%= Badge.human_attribute_name(:disabled_badge) %></p>
+      </th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @badges.each do |badge| %>
+    <tr>
+      <td><%= badge.id %></td>
+      <td><%= badge.title %></td>
+      <td><%= badge.abbr %></td>
+      <td><%= badge.level %></td>
+      <td>
+        <p><%= image_tag badge.enabled_badge, class: 'ui avatar image' if badge.enabled_badge.attached? %></p>
+        <p><%= image_tag badge.disabled_badge, class: 'ui avatar image' if badge.disabled_badge.attached? %></p>
+      </td>
+      <td class="ui labels">
+        <%= link_to edit_admin_badge_path(badge), class: 'ui pink mini icon button' do %>
+          <i class="pencil alternate icon"></i>
+        <% end %>
+        <%= link_to admin_badge_path(badge), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+          <i class="times icon"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @badges %>

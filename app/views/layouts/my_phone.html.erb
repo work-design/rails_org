@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : t('site_name') %></title>
+  <meta name="description" content="<%= yield(:meta_description) %>">
+  <meta name="keywords" content="<%= yield(:meta_keywords) %>">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true %>
+  <%= css_load media: 'all', 'data-turbolinks-track': true %>
+  <%= stylesheet_link_tag 'rails_notice/cable' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
+  <%= javascript_include_tag 'rails_notice/cable', 'data-turbolinks-eval': 'false' %>
+  <%= js_ready 'data-turbolinks-track': true %>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+</head>
+
+<body>
+  <header class="ui inverted site borderless menu">
+    <div class="ui container">
+      <% if current_user %>
+        <%= link_to root_path, class: 'item header' do %>
+          <span>MDPI</span>
+        <% end %>
+        <%= link_to 'Team', members_path, class: active_helper(controller: '/members') %>
+      <% else %>
+        <%= link_to 'MDPI', root_path, class: 'item header' %>
+      <% end %>
+    </div>
+  </header>
+
+  <main class="ui container grid">
+    <%= yield %>
+  </main>
+  
+  <%= js_load %>
+  <%= javascript_include_tag 'footer' %>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+<%= render 'department_navbar' %>
+
+<div class="ui basic segment breadcrumb">
+  <%= link_to 'Back', admin_department_job_descriptions_path(@department), class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section">Add</div>
+</div>
+
+<div class="ui segment">
+  <%= form_with model: @job_description, url: admin_department_job_descriptions_path(@department), local: true do |f| %>
+    <%= render partial: 'form', locals: { f: f } %>
+  <% end %>
+</div>

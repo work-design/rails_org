@@ -1,0 +1,31 @@
+<% form_object = search_form_object(:q, on: { wrapper_id: true }) %>
+<% if @department %>
+var template = '<%= j(render partial: 'department_form', locals: { f: form_object }) %>'
+if ($('#q_department_wrapper_<%= params[:previous_id] %>').next().length > 0) {
+  $('#q_department_wrapper_<%= params[:previous_id] %>').next().replaceWith(template);
+} else {
+  $('#q_department_wrapper_<%= params[:previous_id] %>').after(template);
+}
+$("#q_department_id_<%= params[:department_id] %>").dropdown({
+  placeholder: false,
+  onChange: function (value, text, $selectedItem) {
+    var search_path = '/hr/departments/filter';
+    var search_url = new URL(window.location.origin + search_path);
+    search_url.searchParams.set('department_id', value);
+    search_url.searchParams.set('previous_id', this.dataset['id']);
+
+    var params = {
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/javascript',
+        'X-CSRF-Token': document.head.querySelector("[name=csrf-token]").content
+      }
+    };
+    fetch_xhr_script(search_url, params);
+  }
+});
+<% else %>
+if ($('#q_department_wrapper_<%= params[:previous_id] %>').next().length > 0) {
+  $('#q_department_wrapper_<%= params[:previous_id] %>').nextAll().replaceWith('');
+}
+<% end %>

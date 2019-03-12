@@ -1,0 +1,6 @@
+<%= form_with model: [:my, @tutorial], local: true do |f| %>
+  <%= render 'shared/error_messages', target: @tutorial %>
+  <%= f.select :tutor_id, options_for_select([[@tutorial.tutor&.name, @tutorial.tutor_id]], @tutorial.tutor_id) %>
+  <%= f.date_field :intern_begin_on %>
+  <%= f.submit %>
+<% end %>

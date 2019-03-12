@@ -1,0 +1,8 @@
+<%= search_form_with model: Document.new do |f| %>
+  <div class="fields">
+    <%= f.text_field :'name-like', placeholder: 'Name' %>
+    <%= f.submit 'Search' %>
+  </div>
+<% end %>
+
+

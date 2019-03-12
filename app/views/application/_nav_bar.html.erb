@@ -1,0 +1,8 @@
+<header class="ui inverted site borderless menu">
+  <div class="ui container">
+    <div class="item header">Admin Center</div>
+    <%= link_to 'Employee', admin_members_path, class: active_helper(modules: 'admin_admin') %>
+    <%= link_to 'Attendance', admin_financial_months_path, class: active_helper(modules: 'my_admin') %>
+    <%= render 'layouts/right_menu' %>
+  </div>
+</header>

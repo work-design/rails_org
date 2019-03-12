@@ -1,0 +1,9 @@
+<%= form_with model: [:hr, @badge], local: true do |f| %>
+  <%= render 'shared/error_messages', target: @badge %>
+  <%= f.text_field :title %>
+  <%= f.text_field :abbr %>
+  <%= f.text_field :level %>
+  <%= f.file_field :enabled_badge %>
+  <%= f.file_field :disabled_badge %>
+  <%= f.submit %>
+<% end %>

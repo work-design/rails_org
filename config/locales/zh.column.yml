@@ -1,0 +1,77 @@
+zh:
+  activerecord:
+    attributes:
+      absence:
+        hours: 时长(小时）
+        member: 职员
+        member_name: 姓名
+        type_i18n: 类别
+        state_i18n: 状态
+        start_at: 开始时间
+        finish_at: 结束时间
+        note: 说明
+      attendance:
+        member: 职员
+        start_at: Start
+        finish_at: Leave
+        interval_start_at: Interval Leave start
+        interval_finish_at: Finish
+        total_hours: Total
+        late_minutes: Late
+        leave_minutes: Leave
+        overtime_hours: Overtime
+      attendance_log:
+        member_name: 姓名
+        record_at: 时间
+        note: 说明
+        state_i18n: 状态
+      department:
+        editorial: Editorial Director
+        hr: HR
+        financial: Financial Assistant
+        marketing: Marketing Assistant
+      expense:
+        amount: 合计
+        expense_members: 报销人
+      job_transfer:
+        member: Employee
+        transfer_on: Transfer Date
+        state: Status
+      journal:
+        name_short: Journal
+        editors: Managing Editor(s)
+        idatabases: Indexing
+      lesson:
+        lesson_taxon: 类别
+      lesson_member:
+        state: 状态
+      member:
+        join_on: 入职日期
+        on_time: Current work shift (on)
+        off_time: Current work shift (off)
+        next_on_time: Next work shift (on)
+        next_off_time: Next work shift (off)
+        experience: Profile in MDPI
+        parent: 上级
+        enabled: 状态
+      overtime:
+        member: 职员
+        member_name: 姓名
+        start_at: 开始时间
+        finish_at: 结束时间
+        state_i18n: 状态
+        hours: 时长（小时）
+      profile:
+        real_name: 中文名字
+        work_experience: 工作经历
+        birtheday_type: 生日类型
+      resign:
+        member: 职员
+        leave_on: 最后工作日
+        resign_reason: 离职原因
+        reason_note: 详情
+        state: 状态
+      tutorial:
+        member: 职员
+      user:
+        name: 姓名

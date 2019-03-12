@@ -1,0 +1,39 @@
+<div class="ui top attached borderless menu">
+  <div class="header item">Member lists</div>
+  <div class="right menu">
+    <div class="item">
+      <%= link_to 'New', new_admin_member_path, class: 'ui teal button' %>
+    </div>
+    <div class="item">
+      <%= link_to t('.export'), find_data_list_table_lists_path('MemberExport', params.fetch(:q, {}).permit(:office_id)), class: 'ui blue button', remote: true %>
+    </div>
+  </div>
+</div>
+
+<div class="ui attached segment">
+  <%= render 'search_form' %>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th><%= Member.human_attribute_name(:name) %></th>
+    <th><%= Member.human_attribute_name(:office) %></th>
+    <th><%= Member.human_attribute_name(:department) %></th>
+    <th><%= Member.human_attribute_name(:job_titles) %></th>
+    <th><%= Member.human_attribute_name(:contacts) %></th>
+    <th><%= Member.human_attribute_name(:join_on) %></th>
+    <th><%= Member.human_attribute_name(:resume) %></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <%= render partial: 'member', locals: { member: member } %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @members %>

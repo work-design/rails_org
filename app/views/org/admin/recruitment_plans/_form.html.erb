@@ -1,0 +1,10 @@
+<%= form_with model: [:hr, @recruitment_plan], local: true do |f| %>
+  <%= render 'shared/error_messages', target: @recruitment_plan %>
+  <%= f.collection_select :journal_id, Journal.all, :id, :name_short, {prompt: true, required: true} %>
+  <%= f.number_field :ae_count, required: true %>
+  <%= f.number_field :me_count, required: true %>
+  <%= f.select :state, options_for_select(RecruitmentPlan.options_i18n(:state), @recruitment_plan.state) %>
+  <%= f.check_box :rejected %>
+  <%= f.text_area :comment %>
+  <%= f.submit %>
+<% end %>

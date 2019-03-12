@@ -1,0 +1,8 @@
+<%= search_form_with model: Resign.new do |f| %>
+  <div class="fields">
+    <%= f.select :id, options_from_collection_for_select(ResignReason.where({parent_id: nil}),:id ,:name),{} %>
+    <%= f.submit 'Search' %>
+  </div>
+<% end %>
+
+

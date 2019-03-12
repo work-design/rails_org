@@ -1,0 +1,32 @@
+<tr>
+  <td>
+    <%= member.id %>
+  </td>
+  <td>
+    <% if member.user && member.user.avatar.attached? %>
+      <%= link_to admin_user_path(member.user&.id) do %>
+        <%= image_tag member.user.avatar.variant(resize: '35x35'), class: 'ui avatar image' %>
+      <% end %>
+    <% else %>
+      <%= link_to user_admin_member_path(member), remote: true do %>
+        <%= image_tag 'default_avatar.jpg', size: '35x35', class: 'ui avatar image' %>
+      <% end %>
+    <% end %>
+    <%= member.name %>
+  </td>
+  <td>
+    <% member.job_titles.each do |job_title| %>
+      <P><%= job_title.name %></P>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to member.office.name, admin_office_path(member.office_id) if member.office %>
+  </td>
+  <td><%= member.parent&.name %></td>
+  <td><%= member.join_on %></td>
+  <td class="ui labels">
+    <%= link_to 'Edit', edit_admin_member_path(member), class: 'ui pink label' %>
+    <%= link_to 'Delete', admin_member_path(member), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+  </td>
+</tr>
+

@@ -1,0 +1,11 @@
+/* mdpi */
+.ui.inverted.menu .site.active.item,
+.ui.inverted.site.menu {
+  background-color: #4f5671;
+}
+.ui.inverted.site.menu .item:before {
+  background-color: rgba(34, 36, 38, 0.1);
+}
+.ui.inverted.site.menu .active.item {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}

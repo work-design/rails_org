@@ -1,0 +1,17 @@
+<%= f.text_field :name, label: 'Real Name' %>
+<%= f.email_field :email %>
+<%= f.text_field :title, label: 'Titles' %>
+<%= f.select :type, options_for_select(Member.options_i18n(:type), @member.type), { label: 'Type', include_blank: true } %>
+<%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'department' } %>
+<%= f.select :job_title_ids, options_from_collection_for_select(JobTitle.all,:id ,:name, @member.job_title_ids),{}, {multiple: true, include_blank: false, label: 'Job Titles' } %>
+<%= f.select :parent_id, options_for_select([[@member.parent&.name, @member.parent&.id]], @member.parent_id), { include_blank: true, label: 'Leader' } %>
+<%= f.collection_select :office_id, Office.all, :id, :name, { prompt: 'Select Office' } %>
+<%= f.collection_select :band_id, Band.all, :id, :name, { prompt: 'Select Band' } %>
+<%= f.date_field :join_on %>
+<%= f.number_field :previous_months %>
+<%= f.number_field :vacation_balances, step: 0.5 %>
+<%= f.number_field :children_count %>
+<%= f.check_box :enabled %>
+<%= f.text_field :attendance_number %>
+<%= f.collection_check_boxes :badge_ids, Badge.all, :id, :abbr %>
+<%= f.submit %>

@@ -1,0 +1,47 @@
+<div class="ui top attached borderless menu">
+  <div class="header item">My Departments</div>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th colspan="<%= @department.col_span %>">Name</th>
+      <th>Needed / Actual</th>
+      <th>People</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td colspan="<%= @department.col_span %>">
+        <%= link_to admin_department_path(@department) do %>
+          <span><%= @department.name %></span>
+          <span class="grey text">(<%= @department.all_members_count %>)</span>
+        <% end %>
+      </td>
+      <td>
+        <%= @department.needed_member %> /
+        <span class="<%= active_asserts('red': @department.needed_member.to_i > @department.members_count, 'grey': @department.needed_member.to_i == @department.members_count, 'green': @department.needed_member.to_i < @department.members_count) %> text">
+          <%= @department.members_count %>
+        </span>
+      </td>
+      <td class="ui labels">
+        <% @department.members.where(enabled: true).each do |member| %>
+          <span class="ui label"><%= member.name %></span>
+        <% end %>
+      </td>
+      <td class="ui labels">
+        <%#= link_to 'JD', admin_department_job_descriptions_path(@department), class: 'ui blue label' %>
+        <%= link_to 'Supports', admin_supports_path(department_id: @department.id), class: 'ui yellow label' %>
+        <%#= link_to 'Journals', admin_department_journals_path(@department), class: 'ui blue label' if @department.is_a?(EditDepartment) %>
+        <%= link_to 'Need', need_admin_department_path(@department), class: 'ui pink label' %>
+      </td>
+    </tr>
+    <%= draw_tree(@department, partial: 'hr_admin/departments/my_department') %>
+  </tbody>
+</table>
+
+<%= paginate @departments %>
+
+

@@ -1,0 +1,35 @@
+<% content_for :nav do %>
+  <%= render 'nav_show' %>
+<% end %>
+
+<%= render 'department_navbar' %>
+
+<div class="ui segment bottom attached">
+  <%# render 'search_form' %>
+</div>
+
+<div class="ui segment top attached">
+  <%= link_to 'New', new_admin_member_path, class: 'ui teal button' %>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th><%= Member.human_attribute_name(:name) %></th>
+    <th><%= Member.human_attribute_name(:job_titles) %></th>
+    <th><%= Member.human_attribute_name(:office) %></th>
+    <th>Leader</th>
+    <th>Join On</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @members.each do |member| %>
+    <%= render partial: 'member', locals: { member: member } %>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @members %>

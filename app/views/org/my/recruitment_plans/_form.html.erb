@@ -1,0 +1,7 @@
+<%= form_with model: [:my, @recruitment_plan], local: true do |f| %>
+  <%= render 'shared/error_messages', target: @recruitment_plan %>
+  <%= f.select :journal_id, options_for_select([[@recruitment_plan.journal&.name_short, @recruitment_plan.journal_id]], @recruitment_plan.journal_id), { label: 'Journal', required: true } %>
+  <%= f.number_field :ae_count, required: true %>
+  <%= f.number_field :me_count, required: true %>
+  <%= f.submit %>
+<% end %>

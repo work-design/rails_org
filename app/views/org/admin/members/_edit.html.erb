@@ -1,0 +1,13 @@
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="ui header blue">
+    Edit Member
+  </div>
+
+  <div class="content">
+    <%= form_with model: @member, as: :member, url: admin_member_path do |f| %>
+      <%= render partial: 'form', locals: { f: f } %>
+    <% end %>
+  </div>
+
+</div>

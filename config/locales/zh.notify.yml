@@ -1,0 +1,38 @@
+zh:
+  activerecord:
+    notify:
+      absence:
+        request:
+          title: '%{member_name}申请%{type_i18n}'
+          body: '%{member_name}申请%{type_i18n}'
+        default:
+          title: 你的请假申请已被%{state_i18n}
+          body: 你的请假申请已被%{state_i18n}
+      attendance_log:
+        request:
+          title: '%{member_name} has requested re-punch'
+          body: '%{member_name} has requested re-punch'
+        default:
+          title: Your Attendance log request has been %{state_i18n}
+          body: Your Attendance log request has been %{state_i18n}
+      expense:
+        request:
+          title: A Expense request need your approve!
+          body: A Expense request need your approve!
+        default:
+          title: Your Expense request has been %{state_i18n}
+          body: Your Expense request has been %{state_i18n}
+      expense_member:
+        request:
+          title: A Expense request need your approve!
+          body: A Expense request need your approve!
+        default:
+          title: Your Expense request has been %{state_i18n}
+          body: Your Expense request has been %{state_i18n}
+      overtime:
+        request:
+          title: '%{member_name}申请了加班'
+          body: '%{member_name}申请了加班'
+        default:
+          title: 你的加班申请已被%{state_i18n}
+          body: 你的加班申请已被%{state_i18n}

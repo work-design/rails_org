@@ -1,0 +1,6 @@
+<%= form_with model: [:hr, @resign_reason], local: true do |f| %>
+  <%= render 'shared/error_messages', target: @resign_reason %>
+  <%= f.collection_select :parent_id, ResignReason.roots, :id, :name, prompt: true %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>

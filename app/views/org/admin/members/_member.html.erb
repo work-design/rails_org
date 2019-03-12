@@ -1,0 +1,54 @@
+<tr>
+  <td>
+    <%= member.number %>
+  </td>
+  <td>
+    <p>
+    <% if member.user && member.user.avatar.attached? %>
+      <%= link_to admin_user_path(member.user&.id) do %>
+        <%= image_tag member.user.avatar.variant(resize: '35x35'), class: 'ui avatar image' %>
+      <% end %>
+    <% else %>
+      <%= link_to user_admin_member_path(member), remote: true do %>
+        <%= image_tag 'default_avatar.jpg', size: '35x35', class: 'ui avatar image' %>
+      <% end %>
+    <% end %>
+    <%= link_to member.name, admin_member_path(member) %>
+    <% if member.enabled %>
+      <i class="green check icon"></i>
+    <% else %>
+      <i class="red times icon"></i>
+    <% end %>
+    </p>
+    <p class="ui labels">
+      <% member.roles.pluck(:name).each do |role| %>
+        <span class="ui green label"><%= role %></span>
+      <% end %>
+    </p>
+  </td>
+  <td><%= member.office&.name %></td>
+  <td>
+    <%= link_to member.department.name, admin_department_path(member.department_id) if member.department %>
+  </td>
+  <td>
+    <% member.job_titles.each do |job_title| %>
+      <P><%= job_title.name %></P>
+    <% end %>
+  </td>
+  <td>
+    <p>Email: <%= member.email %></p>
+    <p>Skype: <%= member.skype %></p>
+    <p>Mobile: <%= member.profile&.mobile %></p>
+  </td>
+  <td><%= member.join_on %></td>
+  <td>
+    <% if member.profile && member.profile.resume.attached? %>
+      <%= link_to member.profile.resume.filename, rails_blob_path(member.profile.resume), target: '_blank' %>
+    <% end %>
+  </td>
+  <td class="ui labels">
+    <%= link_to t('.edit'), edit_admin_member_path(member), class: 'ui pink label' %>
+    <%= link_to 'tutorials', admin_tutorials_path(member_id: member.id), class: 'ui blue label' %>
+  </td>
+</tr>
+

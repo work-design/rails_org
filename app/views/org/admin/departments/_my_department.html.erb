@@ -1,0 +1,32 @@
+<tr>
+  <% (child.depth - @department.depth).times.each do |d| %>
+    <td></td>
+  <% end %>
+  <td colspan="<%= child.col_span %>">
+    <i class="grey caret right icon"></i>
+    <%= link_to admin_department_path(child) do %>
+      <span><%= child.name %></span>
+      <span class="grey text">(<%= child.all_members_count %>)</span>
+    <% end %>
+  </td>
+  <td>
+    <%= child.needed_member %> /
+    <span class="<%= active_asserts('red': child.needed_member.to_i > child.members_count, 'grey': child.needed_member.to_i == child.members_count, 'green': child.needed_member.to_i < child.members_count) %> text">
+      <%= child.members_count %>
+    </span>
+  </td>
+  <td class="ui labels">
+    <% child.members.each do |member| %>
+      <span class="ui label"><%= member.name %></span>
+    <% end %>
+  </td>
+  <td class="ui labels">
+    <%#= link_to 'JD', admin_department_job_descriptions_path(child), class: 'ui blue label' %>
+    <%= link_to 'Supports', admin_supports_path(department_id: child.id), class: 'ui yellow label' %>
+    <%# link_to 'Journals', admin_department_journals_path(child), class: 'ui blue label' if child.is_a?(EditDepartment) %>
+    <%= link_to 'Need', need_admin_department_path(child), class: 'ui pink label' %>
+  </td>
+</tr>
+
+
+
