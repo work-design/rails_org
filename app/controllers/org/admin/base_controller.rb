@@ -2,14 +2,16 @@ class Org::Admin::BaseController < RailsOrg.config.admin_class.constantize
   before_action :require_organ
 
   def require_organ
-    binding.pry
     return if current_organ
 
-    raise ActionController::UnauthorizedError
+    if api_request?
+      raise ActionController::UnauthorizedError
+    else
+      redirect_to root_url
+    end
   end
 
   def current_organ
-    binding.pry
     @current_organ ||= Organ.find_by(token: session[:organ_token])
   end
 

@@ -1,10 +1,28 @@
+<% if current_user.any_role?('org/admin/departments', 'org/admin/offices') %>
 <div class="item">
-  <a class="<%= active_helper(controllers: ['users', 'oauth_users'], active_class: 'title active', item_class: 'title') %>">
-    <i class="address book outline icon"></i>
-    <span>Organ</span>
-    <i class="dropdown icon"></i>
+  <a class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'title active', item_class: 'title') %>">
+    <i class="users icon"></i>
+    <span>Departments</span>
   </a>
-  <div class="<%= active_helper(controllers: ['organs'], active_class: 'menu content active', item_class: 'menu content') %>">
-    <%= link_to '组织列表', admin_organs_path, class: active_helper(paths: admin_organs_path) %>
+  <div class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'active menu content', item_class: 'menu content') %>">
+    <%= link_to 'Departments', admin_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions']) %>
+    <%= link_to 'Offices', admin_offices_path, class: active_helper(controllers: 'offices') %>
+    <%= link_to 'Supports', admin_supports_path, class: active_helper(controllers: 'supports') %>
   </div>
 </div>
+<% end %>
+
+<% if current_user.any_role?('org/admin/members', 'org/admin/tutorials', 'org/admin/job_transfers', 'org/admin/resigns') %>
+<div class="item">
+  <a class="<%= active_helper(controllers: ['members', 'tutorials', 'job_transfers', 'resigns', 'resign_reasons'], active_class: 'title active', item_class: 'title') %>">
+    <i class="user icon"></i>
+    <span>HR Management</span>
+  </a>
+  <div class="<%= active_helper(controllers: ['members', 'tutorials', 'job_transfers', 'resigns', 'resign_reasons'], active_class: 'menu content active', item_class: 'menu content') %>">
+    <%= link_to 'Employees', admin_members_path, class: active_helper(controllers: ['members']) %>
+    <%= link_to 'Tutorials', admin_tutorials_path, class: active_helper(controllers: ['tutorials']) %>
+    <%= link_to 'Job Transfers', admin_job_transfers_path, class: active_helper(controllers: ['job_transfers']) %>
+    <%= link_to 'Resigns', admin_resigns_path, class: active_helper(controllers: ['resigns', 'resign_reasons']) %>
+  </div>
+</div>
+<% end %>
