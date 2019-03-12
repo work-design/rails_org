@@ -41,9 +41,6 @@ en:
         #layout: Layout Group Leader
         #it: IT Support
         #admin: Admin
-      department/type:
-        EditDepartment: Edit Department
-        NormalDepartment: Normal Department
       expense/type:
         BudgetExpense: Budget
         PrepayExpense: Prepay

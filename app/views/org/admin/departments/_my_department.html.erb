@@ -23,7 +23,6 @@
   <td class="ui labels">
     <%#= link_to 'JD', admin_department_job_descriptions_path(child), class: 'ui blue label' %>
     <%= link_to 'Supports', admin_supports_path(department_id: child.id), class: 'ui yellow label' %>
-    <%# link_to 'Journals', admin_department_journals_path(child), class: 'ui blue label' if child.is_a?(EditDepartment) %>
     <%= link_to 'Need', need_admin_department_path(child), class: 'ui pink label' %>
   </td>
 </tr>

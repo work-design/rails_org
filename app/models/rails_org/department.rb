@@ -11,29 +11,9 @@ class Department < ApplicationRecord
   #validates :leader_id, presence: true
   #validates :members_count, numericality: { greater_than: 0 }
 
-  after_save :sync_type, if: -> { saved_change_to_type? }
-  after_save :sync_night_shift, if: -> { saved_change_to_night_shift? }
-
-  default_scope -> { where(enabled: true) }
-  scope :sections, -> { where(enabled: true, kind: :section) }
-  scope :groups, -> { where(enabled: true, kind: :grouping) }
-
-  enum kind: {
-    section: 'section',
-    grouping: 'grouping'
-  }
 
   def leader_member
     Member.find(self.leader_id) if self.leader_id
-  end
-
-
-  def sync_type
-    self.descendants.update_all type: self.type
-  end
-
-  def sync_night_shift
-    self.descendants.update_all night_shift: self.night_shift
   end
 
   def col_span

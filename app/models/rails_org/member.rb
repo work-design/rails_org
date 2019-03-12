@@ -31,29 +31,6 @@ class Member < ApplicationRecord
   #before_save :sync_tutorials, if: -> { join_on_changed? }
 
 
-  def section
-    if group
-      group.parent
-    elsif self.department&.depth == 1
-      self.department
-    end
-  end
-
-  def group
-    self.department if self.department&.depth == 2
-  end
-
-  def exam_reviewers
-    Member.china_sl.default_where('leading_department.id-not': self.department&.ancestor_ids)
-  end
-
-  def leading_section
-    leading_departments.detect { |department| department.section? }
-  end
-
-  def leading_group
-    leading_departments.detect { |department| department.grouping? }
-  end
 
   def leading_section_members
     if leading_section

@@ -41,9 +41,6 @@ zh:
         #layout: 排版
         #it: IT 支持
         #admin: 行政
-      department/type:
-        EditDepartment: 编辑部门
-        NormalDepartment: 普通部门
       expense/type:
         BudgetExpense: 预算（采购）
         PrepayExpense: 借支/报销
