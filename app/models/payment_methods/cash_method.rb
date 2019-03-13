@@ -1,5 +1,0 @@
-class CashMethod < PaymentMethod
-
-
-
-end
