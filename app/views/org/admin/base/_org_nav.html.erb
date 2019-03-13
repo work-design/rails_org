@@ -3,6 +3,7 @@
   <a class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'title active', item_class: 'title') %>">
     <i class="users icon"></i>
     <span>Departments</span>
+    <i class="dropdown icon"></i>
   </a>
   <div class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'active menu content', item_class: 'menu content') %>">
     <%= link_to 'Departments', admin_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions']) %>
@@ -17,6 +18,7 @@
   <a class="<%= active_helper(controllers: ['members', 'tutorials', 'job_transfers', 'resigns', 'resign_reasons'], active_class: 'title active', item_class: 'title') %>">
     <i class="user icon"></i>
     <span>HR Management</span>
+    <i class="dropdown icon"></i>
   </a>
   <div class="<%= active_helper(controllers: ['members', 'tutorials', 'job_transfers', 'resigns', 'resign_reasons'], active_class: 'menu content active', item_class: 'menu content') %>">
     <%= link_to 'Employees', admin_members_path, class: active_helper(controllers: ['members']) %>
