@@ -1,8 +1,0 @@
-<div class="ui top attached borderless menu">
-  <%= link_to 'Base Info', my_user_path, class: active_helper(controllers: ['users']) %>
-  <%= link_to 'Personal Profile', my_profile_path, class: active_helper(controllers: ['profiles']) %>
-  <%= link_to 'MDPI Profile', my_member_path, class: active_helper(controllers: ['members']) %>
-  <% if current_user.teacher %>
-    <%= link_to 'Teacher', my_teacher_path, class: active_helper(controllers: ['teachers']) %>
-  <% end %>
-</div>

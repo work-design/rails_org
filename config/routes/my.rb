@@ -6,13 +6,6 @@ Rails.application.routes.draw do
     controller :home do
       get :index
     end
-    resource :profile do
-
-    end
-    resource :member do
-      get :cert
-      get :search, on: :collection
-    end
     resources :orders, only: [:new, :create] do
       get :dinners, on: :collection
       patch :confirm, on: :member

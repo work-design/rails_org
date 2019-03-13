@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   scope :my, module: 'org/my', as: 'my' do
+    resource :member
     resources :tutorials do
       get :tutorings, on: :collection
       get :perform, on: :member
@@ -27,6 +28,12 @@ Rails.application.routes.draw do
 
   scope :admin, module: 'org/admin', as: 'admin' do
     root to: 'home#index'
+
+    resources :managers do
+      get 'user' => :edit_user, on: :member
+      patch 'user' => :update_user, on: :member
+    end
+    resources :sm_settings
 
     resources :organs do
       patch :token, on: :member
