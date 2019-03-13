@@ -40,13 +40,8 @@ class Org::Admin::OrgansController < RailsOrg.config.admin_class.constantize
   end
 
   def mock
-    session[:organ_token] = @organ.token
+    session[:organ_token] = @organ.get_organ_token(current_user.id)
     redirect_to admin_departments_url
-  end
-
-  def token
-    @organ.refresh_token!
-    redirect_to admin_organs_url
   end
 
   def destroy

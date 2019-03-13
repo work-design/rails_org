@@ -2,15 +2,13 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   before_action :set_department, only: [:show, :edit, :need, :update, :destroy]
 
   def index
-    q_params = {}
-    q_params.merge! params.permit(:type)
-    @departments = Department.roots.default_where(q_params).includes(:children, :leader).page(params[:page])
+    default_params.merge! params.permit(:type)
+    @departments = Department.roots.default_where(default_params).includes(:children, :leader).page(params[:page])
   end
 
   def supports
-    q_params = {}
-    q_params.merge! params.permit(:type)
-    @departments = Department.roots.default_where(q_params).includes(:children, :leader).page(params[:page])
+    default_params.merge! params.permit(:type)
+    @departments = Department.roots.default_where(default_params).includes(:children, :leader).page(params[:page])
   end
 
   def my
@@ -24,7 +22,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def filter
-    q_params = params.fetch(:q, {}).permit!
+    q_params.merge! params.fetch(:q, {}).permit!
     if params[:department_id].present?
       @departments = Department.where(parent_id: params[:department_id])
     else
@@ -60,15 +58,8 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
     @department = current_organ.departments.build
   end
 
-  def edit
-  end
-
-  def need
-
-  end
-
   def create
-    @department = current_organ.departments.build(department_params)
+    @department = Department.new(department_params)
 
     if @department.save
       redirect_to admin_departments_url, notice: 'Department was successfully created.'
@@ -87,6 +78,13 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
     end
   end
 
+  def edit
+  end
+
+  def need
+
+  end
+
   def destroy
     @department.destroy
     redirect_to admin_departments_url, notice: 'Department was successfully destroyed.'
@@ -98,15 +96,16 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def department_params
-    params.fetch(:department, {}).permit(
+    q = params.fetch(:department, {}).permit(
       :name,
       :type,
       :title,
       :leader_id,
       :parent_id,
       :parent_ancestors,
-      :needed_member,
+      :needed_member
     )
+    q.merge! q_params
   end
 
 end

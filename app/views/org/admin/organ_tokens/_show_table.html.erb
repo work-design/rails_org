@@ -1,0 +1,28 @@
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="six wide">
+        <%= link_to t('.edit'), edit_org_admin_organ_token_path(@organ_token), class: 'ui mini blue right floated button', remote: true %>
+      </th>
+      <th class="ten wide"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= OrganToken.human_attribute_name(:user) %></td>
+      <td><%= @organ_token.user %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= OrganToken.human_attribute_name(:member) %></td>
+      <td><%= @organ_token.member %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= OrganToken.human_attribute_name(:token) %></td>
+      <td><%= @organ_token.token %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= OrganToken.human_attribute_name(:expired_at) %></td>
+      <td><%= @organ_token.expired_at %></td>
+    </tr>
+  </tbody>
+</table>

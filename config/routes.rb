@@ -36,8 +36,8 @@ Rails.application.routes.draw do
     resources :sm_settings
 
     resources :organs do
-      patch :token, on: :member
       patch :mock, on: :member
+      resources :organ_tokens, only: [:index, :new, :create, :destroy], as: :tokens
     end
 
     resources :offices
@@ -82,9 +82,6 @@ Rails.application.routes.draw do
     resources :resign_reasons do
       get :parents, on: :collection
     end
-    resources :documents
-    resources :email_templates, except: :show
-    resources :bands
   end
 
 end

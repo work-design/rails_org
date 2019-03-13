@@ -11,6 +11,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     q_params = {
       enabled: true
     }.with_indifferent_access
+    q_params.merge! default_params
     q_params.merge! params.fetch(:q, {}).permit!
     q_params.merge! params.permit(:id, :enabled, :office_id, :department_ancestors)
     #department = Department.find_by id: Member.new(q_params).department_ancestors&.values.to_a.compact.last
@@ -167,7 +168,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   end
 
   def profile_params
-    params.fetch(:profile, {}).permit(
+    q = params.fetch(:profile, {}).permit(
       :title,
       :real_name,
       :private_email,
@@ -181,6 +182,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
       :previous_months,
       :vacation_balances
     )
+    q.merge! default_params
   end
 
 end

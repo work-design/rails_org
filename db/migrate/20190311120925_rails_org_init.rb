@@ -5,7 +5,15 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     create_table :organs do |t|
       t.string :name
       t.string :organ_uuid
+      t.timestamps
+    end
+
+    create_table :organ_tokens do |t|
+      t.references :organ
+      t.references :member
+      t.references :user
       t.string :token, null: false
+      t.datetime :expired_at
       t.timestamps
     end
 
@@ -43,6 +51,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :user
       t.references :department
       t.references :office
+      t.references :organ
       t.string :type
       t.string :name
       t.string :email
@@ -52,7 +61,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.string :state
       t.timestamps
     end
-
 
   end
 
