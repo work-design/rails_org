@@ -10,6 +10,9 @@ class Member < ApplicationRecord
   belongs_to :office, optional: true, counter_cache: true
   belongs_to :department, optional: true, counter_cache: true
 
+  has_one :organ_token, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
+  has_many :organ_tokens, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
+
   has_one :resign
   has_one :profile, through: :user
   has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
@@ -17,7 +20,6 @@ class Member < ApplicationRecord
   has_one :leading_office, class_name: 'Office', foreign_key: :leader_id
   has_one :leading_department, class_name: 'Department', foreign_key: :leader_id
   has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
-
 
   has_many :tutorials, dependent: :nullify
   has_many :tutorings, class_name: 'Tutorial', foreign_key: :tutor_id
@@ -28,7 +30,14 @@ class Member < ApplicationRecord
 
   #before_save :sync_tutorials, if: -> { join_on_changed? }
 
+  def get_organ_token
+    unless organ_token
+      self.organ_tokens.delete_all
+      create_organ_token
+    end
 
+    organ_token.token
+  end
 
   def leading_section_members
     if leading_section

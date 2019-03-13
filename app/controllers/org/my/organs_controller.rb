@@ -1,4 +1,4 @@
-class Org::Admin::OrgansController < RailsOrg.config.admin_class.constantize
+class Org::My::OrgansController < Org::My::BaseController
   before_action :set_organ, only: [:show, :edit, :update, :mock, :destroy]
 
   def index
@@ -39,8 +39,8 @@ class Org::Admin::OrgansController < RailsOrg.config.admin_class.constantize
     end
   end
 
-  def mock
-    session[:organ_token] = @organ.get_organ_token(current_user.id)
+  def login
+    session[:organ_token] = current_member.get_organ_token
     redirect_to admin_departments_url
   end
 

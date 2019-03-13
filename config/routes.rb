@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   scope :my, module: 'org/my', as: 'my' do
     resource :member
+    resources :organs do
+      patch :login, on: :member
+    end
     resources :tutorials do
       get :tutorings, on: :collection
       get :perform, on: :member
