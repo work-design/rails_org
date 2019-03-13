@@ -46,7 +46,6 @@ class Org::Admin::OfficesController < Org::Admin::BaseController
   def office_params
     params.fetch(:office, {}).permit(
       :name,
-      :leader_id,
       :country,
       :city,
       :floor,
@@ -59,7 +58,8 @@ class Org::Admin::OfficesController < Org::Admin::BaseController
       :timezone,
       :contact,
       :recruitment,
-      :locale
+      :locale,
+      :area_ancestors
     )
   end
 

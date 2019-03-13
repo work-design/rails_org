@@ -16,9 +16,7 @@
     <th>
       <%= Office.human_attribute_name(:name) %>(<%= Office.human_attribute_name(:name_short) %>)
     </th>
-    <th><%= Office.human_attribute_name(:leader) %></th>
-    <th><%= Office.human_attribute_name(:deputy_leader) %></th>
-    <th><%= Office.human_attribute_name(:lunch_time) %></th>
+    <th><%= Office.human_attribute_name(:area) %></th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -28,9 +26,7 @@
     <tr>
       <td><%= office.id %></td>
       <td><%= office.name %>(<%= office.name_short %>)</td>
-      <td><%= office.leader&.name %></td>
-      <td><%= office.deputy_leader&.name %></td>
-      <td><%= office.lunch_time %></td>
+      <td><%= office.area.full_name %></td>
       <td class="ui labels">
         <%= link_to 'Supports', admin_supports_path(office_id: office.id), class: 'ui blue label' %>
         <%= link_to t('.edit'), edit_admin_office_path(office), class: 'ui pink label' %>

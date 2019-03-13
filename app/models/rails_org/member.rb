@@ -1,9 +1,10 @@
 class Member < ApplicationRecord
-  attribute :department_ancestors
   include RailsRoleUser
   include RailsTradeBuyer
   include RailsTradeUser
   include RailsNoticeReceivable
+
+  has_taxons :department
 
   belongs_to :user, optional: true
   belongs_to :office, optional: true, counter_cache: true
@@ -23,11 +24,8 @@ class Member < ApplicationRecord
   has_many :tutees, through: :tutorings, source: :member
   has_many :job_transfers, dependent: :destroy
 
-
-
   validates :user_id, uniqueness: true, allow_blank: true
 
-  before_save :sync_department_id, if: -> { department_ancestors_changed? }
   #before_save :sync_tutorials, if: -> { join_on_changed? }
 
 
@@ -62,11 +60,6 @@ class Member < ApplicationRecord
 
   def endearing_name
     name.split(/\s+/).first
-  end
-
-  private
-  def sync_department_id
-    self.department_id = self.department_ancestors.values.compact.last
   end
 
 end
