@@ -15,7 +15,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     q_params.merge! params.permit(:id, :enabled, :office_id, :department_ancestors)
     #department = Department.find_by id: Member.new(q_params).department_ancestors&.values.to_a.compact.last
     #q_params.merge! department_id: department.self_and_descendant_ids if department
-    @members = Member.includes(:parent, :department, :office, :roles, :profile, user: { avatar_attachment: :blob }).default_where(q_params, {allow: nil}).order(id: :desc).page(params[:page])
+    @members = Member.includes(:department, :office, :roles, user: { avatar_attachment: :blob }).default_where(q_params, {allow: nil}).order(id: :desc).page(params[:page])
   end
 
   def leaders
@@ -150,28 +150,19 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   def member_params
     params.fetch(:member, {}).permit(
       :name,
-      :title,
       :email,
       :type,
-      :band_id,
       :office_id,
       :department_id,
       :department_ancestors,
-      :parent_id,
       :join_on,
       :enabled,
-      :attendance_number,
-      :on_time,
-      :off_time,
       :intern_begin_on,
       :probation_one_on,
       :probation_two_on,
       :formal_on,
-      :children_count,
       :join_status,
-      badge_ids: [],
-      role_ids: [],
-      job_title_ids: []
+      role_ids: []
     )
   end
 
