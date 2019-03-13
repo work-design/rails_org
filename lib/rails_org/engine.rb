@@ -1,6 +1,6 @@
 class RailsOrg::Engine < ::Rails::Engine
 
-  config.eager_load_paths += Dir[
+  config.autoload_paths += Dir[
     "#{config.root}/app/models/rails_org"
   ]
 
