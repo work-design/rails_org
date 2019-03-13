@@ -6,7 +6,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   before_action :set_profile, only: [
     :profile, :edit_profile, :update_profile
   ]
-  skip_before_action :verify_authenticity_token, only: [:departments]
 
   def index
     q_params = {
