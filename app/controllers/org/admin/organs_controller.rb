@@ -57,7 +57,8 @@ class Org::Admin::OrgansController < RailsOrg.config.admin_class.constantize
   def organ_params
     params.fetch(:organ, {}).permit(
       :name,
-      :organ_uuid
+      :organ_uuid,
+      :logo
     )
   end
 

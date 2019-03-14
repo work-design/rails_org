@@ -6,5 +6,4 @@ class Org::My::BaseController < RailsOrg.config.my_class.constantize
   end
 
 
-
 end

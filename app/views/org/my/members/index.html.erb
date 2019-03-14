@@ -1,0 +1,23 @@
+<div class="ui three cards">
+  <% @members.each do |member| %>
+  <div class="card">
+    <div class="content">
+      <%= link_to member_path(member), class: 'right floated mini ui image' do %>
+        <%= image_tag member.user.avatar.variant(resize: '150x150') %>
+      <% end %>
+      <span>
+        <%= member.name %>
+        <i class="user icon"></i>
+      </span>
+      <div>
+        <%= member.office.address %>
+      </div>
+    </div>
+    <div class="extra content">
+      <span><%= member.organ.name %></span>
+      <span><%= member.department&.full_name %></span>
+      <%= image_tag member.organ.logo.variant(resize: '150x150'), class: 'right floated mini ui image' %>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,5 +1,8 @@
-class My::MembersController < My::BaseController
-  before_action :set_member
+class Org::My::MembersController < Org::My::BaseController
+
+  def index
+    @members = current_user.members.includes(:organ, :department, :office)
+  end
 
   def show
     respond_to do |format|
@@ -47,9 +50,6 @@ class My::MembersController < My::BaseController
   end
 
   private
-  def set_member
-    @member = current_user.member
-  end
 
   def member_params
     params.fetch(:member, {}).permit(

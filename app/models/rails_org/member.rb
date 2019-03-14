@@ -9,6 +9,7 @@ class Member < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :office, optional: true, counter_cache: true
   belongs_to :department, optional: true, counter_cache: true
+  belongs_to :organ, optional: true
 
   has_one :organ_token, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
   has_many :organ_tokens, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all

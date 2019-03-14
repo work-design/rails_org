@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   scope :my, module: 'org/my', as: 'my' do
-    resource :member
+    resources :members
     resources :organs do
       patch :login, on: :member
     end
