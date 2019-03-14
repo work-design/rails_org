@@ -10,6 +10,7 @@ class Member < ApplicationRecord
   belongs_to :office, optional: true, counter_cache: true
   belongs_to :department, optional: true, counter_cache: true
   belongs_to :organ, optional: true
+  belongs_to :account, -> { where(confirmed: true) }, primary_key: :account, foreign_key: :email, optional: true
 
   has_one :organ_token, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
   has_many :organ_tokens, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
@@ -27,9 +28,14 @@ class Member < ApplicationRecord
   has_many :tutees, through: :tutorings, source: :member
   has_many :job_transfers, dependent: :destroy
 
-  validates :user_id, uniqueness: true, allow_blank: true
+  validates :email, uniqueness: true, allow_blank: true
 
   #before_save :sync_tutorials, if: -> { join_on_changed? }
+  before_save :sync_account_user, if: -> { email_changed? }
+
+  def sync_account_user
+    self.user_id = account&.user_id
+  end
 
   def get_organ_token
     unless organ_token

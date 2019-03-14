@@ -1,7 +1,7 @@
 class Org::Panel::BaseController < RailsOrg.config.panel_class.constantize
   before_action :require_organ
   before_action :require_role
-  helper_method :current_organ
+  helper_method :current_organ, :other_organs
 
   def require_organ
     return if current_organ
@@ -17,6 +17,10 @@ class Org::Panel::BaseController < RailsOrg.config.panel_class.constantize
     return @current_organ if defined?(@current_organ)
     token = OrganToken.find_by(token: session[:organ_token])
     @current_organ = token.organ if token
+  end
+
+  def other_organs
+    current_user.organs.where.not(id: current_organ.id)
   end
 
   def rails_role_user

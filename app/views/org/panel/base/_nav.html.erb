@@ -1,16 +1,17 @@
-<div class="ui text menu">
-  <div class="item">
+<div class="ui inline dropdown">
+  <div class="text">
     <%= image_tag current_organ.logo, class: 'ui avatar image' if current_organ.logo.present? %>
-  </div>
-  <a class="browse ui dropdown item">
     <%= current_organ.name %>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item">Applications</div>
-      <div class="item">International Students</div>
-      <div class="item">Scholarships</div>
+  </div>
+  <i class="dropdown icon"></i>
+  <div class="menu">
+    <% other_organs.each do |organ| %>
+    <div class="item">
+      <%= image_tag organ.logo, class: 'ui avatar image' if organ.logo.present? %>
+      <%= link_to organ.name, login_panel_organ_path(organ_id: organ.id) %>
     </div>
-  </a>
+    <% end %>
+  </div>
 </div>
 <div class="ui divider"></div>
 <div class="ui vertical fluid secondary accordion menu">

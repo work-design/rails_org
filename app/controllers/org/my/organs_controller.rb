@@ -41,7 +41,7 @@ class Org::My::OrgansController < Org::My::BaseController
 
   def login
     session[:organ_token] = current_member.get_organ_token
-    redirect_to panel_departments_url
+    redirect_to panel_organ_url
   end
 
   def destroy

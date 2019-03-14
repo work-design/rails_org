@@ -16,7 +16,6 @@
       <th><%= Organ.human_attribute_name(:logo) %></th>
       <th><%= Organ.human_attribute_name(:name) %></th>
       <th><%= Organ.human_attribute_name(:organ_uuid) %></th>
-      <th><%= Organ.human_attribute_name(:token) %></th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -27,9 +26,6 @@
       <td><%= image_tag organ.logo.variant(resize: '30x30') if organ.logo.attached? %></td>
       <td><%= organ.name %></td>
       <td><%= organ.organ_uuid %></td>
-      <td>
-        <%= link_to 'all tokens', admin_organ_tokens_path(organ) %>
-      </td>
       <td class="ui labels">
         <%= link_to admin_organ_path(organ), data: { tooltip: t('.show') }, class: 'ui blue mini icon button', remote: true do %>
           <i class="location arrow icon"></i>

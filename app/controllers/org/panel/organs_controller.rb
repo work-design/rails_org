@@ -4,6 +4,12 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
   def show
   end
 
+  def login
+    member = current_user.members.find_by(organ_id: params[:organ_id])
+    session[:organ_token] = member.get_organ_token
+    redirect_to panel_organ_url
+  end
+
   def edit
   end
 

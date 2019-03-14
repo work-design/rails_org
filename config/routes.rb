@@ -32,7 +32,10 @@ Rails.application.routes.draw do
   scope :panel, module: 'org/panel', as: 'panel' do
     root to: 'organ#show'
 
-    resource :organ
+    resource :organ do
+      get :login
+    end
+    resources :organ_tokens
     resources :offices
     resources :departments do
       get :supports, on: :collection
@@ -48,12 +51,8 @@ Rails.application.routes.draw do
       get :departments, on: :collection
       get :leaders, on: :collection
       patch :sync_all, on: :collection
-      get 'user' => :edit_user, on: :member
-      patch 'user' => :update_user, on: :member
-      get :profile, on: :member
-      get :edit_profile, on: :member
-      patch 'profile' => :update_profile, on: :member
       patch :sync_one, on: :member
+      get :token, on: :member
     end
     resources :supports do
       get :departments, on: :collection
@@ -79,7 +78,6 @@ Rails.application.routes.draw do
   scope :admin, module: 'org/admin', as: :admin do
     resources :organs do
       patch :mock, on: :member
-      resources :organ_tokens, only: [:index, :new, :create, :destroy], as: :tokens
     end
   end
 

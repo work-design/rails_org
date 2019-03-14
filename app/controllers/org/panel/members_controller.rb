@@ -1,11 +1,5 @@
 class Org::Panel::MembersController < Org::Panel::BaseController
-  before_action :set_member, only: [
-    :show, :edit, :update, :destroy,
-    :edit_user, :update_user, :sync_one
-  ]
-  before_action :set_profile, only: [
-    :profile, :edit_profile, :update_profile
-  ]
+  before_action :set_member, only: [:show, :edit, :update, :token, :destroy, :sync_one]
 
   def index
     q_params = {
@@ -86,43 +80,9 @@ class Org::Panel::MembersController < Org::Panel::BaseController
     end
   end
 
-  def edit_user
-
-  end
-
-  def update_user
-    if params[:login].include?('@')
-      user = User.find_by(email: params[:login])
-    else
-      user = User.find_by(mobile: params[:login])
-    end
-
-    respond_to do |format|
-      if @member.update(user_id: user&.id)
-        format.html { redirect_to panel_members_url, notice: 'Employee was successfully updated.' }
-        format.js
-      else
-        format.html { render :edit }
-        format.js
-      end
-    end
-  end
-
-  def edit_profile
-  end
-
-  def update_profile
-    @profile.assign_attributes(profile_params)
-
-    respond_to do |format|
-      if @profile.save
-        format.html { redirect_to profile_panel_member_url(@member), notice: 'Employee was successfully updated.' }
-        format.js { head :no_content }
-      else
-        format.html { render :edit }
-        format.js { head :no_content }
-      end
-    end
+  def token
+    @member.get_organ_token
+    redirect_back fallback_location: panel_members_url
   end
 
   def destroy
@@ -138,18 +98,8 @@ class Org::Panel::MembersController < Org::Panel::BaseController
     @member = Member.find(params[:id])
   end
 
-  def set_user
-    @member = Member.find params[:id]
-    @user = @member.user || @member.create_user
-  end
-
-  def set_profile
-    set_user
-    @profile = @member.profile || @member.user.create_profile
-  end
-
   def member_params
-    params.fetch(:member, {}).permit(
+    q = params.fetch(:member, {}).permit(
       :name,
       :email,
       :type,
@@ -164,23 +114,6 @@ class Org::Panel::MembersController < Org::Panel::BaseController
       :formal_on,
       :join_status,
       role_ids: []
-    )
-  end
-
-  def profile_params
-    q = params.fetch(:profile, {}).permit(
-      :title,
-      :real_name,
-      :private_email,
-      :gender,
-      :birthday_type,
-      :birthday,
-      :highest_education,
-      :degree,
-      :major,
-      :work_experience,
-      :previous_months,
-      :vacation_balances
     )
     q.merge! default_params
   end
