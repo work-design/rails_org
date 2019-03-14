@@ -1,4 +1,4 @@
-class Org::Panel::OrganTokensController < RailsOrg.config.admin_class.constantize
+class Org::Panel::OrganTokensController < Org::Panel::BaseController
   before_action :set_organ
 
   def index

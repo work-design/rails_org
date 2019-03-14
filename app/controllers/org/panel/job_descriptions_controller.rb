@@ -1,4 +1,4 @@
-class Org::Admin::JobDescriptionsController < Org::Admin::BaseController
+class Org::Panel::JobDescriptionsController < Org::Panel::BaseController
   before_action :set_department
   before_action :set_job_description, only: [:show, :edit, :update, :destroy]
 
