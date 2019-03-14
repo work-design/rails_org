@@ -27,7 +27,7 @@ class Org::Panel::TutorialsController < Org::Panel::BaseController
     @tutorial = Tutorial.new(tutorial_params)
 
     if @tutorial.save
-      redirect_to admin_tutorials_url, notice: 'Tutorial was successfully created.'
+      redirect_to panel_tutorials_url, notice: 'Tutorial was successfully created.'
     else
       render :new
     end
@@ -41,7 +41,7 @@ class Org::Panel::TutorialsController < Org::Panel::BaseController
 
   def update
     if @tutorial.update(tutorial_params)
-      redirect_to admin_tutorials_url, notice: 'Tutorial was successfully updated.'
+      redirect_to panel_tutorials_url, notice: 'Tutorial was successfully updated.'
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class Org::Panel::TutorialsController < Org::Panel::BaseController
 
   def destroy
     @tutorial.destroy
-    redirect_to admin_tutorials_url, notice: 'Tutorial was successfully destroyed.'
+    redirect_to panel_tutorials_url, notice: 'Tutorial was successfully destroyed.'
   end
 
   private

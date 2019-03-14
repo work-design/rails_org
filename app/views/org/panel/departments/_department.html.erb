@@ -4,7 +4,7 @@
     <% unless node.leaf? %>
       <i class="grey caret down icon link"></i>
     <% end %>
-    <%= link_to admin_department_path(node) do %>
+    <%= link_to panel_department_path(node) do %>
       <span><%= node.name %></span>
       <span class="grey text">(<%= node.all_members_count %>)</span>
     <% end %>
@@ -16,15 +16,15 @@
     </span>
   </td>
   <td class="ui labels">
-    <%= link_to admin_department_path(node), class: 'ui label' do %>
+    <%= link_to panel_department_path(node), class: 'ui label' do %>
       <i class="users icon"></i>People
     <% end %>
-    <%= link_to 'JD', admin_department_job_descriptions_path(node), class: 'ui blue label' %>
-    <%#= link_to 'Job Titles', admin_department_job_titles_path(node), class: 'ui blue label' %>
-    <%= link_to edit_admin_department_path(node), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
+    <%= link_to 'JD', panel_department_job_descriptions_path(node), class: 'ui blue label' %>
+    <%#= link_to 'Job Titles', panel_department_job_titles_path(node), class: 'ui blue label' %>
+    <%= link_to edit_panel_department_path(node), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
       <i class="pencil alternate icon"></i>
     <% end %>
-    <%= link_to admin_department_path(node), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+    <%= link_to panel_department_path(node), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
       <i class="times icon"></i>
     <% end %>
   </td>

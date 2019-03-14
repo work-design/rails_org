@@ -1,4 +1,4 @@
-<%= default_form_with model: @profile, url: profile_admin_member_path(@member), local: true do |f| %>
+<%= default_form_with model: @profile, url: profile_panel_member_path(@member), local: true do |f| %>
   <%= f.text_field :real_name %>
   <%= f.select :gender, options_for_select(Profile.options_i18n(:gender), @profile.gender) %>
   <%= f.email_field :private_email %>

@@ -6,11 +6,11 @@
   <td>
     <p>
     <% if member.user && member.user.avatar.attached? %>
-      <%= link_to admin_user_path(member.user&.id) do %>
+      <%= link_to panel_user_path(member.user&.id) do %>
         <%= image_tag member.user.avatar.variant(resize: '35x35'), class: 'ui avatar image' %>
       <% end %>
     <% end %>
-    <%= link_to member.name, admin_member_path(member) %>
+    <%= link_to member.name, panel_member_path(member) %>
     <% if member.enabled %>
       <i class="green check icon"></i>
     <% else %>
@@ -25,7 +25,7 @@
   </td>
   <td><%= member.office&.name %></td>
   <td>
-    <%= link_to member.department.name, admin_department_path(member.department_id) if member.department %>
+    <%= link_to member.department.name, panel_department_path(member.department_id) if member.department %>
   </td>
   <td>
     <p>Email: <%= member.email %></p>
@@ -37,8 +37,8 @@
     <% end %>
   </td>
   <td class="ui labels">
-    <%= link_to t('.edit'), edit_admin_member_path(member), class: 'ui pink label' %>
-    <%= link_to 'tutorials', admin_tutorials_path(member_id: member.id), class: 'ui blue label' %>
+    <%= link_to t('.edit'), edit_panel_member_path(member), class: 'ui pink label' %>
+    <%= link_to 'tutorials', panel_tutorials_path(member_id: member.id), class: 'ui blue label' %>
   </td>
 </tr>
 

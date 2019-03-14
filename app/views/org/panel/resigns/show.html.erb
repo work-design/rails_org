@@ -1,5 +1,5 @@
 <div class="ui segment breadcrumb">
-  <%= link_to 'Back', admin_resigns_path, class: 'section' %>
+  <%= link_to 'Back', panel_resigns_path, class: 'section' %>
   <div class="divider"> / </div>
   <div class="active section">Show</div>
 </div>
@@ -39,8 +39,8 @@
     <tr>
       <td></td>
       <td>
-        <%= link_to 'Edit', edit_admin_resign_path(@resign), class: 'ui pink label' %>
-        <%= link_to 'Delete', admin_resign_path(@resign), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to 'Edit', edit_panel_resign_path(@resign), class: 'ui pink label' %>
+        <%= link_to 'Delete', panel_resign_path(@resign), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
       </td>
     </tr>
   </tbody>

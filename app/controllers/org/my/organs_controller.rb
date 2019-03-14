@@ -14,7 +14,7 @@ class Org::My::OrgansController < Org::My::BaseController
 
     respond_to do |format|
       if @organ.save
-        format.html { redirect_to admin_organs_url, notice: 'Organ was successfully created.' }
+        format.html { redirect_to panel_organs_url, notice: 'Organ was successfully created.' }
         format.html.phone
         format.json { render :show }
       else
@@ -33,7 +33,7 @@ class Org::My::OrgansController < Org::My::BaseController
 
   def update
     if @organ.update(organ_params)
-      redirect_to admin_organs_url, notice: 'Organ was successfully updated.'
+      redirect_to panel_organs_url, notice: 'Organ was successfully updated.'
     else
       render :edit
     end
@@ -41,12 +41,12 @@ class Org::My::OrgansController < Org::My::BaseController
 
   def login
     session[:organ_token] = current_member.get_organ_token
-    redirect_to admin_departments_url
+    redirect_to panel_departments_url
   end
 
   def destroy
     @organ.destroy
-    redirect_to admin_organs_url, notice: 'Organ was successfully destroyed.'
+    redirect_to panel_organs_url, notice: 'Organ was successfully destroyed.'
   end
 
   private

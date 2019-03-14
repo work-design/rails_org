@@ -121,7 +121,7 @@ en:
       tutorial/verified:
         unverified: Unverified
         superior_approved: Superior Approved
-        admin_approved: Org Approved
+        panel_approved: Org Approved
         md_approved: MD Approved
       oauth_user/provider:
         microsoft_v2_auth: Micrsoft

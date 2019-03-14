@@ -25,10 +25,10 @@
     <tr>
       <td><%= tutorial.id %></td>
       <td>
-        <%= link_to tutorial.member.name, admin_member_path(tutorial.member_id) if tutorial.member %>
+        <%= link_to tutorial.member.name, panel_member_path(tutorial.member_id) if tutorial.member %>
       </td>
       <td>
-        <%= link_to tutorial.tutor.name, admin_member_path(tutorial.tutor_id) if tutorial.tutor %>
+        <%= link_to tutorial.tutor.name, panel_member_path(tutorial.tutor_id) if tutorial.tutor %>
       </td>
       <td><%= tutorial.kind_i18n %></td>
       <td>
@@ -43,9 +43,9 @@
       <td><%= tutorial.allowance %></td>
       <td><%= tutorial.verified_i18n %></td>
       <td class="ui labels">
-        <%#= link_to 'Show', admin_tutorial_path(tutorial), class: 'ui blue label' %>
-        <%= link_to t('.edit'), edit_admin_tutorial_path(tutorial), class: 'ui pink label' %>
-        <%= link_to t('.destroy'), admin_tutorial_path(tutorial), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%#= link_to 'Show', panel_tutorial_path(tutorial), class: 'ui blue label' %>
+        <%= link_to t('.edit'), edit_panel_tutorial_path(tutorial), class: 'ui pink label' %>
+        <%= link_to t('.destroy'), panel_tutorial_path(tutorial), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
       </td>
     </tr>
   <% end %>

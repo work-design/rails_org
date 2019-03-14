@@ -13,7 +13,7 @@ class Org::Panel::ResignReasonsController < Org::Panel::BaseController
     @resign_reason = ResignReason.new(resign_reason_params)
 
     if @resign_reason.save
-      redirect_to admin_resign_reasons_url, notice: 'Resign reason was successfully created.'
+      redirect_to panel_resign_reasons_url, notice: 'Resign reason was successfully created.'
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Org::Panel::ResignReasonsController < Org::Panel::BaseController
     @resign_reason.assign_attributes(resign_reason_params)
 
     if @resign_reason.save
-      redirect_to admin_resign_reasons_url, notice: 'Resign reason was successfully updated.'
+      redirect_to panel_resign_reasons_url, notice: 'Resign reason was successfully updated.'
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class Org::Panel::ResignReasonsController < Org::Panel::BaseController
 
   def destroy
     @resign_reason.destroy
-    redirect_to admin_resign_reasons_url, notice: 'Resign reason was successfully destroyed.'
+    redirect_to panel_resign_reasons_url, notice: 'Resign reason was successfully destroyed.'
   end
 
   private

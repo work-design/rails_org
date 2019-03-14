@@ -4,7 +4,7 @@
     <% unless node.leaf? %>
       <a onclick="collapse(this)" href="javascript:void(0)"><i class="grey caret down icon"></i></a>
     <% end %>
-    <%= link_to admin_department_path(node) do %>
+    <%= link_to panel_department_path(node) do %>
       <span><%= node.name %></span>
       <span class="grey text">(<%= node.all_members_count %>)</span>
     <% end %>
@@ -15,11 +15,11 @@
     <td><%= node.public_send(kind)&.name %></td>
   <% end %>
   <td class="ui labels">
-    <%= link_to 'Supports', admin_supports_path(department_id: node.id), class: 'ui yellow label' %>
-    <%= link_to edit_admin_department_path(node), class: 'ui pink mini icon button' do %>
+    <%= link_to 'Supports', panel_supports_path(department_id: node.id), class: 'ui yellow label' %>
+    <%= link_to edit_panel_department_path(node), class: 'ui pink mini icon button' do %>
       <i class="pencil alternate icon"></i>
     <% end %>
-    <%= link_to admin_department_path(node), method: :delete, data: {confirm: 'Are you sure?'}, class: 'ui red mini icon button' do %>
+    <%= link_to panel_department_path(node), method: :delete, data: {confirm: 'Are you sure?'}, class: 'ui red mini icon button' do %>
       <i class="times icon"></i>
     <% end %>
   </td>

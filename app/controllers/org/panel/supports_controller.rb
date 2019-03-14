@@ -27,7 +27,7 @@ class Org::Panel::SupportsController < Org::Panel::BaseController
       query.merge! department_id: @support.department_id if @support.department_id
       query.merge! office_id: @support.office_id if @support.office_id && @support.department_id.blank?
 
-      redirect_to admin_supports_url(query), notice: 'Crm permit was successfully created.'
+      redirect_to panel_supports_url(query), notice: 'Crm permit was successfully created.'
     else
       render :new
     end
@@ -44,7 +44,7 @@ class Org::Panel::SupportsController < Org::Panel::BaseController
     @support.department_id = @support.department_ancestors&.values.to_a.compact.last
 
     if @support.save
-      redirect_to admin_supports_url, notice: 'Crm permit was successfully updated.'
+      redirect_to panel_supports_url, notice: 'Crm permit was successfully updated.'
     else
       render :edit
     end
@@ -52,7 +52,7 @@ class Org::Panel::SupportsController < Org::Panel::BaseController
 
   def destroy
     @support.destroy
-    redirect_to admin_supports_url, notice: 'Crm permit was successfully destroyed.'
+    redirect_to panel_supports_url, notice: 'Crm permit was successfully destroyed.'
   end
 
   private

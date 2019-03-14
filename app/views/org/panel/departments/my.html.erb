@@ -15,7 +15,7 @@
   <tbody>
     <tr>
       <td colspan="<%= @department.col_span %>">
-        <%= link_to admin_department_path(@department) do %>
+        <%= link_to panel_department_path(@department) do %>
           <span><%= @department.name %></span>
           <span class="grey text">(<%= @department.all_members_count %>)</span>
         <% end %>
@@ -32,9 +32,9 @@
         <% end %>
       </td>
       <td class="ui labels">
-        <%#= link_to 'JD', admin_department_job_descriptions_path(@department), class: 'ui blue label' %>
-        <%= link_to 'Supports', admin_supports_path(department_id: @department.id), class: 'ui yellow label' %>
-        <%= link_to 'Need', need_admin_department_path(@department), class: 'ui pink label' %>
+        <%#= link_to 'JD', panel_department_job_descriptions_path(@department), class: 'ui blue label' %>
+        <%= link_to 'Supports', panel_supports_path(department_id: @department.id), class: 'ui yellow label' %>
+        <%= link_to 'Need', need_panel_department_path(@department), class: 'ui pink label' %>
       </td>
     </tr>
     <%= draw_tree(@department, partial: 'org/admin/departments/my_department') %>

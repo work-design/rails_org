@@ -1,11 +1,11 @@
 <div class="ui segment breadcrumb">
-  <%= link_to 'Back', admin_departments_path, class: 'section' %>
+  <%= link_to 'Back', panel_departments_path, class: 'section' %>
   <div class="divider"> / </div>
   <div class="active section">Add</div>
 </div>
 
 <div class="ui segment">
-  <%= form_with model: @department, scope: :department, url: admin_departments_path, local: true do |f| %>
+  <%= form_with model: @department, scope: :department, url: panel_departments_path, local: true do |f| %>
     <%= render partial: 'form', locals: {f: f} %>
   <% end %>
 </div>

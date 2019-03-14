@@ -2,7 +2,7 @@
   <div class="header item">Org Admin Organ Tokens</div>
   <div class="right menu">
     <div class="item">
-      <%= link_to 'New Org Admin Organ Token', new_admin_organ_token_path, class: 'ui teal button', remote: true %>
+      <%= link_to 'New Org Admin Organ Token', new_panel_organ_token_path, class: 'ui teal button', remote: true %>
     </div>
   </div>
 </div>
@@ -22,14 +22,14 @@
   <% @organ_tokens.each do |organ_token| %>
     <tr>
       <td><%= organ_token.id %></td>
-      <td><%= link_to organ_token.user.name, admin_user_path(organ_token.user_id) if organ_token.user %></td>
+      <td><%= link_to organ_token.user.name, panel_user_path(organ_token.user_id) if organ_token.user %></td>
       <td><%= organ_token.member %></td>
       <td><%= organ_token.token %></td>
       <td>
         <time><%= organ_token.expired_at.to_s(:rfc822) %></time>
       </td>
       <td class="ui labels">
-        <%= link_to admin_organ_token_path(@organ, organ_token), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+        <%= link_to panel_organ_token_path(@organ, organ_token), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>
         <% end %>
       </td>

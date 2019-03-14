@@ -29,8 +29,8 @@ Rails.application.routes.draw do
     resources :documents
   end
 
-  scope :admin, module: 'org/panel', as: 'admin' do
-    root to: 'home#index'
+  scope :panel, module: 'org/panel', as: 'panel' do
+    root to: 'organ#show'
 
     resource :organ
     resources :offices

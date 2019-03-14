@@ -36,7 +36,7 @@ class Tutorial < ApplicationRecord
   enum verified: {
     unverified: 'unverified',
     superior_approved: 'superior_approved',
-    admin_approved: 'hr_approved',
+    panel_approved: 'hr_approved',
     md_approved: 'md_approved'
   }
 

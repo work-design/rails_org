@@ -1,7 +1,7 @@
 <div class="ui top attached borderless menu">
   <div class="header item">Offices</div>
   <div class="right menu">
-    <div class="item"><%= link_to 'New Office', new_admin_office_path, class: 'ui teal button' %></div>
+    <div class="item"><%= link_to 'New Office', new_panel_office_path, class: 'ui teal button' %></div>
   </div>
 </div>
 
@@ -28,9 +28,9 @@
       <td><%= office.name %>(<%= office.name_short %>)</td>
       <td><%= office.area.full_name %></td>
       <td class="ui labels">
-        <%= link_to 'Supports', admin_supports_path(office_id: office.id), class: 'ui blue label' %>
-        <%= link_to t('.edit'), edit_admin_office_path(office), class: 'ui pink label' %>
-        <%= link_to t('.destroy'), admin_office_path(office), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to 'Supports', panel_supports_path(office_id: office.id), class: 'ui blue label' %>
+        <%= link_to t('.edit'), edit_panel_office_path(office), class: 'ui pink label' %>
+        <%= link_to t('.destroy'), panel_office_path(office), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
       </td>
     </tr>
   <% end %>

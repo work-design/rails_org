@@ -19,7 +19,7 @@ class Org::Panel::OfficesController < Org::Panel::BaseController
     @office = Office.new(office_params)
 
     if @office.save
-      redirect_to admin_offices_url, notice: 'Office was successfully created.'
+      redirect_to panel_offices_url, notice: 'Office was successfully created.'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Org::Panel::OfficesController < Org::Panel::BaseController
 
   def update
     if @office.update(office_params)
-      redirect_to admin_offices_url, notice: 'Office was successfully updated.'
+      redirect_to panel_offices_url, notice: 'Office was successfully updated.'
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class Org::Panel::OfficesController < Org::Panel::BaseController
 
   def destroy
     @office.destroy
-    redirect_to admin_offices_url, notice: 'Office was successfully destroyed.'
+    redirect_to panel_offices_url, notice: 'Office was successfully destroyed.'
   end
 
   private

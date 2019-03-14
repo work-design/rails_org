@@ -29,7 +29,7 @@ class Org::Panel::ResignsController < Org::Panel::BaseController
     @resign = Resign.new(resign_params)
 
     if @resign.save
-      redirect_to admin_resigns_url, notice: 'Resign was successfully created.'
+      redirect_to panel_resigns_url, notice: 'Resign was successfully created.'
     else
       render :new
     end
@@ -43,7 +43,7 @@ class Org::Panel::ResignsController < Org::Panel::BaseController
 
   def update
     if @resign.update(resign_params)
-      redirect_to admin_resigns_url, notice: 'Resign was successfully updated.'
+      redirect_to panel_resigns_url, notice: 'Resign was successfully updated.'
     else
       render :edit
     end
@@ -51,7 +51,7 @@ class Org::Panel::ResignsController < Org::Panel::BaseController
 
   def destroy
     @resign.destroy
-    redirect_to admin_resigns_url, notice: 'Resign was successfully destroyed.'
+    redirect_to panel_resigns_url, notice: 'Resign was successfully destroyed.'
   end
 
   def charts

@@ -2,16 +2,16 @@ require "application_system_test_case"
 
 class AttendanceSettingsTest < ApplicationSystemTestCase
   setup do
-    @hr_attendance_setting = admin_attendance_settings(:one)
+    @hr_attendance_setting = panel_attendance_settings(:one)
   end
 
   test "visiting the index" do
-    visit admin_attendance_settings_url
+    visit panel_attendance_settings_url
     assert_selector "h1", text: "Attendance Settings"
   end
 
   test "creating a Attendance setting" do
-    visit admin_attendance_settings_url
+    visit panel_attendance_settings_url
     click_on "New Attendance Setting"
 
     fill_in "Note", with: @hr_attendance_setting.note
@@ -24,7 +24,7 @@ class AttendanceSettingsTest < ApplicationSystemTestCase
   end
 
   test "updating a Attendance setting" do
-    visit admin_attendance_settings_url
+    visit panel_attendance_settings_url
     click_on "Edit", match: :first
 
     fill_in "Note", with: @hr_attendance_setting.note
@@ -37,7 +37,7 @@ class AttendanceSettingsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Attendance setting" do
-    visit admin_attendance_settings_url
+    visit panel_attendance_settings_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end

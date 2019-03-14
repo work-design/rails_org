@@ -50,10 +50,10 @@ class Org::Panel::MembersController < Org::Panel::BaseController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to admin_members_url, notice: 'Employee was successfully created.' }
+        format.html { redirect_to panel_members_url, notice: 'Employee was successfully created.' }
         format.js
       else
-        format.html { redirect_to admin_members_url, alert: @member.errors }
+        format.html { redirect_to panel_members_url, alert: @member.errors }
         format.js
       end
     end
@@ -67,7 +67,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
 
   def sync_one
     @member.sync_current_time
-    redirect_back fallback_location: admin_member_url(@member)
+    redirect_back fallback_location: panel_member_url(@member)
   end
 
   def edit
@@ -77,7 +77,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
     @member.assign_attributes(member_params)
     respond_to do |format|
       if @member.save
-        format.html { redirect_to admin_members_url, notice: 'Employee was successfully updated.' }
+        format.html { redirect_to panel_members_url, notice: 'Employee was successfully updated.' }
         format.js { head :no_content }
       else
         format.html { render :edit }
@@ -99,7 +99,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
 
     respond_to do |format|
       if @member.update(user_id: user&.id)
-        format.html { redirect_to admin_members_url, notice: 'Employee was successfully updated.' }
+        format.html { redirect_to panel_members_url, notice: 'Employee was successfully updated.' }
         format.js
       else
         format.html { render :edit }
@@ -116,7 +116,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to profile_admin_member_url(@member), notice: 'Employee was successfully updated.' }
+        format.html { redirect_to profile_panel_member_url(@member), notice: 'Employee was successfully updated.' }
         format.js { head :no_content }
       else
         format.html { render :edit }
@@ -128,7 +128,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   def destroy
     @member.destroy
     respond_to do |format|
-      format.html { redirect_to admin_members_url, notice: 'Employee was successfully destroyed.' }
+      format.html { redirect_to panel_members_url, notice: 'Employee was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

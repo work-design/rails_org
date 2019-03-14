@@ -14,7 +14,7 @@ class Org::Panel::OrganTokensController < Org::Panel::BaseController
     @organ_token = @organ.organ_tokens.build(organ_token_params)
 
     if @organ_token.save
-      redirect_to admin_organ_tokens_url(@organ), notice: 'Organ token was successfully created.'
+      redirect_to panel_organ_tokens_url(@organ), notice: 'Organ token was successfully created.'
     else
       render :new
     end
@@ -24,7 +24,7 @@ class Org::Panel::OrganTokensController < Org::Panel::BaseController
   def destroy
     @organ_token = @organ.organ_tokens.find(params[:id])
     @organ_token.destroy
-    redirect_to admin_organ_tokens_url(@organ), notice: 'Organ token was successfully destroyed.'
+    redirect_to panel_organ_tokens_url(@organ), notice: 'Organ token was successfully destroyed.'
   end
 
   private

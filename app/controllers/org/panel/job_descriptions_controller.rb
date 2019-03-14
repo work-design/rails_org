@@ -20,7 +20,7 @@ class Org::Panel::JobDescriptionsController < Org::Panel::BaseController
     @job_description = @department.job_descriptions.build(job_description_params)
 
     if @job_description.save
-      redirect_to admin_department_job_descriptions_url(@department), notice: 'Job description was successfully created.'
+      redirect_to panel_department_job_descriptions_url(@department), notice: 'Job description was successfully created.'
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Org::Panel::JobDescriptionsController < Org::Panel::BaseController
 
   def update
     if @job_description.update(job_description_params)
-      redirect_to admin_department_job_descriptions_url(@department), notice: 'Job description was successfully updated.'
+      redirect_to panel_department_job_descriptions_url(@department), notice: 'Job description was successfully updated.'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Org::Panel::JobDescriptionsController < Org::Panel::BaseController
 
   def destroy
     @job_description.destroy
-    redirect_to admin_department_job_descriptions_url(@department), notice: 'Job description was successfully destroyed.'
+    redirect_to panel_department_job_descriptions_url(@department), notice: 'Job description was successfully destroyed.'
   end
 
   private

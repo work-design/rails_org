@@ -1,13 +1,13 @@
 <%= render 'department_navbar' %>
 
 <div class="ui basic segment breadcrumb">
-  <%= link_to 'Back', admin_department_job_descriptions_path(@department), class: 'section' %>
+  <%= link_to 'Back', panel_department_job_descriptions_path(@department), class: 'section' %>
   <div class="divider"> / </div>
   <div class="active section">Edit</div>
 </div>
 
 <div class="ui segment">
-  <%= form_with model: @job_description, url: admin_department_job_description_path(@department, @job_description), method: :patch, local: true do |f| %>
+  <%= form_with model: @job_description, url: panel_department_job_description_path(@department, @job_description), method: :patch, local: true do |f| %>
     <%= render partial: 'form', locals: {f: f} %>
   <% end %>
 </div>

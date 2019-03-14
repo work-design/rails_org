@@ -2,7 +2,7 @@
   <div class="header item">Member lists</div>
   <div class="right menu">
     <div class="item">
-      <%= link_to 'New', new_admin_member_path, class: 'ui teal button' %>
+      <%= link_to 'New', new_panel_member_path, class: 'ui teal button' %>
     </div>
     <div class="item">
       <%= link_to t('.export'), find_data_list_table_lists_path('MemberExport', params.fetch(:q, {}).permit(:office_id)), class: 'ui blue button', remote: true %>

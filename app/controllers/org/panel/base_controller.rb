@@ -1,4 +1,4 @@
-class Org::Panel::BaseController < RailsOrg.config.admin_class.constantize
+class Org::Panel::BaseController < RailsOrg.config.panel_class.constantize
   before_action :require_organ
   before_action :require_role
 

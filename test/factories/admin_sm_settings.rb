@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :admin_sm_setting, class: 'SmSetting' do
+  factory :panel_sm_setting, class: 'SmSetting' do
     
   end
 end
