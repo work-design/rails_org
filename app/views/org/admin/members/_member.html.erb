@@ -1,7 +1,8 @@
 <tr>
   <td>
-    <%= member.number %>
+    <%= member.id %>
   </td>
+  <td><%= member.type %></td>
   <td>
     <p>
     <% if member.user && member.user.avatar.attached? %>
