@@ -1,6 +1,7 @@
 class Org::Panel::BaseController < RailsOrg.config.panel_class.constantize
   before_action :require_organ
   before_action :require_role
+  helper_method :current_organ
 
   def require_organ
     return if current_organ

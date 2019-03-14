@@ -1,3 +1,18 @@
+<div class="ui text menu">
+  <div class="item">
+    <%= image_tag current_organ.logo, class: 'ui avatar image' if current_organ.logo.present? %>
+  </div>
+  <a class="browse ui dropdown item">
+    <%= current_organ.name %>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item">Applications</div>
+      <div class="item">International Students</div>
+      <div class="item">Scholarships</div>
+    </div>
+  </a>
+</div>
+<div class="ui divider"></div>
 <div class="ui vertical fluid secondary accordion menu">
   <%= render 'org_nav' %>
 </div>
