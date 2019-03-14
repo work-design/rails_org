@@ -1,4 +1,4 @@
-class Org::Admin::DepartmentsController < Org::Admin::BaseController
+class Org::Panel::DepartmentsController < Org::Panel::BaseController
   before_action :set_department, only: [:show, :edit, :need, :update, :destroy]
 
   def index

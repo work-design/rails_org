@@ -1,4 +1,4 @@
-class Org::Admin::ResignReasonsController < Org::Admin::BaseController
+class Org::Panel::ResignReasonsController < Org::Panel::BaseController
   before_action :set_resign_reason, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, only: [:parents] #todo removed
 

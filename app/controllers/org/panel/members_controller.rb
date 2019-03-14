@@ -1,4 +1,4 @@
-class Org::Admin::MembersController < Org::Admin::BaseController
+class Org::Panel::MembersController < Org::Panel::BaseController
   before_action :set_member, only: [
     :show, :edit, :update, :destroy,
     :edit_user, :update_user, :sync_one

@@ -1,4 +1,4 @@
-class Org::Admin::SupportsController < Org::Admin::BaseController
+class Org::Panel::SupportsController < Org::Panel::BaseController
   before_action :set_support, only: [:show, :edit, :update, :destroy]
   before_action :set_from
 

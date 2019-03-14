@@ -29,20 +29,10 @@ Rails.application.routes.draw do
     resources :documents
   end
 
-  scope :admin, module: 'org/admin', as: 'admin' do
+  scope :admin, module: 'org/panel', as: 'admin' do
     root to: 'home#index'
 
-    resources :managers do
-      get 'user' => :edit_user, on: :member
-      patch 'user' => :update_user, on: :member
-    end
-    resources :sm_settings
-
-    resources :organs do
-      patch :mock, on: :member
-      resources :organ_tokens, only: [:index, :new, :create, :destroy], as: :tokens
-    end
-
+    resource :organ
     resources :offices
     resources :departments do
       get :supports, on: :collection
@@ -54,10 +44,6 @@ Rails.application.routes.draw do
       resources :job_descriptions
       resources :department_journals, as: :journals
     end
-    resources :job_titles
-    resources :supports do
-      get :departments, on: :collection
-    end
     resources :members do
       get :departments, on: :collection
       get :leaders, on: :collection
@@ -68,6 +54,9 @@ Rails.application.routes.draw do
       get :edit_profile, on: :member
       patch 'profile' => :update_profile, on: :member
       patch :sync_one, on: :member
+    end
+    resources :supports do
+      get :departments, on: :collection
     end
 
     resources :tutorials do
@@ -84,6 +73,13 @@ Rails.application.routes.draw do
     end
     resources :resign_reasons do
       get :parents, on: :collection
+    end
+  end
+
+  scope :admin, module: 'org/admin', as: :admin do
+    resources :organs do
+      patch :mock, on: :member
+      resources :organ_tokens, only: [:index, :new, :create, :destroy], as: :tokens
     end
   end
 

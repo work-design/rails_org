@@ -1,4 +1,4 @@
-class Org::Admin::OfficesController < Org::Admin::BaseController
+class Org::Panel::OfficesController < Org::Panel::BaseController
   before_action :set_office, only: [:show, :edit, :update, :destroy]
 
   def index
