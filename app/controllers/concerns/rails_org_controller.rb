@@ -21,6 +21,10 @@ module RailsOrgController
     @current_organ = token.organ if token
   end
 
+  def current_member
+    current_user.members.find_by(organ_id: current_organ.id)
+  end
+
   def other_organs
     current_user.organs.where.not(id: current_organ.id)
   end
@@ -29,7 +33,7 @@ module RailsOrgController
     if current_user.admin?
       current_user
     else
-      current_user.members.first
+      current_member
     end
   end
 

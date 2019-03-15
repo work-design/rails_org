@@ -1,3 +1,4 @@
+puts 'member from org'
 class Member < ApplicationRecord
   include RailsRoleUser
   include RailsTradeBuyer
