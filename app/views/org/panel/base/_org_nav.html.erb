@@ -2,7 +2,7 @@
 <div class="item">
   <a class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'title active', item_class: 'title') %>">
     <i class="users icon"></i>
-    <span>Departments</span>
+    <span>部门管理</span>
     <i class="dropdown icon"></i>
   </a>
   <div class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'active menu content', item_class: 'menu content') %>">
@@ -17,7 +17,7 @@
 <div class="item">
   <a class="<%= active_helper(controllers: ['members', 'tutorials', 'job_transfers', 'resigns', 'resign_reasons'], active_class: 'title active', item_class: 'title') %>">
     <i class="user icon"></i>
-    <span>HR Management</span>
+    <span>员工管理</span>
     <i class="dropdown icon"></i>
   </a>
   <div class="<%= active_helper(controllers: ['members', 'tutorials', 'job_transfers', 'resigns', 'resign_reasons'], active_class: 'menu content active', item_class: 'menu content') %>">
@@ -29,7 +29,12 @@
 </div>
 <% end %>
 <div class="item">
-  <div class="">
+  <a class="<%= active_helper(controllers: ['organ_token'], active_class: 'title active', item_class: 'title') %>">
+    <i class="user icon"></i>
+    <span>权限管理</span>
+    <i class="dropdown icon"></i>
+  </a>
+  <div class="<%= active_helper(controllers: ['organ_tokens'], active_class: 'menu content active', item_class: 'menu content') %>">
     <%= link_to 'all tokens', panel_organ_tokens_path, class: active_helper(controllers: ['organ_tokens']) %>
   </div>
 </div>

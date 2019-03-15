@@ -6,7 +6,8 @@ module RailsOrg #:nodoc:
   configure do |config|
     config.app_class = 'ApplicationController'
     config.my_class = 'MyController'
-    config.panel_class = 'AdminController'
+    config.admin_class = 'AdminController'
+    config.panel_class = 'PanelController'
     config.disabled_models = []
   end
 

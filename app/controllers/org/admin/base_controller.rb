@@ -1,4 +1,4 @@
-class Org::Admin::BaseController < RailsOrg.config.panel_class.constantize
+class Org::Admin::BaseController < RailsOrg.config.admin_class.constantize
   before_action :require_role
 
   def rails_role_user
