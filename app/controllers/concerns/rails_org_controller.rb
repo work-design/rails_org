@@ -38,9 +38,7 @@ module RailsOrgController
   end
 
   def default_params
-    q = {}.with_indifferent_access
-    q.merge! organ_id: current_organ.id
-    q
+    { organ_id: current_organ.id }.with_indifferent_access
   end
 
 end

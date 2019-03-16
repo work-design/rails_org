@@ -2,10 +2,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   before_action :set_member, only: [:show, :edit, :update, :token, :destroy, :sync_one]
 
   def index
-    q_params = {
-      enabled: true
-    }.with_indifferent_access
-    q_params.merge! default_params
+    q_params = default_params.merge! enabled: true
     q_params.merge! params.fetch(:q, {}).permit!
     q_params.merge! params.permit(:id, :enabled, :office_id, :department_ancestors)
     #department = Department.find_by id: Member.new(q_params).department_ancestors&.values.to_a.compact.last
