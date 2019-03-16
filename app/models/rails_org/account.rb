@@ -7,8 +7,10 @@ class Account < ApplicationRecord
 
 
   def sync_to_user
-    member.user_id = self.user_id
-    member.save
+    if member
+      member.user_id = self.user_id
+      member.save
+    end
   end
 
 end
