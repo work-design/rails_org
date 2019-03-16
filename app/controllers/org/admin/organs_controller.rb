@@ -1,4 +1,4 @@
-class Org::Admin::OrgansController < RailsOrg.config.panel_class.constantize
+class Org::Admin::OrgansController < Org::Admin::BaseController
   before_action :set_organ, only: [:show, :edit, :update, :mock, :destroy]
 
   def index
@@ -14,12 +14,14 @@ class Org::Admin::OrgansController < RailsOrg.config.panel_class.constantize
 
     respond_to do |format|
       if @organ.save
-        format.html { redirect_to admin_organs_url, notice: 'Organ was successfully created.' }
         format.html.phone
+        format.html { redirect_to admin_organs_url, notice: 'Organ was successfully created.' }
+        format.js { redirect_back fallback_location: admin_organs_url }
         format.json { render :show }
       else
-        format.html { render :new }
         format.html.phone { render :new }
+        format.html { render :new }
+        format.js
         format.json { render :show }
       end
     end
