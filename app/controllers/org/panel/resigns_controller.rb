@@ -77,9 +77,8 @@ class Org::Panel::ResignsController < Org::Panel::BaseController
         end
         data << q_count
       end
-      color = Office.colors[index]
       label = office.name_short
-      datasets << {label: label, data: data, backgroundColor: color}
+      datasets << {label: label, data: data, backgroundColor: 'red'}
     end
 
     # labels2 = []

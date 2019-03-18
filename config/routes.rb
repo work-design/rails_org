@@ -36,7 +36,9 @@ Rails.application.routes.draw do
       get :login
     end
     resources :organ_tokens
-    resources :offices
+    resources :offices do
+      resources :rooms
+    end
     resources :departments do
       get :supports, on: :collection
       get :parents, on: :collection

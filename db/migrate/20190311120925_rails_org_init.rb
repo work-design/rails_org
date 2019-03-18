@@ -28,6 +28,12 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
+    create_table :rooms do |t|
+      t.references :office
+      t.string :room_number
+      t.timestamps
+    end
+
     create_table :departments do |t|
       t.references :organ
       t.references :parent
