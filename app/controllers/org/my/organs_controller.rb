@@ -40,8 +40,15 @@ class Org::My::OrgansController < Org::My::BaseController
   end
 
   def login
-    session[:organ_token] = current_member.get_organ_token
-    redirect_to panel_organ_url
+    token = current_member.get_organ_token
+
+    respond_to do |format|
+      format.html {
+        session[:organ_token] = token
+        redirect_to panel_organ_url
+      }
+      format.json { render json: { organ_token: token } }
+    end
   end
 
   def destroy
