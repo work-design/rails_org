@@ -3,6 +3,7 @@ module RailsOrgController
   included do
     before_action :require_organ, :require_role
     helper_method :current_organ, :other_organs
+    after_action :set_organ_token
   end
 
   def require_organ
@@ -36,6 +37,20 @@ module RailsOrgController
     else
       current_member
     end
+  end
+
+  def set_auth_token
+    return unless @current_organ
+    token = current_member.get_organ_token
+    if api_request?
+      headers['Organ-Token'] = token
+    else
+      session[:auth_token] = token
+    end
+  end
+
+  def api_request?
+    request.headers['Organ-Token'].present? || request.format.json?
   end
 
   def default_params
