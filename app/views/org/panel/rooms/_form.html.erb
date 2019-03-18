@@ -1,0 +1,5 @@
+<%= form_with model: [:panel, @office, @room] do |f| %>
+  <%= render 'shared/error_messages', target: @room %>
+  <%= f.text_field :room_number %>
+  <%= f.submit %>
+<% end %>

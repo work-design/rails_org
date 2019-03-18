@@ -1,9 +1,9 @@
 class Office < ApplicationRecord
-  include RailsBookingLocate
   has_taxons :area
 
   attribute :name_short, :string
   belongs_to :area, optional: true
+  has_many :rooms, dependent: :destroy
   has_many :supports, -> { where(department_id: nil) }, dependent: :destroy
   has_many :members, dependent: :nullify
 

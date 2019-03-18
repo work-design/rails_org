@@ -1,0 +1,20 @@
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="six wide">
+        <%= link_to t('.edit'), edit_org_panel_room_path(@room), class: 'ui mini blue right floated button', remote: true %>
+      </th>
+      <th class="ten wide"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= Room.human_attribute_name(:room_number) %></td>
+      <td><%= @room.room_number %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Room.human_attribute_name(:time_plans_count) %></td>
+      <td><%= @room.time_plans_count %></td>
+    </tr>
+  </tbody>
+</table>

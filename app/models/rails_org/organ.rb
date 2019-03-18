@@ -1,6 +1,7 @@
 class Organ < ApplicationRecord
   has_many :departments, dependent: :destroy
   has_many :offices, dependent: :destroy
+  has_many :rooms, through: :offices
   has_many :members, dependent: :nullify
   has_many :organ_tokens, dependent: :delete_all
   has_one_attached :logo

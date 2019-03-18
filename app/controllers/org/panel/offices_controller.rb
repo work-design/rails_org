@@ -2,7 +2,8 @@ class Org::Panel::OfficesController < Org::Panel::BaseController
   before_action :set_office, only: [:show, :edit, :update, :destroy]
 
   def index
-    @offices = Office.page(params[:page])
+    q_params = default_params
+    @offices = Office.default_where(q_params).page(params[:page])
   end
 
   def show
@@ -44,13 +45,11 @@ class Org::Panel::OfficesController < Org::Panel::BaseController
   end
 
   def office_params
-    params.fetch(:office, {}).permit(
+    p = params.fetch(:office, {}).permit(
       :name,
-      :country,
       :city,
       :floor,
       :address,
-      :address_cn,
       :absence_email,
       :lunch_time,
       :deputy_leader_id,
@@ -61,6 +60,7 @@ class Org::Panel::OfficesController < Org::Panel::BaseController
       :locale,
       :area_ancestors
     )
+    p.merge! default_params
   end
 
 end

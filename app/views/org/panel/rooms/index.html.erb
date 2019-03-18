@@ -1,0 +1,47 @@
+<div class="ui segment breadcrumb">
+  <%= link_to 'Back', panel_offices_path, class: 'section' %>
+  <div class="divider">/</div>
+  <div class="active section">Rooms</div>
+</div>
+
+<div class="ui top attached borderless menu">
+  <div class="header item">Org Panel Rooms</div>
+  <div class="right menu">
+    <div class="item">
+      <%= link_to 'New Org Panel Room', new_panel_office_room_path(@office), class: 'ui teal button', remote: true %>
+    </div>
+  </div>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th><%= Room.human_attribute_name(:id) %></th>
+      <th><%= Room.human_attribute_name(:room_number) %></th>
+      <th><%= Room.human_attribute_name(:time_plans_count) %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.id %></td>
+      <td><%= room.room_number %></td>
+      <td><%= room.time_plans_count %></td>
+      <td class="ui labels">
+        <%= link_to panel_office_room_path(@office, room), data: { tooltip: t('.show') }, class: 'ui blue mini icon button', remote: true do %>
+          <i class="location arrow icon"></i>
+        <% end %>
+        <%= link_to edit_panel_office_room_path(@office, room), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button', remote: true do %>
+          <i class="pencil alternate icon"></i>
+        <% end %>
+        <%= link_to panel_office_room_path(@office, room), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+          <i class="times icon"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @rooms %>
