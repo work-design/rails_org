@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resource :organ do
       get :login
     end
-    resources :organ_tokens
+    resources :organ_grants
     resources :offices do
       resources :rooms
     end

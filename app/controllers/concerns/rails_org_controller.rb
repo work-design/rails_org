@@ -19,7 +19,7 @@ module RailsOrgController
   def current_organ
     return @current_organ if defined?(@current_organ)
     organ_token = request.headers['Organ-Token'].presence || session[:organ_token]
-    token = OrganToken.find_by(token: organ_token)
+    token = OrganGrant.find_by(token: organ_token)
     @current_organ = token.organ if token
   end
 
@@ -39,9 +39,9 @@ module RailsOrgController
     end
   end
 
-  def set_auth_token
+  def set_organ_token
     return unless @current_organ
-    token = current_member.get_organ_token
+    token = current_member.organ_token
     if api_request?
       headers['Organ-Token'] = token
     else

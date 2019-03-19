@@ -8,7 +8,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    create_table :organ_tokens do |t|
+    create_table :organ_grants do |t|
       t.references :organ
       t.references :member
       t.references :user
@@ -65,6 +65,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.date :join_on
       t.boolean :enabled, default: true
       t.string :state
+      t.string :organ_grant
       t.timestamps
     end
 

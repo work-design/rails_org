@@ -1,4 +1,4 @@
-class OrganToken < ApplicationRecord
+class OrganGrant < ApplicationRecord
   belongs_to :organ
   belongs_to :member, optional: true
   belongs_to :user, optional: true

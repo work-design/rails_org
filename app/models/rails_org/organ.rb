@@ -3,7 +3,7 @@ class Organ < ApplicationRecord
   has_many :offices, dependent: :destroy
   has_many :rooms, through: :offices
   has_many :members, dependent: :nullify
-  has_many :organ_tokens, dependent: :delete_all
+  has_many :organ_grants, dependent: :delete_all
   has_one_attached :logo
 
   after_initialize if: :new_record? do
@@ -12,14 +12,14 @@ class Organ < ApplicationRecord
 
 
   def get_organ_token(user_id)
-    token = self.organ_tokens.valid.find_by(user_id: user_id)
-    if token
-      token
+    grant = self.organ_grants.valid.find_by(user_id: user_id)
+    if grant
+      grant
     else
-      self.organ_tokens.where(user_id: user_id).delete_all
-      token = organ_tokens.create(user_id: user_id)
+      self.organ_grants.where(user_id: user_id).delete_all
+      grant = organ_grants.create(user_id: user_id)
     end
-    token.token
+    grant.token
   end
 
   def generate_token(**options)

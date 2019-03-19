@@ -1,5 +1,5 @@
-<%= form_with model: @organ_token, url: panel_organ_tokens_url(@organ) do |f| %>
-  <%= render 'shared/error_messages', target: @organ_token %>
+<%= form_with model: @organ_grant, url: panel_organ_grants_url(@organ) do |f| %>
+  <%= render 'shared/error_messages', target: @organ_grant %>
   <%= f.text_field :user_id %>
   <%= f.text_field :member_id %>
   <%= f.text_field :token %>

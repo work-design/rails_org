@@ -13,8 +13,8 @@ class Member < ApplicationRecord
   belongs_to :organ, optional: true
   belongs_to :account, -> { where(confirmed: true) }, primary_key: :account, foreign_key: :email, optional: true
 
-  has_one :organ_token, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
-  has_many :organ_tokens, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
+  has_one :organ_grant, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
+  has_many :organ_grants, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
 
   has_one :resign
   has_one :profile, through: :user
@@ -38,13 +38,13 @@ class Member < ApplicationRecord
     self.user_id = account&.user_id
   end
 
-  def get_organ_token
-    unless organ_token
-      self.organ_tokens.delete_all
-      create_organ_token
+  def organ_grant
+    unless organ_grant
+      self.organ_grants.delete_all
+      create_organ_grant
     end
 
-    organ_token.token
+    organ_grant.token
   end
 
   def leading_section_members

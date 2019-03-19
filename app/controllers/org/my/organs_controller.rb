@@ -40,14 +40,14 @@ class Org::My::OrgansController < Org::My::BaseController
   end
 
   def login
-    token = current_member.get_organ_token
+    token = current_member.get_organ_grant
 
     respond_to do |format|
       format.html {
-        session[:organ_token] = token
+        session[:organ_grant] = token
         redirect_to panel_organ_url
       }
-      format.json { render json: { organ_token: token } }
+      format.json { render json: { organ_grant: token } }
     end
   end
 
