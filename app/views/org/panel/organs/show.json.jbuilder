@@ -1,1 +1,1 @@
-json.partial! 'organ', organ: @organ
+json.organ @organ, partial: 'organ', as: :organ
