@@ -45,7 +45,7 @@ module RailsOrgController
     if api_request?
       headers['Organ-Token'] = token
     else
-      session[:auth_token] = token
+      session[:organ_token] = token
     end
   end
 

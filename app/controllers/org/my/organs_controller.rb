@@ -40,7 +40,7 @@ class Org::My::OrgansController < Org::My::BaseController
   end
 
   def login
-    token = current_member.get_organ_grant
+    token = current_member.organ_token
 
     respond_to do |format|
       format.html {

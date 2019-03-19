@@ -78,7 +78,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   end
 
   def token
-    @member.get_organ_grant
+    @member.refresh_organ_token
     redirect_back fallback_location: panel_members_url
   end
 

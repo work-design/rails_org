@@ -38,11 +38,20 @@ class Member < ApplicationRecord
     self.user_id = account&.user_id
   end
 
-  def organ_grant
-    unless organ_grant
+  def organ_token
+    if super
+      return super
+    else
       self.organ_grants.delete_all
       create_organ_grant
     end
+
+    organ_grant.token
+  end
+
+  def refresh_organ_token
+    self.organ_grants.delete_all
+    create_organ_grant
 
     organ_grant.token
   end
