@@ -41,7 +41,7 @@ module RailsOrgController
   end
 
   def set_organ_token
-    return unless @current_organ
+    return unless @current_organ && @current_member
     token = current_member.organ_token
 
     if api_request?
