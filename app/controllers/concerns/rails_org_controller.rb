@@ -24,11 +24,11 @@ module RailsOrgController
   end
 
   def current_member
-    current_user.members.find_by(organ_id: current_organ.id)
+    return @current_member if defined?(@current_member)
+    @current_member = current_user.members.find_by(organ_id: current_organ.id)
   end
 
   def other_organs
-    p 'ssssssssss'
     current_user.organs.where.not(id: current_organ.id)
   end
 
@@ -43,6 +43,7 @@ module RailsOrgController
   def set_organ_token
     return unless @current_organ
     token = current_member.organ_token
+
     if api_request?
       headers['Organ-Token'] = token
     else
