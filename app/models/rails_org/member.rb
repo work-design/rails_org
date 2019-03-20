@@ -1,4 +1,4 @@
-puts 'member from org'
+puts '-----> member from org'
 class Member < ApplicationRecord
   include RailsRoleUser
   include RailsTradeBuyer
@@ -71,7 +71,7 @@ class Member < ApplicationRecord
   def leading_highest_department
     leading_departments = self.leading_departments
     unless leading_departments.empty?
-      leading_departments = self.leading_departments.sort_by {|a| a.depth}
+      leading_departments = self.leading_departments.sort_by(&:depth)
     end
     leading_departments.first
   end

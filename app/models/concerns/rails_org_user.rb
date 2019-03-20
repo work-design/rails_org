@@ -6,5 +6,4 @@ module RailsOrgUser
     has_many :organs, through: :members
   end
 
-
 end

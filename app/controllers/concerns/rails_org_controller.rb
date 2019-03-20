@@ -28,6 +28,7 @@ module RailsOrgController
   end
 
   def other_organs
+    p 'ssssssssss'
     current_user.organs.where.not(id: current_organ.id)
   end
 
