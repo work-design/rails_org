@@ -53,7 +53,7 @@ Rails.application.routes.draw do
       get :departments, on: :collection
       get :leaders, on: :collection
       patch :sync_all, on: :collection
-      patch :sync_one, on: :member
+      get :profile, on: :member
       get :token, on: :member
     end
     resources :supports do

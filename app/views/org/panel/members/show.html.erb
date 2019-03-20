@@ -6,7 +6,6 @@
     <th class="three wide"></th>
     <th>
       <%= link_to 'Edit', edit_panel_member_path, class: 'ui mini blue right floated button' %>
-      <%= link_to 'Sync', sync_one_panel_member_path(@member), method: :patch, class: 'ui mini blue right floated button' %>
     </th>
   </tr>
   </thead>
@@ -17,7 +16,7 @@
       <% @member.roles.each do |role| %>
         <span class="ui green label"><%= role.name %></span>
       <% end %>
-      <%= link_to panel_who_roles_path('Member', @member.id), target: '_blank' do %>
+      <%= link_to admin_who_roles_path('Member', @member.id), target: '_blank' do %>
         <i class="icon white pencil"></i>
       <% end %>
     </td>
@@ -27,8 +26,8 @@
     <td><%= @member.type_i18n %></td>
   </tr>
   <tr>
-    <td class="right aligned"><%= Member.human_attribute_name(:email) %></td>
-    <td><%= @member.email %></td>
+    <td class="right aligned"><%= Member.human_attribute_name(:identity) %></td>
+    <td><%= @member.identity %></td>
   </tr>
   <tr>
     <td class="right aligned"><%= Profile.human_attribute_name(:department) %></td>

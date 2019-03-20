@@ -56,11 +56,6 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   def profile
   end
 
-  def sync_one
-    @member.sync_current_time
-    redirect_back fallback_location: panel_member_url(@member)
-  end
-
   def edit
   end
 
