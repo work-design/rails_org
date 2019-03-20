@@ -31,8 +31,6 @@ class JobTransfer < ApplicationRecord
   after_create_commit :send_notification
 
   acts_as_notify :default, only: []
-  acts_as_notify :init, mailer_class: JobTransferMailer, mailer_method: 'pending_sl_email'
-  acts_as_notify :approved_sl, mailer_class: JobTransferMailer, mailer_method: 'pending_email'
 
   def approve_config
     {

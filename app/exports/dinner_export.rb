@@ -1,5 +1,5 @@
 class DinnerExport
-  extend TheData::Export
+  extend RailsData::Export
 
   config do
     collect -> (params){ Dinner.default_where(params) }

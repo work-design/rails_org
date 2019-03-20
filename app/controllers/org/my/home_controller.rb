@@ -1,4 +1,4 @@
-class My::HomeController < My::BaseController
+class Org::My::HomeController < Org::My::BaseController
 
   def index
     if current_receiver

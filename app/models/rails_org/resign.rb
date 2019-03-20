@@ -56,16 +56,4 @@ class Resign < ApplicationRecord
   def validate_resign_reasons
     self.errors.add :base, 'Please select one reason at least' if self.resign_reasons.empty?
   end
-  acts_as_sync dest: :employe,
-               only: [
-                 'member_id',
-                 'leave_on',
-                 'reason_note',
-                 'created_at'
-               ],
-               mapping: [
-                 ['member_id', 'person_id'],
-                 ['leave_on', 'date'],
-                 ['reason_note', 'reason']
-               ]
 end

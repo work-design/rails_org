@@ -1,5 +1,5 @@
 class ResignReason < ApplicationRecord
-  prepend TheNodeModel
+  prepend RailsTaxonNode
 
   has_many :resign_resign_reasons, dependent: :destroy
   has_many :resigns, through: :resign_resign_reasons
