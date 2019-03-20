@@ -60,12 +60,12 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :organ
       t.string :type
       t.string :name
-      t.string :email
+      t.string :identity
       t.string :number
       t.date :join_on
       t.boolean :enabled, default: true
       t.string :state
-      t.string :organ_grant
+      t.string :organ_token
       t.timestamps
     end
 

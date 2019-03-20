@@ -34,7 +34,7 @@ class Org::My::OrdersController < Org::My::BaseController
 
   def new
     dinners_params = {
-        office_id: [current_user.office_id, nil]
+      office_id: [current_user.office_id, nil]
     }
     if Dinner.enabled?
       @dinners = Dinner.default_where(dinners_params)

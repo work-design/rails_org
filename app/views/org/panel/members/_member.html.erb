@@ -28,7 +28,7 @@
     <%= link_to member.department.name, panel_department_path(member.department_id) if member.department %>
   </td>
   <td>
-    <p>Email: <%= member.email %></p>
+    <p><%= member.identity %></p>
   </td>
   <td><%= member.join_on %></td>
   <td>

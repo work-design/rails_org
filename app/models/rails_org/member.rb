@@ -1,4 +1,3 @@
-puts '-----> member from org'
 class Member < ApplicationRecord
   include RailsRoleUser
   include RailsTradeBuyer
@@ -11,7 +10,7 @@ class Member < ApplicationRecord
   belongs_to :office, optional: true, counter_cache: true
   belongs_to :department, optional: true, counter_cache: true
   belongs_to :organ, optional: true
-  belongs_to :account, -> { where(confirmed: true) }, primary_key: :account, foreign_key: :email, optional: true
+  belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
 
   has_one :organ_grant, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
   has_many :organ_grants, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
@@ -29,10 +28,10 @@ class Member < ApplicationRecord
   has_many :tutees, through: :tutorings, source: :member
   has_many :job_transfers, dependent: :destroy
 
-  validates :email, uniqueness: true, allow_blank: true
+  validates :identity, uniqueness: true, allow_blank: true
 
   #before_save :sync_tutorials, if: -> { join_on_changed? }
-  before_save :sync_account_user, if: -> { email_changed? }
+  before_save :sync_account_user, if: -> { identity_changed? }
 
   def sync_account_user
     self.user_id = account&.user_id

@@ -98,7 +98,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   def member_params
     q = params.fetch(:member, {}).permit(
       :name,
-      :email,
+      :identity,
       :type,
       :office_id,
       :department_id,

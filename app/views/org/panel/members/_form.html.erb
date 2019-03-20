@@ -1,5 +1,5 @@
 <%= f.text_field :name, label: 'Real Name' %>
-<%= f.email_field :email %>
+<%= f.text_field :identity %>
 <%= f.select :type, options_for_select(Member.options_i18n(:type), @member.type), { label: 'Type', include_blank: true } %>
 <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'department' } %>
 <%= f.collection_select :office_id, Office.all, :id, :name, { prompt: 'Select Office' } %>
