@@ -146,23 +146,4 @@ ActiveRecord::Schema.define(version: 2019_03_04_134752) do
     t.index ["supporter_id"], name: "index_supports_on_supporter_id"
   end
 
-  create_table "tutorials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "member_id"
-    t.bigint "tutor_id"
-    t.string "kind"
-    t.string "state"
-    t.string "accepted_status"
-    t.string "verified"
-    t.date "start_on"
-    t.date "finish_on"
-    t.string "performance"
-    t.integer "allowance"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "note", limit: 4096
-    t.string "comment", limit: 4096
-    t.index ["member_id"], name: "index_tutorials_on_member_id"
-    t.index ["tutor_id"], name: "index_tutorials_on_tutor_id"
-  end
-
 end

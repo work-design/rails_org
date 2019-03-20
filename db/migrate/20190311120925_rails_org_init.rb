@@ -69,6 +69,22 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
+    create_table :tutorials do |t|
+      t.references :member
+      t.references :tutor
+      t.string :kind
+      t.string :state
+      t.string :accepted_status
+      t.string :verified
+      t.date :start_on
+      t.date :finish_on
+      t.string :performance
+      t.integer :allowance
+      t.string :note, limit: 4096
+      t.string :comment, limit: 4096
+      t.timestamps
+    end
+
   end
 
 end

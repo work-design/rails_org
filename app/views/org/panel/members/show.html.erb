@@ -69,13 +69,5 @@
       </table>
     </td>
   </tr>
-  <tr>
-    <td class="right aligned"><%= Profile.human_attribute_name(:current_on_time) %></td>
-    <td><%= @member.on_time.to_s(:time) if @member.on_time %></td>
-  </tr>
-  <tr>
-    <td class="right aligned"><%= Profile.human_attribute_name(:current_off_time) %></td>
-    <td><%= @member.off_time.to_s(:time) if @member.off_time %></td>
-  </tr>
   </tbody>
 </table>
