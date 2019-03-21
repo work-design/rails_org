@@ -2,12 +2,12 @@
 <div class="item">
   <a class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'title active', item_class: 'title') %>">
     <i class="users icon"></i>
-    <span>部门管理</span>
+    <span>教职员管理</span>
     <i class="dropdown icon"></i>
   </a>
   <div class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'active menu content', item_class: 'menu content') %>">
-    <%= link_to 'Departments', panel_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions']) %>
-    <%= link_to 'Offices', panel_offices_path, class: active_helper(controllers: 'offices') %>
+    <%= link_to '部门', panel_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions']) %>
+    <%= link_to '区域管理', panel_offices_path, class: active_helper(controllers: 'offices') %>
     <%= link_to 'Supports', panel_supports_path, class: active_helper(controllers: 'supports') %>
   </div>
 </div>

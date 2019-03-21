@@ -2,7 +2,7 @@
   <div class="header item">
     <div class="ui breadcrumb">
       <% @department.ancestors.reverse.each do |ancestor| %>
-        <% if controller_path == 'hr/departments' %>
+        <% if controller_path == 'org/panel/departments' %>
           <%= link_to ancestor.name, { id: ancestor.id }, { class: 'section' } %>
         <% else %>
           <%= link_to ancestor.name, { department_id: ancestor.id }, { class: 'section' } %>
@@ -12,7 +12,7 @@
       <div class="section"><%= @department.name %></div>
     </div>
   </div>
-  <%= link_to 'Members', panel_department_path(@department), class: active_helper('org/admin/departments': ['show']) %>
+  <%= link_to 'Members', panel_department_path(@department), class: active_helper('org/panel/departments': ['show']) %>
   
   <%#= link_to 'Job Titles', panel_department_job_titles_path(@department), class: active_helper(controllers: 'job_titles') %>
   <%#= link_to 'JD', panel_department_job_descriptions_path(@department), class: active_helper(controllers: 'job_descriptions') %>
