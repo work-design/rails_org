@@ -105,7 +105,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
       :parent_ancestors,
       :needed_member
     )
-    q.merge! q_params
+    q.merge! default_params
   end
 
 end
