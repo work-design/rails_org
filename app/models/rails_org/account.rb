@@ -1,5 +1,5 @@
 require 'rails_auth/account'
-class Account < ApplicationRecord
+class Account
   belongs_to :member, foreign_key: :identity, primary_key: :identity, optional: true
 
   after_save :sync_to_user, if: -> { saved_change_to_identity? }
