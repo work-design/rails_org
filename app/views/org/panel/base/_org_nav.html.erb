@@ -1,8 +1,8 @@
 <% if current_user.any_role?('org/admin/departments', 'org/admin/offices') %>
 <div class="item">
   <a class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'title active', item_class: 'title') %>">
-    <i class="users icon"></i>
-    <span>教职员管理</span>
+    <i class="home inverted grey sitemap icon"></i>
+    <span>组织管理</span>
     <i class="dropdown icon"></i>
   </a>
   <div class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'active menu content', item_class: 'menu content') %>">
@@ -16,7 +16,7 @@
 <% if current_user.any_role?('org/admin/members', 'org/admin/tutorials', 'org/admin/job_transfers', 'org/admin/resigns') %>
 <div class="item">
   <a class="<%= active_helper(controllers: ['members', 'tutorials', 'job_transfers', 'resigns', 'resign_reasons'], active_class: 'title active', item_class: 'title') %>">
-    <i class="user icon"></i>
+    <i class="home inverted grey user icon"></i>
     <span>员工管理</span>
     <i class="dropdown icon"></i>
   </a>
