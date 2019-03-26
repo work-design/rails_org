@@ -87,12 +87,6 @@ zh:
       payment_method/type:
         CashMethod: 现金
         BankMethod: 银行账号
-      profile/birthday_type:
-        gregorian: Gregorian
-        lunar: Lunar
-      profile/gender:
-        male: 男
-        female: 女
       purchase/type:
         BulkPurchase: 采购
         PayoutPurchase: 对公支付

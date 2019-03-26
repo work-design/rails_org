@@ -93,12 +93,6 @@ en:
       payment_method/type:
         CashMethod: Cash
         BankMethod: Bank Account
-      profile/birthday_type:
-        gregorian: Gregorian
-        lunar: Lunar
-      profile/gender:
-        male: Male
-        female: Female
       purchase/type:
         BulkPurchase: Bulk Purchase
         PayoutPurchase: Payout
