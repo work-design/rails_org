@@ -7,6 +7,20 @@ class Org::MembersController < ApplicationController
     @members = Member.includes(:department, user: { avatar_attachment: :blob }).where(enabled: true).default_where(q_params).page(params[:page]).per(30)
   end
 
+  def search
+    if params[:q].present?
+      @members = Member.where(enabled: true).default_where('name-like': params[:q])
+    else
+      @members = Member.none
+    end
+
+    results = []
+    @members.each do |member|
+      results << { name: member.name, id: member.id }
+    end
+    render json: { results: results }
+  end
+
   def show
   end
 

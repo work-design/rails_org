@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   scope module: 'org' do
-    resources :members, only: [:index, :show]
+    resources :members, only: [:index, :show] do
+      get :search, on: :collection
+    end
   end
 
   scope :my, module: 'org/my', as: 'my' do

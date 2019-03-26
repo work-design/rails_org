@@ -2,7 +2,7 @@
 $('#department_type').dropdown();
 $('#department_leader_id').dropdown({
   apiSettings: {
-    url: '/my/member/search?q={query}',
+    url: '/members/search?q={query}',
   },
   fields: {
     name: 'name',

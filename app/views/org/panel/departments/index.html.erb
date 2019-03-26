@@ -9,6 +9,7 @@
     <tr>
       <th>Name</th>
       <th>Needed / Actual</th>
+      <th><%= Department.human_attribute_name(:leader) %></th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -16,7 +17,7 @@
   <tbody>
   <% @departments.each do |department| %>
     <%= render partial: 'department', locals: { node: department } %>
-    <%= draw_tree(department, partial: 'org/admin/departments/department') %>
+    <%= draw_tree(department, partial: 'org/panel/departments/department') %>
   <% end %>
   </tbody>
 </table>

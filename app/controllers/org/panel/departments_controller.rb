@@ -55,6 +55,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
   end
 
   def new
+    @roots = current_organ.departments.roots
     @department = current_organ.departments.build
   end
 
@@ -72,7 +73,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
     @department.assign_attributes(department_params)
 
     if @department.save
-      redirect_to my_panel_departments_url, notice: 'Department was successfully updated.'
+      redirect_to panel_departments_url, notice: 'Department was successfully updated.'
     else
       render :edit
     end

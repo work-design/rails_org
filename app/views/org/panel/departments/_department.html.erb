@@ -15,6 +15,7 @@
       <%= node.members_count %>
     </span>
   </td>
+  <td><%= node.leader&.name %></td>
   <td class="ui labels">
     <%= link_to panel_department_path(node), class: 'ui label' do %>
       <i class="users icon"></i>People
