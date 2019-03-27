@@ -1,5 +1,7 @@
 class Department < ApplicationRecord
   prepend RailsTaxonNode
+
+  has_many :job_titles
   has_many :job_descriptions
   has_many :members, dependent: :nullify
 

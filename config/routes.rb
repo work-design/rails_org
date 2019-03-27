@@ -48,8 +48,8 @@ Rails.application.routes.draw do
       get :search, on: :collection
       get :filter, on: :collection
       get :need, on: :member
+      resources :job_titles
       resources :job_descriptions
-      resources :department_journals, as: :journals
     end
     resources :members do
       get :departments, on: :collection

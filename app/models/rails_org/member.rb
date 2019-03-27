@@ -8,13 +8,16 @@ class Member < ApplicationRecord
 
   attribute :experience, :string
   attribute :attendance_number, :string
-  attribute :grade, :integer, default: 'normal'
+  attribute :grade, :integer, default: 0
+
+
+  belongs_to :organ, optional: true
+  belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
 
   belongs_to :user, optional: true
   belongs_to :office, optional: true, counter_cache: true
   belongs_to :department, optional: true, counter_cache: true
-  belongs_to :organ, optional: true
-  belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
+  belongs_to :job_title, primary_key: :grade, foreign_key: :grade
 
   has_one :organ_grant, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
   has_many :organ_grants, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
@@ -36,11 +39,6 @@ class Member < ApplicationRecord
 
   #before_save :sync_tutorials, if: -> { join_on_changed? }
   before_save :sync_account_user, if: -> { identity_changed? }
-
-  enum band: {
-    normal: 'normal',
-    leader: 'leader'
-  }
 
   def sync_account_user
     self.user_id = account&.user_id

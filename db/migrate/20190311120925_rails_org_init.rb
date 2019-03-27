@@ -87,6 +87,13 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
+    create_table :job_titles do |t|
+      t.references :department
+      t.string :name
+      t.integer :grade
+      t.timestamps
+    end
+
   end
 
 end
