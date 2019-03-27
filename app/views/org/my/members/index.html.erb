@@ -2,7 +2,7 @@
   <% @members.each do |member| %>
   <div class="card">
     <div class="content">
-      <%= link_to member_path(member), class: 'right floated mini ui image' do %>
+      <%= link_to my_member_path(member), class: 'right floated mini ui image' do %>
         <%= image_tag member.user.avatar.variant(resize: '150x150') %>
       <% end %>
       <span>

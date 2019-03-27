@@ -1,11 +1,9 @@
-<%= render 'the_auth_my/users/menu' %>
-
 <table class="ui very basic large table">
   <thead>
     <tr>
       <th class="three wide"></th>
       <th>
-        <%= link_to t('.edit'), edit_my_member_path, class: 'ui mini blue right floated button' %>
+        <%= link_to t('.edit'), edit_my_member_path(@member), class: 'ui mini blue right floated button' %>
       </th>
     </tr>
   </thead>
@@ -17,10 +15,6 @@
     <tr>
       <td class="right aligned"><%= Member.human_attribute_name(:name) %></td>
       <td><%= @member.name %></td>
-    </tr>
-    <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:parent) %></td>
-      <td><%= @member.parent&.name %></td>
     </tr>
     <tr>
       <td class="right aligned"><%= Member.human_attribute_name(:join_on) %></td>

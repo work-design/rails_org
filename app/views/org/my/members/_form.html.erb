@@ -1,9 +1,8 @@
-<%= default_form_with model: @member, url: my_member_path do |f| %>
-  <%= f.select :parent_id, options_for_select([[@member.parent&.name, @member.parent&.id]], @member.parent_id), {include_blank: true, label: 'Leader'} %>
+<%= form_with model: @member, url: my_member_path(@member), method: :patch do |f| %>
   <%= f.text_area :experience %>
   <div class="inline fields">
     <%= f.submit 'update info', class: 'ui green button', on: { wrapper_all: false } %>
-    <%= link_to 'back', my_member_path, class: 'ui button' %>
+    <%= link_to 'back', my_members_path, class: 'ui button' %>
   </div>
 <% end %>
 

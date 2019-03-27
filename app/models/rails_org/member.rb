@@ -6,6 +6,9 @@ class Member < ApplicationRecord
 
   has_taxons :department
 
+  attribute :experience, :string
+  attribute :attendance_number, :string
+
   belongs_to :user, optional: true
   belongs_to :office, optional: true, counter_cache: true
   belongs_to :department, optional: true, counter_cache: true

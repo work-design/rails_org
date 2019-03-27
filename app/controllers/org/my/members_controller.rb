@@ -1,4 +1,5 @@
 class Org::My::MembersController < Org::My::BaseController
+  before_action :set_member, only: [:show, :edit]
 
   def index
     @members = current_user.members.includes(:organ, :department, :office)
@@ -36,6 +37,10 @@ class Org::My::MembersController < Org::My::BaseController
   end
 
   private
+  def set_member
+    @member = current_user.members.find params[:id]
+  end
+
   def member_params
     params.fetch(:member, {}).permit(
       :profession,
