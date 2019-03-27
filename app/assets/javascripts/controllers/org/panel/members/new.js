@@ -1,16 +1,15 @@
 //= require rails_taxon/outer
-$('#member_parent_id').dropdown({
+$('#member_job_title_id').dropdown({
   apiSettings: {
-    url: '/hr/members/leaders?q={query}&department_ids={department_ids}',
+    url: '/panel/departments/{department_id}/job_titles',
     cache: false,
     beforeSend: function(settings) {
-      settings.urlData.department_ids = [];
-      $('[data-title="department_ancestors"]').each(function(){
-        return settings.urlData.department_ids.push(this.value);
-      });
-
-      // settings.urlData.department_id = xx;
-      return settings;
+      var department_id = $('[data-title="node_ancestors"]').last();
+      if (department_id.length > 0) {
+        return settings.urlData.department_id = department_id[0].value;
+      } else {
+        return settings.urlData.department_id = 0;
+      }
     }
   },
   fields: {

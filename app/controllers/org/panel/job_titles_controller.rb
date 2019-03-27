@@ -3,7 +3,11 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
   before_action :set_job_title, only: [:show, :edit, :update, :destroy]
 
   def index
-    @job_titles = JobTitle.page(params[:page])
+    q_params = {
+      department_id: params[:department_id]
+    }.with_indifferent_access
+    q_params.merge! params.permit(:office_id)
+    @job_titles = JobTitle.default_where(q_params).page(params[:page])
   end
 
   def new

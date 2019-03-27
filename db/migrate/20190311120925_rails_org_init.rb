@@ -59,6 +59,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :department
       t.references :office
       t.references :organ
+      t.references :job_title
       t.string :type
       t.string :name
       t.string :identity
