@@ -11,8 +11,7 @@ class RailsOrg::Engine < ::Rails::Engine
     g.rails = {
       assets: false,
       stylesheets: false,
-      helper: false,
-      jbuilder: true
+      helper: false
     }
     g.test_unit = {
       fixture: true,

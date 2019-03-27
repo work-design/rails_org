@@ -58,16 +58,12 @@ class Member < ApplicationRecord
     organ_grant.token
   end
 
-  def leading_section_members
-    if leading_section
-      Member.where(department_id: leading_section.self_and_descendant_ids, enabled: true)
-    end
+  def leading_members
+    Member.where(department_id: leading_department.self_and_descendant_ids)
   end
 
-  def leading_group_members
-    if leading_group
-      Member.where(department_id: leading_group.id, enabled: true)
-    end
+  def leading_member_ids
+    leading_members.pluck(:id)
   end
 
   def leading_highest_department

@@ -11,11 +11,6 @@ class Department < ApplicationRecord
   #validates :leader_id, presence: true
   #validates :members_count, numericality: { greater_than: 0 }
 
-
-  def leader_member
-    Member.find(self.leader_id) if self.leader_id
-  end
-
   def col_span
     self.class.max_depth - self.depth
   end
@@ -29,7 +24,6 @@ class Department < ApplicationRecord
     self_and_ancestors.pluck(:name).reverse.join(' > ')
   end
 
-
   def supports
     return @supports if @supports
     results = Support.where(department_id: self.self_and_ancestor_ids).group_by { |i| i.kind }
@@ -37,7 +31,6 @@ class Department < ApplicationRecord
       records.sort_by! { |i| self.self_and_ancestor_ids.index(i.department_id) }.first
     end
   end
-
 
   def self.filter_options
     Department.leaves.map { |i| [i.full_name, i.id] }
