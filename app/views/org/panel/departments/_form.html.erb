@@ -1,6 +1,5 @@
 <%= render 'shared/error_messages', target: @department %>
 <%= render partial: 'nodes/children_select', locals: { f: f, node: @roots } %>
 <%= f.text_field :name, required: true %>
-<%= f.select :leader_id, options_for_select([[@department.leader&.name, @department.leader_id]], @department.leader_id), {include_blank: true, label: 'Leader'} %>
 <%= f.number_field :needed_member, required: true %>
 <%= f.submit %>

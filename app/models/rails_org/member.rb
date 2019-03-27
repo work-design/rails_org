@@ -8,6 +8,7 @@ class Member < ApplicationRecord
 
   attribute :experience, :string
   attribute :attendance_number, :string
+  attribute :grade, :integer, default: 'normal'
 
   belongs_to :user, optional: true
   belongs_to :office, optional: true, counter_cache: true
@@ -35,6 +36,11 @@ class Member < ApplicationRecord
 
   #before_save :sync_tutorials, if: -> { join_on_changed? }
   before_save :sync_account_user, if: -> { identity_changed? }
+
+  enum band: {
+    normal: 'normal',
+    leader: 'leader'
+  }
 
   def sync_account_user
     self.user_id = account&.user_id

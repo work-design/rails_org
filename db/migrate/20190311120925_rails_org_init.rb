@@ -39,7 +39,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     create_table :departments do |t|
       t.references :organ
       t.references :parent
-      t.references :leader
       t.string :name
       t.integer :members_count, default: 0
       t.integer :needed_member
@@ -68,6 +67,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.boolean :enabled, default: true
       t.string :state
       t.string :organ_token
+      t.integer :grade, default: 0
       t.timestamps
     end
 

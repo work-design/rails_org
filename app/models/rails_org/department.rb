@@ -1,15 +1,16 @@
 class Department < ApplicationRecord
   prepend RailsTaxonNode
-  belongs_to :leader, class_name: 'Member', optional: true
   has_many :job_descriptions
   has_many :members, dependent: :nullify
+
+  has_one :leader, -> { order(grade: :desc) }, class_name: 'Member'
+  has_many :leaders, -> { order(grade: :desc) }, class_name: 'Member'
+
   has_many :offices, -> { distinct }, through: :members
   has_many :lesson_grants, -> (department){ unscope(where: :department_id).where(department_id: department.self_and_ancestor_ids) }, dependent: :nullify
   has_many :lessons, through: :lesson_grants
 
   validates :name, presence: true
-  #validates :leader_id, presence: true
-  #validates :members_count, numericality: { greater_than: 0 }
 
   def col_span
     self.class.max_depth - self.depth
