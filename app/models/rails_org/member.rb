@@ -15,9 +15,9 @@ class Member < ApplicationRecord
   belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
 
   belongs_to :user, optional: true
-  belongs_to :office, optional: true, counter_cache: true
-  belongs_to :department, optional: true, counter_cache: true
-  belongs_to :job_title, primary_key: :grade, foreign_key: :grade
+  belongs_to :department, optional: true, counter_cache: true, optional: true
+  belongs_to :office, optional: true, counter_cache: true, optional: true
+  belongs_to :job_title, primary_key: :grade, foreign_key: :grade, optional: true
 
   has_one :organ_grant, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
   has_many :organ_grants, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
