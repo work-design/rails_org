@@ -90,8 +90,28 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
 
     create_table :job_titles do |t|
       t.references :department
+      t.references :office
       t.string :name
       t.integer :grade
+      t.timestamps
+    end
+
+    create_table :member_job_titles do |t|
+      t.references :member
+      t.references :job_title
+      t.references :department
+      t.references :office
+      t.integer :grade
+      t.timestamps
+    end
+
+    create_table :supports do |t|
+      t.references :department
+      t.references :office
+      t.references :member
+      t.string :name
+      t.integer :grade
+      t.string :code
       t.timestamps
     end
 

@@ -132,18 +132,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_134752) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "supports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "department_id"
-    t.bigint "office_id"
-    t.bigint "member_id"
-    t.string "kind"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "supporter_id"
-    t.index ["department_id"], name: "index_supports_on_department_id"
-    t.index ["member_id"], name: "index_supports_on_member_id"
-    t.index ["office_id"], name: "index_supports_on_office_id"
-    t.index ["supporter_id"], name: "index_supports_on_supporter_id"
-  end
+
 
 end

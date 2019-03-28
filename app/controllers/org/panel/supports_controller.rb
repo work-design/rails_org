@@ -13,9 +13,7 @@ class Org::Panel::SupportsController < Org::Panel::BaseController
   end
 
   def new
-    @support = Support.new
-    @support.department_id = params[:department_id]
-    @support.office_id = params[:office_id]
+    @support = Support.new(support_params)
   end
 
   def create
@@ -80,9 +78,10 @@ class Org::Panel::SupportsController < Org::Panel::BaseController
       :department_id,
       :department_ancestors,
       :office_id,
-      :kind,
-      :member_id,
-      :supporter_id
+      :name,
+      :code,
+      :grade,
+      :member_id
     )
   end
 

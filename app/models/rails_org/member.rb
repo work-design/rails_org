@@ -8,16 +8,16 @@ class Member < ApplicationRecord
 
   attribute :experience, :string
   attribute :attendance_number, :string
-  attribute :grade, :integer, default: 0
-
 
   belongs_to :organ, optional: true
   belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
 
   belongs_to :user, optional: true
-  belongs_to :department, optional: true, counter_cache: true, optional: true
-  belongs_to :office, optional: true, counter_cache: true, optional: true
-  belongs_to :job_title, primary_key: :grade, foreign_key: :grade, optional: true
+  belongs_to :department, counter_cache: true, optional: true
+  belongs_to :office, counter_cache: true, optional: true
+
+  has_many :member_job_titles, dependent: :delete_all
+  has_many :job_titles, through: :member_job_titles
 
   has_one :organ_grant, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
   has_many :organ_grants, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all

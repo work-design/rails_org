@@ -20,15 +20,6 @@ Rails.application.routes.draw do
     resources :job_transfers do
       get :departments, on: :collection
     end
-    resources :recruitment_plans do
-      patch :comment, on: :member
-      patch :handle, on: :member
-      patch :repropose, on: :member
-      patch :confirm, on: :member
-      get :my, on: :collection
-    end
-    resources :journal_transfers do
-    end
     resources :documents
   end
 
@@ -49,7 +40,6 @@ Rails.application.routes.draw do
       get :search, on: :collection
       get :filter, on: :collection
       get :need, on: :member
-      resources :job_titles
       resources :job_descriptions
     end
     resources :members do
@@ -58,6 +48,9 @@ Rails.application.routes.draw do
       patch :sync_all, on: :collection
       get :profile, on: :member
       get :token, on: :member
+    end
+    resources :job_titles do
+      get :search, on: :collection
     end
     resources :supports do
       get :departments, on: :collection

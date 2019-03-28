@@ -1,5 +1,5 @@
 class Org::Panel::JobTitlesController < Org::Panel::BaseController
-  before_action :set_department
+  before_action :set_from
   before_action :set_job_title, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -11,7 +11,7 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
   end
 
   def new
-    @job_title = @department.job_titles.build
+    @job_title = @department.job_titles.build(job_title_params)
   end
 
   def create
@@ -62,8 +62,18 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
   end
 
   private
-  def set_department
-    @department = Department.find params[:department_id]
+  def set_from
+    if params[:department_id]
+      @department = Department.find params[:department_id]
+      if @department.leaf? && !@department.root?
+        @department_parent = @department.parent
+      else
+        @department_parent = @department
+      end
+    end
+    if params[:office_id]
+      @office = Office.find params[:office_id]
+    end
   end
 
   def set_job_title
@@ -73,7 +83,9 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
   def job_title_params
     params.fetch(:job_title, {}).permit(
       :name,
-      :grade
+      :grade,
+      :department_id,
+      :office_id
     )
   end
 

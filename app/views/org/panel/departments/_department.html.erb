@@ -21,7 +21,7 @@
       <i class="users icon"></i>People
     <% end %>
     <%= link_to 'JD', panel_department_job_descriptions_path(node), class: 'ui blue label' %>
-    <%= link_to 'Job Titles', panel_department_job_titles_path(node), class: 'ui green label' %>
+    <%= link_to 'Job Titles', panel_job_titles_path(department_id: node.id), class: 'ui green label' %>
     <%= link_to edit_panel_department_path(node), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button', remote: true do %>
       <i class="pencil alternate icon"></i>
     <% end %>

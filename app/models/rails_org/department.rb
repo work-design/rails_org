@@ -1,12 +1,14 @@
 class Department < ApplicationRecord
   prepend RailsTaxonNode
 
-  has_many :job_titles
   has_many :job_descriptions
   has_many :members, dependent: :nullify
 
-  has_one :leader, -> { order(grade: :desc) }, class_name: 'Member'
-  has_many :leaders, -> { order(grade: :desc) }, class_name: 'Member'
+  has_many :job_titles
+  has_many :member_job_titles
+  has_many :leaders, through: :member_job_titles, source: :member
+  has_one :member_job_title, -> { order(grade: :desc) }
+  has_one :leader, through: :member_job_title, source: :member
 
   has_many :offices, -> { distinct }, through: :members
   has_many :lesson_grants, -> (department){ unscope(where: :department_id).where(department_id: department.self_and_ancestor_ids) }, dependent: :nullify
