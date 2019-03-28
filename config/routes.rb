@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :organs do
       patch :login, on: :member
     end
+    resources :departments
     resources :tutorials do
       get :tutorings, on: :collection
       get :perform, on: :member

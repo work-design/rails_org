@@ -1,36 +1,6 @@
-# Please order by a-z
 en:
-  site_name: MDPI System
   activerecord:
-    attributes:
-      absence/compensatory:
-        never: Never Compensatory Work
-        previous: Pre Compensatory Work
-        later: Later Compensatory Work
-      absence/state:
-        init: Pending
-        approved: Approved
-        denied: Rejected
-      absence/type:
-        BusinessTrip: Business Trip
-        PersonalLeave: Personal Leave
-        AnnualLeave: Annual Leave
-        CompensatoryLeave: Adjustment(Weekend/Holiday)
-        BereavementLeave: Bereavement Leave
-        ChildrenDayLeave: Children's Day
-        MarriageLeave: Marriage Leave
-        MaternityLeave: Maternity Leave
-        ParentalLeave: Parental Leave
-        PrenatalLeave: Prenatal Leave
-        SickLeave: Sick Leave
-      attendance/kind:
-        start: Start
-        finish: Finish
-      attendance/status:
-        init: Pending
-      attendance_setting/state:
-        init: Pending
-        approved: Approved
+    enum:
       crm_permit/kind:
         editorial: Editorial Director
         hr: HR
@@ -41,16 +11,6 @@ en:
         #layout: Layout Group Leader
         #it: IT Support
         #admin: Admin
-      expense/type:
-        BudgetExpense: Budget
-        PrepayExpense: Prepay
-        PayableExpense: Payout
-      expense/state:
-        init: Pending
-        rejected: Reject
-      extra_day/kind:
-        workday: Workday
-        holiday: Holiday
       job_transfer/state:
         init: Pending
         approved_sl: Approved by SL
@@ -61,41 +21,9 @@ en:
         approved_manager: Approved by Manager
         approved_hr: Approved by HR
         rejected: Rejected
-      lesson/compulsory:
-        true: compulsory
-        false: optional
-      lesson/repeat_type:
-        once: Once
-        week: Weekly
-        month: Monthly
-      lesson/type:
-        OnlineLesson: Online Lesson
-        OfflineLesson: Offline Lesson
-        ShareLesson: Experience Sharing
-        CaseStudy: Case Study
-      lesson_member/state:
-        in_studying: Registered
-        request_quit: Cancel
-        quitted: Cancelled
-        in_evaluating: Reviewing
-        passed: Passed
-        failed: Failed
-      lesson_paper/type:
-        ExamPaper: Exam Paper
-        SurveyPaper: Survey Paper
-        CertifiablePaper: Certification Test
+
       notification/receiver_type:
         User: User
-      overtime/state:
-        init: Pending
-        approved: Approved
-        denied: Rejected
-      payment_method/type:
-        CashMethod: Cash
-        BankMethod: Bank Account
-      purchase/type:
-        BulkPurchase: Bulk Purchase
-        PayoutPurchase: Payout
       resign/state:
         init: Pending
         approved: Approved

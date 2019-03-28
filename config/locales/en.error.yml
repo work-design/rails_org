@@ -1,8 +1,0 @@
-en:
-  errors:
-    messages:
-      blank: can not be blank
-      too_short: is too short
-      taken: has been used by other
-      record_invalid: already exist
-
