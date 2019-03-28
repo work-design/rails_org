@@ -11,17 +11,17 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
   end
 
   def new
-    @job_title = @department.job_titles.build(job_title_params)
+    @job_title = JobTitle.new(params.permit(:department_id, :office_id))
   end
 
   def create
-    @job_title = @department.job_titles.build(job_title_params)
+    @job_title = JobTitle.new(job_title_params)
 
     respond_to do |format|
       if @job_title.save
         format.html.phone
-        format.html { redirect_to panel_department_job_titles_url(@department), notice: 'Job title was successfully created.' }
-        format.js { redirect_to panel_department_job_titles_url(@department) }
+        format.html { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id), notice: 'Job title was successfully created.' }
+        format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
         format.json { render :show }
       else
         format.html.phone { render :new }
@@ -44,13 +44,13 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
     respond_to do |format|
       if @job_title.save
         format.html.phone
-        format.html { redirect_to panel_department_job_titles_url(@department), notice: 'Job title was successfully updated.' }
-        format.js { redirect_to panel_department_job_titles_url(@department) }
+        format.html { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id), notice: 'Job title was successfully updated.' }
+        format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
         format.json { render :show }
       else
         format.html.phone { render :edit }
         format.html { render :edit }
-        format.js { redirect_to panel_department_job_titles_url(@department) }
+        format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
         format.json { render :show }
       end
     end
@@ -58,7 +58,7 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
 
   def destroy
     @job_title.destroy
-    redirect_to panel_department_job_titles_url(@department), notice: 'Job title was successfully destroyed.'
+    redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id), notice: 'Job title was successfully destroyed.'
   end
 
   private

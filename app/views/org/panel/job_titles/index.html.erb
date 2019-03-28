@@ -2,7 +2,7 @@
   <div class="header item">Org Panel Job Titles</div>
   <div class="right menu">
     <div class="item">
-      <%= link_to 'New Org Panel Job Title', new_panel_department_job_title_path(@department), class: 'ui teal button', remote: true %>
+      <%= link_to 'New Org Panel Job Title', new_panel_job_title_path(params.permit(:department_id, :office_id)), class: 'ui teal button', remote: true %>
     </div>
   </div>
 </div>
@@ -14,8 +14,9 @@
     <tr>
       <th><%= JobTitle.human_attribute_name(:id) %></th>
       <th><%= JobTitle.human_attribute_name(:department) %></th>
-      <th><%= JobTitle.human_attribute_name(:name) %></th>
+      <th><%= JobTitle.human_attribute_name(:office) %></th>
       <th><%= JobTitle.human_attribute_name(:grade) %></th>
+      <th><%= JobTitle.human_attribute_name(:name) %></th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -23,14 +24,15 @@
   <% @job_titles.each do |job_title| %>
     <tr>
       <td><%= job_title.id %></td>
-      <td><%= job_title.department.full_name %></td>
-      <td><%= job_title.name %></td>
+      <td><%= job_title.department&.full_name %></td>
+      <td><%= job_title.office&.name %></td>
       <td><%= job_title.grade %></td>
+      <td><%= job_title.name %></td>
       <td class="ui labels">
-        <%= link_to edit_panel_department_job_title_path(@department, job_title), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button', remote: true do %>
+        <%= link_to edit_panel_job_title_path(job_title), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button', remote: true do %>
           <i class="pencil alternate icon"></i>
         <% end %>
-        <%= link_to panel_department_job_title_path(@department, job_title), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+        <%= link_to panel_job_title_path(job_title), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>
         <% end %>
       </td>

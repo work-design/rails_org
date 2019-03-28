@@ -1,5 +1,7 @@
-<%= form_with model: [:panel, @department, @job_title] do |f| %>
+<%= form_with model: [:panel, @job_title] do |f| %>
   <%= render 'shared/error_messages', target: @job_title %>
+  <%= f.hidden_field :department_id %>
+  <%= f.hidden_field :office_id %>
   <%= f.text_field :name %>
   <%= f.text_field :grade %>
   <%= f.submit %>
