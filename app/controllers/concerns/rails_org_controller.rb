@@ -10,7 +10,7 @@ module RailsOrgController
     return if current_organ
 
     if api_request?
-      raise ActionController::UnauthorizedError
+      raise ActionController::UnauthorizedError, 'Organ not login'
     else
       redirect_to root_url
     end
