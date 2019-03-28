@@ -11,8 +11,6 @@ class Department < ApplicationRecord
   has_one :leader, through: :member_job_title, source: :member
 
   has_many :offices, -> { distinct }, through: :members
-  has_many :lesson_grants, -> (department){ unscope(where: :department_id).where(department_id: department.self_and_ancestor_ids) }, dependent: :nullify
-  has_many :lessons, through: :lesson_grants
 
   validates :name, presence: true
 

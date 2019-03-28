@@ -19,6 +19,13 @@ class Member < ApplicationRecord
   has_many :member_job_titles, dependent: :delete_all
   has_many :job_titles, through: :member_job_titles
 
+  has_many :department_job_titles, class_name: 'MemberJobTitle', foreign_key: :department_id, primary_key: :department_id
+
+
+  has_one :leading_office, class_name: 'Office', foreign_key: :leader_id
+  has_one :leading_department, class_name: 'Department', foreign_key: :leader_id
+  has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
+
   has_one :organ_grant, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
   has_many :organ_grants, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
 
@@ -26,10 +33,6 @@ class Member < ApplicationRecord
   has_one :profile, through: :user
   has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
   has_one :tutor, through: :tutorial
-  has_one :leading_office, class_name: 'Office', foreign_key: :leader_id
-  has_one :leading_department, class_name: 'Department', foreign_key: :leader_id
-  has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
-
   has_many :tutorials, dependent: :nullify
   has_many :tutorings, class_name: 'Tutorial', foreign_key: :tutor_id
   has_many :tutees, through: :tutorings, source: :member
@@ -42,6 +45,10 @@ class Member < ApplicationRecord
 
   def sync_account_user
     self.user_id = account&.user_id
+  end
+
+  def xxx
+    member_job_titles.pluck(:department_id)
   end
 
   def organ_token
