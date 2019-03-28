@@ -14,11 +14,7 @@ class Org::MembersController < ApplicationController
       @members = Member.none
     end
 
-    results = []
-    @members.each do |member|
-      results << { name: member.name, id: member.id }
-    end
-    render json: { results: results }
+    render json: { results: @members.as_json(only: [:name, :id]) }
   end
 
   def show

@@ -64,10 +64,10 @@ class Org::Panel::MembersController < Org::Panel::BaseController
     respond_to do |format|
       if @member.save
         format.html { redirect_to panel_members_url, notice: 'Employee was successfully updated.' }
-        format.js { head :no_content }
+        format.js { redirect_to panel_members_url }
       else
         format.html { render :edit }
-        format.js { head :no_content }
+        format.js { redirect_to panel_members_url }
       end
     end
   end
@@ -81,7 +81,8 @@ class Org::Panel::MembersController < Org::Panel::BaseController
     @member.destroy
     respond_to do |format|
       format.html { redirect_to panel_members_url, notice: 'Employee was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js { redirect_to panel_members_url }
+      format.json { redirect_to panel_members_url }
     end
   end
 
@@ -105,7 +106,8 @@ class Org::Panel::MembersController < Org::Panel::BaseController
       :probation_two_on,
       :formal_on,
       :join_status,
-      role_ids: []
+      role_ids: [],
+      job_title_ids: []
     )
     q.merge! default_params
   end

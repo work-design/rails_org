@@ -1,7 +1,7 @@
 //= require rails_taxon/outer
-$('#member_job_title_id').dropdown({
+$('#member_job_title_ids').dropdown({
   apiSettings: {
-    url: '/panel/departments/{department_id}/job_titles',
+    url: '/panel/job_titles/search?department_id={department_id}',
     cache: false,
     beforeSend: function(settings) {
       var department_id = $('[data-title="node_ancestors"]').last();
@@ -20,4 +20,3 @@ $('#member_job_title_id').dropdown({
 $('#member_type').dropdown();
 $('#member_office_id').dropdown();
 $('#member_band_id').dropdown();
-$('#member_job_title_ids').dropdown();

@@ -10,6 +10,14 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
     @job_titles = JobTitle.default_where(q_params).page(params[:page])
   end
 
+  def search
+    q_params = {}.with_indifferent_access
+    q_params.merge! params.permit(:department_id, :office_id)
+    @job_titles = JobTitle.default_where(q_params).page(params[:page])
+
+    render json: { results: @job_titles.as_json(only: [:name, :id]) }
+  end
+
   def new
     @job_title = JobTitle.new(params.permit(:department_id, :office_id))
   end
