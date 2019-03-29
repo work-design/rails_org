@@ -7,3 +7,9 @@ json.extract! member,
               :number,
               :created_at,
               :updated_at
+if member.department
+  json.department member.department, :names, :full_name
+end
+if member.office
+  json.office member.office, :name, :area
+end

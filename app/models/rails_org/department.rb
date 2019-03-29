@@ -23,8 +23,12 @@ class Department < ApplicationRecord
     self.self_and_descendants.sum(:members_count)
   end
 
+  def names
+    self_and_ancestors.pluck(:name).reverse
+  end
+
   def full_name
-    self_and_ancestors.pluck(:name).reverse.join(' > ')
+    names.join(' > ')
   end
 
   def supports
