@@ -4,8 +4,14 @@
   <% else %>
     <label class="six wide field"></label>
   <% end %>
-  <%= render partial: 'nodes/outer_select', locals: { f: ef, outer: 'department' } %>
-  <%= ef.select :job_title_id, options_for_select([[ef.object.job_title&.name, ef.object.job_title_id]], ef.object.job_title_id), {} %>
+  <% if ef.object.department_id %>
+    <% ef.object.department.self_and_ancestors.reverse_each do |node| %>
+      <%= render partial: 'nodes/outer_options', locals: { f: ef, node: node } %>
+    <% end %>
+  <% else %>
+    <%= render partial: 'nodes/outer_options', locals: { f: ef, node: Department.new } %>
+  <% end %>
+  <%= ef.select :job_title_id, options_for_select([[ef.object.job_title&.name, ef.object.job_title_id]], ef.object.job_title_id), { on: { wrapper_input_id: true } } %>
   
   <div class="field">
     <%= link_to add_item_panel_members_path('item', index: ef.index), data: { title: 'add_item' }, remote: true do %>
