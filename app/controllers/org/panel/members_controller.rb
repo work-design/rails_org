@@ -106,8 +106,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
       :probation_two_on,
       :formal_on,
       :join_status,
-      role_ids: [],
-      job_title_ids: []
+      role_ids: []
     )
     q.merge! default_params
   end

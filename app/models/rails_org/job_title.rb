@@ -6,5 +6,6 @@ class JobTitle < ApplicationRecord
 
   belongs_to :department, optional: true
   belongs_to :office, optional: true
+  has_many :member_job_titles, ->(o){ default_where('grade-lte': o.grade) }
 
 end

@@ -96,12 +96,14 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    create_table :member_job_titles do |t|
+    create_table :member_departments do |t|
       t.references :member
       t.references :job_title
+      t.references :department_root
       t.references :department
       t.references :office
       t.integer :grade
+      t.boolean :primary
       t.timestamps
     end
 

@@ -16,12 +16,12 @@ class Member < ApplicationRecord
   belongs_to :department, counter_cache: true, optional: true
   belongs_to :office, counter_cache: true, optional: true
 
-  has_many :member_job_titles, dependent: :delete_all
-  has_many :job_titles, through: :member_job_titles
+  has_many :member_departments, dependent: :delete_all
+  has_many :job_titles, through: :member_departments
+  has_many :departments, through: :member_departments
 
-  has_many :department_job_titles, class_name: 'MemberJobTitle', foreign_key: :department_id, primary_key: :department_id
+  has_many :department_job_titles, class_name: 'MemberDepartment', foreign_key: :department_id, primary_key: :department_id
   has_many :direct_followers, through: :department_job_titles, source: :department_members
-
 
   has_one :leading_office, class_name: 'Office', foreign_key: :leader_id
   has_one :leading_department, class_name: 'Department', foreign_key: :leader_id
@@ -50,7 +50,7 @@ class Member < ApplicationRecord
     self.user_id = account&.user_id
   end
 
-  def direct_followerss
+  def direct_followers
     ids = member_job_titles.pluck(:department_id)
     Member.where(department_id: ids)
   end

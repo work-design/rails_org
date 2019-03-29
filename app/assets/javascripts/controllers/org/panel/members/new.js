@@ -4,7 +4,7 @@ $('#member_job_title_ids').dropdown({
     url: '/panel/job_titles/search?department_id={department_id}',
     cache: false,
     beforeSend: function(settings) {
-      var department_id = $('[data-title="node_ancestors"]').last();
+      var department_id = $('[data-title="node_ancestors"]').first();
       if (department_id.length > 0) {
         return settings.urlData.department_id = department_id[0].value;
       } else {
