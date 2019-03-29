@@ -17,8 +17,9 @@ class Member < ApplicationRecord
   belongs_to :office, counter_cache: true, optional: true
 
   has_many :member_departments, dependent: :delete_all
-  has_many :job_titles, through: :member_departments
   has_many :departments, through: :member_departments
+  has_many :job_titles, through: :member_departments
+  accepts_nested_attributes_for :member_departments
 
   has_many :department_job_titles, class_name: 'MemberDepartment', foreign_key: :department_id, primary_key: :department_id
   has_many :direct_followers, through: :department_job_titles, source: :department_members

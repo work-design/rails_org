@@ -1,0 +1,22 @@
+<div class="inline fields" id="member_member_departments_<%= ef.index %>" data-title="member_member_departments">
+  <% if ef.index == 0 %>
+    <%= ef.options[:parent_builder].label :member_departments %>
+  <% else %>
+    <label class="six wide field"></label>
+  <% end %>
+  <%= render partial: 'nodes/outer_select', locals: { f: ef, outer: 'department' } %>
+  <%= ef.select :job_title_id, options_for_select([]), {} %>
+  
+  <div class="field">
+    <%= link_to add_item_panel_members_path('item', index: ef.index), data: { title: 'add_item' }, remote: true do %>
+      <i class="plus circle icon"></i>
+    <% end %>
+    <% if ef.object.id %>
+      <%= ef.check_box :_destroy, { on: { offset: false }, css: { wrapper_checkbox: 'ui checkbox' }, checked: true }, 0, 1 %>
+    <% else %>
+      <%= link_to remove_item_panel_members_path('item', index: ef.index), remote: true do %>
+        <i class="minus circle icon"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>

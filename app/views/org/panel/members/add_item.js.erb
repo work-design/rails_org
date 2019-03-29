@@ -1,0 +1,9 @@
+<% form_object = default_form_object(@member, on: { wrapper_id: true }) %>
+
+var template = '<%= j(render partial: 'item_field', locals: { f: form_object, index: UidHelper.sec_uuid }) %>'
+
+$('#member_member_departments_<%= params[:index] %>').after(template);
+
+$('[data-title="member_department_job_title_id"]').dropdown({
+  placeholder: true
+});

@@ -1,0 +1,3 @@
+<%= f.fields :member_departments, child_index: index, on: { wrapper_all: false, label: false, placeholder: true }, css: { wrapper_input: 'four wide field' } do |ef| %>
+  <%= render partial: 'item_form', locals: { ef: ef } %>
+<% end %>

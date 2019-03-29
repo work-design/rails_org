@@ -29,6 +29,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
 
   def new
     @member = Member.new
+    @member.member_departments.build
 
     respond_to do |format|
       format.js
@@ -57,6 +58,9 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   end
 
   def edit
+    if @member.member_departments.count == 0
+      @member.member_departments.build
+    end
   end
 
   def update
@@ -70,6 +74,15 @@ class Org::Panel::MembersController < Org::Panel::BaseController
         format.js { redirect_to panel_members_url }
       end
     end
+  end
+
+  def add_item
+    @member = Member.new
+    @member.member_departments.build
+  end
+
+  def remove_item
+
   end
 
   def token
@@ -106,7 +119,8 @@ class Org::Panel::MembersController < Org::Panel::BaseController
       :probation_two_on,
       :formal_on,
       :join_status,
-      role_ids: []
+      role_ids: [],
+      member_departments_attributes: {}
     )
     q.merge! default_params
   end

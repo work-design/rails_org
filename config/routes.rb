@@ -34,20 +34,28 @@ Rails.application.routes.draw do
       resources :rooms
     end
     resources :departments do
-      get :supports, on: :collection
-      get :parents, on: :collection
-      get :my, on: :collection
-      get :search, on: :collection
-      get :filter, on: :collection
+      collection do
+        get :supports
+        get :parents
+        get :my
+        get :search
+        get :filter
+      end
       get :need, on: :member
       resources :job_descriptions
     end
     resources :members do
-      get :departments, on: :collection
-      get :leaders, on: :collection
-      patch :sync_all, on: :collection
-      get :profile, on: :member
-      get :token, on: :member
+      collection do
+        get :departments
+        get :leaders
+        patch :sync_all
+        get 'add_item/:item' => :add_item, as: :add_item
+        get 'remove_item/:item' => :remove_item, as: :remove_item
+      end
+      member do
+        get :profile
+        get :token
+      end
     end
     resources :job_titles do
       get :search, on: :collection

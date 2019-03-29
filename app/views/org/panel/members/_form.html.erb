@@ -1,9 +1,10 @@
 <%= f.text_field :name, label: 'Real Name' %>
 <%= f.text_field :identity %>
 <%= f.select :type, options_for_select(Member.options_i18n(:type), @member.type), { label: 'Type', include_blank: true } %>
-<%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'department' } %>
 <%= f.collection_select :office_id, Office.all, :id, :name, { prompt: 'Select Office' } %>
-<%= f.select :job_title_ids, options_from_collection_for_select(@member.job_titles, :id, :name, @member.job_title_ids), {}, { multiple: true } %>
+<%= f.fields :member_departments, on: { wrapper_all: false, label: false, placeholder: true }, css: { wrapper_input: 'two wide field' } do |ef| %>
+  <%= render partial: 'item_form', locals: { ef: ef } %>
+<% end %>
 <%= f.date_field :join_on %>
 <%= f.check_box :enabled %>
 <%= f.submit %>
