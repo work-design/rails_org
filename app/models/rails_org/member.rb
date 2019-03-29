@@ -20,6 +20,7 @@ class Member < ApplicationRecord
   has_many :job_titles, through: :member_job_titles
 
   has_many :department_job_titles, class_name: 'MemberJobTitle', foreign_key: :department_id, primary_key: :department_id
+  has_many :direct_followers, through: :department_job_titles, source: :department_members
 
 
   has_one :leading_office, class_name: 'Office', foreign_key: :leader_id
@@ -49,8 +50,15 @@ class Member < ApplicationRecord
     self.user_id = account&.user_id
   end
 
-  def xxx
-    member_job_titles.pluck(:department_id)
+  def direct_followerss
+    ids = member_job_titles.pluck(:department_id)
+    Member.where(department_id: ids)
+  end
+
+  def all_followers
+    department_ids = member_job_titles.pluck(:department_id)
+    ids = Department.joins(:ancestor_hierarchies).default_where('descendant_hierarchies.ancestor_id': department_ids)
+    Member.where(department_id: ids)
   end
 
   def organ_token
