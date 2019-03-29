@@ -103,7 +103,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :department
       t.references :office
       t.integer :grade
-      t.boolean :primary
+      t.boolean :major
       t.timestamps
     end
 

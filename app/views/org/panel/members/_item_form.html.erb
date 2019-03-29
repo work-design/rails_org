@@ -5,7 +5,7 @@
     <label class="six wide field"></label>
   <% end %>
   <%= render partial: 'nodes/outer_select', locals: { f: ef, outer: 'department' } %>
-  <%= ef.select :job_title_id, options_for_select([]), {} %>
+  <%= ef.select :job_title_id, options_for_select([[ef.object.job_title&.name, ef.object.job_title_id]], ef.object.job_title_id), {} %>
   
   <div class="field">
     <%= link_to add_item_panel_members_path('item', index: ef.index), data: { title: 'add_item' }, remote: true do %>

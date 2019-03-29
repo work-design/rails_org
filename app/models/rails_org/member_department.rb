@@ -10,6 +10,13 @@ class MemberDepartment < ApplicationRecord
 
   before_save :sync_department_and_office, if: -> { job_title_id_changed? }
 
+  def set_major
+    self.class.transaction do
+      self.update(major: true)
+      self.class.where.not(id: self.id).where(member_id: self.member_id).update_all(major: false)
+    end
+  end
+
   def sync_department_and_office
     if job_title
       self.department_root_id = job_title.department_id
