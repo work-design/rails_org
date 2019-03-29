@@ -38,6 +38,8 @@ class Member < ApplicationRecord
   has_many :tutees, through: :tutorings, source: :member
   has_many :job_transfers, dependent: :destroy
 
+  has_one_attached :avatar
+
   validates :identity, uniqueness: true, allow_blank: true
 
   #before_save :sync_tutorials, if: -> { join_on_changed? }
@@ -91,6 +93,10 @@ class Member < ApplicationRecord
 
   def locale
     user.locale || office.locale.presence || I18n.default_locale
+  end
+
+  def avatar_url
+    avatar.service_url if avatar.attachment.present?
   end
 
   def endearing_name

@@ -1,5 +1,5 @@
 class Org::My::MembersController < Org::My::BaseController
-  before_action :set_member, only: [:show, :edit]
+  before_action :set_member, only: [:show, :edit, :update]
 
   def index
     @members = current_user.members.includes(:organ, :department, :office)
@@ -9,7 +9,7 @@ class Org::My::MembersController < Org::My::BaseController
     respond_to do |format|
       format.js
       format.html
-      format.json { render json: @member }
+      format.json
     end
   end
 
@@ -27,11 +27,14 @@ class Org::My::MembersController < Org::My::BaseController
   end
 
   def update
+    @member.assign_attributes member_params
     respond_to do |format|
-      if @member.update member_params
-        format.html { redirect_to my_member_url, notice: 'Member was successfully updated.' }
+      if @member.save
+        format.html { redirect_to my_member_url(@member), notice: 'Member was successfully updated.' }
+        format.json { render :show }
       else
         format.html { render action: 'edit' }
+        format.json { render :show }
       end
     end
   end
@@ -43,12 +46,13 @@ class Org::My::MembersController < Org::My::BaseController
 
   def member_params
     params.fetch(:member, {}).permit(
+      :name,
+      :identity,
       :profession,
       :attendance_number,
       :next_on_time,
       :next_off_time,
-      :experience,
-      :parent_id
+      :experience
     )
   end
 
