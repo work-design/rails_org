@@ -1,5 +1,5 @@
 //= require rails_taxon/outer
-$('#member_job_title_ids').dropdown({
+$('[data-title="job_title_id"]').dropdown({
   apiSettings: {
     url: '/panel/job_titles/search?department_id={department_id}',
     cache: false,
