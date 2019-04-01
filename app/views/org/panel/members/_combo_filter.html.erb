@@ -1,3 +1,19 @@
+<%#= search_form_with model: Member.new do |f| %>
+<!--  <div class="fields">-->
+<%#= f.text_field :'name-like', placeholder: 'Name' %>
+<%#= f.text_field :mobile %>
+<%#= f.text_field :email %>
+<!--  </div>-->
+<!--  <div class="fields">-->
+<!--    <div class="two wide field" id="q_department_wrapper_0">-->
+<%#= f.collection_select "department_ancestors(0i)", Department.roots, :id, :name, {prompt: 'Select', skip_default_ids: true, label: false, on: {wrapper_all: false, wrapper_input: false}}, {data: {id: 0, title: 'department_ancestors'}} %>
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="fields">-->
+<!--    <div class="field"><%#= f.submit t('.search'), class: 'ui green small button' %></div>-->
+<!--  </div>-->
+<%# end %>
+
 <div style="width: auto">
   <div class="ui input" style="width: 12rem">
     <input type="text" placeholder="姓名...">
