@@ -1,0 +1,8 @@
+<div class="right menu">
+  <div class="item">
+    <%= link_to 'New Department', new_panel_department_path, class: 'ui mini teal button' %>
+  </div>
+  <div class="item">
+    <%= link_to t('.export'), find_data_list_table_lists_path('DepartmentExport', request.query_parameters), class: 'ui mini blue button', remote: true %>
+  </div>
+</div>
