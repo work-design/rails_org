@@ -7,8 +7,13 @@ class MemberDepartment < ApplicationRecord
   has_many :same_department_followers, ->(o){ default_where('grade-lte': o.grade) }, class_name: self.name, foreign_key: :department_id, primary_key: :department_id
 
   has_taxons :department
+  attribute :department_descendants
 
   before_save :sync_department_and_office, if: -> { job_title_id_changed? }
+
+  def all_department_followers
+
+  end
 
   def set_major
     self.class.transaction do
