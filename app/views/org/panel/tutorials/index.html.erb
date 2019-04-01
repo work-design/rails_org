@@ -1,12 +1,11 @@
-<div class="ui top attached borderless menu">
-  <div class="header item">Tutorials</div>
-  <div class="right menu">
-    <div class="item"><%= link_to 'New Tutorial', new_panel_tutorial_path, class: 'ui teal button' %></div>
-  </div>
+<%= render 'layouts/topbar' %>
+<div class="content-breadcrumb-section">
+  <%= render 'layouts/breadcrumb' %>
 </div>
 
 <div class="ui attached segment">
   <%= render 'search_form' %>
+  <%= render 'right_menu_table_tool'%>
 </div>
 
 <%= render 'list' %>
