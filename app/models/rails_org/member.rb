@@ -21,9 +21,6 @@ class Member < ApplicationRecord
   has_many :job_titles, through: :member_departments
   accepts_nested_attributes_for :member_departments
 
-  has_many :department_job_titles, class_name: 'MemberDepartment', foreign_key: :department_id, primary_key: :department_id
-  has_many :direct_followers, through: :department_job_titles, source: :department_members
-
   has_one :leading_office, class_name: 'Office', foreign_key: :leader_id
   has_one :leading_department, class_name: 'Department', foreign_key: :leader_id
   has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
@@ -51,15 +48,26 @@ class Member < ApplicationRecord
     self.user_id = account&.user_id
   end
 
+  def direct_follower_ids
+    return @direct_follower_ids if defined?(@direct_follower_ids)
+    @direct_follower_ids = member_departments.map do |md|
+      md.direct_followers.pluck(:member_id)
+    end.flatten.uniq
+  end
+
   def direct_followers
-    ids = member_job_titles.pluck(:department_id)
-    Member.where(department_id: ids)
+    Member.where(id: direct_follower_ids)
+  end
+
+  def all_follower_ids
+    return @all_follower_ids if defined?(@all_follower_ids)
+    @all_follower_ids = member_departments.map do |md|
+      md.all_followers.pluck(:member_id)
+    end.flatten.uniq
   end
 
   def all_followers
-    department_ids = member_job_titles.pluck(:department_id)
-    ids = Department.joins(:ancestor_hierarchies).default_where('descendant_hierarchies.ancestor_id': department_ids)
-    Member.where(department_id: ids)
+    Member.where(id: all_follower_ids)
   end
 
   def organ_token
