@@ -1,7 +1,11 @@
-<%= render 'menu' %>
+<%= render 'layouts/topbar' %>
+<div class="content-breadcrumb-section">
+  <%= render 'layouts/breadcrumb' %>
+</div>
 
 <div class="ui attached segment">
   <%= render 'search_form' %>
+  <%= render 'right_menu_table_tool' %>
 </div>
 
 <table class="ui bottom attached table">

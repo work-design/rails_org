@@ -1,8 +1,11 @@
-<%= search_form_with model: Office.new do |f| %>
-  <div class="fields">
-    <%= f.text_field :name %>
-    <%= f.submit 'Search' %>
-  </div>
-<% end %>
+<%#= search_form_with model: Office.new do |f| %>
+<!--  <div class="fields">-->
+    <%#= f.text_field :name %>
+    <%#= f.submit 'Search' %>
+<!--  </div>-->
+<%# end %>
 
-
+<div class="ui icon input">
+  <input type="text" placeholder="Search...">
+  <i class="search icon"></i>
+</div>

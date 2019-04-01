@@ -1,13 +1,23 @@
-<div class="ui top attached borderless menu">
-  <div class="header item">Offices</div>
-  <div class="right menu">
-    <div class="item"><%= link_to 'New Office', new_panel_office_path, class: 'ui teal button' %></div>
-  </div>
+<%= render 'layouts/topbar' %>
+<div class="content-breadcrumb-section">
+  <%= render 'layouts/breadcrumb' %>
 </div>
 
 <div class="ui attached segment">
   <%= render 'search_form' %>
+  <%= render 'right_menu_table_tool' %>
 </div>
+
+<!--<div class="ui top attached borderless menu">-->
+<!--  <div class="header item">Offices</div>-->
+<!--  <div class="right menu">-->
+<!--    <div class="item"><%#= link_to 'New Office', new_panel_office_path, class: 'ui teal button' %></div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="ui attached segment">-->
+  <%#= render 'search_form' %>
+<!--</div>-->
 
 <table class="ui bottom attached table">
   <thead>
