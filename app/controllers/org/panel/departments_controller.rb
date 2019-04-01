@@ -101,7 +101,6 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
       :name,
       :type,
       :title,
-      :leader_id,
       :parent_id,
       :parent_ancestors,
       :needed_member

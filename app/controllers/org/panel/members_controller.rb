@@ -65,6 +65,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
 
   def update
     @member.assign_attributes(member_params)
+
     respond_to do |format|
       if @member.save
         format.html { redirect_to panel_members_url, notice: 'Employee was successfully updated.' }
@@ -110,8 +111,6 @@ class Org::Panel::MembersController < Org::Panel::BaseController
       :identity,
       :type,
       :office_id,
-      :department_id,
-      :department_ancestors,
       :join_on,
       :enabled,
       :intern_begin_on,
