@@ -17,17 +17,18 @@
   </td>
   <td><%= node.leader&.name %></td>
   <td class="ui labels">
-    <%= link_to panel_department_path(node), class: 'ui label' do %>
-      <i class="users icon"></i>People
+    <%= link_to panel_department_path(node), class: 'ui circular mini icon button' do %>
+      <i class="user icon"></i>
     <% end %>
-    <%= link_to 'JD', panel_department_job_descriptions_path(node), class: 'ui blue label' %>
+    <%#= link_to 'JD', panel_department_job_descriptions_path(node), class: 'ui circular mini icon button' %>
+
     <% if node.root? %>
-      <%= link_to 'Job Titles', panel_job_titles_path(department_id: node.id), class: 'ui green label' %>
-    <% end %>
-    <%= link_to edit_panel_department_path(node), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button', remote: true do %>
+      <%= link_to 'Job Titles', panel_job_titles_path(department_id: node.id), class: 'ui circular mini icon button' %>
+  <% end %>
+    <%= link_to edit_panel_department_path(node), data: { tooltip: t('.edit') }, class: 'ui circular mini icon button', remote: true do %>
       <i class="pencil alternate icon"></i>
     <% end %>
-    <%= link_to panel_department_path(node), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+    <%= link_to panel_department_path(node), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui circular mini icon button' do %>
       <i class="times icon"></i>
     <% end %>
   </td>

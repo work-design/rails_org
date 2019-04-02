@@ -36,11 +36,9 @@
       <%= link_to member.profile.resume.filename, rails_blob_path(member.profile.resume), target: '_blank' %>
     <% end %>
   </td>
-  <td>
-    <%= link_to 'token', token_panel_member_path(member), class: 'ui blue label' %>
-  </td>
+
   <td class="ui labels">
-    <%= link_to edit_panel_member_path(member), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button', remote: true do %>
+    <%= link_to edit_panel_member_path(member), data: { tooltip: t('.edit') }, class: 'ui circular mini icon button', remote: true do %>
       <i class="pencil alternate icon"></i>
     <% end %>
     <%= link_to 'tutorials', panel_tutorials_path(member_id: member.id), class: 'ui blue label' %>
