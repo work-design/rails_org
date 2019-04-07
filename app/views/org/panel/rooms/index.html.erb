@@ -1,8 +1,10 @@
-<div class="ui segment breadcrumb">
+<% content_for :breadcrumb do %>
+<div class="ui breadcrumb">
   <%= link_to 'Back', panel_offices_path, class: 'section' %>
   <div class="divider">/</div>
   <div class="active section">Rooms</div>
 </div>
+<% end %>
 
 <div class="ui top attached borderless menu">
   <div class="header item">Org Panel Rooms</div>
