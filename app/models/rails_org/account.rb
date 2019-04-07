@@ -2,10 +2,10 @@ require 'rails_auth/account'
 class Account
   belongs_to :member, foreign_key: :identity, primary_key: :identity, optional: true
 
-  after_save :sync_to_user, if: -> { saved_change_to_identity? }
+  after_save :sync_to_member, if: -> { saved_change_to_identity? || saved_change_to_confirmed? }
 
-  def sync_to_user
-    if member
+  def sync_to_member
+    if confirmed? && member
       member.user_id = self.user_id
       member.save
     end
