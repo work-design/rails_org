@@ -1,27 +1,27 @@
 <% content_for :breadcrumb do %>
-<div class="content-breadcrumb-section">
-  <%= render 'layouts/breadcrumb' %>
-</div>
+  <%= render 'breadcrumb' %>
 <% end %>
 
 <div class="ui attached segment" style="flex-direction: column; align-items: start">
   <%= render 'combo_filter' %>
-  <%= render 'right_menu_table_tool'%>
 </div>
 
 <table class="ui bottom attached table">
   <thead>
-  <tr>
-    <th>ID</th>
-    <th><%= Member.human_attribute_name(:type) %></th>
-    <th><%= Member.human_attribute_name(:name) %></th>
-    <th><%= Member.human_attribute_name(:office) %></th>
-    <th><%= Member.human_attribute_name(:department) %></th>
-    <th><%= Member.human_attribute_name(:contacts) %></th>
-    <th><%= Member.human_attribute_name(:join_on) %></th>
-    <th><%= Member.human_attribute_name(:resume) %></th>
-    <th></th>
-  </tr>
+    <tr>
+      <th><%= Member.human_attribute_name(:id) %></th>
+      <th><%= Member.human_attribute_name(:type) %></th>
+      <th><%= Member.human_attribute_name(:name) %></th>
+      <th><%= Member.human_attribute_name(:office) %></th>
+      <th><%= Member.human_attribute_name(:department) %></th>
+      <th><%= Member.human_attribute_name(:contacts) %></th>
+      <th><%= Member.human_attribute_name(:join_on) %></th>
+      <th><%= Member.human_attribute_name(:resume) %></th>
+      <th>
+        <%= link_to 'New', new_panel_member_path, remote: true, class: 'ui mini primary button' %>
+        <%= link_to t('.export'), find_data_list_table_lists_path('MemberExport', params.fetch(:q, {}).permit(:office_id)), class: 'ui mini secondary button', remote: true %>
+      </th>
+    </tr>
   </thead>
 
   <tbody>

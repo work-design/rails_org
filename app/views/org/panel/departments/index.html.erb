@@ -1,7 +1,5 @@
-
 <div class="ui attached segment">
   <%= render 'search_form' %>
-  <%= render 'right_menu_table_tool' %>
 </div>
 
 <table class="ui bottom attached table">
@@ -10,7 +8,10 @@
       <th>Name</th>
       <th>Needed / Actual</th>
       <th><%= Department.human_attribute_name(:leader) %></th>
-      <th>Actions</th>
+      <th>
+        <%= link_to 'New Department', new_panel_department_path, remote: true, class: 'ui mini primary button' %>
+        <%= link_to t('.export'), find_data_list_table_lists_path('DepartmentExport', request.query_parameters), class: 'ui mini secondary button', remote: true %>
+      </th>
     </tr>
   </thead>
 

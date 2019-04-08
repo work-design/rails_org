@@ -1,7 +1,5 @@
 <% content_for :breadcrumb do %>
-<div class="content-breadcrumb-section">
-  <%= render 'layouts/breadcrumb' %>
-</div>
+  <%= render 'breadcrumb' %>
 <% end %>
 
 <div class="ui attached segment">
@@ -28,7 +26,9 @@
       <%= Office.human_attribute_name(:name) %>(<%= Office.human_attribute_name(:name_short) %>)
     </th>
     <th><%= Office.human_attribute_name(:area) %></th>
-    <th>Actions</th>
+    <th>
+      <%= link_to 'New', new_panel_office_path, remote: true, class: 'ui mini primary button' %>
+    </th>
   </tr>
   </thead>
 
@@ -41,7 +41,9 @@
       <td class="ui labels">
         <%= link_to '教室', panel_office_rooms_path(office.id), class: 'ui blue label' %>
         <%= link_to 'Supports', panel_supports_path(office_id: office.id), class: 'ui blue label' %>
-        <%= link_to t('.edit'), edit_panel_office_path(office), class: 'ui pink label' %>
+        <%= link_to edit_panel_office_path(office), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button' do %>
+          <i class="pencil alternate icon"></i>
+        <% end %>
         <%= link_to t('.destroy'), panel_office_path(office), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
       </td>
     </tr>
