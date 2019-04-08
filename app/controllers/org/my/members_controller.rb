@@ -52,7 +52,8 @@ class Org::My::MembersController < Org::My::BaseController
       :attendance_number,
       :next_on_time,
       :next_off_time,
-      :experience
+      :experience,
+      :avatar
     )
   end
 
