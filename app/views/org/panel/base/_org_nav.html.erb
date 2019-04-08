@@ -8,7 +8,7 @@
   <div class="<%= active_helper(controllers: ['offices', 'departments', 'job_descriptions', 'supports'], active_class: 'active menu content', item_class: 'menu content') %>">
     <%= link_to '部门', panel_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions']) %>
     <%= link_to '区域管理', panel_offices_path, class: active_helper(controllers: 'offices') %>
-    <%= link_to 'Supports', panel_supports_path, class: active_helper(controllers: 'supports') %>
+    <%# link_to 'Supports', panel_supports_path, class: active_helper(controllers: 'supports') %>
   </div>
 </div>
 <% end %>
@@ -21,7 +21,7 @@
     <i class="dropdown icon"></i>
   </a>
   <div class="<%= active_helper(controllers: ['members', 'tutorials', 'job_transfers', 'resigns', 'resign_reasons'], active_class: 'menu content active', item_class: 'menu content') %>">
-    <%= link_to 'Employees', panel_members_path, class: active_helper(controllers: ['members']) %>
+    <%= link_to '职员', panel_members_path, class: active_helper(controllers: ['members']) %>
     <%# link_to 'Tutorials', panel_tutorials_path, class: active_helper(controllers: ['tutorials']) %>
     <%# link_to 'Job Transfers', panel_job_transfers_path, class: active_helper(controllers: ['job_transfers']) %>
     <%# link_to 'Resigns', panel_resigns_path, class: active_helper(controllers: ['resigns', 'resign_reasons']) %>

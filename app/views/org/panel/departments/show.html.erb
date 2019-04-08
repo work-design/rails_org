@@ -2,14 +2,24 @@
   <%= render 'nav_show' %>
 <% end %>
 
+<%= content_for :breadcrumb do %>
+  <div class="ui basic segment breadcrumb">
+    <% @department.ancestors.reverse.each do |ancestor| %>
+      <% if controller_path == 'org/panel/departments' %>
+        <%= link_to ancestor.name, { id: ancestor.id }, { class: 'section' } %>
+      <% else %>
+        <%= link_to ancestor.name, { department_id: ancestor.id }, { class: 'section' } %>
+      <% end %>
+      <div class="divider">></div>
+    <% end %>
+    <div class="section"><%= @department.name %></div>
+  </div>
+<% end %>
+
 <%= render 'department_navbar' %>
 
-<div class="ui segment bottom attached">
-  <%# render 'search_form' %>
-</div>
-
-<div class="ui segment top attached">
-  <%= link_to 'New', new_panel_member_path, class: 'ui teal button' %>
+<div class="ui attached segment">
+  <%= render 'search_form' %>
 </div>
 
 <table class="ui bottom attached table">
@@ -21,7 +31,9 @@
     <th><%= Member.human_attribute_name(:office) %></th>
     <th>Leader</th>
     <th>Join On</th>
-    <th></th>
+    <th>
+      <%= link_to 'New', new_panel_member_path, class: 'ui teal button' %>
+    </th>
   </tr>
   </thead>
 

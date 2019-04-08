@@ -1,11 +1,3 @@
-<div class="ui top attached borderless menu">
-  <div class="header item">Org Admin Organs</div>
-  <div class="right menu">
-    <div class="item">
-      <%= link_to 'New Org Admin Organ', new_admin_organ_path, class: 'ui teal button', remote: true %>
-    </div>
-  </div>
-</div>
 
 <%= render 'filter' %>
 
@@ -16,7 +8,9 @@
       <th><%= Organ.human_attribute_name(:logo) %></th>
       <th><%= Organ.human_attribute_name(:name) %></th>
       <th><%= Organ.human_attribute_name(:organ_uuid) %></th>
-      <th>Actions</th>
+      <th>
+        <%= link_to 'New Org Admin Organ', new_admin_organ_path, class: 'ui teal button', remote: true %>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -27,16 +21,16 @@
       <td><%= organ.name %></td>
       <td><%= organ.organ_uuid %></td>
       <td class="ui labels">
-        <%= link_to admin_organ_path(organ), data: { tooltip: t('.show') }, class: 'ui blue mini icon button', remote: true do %>
+        <%= link_to admin_organ_path(organ), data: { tooltip: t('.show') }, class: 'ui mini circular icon button', remote: true do %>
           <i class="location arrow icon"></i>
         <% end %>
-        <%= link_to edit_admin_organ_path(organ), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button', remote: true do %>
+        <%= link_to edit_admin_organ_path(organ), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
           <i class="pencil alternate icon"></i>
         <% end %>
-        <%= link_to admin_organ_path(organ), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
-          <i class="times icon"></i>
+        <%= link_to admin_organ_path(organ), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui mini circular icon button' do %>
+          <i class="trash alternate icon"></i>
         <% end %>
-        <%= link_to mock_admin_organ_path(organ), method: :patch, data: { tooltip: 'Mock' }, class: 'ui red mini icon button' do %>
+        <%= link_to mock_admin_organ_path(organ), method: :patch, data: { tooltip: 'Mock' }, class: 'ui mini circular icon button' do %>
           <i class="hand point right icon"></i>
         <% end %>
       </td>
