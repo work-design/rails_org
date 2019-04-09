@@ -23,6 +23,10 @@ zh:
         experience: Profile in MDPI
         parent: 上级
         enabled: 状态
+      office:
+        name: 名称
+        name_short: 简称
+        area: 地区
       profile:
         real_name: 中文名字
         work_experience: 工作经历

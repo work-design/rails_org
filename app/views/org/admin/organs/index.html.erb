@@ -9,7 +9,9 @@
       <th><%= Organ.human_attribute_name(:name) %></th>
       <th><%= Organ.human_attribute_name(:organ_uuid) %></th>
       <th>
-        <%= link_to 'New Org Admin Organ', new_admin_organ_path, class: 'ui teal button', remote: true %>
+        <%= link_to new_admin_organ_path, remote: true, class: 'ui mini primary button' do %>
+          <i class="plus icon"></i><%= t('.new') %>
+        <% end %>
       </th>
     </tr>
   </thead>
