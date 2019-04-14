@@ -1,8 +1,8 @@
 class JobTitle < ApplicationRecord
-  acts_as_list column: :grade, scope: [:department_id, :office_id], top_of_list: 0, add_new_at: :top
+  acts_as_list column: :grade, scope: [:department_id, :office_id], top_of_list: 0
 
   attribute :name, :string
-  attribute :grade, :integer, default: 0
+  attribute :grade, :integer
 
   belongs_to :department, optional: true
   belongs_to :office, optional: true

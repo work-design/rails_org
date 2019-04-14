@@ -59,6 +59,10 @@ Rails.application.routes.draw do
     end
     resources :job_titles do
       get :search, on: :collection
+      member do
+        patch :move_lower
+        patch :move_higher
+      end
     end
     resources :supports do
       get :departments, on: :collection
