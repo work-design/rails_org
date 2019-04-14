@@ -3,6 +3,7 @@ class JobTitle < ApplicationRecord
 
   attribute :name, :string
   attribute :grade, :integer
+  attribute :limit, :integer
 
   belongs_to :department, optional: true
   belongs_to :office, optional: true

@@ -93,6 +93,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :office
       t.string :name
       t.integer :grade
+      t.integer :limit
       t.timestamps
     end
 
