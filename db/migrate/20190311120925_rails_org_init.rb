@@ -32,6 +32,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :office
       t.string :room_number
       t.integer :limit_people
+      t.string :color
       t.integer :time_plans_count, default: 0
       t.timestamps
     end

@@ -69,6 +69,7 @@ class Org::Panel::RoomsController < Org::Panel::BaseController
   def room_params
     params.fetch(:room, {}).permit(
       :room_number,
+      :color,
       :time_plans_count
     )
   end

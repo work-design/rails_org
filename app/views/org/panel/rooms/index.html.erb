@@ -11,6 +11,7 @@
     <tr>
       <th><%= Room.human_attribute_name(:id) %></th>
       <th><%= Room.human_attribute_name(:room_number) %></th>
+      <th><%= Room.human_attribute_name(:color) %></th>
       <th><%= Room.human_attribute_name(:time_plans_count) %></th>
       <th>
         <%= link_to new_panel_office_room_path(@office), class: 'ui mini primary button', remote: true do %>
@@ -24,6 +25,9 @@
     <tr>
       <td><%= room.id %></td>
       <td><%= room.room_number %></td>
+      <td>
+        <span class="ui label" style="background-color: <%= room.color %>;"><%= room.color %></span>
+      </td>
       <td><%= room.time_plans_count %></td>
       <td>
         <%= link_to edit_panel_office_room_path(@office, room), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
