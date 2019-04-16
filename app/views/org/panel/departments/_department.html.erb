@@ -16,20 +16,20 @@
     </span>
   </td>
   <td><%= node.leader&.name %></td>
-  <td class="ui labels">
-    <%= link_to panel_department_path(node), class: 'ui circular mini icon button' do %>
+  <td>
+    <%= link_to panel_department_path(node), data: { tooltip: t('.show') }, class: 'ui circular mini icon button' do %>
       <i class="user icon"></i>
     <% end %>
     <%#= link_to 'JD', panel_department_job_descriptions_path(node), class: 'ui circular mini icon button' %>
 
     <% if node.root? %>
-      <%= link_to 'Job Titles', panel_job_titles_path(department_id: node.id), class: 'ui circular mini icon button' %>
+      <%= link_to JobTitle.human_name, panel_job_titles_path(department_id: node.id), class: 'ui circular mini icon button' %>
   <% end %>
     <%= link_to edit_panel_department_path(node), data: { tooltip: t('.edit') }, class: 'ui circular mini icon button', remote: true do %>
       <i class="pencil alternate icon"></i>
     <% end %>
     <%= link_to panel_department_path(node), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui circular mini icon button' do %>
-      <i class="times icon"></i>
+      <i class="trash alternate icon"></i>
     <% end %>
   </td>
 </tr>

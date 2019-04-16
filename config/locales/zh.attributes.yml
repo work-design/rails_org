@@ -1,11 +1,13 @@
 zh:
   activerecord:
+    models:
+      job_title: 职级
+      room: 教室
     attributes:
       department:
-        editorial: Editorial Director
-        hr: HR
-        financial: Financial Assistant
-        marketing: Marketing Assistant
+        leader: 负责人
+        needed_member: 岗位计划
+        members_count: 现有人数
       job_transfer:
         member: Employee
         transfer_on: Transfer Date
@@ -23,6 +25,9 @@ zh:
         experience: Profile in MDPI
         parent: 上级
         enabled: 状态
+        office: 办公室
+        department: 部门
+        name: 姓名
       office:
         name: 名称
         name_short: 简称

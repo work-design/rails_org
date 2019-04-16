@@ -24,17 +24,19 @@
 
 <table class="ui bottom attached table">
   <thead>
-  <tr>
-    <th>ID</th>
-    <th><%= Member.human_attribute_name(:name) %></th>
-    <th><%= Member.human_attribute_name(:job_titles) %></th>
-    <th><%= Member.human_attribute_name(:office) %></th>
-    <th>Leader</th>
-    <th>Join On</th>
-    <th>
-      <%= link_to 'New', new_panel_member_path, class: 'ui teal button' %>
-    </th>
-  </tr>
+    <tr>
+      <th><%= Member.human_attribute_name(:id) %></th>
+      <th><%= Member.human_attribute_name(:name) %></th>
+      <th><%= Member.human_attribute_name(:job_titles) %></th>
+      <th><%= Member.human_attribute_name(:office) %></th>
+      <th><%= Member.human_attribute_name(:leader) %></th>
+      <th><%= Member.human_attribute_name(:join_on) %></th>
+      <th>
+        <%= link_to new_panel_member_path, class: 'ui mini primary button' do %>
+          <i class="plus icon"></i><%= t('.new') %>
+        <% end %>
+      </th>
+    </tr>
   </thead>
 
   <tbody>

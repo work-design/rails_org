@@ -40,7 +40,7 @@
       <td><%= office.name %>(<%= office.name_short %>)</td>
       <td><%= office.area.full_name %></td>
       <td>
-        <%= link_to '教室', panel_office_rooms_path(office.id), class: 'ui mini circular button' %>
+        <%= link_to Room.human_name, panel_office_rooms_path(office.id), class: 'ui mini circular button' %>
         <%# link_to 'Supports', panel_supports_path(office_id: office.id), class: 'ui mini circular button' %>
         <%= link_to edit_panel_office_path(office), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button' do %>
           <i class="pencil alternate icon"></i>
