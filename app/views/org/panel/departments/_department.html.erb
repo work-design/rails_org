@@ -10,8 +10,8 @@
     <% end %>
   </td>
   <td>
-    <%= node.needed_member %> /
-    <span class="<%= active_asserts('red': node.needed_member.to_i > node.members_count, 'grey': node.needed_member.to_i == node.members_count, 'green': node.needed_member.to_i < node.members_count) %> text">
+    <%= node.needed_number %> /
+    <span class="<%= active_asserts('red': node.needed_number.to_i > node.members_count, 'grey': node.needed_number.to_i == node.members_count, 'green': node.needed_number.to_i < node.members_count) %> text">
       <%= node.members_count %>
     </span>
   </td>

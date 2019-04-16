@@ -31,7 +31,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     create_table :rooms do |t|
       t.references :office
       t.string :room_number
-      t.integer :limit_people
+      t.integer :limit_number
       t.string :color
       t.integer :time_plans_count, default: 0
       t.timestamps
@@ -42,7 +42,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :parent
       t.string :name
       t.integer :members_count, default: 0
-      t.integer :needed_member
+      t.integer :needed_number
       t.string :collective_email
       t.timestamps
     end

@@ -6,7 +6,7 @@ zh:
     attributes:
       department:
         leader: 负责人
-        needed_member: 岗位计划
+        needed_number: 岗位计划
         members_count: 现有人数
       job_transfer:
         member: Employee

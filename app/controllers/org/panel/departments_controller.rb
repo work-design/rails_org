@@ -101,9 +101,9 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
       :name,
       :type,
       :title,
+      :needed_number,
       :parent_id,
-      :parent_ancestors,
-      :needed_member
+      :parent_ancestors
     )
     q.merge! default_params
   end

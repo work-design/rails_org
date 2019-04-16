@@ -70,7 +70,7 @@ class Org::Panel::RoomsController < Org::Panel::BaseController
     params.fetch(:room, {}).permit(
       :room_number,
       :color,
-      :time_plans_count
+      :limit_number
     )
   end
 
