@@ -3,11 +3,9 @@
   <div class="ui header blue">
     Edit Member
   </div>
-
   <div class="content">
-    <%= form_with model: @member, as: :member, url: panel_member_path do |f| %>
+    <%= form_with model: @member, scope: :member, url: panel_member_path do |f| %>
       <%= render partial: 'form', locals: { f: f } %>
     <% end %>
   </div>
-
 </div>
