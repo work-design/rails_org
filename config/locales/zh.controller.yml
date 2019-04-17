@@ -1,0 +1,12 @@
+zh:
+  org:
+    panel:
+      departments:
+        index:
+          title: 部门管理
+      offices:
+        index:
+          title: 区域管理
+      members:
+        index:
+          title: 职员
