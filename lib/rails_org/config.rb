@@ -4,10 +4,10 @@ module RailsOrg #:nodoc:
   include ActiveSupport::Configurable
 
   configure do |config|
-    config.app_class = 'ApplicationController'
-    config.my_class = 'MyController'
-    config.admin_class = 'AdminController'
-    config.panel_class = 'PanelController'
+    config.app_controller = 'ApplicationController'
+    config.my_controller = 'MyController'
+    config.admin_controller = 'AdminController'
+    config.panel_controller = 'PanelController'
     config.disabled_models = []
   end
 

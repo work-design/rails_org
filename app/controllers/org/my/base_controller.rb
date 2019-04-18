@@ -1,4 +1,4 @@
-class Org::My::BaseController < RailsOrg.config.my_class.constantize
+class Org::My::BaseController < RailsOrg.config.my_controller.constantize
 
 
   def current_member

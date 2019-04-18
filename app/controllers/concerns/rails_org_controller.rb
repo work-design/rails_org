@@ -32,14 +32,6 @@ module RailsOrgController
     current_user.organs.where.not(id: current_organ.id)
   end
 
-  def rails_role_user
-    if current_user.admin?
-      current_user
-    else
-      current_member
-    end
-  end
-
   def set_organ_token
     return unless @current_organ && current_member
     token = current_member.organ_token
