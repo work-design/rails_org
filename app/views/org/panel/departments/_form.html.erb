@@ -1,5 +1,5 @@
 <%= render 'shared/error_messages', target: @department %>
 <%= render partial: 'nodes/children_select', locals: { f: f, node: @roots } %>
 <%= f.text_field :name, required: true %>
-<%= f.number_field :needed_member, required: true %>
+<%= f.number_field :needed_number %>
 <%= f.submit %>

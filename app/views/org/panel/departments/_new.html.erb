@@ -5,7 +5,7 @@
   </div>
 
   <div class="content">
-    <%= form_with model: @department, scope: :department, url: panel_department_path(@department) do |f| %>
+    <%= form_with model: @department, scope: :department, url: panel_departments_path do |f| %>
       <%= render partial: 'form', locals: { f: f } %>
     <% end %>
   </div>
