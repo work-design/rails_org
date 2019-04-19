@@ -24,8 +24,6 @@ Rails.application.routes.draw do
   end
 
   scope :panel, module: 'org/panel', as: 'panel' do
-    root to: 'organ#show'
-
     resource :organ do
       get :login
     end
