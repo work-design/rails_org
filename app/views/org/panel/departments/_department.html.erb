@@ -26,10 +26,10 @@
       <%= link_to JobTitle.human_name, panel_job_titles_path(department_id: node.id), class: 'ui circular mini icon button' %>
   <% end %>
     <%= link_to edit_panel_department_path(node), data: { tooltip: t('.edit') }, class: 'ui circular mini icon button', remote: true do %>
-      <i class="pencil alternate icon"></i>
+      <i class="fas fa-pencil-alt"></i>
     <% end %>
     <%= link_to panel_department_path(node), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui circular mini icon button' do %>
-      <i class="trash alternate icon"></i>
+      <i class="fas fa-trash-alt"></i>
     <% end %>
   </td>
 </tr>

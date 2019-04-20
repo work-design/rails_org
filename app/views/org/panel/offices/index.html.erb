@@ -32,10 +32,10 @@
         <%= link_to Room.human_name, panel_office_rooms_path(office.id), class: 'ui mini circular button' %>
         <%# link_to 'Supports', panel_supports_path(office_id: office.id), class: 'ui mini circular button' %>
         <%= link_to edit_panel_office_path(office), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
-          <i class="pencil alternate icon"></i>
+          <i class="fas fa-pencil-alt"></i>
         <% end %>
         <%= link_to panel_office_path(office), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
-          <i class="trash alternate icon"></i>
+          <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>
     </tr>
