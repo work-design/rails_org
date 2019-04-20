@@ -10,7 +10,7 @@
       <th><%= Organ.human_attribute_name(:organ_uuid) %></th>
       <th>
         <%= link_to new_admin_organ_path, remote: true, class: 'ui mini primary button' do %>
-          <i class="plus icon"></i><%= t('.new') %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
     </tr>
@@ -33,7 +33,7 @@
           <i class="fas fa-trash-alt"></i>
         <% end %>
         <%= link_to mock_admin_organ_path(organ), method: :patch, data: { tooltip: 'Mock' }, class: 'ui mini circular icon button' do %>
-          <i class="hand point right icon"></i>
+          <i class="fas fa-hand-point-right"></i>
         <% end %>
       </td>
     </tr>

@@ -10,7 +10,7 @@
       <th><%= JobTitle.human_attribute_name(:name) %></th>
       <th>
         <%= link_to new_panel_job_title_path(params.permit(:department_id, :office_id)), class: 'ui mini primary button', remote: true do %>
-          <i class="plus icon"></i><%= t('.new') %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
     </tr>
