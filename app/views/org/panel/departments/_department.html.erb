@@ -28,7 +28,7 @@
     <%= link_to edit_panel_department_path(node), data: { tooltip: t('.edit') }, class: 'ui circular mini icon button', remote: true do %>
       <i class="pencil alternate icon"></i>
     <% end %>
-    <%= link_to panel_department_path(node), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui circular mini icon button' do %>
+    <%= link_to panel_department_path(node), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui circular mini icon button' do %>
       <i class="trash alternate icon"></i>
     <% end %>
   </td>

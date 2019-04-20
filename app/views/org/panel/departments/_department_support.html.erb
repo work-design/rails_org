@@ -19,7 +19,7 @@
     <%= link_to edit_panel_department_path(node), class: 'ui pink mini icon button' do %>
       <i class="pencil alternate icon"></i>
     <% end %>
-    <%= link_to panel_department_path(node), method: :delete, data: {confirm: 'Are you sure?'}, class: 'ui red mini icon button' do %>
+    <%= link_to panel_department_path(node), method: :delete, data: {confirm: t('.confirm')}, class: 'ui red mini icon button' do %>
       <i class="times icon"></i>
     <% end %>
   </td>

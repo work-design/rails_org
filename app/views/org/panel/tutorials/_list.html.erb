@@ -45,7 +45,7 @@
       <td class="ui labels">
         <%#= link_to 'Show', panel_tutorial_path(tutorial), class: 'ui blue label' %>
         <%= link_to t('.edit'), edit_panel_tutorial_path(tutorial), class: 'ui pink label' %>
-        <%= link_to t('.destroy'), panel_tutorial_path(tutorial), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to t('.destroy'), panel_tutorial_path(tutorial), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
       </td>
     </tr>
   <% end %>

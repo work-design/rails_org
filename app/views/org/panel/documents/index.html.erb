@@ -29,7 +29,7 @@
       </td>
       <td>
         <%= link_to t('.edit'), edit_panel_document_path(document), class: 'ui pink label' %>
-        <%= link_to t('.destroy'), panel_document_path(document), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to t('.destroy'), panel_document_path(document), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
       </td>
     </tr>
   <% end %>

@@ -23,7 +23,7 @@
       <td>
         <% if Dinner.enabled? %>
           <%= link_to 'Note', edit_my_order_path(order), remote: true, class: 'ui pink label' %>
-          <%= link_to t('.destroy'), remove_my_order_path(order), method: :delete, data: { confirm: 'Are you sure?' }, local: true, class: 'ui red label' %>
+          <%= link_to t('.destroy'), remove_my_order_path(order), method: :delete, data: { confirm: t('.confirm') }, local: true, class: 'ui red label' %>
         <% end %>
       </td>
     </tr>

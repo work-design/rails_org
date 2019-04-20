@@ -8,7 +8,7 @@
       <% if !@resign.persisted? %>
         <%= link_to 'New', new_my_resign_path, class: 'ui mini blue right floated button' %>
       <% elsif @resign.init? %>
-        <%= link_to 'Delete', my_resign_path(@resign), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui mini red right floated button' %>
+        <%= link_to 'Delete', my_resign_path(@resign), method: :delete, data: { confirm: t('.confirm') }, class: 'ui mini red right floated button' %>
         <%= link_to 'Edit', edit_my_resign_path(@resign), class: 'ui mini blue right floated button' %>
       <% end %>
     </th>

@@ -35,8 +35,8 @@
         <%= link_to edit_panel_office_room_path(@office, room), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
           <i class="pencil alternate icon"></i>
         <% end %>
-        <%= link_to panel_office_room_path(@office, room), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui mini circular icon button' do %>
-          <i class="trash laternate icon"></i>
+        <%= link_to panel_office_room_path(@office, room), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+          <i class="trash alternate icon"></i>
         <% end %>
       </td>
     </tr>

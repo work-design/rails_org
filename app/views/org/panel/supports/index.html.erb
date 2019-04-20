@@ -43,7 +43,7 @@
       <td><%= support.supporter&.name %></td>
       <td class="ui labels">
         <%= link_to t('.edit'), edit_panel_support_path(support), class: 'ui pink label' %>
-        <%= link_to t('.destroy'), panel_support_path(support), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to t('.destroy'), panel_support_path(support), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
       </td>
     </tr>
   <% end %>

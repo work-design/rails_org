@@ -1,11 +1,7 @@
-<%#= search_form_with model: Office.new do |f| %>
-<!--  <div class="fields">-->
-    <%#= f.text_field :name %>
-    <%#= f.submit 'Search' %>
-<!--  </div>-->
-<%# end %>
-
-<div class="ui icon input">
-  <input type="text" placeholder="Search...">
-  <i class="search icon"></i>
-</div>
+<%= search_form_with model: Office.new(params.permit(:name)) do |f| %>
+<div class="fields">
+    <%= f.text_field :name %>
+    <%= f.submit %>
+    <%= link_to t('.clear'), filter_params(except: [:name]), class: 'ui button' %>
+  </div>
+<% end %>

@@ -2,8 +2,9 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
   before_action :set_department, only: [:show, :edit, :need, :update, :destroy]
 
   def index
-    default_params.merge! params.permit(:type)
-    @departments = Department.roots.default_where(default_params).includes(:children, :leader).page(params[:page])
+    q_params = default_params
+    q_params.merge! params.permit(:type, :name)
+    @departments = Department.roots.default_where(q_params).includes(:children, :leader).page(params[:page])
   end
 
   def supports

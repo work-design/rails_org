@@ -40,7 +40,7 @@
       <td class="ui labels">
         <%= link_to 'Detail', panel_job_transfer_path(job_transfer), class: 'ui blue label' %>
         <%= link_to 'Edit', edit_panel_job_transfer_path(job_transfer), class: 'ui pink label' %>
-        <%= link_to t('.destroy'), panel_job_transfer_path(job_transfer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to t('.destroy'), panel_job_transfer_path(job_transfer), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
       </td>
     </tr>
   <% end %>

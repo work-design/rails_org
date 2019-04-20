@@ -34,7 +34,7 @@
       <td><%= job_description.salary_max %></td>
       <td class="ui labels">
         <%= link_to t('.edit'), edit_panel_department_job_description_path(@department, job_description), class: 'ui pink label' %>
-        <%= link_to t('.destroy'), panel_department_job_description_path(@department, job_description), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to t('.destroy'), panel_department_job_description_path(@department, job_description), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
       </td>
     </tr>
   <% end %>

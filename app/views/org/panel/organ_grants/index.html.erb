@@ -31,7 +31,7 @@
         <time><%= organ_grant.expired_at.to_s(:rfc822) %></time>
       </td>
       <td class="ui labels">
-        <%= link_to panel_organ_grant_path(@organ, organ_grant), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+        <%= link_to panel_organ_grant_path(@organ, organ_grant), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>
         <% end %>
       </td>
