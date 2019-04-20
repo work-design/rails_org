@@ -1,15 +1,5 @@
 <div class="ui vertical fluid menu">
-  <div class="header center item">
-    <i class="blue angle left icon"></i>
-    <% if @department_parent.parent_id %>
-      <%= link_to panel_department_path(@department_parent.parent_id) do %>
-        <span><%= @department_parent.parent.name %></span><span class="grey text">(<%= @department_parent.parent.all_members_count %>)</span>
-      <% end %>
-    <% else %>
-      <%= link_to 'Departments', panel_departments_path %>
-    <% end %>
-  </div>
-  <% @department_parent.self_and_siblings.each do |sibling| %>
+  <% @department.self_and_siblings.each do |sibling| %>
   <div class="item">
     <%= link_to panel_department_path(sibling), class: active_helper(id: sibling.id, active_class: 'header', item_class: '') do %>
       <span><%= sibling.name %></span><span class="grey text">(<%= sibling.all_members_count %>)</span>

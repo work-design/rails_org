@@ -1,16 +1,14 @@
-<% content_for :nav do %>
-  <%= render 'nav_show' %>
-<% end %>
-
 <%= content_for :breadcrumb do %>
   <div class="ui basic segment breadcrumb">
+    <%= link_to t('org.panel.departments.index.title'), panel_departments_path, class: 'section' %>
+    <i class="right angle icon divider"></i>
     <% @department.ancestors.reverse.each do |ancestor| %>
       <% if controller_path == 'org/panel/departments' %>
         <%= link_to ancestor.name, { id: ancestor.id }, { class: 'section' } %>
       <% else %>
         <%= link_to ancestor.name, { department_id: ancestor.id }, { class: 'section' } %>
       <% end %>
-      <div class="divider">></div>
+      <i class="right angle icon divider"></i>
     <% end %>
     <div class="section"><%= @department.name %></div>
   </div>
@@ -22,28 +20,38 @@
   <%= render 'search_form' %>
 </div>
 
-<table class="ui bottom attached table">
-  <thead>
-    <tr>
-      <th><%= Member.human_attribute_name(:id) %></th>
-      <th><%= Member.human_attribute_name(:name) %></th>
-      <th><%= Member.human_attribute_name(:job_titles) %></th>
-      <th><%= Member.human_attribute_name(:office) %></th>
-      <th><%= Member.human_attribute_name(:leader) %></th>
-      <th><%= Member.human_attribute_name(:join_on) %></th>
-      <th>
-        <%= link_to new_panel_member_path, class: 'ui mini primary button' do %>
-          <i class="plus icon"></i><%= t('.new') %>
-        <% end %>
-      </th>
-    </tr>
-  </thead>
+<div class="ui bottom attachment segment grid">
+  <div class="thirteen wide column">
+    <table class="ui bottom attached table">
+      <thead>
+      <tr>
+        <th><%= Member.human_attribute_name(:id) %></th>
+        <th><%= Member.human_attribute_name(:name) %></th>
+        <th><%= Member.human_attribute_name(:job_titles) %></th>
+        <th><%= Member.human_attribute_name(:office) %></th>
+        <th><%= Member.human_attribute_name(:leader) %></th>
+        <th><%= Member.human_attribute_name(:join_on) %></th>
+        <th>
+          <%= link_to new_panel_member_path, class: 'ui mini primary button' do %>
+            <i class="plus icon"></i><%= t('.new') %>
+          <% end %>
+        </th>
+      </tr>
+      </thead>
+    
+      <tbody>
+      <% @members.each do |member| %>
+        <%= render partial: 'member', locals: { member: member } %>
+      <% end %>
+      </tbody>
+    </table>
+  
+    <%= paginate @members %>
+  </div>
+  <div class="three wide column">
+    <%= render 'nav_show' %>
+  </div>
+</div>
 
-  <tbody>
-  <% @members.each do |member| %>
-    <%= render partial: 'member', locals: { member: member } %>
-  <% end %>
-  </tbody>
-</table>
 
-<%= paginate @members %>
+
