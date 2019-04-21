@@ -1,14 +1,14 @@
 <%= content_for :breadcrumb do %>
   <div class="ui basic segment breadcrumb">
     <%= link_to t('org.panel.departments.index.title'), panel_departments_path, class: 'section' %>
-    <i class="right angle icon divider"></i>
+    <i class="fas fa-angle-right divider"></i>
     <% @department.ancestors.reverse.each do |ancestor| %>
       <% if controller_path == 'org/panel/departments' %>
         <%= link_to ancestor.name, { id: ancestor.id }, { class: 'section' } %>
       <% else %>
         <%= link_to ancestor.name, { department_id: ancestor.id }, { class: 'section' } %>
       <% end %>
-      <i class="right angle icon divider"></i>
+      <i class="fas fa-angle-right divider"></i>
     <% end %>
     <div class="section"><%= @department.name %></div>
   </div>
