@@ -2,7 +2,7 @@
   <td>
     <span><%= ('&emsp;' * node.depth * 2).html_safe %></span>
     <% unless node.leaf? %>
-      <i class="grey caret down icon link"></i>
+      <i class="fas fa-caret-down link"></i>
     <% end %>
     <%= link_to panel_department_path(node) do %>
       <span><%= node.name %></span>
@@ -18,13 +18,13 @@
   <td><%= node.leader&.name %></td>
   <td>
     <%= link_to panel_department_path(node), data: { tooltip: t('.show') }, class: 'ui circular mini icon button' do %>
-      <i class="user icon"></i>
+      <i class="fas fa-users"></i>
     <% end %>
     <%#= link_to 'JD', panel_department_job_descriptions_path(node), class: 'ui circular mini icon button' %>
 
     <% if node.root? %>
       <%= link_to JobTitle.human_name, panel_job_titles_path(department_id: node.id), class: 'ui circular mini icon button' %>
-  <% end %>
+    <% end %>
     <%= link_to edit_panel_department_path(node), data: { tooltip: t('.edit') }, class: 'ui circular mini icon button', remote: true do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
