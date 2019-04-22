@@ -2,7 +2,7 @@
   <td>
     <span><%= ('&emsp;' * node.depth * 2).html_safe %></span>
     <% unless node.leaf? %>
-      <i class="fas fa-caret-down link"></i>
+      <i class="fas fa-caret-down grey link icon"></i>
     <% end %>
     <%= link_to panel_department_path(node) do %>
       <span><%= node.name %></span>
