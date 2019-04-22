@@ -22,12 +22,16 @@ zh:
         off_time: Current work shift (off)
         next_on_time: Next work shift (on)
         next_off_time: Next work shift (off)
-        experience: Profile in MDPI
+        experience: Profile
+        identity: 账号
         parent: 上级
         enabled: 状态
         office: 办公室
+        office_id: 办公室
         department: 部门
         name: 姓名
+        member_departments: 部门
+        resume: 简历
       office:
         name: 名称
         name_short: 简称

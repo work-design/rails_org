@@ -38,6 +38,7 @@ class Member < ApplicationRecord
   has_many :job_transfers, dependent: :destroy
 
   has_one_attached :avatar
+  has_one_attached :resume
 
   validates :identity, uniqueness: true, allow_blank: true
 

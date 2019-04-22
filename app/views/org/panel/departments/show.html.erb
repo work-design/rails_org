@@ -27,10 +27,9 @@
         <th><%= Member.human_attribute_name(:name) %></th>
         <th><%= Member.human_attribute_name(:job_titles) %></th>
         <th><%= Member.human_attribute_name(:office) %></th>
-        <th><%= Member.human_attribute_name(:leader) %></th>
         <th><%= Member.human_attribute_name(:join_on) %></th>
         <th>
-          <%= link_to new_panel_member_path, class: 'ui mini primary button' do %>
+          <%= link_to new_panel_member_path, remote: true, class: 'ui mini primary button' do %>
             <i class="fas fa-plus"></i><%= t('.new') %>
           <% end %>
         </th>

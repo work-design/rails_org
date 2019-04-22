@@ -118,6 +118,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
       :probation_two_on,
       :formal_on,
       :join_status,
+      :resume,
       role_ids: [],
       member_departments_attributes: {}
     )

@@ -10,3 +10,5 @@ zh:
       members:
         index:
           title: 职员
+          enabled: 可用
+          disabled: 禁用

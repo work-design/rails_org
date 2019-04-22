@@ -1,12 +1,11 @@
 <%= search_form_with model: Member.new do |f| %>
   <div class="fields">
-    <%= f.text_field :'name-like', placeholder: 'Name' %>
-    <%= f.text_field :mobile %>
-    <%= f.text_field :email %>
+    <%= f.text_field :'name-like' %>
+    <%= f.text_field :identity %>
   </div>
   <div class="fields">
     <div class="two wide field" id="q_department_wrapper_0">
-      <%= f.collection_select "department_ancestors(0i)", Department.roots, :id, :name, {prompt: 'Select', skip_default_ids: true, label: false, on: {wrapper_all: false, wrapper_input: false}}, {data: {id: 0, title: 'department_ancestors'}} %>
+      <%= f.collection_select "department_ancestors(0i)", Department.roots, :id, :name, { prompt: true, skip_default_ids: true, label: false, on: {wrapper_all: false, wrapper_input: false}}, {data: {id: 0, title: 'department_ancestors'}} %>
     </div>
   </div>
   <div class="fields">
@@ -15,18 +14,18 @@
 <% end %>
 
 <dl>
-  <dt>Enabled:</dt>
+  <dt><%= Member.human_attribute_name(:enabled) %>:</dt>
   <dd>
-    <%= link_to 'All', filter_params(except: [:enabled]), class: active_params(enabled: '', active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
-    <%= link_to 'Enabled', filter_params(enabled: 1), class: active_params(enabled: 1, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
-    <%= link_to 'Disabled', filter_params(enabled: 0), class: active_params(enabled: 0, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
+    <%= link_to t('.all'), filter_params(except: [:enabled]), class: active_params(enabled: '', active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
+    <%= link_to t('.enabled'), filter_params(enabled: 1), class: active_params(enabled: 1, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
+    <%= link_to t('.disabled'), filter_params(enabled: 0), class: active_params(enabled: 0, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
   </dd>
 </dl>
 
 <dl>
-  <dt>Office:</dt>
+  <dt><%= Member.human_attribute_name(:office_id) %>:</dt>
   <dd>
-    <%= link_to 'All', filter_params(except: [:office_id]), class: active_params(office_id: '', active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
+    <%= link_to t('.all'), filter_params(except: [:office_id]), class: active_params(office_id: '', active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
     <% Office.all.each do |office| %>
       <%= link_to office.name, filter_params(office_id: office.id), class: active_params(office_id: office.id, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
     <% end %>

@@ -1,10 +1,11 @@
-<%= f.text_field :name, label: 'Real Name' %>
+<%= f.text_field :name %>
 <%= f.text_field :identity %>
-<%= f.select :type, options_for_select(Member.options_i18n(:type), @member.type), { label: 'Type', include_blank: true } %>
+<%= f.select :type, options_for_select(Member.options_i18n(:type), @member.type), { prompt: true } %>
 <%= f.collection_select :office_id, Office.all, :id, :name, { prompt: 'Select Office' } %>
 <%= f.fields :member_departments, on: { wrapper_all: false, label: false, placeholder: true }, css: { wrapper_input: 'two wide field' } do |ef| %>
   <%= render partial: 'item_form', locals: { ef: ef } %>
 <% end %>
 <%= f.date_field :join_on %>
+<%= f.file_field :resume %>
 <%= f.check_box :enabled %>
 <%= f.submit %>

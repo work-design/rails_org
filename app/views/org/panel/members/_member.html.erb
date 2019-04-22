@@ -40,8 +40,8 @@
   </td>
   <td><%= member.join_on %></td>
   <td>
-    <% if member.profile && member.profile.resume.attached? %>
-      <%= link_to member.profile.resume.filename, rails_blob_path(member.profile.resume), target: '_blank' %>
+    <% if member.resume.attached? %>
+      <%= link_to member.resume.filename, rails_blob_path(member.resume), target: '_blank' %>
     <% end %>
   </td>
   <td>
