@@ -1,3 +1,15 @@
+<% content_for :breadcrumb do %>
+  <div class="ui basic segment breadcrumb">
+    <%= link_to t('org.panel.departments.index.title'), panel_departments_path, class: 'section' %>
+    <% if params[:department_id] %>
+    <i class="fas fa-angle-right divider"></i>
+    <%= link_to @department.name, panel_department_path(params[:department_id]), class: 'section' %>
+    <% end %>
+    <i class="fas fa-angle-right divider"></i>
+    <div class="active section"><%= JobTitle.human_name %></div>
+  </div>
+<% end %>
+
 <%= render 'filter' %>
 
 <table class="ui bottom attached table">
