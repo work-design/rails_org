@@ -16,7 +16,7 @@ class Org::Panel::RoomsController < Org::Panel::BaseController
     respond_to do |format|
       if @room.save
         format.html.phone
-        format.html { redirect_to panel_office_rooms_url(@office), notice: 'Room was successfully created.' }
+        format.html { redirect_to panel_office_rooms_url(@office) }
         format.js { redirect_back fallback_location: panel_office_rooms_url(@office) }
         format.json { render :show }
       else
@@ -40,7 +40,7 @@ class Org::Panel::RoomsController < Org::Panel::BaseController
     respond_to do |format|
       if @room.save
         format.html.phone
-        format.html { redirect_to panel_office_rooms_url(@office), notice: 'Room was successfully updated.' }
+        format.html { redirect_to panel_office_rooms_url(@office) }
         format.js { redirect_back fallback_location: panel_office_rooms_url(@office) }
         format.json { render :show }
       else
@@ -54,7 +54,7 @@ class Org::Panel::RoomsController < Org::Panel::BaseController
 
   def destroy
     @room.destroy
-    redirect_to panel_office_rooms_url(@office), notice: 'Room was successfully destroyed.'
+    redirect_to panel_office_rooms_url(@office)
   end
 
   private

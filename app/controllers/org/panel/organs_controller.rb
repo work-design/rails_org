@@ -18,7 +18,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
 
   def update
     if @organ.update(organ_params)
-      redirect_to panel_organ_url, notice: 'Organ was successfully updated.'
+      redirect_to panel_organ_url
     else
       render :edit
     end
@@ -26,7 +26,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
 
   def destroy
     @organ.destroy
-    redirect_to panel_organ_url, notice: 'Organ was successfully destroyed.'
+    redirect_to panel_organ_url
   end
 
   private

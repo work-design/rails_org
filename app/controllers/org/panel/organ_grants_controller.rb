@@ -13,7 +13,7 @@ class Org::Panel::OrganGrantsController < Org::Panel::BaseController
     @organ_grant = current_organ.organ_grants.build(organ_grant_params)
 
     if @organ_grant.save
-      redirect_to panel_organ_grants_url(current_organ), notice: 'Organ token was successfully created.'
+      redirect_to panel_organ_grants_url(current_organ)
     else
       render :new
     end
@@ -22,7 +22,7 @@ class Org::Panel::OrganGrantsController < Org::Panel::BaseController
   def destroy
     @organ_grant = current_organ.organ_grants.find(params[:id])
     @organ_grant.destroy
-    redirect_to panel_organ_grants_url(current_organ), notice: 'Organ token was successfully destroyed.'
+    redirect_to panel_organ_grants_url(current_organ)
   end
 
   private

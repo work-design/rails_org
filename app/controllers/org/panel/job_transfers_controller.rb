@@ -36,7 +36,7 @@ class Org::Panel::JobTransfersController < Org::Panel::BaseController
     @job_transfer = JobTransfer.new(job_transfer_params)
 
     if @job_transfer.save
-      redirect_to panel_job_transfers_url, notice: 'Job transfer was successfully created.'
+      redirect_to panel_job_transfers_url
     else
       render :new
     end
@@ -53,7 +53,7 @@ class Org::Panel::JobTransfersController < Org::Panel::BaseController
     @job_transfer.to_department_id = @job_transfer.department_ancestors&.values.to_a.compact.last
 
     if @job_transfer.save
-      redirect_to panel_job_transfers_url, notice: 'Job transfer was successfully updated.'
+      redirect_to panel_job_transfers_url
     else
       render :edit
     end
@@ -66,7 +66,7 @@ class Org::Panel::JobTransfersController < Org::Panel::BaseController
 
   def destroy
     @job_transfer.destroy
-    redirect_to panel_job_transfers_url, notice: 'Job transfer was successfully destroyed.'
+    redirect_to panel_job_transfers_url
   end
 
   private

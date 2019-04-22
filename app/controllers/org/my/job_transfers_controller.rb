@@ -15,7 +15,7 @@ class Org::My::JobTransfersController < Org::My::BaseController
     @job_transfer.to_department_id = @job_transfer.department_ancestors&.values.to_a.compact.last
 
     if @job_transfer.save
-      redirect_to my_job_transfers_url, notice: 'Job transfer was successfully created.'
+      redirect_to my_job_transfers_url
     else
       render :new
     end
@@ -32,7 +32,7 @@ class Org::My::JobTransfersController < Org::My::BaseController
     @job_transfer.to_department_id = @job_transfer.department_ancestors&.values.to_a.compact.last
 
     if @job_transfer.save
-      redirect_to my_job_transfers_url, notice: 'Job transfer was successfully updated.'
+      redirect_to my_job_transfers_url
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class Org::My::JobTransfersController < Org::My::BaseController
 
   def destroy
     @job_transfer.destroy
-    redirect_to my_job_transfers_url, notice: 'Job transfer was successfully destroyed.'
+    redirect_to my_job_transfers_url
   end
 
   private

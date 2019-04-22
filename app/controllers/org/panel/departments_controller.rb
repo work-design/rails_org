@@ -64,7 +64,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
     @department = Department.new(department_params)
 
     if @department.save
-      redirect_to panel_departments_url, notice: 'Department was successfully created.'
+      redirect_to panel_departments_url
     else
       render :new
     end
@@ -74,7 +74,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
     @department.assign_attributes(department_params)
 
     if @department.save
-      redirect_to panel_departments_url, notice: 'Department was successfully updated.'
+      redirect_to panel_departments_url
     else
       render :edit
     end
@@ -89,7 +89,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
 
   def destroy
     @department.destroy
-    redirect_to panel_departments_url, notice: 'Department was successfully destroyed.'
+    redirect_to panel_departments_url
   end
 
   private

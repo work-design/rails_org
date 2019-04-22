@@ -30,7 +30,7 @@ class Org::My::MembersController < Org::My::BaseController
     @member.assign_attributes member_params
     respond_to do |format|
       if @member.save
-        format.html { redirect_to my_member_url(@member), notice: 'Member was successfully updated.' }
+        format.html { redirect_to my_member_url(@member) }
         format.json { render :show }
       else
         format.html { render action: 'edit' }

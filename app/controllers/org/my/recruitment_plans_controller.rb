@@ -26,7 +26,7 @@ class Org::My::RecruitmentPlansController < Org::My::BaseController
   def create
     @recruitment_plan = current_user.recruitment_plans.build(recruitment_plan_params)
     if @recruitment_plan.save
-      redirect_to my_recruitment_plans_url, notice: 'Recruitment plan was successfully created.'
+      redirect_to my_recruitment_plans_url
     else
       render :new
     end
@@ -45,7 +45,7 @@ class Org::My::RecruitmentPlansController < Org::My::BaseController
     @recruitment_plan.assign_attributes(recruitment_plan_params)
 
     if @recruitment_plan.save
-      redirect_to my_recruitment_plans_url, notice: 'Recruitment plan was successfully updated.'
+      redirect_to my_recruitment_plans_url
     else
       render :edit
     end
@@ -53,7 +53,7 @@ class Org::My::RecruitmentPlansController < Org::My::BaseController
 
   def destroy
     @recruitment_plan.destroy
-    redirect_to my_recruitment_plans_url, notice: 'Recruitment plan was successfully destroyed.'
+    redirect_to my_recruitment_plans_url
   end
 
   def handle
@@ -65,14 +65,14 @@ class Org::My::RecruitmentPlansController < Org::My::BaseController
     end
     @recruitment_plan.update(q_params)
     @recruitment_plan.save
-    redirect_to my_my_recruitment_plans_url, notice: 'Recruitment plan was successfully updated.'
+    redirect_to my_my_recruitment_plans_url
   end
 
   def repropose
     q_params =  {rejected: false}
     @recruitment_plan.update(q_params)
     @recruitment_plan.save
-    redirect_to my_my_recruitment_plans_url, notice: 'Recruitment plan reproposed successfully.'
+    redirect_to my_my_recruitment_plans_url
   end
 
   def confirm

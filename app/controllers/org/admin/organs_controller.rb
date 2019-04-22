@@ -15,7 +15,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
     respond_to do |format|
       if @organ.save
         format.html.phone
-        format.html { redirect_to admin_organs_url, notice: 'Organ was successfully created.' }
+        format.html { redirect_to admin_organs_url }
         format.js { redirect_back fallback_location: admin_organs_url }
         format.json { render :show }
       else
@@ -35,7 +35,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
 
   def update
     if @organ.update(organ_params)
-      redirect_to admin_organs_url, notice: 'Organ was successfully updated.'
+      redirect_to admin_organs_url
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
 
   def destroy
     @organ.destroy
-    redirect_to admin_organs_url, notice: 'Organ was successfully destroyed.'
+    redirect_to admin_organs_url
   end
 
   private

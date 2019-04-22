@@ -11,7 +11,7 @@ class Org::My::ResignsController < Org::My::BaseController
     @resign.assign_attributes(resign_params)
 
     if @resign.save
-      redirect_to my_resign_url, notice: 'Resign was successfully created.'
+      redirect_to my_resign_url
     else
       render :new
     end
@@ -22,7 +22,7 @@ class Org::My::ResignsController < Org::My::BaseController
 
   def update
     if @resign.update(resign_params)
-      redirect_to my_resign_url, notice: 'Resign was successfully updated.'
+      redirect_to my_resign_url
     else
       render :edit
     end
@@ -30,7 +30,7 @@ class Org::My::ResignsController < Org::My::BaseController
 
   def destroy
     @resign.destroy
-    redirect_to my_resign_url, notice: 'Resign was successfully destroyed.'
+    redirect_to my_resign_url
   end
 
   private

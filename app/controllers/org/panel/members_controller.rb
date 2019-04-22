@@ -42,7 +42,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to panel_members_url, notice: 'Employee was successfully created.' }
+        format.html { redirect_to panel_members_url }
         format.js
       else
         format.html { redirect_to panel_members_url, alert: @member.errors }
@@ -68,7 +68,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to panel_members_url, notice: 'Employee was successfully updated.' }
+        format.html { redirect_to panel_members_url }
         format.js { redirect_to panel_members_url }
       else
         format.html { render :edit }
@@ -94,7 +94,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   def destroy
     @member.destroy
     respond_to do |format|
-      format.html { redirect_to panel_members_url, notice: 'Employee was successfully destroyed.' }
+      format.html { redirect_to panel_members_url }
       format.js { redirect_to panel_members_url }
       format.json { redirect_to panel_members_url }
     end

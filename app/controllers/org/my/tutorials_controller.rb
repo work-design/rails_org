@@ -23,7 +23,7 @@ class Org::My::TutorialsController < Org::My::BaseController
     @tutorial = Tutorial.new(tutorial_params)
 
     if @tutorial.save
-      redirect_to my_tutorials_url, notice: 'Tutorial was successfully created.'
+      redirect_to my_tutorials_url
     else
       render :new
     end
@@ -40,7 +40,7 @@ class Org::My::TutorialsController < Org::My::BaseController
 
   def update
     if @tutorial.update(tutorial_params)
-      redirect_to my_tutorials_url, notice: 'Tutorial was successfully updated.'
+      redirect_to my_tutorials_url
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class Org::My::TutorialsController < Org::My::BaseController
 
   def destroy
     @tutorial.destroy
-    redirect_to my_tutorials_url, notice: 'Tutorial was successfully destroyed.'
+    redirect_to my_tutorials_url
   end
 
   private

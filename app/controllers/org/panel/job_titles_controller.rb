@@ -28,7 +28,7 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
     respond_to do |format|
       if @job_title.save
         format.html.phone
-        format.html { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id), notice: 'Job title was successfully created.' }
+        format.html { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
         format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
         format.json { render :show }
       else
@@ -52,7 +52,7 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
     respond_to do |format|
       if @job_title.save
         format.html.phone
-        format.html { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id), notice: 'Job title was successfully updated.' }
+        format.html { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
         format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
         format.json { render :show }
       else
@@ -76,7 +76,7 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
 
   def destroy
     @job_title.destroy
-    redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id), notice: 'Job title was successfully destroyed.'
+    redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id)
   end
 
   private

@@ -15,7 +15,7 @@ class Org::My::WorkersController < Org::My::BaseController
 
     respond_to do |format|
       if @worker.save
-        format.html { redirect_to my_workers_url, notice: 'Worker was successfully created.' }
+        format.html { redirect_to my_workers_url }
         format.json { render :show, status: :created, location: @my_worker }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class Org::My::WorkersController < Org::My::BaseController
   def update
     respond_to do |format|
       if @worker.update(worker_params)
-        format.html { redirect_to my_workers_url, notice: 'Worker was successfully updated.' }
+        format.html { redirect_to my_workers_url }
         format.json { render :show, status: :ok, location: @my_worker }
       else
         format.html { render :edit }
@@ -50,7 +50,7 @@ class Org::My::WorkersController < Org::My::BaseController
   def destroy
     @worker.destroy
     respond_to do |format|
-      format.html { redirect_to my_workers_url, notice: 'Worker was successfully destroyed.' }
+      format.html { redirect_to my_workers_url }
       format.json { head :no_content }
     end
   end
