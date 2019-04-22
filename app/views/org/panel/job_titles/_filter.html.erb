@@ -1,11 +1,10 @@
-<div class="ui attached segment">
-
-<%= search_form_with model: JobTitle.new do |f| %>
-  <div class="fields">
-    <%= f.text_field :name %>
-    <%= f.submit 'Search' %>
-  </div>
-<% end %>
-
+<div class="ui top attached segment">
+  <%= search_form_with model: JobTitle.new(params.permit(:name)) do |f| %>
+    <div class="fields">
+      <%= f.text_field :name %>
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:name]), class: 'ui button' %>
+    </div>
+  <% end %>
 </div>
 

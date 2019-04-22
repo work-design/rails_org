@@ -3,10 +3,10 @@ zh:
     panel:
       departments:
         index:
-          title: 部门管理
+          title: 部门
       offices:
         index:
-          title: 区域管理
+          title: 区域
       members:
         index:
           title: 职员

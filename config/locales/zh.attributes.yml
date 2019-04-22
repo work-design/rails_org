@@ -8,6 +8,10 @@ zh:
         leader: 负责人
         needed_number: 岗位计划
         members_count: 现有人数
+      job_title:
+        grade: 级别
+        department_id: 部门
+        office_id: 办公室
       job_transfer:
         member: Employee
         transfer_on: Transfer Date
@@ -36,6 +40,11 @@ zh:
         name: 名称
         name_short: 简称
         area: 地区
+      room:
+        room_number: 房间号
+        color: 颜色
+        limit_number: 容纳人数
+        time_plans_count: 预定情况
       profile:
         real_name: 中文名字
         work_experience: 工作经历
