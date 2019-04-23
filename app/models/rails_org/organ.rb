@@ -6,10 +6,11 @@ class Organ < ApplicationRecord
   has_many :organ_grants, dependent: :delete_all
   has_one_attached :logo
 
-  after_initialize if: :new_record? do
-    self.organ_uuid = UidHelper.nsec_uuid('ORG')
-  end
+  validates :name, presence: true
 
+  before_validation do
+    self.organ_uuid ||= UidHelper.nsec_uuid('ORG')
+  end
 
   def get_organ_token(user_id)
     grant = self.organ_grants.valid.find_by(user_id: user_id)

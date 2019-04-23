@@ -1,7 +1,7 @@
 <div class="item">
   <span class="header">工作管理</span>
   <div class="menu">
-    <%= link_to '职员信息', my_members_path, class: active_helper(controllers: ['members']) %>
+    <%= link_to t('org.my.members.index.title'), my_members_path, class: active_helper(controllers: ['members']) %>
     <%= link_to '我的部门', my_departments_path, class: active_helper(controllers: 'org/my/departments') %>
     <%= link_to 'Job Transfer', my_job_transfers_path, class: active_helper(controllers: ['job_transfers']) %>
     <%= link_to 'Resign', my_resign_path, class: active_helper(controllers: ['resigns']) %>

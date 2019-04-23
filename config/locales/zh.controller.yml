@@ -12,3 +12,7 @@ zh:
           title: 职员
           enabled: 可用
           disabled: 禁用
+    my:
+      members:
+        index:
+          title: 我的组织

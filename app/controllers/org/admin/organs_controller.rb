@@ -21,7 +21,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
       else
         format.html.phone { render :new }
         format.html { render :new }
-        format.js
+        format.js { render :new }
         format.json { render :show }
       end
     end
