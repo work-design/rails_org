@@ -1,10 +1,11 @@
-class Org::Panel::DepartmentsController < Org::Panel::BaseController
-  before_action :set_department, only: [:show, :edit, :need, :update, :destroy]
+class Org::My::DepartmentsController < Org::My::BaseController
 
   def index
-    q_params = default_params
-    q_params.merge! params.permit(:type, :name)
-    @departments = Department.roots.default_where(q_params).includes(:children, :leader).page(params[:page])
+    @department = current_member.department
+    unless @department
+      redirect_to panel_departments_url and return
+    end
+    @departments = @department.children.page(params[:page])
   end
 
   def supports
@@ -60,43 +61,11 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
     end
   end
 
-  def update
-    @department.assign_attributes(department_params)
-
-    if @department.save
-      redirect_to panel_departments_url
-    else
-      render :edit
-    end
-  end
-
-  def edit
-  end
-
-  def need
-
-  end
-
-  def destroy
-    @department.destroy
-    redirect_to panel_departments_url
-  end
 
   private
   def set_department
     @department = Department.find(params[:id])
   end
 
-  def department_params
-    q = params.fetch(:department, {}).permit(
-      :name,
-      :type,
-      :title,
-      :needed_number,
-      :parent_id,
-      :parent_ancestors
-    )
-    q.merge! default_params
-  end
 
 end

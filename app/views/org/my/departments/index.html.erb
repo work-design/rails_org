@@ -21,8 +21,8 @@
         <% end %>
       </td>
       <td>
-        <%= @department.needed_member %> /
-        <span class="<%= active_asserts('red': @department.needed_member.to_i > @department.members_count, 'grey': @department.needed_member.to_i == @department.members_count, 'green': @department.needed_member.to_i < @department.members_count) %> text">
+        <%= @department.needed_number %> /
+        <span class="<%= active_asserts('red': @department.needed_number.to_i > @department.members_count, 'grey': @department.needed_number.to_i == @department.members_count, 'green': @department.needed_number.to_i < @department.members_count) %> text">
           <%= @department.members_count %>
         </span>
       </td>
@@ -37,7 +37,7 @@
         <%= link_to 'Need', need_panel_department_path(@department), class: 'ui pink label' %>
       </td>
     </tr>
-    <%= draw_tree(@department, partial: 'org/admin/departments/my_department') %>
+    <%= draw_tree(@department, partial: 'department') %>
   </tbody>
 </table>
 
