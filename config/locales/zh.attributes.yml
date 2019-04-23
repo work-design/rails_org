@@ -36,6 +36,7 @@ zh:
         name: 姓名
         member_departments: 部门
         resume: 简历
+        role_ids: 权限
       office:
         name: 名称
         name_short: 简称

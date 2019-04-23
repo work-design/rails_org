@@ -40,7 +40,7 @@ class Member < ApplicationRecord
   has_one_attached :avatar
   has_one_attached :resume
 
-  validates :identity, uniqueness: true, allow_blank: true
+  validates :identity, uniqueness: { scope: :organ_id }, allow_blank: true
 
   #before_save :sync_tutorials, if: -> { join_on_changed? }
   before_save :sync_account_user, if: -> { identity_changed? }

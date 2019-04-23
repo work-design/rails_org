@@ -11,12 +11,12 @@
   </thead>
   <tbody>
   <tr>
-    <td class="right aligned"><%= Member.human_attribute_name(:roles) %></td>
+    <td class="right aligned"><%= Member.human_attribute_name(:role_ids) %></td>
     <td class="ui labels">
       <% @member.roles.each do |role| %>
         <span class="ui green label"><%= role.name %></span>
       <% end %>
-      <%= link_to admin_who_roles_path('Member', @member.id), target: '_blank' do %>
+      <%= link_to edit_admin_who_roles_path('Member', @member.id), remote: true do %>
         <i class="icon white pencil"></i>
       <% end %>
     </td>

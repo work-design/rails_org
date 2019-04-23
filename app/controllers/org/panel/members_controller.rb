@@ -43,10 +43,13 @@ class Org::Panel::MembersController < Org::Panel::BaseController
     respond_to do |format|
       if @member.save
         format.html { redirect_to panel_members_url }
-        format.js
+        format.js { redirect_to panel_members_url }
       else
         format.html { redirect_to panel_members_url, alert: @member.errors }
-        format.js
+        format.js {
+          @member.member_departments.build
+          render :new
+        }
       end
     end
   end
