@@ -1,17 +1,23 @@
 <div class="ui site vertical fluid labeled icon secondary menu">
   <%= image_tag current_organ.logo, class: 'ui avatar image' if current_organ.logo.present? %>
-  <div class="ui inline dropdown" id="organ_dropdown">
+  <div class="item">
+    <%= current_organ.name %>
+    <%= link_to my_members_path do %>
+      <i class="fas fa-exchange-alt" data-tooltip="xxx"></i>
+    <% end %>
+  </div>
+  
+  <!--<div class="ui inline dropdown" id="organ_dropdown">
     <div class="text">
-      <%= current_organ.name %>
       <i class="dropdown icon"></i>
       <div class="menu">
-        <% other_organs.each do |organ| %>
+        <%# other_organs.each do |organ| %>
           <div class="item">
-            <%= image_tag organ.logo, class: 'ui avatar image' if organ.logo.present? %>
-            <%= link_to organ.name, login_panel_organ_path(organ_id: organ.id) %>
+            <%#= image_tag organ.logo, class: 'ui avatar image' if organ.logo.present? %>
+            <%#= link_to organ.name, login_panel_organ_path(organ_id: organ.id) %>
           </div>
-        <% end %>
+        <%# end %>
       </div>
     </div>
-  </div>
+  </div>-->
 </div>
