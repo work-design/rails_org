@@ -1,6 +1,6 @@
-<div class="ui vertical fluid">
+<div class="ui site vertical fluid labeled icon secondary menu">
   <%= image_tag current_organ.logo, class: 'ui avatar image' if current_organ.logo.present? %>
-  <div class="ui inline dropdown">
+  <div class="ui inline dropdown" id="organ_dropdown">
     <div class="text">
       <%= current_organ.name %>
       <i class="dropdown icon"></i>
