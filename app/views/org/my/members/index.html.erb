@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="extra content">
-      <%= link_to member.organ.name, login_my_organ_path(member.organ_id), method: :patch, class: 'ui mini button' %>
+      <%= link_to member.organ.name, login_my_member_path(member), method: :patch, class: 'ui mini button' %>
       <span><%= member.department&.full_name %></span>
       <%= image_tag member.organ.logo.variant(resize: '150x150'), class: 'right floated mini ui image' %>
     </div>

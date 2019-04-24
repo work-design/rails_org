@@ -1,5 +1,5 @@
 class Org::My::MembersController < Org::My::BaseController
-  before_action :set_member, only: [:show, :edit, :update]
+  before_action :set_member, only: [:show, :edit, :update, :login]
 
   def index
     @members = current_user.members.includes(:organ, :department, :office)
@@ -36,6 +36,18 @@ class Org::My::MembersController < Org::My::BaseController
         format.html { render action: 'edit' }
         format.json { render :show }
       end
+    end
+  end
+
+  def login
+    #login_organ_as @member
+
+    respond_to do |format|
+      format.html {
+        session[:organ_token] = @member.organ_token
+        redirect_to panel_organ_url
+      }
+      format.json { render json: { organ_grant: @member.organ_token } }
     end
   end
 

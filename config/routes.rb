@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   end
 
   scope :my, module: 'org/my', as: 'my' do
-    resources :members
-    resources :organs do
+    resources :members do
       patch :login, on: :member
     end
+    resources :organs
     resources :departments
     resources :tutorials do
       get :tutorings, on: :collection

@@ -1,15 +1,13 @@
 class Org::Panel::OrgansController < Org::Panel::BaseController
-  before_action :set_organ, only: [:show, :edit, :update, :mock, :destroy]
+  before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def show
   end
 
   def login
     member = current_user.members.find_by(organ_id: params[:organ_id])
-    organ = current_user.organs.find(params[:organ_id])
+    login_organ_as member
 
-    @current_organ = organ
-    @current_member = member
     redirect_to panel_organ_url
   end
 

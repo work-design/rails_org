@@ -1,5 +1,5 @@
 class Org::My::OrgansController < Org::My::BaseController
-  before_action :set_organ, only: [:show, :edit, :update, :mock, :destroy]
+  before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def index
     @organs = Organ.page(params[:page])
@@ -36,18 +36,6 @@ class Org::My::OrgansController < Org::My::BaseController
       redirect_to panel_organs_url
     else
       render :edit
-    end
-  end
-
-  def login
-    token = current_member.organ_token
-
-    respond_to do |format|
-      format.html {
-        session[:organ_grant] = token
-        redirect_to panel_organ_url
-      }
-      format.json { render json: { organ_grant: token } }
     end
   end
 
