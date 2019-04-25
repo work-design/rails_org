@@ -3,8 +3,8 @@ module RailsOrg::ResignReason
   included do
     prepend RailsTaxonNode
 
-    has_many :resign_resign_reasons, dependent: :destroy
-    has_many :resigns, through: :resign_resign_reasons
+    has_many :resign_references, dependent: :destroy
+    has_many :resigns, through: :resign_references
 
     validates :name, presence: true
   end

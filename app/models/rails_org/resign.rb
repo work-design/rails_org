@@ -9,8 +9,8 @@ module RailsOrg::Resign
 
     belongs_to :member
 
-    has_many :resign_resign_reasons
-    has_many :resign_reasons, through: :resign_resign_reasons
+    has_many :resign_references
+    has_many :resign_reasons, through: :resign_references
     validate :validate_resign_reasons
 
     enum state: {

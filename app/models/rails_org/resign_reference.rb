@@ -1,4 +1,4 @@
-module RailsOrg::ResignResignReason
+module RailsOrg::ResignReference
   extend ActiveSupport::Concern
   included do
     belongs_to :resign
