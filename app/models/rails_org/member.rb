@@ -1,49 +1,52 @@
-class Member < ApplicationRecord
-  include RailsRoleUser
-  include RailsTradeBuyer
-  include RailsTradeUser
-  include RailsNoticeReceivable
+module RailsOrg::Member
+  extend ActiveSupport::Concern
+  included do
+    include RailsRole::User
+    include RailsTrade::Buyer
+    include RailsTrade::User
+    include RailsNotice::Receivable
 
-  has_taxons :department
+    has_taxons :department
 
-  attribute :experience, :string
-  attribute :attendance_number, :string
+    attribute :experience, :string
+    attribute :attendance_number, :string
 
-  belongs_to :organ, optional: true
-  belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
+    belongs_to :organ, optional: true
+    belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
 
-  belongs_to :user, optional: true
-  belongs_to :department, counter_cache: true, optional: true
-  belongs_to :office, counter_cache: true, optional: true
+    belongs_to :user, optional: true
+    belongs_to :department, counter_cache: true, optional: true
+    belongs_to :office, counter_cache: true, optional: true
 
-  has_many :member_departments, dependent: :delete_all
-  has_many :departments, through: :member_departments
-  has_many :job_titles, through: :member_departments
-  accepts_nested_attributes_for :member_departments
+    has_many :member_departments, dependent: :delete_all
+    has_many :departments, through: :member_departments
+    has_many :job_titles, through: :member_departments
+    accepts_nested_attributes_for :member_departments
 
-  has_one :leading_office, class_name: 'Office', foreign_key: :leader_id
-  has_one :leading_department, class_name: 'Department', foreign_key: :leader_id
-  has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
+    has_one :leading_office, class_name: 'Office', foreign_key: :leader_id
+    has_one :leading_department, class_name: 'Department', foreign_key: :leader_id
+    has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
 
-  has_one :organ_grant, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
-  has_many :organ_grants, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
+    has_one :organ_grant, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
+    has_many :organ_grants, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
 
-  has_one :resign
-  has_one :profile, through: :user
-  has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
-  has_one :tutor, through: :tutorial
-  has_many :tutorials, dependent: :nullify
-  has_many :tutorings, class_name: 'Tutorial', foreign_key: :tutor_id
-  has_many :tutees, through: :tutorings, source: :member
-  has_many :job_transfers, dependent: :destroy
+    has_one :resign
+    has_one :profile, through: :user
+    has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
+    has_one :tutor, through: :tutorial
+    has_many :tutorials, dependent: :nullify
+    has_many :tutorings, class_name: 'Tutorial', foreign_key: :tutor_id
+    has_many :tutees, through: :tutorings, source: :member
+    has_many :job_transfers, dependent: :destroy
 
-  has_one_attached :avatar
-  has_one_attached :resume
+    has_one_attached :avatar
+    has_one_attached :resume
 
-  validates :identity, uniqueness: { scope: :organ_id }, allow_blank: true
+    validates :identity, uniqueness: { scope: :organ_id }, allow_blank: true
 
-  #before_save :sync_tutorials, if: -> { join_on_changed? }
-  before_save :sync_account_user, if: -> { identity_changed? }
+    #before_save :sync_tutorials, if: -> { join_on_changed? }
+    before_save :sync_account_user, if: -> { identity_changed? }
+  end
 
   def sync_account_user
     self.user_id = account&.user_id

@@ -1,4 +1,4 @@
-module RailsOrgUser
+module RailsOrg::User
   extend ActiveSupport::Concern
 
   included do

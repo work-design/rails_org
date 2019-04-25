@@ -1,8 +1,9 @@
-require 'rails_auth/account'
-class Account
-  belongs_to :member, foreign_key: :identity, primary_key: :identity, optional: true
-
-  after_save :sync_to_member, if: -> { saved_change_to_identity? || saved_change_to_confirmed? }
+module RailsOrg::Account
+  extend ActiveSupport::Concern
+  included do
+    belongs_to :member, foreign_key: :identity, primary_key: :identity, optional: true
+    after_save :sync_to_member, if: -> { saved_change_to_identity? || saved_change_to_confirmed? }
+  end
 
   def sync_to_member
     if confirmed? && member

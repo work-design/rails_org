@@ -1,15 +1,18 @@
-class JobTitle < ApplicationRecord
-  acts_as_list column: :grade, scope: [:department_id, :office_id], top_of_list: 0
+module RailsOrg::JobTitle
+  extend ActiveSupport::Concern
+  included do
+    acts_as_list column: :grade, scope: [:department_id, :office_id], top_of_list: 0
 
-  attribute :name, :string
-  attribute :grade, :integer
-  attribute :limit, :integer
+    attribute :name, :string
+    attribute :grade, :integer
+    attribute :limit, :integer
 
-  belongs_to :department, optional: true
-  belongs_to :office, optional: true
-  has_many :member_departments
+    belongs_to :department, optional: true
+    belongs_to :office, optional: true
+    has_many :member_departments
 
-  after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
+    after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
+  end
 
   def sync_grade_member_departments
     member_departments.update_all(grade: self.grade)

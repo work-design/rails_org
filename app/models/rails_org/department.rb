@@ -1,18 +1,21 @@
-class Department < ApplicationRecord
-  prepend RailsTaxonNode
+module RailsOrg::Department
+  extend ActiveSupport::Concern
+  included do
+    prepend RailsTaxonNode
 
-  has_many :job_descriptions
-  has_many :members, dependent: :nullify
+    has_many :job_descriptions
+    has_many :members, dependent: :nullify
 
-  has_many :job_titles
-  has_many :member_departments
-  has_many :leaders, through: :member_departments, source: :member
-  has_one :member_department, -> { order(grade: :desc) }
-  has_one :leader, through: :member_department, source: :member
+    has_many :job_titles
+    has_many :member_departments
+    has_many :leaders, through: :member_departments, source: :member
+    has_one :member_department, -> { order(grade: :desc) }
+    has_one :leader, through: :member_department, source: :member
 
-  has_many :offices, -> { distinct }, through: :members
+    has_many :offices, -> { distinct }, through: :members
 
-  validates :name, presence: true
+    validates :name, presence: true
+  end
 
   def col_span
     self.class.max_depth - self.depth

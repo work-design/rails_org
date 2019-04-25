@@ -1,36 +1,39 @@
-class JobTransfer < ApplicationRecord
-  include CheckMachine
+module RailsOrg::JobTransfer
+  extend ActiveSupport::Concern
+  included do
+    include CheckMachine
 
-  attr_accessor :department_ancestors
-  attribute :state, :string, default: 'init'
+    attr_accessor :department_ancestors
+    attribute :state, :string, default: 'init'
 
-  belongs_to :member
-  belongs_to :to_office, class_name: 'Office', optional: true
-  belongs_to :to_department, class_name: 'Department', optional: true
-  belongs_to :to_job_title, class_name: 'JobTitle', optional: true
-  belongs_to :from_office, class_name: 'Office', optional: true
-  belongs_to :from_department, class_name: 'Department', optional: true
-  belongs_to :from_job_title, class_name: 'JobTitle', optional: true
+    belongs_to :member
+    belongs_to :to_office, class_name: 'Office', optional: true
+    belongs_to :to_department, class_name: 'Department', optional: true
+    belongs_to :to_job_title, class_name: 'JobTitle', optional: true
+    belongs_to :from_office, class_name: 'Office', optional: true
+    belongs_to :from_department, class_name: 'Department', optional: true
+    belongs_to :from_job_title, class_name: 'JobTitle', optional: true
 
-  enum state: {
-    init: 'init',
-    approved_sl: 'approved sl',
-    approved_om: 'approved om',
-    rejected: 'rejected'
-  }
+    enum state: {
+      init: 'init',
+      approved_sl: 'approved sl',
+      approved_om: 'approved om',
+      rejected: 'rejected'
+    }
 
-  validate :validate_select_option
-  validates :transfer_on, :reason_note, presence: true
+    validate :validate_select_option
+    validates :transfer_on, :reason_note, presence: true
 
-  after_initialize if: :new_record? do
-    self.from_office_id = self.member&.office_id
-    self.from_department_id = self.member&.department_id
-    self.from_job_title_id = self.member&.job_title_id
-    self.state = JobTransfer::states[:approved_sl] if self.member&.leading_department
+    after_initialize if: :new_record? do
+      self.from_office_id = self.member&.office_id
+      self.from_department_id = self.member&.department_id
+      self.from_job_title_id = self.member&.job_title_id
+      self.state = JobTransfer::states[:approved_sl] if self.member&.leading_department
+    end
+    after_create_commit :send_notification
+
+    acts_as_notify :default, only: []
   end
-  after_create_commit :send_notification
-
-  acts_as_notify :default, only: []
 
   def approve_config
     {

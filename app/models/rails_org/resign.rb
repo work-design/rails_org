@@ -1,25 +1,28 @@
-class Resign < ApplicationRecord
-  include CheckMachine
+module RailsOrg::Resign
+  extend ActiveSupport::Concern
+  included do
+    include CheckMachine
 
-  attribute :state, :string, default: 'init'
+    attribute :state, :string, default: 'init'
 
-  validates :leave_on, :reason_note, presence: true
+    validates :leave_on, :reason_note, presence: true
 
-  belongs_to :member
+    belongs_to :member
 
-  has_many :resign_resign_reasons
-  has_many :resign_reasons, through: :resign_resign_reasons
-  validate :validate_resign_reasons
+    has_many :resign_resign_reasons
+    has_many :resign_reasons, through: :resign_resign_reasons
+    validate :validate_resign_reasons
 
-  enum state: {
-    init: 'init',
-    approved: 'approved',
-    rejected: 'rejected'
-  }
+    enum state: {
+      init: 'init',
+      approved: 'approved',
+      rejected: 'rejected'
+    }
 
-  after_create_commit :send_notification
+    after_create_commit :send_notification
 
-  acts_as_notify only: [:reason_note, :leave_on]
+    acts_as_notify only: [:reason_note, :leave_on]
+  end
 
   def do_trigger(params = {})
     self.trigger_to(params.slice(:state))

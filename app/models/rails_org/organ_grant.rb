@@ -1,11 +1,14 @@
-class OrganGrant < ApplicationRecord
-  belongs_to :organ
-  belongs_to :member, optional: true
-  belongs_to :user, optional: true
-  scope :valid, -> { where('expired_at >= ?', Time.now) }
+module RailsOrg::OrganGrant
+  extend ActiveSupport::Concern
+  included do
+    belongs_to :organ
+    belongs_to :member, optional: true
+    belongs_to :user, optional: true
+    scope :valid, -> { where('expired_at >= ?', Time.now) }
 
-  after_validation :update_token
-  after_commit :sync_to_member, if: -> { saved_change_to_token? }
+    after_validation :update_token
+    after_commit :sync_to_member, if: -> { saved_change_to_token? }
+  end
 
   def update_token
     self.expired_at = 14.days.since
