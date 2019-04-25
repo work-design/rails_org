@@ -8,7 +8,6 @@ module RailsOrg #:nodoc:
     config.my_controller = 'MyController'
     config.admin_controller = 'AdminController'
     config.panel_controller = 'PanelController'
-    config.disabled_models = []
   end
 
 end
