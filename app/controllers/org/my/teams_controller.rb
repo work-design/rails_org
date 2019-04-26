@@ -55,7 +55,8 @@ class Org::My::TeamsController < Org::My::BaseController
   end
 
   def team_params
-    params.fetch(:team, {}).permit(:duty_id, :position, :worker_id, :teaming_type, :teaming_id)
+    params.fetch(:team, {}).permit(
+      :duty_id, :position, :worker_id, :teaming_type, :teaming_id)
   end
 
 end

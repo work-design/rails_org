@@ -26,7 +26,12 @@
   <% @offices.each do |office| %>
     <tr>
       <td><%= office.id %></td>
-      <td><%= office.name %>(<%= office.name_short %>)</td>
+      <td>
+        <%= office.name %>
+        <% if office.name_short %>
+        (<%= office.name_short %>)
+        <% end %>
+      </td>
       <td><%= office.area.full_name %></td>
       <td>
         <%= link_to Room.human_name, panel_office_rooms_path(office.id), class: 'ui mini circular button' %>

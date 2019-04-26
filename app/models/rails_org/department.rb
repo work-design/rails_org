@@ -2,7 +2,8 @@ module RailsOrg::Department
   extend ActiveSupport::Concern
   included do
     prepend RailsTaxon::Node
-
+    
+    belongs_to :office, optional: true
     has_many :job_descriptions
     has_many :members, dependent: :nullify
 

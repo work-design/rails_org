@@ -49,6 +49,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     create_table :departments do |t|
       t.references :organ
       t.references :parent
+      t.references :office
       t.string :name
       t.integer :members_count, default: 0
       t.integer :needed_number
