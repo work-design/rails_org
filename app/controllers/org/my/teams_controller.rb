@@ -1,4 +1,4 @@
-class TeamsController < ApplicationController
+class Org::My::TeamsController < Org::My::BaseController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   def index

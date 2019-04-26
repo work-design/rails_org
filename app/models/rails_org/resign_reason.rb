@@ -1,7 +1,7 @@
 module RailsOrg::ResignReason
   extend ActiveSupport::Concern
   included do
-    prepend RailsTaxonNode
+    prepend RailsTaxon::Node
 
     has_many :resign_references, dependent: :destroy
     has_many :resigns, through: :resign_references
