@@ -2,7 +2,7 @@
   <%= render 'breadcrumb' %>
 <% end %>
 
-<div class="ui attached segment" style="flex-direction: column; align-items: start">
+<div class="ui top attached segment" style="flex-direction: column; align-items: start">
   <%= render 'search_form' %>
 </div>
 
@@ -12,7 +12,7 @@
       <th><%= Member.human_attribute_name(:id) %></th>
       <th><%= Member.human_attribute_name(:type) %></th>
       <th><%= Member.human_attribute_name(:name) %></th>
-      <th><%= Member.human_attribute_name(:office) %></th>
+      <th><%= Member.human_attribute_name(:office_id) %></th>
       <th><%= Member.human_attribute_name(:department) %></th>
       <th><%= Member.human_attribute_name(:identity) %></th>
       <th><%= Member.human_attribute_name(:join_on) %></th>

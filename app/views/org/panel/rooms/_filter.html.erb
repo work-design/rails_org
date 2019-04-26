@@ -1,11 +1,8 @@
-<div class="ui attached segment">
-
-<%= search_form_with model: Room.new do |f| %>
+<%= search_form_with model: Room.new(params.permit(:room_number)) do |f| %>
   <div class="fields">
-    <%= f.text_field :name %>
+    <%= f.text_field :room_number %>
     <%= f.submit %>
+    <%= link_to t('.clear'), filter_params(except: [:room_number]), class: 'ui button' %>
   </div>
 <% end %>
-
-</div>
 

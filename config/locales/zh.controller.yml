@@ -1,5 +1,9 @@
 zh:
   org:
+    admin:
+      organs:
+        index:
+          title: 组织机构
     panel:
       departments:
         index:
@@ -7,6 +11,9 @@ zh:
       offices:
         index:
           title: 区域
+      rooms:
+        index:
+          title: 教室
       members:
         index:
           title: 职员

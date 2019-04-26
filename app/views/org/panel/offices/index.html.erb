@@ -31,6 +31,7 @@
       <td>
         <%= link_to Room.human_name, panel_office_rooms_path(office.id), class: 'ui mini circular button' %>
         <%# link_to 'Supports', panel_supports_path(office_id: office.id), class: 'ui mini circular button' %>
+        <%= link_to JobTitle.human_name, panel_job_titles_path(office_id: office.id), class: 'ui circular mini icon button' %>
         <%= link_to edit_panel_office_path(office), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>

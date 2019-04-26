@@ -3,7 +3,9 @@ class Org::Panel::RoomsController < Org::Panel::BaseController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   def index
-    @rooms = @office.rooms.page(params[:page])
+    q_params = {}
+    q_params.merge! params.permit(:room_number)
+    @rooms = @office.rooms.default_where(q_params).page(params[:page])
   end
 
   def new

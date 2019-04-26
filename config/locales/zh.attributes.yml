@@ -11,7 +11,7 @@ zh:
       job_title:
         grade: 级别
         department_id: 部门
-        office_id: 办公室
+        office_id: 区域
       job_transfer:
         member: Employee
         transfer_on: Transfer Date
@@ -30,8 +30,8 @@ zh:
         identity: 账号
         parent: 上级
         enabled: 状态
-        office: 办公室
-        office_id: 办公室
+        office: 区域
+        office_id: 区域
         department: 部门
         name: 姓名
         member_departments: 部门
