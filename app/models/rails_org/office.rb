@@ -1,6 +1,7 @@
 module RailsOrg::Office
   extend ActiveSupport::Concern
   included do
+    prepend RailsTaxon::Node
     has_taxons :area
 
     attribute :name_short, :string

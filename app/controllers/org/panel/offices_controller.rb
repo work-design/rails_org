@@ -11,6 +11,7 @@ class Org::Panel::OfficesController < Org::Panel::BaseController
   end
 
   def new
+    @roots = current_organ.offices.roots
     @office = Office.new
   end
 
@@ -59,6 +60,7 @@ class Org::Panel::OfficesController < Org::Panel::BaseController
       :contact,
       :recruitment,
       :locale,
+      :parent_ancestors,
       :area_ancestors
     )
     p.merge! default_params

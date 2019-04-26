@@ -1,4 +1,5 @@
 //= require rails_taxon/outer
+//= require rails_taxon/form
 
 $('#office_leader_id, #office_deputy_leader_id').dropdown({
   apiSettings: {
