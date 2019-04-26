@@ -16,6 +16,7 @@ module RailsOrg::MemberDepartment
     before_save :sync_department_and_office, if: -> { job_title_id_changed? }
     before_save :sync_department_tree, if: -> { department_id_changed? }
   end
+  
   def set_major
     self.class.transaction do
       self.update(major: true)

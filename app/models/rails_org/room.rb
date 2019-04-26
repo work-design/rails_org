@@ -1,7 +1,7 @@
 module RailsOrg::Room
   extend ActiveSupport::Concern
   included do
-    include RailsBookingLocate
+    include RailsBooking::Locate
 
     attribute :room_number, :string
 

@@ -1,7 +1,7 @@
 module RailsOrg::Department
   extend ActiveSupport::Concern
   included do
-    prepend RailsTaxonNode
+    prepend RailsTaxon::Node
 
     has_many :job_descriptions
     has_many :members, dependent: :nullify

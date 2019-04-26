@@ -6,7 +6,7 @@
   <td>
     <p>
     <% if member.user && member.user.avatar.attached? %>
-      <%= link_to panel_user_path(member.user&.id) do %>
+      <%= link_to admin_user_path(member.user_id) do %>
         <%= image_tag member.user.avatar.variant(resize: '35x35'), class: 'ui avatar image' %>
       <% end %>
     <% end %>
