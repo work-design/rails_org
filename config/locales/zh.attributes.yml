@@ -46,6 +46,9 @@ zh:
         name: 名称
         name_short: 简称
         area: 地区
+        address: 地址
+        timezone: 时区
+        locale: 语言
       room:
         room_number: 房间号
         color: 颜色

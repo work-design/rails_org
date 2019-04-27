@@ -1,6 +1,7 @@
 class Org::Panel::DepartmentsController < Org::Panel::BaseController
   before_action :set_department, only: [:show, :edit, :need, :update, :destroy]
-
+  before_action :prepare_form, only: [:new, :edit]
+  
   def index
     q_params = default_params
     q_params.merge! params.permit(:type, :name)
@@ -85,6 +86,10 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
   private
   def set_department
     @department = Department.find(params[:id])
+  end
+  
+  def prepare_form
+    @offices = current_organ.offices
   end
 
   def department_params

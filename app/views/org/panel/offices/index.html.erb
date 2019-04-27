@@ -14,6 +14,7 @@
         <%= Office.human_attribute_name(:name) %>(<%= Office.human_attribute_name(:name_short) %>)
       </th>
       <th><%= Office.human_attribute_name(:area) %></th>
+      <th><%= Office.human_attribute_name(:address) %></th>
       <th>
         <%= link_to new_panel_office_path, remote: true, class: 'ui mini primary button' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
@@ -33,6 +34,7 @@
         <% end %>
       </td>
       <td><%= office.area.full_name %></td>
+      <td><%= office.address %></td>
       <td>
         <%= link_to Room.human_name, panel_office_rooms_path(office.id), class: 'ui mini circular button' %>
         <%= link_to edit_panel_office_path(office), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
