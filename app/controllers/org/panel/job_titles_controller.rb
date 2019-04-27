@@ -1,10 +1,12 @@
 class Org::Panel::JobTitlesController < Org::Panel::BaseController
-  before_action :set_from
+  before_action :set_department
   before_action :set_job_title, only: [:show, :edit, :update, :move_higher, :move_lower, :destroy]
 
   def index
-    q_params = {}
-    q_params.merge! params.permit(:office_id, :department_id, :name)
+    q_params = {
+      department_root_id: @department.root.id
+    }
+    q_params.merge! params.permit(:name)
     @job_titles = JobTitle.default_where(q_params).order(grade: :desc).page(params[:page])
   end
 
@@ -17,22 +19,22 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
   end
 
   def new
-    @job_title = JobTitle.new(params.permit(:department_id, :office_id))
+    @job_title = @department.job_titles.build
   end
 
   def create
-    @job_title = JobTitle.new(job_title_params)
-
+    @job_title = @department.job_titles.build(job_title_params)
+    
     respond_to do |format|
       if @job_title.save
         format.html.phone
-        format.html { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
-        format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
+        format.html { redirect_to panel_department_job_titles_url(@department) }
+        format.js { redirect_to panel_department_job_titles_url(@department) }
         format.json { render :show }
       else
         format.html.phone { render :new }
         format.html { render :new }
-        format.js { redirect_back fallback_location: panel_job_titles_url }
+        format.js { redirect_to panel_department_job_titles_url(@department), status: :unprocessable_entity }
         format.json { render :show }
       end
     end
@@ -56,7 +58,7 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
       else
         format.html.phone { render :edit }
         format.html { render :edit }
-        format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
+        format.js { redirect_to panel_department_job_titles_url(@job_title.department_id) }
         format.json { render :show }
       end
     end
@@ -64,31 +66,25 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
 
   def move_higher
     @job_title.move_higher
-    redirect_to panel_job_titles_url(request.query_parameters)
+    redirect_to panel_department_job_titles_url(@department)
   end
 
   def move_lower
     @job_title.move_lower
-    redirect_to panel_job_titles_url(request.query_parameters)
+    redirect_to panel_department_job_titles_url(@department)
   end
 
   def destroy
     @job_title.destroy
-    redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id)
+    redirect_to panel_department_job_titles_url(@job_title.department_id)
   end
 
   private
-  def set_from
+  def set_department
     if params[:department_id]
       @department = Department.find params[:department_id]
-      if @department.leaf? && !@department.root?
-        @department_parent = @department.parent
-      else
-        @department_parent = @department
-      end
-    end
-    if params[:office_id]
-      @office = Office.find params[:office_id]
+    else
+      @department = JobTitle.find(params[:id]).department
     end
   end
 
@@ -99,9 +95,7 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
   def job_title_params
     params.fetch(:job_title, {}).permit(
       :name,
-      :grade,
-      :department_id,
-      :office_id
+      :grade
     )
   end
 

@@ -101,9 +101,10 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
 
     create_table :job_titles do |t|
       t.references :department
+      t.references :department_root
       t.string :name
       t.integer :grade
-      t.integer :limit
+      t.integer :limit_number
       t.timestamps
     end
 

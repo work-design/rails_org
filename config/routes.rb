@@ -44,6 +44,14 @@ Rails.application.routes.draw do
       end
       get :need, on: :member
       resources :job_descriptions
+      resources :job_titles
+    end
+    resources :job_titles, only: [] do
+      get :search, on: :collection
+      member do
+        patch :move_lower
+        patch :move_higher
+      end
     end
     resources :members do
       collection do
@@ -56,13 +64,6 @@ Rails.application.routes.draw do
       member do
         get :profile
         get :token
-      end
-    end
-    resources :job_titles do
-      get :search, on: :collection
-      member do
-        patch :move_lower
-        patch :move_higher
       end
     end
     resources :supports do

@@ -44,13 +44,11 @@ module RailsOrg::Department
       records.sort_by! { |i| self.self_and_ancestor_ids.index(i.department_id) }.first
     end
   end
-
-  def job_titles
-    JobTitle.where(department_id: self_and_ancestor_ids)
-  end
-
-  def self.filter_options
-    Department.leaves.map { |i| [i.full_name, i.id] }
+  
+  class_methods do
+    def filter_options
+      Department.leaves.map { |i| [i.full_name, i.id] }
+    end
   end
 
 end

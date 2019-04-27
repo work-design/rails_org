@@ -20,7 +20,7 @@
       <th><%= JobTitle.human_attribute_name(:grade) %></th>
       <th><%= JobTitle.human_attribute_name(:name) %></th>
       <th>
-        <%= link_to new_panel_job_title_path(params.permit(:department_id, :office_id)), class: 'ui mini primary button', remote: true do %>
+        <%= link_to new_panel_department_job_title_path(params.permit(:department_id)), class: 'ui mini primary button', remote: true do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
@@ -33,19 +33,19 @@
       <td><%= job_title.department.full_name %></td>
       <td>
         <%= job_title.grade %>
-        <%= link_to move_higher_panel_job_title_path(job_title, params.permit(:department_id, :office_id)), method: :patch do %>
+        <%= link_to move_higher_panel_job_title_path(job_title), method: :patch do %>
           <i class="arrow down icon"></i>
         <% end %>
-        <%= link_to move_lower_panel_job_title_path(job_title, params.permit(:department_id, :office_id)), method: :patch do %>
+        <%= link_to move_lower_panel_job_title_path(job_title), method: :patch do %>
           <i class="arrow up icon"></i>
         <% end %>
       </td>
       <td><%= job_title.name %></td>
       <td class="ui labels">
-        <%= link_to edit_panel_job_title_path(job_title), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
+        <%= link_to edit_panel_department_job_title_path(@department, job_title), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
-        <%= link_to panel_job_title_path(job_title), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+        <%= link_to panel_department_job_title_path(@department, job_title), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>
