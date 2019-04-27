@@ -1,13 +1,10 @@
-class Org::My::TutorialsController < Org::My::BaseController
+class Org::Member::TutorialsController < Org::Member::BaseController
   before_action :set_tutorial, only: [:show, :edit, :perform, :update, :destroy]
 
   def index
-    default_params = {
-
-    }
-    q_params = params.fetch(:q, {}).permit!
-    default_params.merge! q_params
-    @tutorials = current_user.tutorials.default_where(default_params).page(params[:page])
+    q_params = {}
+    q_params.merge! default_params
+    @tutorials = current_user.tutorials.default_where(q_params).page(params[:page])
   end
 
   def tutorings

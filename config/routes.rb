@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       patch :login, on: :member
     end
     resources :organs
+    resources :documents
+  end
+  
+  scope :my, module: 'org/member', as: 'my' do
     resources :departments
     resources :tutorials do
       get :tutorings, on: :collection
@@ -20,7 +24,6 @@ Rails.application.routes.draw do
     resources :job_transfers do
       get :departments, on: :collection
     end
-    resources :documents
   end
 
   scope :panel, module: 'org/panel', as: 'panel' do

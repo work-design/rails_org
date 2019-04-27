@@ -1,11 +1,7 @@
-class Org::My::DepartmentsController < Org::My::BaseController
+class Org::Member::DepartmentsController < Org::Member::BaseController
 
   def index
-    @department = current_member.department
-    unless @department
-      redirect_to panel_departments_url and return
-    end
-    @departments = @department.children.page(params[:page])
+    @departments = current_member.departments
   end
 
   def supports
