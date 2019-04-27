@@ -1,20 +1,19 @@
 //= require rails_taxon/outer
-$('[data-title="job_title_id"]').dropdown({
-  apiSettings: {
-    url: '/panel/job_titles/search?department_id={department_id}',
-    cache: false,
-    beforeSend: function(settings) {
-      var department_id = $('[data-title="node_ancestors"]').first();
-      if (department_id.length > 0) {
-        return settings.urlData.department_id = department_id[0].value;
-      } else {
-        return settings.urlData.department_id = 0;
-      }
+$('[data-title="node_ancestors"]').on('change', function(){
+  var search_path = '/nodes/outer';
+  var search_url = new URL(window.location.origin + search_path);
+  var value = this.value;
+  if (value) {
+    search_url.searchParams.set('node_id', value);
+    search_url.searchParams.set('node_type', this.dataset['nodeType']);
+    search_url.searchParams.set('entity_type', this.dataset['entityType']);
+    search_url.searchParams.set('as', this.dataset['as']);
+    search_url.searchParams.set('method', this.dataset['method']);
+    if (this.dataset['index']) {
+      search_url.searchParams.set('index', this.dataset['index']);
     }
-  },
-  fields: {
-    name: 'name',
-    value: 'id'
+
+    Rails.ajax({url: search_url, type: 'GET', dataType: 'script'});
   }
 });
 $('#member_type').dropdown();
