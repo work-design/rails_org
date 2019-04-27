@@ -2,4 +2,5 @@
 <%= render partial: 'nodes/children_select', locals: { f: f, node: @roots } %>
 <%= f.text_field :name, required: true %>
 <%= f.number_field :needed_number %>
+<%= f.file_field :logo %>
 <%= f.submit %>

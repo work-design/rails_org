@@ -4,7 +4,7 @@
     <% if !node.leaf? %>
       <i class="fas fa-caret-down fa-fw grey link icon"></i>
     <% else %>
-      <i class="icon"></i>
+      <%= image_tag node.logo, class: 'ui avatar image' if node.logo.present? %>
     <% end %>
     <%= link_to panel_department_path(node) do %>
       <span><%= node.name %></span>
@@ -17,6 +17,7 @@
       <%= node.members_count %>
     </span>
   </td>
+  <td><%= node.office&.name %></td>
   <td><%= node.leader&.name %></td>
   <td>
     <%= link_to panel_department_path(node), data: { tooltip: t('.show') }, class: 'ui circular mini icon button' do %>

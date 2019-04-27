@@ -23,11 +23,15 @@
       <% end %>
     </p>
   </td>
-  <td><%= member.office&.name %></td>
   <td>
     <% member.member_departments.each do |md| %>
       <div class="ui labels">
-        <span class="ui label"><%= link_to md.department.full_name, panel_department_path(md.department_id) %></span>
+        <span class="ui image label">
+          <%= link_to md.department.full_name, panel_department_path(md.department_id) %>
+        </span>
+        <% if md.office %>
+        <span class="ui label"><%= md.office.name %></span>
+        <% end %>
         <span class="ui label"><%= md.job_title.name %></span>
         <% if md.major %>
         <i class="crosshairs icon"></i>

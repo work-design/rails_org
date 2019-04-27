@@ -18,5 +18,5 @@ $('[data-title="job_title_id"]').dropdown({
   }
 });
 $('#member_type').dropdown();
-$('#member_office_id').dropdown();
+$('#member_member_departments_attributes_0_office_id').dropdown();
 $('#member_band_id').dropdown();

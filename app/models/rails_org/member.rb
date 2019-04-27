@@ -15,12 +15,13 @@ module RailsOrg::Member
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
 
     belongs_to :user, optional: true
-    belongs_to :department, counter_cache: true, optional: true
-    belongs_to :office, counter_cache: true, optional: true
+    belongs_to :department, optional: true
+    belongs_to :office, optional: true
 
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
+    has_many :offices, through: :member_departments
     accepts_nested_attributes_for :member_departments
 
     has_one :leading_office, class_name: 'Office', foreign_key: :leader_id

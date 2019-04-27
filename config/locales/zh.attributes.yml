@@ -8,6 +8,7 @@ zh:
         leader: 负责人
         needed_number: 岗位计划
         members_count: 现有人数
+        office_id: 特定区域
       job_title:
         grade: 级别
         department_id: 部门
@@ -37,6 +38,10 @@ zh:
         member_departments: 部门
         resume: 简历
         role_ids: 权限
+      member_department:
+        office_id: 区域
+        department: 部门
+        job_title_id: 职级
       office:
         name: 名称
         name_short: 简称

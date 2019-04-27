@@ -2,9 +2,12 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   before_action :set_member, only: [:show, :edit, :update, :token, :destroy, :sync_one]
 
   def index
-    q_params = default_params.merge! enabled: true
-    q_params.merge! params.fetch(:q, {}).permit!
-    q_params.merge! params.permit(:id, :enabled, :office_id, :department_ancestors)
+    q_params = {
+      enabled: true,
+      office_id: current_member.office_ids
+    }
+    q_params.merge! default_params
+    q_params.merge! params.permit(:id, 'name-like', :enabled, :office_id, :department_ancestors)
     #department = Department.find_by id: Member.new(q_params).department_ancestors&.values.to_a.compact.last
     #q_params.merge! department_id: department.self_and_descendant_ids if department
     @members = Member.includes(:department, :office, :roles, user: { avatar_attachment: :blob }).default_where(q_params, {allow: nil}).order(id: :desc).page(params[:page])

@@ -14,7 +14,9 @@ module RailsOrg::Department
     has_one :leader, through: :member_department, source: :member
 
     has_many :offices, -> { distinct }, through: :members
-
+    
+    has_one_attached :logo
+    
     validates :name, presence: true
   end
 

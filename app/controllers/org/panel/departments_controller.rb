@@ -93,6 +93,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
       :type,
       :title,
       :needed_number,
+      :logo,
       :parent_id,
       :parent_ancestors
     )

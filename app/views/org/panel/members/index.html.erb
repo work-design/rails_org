@@ -9,15 +9,14 @@
 <table class="ui bottom attached table">
   <thead>
     <tr>
-      <th><%= Member.human_attribute_name(:id) %></th>
-      <th><%= Member.human_attribute_name(:type) %></th>
-      <th><%= Member.human_attribute_name(:name) %></th>
-      <th><%= Member.human_attribute_name(:office_id) %></th>
-      <th><%= Member.human_attribute_name(:department) %></th>
-      <th><%= Member.human_attribute_name(:identity) %></th>
-      <th><%= Member.human_attribute_name(:join_on) %></th>
-      <th><%= Member.human_attribute_name(:resume) %></th>
-      <th>
+      <th class="center aligned"><%= Member.human_attribute_name(:id) %></th>
+      <th class="center aligned"><%= Member.human_attribute_name(:type) %></th>
+      <th class="center aligned"><%= Member.human_attribute_name(:name) %></th>
+      <th class="center aligned"><%= Member.human_attribute_name(:department) %></th>
+      <th class="center aligned"><%= Member.human_attribute_name(:identity) %></th>
+      <th class="center aligned"><%= Member.human_attribute_name(:join_on) %></th>
+      <th class="center aligned"><%= Member.human_attribute_name(:resume) %></th>
+      <th class="center aligned">
         <%= link_to new_panel_member_path, remote: true, class: 'ui mini primary button' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
