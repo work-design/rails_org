@@ -33,7 +33,6 @@ module RailsOrg::MemberDepartment
   def sync_department_and_office
     if job_title
       self.department_root_id = job_title.department_id
-      self.office_id = job_title.office_id
       self.grade = job_title.grade
     end
   end

@@ -12,10 +12,15 @@ module RailsOrg::JobTitle
     has_many :member_departments
 
     after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
+    validate :valid_department
   end
 
   def sync_grade_member_departments
     member_departments.update_all(grade: self.grade)
+  end
+  
+  def valid_department
+    department.root?
   end
 
 end
