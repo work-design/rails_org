@@ -99,6 +99,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
       :title,
       :needed_number,
       :logo,
+      :office_id,
       :parent_id,
       :parent_ancestors
     )
