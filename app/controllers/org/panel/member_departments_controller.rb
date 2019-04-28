@@ -32,7 +32,9 @@ class Org::Panel::MemberDepartmentsController < Org::Panel::BaseController
     @member_department = @member.member_departments.build
     
     department = Department.find params[:department_id]
-    @offices = department.office || current_organ.offices
+    q = {}
+    q.merge! office_id: department.office_id if department.office
+    @offices = current_organ.offices.default_where(q)
     @job_titles = JobTitle.where(department_id: department.self_and_descendant_ids)
   end
   
@@ -40,7 +42,9 @@ class Org::Panel::MemberDepartmentsController < Org::Panel::BaseController
     @member_department = @member.member_departments.build
   
     department = Department.find params[:department_id]
-    @offices = department.office || current_organ.offices
+    q = {}
+    q.merge! office_id: department.office_id if department.office
+    @offices = current_organ.offices.default_where(q)
     @job_titles = JobTitle.where(department_id: department.self_and_descendant_ids)
     
     render 'options'
@@ -58,13 +62,13 @@ class Org::Panel::MemberDepartmentsController < Org::Panel::BaseController
     respond_to do |format|
       if @member_department.save
         format.html.phone
-        format.html { redirect_to panel_member_departments_url }
-        format.js { redirect_back fallback_location: panel_member_departments_url }
+        format.html { redirect_to panel_members_url }
+        format.js { redirect_back fallback_location: panel_members_url }
         format.json { render :show }
       else
         format.html.phone { render :edit }
         format.html { render :edit }
-        format.js { redirect_back fallback_location: panel_member_departments_url }
+        format.js { redirect_to panel_members_url }
         format.json { render :show }
       end
     end
