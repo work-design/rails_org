@@ -8,7 +8,7 @@
   <%= link_to 'New Job Description', new_panel_department_job_description_path(@department), class: 'ui teal button' %>
 </div>
 
-<table class="ui bottom attached table">
+<table class="ui bottom attached selectable table">
   <thead>
     <tr>
       <th><%= JobDescription.human_attribute_name(:duties) %></th>
