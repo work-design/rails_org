@@ -1,5 +1,5 @@
 <%= render 'shared/error_messages', target: @member_department %>
 <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'department' } %>
-<%= f.collection_select :office_id, Office.default_where(default_params), :id, :name, { prompt: true }, { data: { title: 'office_id' } } %>
+<%= f.collection_select :office_id, Office.default_where(default_params), :id, :name, { prompt: true, on: { wrapper_input_id: true } }, { data: { title: 'office_id' } } %>
 <%= f.collection_select :job_title_id, JobTitle.default_where(default_params), :id, :name, { on: { wrapper_input_id: true } }, { data: { title: 'job_title_id' } } %>
 <%= f.submit %>

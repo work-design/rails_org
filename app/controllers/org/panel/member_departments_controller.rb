@@ -28,6 +28,24 @@ class Org::Panel::MemberDepartmentsController < Org::Panel::BaseController
     end
   end
 
+  def options
+    @member_department = @member.member_departments.build
+    
+    department = Department.find params[:department_id]
+    @offices = department.office || current_organ.offices
+    @job_titles = JobTitle.where(department_id: department.self_and_descendant_ids)
+  end
+  
+  def member_options
+    @member_department = @member.member_departments.build
+  
+    department = Department.find params[:department_id]
+    @offices = department.office || current_organ.offices
+    @job_titles = JobTitle.where(department_id: department.self_and_descendant_ids)
+    
+    render 'options'
+  end
+
   def show
   end
 

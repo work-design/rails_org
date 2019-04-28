@@ -65,7 +65,10 @@ Rails.application.routes.draw do
         get :profile
         get :token
       end
-      resources :member_departments
+      resources :member_departments do
+        get :options, on: :collection
+        get 'options' => :member_options, on: :member
+      end
     end
     resources :supports do
       get :departments, on: :collection
