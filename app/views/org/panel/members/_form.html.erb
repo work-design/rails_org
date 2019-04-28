@@ -3,7 +3,7 @@
 <%= f.select :type, options_for_select(Member.options_i18n(:type), @member.type), { prompt: true } %>
 <%= f.fields :member_departments do |ef| %>
   <%= render partial: 'nodes/outer_select', locals: { f: ef, outer: 'department' } %>
-  <%= ef.collection_select :office_id, Office.default_where(default_params), :id, :name, { prompt: true } %>
+  <%= ef.collection_select :office_id, Office.default_where(default_params), :id, :name, { prompt: true }, { data: { title: 'office_id' } } %>
   <%= ef.select :job_title_id, options_for_select([[ef.object.job_title&.name, ef.object.job_title_id]], ef.object.job_title_id), { on: { wrapper_input_id: true } }, { data: { title: 'job_title_id' } } %>
 <% end %>
 <%= f.date_field :join_on %>

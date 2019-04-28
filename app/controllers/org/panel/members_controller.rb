@@ -4,7 +4,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   def index
     q_params = {
       enabled: true,
-      office_id: current_member.office_ids
+      'department_members.office_id': current_member.office_ids
     }
     q_params.merge! default_params
     q_params.merge! params.permit(:id, 'name-like', :enabled, :office_id, :department_ancestors)
