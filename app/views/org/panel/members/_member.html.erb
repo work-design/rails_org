@@ -24,20 +24,38 @@
     </p>
   </td>
   <td>
+    <table class="ui very basic table">
     <% member.member_departments.each do |md| %>
-      <div class="ui labels">
-        <span class="ui image label">
+      <tr class="blue">
+        <td>
           <%= link_to md.department.full_name, panel_department_path(md.department_id) %>
-        </span>
-        <% if md.office %>
-        <span class="ui label"><%= md.office.name %></span>
-        <% end %>
-        <span class="ui label"><%= md.job_title.name %></span>
-        <% if md.major %>
-        <i class="crosshairs icon"></i>
-        <% end %>
-      </div>
+        </td>
+        <td>
+          <%= md.office&.name %>
+        </td>
+        <td>
+          <%= md.job_title.name %>
+        </td>
+        <td>
+          <% if md.major %>
+            <i class="crosshairs icon"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to edit_panel_member_member_department_path(member, md), remote: true, class: 'ui mini circular icon button' do %>
+            <i class="fas fa-pencil-alt"></i>
+          <% end %>
+        </td>
+      </tr>
     <% end %>
+      <tr>
+        <td colspan="3">
+          <%= link_to new_panel_member_member_department_path(member), remote: true, class: 'ui mini circular icon button' do %>
+            <i class="fas fa-plus"></i>
+          <% end %>
+        </td>
+      </tr>
+    </table>
   </td>
   <td>
     <p><%= member.identity %></p>
