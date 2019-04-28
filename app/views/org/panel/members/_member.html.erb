@@ -24,9 +24,9 @@
     </p>
   </td>
   <td>
-    <table class="ui very basic table">
+    <table class="ui table">
     <% member.member_departments.each do |md| %>
-      <tr class="blue">
+      <tr>
         <td>
           <%= link_to md.department.full_name, panel_department_path(md.department_id) %>
         </td>
@@ -49,7 +49,7 @@
       </tr>
     <% end %>
       <tr>
-        <td colspan="3">
+        <td colspan="5">
           <%= link_to new_panel_member_member_department_path(member), remote: true, class: 'ui mini circular icon button' do %>
             <i class="fas fa-plus"></i>
           <% end %>
