@@ -23,3 +23,7 @@ zh:
       members:
         index:
           title: 我的组织
+    member:
+      departments:
+        index:
+          title: 我的部门

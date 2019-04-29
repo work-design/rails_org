@@ -2,7 +2,7 @@ class Org::Member::DepartmentsController < Org::Member::BaseController
 
   def index
     @departments = current_member.departments
-    @members = current_member.all_followers
+    @members = current_member.all_followers.page(params[:page])
   end
 
   def supports
