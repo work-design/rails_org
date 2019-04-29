@@ -30,7 +30,7 @@
         <td class="six wide">
           <%= link_to md.department.full_name, panel_department_path(md.department_id) %>
         </td>
-        <td class="three wide">
+        <td class="two wide">
           <%= md.office&.name %>
         </td>
         <td class="three wide">
@@ -41,9 +41,12 @@
             <i class="crosshairs icon"></i>
           <% end %>
         </td>
-        <td class="one wide">
-          <%= link_to edit_panel_member_member_department_path(member, md), remote: true, class: 'ui mini circular icon button' do %>
+        <td class="two wide">
+          <%= link_to edit_panel_member_member_department_path(member, md), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
             <i class="fas fa-pencil-alt"></i>
+          <% end %>
+          <%= link_to panel_member_member_department_path(member, md), method: :delete, data: { tooltip: t('.destroy') }, remote: true, class: 'ui mini circular icon button' do %>
+            <i class="fas fa-trash-alt"></i>
           <% end %>
         </td>
       </tr>

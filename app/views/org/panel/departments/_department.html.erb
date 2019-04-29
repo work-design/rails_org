@@ -4,11 +4,7 @@
     <% if !node.leaf? %>
       <i class="fas fa-caret-down fa-fw grey link icon"></i>
     <% else %>
-      <% if node.logo.present? %>
-        <%= image_tag node.logo, class: 'ui avatar image' %>
-      <% else %>
-        <i class="fas fa-minus-circle fa-fw grey icon"></i>
-      <% end %>
+      <i class="fas fa-minus-circle fa-fw grey icon"></i>
     <% end %>
     <%= link_to panel_department_path(node) do %>
       <span><%= node.name %></span>

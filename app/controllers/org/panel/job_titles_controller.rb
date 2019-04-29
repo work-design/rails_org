@@ -51,8 +51,8 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
     respond_to do |format|
       if @job_title.save
         format.html.phone
-        format.html { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
-        format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id, office_id: @job_title.office_id) }
+        format.html { redirect_to panel_department_job_titles_url(@job_title.department_id) }
+        format.js { redirect_to panel_department_job_titles_url(@job_title.department_id) }
         format.json { render :show }
       else
         format.html.phone { render :edit }

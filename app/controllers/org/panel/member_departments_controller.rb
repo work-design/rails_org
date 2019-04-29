@@ -76,7 +76,7 @@ class Org::Panel::MemberDepartmentsController < Org::Panel::BaseController
 
   def destroy
     @member_department.destroy
-    redirect_to panel_member_departments_url
+    redirect_to panel_members_url
   end
 
   private

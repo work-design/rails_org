@@ -5,7 +5,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
   def index
     q_params = default_params
     q_params.merge! params.permit(:type, :name)
-    @departments = Department.roots.default_where(q_params).includes(:children, :leader).page(params[:page])
+    @departments = Department.roots.default_where(q_params).includes(:children, :leader).order(name: :asc).page(params[:page])
   end
 
   def supports

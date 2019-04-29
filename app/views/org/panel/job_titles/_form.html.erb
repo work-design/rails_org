@@ -1,5 +1,6 @@
 <%= form_with model: [:panel, @department, @job_title] do |f| %>
   <%= render 'shared/error_messages', target: @job_title %>
   <%= f.text_field :name %>
+  <%= f.number_field :grade %>
   <%= f.submit %>
 <% end %>
