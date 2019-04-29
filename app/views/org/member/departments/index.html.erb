@@ -1,46 +1,54 @@
-<div class="ui top attached borderless menu">
-  <div class="header item">My Departments</div>
+<%= content_for :breadcrumb do %>
+  <div class="ui basic segment breadcrumb">
+    <%= link_to t('org.panel.departments.index.title'), panel_departments_path, class: 'section' %>
+    <i class="fas fa-angle-right divider"></i>
+    <% @department.ancestors.reverse.each do |ancestor| %>
+      <% if controller_path == 'org/panel/departments' %>
+        <%= link_to ancestor.name, { id: ancestor.id }, { class: 'section' } %>
+      <% else %>
+        <%= link_to ancestor.name, { department_id: ancestor.id }, { class: 'section' } %>
+      <% end %>
+      <i class="fas fa-angle-right divider"></i>
+    <% end %>
+    <div class="section"><%= @department.name %></div>
+  </div>
+<% end %>
+
+<div class="ui top attached segment">
+  <%= render 'search_form' %>
 </div>
 
-<table class="ui bottom attached selectable table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Needed / Actual</th>
-      <th>People</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
+<div class="ui bottom attached segment grid">
+  <div class="thirteen wide column">
+    <table class="ui bottom attached selectable table">
+      <thead>
+      <tr>
+        <th><%= Member.human_attribute_name(:id) %></th>
+        <th><%= Member.human_attribute_name(:name) %></th>
+        <th><%= Member.human_attribute_name(:job_titles) %></th>
+        <th><%= Member.human_attribute_name(:office) %></th>
+        <th><%= Member.human_attribute_name(:join_on) %></th>
+        <th>
+          <%= link_to new_panel_member_path, remote: true, class: 'ui mini primary button' do %>
+            <i class="fas fa-plus"></i><%= t('.new') %>
+          <% end %>
+        </th>
+      </tr>
+      </thead>
+    
+      <tbody>
+      <% @members.each do |member| %>
+        <%= render partial: 'member', locals: { member: member } %>
+      <% end %>
+      </tbody>
+    </table>
+  
+    <%= paginate @members %>
+  </div>
+  <div class="three wide column">
+    <%= render 'nav_show' %>
+  </div>
+</div>
 
-  <tbody>
-    <tr>
-      <td colspan="<%= @department.col_span %>">
-        <%= link_to panel_department_path(@department) do %>
-          <span><%= @department.name %></span>
-          <span class="grey text">(<%= @department.all_members_count %>)</span>
-        <% end %>
-      </td>
-      <td>
-        <%= @department.needed_number %> /
-        <span class="<%= active_asserts('red': @department.needed_number.to_i > @department.members_count, 'grey': @department.needed_number.to_i == @department.members_count, 'green': @department.needed_number.to_i < @department.members_count) %> text">
-          <%= @department.members_count %>
-        </span>
-      </td>
-      <td class="ui labels">
-        <% @department.members.where(enabled: true).each do |member| %>
-          <span class="ui label"><%= member.name %></span>
-        <% end %>
-      </td>
-      <td class="ui labels">
-        <%#= link_to 'JD', panel_department_job_descriptions_path(@department), class: 'ui blue label' %>
-        <%= link_to 'Supports', panel_supports_path(department_id: @department.id), class: 'ui yellow label' %>
-        <%= link_to 'Need', need_panel_department_path(@department), class: 'ui pink label' %>
-      </td>
-    </tr>
-    <%= draw_tree(@department, partial: 'department') %>
-  </tbody>
-</table>
-
-<%= paginate @departments %>
 
 

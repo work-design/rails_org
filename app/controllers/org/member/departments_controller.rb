@@ -2,7 +2,7 @@ class Org::Member::DepartmentsController < Org::Member::BaseController
 
   def index
     @departments = current_member.departments
-    @members = current_user.
+    @members = current_member.all_followers
   end
 
   def supports
