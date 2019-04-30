@@ -11,6 +11,9 @@ zh:
       offices:
         index:
           title: 区域
+      organs:
+        show:
+          title: 我的组织
       rooms:
         index:
           title: 教室
