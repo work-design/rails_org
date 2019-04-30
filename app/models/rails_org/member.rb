@@ -1,11 +1,6 @@
 module RailsOrg::Member
   extend ActiveSupport::Concern
   included do
-    include RailsRole::User
-    include RailsTrade::Buyer
-    include RailsTrade::User
-    include RailsNotice::Receiver
-
     has_taxons :department
 
     attribute :experience, :string
