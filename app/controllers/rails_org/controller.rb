@@ -1,4 +1,4 @@
-module RailsOrgController
+module RailsOrg::Controller
   extend ActiveSupport::Concern
   included do
     before_action :require_organ
