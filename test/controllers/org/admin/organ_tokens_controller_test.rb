@@ -17,7 +17,7 @@ class Org::Admin::OrganGrantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create org_panel_organ_grant" do
     assert_difference('OrganGrant.count') do
-      post panel_organ_grants_url, params: { org_panel_organ_grant: { expired_at: @org_panel_organ_grant.expired_at, member: @org_panel_organ_grant.member, token: @org_panel_organ_grant.token, user: @org_panel_organ_grant.user } }
+      post panel_organ_grants_url, params: { org_panel_organ_grant: { expire_at: @org_panel_organ_grant.expire_at, member: @org_panel_organ_grant.member, token: @org_panel_organ_grant.token, user: @org_panel_organ_grant.user } }
     end
 
     assert_redirected_to org_panel_organ_grant_url(OrganGrant.last)
@@ -34,7 +34,7 @@ class Org::Admin::OrganGrantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update org_panel_organ_grant" do
-    patch panel_organ_grant_url(@org_panel_organ_grant), params: { org_panel_organ_grant: { expired_at: @org_panel_organ_grant.expired_at, member: @org_panel_organ_grant.member, token: @org_panel_organ_grant.token, user: @org_panel_organ_grant.user } }
+    patch panel_organ_grant_url(@org_panel_organ_grant), params: { org_panel_organ_grant: { expire_at: @org_panel_organ_grant.expire_at, member: @org_panel_organ_grant.member, token: @org_panel_organ_grant.token, user: @org_panel_organ_grant.user } }
     assert_redirected_to org_panel_organ_grant_url(@org_panel_organ_grant)
   end
 

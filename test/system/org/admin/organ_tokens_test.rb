@@ -14,7 +14,7 @@ class OrganGrantsTest < ApplicationSystemTestCase
     visit org_panel_organ_grants_url
     click_on "New Organ Token"
 
-    fill_in "Expired at", with: @org_panel_organ_grant.expired_at
+    fill_in "Expired at", with: @org_panel_organ_grant.expire_at
     fill_in "Member", with: @org_panel_organ_grant.member
     fill_in "Token", with: @org_panel_organ_grant.token
     fill_in "User", with: @org_panel_organ_grant.user
@@ -28,7 +28,7 @@ class OrganGrantsTest < ApplicationSystemTestCase
     visit org_panel_organ_grants_url
     click_on "Edit", match: :first
 
-    fill_in "Expired at", with: @org_panel_organ_grant.expired_at
+    fill_in "Expired at", with: @org_panel_organ_grant.expire_at
     fill_in "Member", with: @org_panel_organ_grant.member
     fill_in "Token", with: @org_panel_organ_grant.token
     fill_in "User", with: @org_panel_organ_grant.user

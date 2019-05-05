@@ -15,7 +15,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :member
       t.references :user
       t.string :token, null: false
-      t.datetime :expired_at
+      t.datetime :expire_at
       t.timestamps
     end
 
