@@ -2,7 +2,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   before_action :set_organ, only: [:show, :edit, :update, :mock, :destroy]
 
   def index
-    @organs = Organ.page(params[:page])
+    @organs = Organ.order(id: :desc).page(params[:page])
   end
 
   def new
@@ -60,6 +60,8 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
     params.fetch(:organ, {}).permit(
       :name,
       :organ_uuid,
+      :limit_office,
+      :limit_wechat,
       :logo
     )
   end

@@ -5,6 +5,8 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     create_table :organs do |t|
       t.string :name
       t.string :organ_uuid
+      t.integer :limit_wechat
+      t.integer :limit_office
       t.timestamps
     end
 

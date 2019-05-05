@@ -49,6 +49,10 @@ zh:
         address: 地址
         timezone: 时区
         locale: 语言
+      organ:
+        organ_uuid: 机构编码
+        limit_wechat: 允许微信数
+        limit_office: 允许分支机构数
       room:
         room_number: 房间号
         color: 颜色

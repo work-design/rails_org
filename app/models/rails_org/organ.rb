@@ -1,6 +1,8 @@
 module RailsOrg::Organ
   extend ActiveSupport::Concern
   included do
+    attribute :limit_office, :integer, default: 1
+    
     has_many :departments, dependent: :destroy
     has_many :offices, dependent: :destroy
     has_many :rooms, through: :offices
