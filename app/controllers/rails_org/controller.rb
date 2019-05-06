@@ -19,7 +19,7 @@ module RailsOrg::Controller
   def current_organ
     return @current_organ if defined?(@current_organ)
     organ_token = request.headers['Organ-Token'].presence || session[:organ_token]
-    token = OrganGrant.find_by(token: organ_token)
+    token = ::OrganGrant.find_by(token: organ_token)
     @current_organ = token.organ if token
   end
 
