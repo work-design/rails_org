@@ -4,11 +4,10 @@ module RailsOrg::Department
     prepend RailsTaxon::Node
     
     belongs_to :office, optional: true
+    
     has_many :job_descriptions
-    has_many :members, dependent: :nullify
-
     has_many :job_titles
-    has_many :member_departments
+    has_many :member_departments, dependent: :delete_all
     has_many :leaders, through: :member_departments, source: :member
     has_one :member_department, -> { order(grade: :desc) }
     has_one :leader, through: :member_department, source: :member
