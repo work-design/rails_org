@@ -1,31 +1,30 @@
 module RailsOrg::Department
   extend ActiveSupport::Concern
   included do
-    prepend RailsTaxon::Node
-    
     belongs_to :office, optional: true
     
     has_many :job_descriptions
     has_many :job_titles
     has_many :member_departments, dependent: :delete_all
-    has_many :leaders, through: :member_departments, source: :member
+    has_many :members, through: :member_departments, source: :member
+    has_many :offices, -> { distinct }, through: :member_departments
+    
     has_one :member_department, -> { order(grade: :desc) }
     has_one :leader, through: :member_department, source: :member
-
-    has_many :offices, -> { distinct }, through: :members
     
     has_one_attached :logo
     
     validates :name, presence: true
+    after_save_commit :sync_descendant_tree, if: -> { saved_change_member_departments_count? }
+  end
+  
+  def all_members
+    ids = MemberDepartment.default_where(department_id: self.self_and_descendant_ids).pluck(:member_id)
+    Member.where(id: ids)
   end
 
   def col_span
     self.class.max_depth - self.depth
-  end
-
-  # todo cache in db
-  def all_members_count
-    self.self_and_descendants.sum(:members_count)
   end
 
   def names
@@ -41,6 +40,12 @@ module RailsOrg::Department
     results = Support.where(department_id: self.self_and_ancestor_ids).group_by { |i| i.kind }
     @supports = results.map do |_, records|
       records.sort_by! { |i| self.self_and_ancestor_ids.index(i.department_id) }.first
+    end
+  end
+
+  def sync_descendant_tree
+    self.self_and_ancestors.each do |depart|
+      depart.update(all_member_departments_count: depart.self_and_descendants.sum(:member_departments_count))
     end
   end
   

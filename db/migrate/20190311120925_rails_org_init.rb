@@ -53,7 +53,8 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :parent
       t.references :office
       t.string :name
-      t.integer :members_count, default: 0
+      t.integer :member_departments_count, default: 0
+      t.integer :all_member_departments_count, default: 0
       t.integer :needed_number
       t.string :collective_email
       t.timestamps
@@ -69,10 +70,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
 
     create_table :members do |t|
       t.references :user
-      t.references :department
-      t.references :office
       t.references :organ
-      t.references :job_title
       t.string :type
       t.string :name
       t.string :identity
@@ -81,7 +79,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.boolean :enabled, default: true
       t.string :state
       t.string :organ_token
-      t.integer :grade, default: 0
       t.timestamps
     end
 
@@ -118,6 +115,8 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :office
       t.integer :grade
       t.boolean :major
+      t.integer :department_descendant_ids, array: true
+      t.integer :department_ancestor_ids, array: true
       t.timestamps
     end
 

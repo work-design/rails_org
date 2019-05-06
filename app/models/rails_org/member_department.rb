@@ -7,13 +7,17 @@ module RailsOrg::MemberDepartment
     
     belongs_to :member
     belongs_to :job_title
-    belongs_to :department, optional: true
+    belongs_to :department, counter_cache: true, optional: true
     belongs_to :office, optional: true
     has_many :direct_followers, ->(o){ default_where('grade-lt': o.grade) }, class_name: self.name, foreign_key: :department_id, primary_key: :department_id
-    has_many :all_followers, ->(o){ default_where('grade-lt': o.grade) }, class_name: self.name, foreign_key: :department_id, primary_key: :department_descendant_ids
-
+    has_many :proxy_all_followers, class_name: self.name, foreign_key: :department_id, primary_key: :department_descendant_ids
+    
     before_save :sync_department_and_office, if: -> { job_title_id_changed? }
     before_save :sync_department_tree, if: -> { department_id_changed? }
+  end
+  
+  def all_followers
+    proxy_all_followers.default_where('grade-lt': self.grade)
   end
   
   def set_major

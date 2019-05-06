@@ -2,12 +2,12 @@
   <% @department.self_and_siblings.each do |sibling| %>
   <div class="item">
     <%= link_to panel_department_path(sibling), class: active_helper(id: sibling.id, active_class: 'header', item_class: '') do %>
-      <span><%= sibling.name %></span><span class="grey text">(<%= sibling.all_members_count %>)</span>
+      <span><%= sibling.name %></span><span class="grey text">(<%= sibling.all_member_departments_count %>)</span>
     <% end %>
     <div class="<%= active_assert((sibling.child_ids + [sibling.id]).include?(@department.id), expected: 'menu', unexpected: 'menu') %>">
       <% sibling.children.each do |child| %>
         <%= link_to panel_department_path(child), class: active_helper(id: child.id) do %>
-          <span><%= child.name %></span><span class="grey text">(<%= child.all_members_count %>)</span>
+          <span><%= child.name %></span><span class="grey text">(<%= child.all_member_departments_count %>)</span>
         <% end %>
       <% end %>
     </div>

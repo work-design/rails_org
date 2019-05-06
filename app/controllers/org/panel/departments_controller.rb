@@ -38,12 +38,16 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
   end
 
   def show
+    q_params = {
+      enabled: true
+    }
+    q_params.merge! params.permit(:enabled)
     if @department.leaf? && !@department.root?
       @department_parent = @department.parent
     else
       @department_parent = @department
     end
-    @members = Member.where(department_id: @department.self_and_descendant_ids, enabled: true).page(params[:page])
+    @members = @department.all_members.default_where(q_params).page(params[:page])
   end
 
   def new
