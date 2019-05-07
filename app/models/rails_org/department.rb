@@ -15,7 +15,7 @@ module RailsOrg::Department
     has_one_attached :logo
     
     validates :name, presence: true
-    after_save_commit :sync_descendant_tree, if: -> { saved_change_member_departments_count? }
+    after_save_commit :sync_descendant_tree, if: -> { saved_change_to_member_departments_count? }
   end
   
   def all_members

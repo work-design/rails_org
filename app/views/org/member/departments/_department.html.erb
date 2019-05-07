@@ -6,13 +6,13 @@
     <i class="grey caret right icon"></i>
     <%= link_to panel_department_path(child) do %>
       <span><%= child.name %></span>
-      <span class="grey text">(<%= child.all_members_count %>)</span>
+      <span class="grey text">(<%= child.all_member_departments_count %>)</span>
     <% end %>
   </td>
   <td>
     <%= child.needed_member %> /
-    <span class="<%= active_asserts('red': child.needed_member.to_i > child.members_count, 'grey': child.needed_member.to_i == child.members_count, 'green': child.needed_member.to_i < child.members_count) %> text">
-      <%= child.members_count %>
+    <span class="<%= active_asserts('red': child.needed_member.to_i > child.member_departments_count, 'grey': child.needed_member.to_i == child.member_departments_count, 'green': child.needed_member.to_i < child.member_departments_count) %> text">
+      <%= child.member_departments_count %>
     </span>
   </td>
   <td class="ui labels">

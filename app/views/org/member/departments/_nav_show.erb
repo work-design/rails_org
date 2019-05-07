@@ -2,12 +2,12 @@
   <% @departments.each do |department| %>
   <div class="item">
     <%= link_to my_department_path(department), class: active_helper(id: department.id, active_class: 'header', item_class: '') do %>
-      <span><%= department.name %></span><span class="grey text">(<%= department.all_members_count %>)</span>
+      <span><%= department.name %></span><span class="grey text">(<%= department.all_member_departments_count %>)</span>
     <% end %>
     <div class="<%= active_assert((department.child_ids + [department.id]).include?(params[:department_id]), expected: 'menu', unexpected: 'menu') %>">
       <% department.children.each do |child| %>
         <%= link_to my_department_path(child), class: active_helper(id: child.id) do %>
-          <span><%= child.name %></span><span class="grey text">(<%= child.all_members_count %>)</span>
+          <span><%= child.name %></span><span class="grey text">(<%= child.all_member_departments_count %>)</span>
         <% end %>
       <% end %>
     </div>
