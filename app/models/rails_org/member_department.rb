@@ -5,8 +5,8 @@ module RailsOrg::MemberDepartment
     attribute :department_descendant_ids, :integer, array: true
     
     belongs_to :member
-    belongs_to :job_title
     belongs_to :department, counter_cache: true
+    belongs_to :job_title, optional: true
     belongs_to :office, optional: true
     
     before_save :sync_department_and_office
@@ -39,7 +39,7 @@ module RailsOrg::MemberDepartment
   end
 
   def sync_department_members_count
-    self.class.transaction do 
+    self.class.transaction do
       Department.increment_counter :all_member_departments_count, department.self_and_ancestor_ids
       if department_id_before_last_save
         depart = Department.find(department_id_before_last_save)

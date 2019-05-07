@@ -2,9 +2,6 @@
   <div class="fields">
     <%= f.text_field :'name-like' %>
     <%= f.text_field :identity %>
-    <div class="two wide field" id="q_department_wrapper_0">
-      <%= f.collection_select "department_ancestors(0i)", Department.roots, :id, :name, { prompt: true, on: { wrapper_input: false }}, {data: {id: 0, title: 'department_ancestors'}} %>
-    </div>
     <%= f.submit %>
     <%= link_to t('.clear'), filter_params(except: [:'name-like', :identity]), class: 'ui button' %>
   </div>
@@ -18,7 +15,6 @@
     <%= link_to t('.disabled'), filter_params(enabled: 0), class: active_params(enabled: 0, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
   </dd>
 </dl>
-
 <dl>
   <dt><%= Member.human_attribute_name(:office_id) %>:</dt>
   <dd>
