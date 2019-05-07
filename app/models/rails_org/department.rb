@@ -15,7 +15,6 @@ module RailsOrg::Department
     has_one_attached :logo
     
     validates :name, presence: true, uniqueness: { scope: :organ_id }
-    after_save_commit :sync_descendant_tree, if: -> { saved_change_to_member_departments_count? }
   end
   
   def all_members
@@ -42,11 +41,9 @@ module RailsOrg::Department
       records.sort_by! { |i| self.self_and_ancestor_ids.index(i.department_id) }.first
     end
   end
-
-  def sync_descendant_tree
-    self.self_and_ancestors.each do |depart|
-      depart.update(all_member_departments_count: depart.self_and_descendants.sum(:member_departments_count))
-    end
+  
+  def reset_all_member_departments_count
+    update(all_member_departments_count: self_and_descendants.sum(:member_departments_count))
   end
   
   class_methods do

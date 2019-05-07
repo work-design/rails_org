@@ -116,7 +116,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.integer :grade
       t.boolean :major
       t.integer :department_descendant_ids, array: true
-      t.integer :department_ancestor_ids, array: true
+      t.integer :department_ancestors, array: true
       t.timestamps
     end
 
