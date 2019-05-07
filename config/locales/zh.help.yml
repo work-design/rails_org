@@ -1,0 +1,6 @@
+zh:
+  activerecord:
+    help:
+      department:
+        job_titles: 职级越高，标号越大，高职级有权限查看低职级者数据
+        name: 部门名称

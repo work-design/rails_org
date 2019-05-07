@@ -10,7 +10,6 @@ zh:
           title: 部门
           show: 职员列表
           job_title: 职级设置
-          job_title_help: 职级越高，标号越大，高职级有权限查看低职级者数据
       offices:
         index:
           title: 区域

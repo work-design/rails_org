@@ -14,7 +14,7 @@
       <th><%= Department.human_attribute_name(:office_id) %></th>
       <th>
         <%= Department.human_attribute_name(:job_titles) %>
-        <span data-tooltip="<%= t('.job_title_help') %>"><i class="grey question circle icon"></i></span>
+        <span data-tooltip="<%= Department.help_i18n(:job_titles) %>"><i class="grey question circle icon"></i></span>
       </th>
       <th><%= Department.human_attribute_name(:leader) %></th>
       <th>
