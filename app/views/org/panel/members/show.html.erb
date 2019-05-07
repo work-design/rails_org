@@ -30,7 +30,7 @@
     <td><%= @member.identity %></td>
   </tr>
   <tr>
-    <td class="right aligned"><%= Profile.human_attribute_name(:department) %></td>
+    <td class="right aligned"><%= Member.human_attribute_name(:department) %></td>
     <td>
       <% @member.department&.self_and_ancestors&.reverse_each do |department| %>
         <%= link_to department.name, panel_department_path(department) %>
@@ -39,15 +39,15 @@
     </td>
   </tr>
   <tr>
-    <td class="right aligned"><%= Profile.human_attribute_name(:office) %></td>
+    <td class="right aligned"><%= Member.human_attribute_name(:office) %></td>
     <td><%= @member.office&.name %></td>
   </tr>
   <tr>
-    <td class="right aligned"><%= Profile.human_attribute_name(:join_on) %></td>
+    <td class="right aligned"><%= Member.human_attribute_name(:join_on) %></td>
     <td><%= @member.join_on %></td>
   </tr>
   <tr>
-    <td class="right aligned"><%= Profile.human_attribute_name(:tutorials) %></td>
+    <td class="right aligned"><%= Member.human_attribute_name(:tutorials) %></td>
     <td>
       <table class="ui very basic table">
         <% @member.tutorials.each do |tutorial| %>

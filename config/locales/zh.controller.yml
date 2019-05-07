@@ -22,6 +22,8 @@ zh:
           title: 职员
           enabled: 可用
           disabled: 禁用
+        show:
+          title: 职员信息
     my:
       members:
         index:
