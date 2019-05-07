@@ -1,27 +1,15 @@
 <tr>
-  <td>
-    <%= member.id %>
-  </td>
-  <td><%= member.type_i18n %></td>
+  <td><%= member.id %></td>
   <td>
     <p>
-    <% if member.user && member.user.avatar.attached? %>
-      <%= link_to admin_user_path(member.user_id) do %>
-        <%= image_tag member.user.avatar.variant(resize: '35x35'), class: 'ui avatar image' %>
+      <% if member.user && member.user.avatar.attached? %>
+        <%= link_to admin_user_path(member.user_id) do %>
+          <%= image_tag member.user.avatar.variant(resize: '35x35'), class: 'ui avatar image' %>
+        <% end %>
       <% end %>
-    <% end %>
-    <%= link_to member.name, panel_member_path(member) %>
-    <% if member.enabled %>
-      <i class="fas fa-check green icon"></i>
-    <% else %>
-      <i class="fas fa-times red icon"></i>
-    <% end %>
+      <%= link_to member.name, panel_member_path(member) %>
     </p>
-    <p class="ui labels">
-      <% member.roles.pluck(:name).each do |role| %>
-        <span class="ui green label"><%= role %></span>
-      <% end %>
-    </p>
+    <p><span class="ui label"><%= member.type_i18n %></span></p>
   </td>
   <td class="error selectable">
     <table class="ui table">
@@ -60,10 +48,23 @@
       </tr>
     </table>
   </td>
-  <td>
-    <p><%= member.identity %></p>
-  </td>
+  <td><%= member.identity %></td>
   <td><%= member.join_on %></td>
+  <td>
+    <div class="ui labels">
+      <% member.roles.pluck(:name).each do |role| %>
+        <span class="ui label"><%= role %></span>
+      <% end %>
+    </div>
+    <%= link_to edit_admin_who_roles_path('Member', member.id), remote: true do %>
+      <i class="fas fa-user-shield"></i>
+    <% end %>
+  </td>
+  <td>
+    <div class="ui toggle checkbox">
+      <%= check_box_tag '[member]enabled', nil, member.enabled, data: { method: :patch, remote: true, url: panel_member_path(member), submit: true }, id: nil %>
+    </div>
+  </td>
   <td>
     <% if member.resume.attached? %>
       <%= link_to member.resume.filename, rails_blob_path(member.resume), target: '_blank' %>
