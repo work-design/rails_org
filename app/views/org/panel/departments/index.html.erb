@@ -12,6 +12,10 @@
         <%= Department.human_attribute_name(:members_count) %>
       </th>
       <th><%= Department.human_attribute_name(:office_id) %></th>
+      <th>
+        <%= Department.human_attribute_name(:job_titles) %>
+        <span data-tooltip="<%= t('.job_title_help') %>"><i class="grey question circle icon"></i></span>
+      </th>
       <th><%= Department.human_attribute_name(:leader) %></th>
       <th>
         <%= link_to new_panel_department_path, remote: true, class: 'ui mini primary button' do %>

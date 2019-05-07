@@ -14,7 +14,7 @@ module RailsOrg::Department
     
     has_one_attached :logo
     
-    validates :name, presence: true
+    validates :name, presence: true, uniqueness: { scope: :organ_id }
     after_save_commit :sync_descendant_tree, if: -> { saved_change_to_member_departments_count? }
   end
   

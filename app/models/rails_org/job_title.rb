@@ -11,6 +11,8 @@ module RailsOrg::JobTitle
     belongs_to :department_root, class_name: 'Department'
     has_many :member_departments, dependent: :destroy
     
+    default_scope -> { order(grade: :desc) }
+    
     after_initialize if: :new_record? do
       self.department_root = self.department.root if self.department
     end

@@ -9,6 +9,7 @@ zh:
         needed_number: 岗位计划
         members_count: 现有人数
         office_id: 特定区域
+        job_titles: 部门可选职级
       job_title:
         grade: 级别
         department_id: 部门
