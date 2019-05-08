@@ -9,7 +9,6 @@
       <% end %>
       <%= link_to member.name, panel_member_path(member) %>
     </p>
-    <p><span class="ui label"><%= member.type_i18n %></span></p>
   </td>
   <td class="error selectable">
     <table class="ui table">
@@ -56,7 +55,7 @@
         <span class="ui label"><%= role %></span>
       <% end %>
     </div>
-    <%= link_to edit_admin_who_roles_path('Member', member.id), remote: true do %>
+    <%= link_to edit_admin_who_roles_path('Member', member.id), data: { tooltip: t('role.admin.who_roles.edit.title') }, remote: true do %>
       <i class="fas fa-user-shield"></i>
     <% end %>
   </td>

@@ -1,6 +1,5 @@
 <%= f.text_field :name %>
 <%= f.text_field :identity %>
-<%= f.select :type, options_for_select(Member.options_i18n(:type), @member.type), { prompt: true } %>
 <%= f.date_field :join_on %>
 <%= f.file_field :resume %>
 <%= f.check_box :enabled %>
