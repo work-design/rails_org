@@ -18,14 +18,26 @@ module RailsOrg::Controller
 
   def current_organ
     return @current_organ if defined?(@current_organ)
-    organ_token = request.headers['Organ-Token'].presence || session[:organ_token]
-    token = ::OrganGrant.find_by(token: organ_token)
-    @current_organ = token.organ if token
+    @current_organ, _ = login_from_organ_token
+    @current_organ
   end
 
   def current_member
     return @current_member if defined?(@current_member)
-    @current_member = current_user.members.find_by(organ_id: current_organ.id)
+    _, @current_member = login_from_organ_token
+    @current_member
+  end
+
+  def login_from_organ_token
+    organ_token = request.headers['Organ-Token'].presence || session[:organ_token]
+    organ_grant = ::OrganGrant.find_by(token: organ_token)
+    if organ_grant
+      @current_organ = organ_grant.organ
+      @current_member = organ_grant.member
+      [@current_organ, @current_member]
+    else
+      [nil, nil]
+    end
   end
 
   def other_organs
