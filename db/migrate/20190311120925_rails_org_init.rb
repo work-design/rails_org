@@ -102,6 +102,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :department
       t.references :department_root
       t.string :name
+      t.string :description
       t.integer :grade
       t.integer :limit_number
       t.timestamps

@@ -1,8 +1,6 @@
 module RailsOrg::JobTitle
   extend ActiveSupport::Concern
   included do
-    acts_as_list column: :grade, scope: [:department_root_id], top_of_list: 0
-
     attribute :name, :string
     attribute :grade, :integer
     attribute :limit, :integer
