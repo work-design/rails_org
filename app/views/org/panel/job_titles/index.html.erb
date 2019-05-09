@@ -33,10 +33,16 @@
       <td><%= job_title.id %></td>
       <td>
         <%= job_title.grade %>
+        <%= link_to move_higher_panel_job_title_path(job_title), method: :patch do %>
+          <i class="arrow down icon"></i>
+        <% end %>
+        <%= link_to move_lower_panel_job_title_path(job_title), method: :patch do %>
+          <i class="arrow up icon"></i>
+        <% end %>
       </td>
       <td><%= job_title.name %></td>
       <td><%= job_title.description %></td>
-      <td><%= job_title.department.full_name %></td>
+      <td><%= job_title.department&.full_name %></td>
       <td class="ui labels">
         <%= link_to edit_panel_department_job_title_path(@department, job_title), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
           <i class="fas fa-pencil-alt"></i>

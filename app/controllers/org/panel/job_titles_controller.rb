@@ -1,13 +1,13 @@
 class Org::Panel::JobTitlesController < Org::Panel::BaseController
   before_action :set_department
-  before_action :set_job_title, only: [:show, :edit, :update, :destroy]
+  before_action :set_job_title, only: [:show, :edit, :update, :move_higher, :move_lower, :destroy]
 
   def index
     q_params = {
-      department_root_id: @department.root.id
+      department_root_id: [@department.root.id, nil]
     }
     q_params.merge! params.permit(:name)
-    @job_titles = JobTitle.default_where(q_params).order(grade: :desc).page(params[:page])
+    @job_titles = JobTitle.default_where(q_params).page(params[:page])
   end
 
   def search
@@ -61,6 +61,16 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
         format.json { render :show }
       end
     end
+  end
+
+  def move_higher
+    @job_title.move_higher
+    redirect_to panel_department_job_titles_url(@department)
+  end
+
+  def move_lower
+    @job_title.move_lower
+    redirect_to panel_department_job_titles_url(@department)
   end
 
   def destroy

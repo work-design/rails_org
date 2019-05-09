@@ -14,11 +14,11 @@ module RailsOrg::MemberDepartment
   end
   
   def direct_followers
-    self.class.default_where(department_id: department_id, 'grade-lt': self.grade)
+    self.class.default_where(department_id: department_id, 'grade-gt': self.grade)
   end
   
   def all_followers
-    self.class.default_where(department_id: department.self_and_descendant_ids, 'grade-lt': self.grade)
+    self.class.default_where(department_id: [nil, department.self_and_descendant_ids], 'grade-gt': self.grade)
   end
   
   def set_major
