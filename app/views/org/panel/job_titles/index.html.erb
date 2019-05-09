@@ -16,11 +16,12 @@
   <thead>
     <tr>
       <th><%= JobTitle.human_attribute_name(:id) %></th>
-      <th><%= JobTitle.human_attribute_name(:department_id) %></th>
       <th><%= JobTitle.human_attribute_name(:grade) %></th>
       <th><%= JobTitle.human_attribute_name(:name) %></th>
+      <th><%= JobTitle.human_attribute_name(:description) %></th>
+      <th><%= JobTitle.human_attribute_name(:department_id) %></th>
       <th>
-        <%= link_to new_panel_department_job_title_path(params.permit(:department_id)), class: 'ui mini primary button', remote: true do %>
+        <%= link_to new_panel_department_job_title_path(@department), class: 'ui mini primary button', remote: true do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
@@ -30,17 +31,12 @@
   <% @job_titles.each do |job_title| %>
     <tr>
       <td><%= job_title.id %></td>
-      <td><%= job_title.department.full_name %></td>
       <td>
         <%= job_title.grade %>
-        <%= link_to move_higher_panel_job_title_path(job_title), method: :patch do %>
-          <i class="arrow down icon"></i>
-        <% end %>
-        <%= link_to move_lower_panel_job_title_path(job_title), method: :patch do %>
-          <i class="arrow up icon"></i>
-        <% end %>
       </td>
       <td><%= job_title.name %></td>
+      <td><%= job_title.description %></td>
+      <td><%= job_title.department.full_name %></td>
       <td class="ui labels">
         <%= link_to edit_panel_department_job_title_path(@department, job_title), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
           <i class="fas fa-pencil-alt"></i>

@@ -1,6 +1,6 @@
 class Org::Panel::JobTitlesController < Org::Panel::BaseController
   before_action :set_department
-  before_action :set_job_title, only: [:show, :edit, :update, :move_higher, :move_lower, :destroy]
+  before_action :set_job_title, only: [:show, :edit, :update, :destroy]
 
   def index
     q_params = {
@@ -61,16 +61,6 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
         format.json { render :show }
       end
     end
-  end
-
-  def move_higher
-    @job_title.move_higher
-    redirect_to panel_department_job_titles_url(@department)
-  end
-
-  def move_lower
-    @job_title.move_lower
-    redirect_to panel_department_job_titles_url(@department)
   end
 
   def destroy

@@ -46,13 +46,6 @@ Rails.application.routes.draw do
       resources :job_descriptions
       resources :job_titles
     end
-    resources :job_titles, only: [] do
-      get :search, on: :collection
-      member do
-        patch :move_lower
-        patch :move_higher
-      end
-    end
     resources :members do
       collection do
         get :departments

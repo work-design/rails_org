@@ -1,9 +1,10 @@
 module RailsOrg::JobTitle
   extend ActiveSupport::Concern
   included do
-    attribute :name, :string
     attribute :grade, :integer
-    attribute :limit, :integer
+    attribute :name, :string
+    attribute :description, :string
+    attribute :limit_number, :integer
 
     belongs_to :department
     belongs_to :department_root, class_name: 'Department'
