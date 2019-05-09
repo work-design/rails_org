@@ -14,6 +14,9 @@
       <th><%= Department.human_attribute_name(:office_id) %></th>
       <th>
         <%= Department.human_attribute_name(:job_titles) %>
+        <%= link_to panel_job_titles_path, data: { tooltip: '不限部门职级' } do %>
+          <i class="fas fa-cog"></i>
+        <% end %>
       </th>
       <th><%= Department.human_attribute_name(:leader) %></th>
       <th>

@@ -3,11 +3,11 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
   before_action :set_job_title, only: [:show, :edit, :update, :move_higher, :move_lower, :destroy]
 
   def index
-    q_params = {}
+    q_params = { department_root_id: nil }
     q_params.merge! default_params
     q_params.merge! department_root_id: [@department.root&.id, nil] if @department
     q_params.merge! params.permit(:name)
-    @job_titles = JobTitle.default_where(q_params).page(params[:page])
+    @job_titles = JobTitle.default_where(q_params, department_root_id: { allow: nil }).page(params[:page])
   end
 
   def new

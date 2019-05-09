@@ -24,9 +24,13 @@ module RailsOrg::JobTitle
     if self.department
       self.department_root = self.department.root
       top = self.class.where(organ_id: department.organ_id, department_root_id: self.department_root.id).unscope(:order).order(grade: :desc).first
+      unless top
+        top = self.class.where(organ_id: self.organ_id, department_id: nil).unscope(:order).order(grade: :desc).first
+      end
     else
       top = self.class.where(organ_id: self.organ_id, department_id: nil).unscope(:order).order(grade: :desc).first
     end
+
     self.grade = top ? top.grade + 1 : 0
   end
   
