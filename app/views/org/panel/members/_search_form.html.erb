@@ -10,7 +10,6 @@
 <dl>
   <dt><%= Member.human_attribute_name(:enabled) %>:</dt>
   <dd>
-    <%= link_to t('.all'), filter_params(except: [:enabled]), class: active_params(enabled: '', active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
     <%= link_to t('.enabled'), filter_params(enabled: 1), class: active_params(enabled: 1, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
     <%= link_to t('.disabled'), filter_params(enabled: 0), class: active_params(enabled: 0, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
   </dd>

@@ -29,7 +29,7 @@
         <th><%= Member.human_attribute_name(:office) %></th>
         <th><%= Member.human_attribute_name(:join_on) %></th>
         <th>
-          <%= link_to new_panel_member_path, remote: true, class: 'ui mini primary button' do %>
+          <%= link_to new_panel_member_path(department_id: @department.id), remote: true, class: 'ui mini primary button' do %>
             <i class="fas fa-plus"></i><%= t('.new') %>
           <% end %>
         </th>

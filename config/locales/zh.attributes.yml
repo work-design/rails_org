@@ -29,7 +29,7 @@ zh:
         next_on_time: Next work shift (on)
         next_off_time: Next work shift (off)
         experience: Profile
-        identity: 账号
+        identity: 手机号或邮箱
         parent: 上级
         enabled: 状态
         office: 区域
@@ -39,6 +39,7 @@ zh:
         member_departments: 部门
         resume: 简历
         role_ids: 权限
+        job_titles: 职级
       member_department:
         office_id: 区域
         department: 部门

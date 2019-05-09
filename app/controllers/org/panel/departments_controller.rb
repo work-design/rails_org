@@ -42,11 +42,6 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
       enabled: true
     }
     q_params.merge! params.permit(:enabled)
-    if @department.leaf? && !@department.root?
-      @department_parent = @department.parent
-    else
-      @department_parent = @department
-    end
     @members = @department.all_members.default_where(q_params).page(params[:page])
   end
 

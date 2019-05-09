@@ -11,7 +11,7 @@
     <%= member.name %>
   </td>
   <td>
-  
+    <%= member.job_titles.where(department_root_id: @department.root.id).pluck(:name).join(',') %>
   </td>
   <td><%= member.name %></td>
   <td><%= member.join_on %></td>
