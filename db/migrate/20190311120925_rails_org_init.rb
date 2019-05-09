@@ -99,6 +99,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     end
 
     create_table :job_titles do |t|
+      t.references :organ
       t.references :department
       t.references :department_root
       t.string :name

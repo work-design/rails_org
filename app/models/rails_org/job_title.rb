@@ -12,23 +12,30 @@ module RailsOrg::JobTitle
     
     default_scope -> { order(grade: :asc) }
     
-    before_validation do
-      self.department_root = self.department&.root
-    end
+    after_initialize :init_grade_and_department_root, if: :new_record?
     after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
-    acts_as_list column: :grade, scope: [:department_root_id], top_of_list: self.top_of_list
   end
   
   def sync_grade_member_departments
     member_departments.update_all(grade: self.grade)
   end
   
-  class_methods do
-    
-    def top_of_list
-      self.where(department_id: nil).order(grade: :asc).first.grade + 1
+  def init_grade_and_department_root
+    if self.department
+      self.department_root = self.department.root
+      top = self.class.where(organ_id: department.organ_id, department_root_id: self.department_root.id).unscope(:order).order(grade: :desc).first
+    else
+      top = self.class.where(organ_id: self.organ_id, department_id: nil).unscope(:order).order(grade: :desc).first
     end
-    
+    self.grade = top ? top.grade + 1 : 0
   end
-
+  
+  def move_higher
+  
+  end
+  
+  def move_lower
+  
+  end
+  
 end

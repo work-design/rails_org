@@ -44,9 +44,8 @@ Rails.application.routes.draw do
       end
       get :need, on: :member
       resources :job_descriptions
-      resources :job_titles
     end
-    resources :job_titles, only: [] do
+    resources :job_titles do
       member do
         patch :move_lower
         patch :move_higher

@@ -3,37 +3,31 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
   before_action :set_job_title, only: [:show, :edit, :update, :move_higher, :move_lower, :destroy]
 
   def index
-    q_params = {
-      department_root_id: [@department.root.id, nil]
-    }
+    q_params = {}
+    q_params.merge! default_params
+    q_params.merge! department_root_id: [@department.root&.id, nil] if @department
     q_params.merge! params.permit(:name)
     @job_titles = JobTitle.default_where(q_params).page(params[:page])
   end
 
-  def search
-    q_params = {
-      department_id: @department.self_and_descendant_ids
-    }
-    @job_titles = JobTitle.default_where(q_params)
-  end
-
   def new
-    @job_title = @department.job_titles.build
+    p = { department_id: params[:department_id] }.merge! default_params
+    @job_title = JobTitle.new(p)
   end
 
   def create
-    @job_title = @department.job_titles.build(job_title_params)
+    @job_title = JobTitle.new(job_title_params)
     
     respond_to do |format|
       if @job_title.save
         format.html.phone
-        format.html { redirect_to panel_department_job_titles_url(@department) }
-        format.js { redirect_to panel_department_job_titles_url(@department) }
+        format.html { redirect_to panel_job_titles_url(department_id: @department) }
+        format.js { redirect_to panel_job_titles_url(department_id: @department) }
         format.json { render :show }
       else
         format.html.phone { render :new }
         format.html { render :new }
-        format.js { redirect_to panel_department_job_titles_url(@department), status: :unprocessable_entity }
+        format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id), status: :unprocessable_entity }
         format.json { render :show }
       end
     end
@@ -51,13 +45,13 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
     respond_to do |format|
       if @job_title.save
         format.html.phone
-        format.html { redirect_to panel_department_job_titles_url(@job_title.department_id) }
-        format.js { redirect_to panel_department_job_titles_url(@job_title.department_id) }
+        format.html { redirect_to panel_job_titles_url(department_id: @job_title.department_id) }
+        format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id) }
         format.json { render :show }
       else
         format.html.phone { render :edit }
         format.html { render :edit }
-        format.js { redirect_to panel_department_job_titles_url(@job_title.department_id) }
+        format.js { redirect_to panel_job_titles_url(department_id: @job_title.department_id) }
         format.json { render :show }
       end
     end
@@ -65,37 +59,40 @@ class Org::Panel::JobTitlesController < Org::Panel::BaseController
 
   def move_higher
     @job_title.move_higher
-    redirect_to panel_department_job_titles_url(@department)
+    redirect_to panel_job_titles_url(department_id: @job_title.department_id)
   end
 
   def move_lower
     @job_title.move_lower
-    redirect_to panel_department_job_titles_url(@department)
+    redirect_to panel_job_titles_url(department_id: @job_title.department_id)
   end
 
   def destroy
     @job_title.destroy
-    redirect_to panel_department_job_titles_url(@job_title.department_id)
+    redirect_to panel_job_titles_url(department_id: @job_title.department_id)
   end
 
   private
   def set_department
     if params[:department_id]
       @department = Department.find params[:department_id]
-    else
+    elsif params[:id]
       @department = JobTitle.find(params[:id]).department
     end
   end
 
   def set_job_title
-    @job_title = JobTitle.find(params[:id])
+    @job_title = JobTitle.where(department_root_id: @department&.root&.id).find(params[:id])
   end
 
   def job_title_params
-    params.fetch(:job_title, {}).permit(
+    p = params.fetch(:job_title, {}).permit(
       :name,
-      :grade
+      :description,
+      :grade,
+      :department_id
     )
+    p.merge! default_params
   end
 
 end

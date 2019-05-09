@@ -2,6 +2,7 @@ module RailsOrg::Department
   extend ActiveSupport::Concern
   included do
     attribute :needed_number, :integer, default: 1
+    
     belongs_to :office, optional: true
     
     has_many :job_descriptions
