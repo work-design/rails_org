@@ -50,9 +50,11 @@ module RailsOrg::Member
 
   def direct_follower_ids
     return @direct_follower_ids if defined?(@direct_follower_ids)
-    @direct_follower_ids = member_departments.map do |md|
+    direct_ids = member_departments.map do |md|
       md.direct_followers.pluck(:member_id)
-    end.flatten.uniq
+    end
+    direct_ids << self.id
+    @direct_follower_ids = direct_ids.flatten.uniq
   end
 
   def direct_followers
@@ -61,9 +63,11 @@ module RailsOrg::Member
 
   def all_follower_ids
     return @all_follower_ids if defined?(@all_follower_ids)
-    @all_follower_ids = member_departments.map do |md|
+    all_ids = member_departments.map do |md|
       md.all_followers.pluck(:member_id)
-    end.flatten.uniq
+    end
+    all_ids << self.id
+    @all_follower_ids = all_ids.flatten.uniq
   end
 
   def all_followers
