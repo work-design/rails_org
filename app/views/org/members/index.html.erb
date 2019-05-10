@@ -7,7 +7,7 @@
   <div class="card">
     <%= link_to member_path(member), class: 'image' do %>
       <% if member.user && member.user.avatar.attached? %>
-        <%= image_tag member.user.avatar.variant(resize: '150x150') %>
+        <%= image_tag member.user.avatar.variant(resize_to_limit: [150, 150]) %>
       <% else %>
         <%= image_tag 'default_avatar.jpg' %>
       <% end %>

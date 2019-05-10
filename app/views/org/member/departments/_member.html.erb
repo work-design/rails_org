@@ -5,7 +5,7 @@
   <td>
     <% if member.user && member.user.avatar.present? %>
       <%= link_to admin_user_path(member.user_id) do %>
-        <%= image_tag member.user.avatar.variant(resize: '35x35'), class: 'ui avatar image' %>
+        <%= image_tag member.user.avatar.variant(resize_to_limit: [35, 35]), class: 'ui avatar image' %>
       <% end %>
     <% end %>
     <%= member.name %>
