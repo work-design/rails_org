@@ -1,41 +1,41 @@
-<tr data-depth="<%= node.depth_str %>">
+<tr data-depth="<%= department.depth_str %>">
   <td>
-    <span style="width: <%= node.depth * 1.43 %>em; display: inline-block;"></span>
-    <% if !node.leaf? %>
+    <span style="width: <%= department.depth * 1.43 %>em; display: inline-block;"></span>
+    <% if !department.leaf? %>
       <i class="fas fa-caret-down fa-fw grey link icon"></i>
     <% else %>
-      <i class="fas fa-minus-circle fa-fw grey icon"></i>
+      <i class="fas fa-minus fa-fw grey icon"></i>
     <% end %>
-    <%= link_to panel_department_path(node) do %>
-      <span><%= node.name %></span>
-      <span class="grey text">(<%= node.all_member_departments_count %>)</span>
+    <%= link_to panel_department_path(department) do %>
+      <span><%= department.name %></span>
+      <span class="grey text">(<%= department.all_member_departments_count %>)</span>
     <% end %>
   </td>
   <td>
-    <%= node.needed_number %> /
-    <span class="<%= active_asserts('red': node.needed_number.to_i > node.member_departments_count, 'grey': node.needed_number.to_i == node.member_departments_count, 'green': node.needed_number.to_i < node.member_departments_count) %> text">
-      <%= node.member_departments_count %>
+    <%= department.needed_number %> /
+    <span class="<%= active_asserts('red': department.needed_number.to_i > department.member_departments_count, 'grey': department.needed_number.to_i == department.member_departments_count, 'green': department.needed_number.to_i < department.member_departments_count) %> text">
+      <%= department.member_departments_count %>
     </span>
   </td>
-  <td><%= node.office&.name %></td>
+  <td><%= department.office&.name %></td>
   <td class="ui labels">
-    <% node.job_titles.each do |job_title| %>
+    <% department.job_titles.each do |job_title| %>
       <div class="ui label" data-tooltip="<%= job_title.grade %>"><%= job_title.name %></div>
     <% end %>
-    <%= link_to panel_job_titles_path(department_id: node.id), data: { tooltip: t('.job_title') }, class: 'ui circular mini icon button' do %>
+    <%= link_to panel_job_titles_path(department_id: department.id), data: { tooltip: t('.job_title') }, class: 'ui circular mini icon button' do %>
       <i class="fas fa-user-tag"></i>
     <% end %>
   </td>
-  <td><%= node.leader&.name %></td>
+  <td><%= department.leader&.name %></td>
   <td>
-    <%= link_to panel_department_path(node), data: { tooltip: t('.show') }, class: 'ui circular mini icon button' do %>
+    <%= link_to panel_department_path(department), data: { tooltip: t('.show') }, class: 'ui circular mini icon button' do %>
       <i class="fas fa-users"></i>
     <% end %>
-    <%#= link_to 'JD', panel_department_job_descriptions_path(node), class: 'ui circular mini icon button' %>
-    <%= link_to edit_panel_department_path(node), data: { tooltip: t('.edit') }, class: 'ui circular mini icon button', remote: true do %>
+    <%#= link_to 'JD', panel_department_job_descriptions_path(department), class: 'ui circular mini icon button' %>
+    <%= link_to edit_panel_department_path(department), data: { tooltip: t('.edit') }, class: 'ui circular mini icon button', remote: true do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to panel_department_path(node), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui circular mini icon button' do %>
+    <%= link_to panel_department_path(department), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui circular mini icon button' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </td>

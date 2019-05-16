@@ -6,19 +6,19 @@ module RailsOrg::MemberDepartment
     
     belongs_to :member
     belongs_to :department, counter_cache: true
+    belongs_to :office
     belongs_to :job_title, optional: true
-    belongs_to :office, optional: true
     
     before_save :sync_department_and_office
     after_save_commit :sync_department_members_count, if: -> { saved_change_to_department_id? }
   end
   
   def direct_followers
-    self.class.default_where(department_id: department_id, 'grade-gt': self.grade)
+    self.class.default_where(department_id: department_id, office_id: office.self_and_descendant_ids, 'grade-gt': self.grade)
   end
   
   def all_followers
-    self.class.default_where(department_id: [nil, department.self_and_descendant_ids], 'grade-gt': self.grade)
+    self.class.default_where(department_id: [nil, department.self_and_descendant_ids], office_id: office.self_and_descendant_ids, 'grade-gt': self.grade)
   end
   
   def set_major

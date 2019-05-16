@@ -4,7 +4,7 @@ class Org::Panel::OfficesController < Org::Panel::BaseController
   def index
     q_params = default_params
     q_params.merge! params.permit(:name)
-    @offices = Office.default_where(q_params).page(params[:page])
+    @offices = Office.roots.default_where(q_params).page(params[:page])
   end
 
   def show

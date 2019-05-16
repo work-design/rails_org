@@ -6,9 +6,8 @@ module RailsOrg::Office
 
     attribute :name_short, :string
     belongs_to :area
-    has_many :rooms, dependent: :destroy
+    has_many :rooms, dependent: :delete_all
     has_many :supports, -> { where(department_id: nil) }, dependent: :destroy
-    has_many :members, dependent: :nullify
 
     has_many :member_job_titles
     has_many :leaders, through: :member_job_titles, source: :member

@@ -9,7 +9,6 @@
 <table class="ui bottom attached selectable table">
   <thead>
     <tr>
-      <th><%= Office.human_attribute_name(:id) %></th>
       <th>
         <%= Office.human_attribute_name(:name) %>(<%= Office.human_attribute_name(:name_short) %>)
       </th>
@@ -25,26 +24,8 @@
 
   <tbody>
   <% @offices.each do |office| %>
-    <tr>
-      <td><%= office.id %></td>
-      <td>
-        <%= office.name %>
-        <% if office.name_short %>
-        (<%= office.name_short %>)
-        <% end %>
-      </td>
-      <td><%= office.area.full_name %></td>
-      <td><%= office.address %></td>
-      <td>
-        <%= link_to Room.human_name, panel_office_rooms_path(office.id), class: 'ui mini circular button' %>
-        <%= link_to edit_panel_office_path(office), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
-          <i class="fas fa-pencil-alt"></i>
-        <% end %>
-        <%= link_to panel_office_path(office), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
+    <%= render partial: 'office', object: office %>
+    <%= draw_tree(partial: 'org/panel/offices/office', object: office) %>
   <% end %>
   </tbody>
 </table>
