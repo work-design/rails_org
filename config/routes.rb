@@ -87,6 +87,7 @@ Rails.application.routes.draw do
     resources :resign_reasons do
       get :parents, on: :collection
     end
+    resources :org_configs
   end
 
   scope :admin, module: 'org/admin', as: :admin do

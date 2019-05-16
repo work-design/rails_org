@@ -1,0 +1,9 @@
+<%= form_with model: [:panel, @org_config] do |f| %>
+  <%= render 'shared/error_messages', target: @org_config %>
+  <%= f.text_field :name %>
+  <%= f.text_field :description %>
+  <%= f.text_field :record_class %>
+  <%= f.text_field :record_column %>
+  <%= f.collection_select :job_title_id, JobTitle.default_where(default_params), :id, :name, { on: { wrapper_input_id: true } }, { data: { title: 'job_title_id' } } %>
+  <%= f.submit %>
+<% end %>

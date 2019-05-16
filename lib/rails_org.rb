@@ -1,3 +1,4 @@
 require_relative 'rails_org/version'
 require_relative 'rails_org/engine'
 require_relative 'rails_org/config'
+require_relative 'rails_org/default_form'

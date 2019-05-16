@@ -1,0 +1,32 @@
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="six wide">
+        <%= link_to t('.edit'), edit_panel_org_config_path(@org_config), class: 'ui mini blue right floated button', remote: true %>
+      </th>
+      <th class="ten wide"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= OrgConfig.human_attribute_name(:name) %></td>
+      <td><%= @org_config.name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= OrgConfig.human_attribute_name(:description) %></td>
+      <td><%= @org_config.description %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= OrgConfig.human_attribute_name(:record_class) %></td>
+      <td><%= @org_config.record_class %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= OrgConfig.human_attribute_name(:record_column) %></td>
+      <td><%= @org_config.record_column %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= OrgConfig.human_attribute_name(:job_title_id) %></td>
+      <td><%= @org_config.job_title_id %></td>
+    </tr>
+  </tbody>
+</table>

@@ -130,6 +130,16 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.string :code
       t.timestamps
     end
+    
+    create_table :org_configs do |t|
+      t.references :organ
+      t.references :job_title
+      t.string :name
+      t.string :description
+      t.string :record_class
+      t.string :record_column
+      t.timestamps
+    end
 
   end
 
