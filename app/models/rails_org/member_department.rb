@@ -6,7 +6,7 @@ module RailsOrg::MemberDepartment
     
     belongs_to :member
     belongs_to :department, counter_cache: true
-    belongs_to :office
+    belongs_to :office, optional: true
     belongs_to :job_title, optional: true
     
     before_save :sync_department_and_office
@@ -18,7 +18,7 @@ module RailsOrg::MemberDepartment
   end
   
   def all_followers
-    self.class.default_where(department_id: [nil, department.self_and_descendant_ids], office_id: office.self_and_descendant_ids, 'grade-gt': self.grade)
+    self.class.default_where(department_id: [department.self_and_descendant_ids], office_id: [nil, office.self_and_descendant_ids], 'grade-gt': self.grade)
   end
   
   def set_major

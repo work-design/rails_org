@@ -6,5 +6,9 @@ $('[data-title="node_ancestors"]').on('change', function(){
     Rails.ajax({url: search_url, type: 'GET', dataType: 'script'});
   }
 });
-$('#member_department_office_id').dropdown();
-$('#member_department_job_title_id').dropdown();
+$('#member_department_office_id').dropdown({
+  placeholder: false
+});
+$('#member_department_job_title_id').dropdown({
+  placeholder: false
+});
