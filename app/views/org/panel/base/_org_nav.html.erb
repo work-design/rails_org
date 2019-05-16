@@ -1,4 +1,4 @@
-<% if current_user.any_role?('org/panel/departments', 'org/panel/offices') %>
+<% if rails_role_user.any_role?('org/panel/departments', 'org/panel/offices') %>
 <div class="item">
   <a class="<%= active_helper(modules: 'org/panel', active_class: 'title active', item_class: 'title') %>">
     <i class="fas fa-sitemap"></i>

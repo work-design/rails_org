@@ -5,11 +5,8 @@ json.extract! member,
               :join_on,
               :identity,
               :number,
+              :organ_token,
               :created_at,
-              :updated_at
-if member.department
-  json.department member.department, :names, :full_name
-end
-if member.office
-  json.office member.office, :name, :area
+if member.organ
+  json.organ member.organ, :name, :organ_uuid
 end
