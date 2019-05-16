@@ -5,7 +5,6 @@
 <table class="ui bottom attached selectable table">
   <thead>
     <tr>
-      <th><%= OrgConfig.human_attribute_name(:id) %></th>
       <th><%= OrgConfig.human_attribute_name(:name) %></th>
       <th><%= OrgConfig.human_attribute_name(:description) %></th>
       <th><%= OrgConfig.human_attribute_name(:record_class) %></th>
@@ -21,7 +20,6 @@
   <tbody>
   <% @org_configs.each do |org_config| %>
     <tr>
-      <td><%= org_config.id %></td>
       <td><%= org_config.name %></td>
       <td><%= org_config.description %></td>
       <td><%= org_config.record_class %></td>
