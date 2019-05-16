@@ -18,7 +18,13 @@ module RailsOrg::MemberDepartment
   end
   
   def all_followers
-    self.class.default_where(department_id: [department.self_and_descendant_ids], office_id: [nil, office.self_and_descendant_ids], 'grade-gt': self.grade)
+    if office
+      office_ids = office.self_and_descendant_ids
+    else
+      office_ids = [nil]
+      office_ids += Office.where(organ_id: department.organ_id).pluck(:id)
+    end
+    self.class.default_where(department_id: [department.self_and_descendant_ids], office_id: office_ids, 'grade-gt': self.grade)
   end
   
   def set_major
