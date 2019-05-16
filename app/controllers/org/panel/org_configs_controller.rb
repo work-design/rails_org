@@ -2,7 +2,8 @@ class Org::Panel::OrgConfigsController < Org::Panel::BaseController
   before_action :set_org_config, only: [:show, :edit, :update, :destroy]
 
   def index
-    @org_configs = OrgConfig.page(params[:page])
+    q_params = default_params
+    @org_configs = OrgConfig.default_where(q_params).order(id: :asc).page(params[:page])
   end
 
   def new
@@ -67,7 +68,7 @@ class Org::Panel::OrgConfigsController < Org::Panel::BaseController
       :description,
       :record_class,
       :record_column,
-      :job_title_id
+      job_title_ids: []
     )
   end
 

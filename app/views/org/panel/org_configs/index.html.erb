@@ -26,15 +26,14 @@
       <td><%= org_config.description %></td>
       <td><%= org_config.record_class %></td>
       <td><%= org_config.record_column %></td>
-      <td>
-        <%= org_config.job_title.name %>
-        <%= link_to edit_panel_org_config_path(org_config), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
-          <i class="fas fa-pencil-alt"></i>
+      <td class="ui labels">
+        <% org_config.job_titles.each do |job_title| %>
+          <span class="ui label"><%= job_title.name %></span>
         <% end %>
       </td>
       <td>
-        <%= link_to panel_org_config_path(org_config), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
-          <i class="fas fa-trash-alt"></i>
+        <%= link_to edit_panel_org_config_path(org_config), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-pencil-alt"></i>
         <% end %>
       </td>
     </tr>

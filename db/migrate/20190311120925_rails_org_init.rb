@@ -133,7 +133,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     
     create_table :org_configs do |t|
       t.references :organ
-      t.references :job_title
+      t.integer :job_title_ids, array: true
       t.string :name
       t.string :description
       t.string :record_class

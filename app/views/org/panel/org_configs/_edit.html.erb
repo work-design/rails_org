@@ -7,7 +7,7 @@
   <div class="content">
     <%= form_with model: [:panel, @org_config] do |f| %>
       <%= render 'shared/error_messages', target: @org_config %>
-      <%= f.collection_select :job_title_id, JobTitle.default_where(default_params), :id, :name, { on: { wrapper_input_id: true } }, { data: { title: 'job_title_id' } } %>
+      <%= f.collection_select :job_title_ids, JobTitle.default_where(default_params), :id, :name, {}, { multiple: true } %>
       <%= f.submit %>
     <% end %>
   </div>
