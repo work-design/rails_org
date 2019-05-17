@@ -87,13 +87,16 @@ Rails.application.routes.draw do
     resources :resign_reasons do
       get :parents, on: :collection
     end
-    resources :org_configs
+    resources :organ_handles, only: [:index] do
+      resources :department_grants, only: [:new, :create, :destroy]
+    end
   end
 
   scope :admin, module: 'org/admin', as: :admin do
     resources :organs do
       patch :mock, on: :member
     end
+    resources :organ_handles
   end
 
 end

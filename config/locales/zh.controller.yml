@@ -16,7 +16,7 @@ zh:
       organs:
         show:
           title: 我的组织
-      org_configs:
+      organ_handles:
         index:
           title: 部门职能设置
       rooms:

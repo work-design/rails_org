@@ -131,13 +131,19 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.timestamps
     end
     
-    create_table :org_configs do |t|
-      t.references :organ
-      t.integer :job_title_ids, array: true
+    create_table :organ_handles do |t|
       t.string :name
       t.string :description
       t.string :record_class
       t.string :record_column
+      t.timestamps
+    end
+    
+    create_table :department_grants do |t|
+      t.references :organ
+      t.references :organ_handle
+      t.references :department
+      t.references :job_title
       t.timestamps
     end
 
