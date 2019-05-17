@@ -12,7 +12,7 @@ module RailsOrg::Controller
     if api_request?
       raise ActionController::UnauthorizedError, 'Organ not login'
     else
-      redirect_to root_url
+      redirect_to RailsOrg.config.default_return_path
     end
   end
 

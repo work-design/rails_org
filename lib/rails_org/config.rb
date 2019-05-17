@@ -9,6 +9,7 @@ module RailsOrg #:nodoc:
     config.panel_controller = 'PanelController'
     config.my_controller = 'MyController'
     config.member_controller = 'MemberController'
+    config.default_return_path = '/my/members'
   end
 
 end
