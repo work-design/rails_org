@@ -5,7 +5,7 @@ module RailsOrg::Room
 
     attribute :room_number, :string
 
-    belongs_to :office
+    belongs_to :organ
   end
 
   def name

@@ -1,30 +1,30 @@
 class Org::Panel::RoomsController < Org::Panel::BaseController
-  before_action :set_office
+  before_action :set_organ
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   def index
     q_params = {}
     q_params.merge! params.permit(:room_number)
-    @rooms = @office.rooms.default_where(q_params).page(params[:page])
+    @rooms = @organ.rooms.default_where(q_params).page(params[:page])
   end
 
   def new
-    @room = @office.rooms.build
+    @room = @organ.rooms.build
   end
 
   def create
-    @room = @office.rooms.build(room_params)
+    @room = @organ.rooms.build(room_params)
 
     respond_to do |format|
       if @room.save
         format.html.phone
-        format.html { redirect_to panel_office_rooms_url(@office) }
-        format.js { redirect_back fallback_location: panel_office_rooms_url(@office) }
+        format.html { redirect_to panel_organ_rooms_url(@organ) }
+        format.js { redirect_back fallback_location: panel_organ_rooms_url(@organ) }
         format.json { render :show }
       else
         format.html.phone { render :new }
         format.html { render :new }
-        format.js { redirect_back fallback_location: panel_office_rooms_url(@office) }
+        format.js { redirect_back fallback_location: panel_organ_rooms_url(@organ) }
         format.json { render :show }
       end
     end
@@ -42,13 +42,13 @@ class Org::Panel::RoomsController < Org::Panel::BaseController
     respond_to do |format|
       if @room.save
         format.html.phone
-        format.html { redirect_to panel_office_rooms_url(@office) }
-        format.js { redirect_back fallback_location: panel_office_rooms_url(@office) }
+        format.html { redirect_to panel_organ_rooms_url(@organ) }
+        format.js { redirect_back fallback_location: panel_organ_rooms_url(@organ) }
         format.json { render :show }
       else
         format.html.phone { render :edit }
         format.html { render :edit }
-        format.js { redirect_back fallback_location: panel_office_rooms_url(@office) }
+        format.js { redirect_back fallback_location: panel_organ_rooms_url(@organ) }
         format.json { render :show }
       end
     end
@@ -56,12 +56,12 @@ class Org::Panel::RoomsController < Org::Panel::BaseController
 
   def destroy
     @room.destroy
-    redirect_to panel_office_rooms_url(@office)
+    redirect_to panel_organ_rooms_url(@organ)
   end
 
   private
-  def set_office
-    @office = Office.find params[:office_id]
+  def set_organ
+    @organ = Organ.find params[:organ_id]
   end
 
   def set_room

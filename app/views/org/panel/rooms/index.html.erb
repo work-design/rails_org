@@ -2,7 +2,7 @@
 <div class="ui basic segment breadcrumb">
   <%= link_to t('org.panel.organs.index.title'), panel_organs_path, class: 'section' %>
   <i class="fas fa-angle-right divider"></i>
-  <div class="section"><%= @office.name %></div>
+  <div class="section"><%= @organ.name %></div>
   <i class="fas fa-angle-right divider"></i>
   <div class="active section"><%= t('org.panel.rooms.index.title') %></div>
 </div>
@@ -21,7 +21,7 @@
       <th><%= Room.human_attribute_name(:limit_number) %></th>
       <th><%= Room.human_attribute_name(:time_plans_count) %></th>
       <th>
-        <%= link_to new_panel_office_room_path(@office), class: 'ui mini primary button', remote: true do %>
+        <%= link_to new_panel_organ_room_path(@organ), class: 'ui mini primary button', remote: true do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
@@ -38,10 +38,10 @@
       <td><%= room.limit_number %></td>
       <td><%= room.time_plans_count %></td>
       <td>
-        <%= link_to edit_panel_office_room_path(@office, room), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
+        <%= link_to edit_panel_organ_room_path(@organ, room), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
-        <%= link_to panel_office_room_path(@office, room), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+        <%= link_to panel_organ_room_path(@organ, room), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>
