@@ -3,7 +3,11 @@
   <%= f.text_field :name %>
   <%= f.text_field :organ_uuid %>
   <%= f.file_field :logo %>
-  <%= render partial: 'nodes/children_select', locals: { f: f, node: @roots } %>
+  <% if @organ.parent_id %>
+    <%= f.hidden_field :parent_id %>
+  <% else %>
+    <%= render partial: 'nodes/children_select', locals: { f: f, node: @root } %>
+  <% end %>
   <%= f.text_field :name, required: true %>
   <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'area' } %>
   <%= f.text_field :name_short %>

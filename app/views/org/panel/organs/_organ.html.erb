@@ -1,24 +1,24 @@
-<tr data-depth="<%= office.depth_str %>">
+<tr data-depth="<%= organ.depth_str %>">
   <td>
-    <span style="width: <%= office.depth * 1.43 %>em; display: inline-block;"></span>
-    <% if !office.leaf? %>
+    <span style="width: <%= organ.depth * 1.43 %>em; display: inline-block;"></span>
+    <% if !organ.leaf? %>
       <i class="fas fa-caret-down fa-fw grey link icon"></i>
     <% else %>
       <i class="fas fa-minus fa-fw grey icon"></i>
     <% end %>
-    <%= office.name %>
-    <% if office.name_short %>
-      (<%= office.name_short %>)
+    <%= organ.name %>
+    <% if organ.name_short %>
+      (<%= organ.name_short %>)
     <% end %>
   </td>
-  <td><%= office.area.full_name %></td>
-  <td><%= office.address %></td>
+  <td><%= organ.area.full_name %></td>
+  <td><%= organ.address %></td>
   <td>
-    <%= link_to Room.human_name, panel_office_rooms_path(office.id), class: 'ui mini circular button' %>
-    <%= link_to edit_panel_office_path(office), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
+    <%= link_to Room.human_name, panel_organ_rooms_path(organ.id), class: 'ui mini circular button' %>
+    <%= link_to edit_panel_organ_path(organ), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to panel_office_path(office), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+    <%= link_to panel_organ_path(organ), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </td>

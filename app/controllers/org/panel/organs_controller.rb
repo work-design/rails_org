@@ -9,11 +9,12 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
   end
 
   def new
-    @organ = Organ.new
+    @organ = current_organ.children.build
+    @root = current_organ.children.build
   end
   
   def create
-    @organ = Organ.new(organ_params)
+    @organ = current_organ.children.build(organ_params)
   
     if @organ.save
       redirect_to panel_organs_url
@@ -48,6 +49,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
       :name,
       :organ_uuid,
       :logo,
+      :parent_id,
       :parent_ancestors,
       :area_ancestors
     )

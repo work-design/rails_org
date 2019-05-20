@@ -6,7 +6,7 @@
     <i class="dropdown icon"></i>
   </a>
   <div class="<%= active_helper(modules: 'org/panel', active_class: 'active menu content', item_class: 'menu content') %>">
-    <%= link_to t('org.panel.departments.index.title'), panel_organs_path, class: active_helper(controllers: ['organs']) %>
+    <%= link_to t('org.panel.organs.index.title'), panel_organs_path, class: active_helper(controllers: ['organs']) %>
     <%= link_to t('org.panel.departments.index.title'), panel_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions']) %>
     <%= link_to t('org.panel.members.index.title'), panel_members_path, class: active_helper(controllers: ['members']) %>
     <%# link_to 'Supports', panel_supports_path, class: active_helper(controllers: 'supports') %>

@@ -18,7 +18,7 @@
   <dt><%= Member.human_attribute_name(:office_id) %>:</dt>
   <dd>
     <%= link_to t('.all'), filter_params(except: [:office_id]), class: active_params(office_id: '', active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
-    <% Office.where(default_params).each do |office| %>
+    <% current_organ.children.each do |office| %>
       <%= link_to office.name, filter_params(office_id: office.id), class: active_params(office_id: office.id, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
     <% end %>
   </dd>

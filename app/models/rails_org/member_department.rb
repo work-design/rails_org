@@ -5,8 +5,8 @@ module RailsOrg::MemberDepartment
     attribute :department_descendant_ids, :integer, array: true
     
     belongs_to :member
+    belongs_to :organ
     belongs_to :department, counter_cache: true
-    belongs_to :office, optional: true
     belongs_to :job_title, optional: true
     
     before_save :sync_department_and_office
