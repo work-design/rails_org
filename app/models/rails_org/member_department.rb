@@ -9,6 +9,8 @@ module RailsOrg::MemberDepartment
     belongs_to :department, counter_cache: true
     belongs_to :job_title, optional: true
     
+    validates :department_id, uniqueness: { scope: [:member_id, :organ_id] }
+    
     before_save :sync_department_and_office
     after_save_commit :sync_department_members_count, if: -> { saved_change_to_department_id? }
   end

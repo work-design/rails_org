@@ -43,15 +43,15 @@ module RailsOrg::Controller
     current_user.organs.where.not(id: current_organ.id)
   end
 
-  def login_organ_as(member)
+  def login_organ_as(organ_token)
     unless api_request?
-      session[:organ_token] = member.organ_token
+      session[:organ_token] = organ_token.token
     end
 
-    logger.debug "Login as Organ #{member.organ_id}"
+    logger.debug "Login as Organ #{organ_token.organ_id}"
 
-    @current_member = member
-    @current_organ = member.organ
+    @current_member = organ_token.member
+    @current_organ = organ_token.organ
   end
 
   def set_organ_token

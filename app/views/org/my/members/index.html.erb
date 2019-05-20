@@ -7,14 +7,14 @@
         <span class="ui grey text"><%= member.name %></span>
         <span class="ui green text"><%= member.identity %></span>
       </div>
-      <div>
-        <%= member.organ.address %>
-      </div>
     </div>
     <div class="extra content">
-      <%= link_to member.organ.name, login_my_member_path(member), method: :patch, class: 'ui mini button' %>
-      <span><%= member.departments.map(&:full_name).join(', ') %></span>
-      <%= image_tag member.organ.logo.variant(resize_to_limit: [150, 150]), class: 'right floated mini ui image' %>
+      <% member.organs.each do |organ| %>
+        <div><%= organ.address %></div>
+        <%= link_to organ.name, login_my_member_path(member, organ_id: organ.id), method: :patch, class: 'ui mini button' %>
+        <span><%= member.departments.find_by(organ_id: organ.id)&.full_name %></span>
+        <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'right floated mini ui image' %>
+      <% end %>
     </div>
   </div>
   <% end %>

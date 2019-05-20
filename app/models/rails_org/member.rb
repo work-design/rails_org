@@ -82,11 +82,13 @@ module RailsOrg::Member
     organ_grant.token
   end
 
-  def refresh_organ_token
-    self.organ_grants.delete_all
-    create_organ_grant
-
-    organ_grant.token
+  def get_organ_token(organ_id)
+    grant = self.organ_grants.valid.find_by(organ_id: organ_id)
+    unless grant
+      self.organ_grants.where(organ_id: organ_id).delete_all
+      grant = organ_grants.create(organ_id: organ_id)
+    end
+    grant
   end
 
   def leading_members

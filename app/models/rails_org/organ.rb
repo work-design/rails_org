@@ -33,6 +33,13 @@ module RailsOrg::Organ
     grant.token
   end
 
+  def refresh_organ_token(member_id)
+    self.organ_grants.delete_all
+    create_organ_grant
+  
+    organ_grant.token
+  end
+
   def generate_token(**options)
     JwtHelper.generate_jwt_token(id, organ_uuid, options)
   end
