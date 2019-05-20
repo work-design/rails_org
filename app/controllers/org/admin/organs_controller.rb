@@ -2,7 +2,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   before_action :set_organ, only: [:show, :edit, :update, :mock, :destroy]
 
   def index
-    @organs = Organ.order(id: :desc).page(params[:page])
+    @organs = Organ.roots.order(id: :desc).page(params[:page])
   end
 
   def new

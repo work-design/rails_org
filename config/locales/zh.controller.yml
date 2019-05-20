@@ -13,10 +13,9 @@ zh:
       job_titles:
         index:
           title: 跨部门职级
-      offices:
+      organs:
         index:
           title: 区域
-      organs:
         show:
           title: 我的组织
       organ_handles:

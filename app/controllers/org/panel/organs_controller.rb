@@ -1,14 +1,25 @@
 class Org::Panel::OrgansController < Org::Panel::BaseController
   before_action :set_organ, only: [:show, :edit, :update, :destroy]
-
+  
+  def index
+    @organs = current_organ.children.page(params[:page])
+  end
+  
   def show
   end
 
-  def login
-    member = current_user.members.find_by(organ_id: params[:organ_id])
-    login_organ_as member
-
-    redirect_to panel_organ_url
+  def new
+    @organ = Organ.new
+  end
+  
+  def create
+    @organ = Organ.new(organ_params)
+  
+    if @organ.save
+      redirect_to panel_organs_url
+    else
+      render :new
+    end
   end
 
   def edit
@@ -36,7 +47,9 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
     params.fetch(:organ, {}).permit(
       :name,
       :organ_uuid,
-      :logo
+      :logo,
+      :parent_ancestors,
+      :area_ancestors
     )
   end
 

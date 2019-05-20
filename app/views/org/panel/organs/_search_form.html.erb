@@ -1,5 +1,5 @@
-<%= search_form_with model: Office.new(params.permit(:name)) do |f| %>
-<div class="fields">
+<%= search_form_with model: Organ.new(params.permit(:name)) do |f| %>
+  <div class="fields">
     <%= f.text_field :name %>
     <%= f.submit %>
     <%= link_to t('.clear'), filter_params(except: [:name]), class: 'ui button' %>
