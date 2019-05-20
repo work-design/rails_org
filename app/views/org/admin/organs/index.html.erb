@@ -8,7 +8,6 @@
       <th><%= Organ.human_attribute_name(:logo) %></th>
       <th><%= Organ.human_attribute_name(:name) %></th>
       <th><%= Organ.human_attribute_name(:organ_uuid) %></th>
-      <th><%= Organ.human_attribute_name(:limit_office) %></th>
       <th><%= Organ.human_attribute_name(:limit_wechat) %></th>
       <th>
         <%= link_to new_admin_organ_path, remote: true, class: 'ui mini primary button' do %>
@@ -24,7 +23,6 @@
       <td><%= image_tag organ.logo.variant(resize_to_limit: [30, 30]) if organ.logo.attached? %></td>
       <td><%= organ.name %></td>
       <td><%= organ.organ_uuid %></td>
-      <td><%= organ.limit_office %></td>
       <td><%= organ.limit_wechat %></td>
       <td class="ui labels">
         <%= link_to admin_organ_path(organ), data: { tooltip: t('.show') }, class: 'ui mini circular icon button', remote: true do %>

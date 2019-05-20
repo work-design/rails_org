@@ -7,16 +7,15 @@ module RailsOrg::Member
     attribute :attendance_number, :string
 
     belongs_to :user, optional: true
-    belongs_to :organ, optional: true
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
-    accepts_nested_attributes_for :organ, reject_if: :all_blank
     
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
-    has_many :offices, through: :member_departments
+    has_many :organs, through: :member_departments
     accepts_nested_attributes_for :member_departments
-
+    accepts_nested_attributes_for :organs
+    
     has_one :leading_office, class_name: 'Office', foreign_key: :leader_id
     has_one :leading_department, class_name: 'Department', foreign_key: :leader_id
     has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
@@ -116,10 +115,6 @@ module RailsOrg::Member
 
   def avatar_url
     avatar.service_url if avatar.attachment.present?
-  end
-
-  def endearing_name
-    name.split(/\s+/).first
   end
 
 end

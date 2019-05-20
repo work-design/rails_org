@@ -27,8 +27,8 @@ Rails.application.routes.draw do
   end
 
   scope :panel, module: 'org/panel', as: 'panel' do
-    resources :organs do
-      get :login
+    resource :organ, only: [:show]
+    resources :organs, except: [:show] do
       resources :rooms
     end
     resources :organ_grants

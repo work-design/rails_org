@@ -4,8 +4,8 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   def index
     q_params = {
       enabled: true,
-      'department_members.office_id': current_member&.office_ids
     }
+    q_params.merge! 'department_members.organ_id': current_member.organ_ids if current_member.organ_ids.present?
     q_params.merge! default_params
     q_params.merge! params.permit(:id, 'name-like', :enabled, :office_id, :department_ancestors)
     #department = Department.find_by id: Member.new(q_params).department_ancestors&.values.to_a.compact.last

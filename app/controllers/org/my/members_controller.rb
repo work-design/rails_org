@@ -43,7 +43,7 @@ class Org::My::MembersController < Org::My::BaseController
     login_organ_as @member
 
     respond_to do |format|
-      format.html { redirect_to panel_organ_url(@member.organ) }
+      format.html { redirect_to panel_organ_url }
       format.json { render json: { organ_grant: @member.organ_token } }
     end
   end
