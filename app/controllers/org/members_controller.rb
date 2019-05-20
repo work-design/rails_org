@@ -22,7 +22,6 @@ class Org::MembersController < ApplicationController
 
   def people
     @members = Member.where(enabled: true)
-    @test = 111
   end
 
   def journals

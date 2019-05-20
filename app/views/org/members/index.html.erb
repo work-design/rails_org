@@ -20,7 +20,7 @@
       </span>
     </div>
     <div class="extra content">
-      <span><%= member.department&.full_name %></span>
+      <span><%= member.departments.map(&:full_name).join(', ') %></span>
     </div>
   </div>
   <% end %>

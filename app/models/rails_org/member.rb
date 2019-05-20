@@ -6,13 +6,11 @@ module RailsOrg::Member
     attribute :experience, :string
     attribute :attendance_number, :string
 
+    belongs_to :user, optional: true
     belongs_to :organ, optional: true
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
-
-    belongs_to :user, optional: true
-    belongs_to :department, optional: true
-    belongs_to :office, optional: true
-
+    accepts_nested_attributes_for :organ, reject_if: :all_blank
+    
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments

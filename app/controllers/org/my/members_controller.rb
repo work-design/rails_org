@@ -2,7 +2,7 @@ class Org::My::MembersController < Org::My::BaseController
   before_action :set_member, only: [:show, :edit, :update, :login]
 
   def index
-    @members = current_user.members.includes(:organ, :department, :office)
+    @members = current_user.members.includes(:organ)
   end
 
   def show
@@ -40,13 +40,10 @@ class Org::My::MembersController < Org::My::BaseController
   end
 
   def login
-    #login_organ_as @member
+    login_organ_as @member
 
     respond_to do |format|
-      format.html {
-        session[:organ_token] = @member.organ_token
-        redirect_to panel_organ_url
-      }
+      format.html { redirect_to panel_organ_url }
       format.json { render json: { organ_grant: @member.organ_token } }
     end
   end

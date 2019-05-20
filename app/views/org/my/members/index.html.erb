@@ -8,12 +8,12 @@
         <span class="ui green text"><%= member.identity %></span>
       </div>
       <div>
-        <%= member.office&.address %>
+        <%= member.offices.first&.address %>
       </div>
     </div>
     <div class="extra content">
       <%= link_to member.organ.name, login_my_member_path(member), method: :patch, class: 'ui mini button' %>
-      <span><%= member.department&.full_name %></span>
+      <span><%= member.departments.map(&:full_name).join(', ') %></span>
       <%= image_tag member.organ.logo.variant(resize_to_limit: [150, 150]), class: 'right floated mini ui image' %>
     </div>
   </div>
