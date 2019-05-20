@@ -10,7 +10,6 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
 
   def new
     @organ = current_organ.children.build
-    @root = current_organ.children.build
   end
   
   def create

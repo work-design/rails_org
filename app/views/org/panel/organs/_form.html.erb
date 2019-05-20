@@ -3,10 +3,10 @@
   <%= f.text_field :name %>
   <%= f.text_field :organ_uuid %>
   <%= f.file_field :logo %>
-  <% if @organ.parent_id %>
+  <% if current_organ.children.blank? %>
     <%= f.hidden_field :parent_id %>
   <% else %>
-    <%= render partial: 'nodes/children_select', locals: { f: f, node: @root } %>
+    <%= render partial: 'nodes/children_select', locals: { f: f, node: current_organ } %>
   <% end %>
   <%= f.text_field :name, required: true %>
   <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'area' } %>
