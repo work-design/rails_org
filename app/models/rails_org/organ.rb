@@ -1,13 +1,18 @@
 module RailsOrg::Organ
   extend ActiveSupport::Concern
   included do
-    attribute :limit_office, :integer, default: 1
+    attribute :limit_wechat, :integer, default: 1
+    attribute :name_short, :string
+
+    has_taxons :area
+    belongs_to :area
     
+    has_many :supports, -> { where(department_id: nil) }, dependent: :destroy
     has_many :departments, dependent: :destroy
-    has_many :offices, dependent: :destroy
-    has_many :rooms, through: :offices
+    has_many :rooms, dependent: :delete_all
     has_many :members, dependent: :nullify
     has_many :organ_grants, dependent: :delete_all
+    
     has_one_attached :logo
 
     validates :name, presence: true

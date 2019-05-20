@@ -3,11 +3,24 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
   def change
 
     create_table :organs do |t|
+      t.references :area
+      t.references :parent
       t.string :name
       t.string :organ_uuid
       t.integer :limit_wechat
-      t.integer :limit_office
+      t.string :address
+      t.string :timezone
+      t.string :locale
+      t.integer :members_count, default: 0
       t.timestamps
+    end
+
+    create_table :organ_hierarchies, id: false do |t|
+      t.integer :ancestor_id, null: false
+      t.integer :descendant_id, null: false
+      t.integer :generations, null: false
+      t.index [:ancestor_id, :descendant_id, :generations], unique: true, name: 'organ_anc_desc_idx'
+      t.index [:descendant_id], name: 'organ_desc_idx'
     end
 
     create_table :organ_grants do |t|
@@ -18,29 +31,9 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.datetime :expire_at
       t.timestamps
     end
-
-    create_table :offices do |t|
-      t.references :organ
-      t.references :area
-      t.references :parent
-      t.string :name
-      t.string :address
-      t.string :timezone
-      t.string :locale
-      t.integer :members_count, default: 0
-      t.timestamps
-    end
-
-    create_table :office_hierarchies, id: false do |t|
-      t.integer :ancestor_id, null: false
-      t.integer :descendant_id, null: false
-      t.integer :generations, null: false
-      t.index [:ancestor_id, :descendant_id, :generations], unique: true, name: 'office_anc_desc_idx'
-      t.index [:descendant_id], name: 'office_desc_idx'
-    end
-
+    
     create_table :rooms do |t|
-      t.references :office
+      t.references :organ
       t.string :room_number
       t.integer :limit_number
       t.string :color
@@ -51,7 +44,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     create_table :departments do |t|
       t.references :organ
       t.references :parent
-      t.references :office
       t.string :name
       t.integer :member_departments_count, default: 0
       t.integer :all_member_departments_count, default: 0
@@ -114,7 +106,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :job_title
       t.references :department_root
       t.references :department
-      t.references :office
+      t.references :organ
       t.integer :grade
       t.boolean :major
       t.integer :department_descendant_ids, array: true

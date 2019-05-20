@@ -10,7 +10,7 @@ class Org::Panel::MembersController < Org::Panel::BaseController
     q_params.merge! params.permit(:id, 'name-like', :enabled, :office_id, :department_ancestors)
     #department = Department.find_by id: Member.new(q_params).department_ancestors&.values.to_a.compact.last
     #q_params.merge! department_id: department.self_and_descendant_ids if department
-    @members = Member.includes(:department, :office, :roles, user: { avatar_attachment: :blob }).default_where(q_params, {allow: nil}).order(id: :desc).page(params[:page])
+    @members = Member.includes(:roles, user: { avatar_attachment: :blob }).default_where(q_params, {allow: nil}).order(id: :desc).page(params[:page])
   end
 
   def leaders

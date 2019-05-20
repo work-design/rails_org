@@ -29,11 +29,9 @@ Rails.application.routes.draw do
   scope :panel, module: 'org/panel', as: 'panel' do
     resource :organ do
       get :login
-    end
-    resources :organ_grants
-    resources :offices do
       resources :rooms
     end
+    resources :organ_grants
     resources :departments do
       collection do
         get :supports
