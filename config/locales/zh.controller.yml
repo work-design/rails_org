@@ -10,6 +10,9 @@ zh:
           title: 部门
           show: 职员列表
           job_title: 职级设置
+      job_titles:
+        index:
+          title: 跨部门职级
       offices:
         index:
           title: 区域
