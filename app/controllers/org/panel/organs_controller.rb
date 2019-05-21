@@ -1,11 +1,12 @@
 class Org::Panel::OrgansController < Org::Panel::BaseController
-  before_action :set_organ, only: [:show, :edit, :update, :destroy]
+  before_action :set_organ, only: [:edit, :update, :mock, :destroy]
   
   def index
     @organs = current_organ.children.page(params[:page])
   end
   
   def show
+    @organ = current_organ
   end
 
   def new
@@ -33,6 +34,13 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
     end
   end
 
+  def mock
+    organ_token = @organ.refresh_organ_token(current_member.id)
+    login_organ_as(organ_token)
+    
+    redirect_to panel_organ_url
+  end
+
   def destroy
     @organ.destroy
     redirect_to panel_organ_url
@@ -40,7 +48,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
 
   private
   def set_organ
-    @organ = current_organ
+    @organ = Organ.find params[:id]
   end
 
   def organ_params

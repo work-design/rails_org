@@ -21,5 +21,8 @@
     <%= link_to panel_organ_path(organ), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
+    <%= link_to mock_panel_organ_path(organ), method: :patch, data: { tooltip: 'Mock' }, class: 'ui mini circular icon button' do %>
+      <i class="fas fa-hand-point-right"></i>
+    <% end %>
   </td>
 </tr>

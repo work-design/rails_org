@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   scope :panel, module: 'org/panel', as: 'panel' do
     resource :organ, only: [:show]
     resources :organs, except: [:show] do
+      patch :mock, on: :member
       resources :rooms
     end
     resources :organ_grants

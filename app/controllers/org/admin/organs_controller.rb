@@ -42,7 +42,9 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   end
 
   def mock
-    session[:organ_token] = @organ.get_organ_token(current_user.id)
+    organ_token = @organ.get_organ_token(current_user.id)
+    login_organ_as(organ_token)
+    
     redirect_to panel_organ_url
   end
 

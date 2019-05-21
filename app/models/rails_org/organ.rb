@@ -25,20 +25,20 @@ module RailsOrg::Organ
 
   def get_organ_token(user_id)
     grant = self.organ_grants.valid.find_by(user_id: user_id)
-    if grant
-      grant
-    else
+    unless grant
       self.organ_grants.where(user_id: user_id).delete_all
       grant = organ_grants.create(user_id: user_id)
     end
-    grant.token
+    grant
   end
 
   def refresh_organ_token(member_id)
-    self.organ_grants.delete_all
-    create_organ_grant
-  
-    organ_grant.token
+    grant = self.organ_grants.valid.find_by(member_id: member_id)
+    unless grant
+      self.organ_grants.where(member_id: member_id).delete_all
+      grant = organ_grants.create(member_id: member_id)
+    end
+    grant
   end
 
   def generate_token(**options)
