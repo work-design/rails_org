@@ -11,22 +11,16 @@ module RailsOrg::MemberDepartment
     
     validates :department_id, uniqueness: { scope: [:member_id, :organ_id] }
     
-    before_save :sync_department_and_office
+    before_save :sync_department_and_organ
     after_save_commit :sync_department_members_count, if: -> { saved_change_to_department_id? }
   end
   
   def direct_followers
-    self.class.default_where(department_id: department_id, office_id: office.self_and_descendant_ids, 'grade-gt': self.grade)
+    self.class.default_where(department_id: department_id, 'grade-gt': self.grade)
   end
   
   def all_followers
-    if office
-      office_ids = office.self_and_descendant_ids
-    else
-      office_ids = [nil]
-      office_ids += Office.where(organ_id: department.organ_id).pluck(:id)
-    end
-    self.class.default_where(department_id: [department.self_and_descendant_ids], office_id: office_ids, 'grade-gt': self.grade)
+    self.class.default_where(department_id: department.self_and_descendant_ids, organ_id: organ.self_and_descendant_ids, 'grade-gt': self.grade)
   end
   
   def set_major
@@ -36,7 +30,7 @@ module RailsOrg::MemberDepartment
     end
   end
 
-  def sync_department_and_office
+  def sync_department_and_organ
     if department && department_id_changed?
       self.department_descendant_ids = self.department.self_and_descendant_ids
     end

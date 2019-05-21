@@ -119,23 +119,18 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   end
 
   def member_params
-    q = params.fetch(:member, {}).permit(
+    params.fetch(:member, {}).permit(
       :name,
       :identity,
       :type,
       :office_id,
       :join_on,
       :enabled,
-      :intern_begin_on,
-      :probation_one_on,
-      :probation_two_on,
-      :formal_on,
-      :join_status,
+      :avatar,
       :resume,
       role_ids: [],
       member_departments_attributes: {}
     )
-    q.merge! default_params
   end
 
 end
