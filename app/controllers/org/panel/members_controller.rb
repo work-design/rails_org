@@ -35,9 +35,9 @@ class Org::Panel::MembersController < Org::Panel::BaseController
     if params[:department_id]
       @department = Department.find params[:department_id]
       @job_titles = JobTitle.where(department_id: @department.self_and_descendant_ids)
-      @member.member_departments.build(department_id: params[:department_id])
     end
-    
+    @member.member_departments.build(organ_id: current_organ.id)
+
     respond_to do |format|
       format.js
       format.html

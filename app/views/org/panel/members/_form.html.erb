@@ -1,10 +1,8 @@
 <%= f.text_field :name %>
-<% if params[:department_id] %>
-  <%= f.fields :member_departments do |ef| %>
-    <%= ef.hidden_field :department_id %>
-    <%= ef.collection_select :office_id, @offices, :id, :name, { prompt: true }, { data: { title: 'office_id' } } %>
-    <%= ef.collection_select :job_title_id, @job_titles, :id, :name, { on: { wrapper_input_id: true } }, { data: { title: 'job_title_id' } } %>
-  <% end %>
+<%= f.fields :member_departments do |ef| %>
+  <%= ef.hidden_field :department_id %>
+  <%= ef.collection_select :organ_id, current_organ.self_and_descendants, :id, :name, { prompt: true }, { data: { title: 'organ_id' } } %>
+  <%= ef.collection_select :job_title_id, @job_titles, :id, :name, { on: { wrapper_input_id: true } }, { data: { title: 'job_title_id' } } %>
 <% end %>
 <%= f.text_field :identity %>
 <%= f.date_field :join_on %>
