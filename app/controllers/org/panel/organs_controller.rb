@@ -9,11 +9,11 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
   end
 
   def new
-    @organ = current_organ.children.build
+    @organ = Organ.new
   end
   
   def create
-    @organ = current_organ.children.build(organ_params)
+    @organ = Organ.new(organ_params)
   
     if @organ.save
       redirect_to panel_organs_url

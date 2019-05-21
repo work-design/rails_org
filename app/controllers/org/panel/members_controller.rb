@@ -4,13 +4,12 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   def index
     q_params = {
       enabled: true,
+      'member_departments.organ_id': current_organ.self_and_descendant_ids
     }
-    q_params.merge! 'department_members.organ_id': current_member.organ_ids if current_member.organ_ids.present?
-    q_params.merge! default_params
-    q_params.merge! params.permit(:id, 'name-like', :enabled, :office_id, :department_ancestors)
+    q_params.merge! params.permit(:id, 'member_departments.organ_id', 'name-like', :enabled, :department_ancestors)
     #department = Department.find_by id: Member.new(q_params).department_ancestors&.values.to_a.compact.last
     #q_params.merge! department_id: department.self_and_descendant_ids if department
-    @members = Member.includes(:roles, user: { avatar_attachment: :blob }).default_where(q_params, {allow: nil}).order(id: :desc).page(params[:page])
+    @members = Member.includes(:roles, member_departments: [:job_title, :department, :organ]).default_where(q_params).order(id: :desc).page(params[:page])
   end
 
   def leaders
