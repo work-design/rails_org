@@ -10,10 +10,12 @@
     </div>
     <div class="extra content">
       <% member.organs.each do |organ| %>
-        <div><%= organ.address %></div>
-        <%= link_to organ.name, login_my_member_path(member, organ_id: organ.id), method: :patch, class: 'ui mini button' %>
-        <span><%= member.departments.find_by(organ_id: organ.id)&.full_name %></span>
-        <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'right floated mini ui image' %>
+        <p>
+          <span><%= organ.address %></span>
+          <%= link_to organ.name, login_my_member_path(member, organ_id: organ.id), method: :patch, class: 'ui mini button' %>
+          <span><%= member.departments.find_by(organ_id: organ.id)&.full_name %></span>
+          <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'right floated mini ui image' %>
+        </p>
       <% end %>
     </div>
   </div>
