@@ -55,13 +55,13 @@ module RailsOrg::Controller
   end
 
   def set_organ_token
-    return unless @current_organ && current_member
-    token = current_member.organ_token
+    return unless current_organ && current_member
+    organ_token = current_member.get_organ_token(current_organ.id)
 
     if api_request?
-      headers['Organ-Token'] = token
+      headers['Organ-Token'] = organ_token.token
     else
-      session[:organ_token] = token
+      session[:organ_token] = organ_token.token
     end
   end
 
