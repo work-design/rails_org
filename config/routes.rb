@@ -27,8 +27,8 @@ Rails.application.routes.draw do
   end
 
   scope :admin, module: 'org/admin', as: 'admin' do
-    resource :organs, only: [:show]
-    resources :organs, except: [:show] do
+    resources :organs do
+      get :current, on: :collection
       patch :mock, on: :member
       resources :rooms
     end
