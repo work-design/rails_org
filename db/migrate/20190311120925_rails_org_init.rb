@@ -62,7 +62,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
 
     create_table :members do |t|
       t.references :user
-      t.string :type
       t.string :name
       t.string :identity
       t.string :number

@@ -16,12 +16,9 @@ module RailsOrg::Member
     accepts_nested_attributes_for :member_departments
     accepts_nested_attributes_for :organs
     
-    has_one :leading_office, class_name: 'Office', foreign_key: :leader_id
-    has_one :leading_department, class_name: 'Department', foreign_key: :leader_id
     has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
-
-    has_one :organ_grant, ->(o){ valid.where(organ_id: o.organ_id) }, foreign_key: :member_id
-    has_many :organ_grants, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, dependent: :delete_all
+    
+    has_many :organ_grants, dependent: :delete_all
 
     has_one :resign
     has_one :profile, through: :user

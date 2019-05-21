@@ -1,4 +1,4 @@
 class Organ < ApplicationRecord
-  include RailsTaxon::Node
+  prepend RailsTaxon::Node
   include RailsOrg::Organ
 end unless defined? Organ

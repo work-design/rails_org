@@ -10,7 +10,8 @@ module RailsOrg::Organ
     has_many :supports, -> { where(department_id: nil) }, dependent: :destroy
     has_many :departments, dependent: :destroy
     has_many :rooms, dependent: :delete_all
-    has_many :members, dependent: :nullify
+    has_many :member_departments, dependent: :destroy
+    has_many :members, through: :member_departments
     has_many :organ_grants, dependent: :delete_all
     
     has_one_attached :logo

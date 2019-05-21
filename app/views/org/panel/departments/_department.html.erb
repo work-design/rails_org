@@ -17,7 +17,6 @@
       <%= department.member_departments_count %>
     </span>
   </td>
-  <td><%= department.office&.name %></td>
   <td class="ui labels">
     <% department.job_titles.each do |job_title| %>
       <div class="ui label" data-tooltip="<%= job_title.grade %>"><%= job_title.name %></div>

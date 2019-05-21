@@ -11,7 +11,6 @@
         <span class="grey text">/</span>
         <%= Department.human_attribute_name(:members_count) %>
       </th>
-      <th><%= Department.human_attribute_name(:office_id) %></th>
       <th>
         <%= Department.human_attribute_name(:job_titles) %>
         <%= link_to panel_job_titles_path, data: { tooltip: '不限部门职级' } do %>

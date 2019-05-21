@@ -8,7 +8,6 @@ zh:
         leader: 负责人
         needed_number: 岗位计划
         members_count: 现有人数
-        office_id: 特定区域
         job_titles: 部门可选职级
       job_title:
         grade: 级别
@@ -32,9 +31,6 @@ zh:
         identity: 手机号或邮箱
         parent: 上级
         enabled: 状态
-        office: 区域
-        office_id: 区域
-        department: 部门
         name: 姓名
         member_departments: 部门
         resume: 简历
@@ -44,16 +40,13 @@ zh:
         office_id: 区域
         department: 部门
         job_title_id: 职级
-      office:
+      organ:
         name: 名称
         name_short: 简称
-        area: 地区
+        area_id: 地区
         address: 地址
         timezone: 时区
         locale: 语言
-      org_config:
-        job_title_ids: 职能
-      organ:
         organ_uuid: 机构编码
         limit_wechat: 允许微信数
         limit_office: 允许分支机构数

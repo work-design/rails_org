@@ -3,13 +3,13 @@ module RailsOrg::Department
   included do
     attribute :needed_number, :integer, default: 1
     
-    belongs_to :office, optional: true
+    belongs_to :organ, optional: true
     
     has_many :job_descriptions
     has_many :job_titles
     has_many :member_departments, dependent: :delete_all
     has_many :members, through: :member_departments, source: :member
-    has_many :offices, -> { distinct }, through: :member_departments
+    has_many :organs, -> { distinct }, through: :member_departments
     
     has_one :member_department, -> { order(grade: :desc) }
     has_one :leader, through: :member_department, source: :member
