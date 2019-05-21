@@ -32,10 +32,12 @@ class Org::Panel::MembersController < Org::Panel::BaseController
   def new
     @member = Member.new
     
+    q_params = { organ_id: current_organ.id }
     if params[:department_id]
-      @department = Department.find params[:department_id]
-      @job_titles = JobTitle.where(department_id: @department.self_and_descendant_ids)
+      department = Department.find params[:department_id]
+      q_params.merge! department_id: department.self_and_descendant_ids
     end
+    @job_titles = JobTitle.default_where(q_params)
     @member.member_departments.build(organ_id: current_organ.id)
 
     respond_to do |format|
