@@ -34,9 +34,6 @@ class Org::Panel::MembersController < Org::Panel::BaseController
     
     if params[:department_id]
       @department = Department.find params[:department_id]
-      q = {}
-      q.merge! office_id: @department.office_id if @department.office
-      @offices = current_organ.offices.default_where(q)
       @job_titles = JobTitle.where(department_id: @department.self_and_descendant_ids)
       @member.member_departments.build(department_id: params[:department_id])
     end

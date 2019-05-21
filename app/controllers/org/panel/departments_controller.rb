@@ -46,7 +46,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
   end
 
   def new
-    @roots = current_organ.departments.roots
+    @root = current_organ.departments.root
     @department = current_organ.departments.build
   end
 
@@ -71,6 +71,7 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
   end
 
   def edit
+    @root = current_organ.departments.root
   end
 
   def need
@@ -88,7 +89,6 @@ class Org::Panel::DepartmentsController < Org::Panel::BaseController
   end
   
   def prepare_form
-    @offices = current_organ.offices
   end
 
   def department_params
