@@ -70,7 +70,11 @@ module RailsOrg::Controller
   end
 
   def default_params
-    { organ_id: current_organ.id }.with_indifferent_access
+    if current_organ
+      { organ_id: current_organ.id }
+    else
+      super
+    end
   end
 
 end
