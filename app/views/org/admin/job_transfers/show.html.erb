@@ -1,0 +1,54 @@
+<div class="ui segment breadcrumb">
+  <%= link_to 'Back', admin_job_transfers_path, class: 'section' %>
+  <i class="fas fa-angle-right divider"></i>
+  <div class="active section">Show</div>
+</div>
+
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="three wide"></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= JobTransfer.human_attribute_name(:member) %></td>
+      <td><%= @job_transfer.member.name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned">From</td>
+      <td><p><%= @job_transfer.from_office&.name %></p>
+        <p><%= @job_transfer.from_department&.full_name %></p>
+        <p><%= @job_transfer.from_job_title&.name %></p></td>
+    </tr>
+    <tr>
+      <td class="right aligned">To</td>
+      <td><p><%= @job_transfer.to_office&.name %></p>
+        <p><%= @job_transfer.to_department&.full_name %></p>
+        <p><%= @job_transfer.to_job_title&.name %></p></td>
+    </tr>
+    <tr>
+      <td class="right aligned">Detail</td>
+      <td><%= @job_transfer.reason_note %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= JobTransfer.human_attribute_name(:transfer_on) %></td>
+      <td><%= @job_transfer.transfer_on %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= JobTransfer.human_attribute_name(:state) %></td>
+      <td><%= @job_transfer.state_i18n %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= JobTransfer.human_attribute_name(:created_at) %></td>
+      <td><time><%= @job_transfer.created_at&.to_s(:rfc822) %></time></td>
+    </tr>
+    <tr><td></td>
+      <td>
+        <%= link_to 'Edit', edit_admin_job_transfer_path(@job_transfer), class: 'ui pink label' %>
+        <%= link_to t('.destroy'), admin_job_transfer_path(@job_transfer), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
+      </td>
+    </tr>
+  </tbody>
+</table>

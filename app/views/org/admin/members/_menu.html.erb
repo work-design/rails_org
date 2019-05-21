@@ -1,0 +1,12 @@
+<%= content_for :breadcrumb do %>
+<div class="ui basic segment breadcrumb">
+  <%= link_to t('org.admin.members.index.title'), admin_members_path, class: 'section' %>
+  <i class="fas fa-angle-right divider"></i>
+  <div class="active section"><%= @member.name %></div>
+</div>
+<% end %>
+
+<div class="ui top attached tabular menu">
+  <%= link_to t('org.admin.members.show.title'), admin_member_path(@member), class: active_helper('org/admin/members': 'show') %>
+  <%# link_to 'Profile', profile_admin_member_path(@member), class: active_helper('org/admin/members': 'profile') %>
+</div>

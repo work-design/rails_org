@@ -1,0 +1,8 @@
+<%= form_with model: [:admin, @job_title] do |f| %>
+  <%= render 'shared/error_messages', target: @job_title %>
+  <%= f.hidden_field :department_id %>
+  <%= f.number_field :grade %>
+  <%= f.text_field :name %>
+  <%= f.text_area :description %>
+  <%= f.submit %>
+<% end %>

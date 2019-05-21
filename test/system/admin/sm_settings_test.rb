@@ -2,16 +2,16 @@ require "application_system_test_case"
 
 class SmSettingsTest < ApplicationSystemTestCase
   setup do
-    @panel_sm_setting = panel_sm_settings(:one)
+    @admin_sm_setting = admin_sm_settings(:one)
   end
 
   test "visiting the index" do
-    visit panel_sm_settings_url
+    visit admin_sm_settings_url
     assert_selector "h1", text: "Sm Settings"
   end
 
   test "creating a Sm setting" do
-    visit panel_sm_settings_url
+    visit admin_sm_settings_url
     click_on "New Sm Setting"
 
     click_on "Create Sm setting"
@@ -21,7 +21,7 @@ class SmSettingsTest < ApplicationSystemTestCase
   end
 
   test "updating a Sm setting" do
-    visit panel_sm_settings_url
+    visit admin_sm_settings_url
     click_on "Edit", match: :first
 
     click_on "Update Sm setting"
@@ -31,7 +31,7 @@ class SmSettingsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Sm setting" do
-    visit panel_sm_settings_url
+    visit admin_sm_settings_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end

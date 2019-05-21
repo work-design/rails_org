@@ -1,0 +1,6 @@
+<div class="ui top attached tabular menu">
+  <%= link_to 'Members', admin_department_path(@department), class: active_helper('org/admin/departments': ['show']) %>
+  <%#= link_to 'Job Titles', admin_department_job_titles_path(@department), class: active_helper(controllers: 'job_titles') %>
+  <%#= link_to 'JD', admin_department_job_descriptions_path(@department), class: active_helper(controllers: 'job_descriptions') %>
+  <%= link_to 'Supports', admin_supports_path(department_id: @department.id), class: active_helper(controllers: 'supports') %>
+</div>

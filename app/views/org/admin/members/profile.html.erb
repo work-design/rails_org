@@ -1,0 +1,81 @@
+<%= render 'org/admin/members/menu' %>
+
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="three wide"></th>
+      <th>
+        <%= link_to 'Edit', edit_profile_admin_member_path(@member), class: 'ui mini blue right floated button' %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= Member.human_attribute_name(:number) %></td>
+      <td><%= @member.number %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Member.human_attribute_name(:parent) %></td>
+      <td><%= @member.parent&.name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Member.human_attribute_name(:join_on) %></td>
+      <td><%= @member.join_on %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Member.human_attribute_name(:department) %></td>
+      <td><%= @member.department&.full_name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Member.human_attribute_name(:office) %></td>
+      <td><%= @member.office&.name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:real_name) %></td>
+      <td><%= @profile.real_name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:gender) %></td>
+      <td><%= @profile.gender_i18n %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:mobile) %></td>
+      <td><%= @profile.mobile %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:private_email) %></td>
+      <td><%= @profile.private_email %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:birthday_type) %></td>
+      <td><%= @profile.birthday_type_i18n %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:birthday) %></td>
+      <td><%= @profile.birthday %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:major) %></td>
+      <td><%= @profile.major %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:degree) %></td>
+      <td><%= @profile.degree %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:highest_education) %></td>
+      <td><%= @profile.highest_education %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:work_experience) %></td>
+      <td><%= simple_format(@profile.work_experience) %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Profile.human_attribute_name(:resume) %></td>
+      <td>
+        <%= link_to @profile.resume.filename, rails_blob_path(@profile.resume), target: '_blank' if @profile.resume.attached? %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

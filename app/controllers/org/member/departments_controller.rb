@@ -52,7 +52,7 @@ class Org::Member::DepartmentsController < Org::Member::BaseController
     @department = Department.new(department_params)
 
     if @department.save
-      redirect_to panel_departments_url
+      redirect_to admin_departments_url
     else
       render :new
     end

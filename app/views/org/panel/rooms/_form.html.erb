@@ -1,7 +1,0 @@
-<%= form_with model: [:panel, @organ, @room] do |f| %>
-  <%= render 'shared/error_messages', target: @room %>
-  <%= f.text_field :room_number %>
-  <%= f.color_field :color %>
-  <%= f.number_field :limit_number %>
-  <%= f.submit %>
-<% end %>

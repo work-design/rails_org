@@ -2,16 +2,16 @@ require "application_system_test_case"
 
 class CheckSettingsTest < ApplicationSystemTestCase
   setup do
-    @hr_check_setting = panel_check_settings(:one)
+    @hr_check_setting = admin_check_settings(:one)
   end
 
   test "visiting the index" do
-    visit panel_check_settings_url
+    visit admin_check_settings_url
     assert_selector "h1", text: "Check Settings"
   end
 
   test "creating a Check setting" do
-    visit panel_check_settings_url
+    visit admin_check_settings_url
     click_on "New Check Setting"
 
     click_on "Create Check setting"
@@ -21,7 +21,7 @@ class CheckSettingsTest < ApplicationSystemTestCase
   end
 
   test "updating a Check setting" do
-    visit panel_check_settings_url
+    visit admin_check_settings_url
     click_on "Edit", match: :first
 
     click_on "Update Check setting"
@@ -31,7 +31,7 @@ class CheckSettingsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Check setting" do
-    visit panel_check_settings_url
+    visit admin_check_settings_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end

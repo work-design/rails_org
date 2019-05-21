@@ -1,0 +1,14 @@
+<%= form_with model: [:admin, @resign], local: true do |f| %>
+  <%= render 'shared/error_messages', target: @resign %>
+  <div class="inline required fields">
+    <label class="six wide field">Reason: </label>
+  </div>
+  <% ResignReason.roots.each do |root| %>
+    <%= f.collection_check_boxes :resign_reason_ids, root.children, :id, :name, label: root.name %>
+  <% end %>
+  <%= f.date_field :leave_on, required: true %>
+  <%= f.text_area :reason_note, required: true %>
+  <%= f.select :state, options_for_select(Resign.options_i18n(:state), @resign.state) %>
+  <%= f.text_area :comment %>
+  <%= f.submit %>
+<% end %>

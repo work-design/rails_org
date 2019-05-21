@@ -1,0 +1,43 @@
+<div class="ui top attached borderless menu">
+  <div class="header item">Org Admin Organ Tokens</div>
+  <div class="right menu">
+    <div class="item">
+      <%= link_to 'New Org Admin Organ Token', new_admin_organ_grant_path, class: 'ui teal button', remote: true %>
+    </div>
+  </div>
+</div>
+
+<table class="ui bottom attached selectable table">
+  <thead>
+    <tr>
+      <th><%= OrganGrant.human_attribute_name(:id) %></th>
+      <th><%= OrganGrant.human_attribute_name(:user) %></th>
+      <th><%= OrganGrant.human_attribute_name(:member) %></th>
+      <th><%= OrganGrant.human_attribute_name(:token) %></th>
+      <th><%= OrganGrant.human_attribute_name(:expired_at) %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @organ_grants.each do |organ_grant| %>
+    <tr>
+      <td><%= organ_grant.id %></td>
+      <td><%= link_to organ_grant.user.name, admin_user_path(organ_grant.user_id) if organ_grant.user %></td>
+      <td>
+        <%= link_to organ_grant.member.name, admin_member_path(organ_grant.member_id) if organ_grant.member %>
+      </td>
+      <td><%= organ_grant.token %></td>
+      <td>
+        <time><%= organ_grant.expired_at.to_s(:rfc822) %></time>
+      </td>
+      <td class="ui labels">
+        <%= link_to admin_organ_grant_path(@organ, organ_grant), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui red mini icon button' do %>
+          <i class="times icon"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @organ_grants %>

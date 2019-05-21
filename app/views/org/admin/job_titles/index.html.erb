@@ -1,0 +1,72 @@
+<% content_for :breadcrumb do %>
+  <div class="ui basic segment breadcrumb">
+    <%= link_to t('org.admin.departments.index.title'), admin_departments_path, class: 'section' %>
+    <% if params[:department_id] %>
+    <i class="fas fa-angle-right divider"></i>
+    <%= link_to @department.name, admin_department_path(params[:department_id]), class: 'section' %>
+    <% end %>
+    <i class="fas fa-angle-right divider"></i>
+    <div class="active section"><%= JobTitle.human_name %></div>
+  </div>
+<% end %>
+
+<%= render 'filter' %>
+
+<table class="ui bottom attached selectable table">
+  <thead>
+    <tr>
+      <th><%= JobTitle.human_attribute_name(:id) %></th>
+      <th>
+        <%= JobTitle.human_attribute_name(:grade) %>
+        <span data-tooltip="<%= JobTitle.help_i18n(:grade) %>"><i class="grey question circle icon"></i></span>
+      </th>
+      <th><%= JobTitle.human_attribute_name(:name) %></th>
+      <th><%= JobTitle.human_attribute_name(:description) %></th>
+      <th><%= JobTitle.human_attribute_name(:department_id) %></th>
+      <th>
+        <%= link_to new_admin_job_title_path(department_id: params[:department_id]), class: 'ui mini primary button', remote: true do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @job_titles.each do |job_title| %>
+    <tr>
+      <td><%= job_title.id %></td>
+      <td>
+        <%= job_title.grade %>
+        <%= link_to move_higher_admin_job_title_path(job_title), method: :patch do %>
+          <i class="arrow down icon"></i>
+        <% end %>
+        <%= link_to move_lower_admin_job_title_path(job_title), method: :patch do %>
+          <i class="arrow up icon"></i>
+        <% end %>
+      </td>
+      <td><%= job_title.name %></td>
+      <td><%= job_title.description %></td>
+      <td>
+        <% if job_title.department_id == params[:department_id].to_i %>
+          <span><%= job_title.department.full_name %></span>
+        <% elsif job_title.department %>
+          <%= link_to job_title.department.full_name, admin_job_titles_path(department_id: job_title.department_id) %>
+        <% else %>
+          <%= link_to t('org.admin.job_titles.index.title'), admin_job_titles_path %>
+        <% end %>
+      </td>
+      <td class="ui labels">
+        <% if job_title.department_id == params[:department_id].to_i %>
+          <%= link_to edit_admin_job_title_path(job_title), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
+            <i class="fas fa-pencil-alt"></i>
+          <% end %>
+          <%= link_to admin_job_title_path(job_title), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @job_titles %>

@@ -1,0 +1,30 @@
+<div class="ui top attached borderless menu">
+  <%= link_to 'Resigns', admin_resigns_path, class: 'item' %>
+  <div class="header item">Resign Reasons</div>
+  <%= link_to 'Resign Charts', charts_admin_resigns_path, class: 'item' %>
+  <div class="right menu">
+    <div class="item"><%= link_to 'New Resign Reason', new_admin_resign_reason_path, class: 'ui teal button' %></div>
+  </div>
+</div>
+
+<div class="ui attached segment">
+  <%#= render 'search_form' %>
+</div>
+
+<table class="ui bottom attached selectable table">
+  <thead>
+    <tr>
+      <th><%= ResignReason.human_attribute_name(:name) %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @resign_reasons.each do |resign_reason| %>
+    <%= render partial: 'resign_reason', locals: { node: resign_reason } %>
+    <%= draw_tree(resign_reason, partial: 'org/admin/resign_reasons/resign_reason') %>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @resign_reasons %>

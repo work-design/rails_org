@@ -81,7 +81,7 @@ module RailsOrg::JobTransfer
       title: "#{self.member.name} has requested Job Transfer",
       body: "#{self.member.name} has requested Job Transfer.",
       code: self.state,
-      link: url_helpers.my_panel_job_transfers_url
+      link: url_helpers.my_admin_job_transfers_url
     )
   end
 

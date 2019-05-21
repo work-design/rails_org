@@ -2,21 +2,21 @@ require "application_system_test_case"
 
 class OrganHandlesTest < ApplicationSystemTestCase
   setup do
-    @org_panel_organ_handle = org_panel_organ_handles(:one)
+    @org_admin_organ_handle = org_admin_organ_handles(:one)
   end
 
   test "visiting the index" do
-    visit org_panel_organ_handles_url
+    visit org_admin_organ_handles_url
     assert_selector "h1", text: "Organ Handles"
   end
 
   test "creating a Organ handle" do
-    visit org_panel_organ_handles_url
+    visit org_admin_organ_handles_url
     click_on "New Organ Handle"
 
-    fill_in "Description", with: @org_panel_organ_handle.description
-    fill_in "Job title", with: @org_panel_organ_handle.job_title_id
-    fill_in "Name", with: @org_panel_organ_handle.name
+    fill_in "Description", with: @org_admin_organ_handle.description
+    fill_in "Job title", with: @org_admin_organ_handle.job_title_id
+    fill_in "Name", with: @org_admin_organ_handle.name
     click_on "Create Organ handle"
 
     assert_text "Organ handle was successfully created"
@@ -24,12 +24,12 @@ class OrganHandlesTest < ApplicationSystemTestCase
   end
 
   test "updating a Organ handle" do
-    visit org_panel_organ_handles_url
+    visit org_admin_organ_handles_url
     click_on "Edit", match: :first
 
-    fill_in "Description", with: @org_panel_organ_handle.description
-    fill_in "Job title", with: @org_panel_organ_handle.job_title_id
-    fill_in "Name", with: @org_panel_organ_handle.name
+    fill_in "Description", with: @org_admin_organ_handle.description
+    fill_in "Job title", with: @org_admin_organ_handle.job_title_id
+    fill_in "Name", with: @org_admin_organ_handle.name
     click_on "Update Organ handle"
 
     assert_text "Organ handle was successfully updated"
@@ -37,7 +37,7 @@ class OrganHandlesTest < ApplicationSystemTestCase
   end
 
   test "destroying a Organ handle" do
-    visit org_panel_organ_handles_url
+    visit org_admin_organ_handles_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end

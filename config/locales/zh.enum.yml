@@ -27,5 +27,5 @@ zh:
         verified:
           unverified: Unverified
           superior_approved: Superior Approved
-          panel_approved: Org Approved
+          admin_approved: Org Approved
           md_approved: MD Approved

@@ -2,47 +2,47 @@ require 'test_helper'
 
 class Org::Admin::OrganGrantsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @org_panel_organ_grant = org_panel_organ_grants(:one)
+    @org_admin_organ_grant = org_admin_organ_grants(:one)
   end
 
   test "should get index" do
-    get panel_organ_grants_url
+    get admin_organ_grants_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_panel_organ_grant_url
+    get new_admin_organ_grant_url
     assert_response :success
   end
 
-  test "should create org_panel_organ_grant" do
+  test "should create org_admin_organ_grant" do
     assert_difference('OrganGrant.count') do
-      post panel_organ_grants_url, params: { org_panel_organ_grant: { expire_at: @org_panel_organ_grant.expire_at, member: @org_panel_organ_grant.member, token: @org_panel_organ_grant.token, user: @org_panel_organ_grant.user } }
+      post admin_organ_grants_url, params: { org_admin_organ_grant: { expire_at: @org_admin_organ_grant.expire_at, member: @org_admin_organ_grant.member, token: @org_admin_organ_grant.token, user: @org_admin_organ_grant.user } }
     end
 
-    assert_redirected_to org_panel_organ_grant_url(OrganGrant.last)
+    assert_redirected_to org_admin_organ_grant_url(OrganGrant.last)
   end
 
-  test "should show org_panel_organ_grant" do
-    get panel_organ_grant_url(@org_panel_organ_grant)
+  test "should show org_admin_organ_grant" do
+    get admin_organ_grant_url(@org_admin_organ_grant)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_panel_organ_grant_url(@org_panel_organ_grant)
+    get edit_admin_organ_grant_url(@org_admin_organ_grant)
     assert_response :success
   end
 
-  test "should update org_panel_organ_grant" do
-    patch panel_organ_grant_url(@org_panel_organ_grant), params: { org_panel_organ_grant: { expire_at: @org_panel_organ_grant.expire_at, member: @org_panel_organ_grant.member, token: @org_panel_organ_grant.token, user: @org_panel_organ_grant.user } }
-    assert_redirected_to org_panel_organ_grant_url(@org_panel_organ_grant)
+  test "should update org_admin_organ_grant" do
+    patch admin_organ_grant_url(@org_admin_organ_grant), params: { org_admin_organ_grant: { expire_at: @org_admin_organ_grant.expire_at, member: @org_admin_organ_grant.member, token: @org_admin_organ_grant.token, user: @org_admin_organ_grant.user } }
+    assert_redirected_to org_admin_organ_grant_url(@org_admin_organ_grant)
   end
 
-  test "should destroy org_panel_organ_grant" do
+  test "should destroy org_admin_organ_grant" do
     assert_difference('OrganGrant.count', -1) do
-      delete panel_organ_grant_url(@org_panel_organ_grant)
+      delete admin_organ_grant_url(@org_admin_organ_grant)
     end
 
-    assert_redirected_to panel_organ_grants_url
+    assert_redirected_to admin_organ_grants_url
   end
 end

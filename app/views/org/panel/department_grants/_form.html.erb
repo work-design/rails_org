@@ -1,6 +1,0 @@
-<%= form_with model: [:panel, @organ_handle, @department_grant] do |f| %>
-  <%= render 'shared/error_messages', target: @department_grant %>
-  <%= f.text_field :department_id %>
-  <%= f.collection_select :job_title_id, JobTitle.default_where(default_params), :id, :name %>
-  <%= f.submit %>
-<% end %>

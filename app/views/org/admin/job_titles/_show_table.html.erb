@@ -1,0 +1,24 @@
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="six wide">
+        <%= link_to t('.edit'), edit_admin_job_title_path(@job_title), class: 'ui mini blue right floated button', remote: true %>
+      </th>
+      <th class="ten wide"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= JobTitle.human_attribute_name(:department) %></td>
+      <td><%= @job_title.department %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= JobTitle.human_attribute_name(:name) %></td>
+      <td><%= @job_title.name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= JobTitle.human_attribute_name(:grade) %></td>
+      <td><%= @job_title.grade %></td>
+    </tr>
+  </tbody>
+</table>

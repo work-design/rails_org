@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :panel, module: 'org/panel', as: 'panel' do
-    resource :organ, only: [:show]
+  scope :admin, module: 'org/admin', as: 'admin' do
+    resource :organs, only: [:show]
     resources :organs, except: [:show] do
       patch :mock, on: :member
       resources :rooms
@@ -86,16 +86,10 @@ Rails.application.routes.draw do
     resources :resign_reasons do
       get :parents, on: :collection
     end
-    resources :organ_handles, only: [:index] do
+    resources :organ_handles
+    resources :organ_handles do
       resources :department_grants, only: [:new, :create, :destroy]
     end
-  end
-
-  scope :admin, module: 'org/admin', as: :admin do
-    resources :organs do
-      patch :mock, on: :member
-    end
-    resources :organ_handles
   end
 
 end

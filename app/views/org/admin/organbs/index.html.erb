@@ -1,0 +1,46 @@
+
+<%= render 'filter' %>
+
+<table class="ui bottom attached selectable table">
+  <thead>
+    <tr>
+      <th><%= Organ.human_attribute_name(:id) %></th>
+      <th><%= Organ.human_attribute_name(:logo) %></th>
+      <th><%= Organ.human_attribute_name(:name) %></th>
+      <th><%= Organ.human_attribute_name(:organ_uuid) %></th>
+      <th><%= Organ.human_attribute_name(:limit_wechat) %></th>
+      <th>
+        <%= link_to new_admin_organ_path, remote: true, class: 'ui mini primary button' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @organs.each do |organ| %>
+    <tr>
+      <td><%= organ.id %></td>
+      <td><%= image_tag organ.logo.variant(resize_to_limit: [30, 30]) if organ.logo.attached? %></td>
+      <td><%= organ.name %></td>
+      <td><%= organ.organ_uuid %></td>
+      <td><%= organ.limit_wechat %></td>
+      <td class="ui labels">
+        <%= link_to admin_organ_path(organ), data: { tooltip: t('.show') }, class: 'ui mini circular icon button', remote: true do %>
+          <i class="fas fa-eye"></i>
+        <% end %>
+        <%= link_to edit_admin_organ_path(organ), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
+          <i class="fas fa-pencil-alt"></i>
+        <% end %>
+        <%= link_to admin_organ_path(organ), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <%= link_to mock_admin_organ_path(organ), method: :patch, data: { tooltip: 'Mock' }, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-hand-point-right"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @organs %>

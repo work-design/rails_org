@@ -1,0 +1,37 @@
+<% content_for :breadcrumb do %>
+  <%= render 'breadcrumb' %>
+<% end %>
+
+<div class="ui top attached segment" style="flex-direction: column; align-items: start">
+  <%= render 'filter' %>
+</div>
+
+<table class="ui bottom attached selectable table">
+  <thead>
+    <tr>
+      <th><%= Member.human_attribute_name(:name) %></th>
+      <th class="center aligned"><%= Member.human_attribute_name(:department) %></th>
+      <th class="center aligned"><%= Member.human_attribute_name(:identity) %></th>
+      <th><%= Member.human_attribute_name(:join_on) %></th>
+      <th><%= Member.human_attribute_name(:role_ids) %></th>
+      <th><%= Member.human_attribute_name(:enabled) %></th>
+      <th><%= Member.human_attribute_name(:resume) %></th>
+      <th>
+        <%= link_to new_admin_member_path, remote: true, class: 'ui mini primary button' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+        <%# link_to find_data_list_table_lists_path('MemberExport', params.fetch(:q, {}).permit(:office_id)), class: 'ui mini secondary button', remote: true do %>
+<!--          <i class="file excel icon"></i><%#= t('.export') %>-->
+        <%# end %>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <%= render partial: 'member', locals: { member: member } %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @members %>

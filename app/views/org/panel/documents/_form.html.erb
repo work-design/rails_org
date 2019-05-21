@@ -1,6 +1,0 @@
-<%= form_with model: [:panel, @document], local: true do |f| %>
-  <%= render 'shared/error_messages', target: @document %>
-  <%= f.text_field :name %>
-  <%= f.file_field :file %>
-  <%= f.submit %>
-<% end %>

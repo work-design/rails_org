@@ -1,0 +1,11 @@
+<div class="ui top attached borderless menu">
+  <div class="header item">Resigns</div>
+  <%= link_to 'Resign Reason', admin_resign_reasons_path, class: 'item' %>
+  <%= link_to 'Resign Charts', charts_admin_resigns_path, class: 'item' %>
+</div>
+
+<div class="ui attached segment">
+  <%= render 'search_form' %>
+</div>
+
+<%= render 'list' %>

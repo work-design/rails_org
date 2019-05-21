@@ -1,0 +1,17 @@
+<% if rails_role_user.any_role?('org/admin/departments', 'org/admin/offices') %>
+<div class="item">
+  <a class="<%= active_helper(modules: 'org/admin', active_class: 'title active', item_class: 'title') %>">
+    <i class="fas fa-sitemap"></i>
+    <span>组织管理</span>
+    <i class="dropdown icon"></i>
+  </a>
+  <div class="<%= active_helper(modules: 'org/admin', active_class: 'active menu content', item_class: 'menu content') %>">
+    <%= link_to t('org.admin.departments.index.title'), admin_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions']) %>
+    <%= link_to t('org.admin.members.index.title'), admin_members_path, class: active_helper(controllers: ['members']) %>
+    <%# link_to 'Supports', admin_supports_path, class: active_helper(controllers: 'supports') %>
+    <%# link_to 'Tutorials', admin_tutorials_path, class: active_helper(controllers: ['tutorials']) %>
+    <%# link_to 'Job Transfers', admin_job_transfers_path, class: active_helper(controllers: ['job_transfers']) %>
+    <%# link_to 'Resigns', admin_resigns_path, class: active_helper(controllers: ['resigns', 'resign_reasons']) %>
+  </div>
+</div>
+<% end %>

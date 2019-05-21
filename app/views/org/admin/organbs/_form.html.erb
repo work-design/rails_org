@@ -1,0 +1,8 @@
+<%= form_with model: [:admin, @organ] do |f| %>
+  <%= render 'shared/error_messages', target: @organ %>
+  <%= f.text_field :name %>
+  <%= f.number_field :limit_office %>
+  <%= f.number_field :limit_wechat %>
+  <%= f.file_field :logo %>
+  <%= f.submit %>
+<% end %>
