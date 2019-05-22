@@ -6,8 +6,11 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
     @organs = current_organ.children.page(params[:page])
   end
   
-  def show
+  def current
     @organ = current_organ
+  end
+  
+  def show
   end
 
   def new
