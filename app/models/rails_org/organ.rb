@@ -23,20 +23,16 @@ module RailsOrg::Organ
     end
   end
 
-  def get_organ_token(user_id)
-    grant = self.organ_grants.valid.find_by(user_id: user_id)
-    unless grant
-      self.organ_grants.where(user_id: user_id).delete_all
-      grant = organ_grants.create(user_id: user_id)
+  def get_organ_token(user)
+    if user.is_a?(User)
+      params = { user_id: user.id }
+    else
+      params = { member_id: user.id }
     end
-    grant
-  end
-
-  def refresh_organ_token(member_id)
-    grant = self.organ_grants.valid.find_by(member_id: member_id)
+    grant = self.organ_grants.valid.find_by(params)
     unless grant
-      self.organ_grants.where(member_id: member_id).delete_all
-      grant = organ_grants.create(member_id: member_id)
+      self.organ_grants.where(params).delete_all
+      grant = organ_grants.create(params)
     end
     grant
   end

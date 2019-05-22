@@ -33,7 +33,6 @@
   <tbody>
   <% @organs.each do |organ| %>
     <%= render partial: 'organ', object: organ %>
-    <%= draw_tree(partial: 'org/admin/organs/organ', object: organ) %>
   <% end %>
   </tbody>
 </table>

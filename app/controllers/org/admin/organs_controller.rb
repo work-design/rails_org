@@ -2,6 +2,10 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   before_action :set_organ, only: [:edit, :update, :mock, :destroy]
   before_action :require_organ
 
+  def all
+    @organs = Organ.roots.order(id: :desc).page(params[:page])
+  end
+  
   def index
     @organs = current_organ.children.page(params[:page])
   end
@@ -37,9 +41,9 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
       render :edit
     end
   end
-
+  
   def mock
-    organ_token = @organ.refresh_organ_token(current_member.id)
+    organ_token = @organ.get_organ_token(current_member || current_user)
     login_organ_as(organ_token)
     
     redirect_to admin_organ_url
@@ -63,6 +67,13 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
       :parent_id,
       :parent_ancestors,
       :area_ancestors
+    )
+  end
+
+  def organ_limit_params
+    params.fetch(:organ, {}).permit(
+      :limit_office,
+      :limit_wechat
     )
   end
 
