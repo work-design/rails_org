@@ -64,6 +64,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
       :name,
       :organ_uuid,
       :logo,
+      :name_short,
       :parent_id,
       :parent_ancestors,
       :area_ancestors
