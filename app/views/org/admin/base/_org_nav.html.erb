@@ -6,6 +6,8 @@
     <i class="dropdown icon"></i>
   </a>
   <div class="<%= active_helper(modules: 'org/admin', active_class: 'active menu content', item_class: 'menu content') %>">
+    <%= link_to '组织列表', admin_organs_path, class: active_helper(controllers: 'organs') %>
+    <%= link_to '组织设置', admin_organ_handles_path, class: active_helper(controllers: 'organ_handles') %>
     <%= link_to t('org.admin.departments.index.title'), admin_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions']) %>
     <%= link_to t('org.admin.members.index.title'), admin_members_path, class: active_helper(controllers: ['members']) %>
     <%# link_to 'Supports', admin_supports_path, class: active_helper(controllers: 'supports') %>
@@ -15,14 +17,3 @@
   </div>
 </div>
 <% end %>
-<div class="item">
-  <a class="<%= active_helper(modules: ['org/admin'], active_class: 'title active', item_class: 'title') %>">
-    <i class="fas fa-building"></i>
-    <span><%= t('org.admin.organs.index.title') %></span>
-    <i class="dropdown icon"></i>
-  </a>
-  <div class="<%= active_helper(modules: ['org/admin'], active_class: 'menu content active', item_class: 'menu content') %>">
-    <%= link_to '组织列表', admin_organs_path, class: active_helper(controllers: 'organs') %>
-    <%= link_to '组织设置', admin_organ_handles_path, class: active_helper(controllers: 'organ_handles') %>
-  </div>
-</div>
