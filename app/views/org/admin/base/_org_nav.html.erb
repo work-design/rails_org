@@ -1,4 +1,4 @@
-<% if rails_role_user.any_role?('org/admin/departments', 'org/admin/offices') %>
+<% if rails_role_user.any_role?('org/admin') %>
 <div class="item">
   <a class="<%= active_helper(modules: 'org/admin', active_class: 'title active', item_class: 'title') %>">
     <i class="fas fa-sitemap"></i>
