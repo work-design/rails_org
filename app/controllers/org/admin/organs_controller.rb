@@ -32,7 +32,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
 
   def update
     if @organ.update(organ_params)
-      redirect_to admin_organ_url
+      redirect_to admin_organs_url
     else
       render :edit
     end
