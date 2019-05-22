@@ -44,7 +44,7 @@ class Org::My::MembersController < Org::My::BaseController
     login_organ_as organ_token
 
     respond_to do |format|
-      format.html { redirect_to admin_organ_url }
+      format.html { redirect_to current_admin_organs_url }
       format.json { render json: { organ_grant: organ_token } }
     end
   end
