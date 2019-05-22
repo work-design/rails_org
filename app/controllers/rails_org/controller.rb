@@ -1,7 +1,7 @@
 module RailsOrg::Controller
   extend ActiveSupport::Concern
   included do
-    helper_method :current_organ, :other_organs
+    helper_method :current_organ, :current_member, :other_organs
     after_action :set_organ_token
   end
 

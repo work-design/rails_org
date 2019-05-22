@@ -37,8 +37,8 @@ zh:
         role_ids: 权限
         job_titles: 职级
       member_department:
-        office_id: 区域
-        department: 部门
+        organ_id: 分支机构
+        department_id: 部门
         job_title_id: 职级
       organ:
         name: 名称
