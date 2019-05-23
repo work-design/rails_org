@@ -31,9 +31,7 @@ module RailsOrg::Member
 
     has_one_attached :avatar
     has_one_attached :resume
-
-    validates :identity, uniqueness: { scope: :organ_id }, allow_blank: true
-
+    
     #before_save :sync_tutorials, if: -> { join_on_changed? }
     before_save :sync_account_user, if: -> { identity_changed? }
   end

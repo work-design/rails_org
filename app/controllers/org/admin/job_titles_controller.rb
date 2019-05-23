@@ -21,8 +21,8 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
     respond_to do |format|
       if @job_title.save
         format.html.phone
-        format.html { redirect_to admin_job_titles_url(department_id: @department) }
-        format.js { redirect_to admin_job_titles_url(department_id: @department) }
+        format.html { redirect_to admin_job_titles_url(department_id: @job_title.department_id) }
+        format.js { redirect_to admin_job_titles_url(department_id: @job_title.department_id) }
         format.json { render :show }
       else
         format.html.phone { render :new }
