@@ -27,7 +27,7 @@ module RailsOrg::Member
     has_many :tutorials, dependent: :nullify
     has_many :tutorings, class_name: 'Tutorial', foreign_key: :tutor_id
     has_many :tutees, through: :tutorings, source: :member
-    has_many :job_transfers, dependent: :destroy
+    #has_many :job_transfers, dependent: :destroy
 
     has_one_attached :avatar
     has_one_attached :resume
