@@ -1,5 +1,5 @@
 class Org::Admin::DepartmentGrantsController < Org::Admin::BaseController
-  before_action :set_organ_handle
+  before_action :set_organ_handle, except: [:index]
   before_action :set_department_grant, only: [:destroy]
 
   def index

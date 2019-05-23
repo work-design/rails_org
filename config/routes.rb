@@ -87,8 +87,9 @@ Rails.application.routes.draw do
       get :parents, on: :collection
     end
     resources :organ_handles
-    resources :organ_handles do
-      resources :department_grants, only: [:new, :create, :destroy]
+    resources :department_grants, only: [:index]
+    resources :organ_handles, only: [] do
+      resources :department_grants, except: [:index]
     end
   end
 

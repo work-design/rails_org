@@ -1,10 +1,6 @@
 zh:
   org:
     admin:
-      organs:
-        index:
-          title: 组织机构
-    admin:
       departments:
         index:
           title: 部门
@@ -16,9 +12,12 @@ zh:
       organs:
         index:
           title: 分支机构
-        show:
+        current:
           title: 我的组织
       organ_handles:
+        index:
+          title: 部门职能设置
+      department_grants:
         index:
           title: 部门职能设置
       rooms:
