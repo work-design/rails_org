@@ -1,0 +1,12 @@
+<%= form_with model: [:my, @member, @organ] do |f| %>
+  <%= render 'shared/error_messages', target: @organ %>
+  <%= f.text_field :parent_uuid %>
+  <%= f.text_field :name, required: true %>
+  <%= f.text_field :name_short %>
+  <%= f.file_field :logo %>
+  <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'area' } %>
+  <%= f.text_area :address %>
+  <%= f.time_zone_select :timezone %>
+  <%= f.select :locale, options_for_select(I18n.available_locales.zip(I18n.available_locales), @organ.locale) %>
+  <%= f.submit %>
+<% end %>

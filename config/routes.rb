@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   scope :my, module: 'org/my', as: 'my' do
     resources :members do
       patch :login, on: :member
+      resources :organs
     end
-    resources :organs
     resources :documents
   end
   

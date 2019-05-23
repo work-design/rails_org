@@ -1,4 +1,5 @@
 class Org::My::OrgansController < Org::My::BaseController
+  before_action :set_member
   before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -6,11 +7,11 @@ class Org::My::OrgansController < Org::My::BaseController
   end
 
   def new
-    @organ = Organ.new
+    @organ = @member.organs.build
   end
 
   def create
-    @organ = Organ.new(organ_params)
+    @organ = @member.organs.build(organ_params)
 
     respond_to do |format|
       if @organ.save
@@ -45,6 +46,10 @@ class Org::My::OrgansController < Org::My::BaseController
   end
 
   private
+  def set_member
+    @member = current_user.members.find params[:member_id]
+  end
+  
   def set_organ
     @organ = Organ.find(params[:id])
   end
