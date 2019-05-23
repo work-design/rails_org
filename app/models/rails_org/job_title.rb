@@ -9,6 +9,7 @@ module RailsOrg::JobTitle
     belongs_to :department, optional: true
     belongs_to :department_root, class_name: 'Department', optional: true
     has_many :member_departments, dependent: :destroy
+    has_many :members, through: :member_departments
     
     default_scope -> { order(grade: :asc) }
     

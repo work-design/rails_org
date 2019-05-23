@@ -63,6 +63,16 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     end
   end
 
+  def options
+    @member_department = @member.member_departments.build
+  
+    department = Department.find params[:department_id]
+    q = {}
+    q.merge! office_id: department.office_id if department.office
+    @offices = current_organ.offices.default_where(q)
+    @job_titles = JobTitle.where(department_id: department.self_and_descendant_ids)
+  end
+
   def show
   end
 

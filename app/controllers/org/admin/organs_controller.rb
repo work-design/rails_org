@@ -46,12 +46,12 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
     organ_token = @organ.get_organ_token(current_member || current_user)
     login_organ_as(organ_token)
     
-    redirect_to admin_organ_url
+    redirect_to current_admin_organs_url
   end
 
   def destroy
     @organ.destroy
-    redirect_to admin_organ_url
+    redirect_to admin_organs_url
   end
 
   private
