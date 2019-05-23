@@ -1,9 +1,10 @@
 class Org::Admin::OrgansController < Org::Admin::BaseController
   before_action :set_organ, only: [:edit, :update, :mock, :destroy]
-  before_action :require_organ
+  before_action :require_organ, except: [:all]
 
   def all
     @organs = Organ.roots.order(id: :desc).page(params[:page])
+    render 'index'
   end
   
   def index

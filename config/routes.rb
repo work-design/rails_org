@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   scope :admin, module: 'org/admin', as: 'admin' do
     resources :organs do
       get :current, on: :collection
+      get :all, on: :collection
       patch :mock, on: :member
       resources :rooms
     end
