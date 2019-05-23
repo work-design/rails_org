@@ -1,8 +1,4 @@
-<%= form_with model: @member, url: my_member_path(@member), method: :patch do |f| %>
-  <%= f.text_area :experience %>
-  <div class="inline fields">
-    <%= f.submit 'update info', class: 'ui green button', on: { wrapper_all: false } %>
-    <%= link_to 'back', my_members_path, class: 'ui button' %>
-  </div>
-<% end %>
+<%= f.text_field :name %>
+<%= f.file_field :resume %>
+<%= f.submit %>
 

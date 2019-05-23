@@ -12,7 +12,7 @@ module RailsOrg::Member
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
-    has_many :organs, through: :member_departments
+    has_many :organs, -> { distinct }, through: :member_departments
     accepts_nested_attributes_for :member_departments
     accepts_nested_attributes_for :organs
     
@@ -32,6 +32,7 @@ module RailsOrg::Member
     has_one_attached :avatar
     has_one_attached :resume
     
+    validates :identity, uniqueness: { scope: :user_id }
     #before_save :sync_tutorials, if: -> { join_on_changed? }
     before_save :sync_account_user, if: -> { identity_changed? }
   end

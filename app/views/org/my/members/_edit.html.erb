@@ -4,7 +4,7 @@
     <%= t('.edit') %>
   </div>
   <div class="content">
-    <%= form_with model: @member, scope: :member, url: admin_member_path(@member) do |f| %>
+    <%= form_with model: @member, scope: :member, url: my_member_path(@member) do |f| %>
       <%= render partial: 'form', locals: { f: f } %>
     <% end %>
   </div>

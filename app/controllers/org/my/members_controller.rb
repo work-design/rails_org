@@ -2,7 +2,26 @@ class Org::My::MembersController < Org::My::BaseController
   before_action :set_member, only: [:show, :edit, :update, :login]
 
   def index
-    @members = current_user.members
+    @members = current_user.members.includes(:organs)
+  end
+
+  def new
+    @member = current_user.members.build
+    @identities = current_user.accounts.confirmed.pluck(:identity).map { |i| [i, i] }.to_h
+  end
+
+  def create
+    @member = current_user.members.build(member_params)
+  
+    respond_to do |format|
+      if @member.save
+        format.html { redirect_to my_members_url }
+        format.js { redirect_to my_members_url }
+      else
+        format.html { redirect_to my_members_url, alert: @member.errors }
+        format.js { render :new }
+      end
+    end
   end
 
   def show
@@ -30,7 +49,7 @@ class Org::My::MembersController < Org::My::BaseController
     @member.assign_attributes member_params
     respond_to do |format|
       if @member.save
-        format.html { redirect_to my_member_url(@member) }
+        format.html { redirect_to my_members_url }
         format.json { render :show }
       else
         format.html { render action: 'edit' }

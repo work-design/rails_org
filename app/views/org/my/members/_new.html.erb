@@ -1,11 +1,14 @@
 <div class="ui modal" id="modal">
   <i class="close icon"></i>
   <div class="ui header blue">
-    <%= t('.edit') %>
+    <%= t('.new') %>
   </div>
+
   <div class="content">
-    <%= form_with model: @member, scope: :member, url: admin_member_path(@member) do |f| %>
+    <%= form_with model: @member, url: my_members_path do |f| %>
+      <%= f.select :identity, options_for_select(@identities) %>
       <%= render partial: 'form', locals: { f: f } %>
     <% end %>
   </div>
+
 </div>
