@@ -11,12 +11,17 @@ class Org::My::OrgansController < Org::My::BaseController
   end
 
   def create
+    if params[:parent_uuid]
+      parent = Organ.find_by organ_uuid: params[:parent_uuid]
+      organ_params.merge! parent_id: parent.id
+    end
     @organ = @member.organs.build(organ_params)
 
     respond_to do |format|
       if @organ.save
-        format.html { redirect_to admin_organs_url }
+        format.html { redirect_to my_members_url }
         format.html.phone
+        format.js { redirect_to my_members_url }
         format.json { render :show }
       else
         format.html { render :new }
@@ -57,7 +62,10 @@ class Org::My::OrgansController < Org::My::BaseController
   def organ_params
     params.fetch(:organ, {}).permit(
       :name,
-      :organ_uuid
+      :logo,
+      :name_short,
+      :parent_uuid,
+      :area_ancestors
     )
   end
 

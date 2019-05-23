@@ -17,6 +17,7 @@ module RailsOrg::Organ
     has_one_attached :logo
 
     validates :name, presence: true
+    validates :organ_uuid, uniqueness: true
 
     before_validation do
       self.organ_uuid ||= UidHelper.nsec_uuid('ORG')
