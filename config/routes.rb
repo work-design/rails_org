@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   scope :my, module: 'org/my', as: 'my' do
     resources :members do
       patch :login, on: :member
+      get :logout, on: :collection
       resources :organs
     end
     resources :documents

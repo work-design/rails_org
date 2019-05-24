@@ -67,6 +67,11 @@ class Org::My::MembersController < Org::My::BaseController
       format.json { render json: { organ_grant: organ_token } }
     end
   end
+  
+  def logout
+    session.delete :organ_token
+    redirect_to my_members_url
+  end
 
   private
   def set_member

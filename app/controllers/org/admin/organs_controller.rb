@@ -1,6 +1,6 @@
 class Org::Admin::OrgansController < Org::Admin::BaseController
   before_action :set_organ, only: [:edit, :update, :mock, :destroy]
-  before_action :require_organ, except: [:all]
+  before_action :require_organ, except: [:all, :mock]
 
   def all
     @organs = Organ.roots.order(id: :desc).page(params[:page])
