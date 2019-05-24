@@ -12,7 +12,7 @@ class Org::My::OrgansController < Org::My::BaseController
 
   def create
     parent_uuid = params.dig(:organ, :parent_uuid)
-    if parent_uuid
+    if parent_uuid.present?
       parent = Organ.find_by organ_uuid: parent_uuid
       organ_params.merge! parent_id: parent.id
     end
