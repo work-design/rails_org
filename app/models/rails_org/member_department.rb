@@ -5,8 +5,8 @@ module RailsOrg::MemberDepartment
     attribute :department_descendant_ids, :integer, array: true
     
     belongs_to :member
-    belongs_to :organ
-    belongs_to :department, counter_cache: true
+    belongs_to :organ, inverse_of: :member_departments
+    belongs_to :department, counter_cache: true, inverse_of: :member_departments, optional: true
     belongs_to :job_title, optional: true
     
     validates :department_id, uniqueness: { scope: [:member_id, :organ_id] }

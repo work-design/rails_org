@@ -11,21 +11,22 @@ class Org::My::OrgansController < Org::My::BaseController
   end
 
   def create
-    if params[:parent_uuid]
-      parent = Organ.find_by organ_uuid: params[:parent_uuid]
+    parent_uuid = params.dig(:organ, :parent_uuid)
+    if parent_uuid
+      parent = Organ.find_by organ_uuid: parent_uuid
       organ_params.merge! parent_id: parent.id
     end
     @organ = @member.organs.build(organ_params)
-
+    
     respond_to do |format|
       if @organ.save
-        format.html { redirect_to my_members_url }
         format.html.phone
+        format.html { redirect_to my_members_url }
         format.js { redirect_to my_members_url }
         format.json { render :show }
       else
-        format.html { render :new }
         format.html.phone { render :new }
+        format.html { render :new }
         format.json { render :show }
       end
     end
@@ -64,7 +65,9 @@ class Org::My::OrgansController < Org::My::BaseController
       :name,
       :logo,
       :name_short,
-      :parent_uuid,
+      :address,
+      :timezone,
+      :locale,
       :area_ancestors
     )
   end

@@ -14,7 +14,9 @@
     <% member.member_departments.each do |md| %>
       <tr>
         <td class="six wide">
+          <% if md.department %>
           <%= link_to md.department.full_name, admin_department_path(md.department_id) %>
+          <% end %>
         </td>
         <td class="two wide">
           <%= md.organ.name %>

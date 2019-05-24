@@ -8,14 +8,14 @@
 <% end %>
 <div class="ui divider"></div>
 <dl>
-  <dt><%= Member.human_attribute_name(:enabled) %>:</dt>
+  <dt><%= Member.human_attribute_name(:enabled) %></dt>
   <dd>
     <%= link_to t('.enabled'), filter_params(enabled: 1), class: active_params(enabled: 1, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
     <%= link_to t('.disabled'), filter_params(enabled: 0), class: active_params(enabled: 0, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
   </dd>
 </dl>
 <dl>
-  <dt><%= Member.human_attribute_name(:organ_id) %>:</dt>
+  <dt><%= Member.human_attribute_name(:organ_id) %></dt>
   <dd>
     <%= link_to t('.all'), filter_params(except: [:'member_departments.organ_id']), class: active_params('member_departments.organ_id': '', active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
     <% current_organ.children.each do |organ| %>
