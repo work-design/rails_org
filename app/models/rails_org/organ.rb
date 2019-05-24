@@ -6,6 +6,7 @@ module RailsOrg::Organ
 
     has_taxons :area
     belongs_to :area
+    belongs_to :creator, class_name: 'Member', optional: true
     
     has_many :supports, -> { where(department_id: nil) }, dependent: :destroy
     has_many :departments, dependent: :destroy
@@ -22,6 +23,7 @@ module RailsOrg::Organ
     before_validation do
       self.organ_uuid ||= UidHelper.nsec_uuid('ORG')
     end
+    after_save :sync_member_departments, if: -> { creator_id && saved_change_to_creator_id? }
   end
 
   def get_organ_token(user)
@@ -40,6 +42,12 @@ module RailsOrg::Organ
 
   def generate_token(**options)
     JwtHelper.generate_jwt_token(id, organ_uuid, options)
+  end
+  
+  def sync_member_departments
+    self.member_departments.create(member_id: creator_id)
+    role = Role.find_by(who_type: 'Member', code: RailsOrg.config.super_role_code)
+    creator.who_roles.create(role_id: role.id) if role
   end
 
 end

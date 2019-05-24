@@ -16,7 +16,7 @@ class Org::My::OrgansController < Org::My::BaseController
       parent = Organ.find_by organ_uuid: parent_uuid
       organ_params.merge! parent_id: parent.id
     end
-    @organ = @member.organs.build(organ_params)
+    @organ = @member.created_organs.build(organ_params)
     
     respond_to do |format|
       if @organ.save
