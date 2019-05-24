@@ -20,7 +20,12 @@ module RailsOrg::MemberDepartment
   end
   
   def all_followers
-    self.class.default_where(department_id: department.self_and_descendant_ids, organ_id: organ.self_and_descendant_ids, 'grade-gt': self.grade)
+    p = {
+      organ_id: organ.self_and_descendant_ids,
+      'grade-gt': self.grade
+    }
+    p.merge! department_id: department.self_and_descendant_ids if department
+    self.class.default_where(p)
   end
   
   def set_major
