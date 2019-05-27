@@ -1,6 +1,7 @@
 module RailsOrg::Member
   extend ActiveSupport::Concern
   included do
+    delegate :url_helpers, to: 'Rails.application.routes'
     has_taxons :department
 
     attribute :experience, :string
@@ -114,7 +115,7 @@ module RailsOrg::Member
   end
 
   def avatar_url
-    avatar.service_url if avatar.attachment.present?
+    url_helpers.rails_blob_url(avatar) if avatar.attachment.present?
   end
 
 end

@@ -5,8 +5,8 @@ json.extract! member,
               :join_on,
               :identity,
               :number,
-              :organ_token,
-              :created_at,
-if member.organ
-  json.organ member.organ, :name, :organ_uuid
+              :created_at
+json.organs member.organs do |organ|
+  json.extract! organ, :name, :organ_uuid
+  json.organ_token organ.get_organ_token(member).token
 end
