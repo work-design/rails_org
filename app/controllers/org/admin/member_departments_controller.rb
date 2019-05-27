@@ -29,23 +29,11 @@ class Org::Admin::MemberDepartmentsController < Org::Admin::BaseController
   end
 
   def options
-    @member_department = @member.member_departments.build
-    
-    department = Department.find params[:department_id]
-    q = {}
-    q.merge! office_id: department.office_id if department.office
-    @offices = current_organ.offices.default_where(q)
-    @job_titles = JobTitle.where(department_id: department.self_and_descendant_ids)
+    prepare_options
   end
   
   def member_options
-    @member_department = @member.member_departments.build
-  
-    department = Department.find params[:department_id]
-    q = {}
-    q.merge! office_id: department.office_id if department.office
-    @offices = current_organ.offices.default_where(q)
-    @job_titles = JobTitle.where(department_id: department.self_and_descendant_ids)
+    prepare_options
     
     render 'options'
   end
@@ -86,6 +74,14 @@ class Org::Admin::MemberDepartmentsController < Org::Admin::BaseController
   
   def set_member_department
     @member_department = MemberDepartment.find(params[:id])
+  end
+  
+  def prepare_options
+    @member_department = @member.member_departments.build
+  
+    department = Department.find params[:department_id]
+    @organs = current_organ.self_and_descendants
+    @job_titles = JobTitle.where(department_id: department.self_and_descendant_ids)
   end
 
   def member_department_params

@@ -1,7 +1,7 @@
 <% form_object = default_form_object(@member_department) %>
 
-$('#member_department_office_id_input').replaceWith('<%= j(render partial: 'office_options', locals: { f: form_object }) %>');
+$('#member_department_organ_id_input').replaceWith('<%= j(render partial: 'organ_options', locals: { f: form_object }) %>');
 $('#member_department_job_title_id_input').replaceWith('<%= j(render partial: 'job_title_options', locals: { f: form_object }) %>');
 
-$('#member_department_office_id').dropdown();
+$('#member_department_organ_id').dropdown();
 $('#member_department_job_title_id').dropdown();
