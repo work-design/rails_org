@@ -78,6 +78,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     if @member.member_departments.count == 0
       @member.member_departments.build
     end
+    prepare_form
   end
 
   def update

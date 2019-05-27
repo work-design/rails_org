@@ -22,25 +22,16 @@
     </td>
   </tr>
   <tr>
-    <td class="right aligned"><%= Member.human_attribute_name(:type) %></td>
-    <td><%= @member.type_i18n %></td>
-  </tr>
-  <tr>
     <td class="right aligned"><%= Member.human_attribute_name(:identity) %></td>
     <td><%= @member.identity %></td>
   </tr>
   <tr>
     <td class="right aligned"><%= Member.human_attribute_name(:department) %></td>
     <td>
-      <% @member.department&.self_and_ancestors&.reverse_each do |department| %>
-        <%= link_to department.name, admin_department_path(department) %>
-        <span class="grey text"> > </span>
+      <% @member.departments.each do |department| %>
+        <p><%= link_to department.full_name, admin_department_path(department) %></p>
       <% end %>
     </td>
-  </tr>
-  <tr>
-    <td class="right aligned"><%= Member.human_attribute_name(:office) %></td>
-    <td><%= @member.office&.name %></td>
   </tr>
   <tr>
     <td class="right aligned"><%= Member.human_attribute_name(:join_on) %></td>
