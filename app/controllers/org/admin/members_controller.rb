@@ -42,7 +42,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def create
     @member = Member.find_or_initialize_by(identity: member_params[:identity])
-    @member.assign_attribute member_params
+    @member.assign_attributes member_params
     
     respond_to do |format|
       if @member.save
