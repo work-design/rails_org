@@ -1,7 +1,8 @@
 <%= f.text_field :name %>
 <%= f.fields :member_departments do |ef| %>
   <% if params[:department_id] %>
-    <%= ef.hidden_field :department_id %>
+    <%= ef.hidden_field :department_id, value: params[:department_id] %>
+    <%= ef.hidden_field :organ_id, value: current_organ.id %>
   <% else %>
     <%= ef.collection_select :organ_id, current_organ.self_and_descendants, :id, :name, { prompt: true }, { data: { title: 'organ_id' } } %>
     <%= render partial: 'nodes/outer_select', locals: { f: ef, outer: 'department' } %>

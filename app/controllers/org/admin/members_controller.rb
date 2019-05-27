@@ -42,11 +42,11 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def create
     @member = Member.new(member_params)
-
+    
     respond_to do |format|
       if @member.save
         format.html { redirect_to admin_members_url }
-        format.js { redirect_to admin_members_url }
+        format.js
       else
         format.html { redirect_to admin_members_url, alert: @member.errors }
         format.js {
@@ -136,7 +136,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
       :name,
       :identity,
       :type,
-      :office_id,
       :join_on,
       :enabled,
       :avatar,
