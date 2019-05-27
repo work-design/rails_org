@@ -26,6 +26,7 @@
     </div>
   </div>
   <% end %>
+  <% if current_user.available_account_identities.exists? %>
   <div class="card">
     <div class="content">
       <%= link_to new_my_member_path, data: { tooltip: t('.new') }, remote: true do %>
@@ -33,4 +34,5 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 </div>
