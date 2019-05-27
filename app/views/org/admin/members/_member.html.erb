@@ -56,7 +56,7 @@
         <span class="ui label"><%= role %></span>
       <% end %>
     </div>
-    <%= link_to edit_admin_who_roles_path('Member', member.id), data: { tooltip: t('role.admin.who_roles.edit.title') }, remote: true do %>
+    <%= link_to edit_who_roles_path('Member', member.id), data: { tooltip: t('role.admin.who_roles.edit.title') }, remote: true do %>
       <i class="fas fa-user-shield"></i>
     <% end %>
   </td>
