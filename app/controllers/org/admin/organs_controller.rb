@@ -26,7 +26,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
     @organ = Organ.new(organ_params)
   
     if @organ.save
-      redirect_to admin_organs_url
+      render 'create'
     else
       render :new
     end
@@ -37,7 +37,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
 
   def update
     if @organ.update(organ_params)
-      redirect_to admin_organs_url
+      render 'update'
     else
       render :edit
     end
