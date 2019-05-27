@@ -41,7 +41,8 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   end
 
   def create
-    @member = Member.new(member_params)
+    @member = Member.find_or_initialize_by(identity: member_params[:identity])
+    @member.assign_attribute member_params
     
     respond_to do |format|
       if @member.save
