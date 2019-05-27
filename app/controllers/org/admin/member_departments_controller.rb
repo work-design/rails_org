@@ -12,7 +12,7 @@ class Org::Admin::MemberDepartmentsController < Org::Admin::BaseController
 
   def create
     @member_department = @member.member_departments.build(member_department_params)
-
+   
     respond_to do |format|
       if @member_department.save
         format.html.phone
@@ -88,7 +88,7 @@ class Org::Admin::MemberDepartmentsController < Org::Admin::BaseController
     params.fetch(:member_department, {}).permit(
       :department_id,
       :department_ancestors,
-      :office_id,
+      :organ_id,
       :job_title_id
     )
   end
