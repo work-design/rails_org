@@ -14,7 +14,7 @@ zh:
         index:
           title: 连锁机构
         current:
-          title: 我的组织
+          title: 本机构
       organ_handles:
         index:
           title: 部门职能设置
@@ -39,7 +39,7 @@ zh:
           title: 申请为职员
       organs:
         new:
-          title: 添加组织
+          title: 绑定/添加机构
     member:
       departments:
         index:
