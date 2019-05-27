@@ -2,7 +2,7 @@ class Org::My::MembersController < Org::My::BaseController
   before_action :set_member, only: [:show, :edit, :update, :login]
 
   def index
-    @members = current_user.members.includes(:organs)
+    @members = current_user.members.includes(:organs).order(id: :asc)
   end
 
   def new
