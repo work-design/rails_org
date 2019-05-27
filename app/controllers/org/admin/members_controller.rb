@@ -31,14 +31,8 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def new
     @member = Member.new
-    
-    q_params = { organ_id: current_organ.id }
-    if params[:department_id]
-      department = Department.find params[:department_id]
-      q_params.merge! department_id: department.self_and_descendant_ids
-    end
-    @job_titles = JobTitle.default_where(q_params)
     @member.member_departments.build(organ_id: current_organ.id)
+    prepare_form
 
     respond_to do |format|
       format.js
@@ -57,6 +51,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
         format.html { redirect_to admin_members_url, alert: @member.errors }
         format.js {
           @member.member_departments.build
+          prepare_form
           render :new
         }
       end
@@ -125,6 +120,15 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   private
   def set_member
     @member = Member.find(params[:id])
+  end
+  
+  def prepare_form
+    q_params = { organ_id: current_organ.id }
+    if params[:department_id]
+      department = Department.find params[:department_id]
+      q_params.merge! department_id: department.self_and_descendant_ids
+    end
+    @job_titles = JobTitle.default_where(q_params)
   end
 
   def member_params
