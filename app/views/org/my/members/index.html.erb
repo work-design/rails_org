@@ -20,7 +20,7 @@
           <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'right floated mini ui image' %>
         </p>
       <% end %>
-      <%= link_to new_my_member_organ_path(member), data: { tooltip: t('.new') }, remote: true do %>
+      <%= link_to new_my_member_organ_path(member), data: { tooltip: t('org.my.organs.new.title') }, remote: true do %>
         <i class="fas fa-plus"></i>
       <% end %>
     </div>
@@ -29,7 +29,7 @@
   <% if current_user.available_account_identities.exists? %>
   <div class="card">
     <div class="content">
-      <%= link_to new_my_member_path, data: { tooltip: t('.new') }, remote: true do %>
+      <%= link_to new_my_member_path, data: { tooltip: t('org.my.members.new.title') }, remote: true do %>
         <i class="fas fa-plus"></i>
       <% end %>
     </div>

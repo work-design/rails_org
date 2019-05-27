@@ -34,6 +34,11 @@ zh:
       members:
         index:
           title: 我的工作台
+        new:
+          title: 申请为职员
+      organs:
+        new:
+          title: 添加组织
     member:
       departments:
         index:
