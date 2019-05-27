@@ -2,11 +2,11 @@
 <div class="item">
   <a class="<%= active_helper(modules: 'org/admin', active_class: 'title active', item_class: 'title') %>">
     <i class="fas fa-sitemap fa-fw"></i>
-    <span>组织管理</span>
+    <span><%= t('org.admin.title') %></span>
     <i class="dropdown icon"></i>
   </a>
   <div class="<%= active_helper(modules: 'org/admin', active_class: 'active menu content', item_class: 'menu content') %>">
-    <%= link_to '组织列表', admin_organs_path, class: active_helper(controllers: 'organs') %>
+    <%= link_to t('org.admin.organs.index.title'), admin_organs_path, class: active_helper(controllers: 'organs') %>
     <%= link_to '组织设置', admin_organ_handles_path, class: active_helper(controllers: 'organ_handles') %>
     <%= link_to t('org.admin.departments.index.title'), admin_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions']) %>
     <%= link_to t('org.admin.members.index.title'), admin_members_path, class: active_helper(controllers: ['members']) %>

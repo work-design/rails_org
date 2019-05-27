@@ -1,6 +1,7 @@
 zh:
   org:
     admin:
+      title: 人力资源管理
       departments:
         index:
           title: 部门
@@ -11,7 +12,7 @@ zh:
           title: 跨部门职级
       organs:
         index:
-          title: 分支机构
+          title: 连锁机构
         current:
           title: 我的组织
       organ_handles:
@@ -25,7 +26,7 @@ zh:
           title: 教室
       members:
         index:
-          title: 职员
+          title: 员工管理
           enabled: 可用
           disabled: 禁用
         show:
