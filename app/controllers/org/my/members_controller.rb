@@ -11,7 +11,9 @@ class Org::My::MembersController < Org::My::BaseController
   end
 
   def create
-    @member = current_user.members.build(member_params)
+    @member = Member.find_or_initialize_by(identity: member_params[:identity])
+    @member.user = current_user
+    @member.assign_attributes member_params
   
     respond_to do |format|
       if @member.save
