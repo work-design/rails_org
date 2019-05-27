@@ -7,7 +7,7 @@ class Org::My::MembersController < Org::My::BaseController
 
   def new
     @member = current_user.members.build
-    @identities = current_user.accounts.confirmed.pluck(:identity).map { |i| [i, i] }.to_h
+    @identities = current_user.accounts.where.not(identity: current_user.members.pluck(:identity)).confirmed.pluck(:identity).map { |i| [i, i] }.to_h
   end
 
   def create
