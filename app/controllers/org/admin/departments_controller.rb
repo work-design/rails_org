@@ -46,7 +46,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def new
-    @root = current_organ.departments.root || current_organ.departments.build
+    @root = current_organ.departments.build
     @department = current_organ.departments.build
   end
 
