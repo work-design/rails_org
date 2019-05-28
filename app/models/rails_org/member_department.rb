@@ -8,11 +8,13 @@ module RailsOrg::MemberDepartment
     belongs_to :organ, inverse_of: :member_departments
     belongs_to :department, counter_cache: true, inverse_of: :member_departments, optional: true
     belongs_to :job_title, optional: true
+    belongs_to :organ_grant, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, primary_key: :member_id
     
     validates :department_id, uniqueness: { scope: [:member_id, :organ_id] }
     
     before_save :sync_department_and_organ
     after_save_commit :sync_department_members_count, if: -> { saved_change_to_department_id? }
+    after_commit :sync_role_ids
   end
   
   def direct_followers
@@ -53,6 +55,11 @@ module RailsOrg::MemberDepartment
         Department.decrement_counter :all_member_departments_count, depart.self_and_ancestor_ids
       end
     end
+  end
+  
+  def sync_role_ids
+    self.organ_grant || self.create_organ_grant
+    organ_grant.role_ids = self.job_title&.role_ids
   end
 
 end
