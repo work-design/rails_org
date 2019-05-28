@@ -3,7 +3,7 @@ class Org::Admin::OrganGrantsController < Org::Admin::BaseController
 
   def index
     q_params = {}
-    q_params.merge! default_params
+    q_params.merge! organ_descendants_params
     @organ_grants = @member.organ_grants.default_where(q_params).page(params[:page])
   end
 
