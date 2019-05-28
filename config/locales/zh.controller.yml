@@ -15,6 +15,9 @@ zh:
           title: 连锁机构
         current:
           title: 本机构
+      organ_grants:
+        index:
+          title: 授权管理
       organ_handles:
         index:
           title: 部门职能设置
