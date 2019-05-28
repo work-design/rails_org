@@ -23,6 +23,7 @@
       <th><%= JobTitle.human_attribute_name(:name) %></th>
       <th><%= JobTitle.human_attribute_name(:description) %></th>
       <th><%= JobTitle.human_attribute_name(:department_id) %></th>
+      <th><%= JobTitle.human_attribute_name(:role_ids) %></th>
       <th>
         <%= link_to new_admin_job_title_path(department_id: params[:department_id]), class: 'ui mini primary button', remote: true do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
@@ -54,7 +55,17 @@
           <%= link_to t('org.admin.job_titles.index.title'), admin_job_titles_path %>
         <% end %>
       </td>
-      <td class="ui labels">
+      <td>
+        <div class="ui labels">
+          <% job_title.roles.pluck(:name).each do |role| %>
+            <span class="ui label"><%= role %></span>
+          <% end %>
+        </div>
+        <%= link_to edit_who_roles_path('JobTitle', job_title.id), data: { tooltip: t('role.admin.who_roles.edit.title') }, remote: true do %>
+          <i class="fas fa-user-shield"></i>
+        <% end %>
+      </td>
+      <td>
         <% if job_title.department_id == params[:department_id].to_i %>
           <%= link_to edit_admin_job_title_path(job_title), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
             <i class="fas fa-pencil-alt"></i>
