@@ -60,10 +60,10 @@
           <% job_title.roles.pluck(:name).each do |role| %>
             <span class="ui label"><%= role %></span>
           <% end %>
+          <%= link_to edit_who_roles_path('JobTitle', job_title.id), data: { tooltip: t('role.admin.who_roles.edit.title') }, remote: true do %>
+            <i class="fas fa-user-shield"></i>
+          <% end %>
         </div>
-        <%= link_to edit_who_roles_path('JobTitle', job_title.id), data: { tooltip: t('role.admin.who_roles.edit.title') }, remote: true do %>
-          <i class="fas fa-user-shield"></i>
-        <% end %>
       </td>
       <td>
         <% if job_title.department_id == params[:department_id].to_i %>
