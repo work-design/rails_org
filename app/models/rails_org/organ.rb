@@ -26,16 +26,15 @@ module RailsOrg::Organ
     after_save :sync_member_departments, if: -> { creator_id && saved_change_to_creator_id? }
   end
 
-  def get_organ_token(user)
+  def get_organ_grant(user)
     if user.is_a?(User)
       params = { user_id: user.id }
     else
       params = { member_id: user.id }
     end
-    grant = self.organ_grants.valid.find_by(params)
-    unless grant
-      self.organ_grants.where(params).delete_all
-      grant = organ_grants.create(params)
+    grant = self.organ_grants.find_or_create_by(params)
+    unless grant.valid_period?
+      grant.update_token!
     end
     grant
   end

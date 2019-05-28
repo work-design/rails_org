@@ -69,23 +69,11 @@ module RailsOrg::Member
   def all_followers
     Member.where(id: all_follower_ids)
   end
-
-  def organ_token
-    if super
-      return super
-    else
-      self.organ_grants.delete_all
-      create_organ_grant
-    end
-
-    organ_grant.token
-  end
-
-  def get_organ_token(organ_id)
-    grant = self.organ_grants.valid.find_by(organ_id: organ_id)
-    unless grant
-      self.organ_grants.where(organ_id: organ_id).delete_all
-      grant = organ_grants.create(organ_id: organ_id)
+  
+  def get_organ_grant(organ_id)
+    grant = self.organ_grants.find_or_create_by(organ_id: organ_id)
+    unless grant.valid_period?
+      grant.update_token!
     end
     grant
   end

@@ -52,11 +52,11 @@
   <td><%= member.join_on %></td>
   <td>
     <div class="ui labels">
-      <% member.roles.pluck(:name).each do |role| %>
+      <% member.get_organ_grant(current_organ.id).roles.pluck(:name).each do |role| %>
         <span class="ui label"><%= role %></span>
       <% end %>
     </div>
-    <%= link_to edit_who_roles_path('Member', member.id), data: { tooltip: t('role.admin.who_roles.edit.title') }, remote: true do %>
+    <%= link_to edit_who_roles_path('OrganGrant', member.get_organ_grant(current_organ.id).id), data: { tooltip: t('role.admin.who_roles.edit.title') }, remote: true do %>
       <i class="fas fa-user-shield"></i>
     <% end %>
   </td>

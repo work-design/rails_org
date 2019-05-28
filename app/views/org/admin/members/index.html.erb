@@ -20,7 +20,7 @@
         <%= link_to new_admin_member_path, remote: true, class: 'ui mini primary button' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
-        <%# link_to find_data_list_table_lists_path('MemberExport', params.fetch(:q, {}).permit(:office_id)), class: 'ui mini secondary button', remote: true do %>
+        <%# link_to find_data_list_table_lists_path('MemberExport', params.permit(:office_id)), class: 'ui mini secondary button', remote: true do %>
 <!--          <i class="file excel icon"></i><%#= t('.export') %>-->
         <%# end %>
       </th>

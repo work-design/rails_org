@@ -1,8 +1,10 @@
 class Org::Admin::OrganGrantsController < Org::Admin::BaseController
-  before_action :set_organ
+  before_action :set_member
 
   def index
-    @organ_grants = current_organ.organ_grants.page(params[:page])
+    q_params = {}
+    q_params.merge! default_params
+    @organ_grants = @member.organ_grants.default_where(q_params).page(params[:page])
   end
 
   def new
@@ -26,12 +28,14 @@ class Org::Admin::OrganGrantsController < Org::Admin::BaseController
   end
 
   private
-  def set_organ
-    @organ = current_organ
+  def set_member
+    @member = current_organ.members.find params[:member_id]
   end
 
   def organ_grant_params
-    params.fetch(:organ_grant).permit(:user_id, :member_id, :token)
+    params.fetch(:organ_grant).permit(
+      role_ids: []
+    )
   end
 
 end

@@ -34,7 +34,6 @@ Rails.application.routes.draw do
       patch :mock, on: :member
       resources :rooms
     end
-    resources :organ_grants
     resources :departments do
       collection do
         get :supports
@@ -68,6 +67,7 @@ Rails.application.routes.draw do
         get :options, on: :collection
         get 'options' => :member_options, on: :member
       end
+      resources :organ_grants
     end
     resources :supports do
       get :departments, on: :collection

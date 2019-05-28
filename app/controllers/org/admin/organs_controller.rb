@@ -44,8 +44,8 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   end
   
   def mock
-    organ_token = @organ.get_organ_token(current_member || current_user)
-    login_organ_as(organ_token)
+    organ_grant = @organ.get_organ_grant(current_member || current_user)
+    login_organ_as(organ_grant)
     
     redirect_to current_admin_organs_url
   end

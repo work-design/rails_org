@@ -61,12 +61,12 @@ class Org::My::MembersController < Org::My::BaseController
   end
 
   def login
-    organ_token = @member.get_organ_token(params[:organ_id])
-    login_organ_as organ_token
+    organ_grant = @member.get_organ_grant(params[:organ_id])
+    login_organ_as organ_grant
 
     respond_to do |format|
       format.html { redirect_to current_admin_organs_url }
-      format.json { render json: { organ_grant: organ_token } }
+      format.json { render json: { organ_grant: organ_grant } }
     end
   end
   

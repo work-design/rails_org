@@ -15,53 +15,55 @@ module RailsOrg::Controller
     end
   end
 
-  def current_organ
-    return @current_organ if defined?(@current_organ)
-    @current_organ, _ = login_from_organ_token
-    @current_organ
+  def rails_role_user
+    if organ_grant
+      organ_grant
+    else
+      current_user
+    end
+  end
+
+  def current_organ_grant
+    return @organ_grant if defined?(@organ_grant)
+    @organ_grant = login_from_organ_token
   end
 
   def current_member
     return @current_member if defined?(@current_member)
-    _, @current_member = login_from_organ_token
-    @current_member
+    @current_member = current_organ_grant.member
+  end
+
+  def current_organ
+    return @current_organ if defined?(@current_organ)
+    @current_organ = current_organ_grant.organ
   end
 
   def login_from_organ_token
     organ_token = request.headers['Organ-Token'].presence || session[:organ_token]
-    organ_grant = ::OrganGrant.find_by(token: organ_token)
-    if organ_grant
-      @current_organ = organ_grant.organ
-      @current_member = organ_grant.member
-      [@current_organ, @current_member]
-    else
-      [nil, nil]
-    end
+    @organ_grant = ::OrganGrant.find_by(token: organ_token)
   end
 
   def other_organs
     current_user.organs.where.not(id: current_organ.id)
   end
 
-  def login_organ_as(organ_token)
+  def login_organ_as(organ_grant)
     unless api_request?
-      session[:organ_token] = organ_token.token
+      session[:organ_token] = organ_grant.token
     end
 
-    logger.debug "Login as Organ #{organ_token.organ_id}"
+    logger.debug "Login as Organ #{organ_grant.organ_id}"
 
-    @current_member = organ_token.member
-    @current_organ = organ_token.organ
+    @current_organ = organ_grant.organ
   end
 
   def set_organ_token
-    return unless current_organ && current_member
-    organ_token = current_member.get_organ_token(current_organ.id)
+    return unless current_organ_grant
 
     if api_request?
-      headers['Organ-Token'] = organ_token.token
+      headers['Organ-Token'] = current_organ_grant.token
     else
-      session[:organ_token] = organ_token.token
+      session[:organ_token] = current_organ_grant.token
     end
   end
 

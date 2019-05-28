@@ -4,7 +4,6 @@ module RailsOrg::OrganGrant
     belongs_to :organ
     belongs_to :member, optional: true
     belongs_to :user, optional: true
-    scope :valid, -> { where('expire_at >= ?', Time.now) }
 
     after_validation :update_token
   end
@@ -13,6 +12,15 @@ module RailsOrg::OrganGrant
     self.expire_at = 14.days.since
     self.token ||= organ.generate_token(sub: 'organ_auth', exp: expire_at)
     self
+  end
+  
+  def update_token!
+    update_token
+    save
+  end
+  
+  def valid_period?
+    self.expire_at > Time.now
   end
 
 end
