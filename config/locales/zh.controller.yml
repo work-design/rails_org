@@ -29,6 +29,7 @@ zh:
           title: 员工管理
           enabled: 可用
           disabled: 禁用
+          role: 授权管理
         show:
           title: 职员信息
     my:

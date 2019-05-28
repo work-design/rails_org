@@ -16,16 +16,16 @@ module RailsOrg::Controller
   end
 
   def rails_role_user
-    if organ_grant
-      organ_grant
+    if current_organ_grant
+      current_organ_grant
     else
       current_user
     end
   end
 
   def current_organ_grant
-    return @organ_grant if defined?(@organ_grant)
-    @organ_grant = login_from_organ_token
+    return @current_organ_grant if defined?(@current_organ_grant)
+    @current_organ_grant = login_from_organ_token
   end
 
   def current_member
@@ -40,7 +40,7 @@ module RailsOrg::Controller
 
   def login_from_organ_token
     organ_token = request.headers['Organ-Token'].presence || session[:organ_token]
-    @organ_grant = ::OrganGrant.find_by(token: organ_token)
+    @current_organ_grant = ::OrganGrant.find_by(token: organ_token)
   end
 
   def other_organs

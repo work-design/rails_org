@@ -15,6 +15,7 @@
       <th><%= OrganGrant.human_attribute_name(:member) %></th>
       <th><%= OrganGrant.human_attribute_name(:token) %></th>
       <th><%= OrganGrant.human_attribute_name(:expired_at) %></th>
+      <th></th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -29,6 +30,16 @@
       <td><%= organ_grant.token %></td>
       <td>
         <time><%= organ_grant.expired_at.to_s(:rfc822) %></time>
+      </td>
+      <td>
+        <div class="ui labels">
+          <% member.get_organ_grant(current_organ.id).roles.pluck(:name).each do |role| %>
+            <span class="ui label"><%= role %></span>
+          <% end %>
+        </div>
+        <%= link_to edit_who_roles_path('OrganGrant', member.get_organ_grant(current_organ.id).id), data: { tooltip: t('role.admin.who_roles.edit.title') }, remote: true do %>
+          <i class="fas fa-user-shield"></i>
+        <% end %>
       </td>
       <td class="ui labels">
         <%= link_to admin_organ_grant_path(@organ, organ_grant), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui red mini icon button' do %>
