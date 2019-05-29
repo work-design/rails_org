@@ -17,7 +17,7 @@
       <td><%= organ_handle.name %></td>
       <td><%= organ_handle.description %></td>
       <td class="ui labels">
-        <% organ_handle.department_grants.each do |department_grant| %>
+        <% organ_handle.department_grants.includes(:job_title).each do |department_grant| %>
           <span class="ui label">
             <%= department_grant.job_title.name %>
             <%= link_to admin_organ_handle_department_grant_path(organ_handle, department_grant), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') } do %>

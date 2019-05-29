@@ -8,7 +8,7 @@ module RailsOrg::MemberDepartment
     belongs_to :organ, inverse_of: :member_departments
     belongs_to :department, counter_cache: true, inverse_of: :member_departments, optional: true
     belongs_to :job_title, optional: true
-    belongs_to :organ_grant, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, primary_key: :member_id
+    belongs_to :organ_grant, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, primary_key: :member_id, optional: true
     
     validates :department_id, uniqueness: { scope: [:member_id, :organ_id] }
     
