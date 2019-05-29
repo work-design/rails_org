@@ -15,7 +15,6 @@
 <table class="ui bottom attached selectable table">
   <thead>
     <tr>
-      <th><%= JobTitle.human_attribute_name(:id) %></th>
       <th>
         <%= JobTitle.human_attribute_name(:grade) %>
         <span data-tooltip="<%= JobTitle.help_i18n(:grade) %>"><i class="grey question circle icon"></i></span>
@@ -34,7 +33,6 @@
   <tbody>
   <% @job_titles.each do |job_title| %>
     <tr>
-      <td><%= job_title.id %></td>
       <td>
         <%= job_title.grade %>
         <%= link_to move_higher_admin_job_title_path(job_title), method: :patch do %>

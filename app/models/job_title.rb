@@ -1,4 +1,4 @@
 class JobTitle < ApplicationRecord
+  include RailsRole::User # must included before Rails::JobTitle
   include RailsOrg::JobTitle
-  include RailsRole::User
 end unless defined? JobTitle

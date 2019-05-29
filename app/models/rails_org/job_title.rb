@@ -10,6 +10,7 @@ module RailsOrg::JobTitle
     belongs_to :department_root, class_name: 'Department', optional: true
     has_many :member_departments, dependent: :destroy
     has_many :members, through: :member_departments
+    has_many :organ_grants, through: :member_departments
     
     default_scope -> { order(grade: :asc) }
     
@@ -42,5 +43,18 @@ module RailsOrg::JobTitle
   def move_lower
   
   end
+
+  def sync_to_role_ids
+    self.role_ids = cached_role_ids
+    moved = Array(cached_role_ids_before_last_save) - Array(cached_role_ids)
+    
+    self.organ_grants.each do |organ_grant|
+      r = Array(organ_grant.cached_role_ids) - moved
+      r |= Array(cached_role_ids)
+      organ_grant.cached_role_ids = r
+      organ_grant.save
+    end
+  end
+  
   
 end
