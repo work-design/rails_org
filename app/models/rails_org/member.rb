@@ -17,8 +17,6 @@ module RailsOrg::Member
     has_many :job_titles, through: :member_departments
     accepts_nested_attributes_for :member_departments
     
-    has_many :created_organs, class_name: 'Organ', foreign_key: :creator_id, dependent: :nullify
-    
     has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
     
     has_many :organ_grants, dependent: :delete_all

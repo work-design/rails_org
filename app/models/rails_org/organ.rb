@@ -6,7 +6,7 @@ module RailsOrg::Organ
 
     has_taxons :area
     belongs_to :area
-    belongs_to :creator, class_name: 'Member', optional: true
+    belongs_to :creator, class_name: 'User', optional: true
     
     has_many :supports, -> { where(department_id: nil) }, dependent: :destroy
     has_many :departments, dependent: :destroy

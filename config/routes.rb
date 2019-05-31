@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     resources :members do
       patch :login, on: :member
       get :logout, on: :collection
-      resources :organs
     end
+    resources :organs
     resources :documents
   end
   

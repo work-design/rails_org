@@ -3,11 +3,11 @@ class Org::My::OrgansController < Org::My::BaseController
   before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def index
-    @organs = Organ.page(params[:page])
+    @organs = current_user.created_organs.page(params[:page])
   end
 
   def new
-    @organ = @member.organs.build
+    @organ = current_user.created_organs.build
   end
 
   def create
@@ -16,7 +16,7 @@ class Org::My::OrgansController < Org::My::BaseController
       parent = Organ.find_by organ_uuid: parent_uuid
       organ_params.merge! parent_id: parent.id
     end
-    @organ = @member.created_organs.build(organ_params)
+    @organ = current_user.created_organs.build(organ_params)
     
     respond_to do |format|
       if @organ.save
@@ -68,7 +68,8 @@ class Org::My::OrgansController < Org::My::BaseController
       :address,
       :timezone,
       :locale,
-      :area_ancestors
+      :area_ancestors,
+      members_attributes: {}
     )
   end
 
