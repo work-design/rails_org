@@ -30,8 +30,8 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   end
 
   def new
-    @member = Member.new
-    @member.member_departments.build(organ_id: current_organ.id)
+    @member = current_organ.members.build
+    @member.member_departments.build
     prepare_form
 
     respond_to do |format|
@@ -41,7 +41,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   end
 
   def create
-    @member = Member.find_or_initialize_by(identity: member_params[:identity])
+    @member = current_organ.members.find_or_initialize_by(identity: member_params[:identity])
     @member.assign_attributes member_params
 
     respond_to do |format|
