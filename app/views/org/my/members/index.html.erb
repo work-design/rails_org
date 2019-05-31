@@ -12,14 +12,12 @@
       </div>
     </div>
     <div class="extra content">
-      <% member.organs.each do |organ| %>
-        <p>
-          <span><%= organ.address %></span>
-          <%= link_to organ.name, login_my_member_path(member, organ_id: organ.id), method: :patch, class: 'ui mini button' %>
-          <span><%= member.departments.find_by(organ_id: organ.id)&.full_name %></span>
-          <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'right floated mini ui image' %>
-        </p>
-      <% end %>
+      <p>
+        <span><%= member.organ.address %></span>
+        <%= link_to member.organ.name, login_my_member_path(member), method: :patch, class: 'ui mini button' %>
+        <span><%= member.departments.first&.full_name %></span>
+        <%= image_tag member.organ.logo.variant(resize_to_limit: [150, 150]), class: 'right floated mini ui image' %>
+      </p>
       <%= link_to new_my_member_organ_path(member), data: { tooltip: t('org.my.organs.new.title') }, remote: true do %>
         <i class="fas fa-plus"></i>
       <% end %>

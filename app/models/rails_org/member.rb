@@ -10,13 +10,12 @@ module RailsOrg::Member
     belongs_to :user, optional: true
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
     belongs_to :organ
-    
+    accepts_nested_attributes_for :organ
+
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
-    has_many :organs, -> { distinct }, through: :member_departments
     accepts_nested_attributes_for :member_departments
-    accepts_nested_attributes_for :organs
     
     has_many :created_organs, class_name: 'Organ', foreign_key: :creator_id, dependent: :nullify
     
@@ -71,8 +70,8 @@ module RailsOrg::Member
     Member.where(id: all_follower_ids)
   end
   
-  def get_organ_grant(organ_id)
-    grant = self.organ_grants.find_or_create_by(organ_id: organ_id)
+  def get_organ_grant
+    grant = self.organ_grants.find_or_create_by(organ_id: self.organ_id)
     unless grant.valid_period?
       grant.update_token!
     end

@@ -2,7 +2,7 @@ class Org::My::MembersController < Org::My::BaseController
   before_action :set_member, only: [:show, :edit, :update, :login]
 
   def index
-    @members = current_user.members.includes(:organs).order(id: :asc)
+    @members = current_user.members.includes(:organ).order(id: :asc)
   end
 
   def new
@@ -61,7 +61,7 @@ class Org::My::MembersController < Org::My::BaseController
   end
 
   def login
-    organ_grant = @member.get_organ_grant(params[:organ_id])
+    organ_grant = @member.get_organ_grant
     login_organ_as organ_grant
 
     respond_to do |format|
