@@ -17,9 +17,9 @@
 <dl>
   <dt><%= MemberDepartment.human_attribute_name(:organ_id) %></dt>
   <dd>
-    <%= link_to t('.all'), filter_params(except: [:'member_departments.organ_id']), class: active_params('member_departments.organ_id': '', active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
+    <%= link_to t('.all'), filter_params(except: [:organ_id]), class: active_params(organ_id: '', active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
     <% current_organ.children.each do |organ| %>
-      <%= link_to organ.name, filter_params('member_departments.organ_id': organ.id), class: active_params('member_departments.organ_id': organ.id, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
+      <%= link_to organ.name, filter_params(organ_id: organ.id), class: active_params(organ_id: organ.id, active_class: 'ui basic blue button', item_class: 'ui basic white button') %>
     <% end %>
   </dd>
 </dl>

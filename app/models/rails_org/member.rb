@@ -9,6 +9,7 @@ module RailsOrg::Member
 
     belongs_to :user, optional: true
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
+    belongs_to :organ
     
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments

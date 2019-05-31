@@ -1,5 +1,4 @@
 <%= render 'shared/error_messages', target: @member_department %>
-<%= f.collection_select :organ_id, current_organ.self_and_descendants, :id, :name, { on: { wrapper_input_id: true } }, { data: { title: 'organ_id' } } %>
 <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'department' } %>
 <%= f.collection_select :job_title_id, JobTitle.default_where(default_params), :id, :name, { include_blank: true, on: { wrapper_input_id: true } }, { data: { title: 'job_title_id' } } %>
 <%= f.submit %>

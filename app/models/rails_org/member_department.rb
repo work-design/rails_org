@@ -5,12 +5,10 @@ module RailsOrg::MemberDepartment
     attribute :department_descendant_ids, :integer, array: true
     
     belongs_to :member
-    belongs_to :organ, inverse_of: :member_departments
     belongs_to :department, counter_cache: true, inverse_of: :member_departments, optional: true
     belongs_to :job_title, optional: true
-    belongs_to :organ_grant, ->(o){ where(organ_id: o.organ_id) }, foreign_key: :member_id, primary_key: :member_id, optional: true
     
-    validates :department_id, uniqueness: { scope: [:member_id, :organ_id] }
+    validates :department_id, uniqueness: { scope: :member_id }
     
     before_save :sync_department_and_organ
     after_save_commit :sync_department_members_count, if: -> { saved_change_to_department_id? }
@@ -22,12 +20,11 @@ module RailsOrg::MemberDepartment
   end
   
   def all_followers
-    p = {
-      organ_id: organ.self_and_descendant_ids,
-      'grade-gt': self.grade
-    }
-    p.merge! department_id: department.self_and_descendant_ids if department
-    self.class.default_where(p)
+    if department
+      self.class.default_where(department_id: department.self_and_descendant_ids, 'grade-gt': self.grade)
+    else
+      self.class.none
+    end
   end
   
   def set_major
@@ -58,8 +55,7 @@ module RailsOrg::MemberDepartment
   end
   
   def sync_role_ids
-    self.organ_grant || self.create_organ_grant
-    organ_grant.role_ids = self.job_title&.role_ids
+    self.member.role_ids = self.job_title&.role_ids
   end
 
 end

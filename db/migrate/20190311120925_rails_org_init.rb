@@ -63,6 +63,8 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
 
     create_table :members do |t|
       t.references :user
+      t.references :organ
+      t.references :organ_root
       t.string :name
       t.string :identity
       t.string :number
@@ -104,7 +106,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :job_title
       t.references :department_root
       t.references :department
-      t.references :organ
       t.integer :grade
       t.boolean :major
       t.integer :department_descendant_ids, array: true

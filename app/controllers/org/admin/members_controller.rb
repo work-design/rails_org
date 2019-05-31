@@ -5,11 +5,11 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     q_params = {
       enabled: true,
     }
-    q_params.merge! 'member_departments.organ_id': current_organ.self_and_descendant_ids if current_organ
-    q_params.merge! params.permit(:id, 'member_departments.organ_id', 'name-like', :enabled, :department_ancestors)
+    q_params.merge! organ_id: current_organ.self_and_descendant_ids if current_organ
+    q_params.merge! params.permit(:id, :organ_id, 'name-like', :enabled, :department_ancestors)
     #department = Department.find_by id: Member.new(q_params).department_ancestors&.values.to_a.compact.last
     #q_params.merge! department_id: department.self_and_descendant_ids if department
-    @members = Member.includes(:roles, member_departments: [:job_title, :department, :organ]).default_where(q_params).order(id: :desc).page(params[:page])
+    @members = Member.includes(:organ, :roles, member_departments: [:job_title, :department]).default_where(q_params).order(id: :desc).page(params[:page])
   end
 
   def leaders
