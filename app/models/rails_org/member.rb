@@ -9,6 +9,7 @@ module RailsOrg::Member
 
     belongs_to :user, optional: true
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
+    belongs_to :profile, ->(o){ where(organ_id: o.organ_id) }, primary_key: :identity, foreign_key: :identity, optional: true
     belongs_to :organ
     accepts_nested_attributes_for :organ
 
@@ -22,7 +23,6 @@ module RailsOrg::Member
     has_many :organ_grants, dependent: :delete_all
 
     has_one :resign
-    has_one :profile, through: :user
     has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
     has_one :tutor, through: :tutorial
     has_many :tutorials, dependent: :nullify
@@ -33,7 +33,7 @@ module RailsOrg::Member
     has_one_attached :avatar
     has_one_attached :resume
     
-    validates :identity, uniqueness: true
+    validates :identity, uniqueness: { scope: :organ_id }
     #before_save :sync_tutorials, if: -> { join_on_changed? }
     before_save :sync_account_user, if: -> { identity_changed? }
   end
