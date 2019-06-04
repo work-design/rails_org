@@ -5,30 +5,18 @@
     <tr>
       <th class="three wide"></th>
       <th>
-        <%= link_to 'Edit', edit_profile_admin_member_path(@member), class: 'ui mini blue right floated button' %>
+        <%= link_to 'Edit', edit_admin_profile_path(@member.profile), class: 'ui mini blue right floated button' %>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:number) %></td>
-      <td><%= @member.number %></td>
-    </tr>
-    <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:parent) %></td>
-      <td><%= @member.parent&.name %></td>
+      <td class="right aligned"><%= Member.human_attribute_name(:leader) %></td>
+      <td><%= @member.leader&.name %></td>
     </tr>
     <tr>
       <td class="right aligned"><%= Member.human_attribute_name(:join_on) %></td>
       <td><%= @member.join_on %></td>
-    </tr>
-    <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:department) %></td>
-      <td><%= @member.department&.full_name %></td>
-    </tr>
-    <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:office) %></td>
-      <td><%= @member.office&.name %></td>
     </tr>
     <tr>
       <td class="right aligned"><%= Profile.human_attribute_name(:real_name) %></td>
@@ -74,6 +62,11 @@
       <td class="right aligned"><%= Profile.human_attribute_name(:resume) %></td>
       <td>
         <%= link_to @profile.resume.filename, rails_blob_path(@profile.resume), target: '_blank' if @profile.resume.attached? %>
+      </td>
+      <td>
+        <% if member.resume.attached? %>
+          <%= link_to member.resume.filename, rails_blob_path(member.resume), target: '_blank' %>
+        <% end %>
       </td>
     </tr>
   </tbody>

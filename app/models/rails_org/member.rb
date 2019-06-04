@@ -9,7 +9,7 @@ module RailsOrg::Member
 
     belongs_to :user, optional: true
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
-    belongs_to :profile, ->(o){ where(organ_id: o.organ_id) }, primary_key: :identity, foreign_key: :identity, optional: true
+    belongs_to :profile, ->(o){ where(organ_id: o.organ_id, user_id: o.user_id) }, primary_key: :identity, foreign_key: :identity, optional: true
     belongs_to :organ
     accepts_nested_attributes_for :organ
 
@@ -67,6 +67,10 @@ module RailsOrg::Member
 
   def all_followers
     Member.where(id: all_follower_ids)
+  end
+  
+  def leader
+    
   end
   
   def get_organ_grant

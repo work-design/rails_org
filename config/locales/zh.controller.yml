@@ -33,6 +33,7 @@ zh:
           enabled: 可用
           disabled: 禁用
           role: 授权管理
+          profile: 简历
         show:
           title: 职员信息
     my:

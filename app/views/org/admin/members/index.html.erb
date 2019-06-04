@@ -10,11 +10,10 @@
   <thead>
     <tr>
       <th><%= Member.human_attribute_name(:name) %></th>
-      <th class="center aligned"><%= Member.human_attribute_name(:department) %></th>
+      <th class="center aligned"><%= MemberDepartment.human_attribute_name(:department_id) %></th>
       <th><%= Member.human_attribute_name(:identity) %></th>
       <th><%= Member.human_attribute_name(:join_on) %></th>
       <th><%= Member.human_attribute_name(:enabled) %></th>
-      <th><%= Member.human_attribute_name(:resume) %></th>
       <th>
         <%= link_to new_admin_member_path, remote: true, class: 'ui mini primary button' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>

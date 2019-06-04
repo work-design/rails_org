@@ -1,5 +1,5 @@
 class Org::Admin::MembersController < Org::Admin::BaseController
-  before_action :set_member, only: [:show, :edit, :update, :token, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :profile, :token, :destroy]
 
   def index
     q_params = {
@@ -73,6 +73,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   end
 
   def profile
+    @profile = @member.profile || @member.create_profile
   end
 
   def edit
