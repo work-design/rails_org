@@ -8,6 +8,7 @@
       <% end %>
       <%= link_to member.name, admin_member_path(member) %>
     </p>
+    <p class="ui grey text"><%= member.organ.name %></p>
   </td>
   <td class="error selectable">
     <table class="ui table">
@@ -50,6 +51,16 @@
   <td>
     <div class="ui toggle checkbox">
       <%= check_box_tag '[member]enabled', nil, member.enabled, data: { method: :patch, remote: true, url: admin_member_path(member), submit: true }, id: nil %>
+    </div>
+  </td>
+  <td>
+    <div class="ui labels">
+      <% member.roles.pluck(:name).each do |role| %>
+        <span class="ui label"><%= role %></span>
+      <% end %>
+      <%= link_to edit_who_roles_path('Member', member.id), data: { tooltip: t('role.who_roles.edit.title') }, remote: true do %>
+        <i class="fas fa-user-shield"></i>
+      <% end %>
     </div>
   </td>
   <td>

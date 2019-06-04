@@ -70,7 +70,7 @@ module RailsOrg::Member
   end
   
   def leader
-    
+  
   end
   
   def get_organ_grant
