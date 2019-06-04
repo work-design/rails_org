@@ -16,8 +16,8 @@ module RailsOrg::Controller
   end
 
   def rails_role_user
-    if current_organ_grant
-      current_organ_grant
+    if current_member
+      current_member
     else
       current_user
     end
