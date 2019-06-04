@@ -36,6 +36,7 @@ module RailsOrg::Member
     validates :identity, uniqueness: { scope: :organ_id }
     #before_save :sync_tutorials, if: -> { join_on_changed? }
     before_save :sync_account_user, if: -> { identity_changed? }
+    after_create :sync_member_roles, if: -> { organ.creator_id == user_id }
   end
 
   def sync_account_user
@@ -102,6 +103,11 @@ module RailsOrg::Member
 
   def avatar_url
     url_helpers.rails_blob_url(avatar) if avatar.attachment.present?
+  end
+
+  def sync_member_roles
+    role = Role.find_by(who_type: 'Member', code: RailsOrg.config.super_role_code)
+    who_roles.create(role_id: role.id) if role
   end
 
 end

@@ -6,7 +6,6 @@
 
   <div class="content">
     <%= form_with model: @member, url: my_members_path do |f| %>
-      <%= f.select :identity, options_for_select(@identities) %>
       <%= render partial: 'form', locals: { f: f } %>
     <% end %>
   </div>

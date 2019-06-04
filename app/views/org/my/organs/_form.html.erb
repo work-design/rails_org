@@ -8,5 +8,8 @@
   <%= f.text_area :address %>
   <%= f.time_zone_select :timezone %>
   <%= f.select :locale, options_for_select(I18n.available_locales.zip(I18n.available_locales), @organ.locale) %>
+  <%= f.fields :members do |ef| %>
+    <%= ef.select :identity, options_for_select(current_user.accounts.pluck(:identity, :identity)) %>
+  <% end %>
   <%= f.submit %>
 <% end %>

@@ -13,6 +13,7 @@ module RailsOrg::Organ
     has_many :members, dependent: :destroy
     has_many :rooms, dependent: :delete_all
     has_many :organ_grants, dependent: :delete_all
+    accepts_nested_attributes_for :members
     
     has_one_attached :logo
 
@@ -22,7 +23,6 @@ module RailsOrg::Organ
     before_validation do
       self.organ_uuid ||= UidHelper.nsec_uuid('ORG')
     end
-    after_save :sync_member_departments, if: -> { creator_id && saved_change_to_creator_id? }
   end
 
   def get_organ_grant(user)
@@ -40,12 +40,6 @@ module RailsOrg::Organ
 
   def generate_token(**options)
     JwtHelper.generate_jwt_token(id, organ_uuid, options)
-  end
-  
-  def sync_member_departments
-    self.member_departments.create(member_id: creator_id)
-    role = Role.find_by(who_type: 'Member', code: RailsOrg.config.super_role_code)
-    creator.who_roles.create(role_id: role.id) if role
   end
 
 end

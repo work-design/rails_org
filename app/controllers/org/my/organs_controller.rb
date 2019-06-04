@@ -1,5 +1,4 @@
 class Org::My::OrgansController < Org::My::BaseController
-  before_action :set_member
   before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,6 +7,7 @@ class Org::My::OrgansController < Org::My::BaseController
 
   def new
     @organ = current_user.created_organs.build
+    @organ.members.build
   end
 
   def create
