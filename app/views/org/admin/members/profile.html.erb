@@ -5,7 +5,7 @@
     <tr>
       <th class="three wide"></th>
       <th>
-        <%= link_to 'Edit', edit_admin_profile_path(@member.profile), class: 'ui mini blue right floated button' %>
+        <%= link_to t('.edit'), edit_admin_profile_path(@member.profile), class: 'ui mini blue right floated button' %>
       </th>
     </tr>
   </thead>
@@ -27,12 +27,8 @@
       <td><%= @profile.gender_i18n %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Profile.human_attribute_name(:mobile) %></td>
-      <td><%= @profile.mobile %></td>
-    </tr>
-    <tr>
-      <td class="right aligned"><%= Profile.human_attribute_name(:private_email) %></td>
-      <td><%= @profile.private_email %></td>
+      <td class="right aligned"><%= Profile.human_attribute_name(:identity) %></td>
+      <td><%= @profile.identity %></td>
     </tr>
     <tr>
       <td class="right aligned"><%= Profile.human_attribute_name(:birthday_type) %></td>
@@ -51,10 +47,6 @@
       <td><%= @profile.degree %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Profile.human_attribute_name(:highest_education) %></td>
-      <td><%= @profile.highest_education %></td>
-    </tr>
-    <tr>
       <td class="right aligned"><%= Profile.human_attribute_name(:work_experience) %></td>
       <td><%= simple_format(@profile.work_experience) %></td>
     </tr>
@@ -62,11 +54,6 @@
       <td class="right aligned"><%= Profile.human_attribute_name(:resume) %></td>
       <td>
         <%= link_to @profile.resume.filename, rails_blob_path(@profile.resume), target: '_blank' if @profile.resume.attached? %>
-      </td>
-      <td>
-        <% if member.resume.attached? %>
-          <%= link_to member.resume.filename, rails_blob_path(member.resume), target: '_blank' %>
-        <% end %>
       </td>
     </tr>
   </tbody>
