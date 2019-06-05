@@ -80,8 +80,12 @@ class Org::Admin::MemberDepartmentsController < Org::Admin::BaseController
     @member_department = @member.member_departments.build
   
     department = Department.find params[:department_id]
+    q_params = {}
+    q_params.merge! default_params
+    q_params.merge! department_root_id: [department.root&.id, nil] if department
+
     @organs = current_organ.self_and_descendants
-    @job_titles = JobTitle.where(department_id: department.self_and_descendant_ids)
+    @job_titles = JobTitle.where(q_params)
   end
 
   def member_department_params
