@@ -22,6 +22,14 @@ module RailsOrg::Controller
       current_user
     end
   end
+  
+  def current_receiver
+    if current_member
+      current_member
+    else
+      current_user
+    end
+  end
 
   def current_organ_grant
     return @current_organ_grant if defined?(@current_organ_grant)
