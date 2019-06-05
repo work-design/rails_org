@@ -5,7 +5,7 @@
     <tr>
       <th class="three wide"></th>
       <th>
-        <%= link_to t('.edit'), edit_admin_profile_path(@member.profile), class: 'ui mini blue right floated button' %>
+        <%= link_to t('.edit'), edit_admin_profile_path(@member.profile), remote: true, class: 'ui mini blue right floated button' %>
       </th>
     </tr>
   </thead>
