@@ -1,6 +1,7 @@
 class Org::My::MembersController < Org::My::BaseController
   before_action :set_member, only: [:show, :edit, :update, :login]
-
+  skip_after_action :set_organ_token, only: [:logout]
+  
   def index
     @members = current_user.members.includes(:organ).order(id: :asc)
   end
@@ -72,6 +73,7 @@ class Org::My::MembersController < Org::My::BaseController
   
   def logout
     session.delete :organ_token
+
     redirect_to my_members_url
   end
 
