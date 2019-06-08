@@ -4,7 +4,6 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
 
   def all
     @organs = Organ.roots.order(id: :desc).page(params[:page])
-    render 'index'
   end
   
   def index

@@ -6,9 +6,6 @@
         <i class="fas fa-user"></i>
         <span class="ui grey text"><%= member.name %></span>
         <span class="ui green text"><%= member.identity %></span>
-        <%= link_to edit_my_member_path(member), data: { tooltip: t('.edit') }, remote: true do %>
-          <i class="fas fa-pencil-alt"></i>
-        <% end %>
       </div>
     </div>
     <div class="extra content">
