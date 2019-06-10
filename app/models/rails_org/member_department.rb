@@ -9,10 +9,12 @@ module RailsOrg::MemberDepartment
     belongs_to :job_title, optional: true
     
     validates :department_id, uniqueness: { scope: :member_id }
+    validates :job_title_id, presence: true, if: -> { department_id.blank? }
+    validates :department_id, presence: true, if: -> { job_title_id.blank? }
     
     before_save :sync_department_and_organ
     after_save_commit :sync_department_members_count, if: -> { saved_change_to_department_id? }
-    after_commit :sync_role_ids
+    after_save_commit :sync_role_ids
   end
   
   def direct_followers
@@ -55,7 +57,8 @@ module RailsOrg::MemberDepartment
   end
   
   def sync_role_ids
-    self.member.role_ids = self.job_title&.role_ids
+    r_ids = self.member.role_ids | self.job_title.role_ids
+    self.member.role_ids = r_ids
   end
 
 end
