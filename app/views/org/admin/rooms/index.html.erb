@@ -15,7 +15,6 @@
 <table class="ui bottom attached selectable table">
   <thead>
     <tr>
-      <th><%= Room.human_attribute_name(:id) %></th>
       <th><%= Room.human_attribute_name(:room_number) %></th>
       <th><%= Room.human_attribute_name(:color) %></th>
       <th><%= Room.human_attribute_name(:limit_number) %></th>
@@ -30,7 +29,6 @@
   <tbody>
   <% @rooms.each do |room| %>
     <tr>
-      <td><%= room.id %></td>
       <td><%= room.room_number %></td>
       <td>
         <span class="ui label" style="background-color: <%= room.color %>;"><%= room.color %></span>
