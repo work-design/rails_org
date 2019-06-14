@@ -1,3 +1,4 @@
+# Must order after RailsAuth::Controller
 module RailsOrg::Controller
   extend ActiveSupport::Concern
   included do
@@ -52,13 +53,24 @@ module RailsOrg::Controller
   def other_organs
     current_user.organs.where.not(id: current_organ.id)
   end
+  
+  def login_by_account(account)
+    super
+    if account.members.size == 1
+      @current_member = account.members.first
+      @current_organ = @current_member.organ
+      logger.debug "  ==========> Login by account as member: #{@current_member.id}"
+    else
+      logger.debug "  ==========> There are more than one organs, please goto select one;"
+    end
+  end
 
   def login_organ_as(organ_grant)
     unless api_request?
       session[:organ_token] = organ_grant.token
     end
 
-    logger.debug "Login as Organ #{organ_grant.organ_id}"
+    logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
 
     @current_organ = organ_grant.organ
   end
