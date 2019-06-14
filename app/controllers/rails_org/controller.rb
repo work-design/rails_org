@@ -1,4 +1,3 @@
-# Must order after RailsAuth::Controller
 module RailsOrg::Controller
   extend ActiveSupport::Concern
   included do
@@ -16,6 +15,7 @@ module RailsOrg::Controller
     end
   end
 
+  # Must order after RailsRole::Controller
   def rails_role_user
     if current_member
       current_member
@@ -54,6 +54,7 @@ module RailsOrg::Controller
     current_user.organs.where.not(id: current_organ.id)
   end
   
+  # Must order after RailsAuth::Controller
   def login_by_account(account)
     super
     if account.members.size == 1
