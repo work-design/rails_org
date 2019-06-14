@@ -35,11 +35,13 @@ module RailsOrg::Controller
   def current_member
     return @current_member if defined?(@current_member)
     @current_member, _ = login_from_organ_token
+    @current_member
   end
 
   def current_organ
     return @current_organ if defined?(@current_organ)
     _, @current_organ = login_from_organ_token
+    @current_organ
   end
 
   def login_from_organ_token
