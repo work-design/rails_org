@@ -3,7 +3,7 @@ class Org::My::MembersController < Org::My::BaseController
   skip_after_action :set_organ_token, only: [:logout]
   
   def index
-    @members = current_user.members.includes(:organ).order(id: :asc)
+    @members = current_user.members.enabled.includes(:organ).order(id: :asc)
   end
 
   def new
