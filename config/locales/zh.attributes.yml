@@ -36,6 +36,7 @@ zh:
         parent: 上级
         enabled: 状态
         name: 姓名
+        name-like: 姓名包含
         member_departments: 部门
         resume: 简历
         role_ids: 权限
