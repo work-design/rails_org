@@ -30,7 +30,7 @@ class Org::Admin::DepartmentGrantsController < Org::Admin::BaseController
 
   def destroy
     @department_grant.destroy
-    redirect_to admin_organ_handles_url
+    redirect_to admin_department_grants_url
   end
 
   private
