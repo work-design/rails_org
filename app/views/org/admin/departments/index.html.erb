@@ -28,8 +28,8 @@
 
   <tbody>
   <% @departments.each do |department| %>
-    <%= render partial: 'department', object: department %>
-    <%= draw_tree(partial: 'org/admin/departments/department', object: department) %>
+    <%= render partial: 'department', object: department, locals: { display: 'table-row' } %>
+    <%= draw_tree(partial: 'org/admin/departments/department', object: department, locals: { display: 'none' }) %>
   <% end %>
   </tbody>
 </table>
