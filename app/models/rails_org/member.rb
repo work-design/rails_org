@@ -112,7 +112,7 @@ module RailsOrg::Member
   end
 
   def sync_member_roles
-    role = Role.find_by(who_type: 'Member', code: RailsOrg.config.super_role_code)
+    role = Role.default_where('who_types-any': 'Member', code: RailsOrg.config.super_role_code).take
     who_roles.create(role_id: role.id) if role
   end
 

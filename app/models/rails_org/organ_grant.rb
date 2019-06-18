@@ -10,7 +10,7 @@ module RailsOrg::OrganGrant
 
   def update_token
     self.expire_at = 14.days.since
-    self.token ||= organ.generate_token(sub: 'organ_auth', exp: expire_at)
+    self.token ||= organ.generate_token(sub: 'organ_auth', exp: expire_at.to_i)
     self
   end
   
