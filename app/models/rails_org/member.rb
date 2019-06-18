@@ -38,7 +38,7 @@ module RailsOrg::Member
     validates :identity, uniqueness: { scope: :organ_id }
     #before_save :sync_tutorials, if: -> { join_on_changed? }
     before_save :sync_account_user, if: -> { identity_changed? }
-    after_create :sync_member_roles, if: -> { organ.creator_id == user_id }
+    after_create :sync_member_roles, if: -> { organ.creator_id.present? && organ.creator_id == user_id }
   end
 
   def sync_account_user
