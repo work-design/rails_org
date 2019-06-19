@@ -17,7 +17,7 @@ class Org::My::OrgansController < Org::My::BaseController
       organ_params.merge! parent_id: parent.id
     end
     @organ = current_user.created_organs.build(organ_params)
-    
+
     respond_to do |format|
       if @organ.save
         format.html.phone

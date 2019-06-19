@@ -11,7 +11,6 @@ module RailsOrg::Member
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
     belongs_to :profile, ->(o){ where(organ_id: o.organ_id, user_id: o.user_id) }, primary_key: :identity, foreign_key: :identity, optional: true
     belongs_to :organ
-    accepts_nested_attributes_for :organ
 
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
