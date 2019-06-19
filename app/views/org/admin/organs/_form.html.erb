@@ -5,5 +5,5 @@
 <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'area' } %>
 <%= f.text_area :address %>
 <%= f.time_zone_select :timezone %>
-<%= f.select :locale, options_for_select(I18n.available_locales.zip(I18n.available_locales), @organ.locale) %>
+<%= f.select :locale, options_for_select(User.options_i18n(:locale), @organ.locale) %>
 <%= f.submit %>
