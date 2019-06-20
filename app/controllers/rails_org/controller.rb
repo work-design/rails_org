@@ -46,6 +46,7 @@ module RailsOrg::Controller
 
   def login_from_organ_token
     organ_token = request.headers['Organ-Token'].presence || session[:organ_token]
+    return unless organ_token
     organ_grant = ::OrganGrant.find_by(token: organ_token)
     if organ_grant
       @current_member, @current_organ = organ_grant.member, organ_grant.organ
