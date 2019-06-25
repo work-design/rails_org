@@ -60,14 +60,15 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   end
 
   def organ_params
-    params.fetch(:organ, {}).permit(
+    p = params.fetch(:organ, {}).permit(
       :name,
       :logo,
       :name_short,
-      :parent_id,
       :parent_ancestors,
       :area_ancestors
     )
+    p.merge! parent_id: current_organ.id if p.select(&->(k, v){ k.start_with?('parent_ancestors') && v.present? }).values.blank?
+    p
   end
 
   def organ_limit_params

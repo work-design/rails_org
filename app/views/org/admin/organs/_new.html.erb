@@ -7,11 +7,7 @@
   <div class="content">
     <%= form_with model: [:admin, @organ] do |f| %>
       <%= render 'shared/error_messages', target: @organ %>
-      <% if current_organ.children.blank? %>
-        <%= f.hidden_field :parent_id, value: current_organ.id %>
-      <% else %>
-        <%= render partial: 'nodes/children_select', locals: { f: f, node: current_organ } %>
-      <% end %>
+      <%= render partial: 'nodes/children_select', locals: { f: f, node: current_organ } %>
       <%= render partial: 'form', locals: { f: f } %>
     <% end %>
   </div>
