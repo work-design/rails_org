@@ -47,9 +47,9 @@ module RailsOrg::Controller
   def login_from_organ_token
     organ_token = request.headers['Organ-Token'].presence || session[:organ_token]
     return unless organ_token
-    organ_grant = ::OrganGrant.find_by(token: organ_token)
-    if organ_grant
-      @current_member, @current_organ = organ_grant.member, organ_grant.organ
+    @current_organ_grant = ::OrganGrant.find_by(token: organ_token)
+    if @current_organ_grant
+      @current_member, @current_organ = @current_organ_grant.member, @current_organ_grant.organ
     end
   end
 
@@ -75,17 +75,23 @@ module RailsOrg::Controller
     end
 
     logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
-
-    @current_organ = organ_grant.organ
+    
+    @current_organ_grant = organ_grant
   end
 
   def set_organ_token
-    return unless current_member
+    if defined?(@current_organ_grant)
+      token = @current_organ_grant.token
+    elsif current_member
+      token = current_member.get_organ_grant.token
+    else
+      return
+    end
 
     if api_request?
-      headers['Organ-Token'] = current_member.get_organ_grant.token
+      headers['Organ-Token'] = token
     else
-      session[:organ_token] = current_member.get_organ_grant.token
+      session[:organ_token] = token
     end
   end
 
