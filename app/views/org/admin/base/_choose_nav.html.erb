@@ -1,5 +1,5 @@
 <div class="ui simple dropdown item">
-  <%= image_tag current_organ.logo, class: 'ui avatar image' %>
+  <%= image_tag current_organ.logo, class: 'ui avatar image' if current_organ.logo.present? %>
   <%= current_organ.name %>
   <i class="dropdown icon"></i>
   <div class="menu">
