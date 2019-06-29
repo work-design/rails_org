@@ -46,8 +46,8 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :organ
       t.references :parent
       t.string :name
-      t.integer :member_departments_count, default: 0
-      t.integer :all_member_departments_count, default: 0
+      t.integer :member_departments_count
+      t.integer :all_member_departments_count
       t.integer :needed_number
       t.string :collective_email
       t.timestamps
@@ -98,6 +98,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.string :description
       t.integer :grade
       t.integer :limit_number
+      t.integer :cached_role_ids, array: true
       t.timestamps
     end
 
