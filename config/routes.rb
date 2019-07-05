@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     end
     resources :members do
       collection do
+        get :options
         get :departments
         get :leaders
         patch :sync_all
