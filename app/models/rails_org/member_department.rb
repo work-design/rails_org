@@ -57,7 +57,10 @@ module RailsOrg::MemberDepartment
   end
   
   def sync_role_ids
-    r_ids = self.member.role_ids | self.job_title.role_ids
+    r_ids = self.member.role_ids
+    if job_title
+      r_ids = r_ids | self.job_title.role_ids
+    end
     self.member.role_ids = r_ids
   end
 
