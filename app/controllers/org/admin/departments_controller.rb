@@ -56,6 +56,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
     if @department.save
       redirect_to admin_departments_url
     else
+      @root = current_organ.departments.build
       render :new
     end
   end

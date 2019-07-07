@@ -44,6 +44,19 @@ module RailsOrg::Member
     self.user_id = account&.user_id
   end
 
+  def init_user
+    account || build_account
+    account.user || account.build_user
+    self.user = account.user
+  
+    self.class.transaction do
+      self.save!
+      account.save!
+    end
+  
+    user
+  end
+
   def direct_follower_ids
     return @direct_follower_ids if defined?(@direct_follower_ids)
     direct_ids = member_departments.map do |md|
