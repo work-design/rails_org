@@ -3,6 +3,8 @@ class Org::Admin::DepartmentGrantsController < Org::Admin::BaseController
   before_action :set_department_grant, only: [:destroy]
 
   def index
+    q_params = {}
+    q_params.merge! params.permit(:record_class, :record_column)
     @organ_handles = OrganHandle.order(id: :asc).page(params[:page])
   end
   

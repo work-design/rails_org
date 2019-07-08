@@ -124,8 +124,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     end
     
     create_table :organ_handles do |t|
-      t.string :name
-      t.string :description
       t.string :record_class
       t.string :record_column
       t.timestamps

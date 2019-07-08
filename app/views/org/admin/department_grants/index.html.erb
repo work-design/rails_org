@@ -5,8 +5,8 @@
 <table class="ui bottom attached selectable table">
   <thead>
     <tr>
-      <th><%= OrganHandle.human_attribute_name(:name) %></th>
-      <th><%= OrganHandle.human_attribute_name(:description) %></th>
+      <th><%= OrganHandle.human_attribute_name(:record_class) %></th>
+      <th><%= OrganHandle.human_attribute_name(:record_column) %></th>
       <th><%= DepartmentGrant.human_attribute_name(:job_title_id) %></th>
       <th></th>
     </tr>
@@ -14,8 +14,8 @@
   <tbody>
   <% @organ_handles.each do |organ_handle| %>
     <tr>
-      <td><%= organ_handle.name %></td>
-      <td><%= organ_handle.description %></td>
+      <td><%= organ_handle.record_class %></td>
+      <td><%= organ_handle.record_column %></td>
       <td class="ui labels">
         <% organ_handle.department_grants.where(default_params).includes(:job_title).each do |department_grant| %>
           <span class="ui label">
