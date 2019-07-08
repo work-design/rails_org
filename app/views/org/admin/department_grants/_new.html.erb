@@ -1,4 +1,4 @@
-<%= form_with model: [:admin, @organ_handle, @department_grant] do |f| %>
+<%= form_with model: @department_grant, url: admin_department_grants_path(@organ_handle.record_class, @organ_handle.record_column), builder: SimpleFormBuilder do |f| %>
   <%= render 'shared/error_messages', target: @department_grant %>
   <%# f.text_field :department_id %>
   <%= f.collection_select :job_title_id, JobTitle.default_where(default_params), :id, :name %>

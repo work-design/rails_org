@@ -89,9 +89,8 @@ Rails.application.routes.draw do
     resources :resign_reasons do
       get :parents, on: :collection
     end
-    resources :department_grants, only: [:index]
-    resources :organ_handles, only: [] do
-      resources :department_grants, except: [:index]
+    scope ':record_class/:record_column' do
+      resources :department_grants
     end
   end
 

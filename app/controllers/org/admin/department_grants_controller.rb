@@ -1,11 +1,8 @@
 class Org::Admin::DepartmentGrantsController < Org::Admin::BaseController
-  before_action :set_organ_handle, except: [:index]
+  before_action :set_organ_handle
   before_action :set_department_grant, only: [:destroy]
 
   def index
-    q_params = {}
-    q_params.merge! params.permit(:record_class, :record_column)
-    @organ_handles = OrganHandle.order(id: :asc).page(params[:page])
   end
   
   def new
@@ -17,27 +14,21 @@ class Org::Admin::DepartmentGrantsController < Org::Admin::BaseController
 
     respond_to do |format|
       if @department_grant.save
-        format.html.phone
-        format.html { redirect_to admin_department_grants_url }
-        format.js { redirect_back fallback_location: admin_organ_handles_url }
-        format.json { render :show }
+        format.js
       else
-        format.html.phone { render :new }
-        format.html { render :new }
-        format.js { redirect_back fallback_location: admin_organ_handles_url }
-        format.json { render :show }
+        format.js
+        format.json
       end
     end
   end
 
   def destroy
     @department_grant.destroy
-    redirect_to admin_department_grants_url
   end
 
   private
   def set_organ_handle
-    @organ_handle = OrganHandle.find params[:organ_handle_id]
+    @organ_handle = OrganHandle.find_or_create_by(record_class: params[:record_class], record_column: params[:record_column])
   end
   
   def set_department_grant
