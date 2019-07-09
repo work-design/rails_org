@@ -49,11 +49,6 @@
   <td><%= member.identity %></td>
   <td><%= member.join_on %></td>
   <td>
-    <div class="ui toggle checkbox">
-      <%= check_box_tag '[member]enabled', nil, member.enabled, data: { method: :patch, remote: true, url: admin_member_path(member), submit: true }, id: nil %>
-    </div>
-  </td>
-  <td>
     <div class="ui labels">
       <% member.roles.pluck(:name).each do |role| %>
         <span class="ui label"><%= role %></span>
