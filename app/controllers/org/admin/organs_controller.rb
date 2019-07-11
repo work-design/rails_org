@@ -22,6 +22,9 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   end
   
   def create
+    if organ_params.select(&->(k, v){ k.start_with?('parent_ancestors') && v.present? }).values.blank?
+      organ_params.merge! parent_id: current_organ.id
+    end
     @organ = Organ.new(organ_params)
   
     if @organ.save
@@ -35,7 +38,9 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   end
 
   def update
-    if @organ.update(organ_params)
+    @organ.assign_attributes(organ_params)
+
+    if @organ.save
       render 'update'
     else
       render :edit
@@ -60,15 +65,13 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   end
 
   def organ_params
-    p = params.fetch(:organ, {}).permit(
+    params.fetch(:organ, {}).permit(
       :name,
       :logo,
       :name_short,
       :parent_ancestors,
       :area_ancestors
     )
-    p.merge! parent_id: current_organ.id if p.select(&->(k, v){ k.start_with?('parent_ancestors') && v.present? }).values.blank?
-    p
   end
 
   def organ_limit_params
