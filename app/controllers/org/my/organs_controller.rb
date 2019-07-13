@@ -17,16 +17,18 @@ class Org::My::OrgansController < Org::My::BaseController
       organ_params.merge! parent_id: parent.id
     end
     @organ = current_user.created_organs.build(organ_params)
+    @organ.members.each { |i| i.user = current_user }
 
     respond_to do |format|
       if @organ.save
         format.html.phone
         format.html { redirect_to my_members_url }
-        format.js { redirect_to my_members_url }
+        format.js
         format.json { render :show }
       else
         format.html.phone { render :new }
         format.html { render :new }
+        format.js
         format.json { render :show }
       end
     end

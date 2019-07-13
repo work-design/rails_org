@@ -1,12 +1,14 @@
 <% if current_organ %>
-<div class="ui simple dropdown item">
-  <%= image_tag current_organ.logo, class: 'ui avatar image' %>
-  <%= current_organ.name %>
-  <i class="dropdown icon"></i>
-  <div class="menu">
-    <%= link_to logout_my_members_path, class: 'item' do %>
-      <i class="fas fa-exchange-alt"></i>切换
-    <% end %>
+<div class="ui one item menu">
+  <div class="ui simple dropdown item">
+    <%= image_tag current_organ.logo, class: 'ui avatar image' %>
+    <%= current_organ.name %>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <%= link_to logout_my_members_path, class: 'item' do %>
+        <i class="fas fa-exchange-alt"></i>切换
+      <% end %>
+    </div>
   </div>
 </div>
 <% end %>

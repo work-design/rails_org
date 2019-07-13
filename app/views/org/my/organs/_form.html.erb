@@ -1,13 +1,8 @@
-<%= form_with model: [:my, @member, @organ] do |f| %>
+<%= form_with model: @organ, url: my_organs_path do |f| %>
   <%= render 'shared/error_messages', target: @organ %>
   <%= f.text_field :parent_uuid %>
   <%= f.text_field :name, required: true %>
-  <%= f.text_field :name_short %>
   <%= f.file_field :logo %>
-  <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'area' } %>
-  <%= f.text_area :address %>
-  <%= f.time_zone_select :timezone %>
-  <%= f.select :locale, options_for_select(User.options_i18n(:locale), @organ.locale) %>
   <%= f.fields :members do |ef| %>
     <%= ef.select :identity, options_for_select(current_user.accounts.pluck(:identity, :identity)) %>
   <% end %>
