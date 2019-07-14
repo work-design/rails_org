@@ -81,7 +81,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def edit
     if @member.member_departments.count == 0
-      @member.member_departments.build
+      @member.member_departments.build(department_id: params[:department_id])
     end
     prepare_form
   end

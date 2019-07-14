@@ -1,11 +1,20 @@
 <%= f.text_field :name %>
-<%= f.fields :member_departments do |ef| %>
-  <% if params[:department_id] %>
-    <%= ef.hidden_field :department_id, value: params[:department_id] %>
-  <% else %>
-    <%= render partial: 'nodes/outer_select', locals: { f: ef, outer: 'department' } %>
-  <% end %>
-  <%= ef.collection_select :job_title_id, @job_titles, :id, :name, { on: { wrapper_input_id: true } }, { data: { title: 'job_title_id' } } %>
+<%= f.fields :member_departments, on: { wrapper_all: false, label: false }, css: { wrapper_input: 'field' } do |ef| %>
+  <div class="inline fields">
+    <%= ef.label :department_id %>
+    <% if params[:department_id] %>
+      <%= ef.hidden_field :department_id, value: params[:department_id] %>
+    <% else %>
+      <% if ef.object.department %>
+        <% ef.object.department.self_and_ancestors.reverse_each do |node| %>
+          <%= render partial: 'nodes/outer_options', locals: { f: ef, node: node, depth: node.depth } %>
+        <% end %>
+      <% else %>
+        <%= render partial: 'nodes/outer_options', locals: { f: ef, node: Department.new, depth: 0 } %>
+      <% end %>
+    <% end %>
+    <%= ef.collection_select :job_title_id, @job_titles, :id, :name, { include_blank: true, on: { wrapper_input_id: true } }, { data: { title: 'job_title_id' } } %>
+  </div>
 <% end %>
 <%= f.text_field :identity %>
 <%= f.date_field :join_on %>
