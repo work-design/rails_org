@@ -2,6 +2,7 @@
 <%= f.fields :member_departments, on: { wrapper_all: false, label: false }, css: { wrapper_input: 'field' } do |ef| %>
   <div class="inline fields">
     <%= ef.label :department_id %>
+    <label class="six wide field"></label>
     <% if params[:department_id] %>
       <%= ef.hidden_field :department_id, value: params[:department_id] %>
     <% else %>
