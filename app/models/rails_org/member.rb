@@ -41,7 +41,7 @@ module RailsOrg::Member
   end
 
   def sync_account_user
-    self.user_id = account&.user_id
+    self.user_id ||= account&.user_id
   end
 
   def init_user
