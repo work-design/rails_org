@@ -8,11 +8,11 @@
       <% end %>
       <%= link_to member.name, admin_member_path(member) %>
     </p>
-    <p class="ui grey text"><%= member.organ.name %></p>
   </td>
   <td>
     <% member.member_departments.each do |md| %>
       <p>
+        <span class="ui grey text"><%= member.organ.name %></span>
         <span>
           <% if md.department %>
           <%= link_to md.department.full_name, admin_department_path(md.department_id) %>
