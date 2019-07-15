@@ -1,4 +1,4 @@
 class Department < ApplicationRecord
-  include RailsTaxon::Node
+  prepend RailsTaxon::Node
   include RailsOrg::Department
 end unless defined? Department
