@@ -1,4 +1,4 @@
-<%= search_form_with model: Organ.new(params.permit(:name)) do |f| %>
+<%= search_form_with model: Organ.new do |f| %>
   <div class="fields">
     <%= f.text_field :name %>
     <%= f.submit %>
