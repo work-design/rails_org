@@ -1,1 +1,1 @@
-<%= f.collection_select :job_title_id, @job_titles, :id, :name, { on: { wrapper_input_id: true, wrapper_all: false, label: false } }, { data: { title: 'job_title_id' } } %>
+<%= f.collection_select :job_title_id, @job_titles, :id, :name, { on: { wrapper_input_id: true, wrapper_all: false, label: false } }, { data: { title: 'job_title_id', index: f.index } } %>
