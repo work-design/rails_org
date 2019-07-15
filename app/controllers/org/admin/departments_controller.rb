@@ -46,7 +46,12 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def new
-    @root = current_organ.departments.build
+    if current_organ.parent
+      @root = current_organ.parent.departments.root
+    else
+      @root = current_organ.departments.build
+    end
+    
     @department = current_organ.departments.build
   end
 
