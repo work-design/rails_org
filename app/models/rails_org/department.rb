@@ -30,6 +30,10 @@ module RailsOrg::Department
     self.class.max_depth - self.depth
   end
 
+  def node_name
+    "#{name}(#{organ.name})"
+  end
+  
   def names
     self_and_ancestors.pluck(:name).reverse
   end

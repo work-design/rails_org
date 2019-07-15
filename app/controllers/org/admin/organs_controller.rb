@@ -71,8 +71,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
       :logo,
       :name_short,
       :parent_ancestors,
-      :area_ancestors,
-      :parent_id
+      :area_ancestors
     )
   end
 
