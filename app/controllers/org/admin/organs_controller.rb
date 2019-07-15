@@ -23,9 +23,10 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   
   def create
     if organ_params.select(&->(k, v){ k.start_with?('parent_ancestors') && v.present? }).values.blank?
-      organ_params.merge! parent_id: current_organ.id
+      @organ = Organ.new organ_params.merge!(parent_id: current_organ.id)
+    else
+      @organ = Organ.new(organ_params)
     end
-    @organ = Organ.new(organ_params)
   
     if @organ.save
       render 'create'
@@ -70,7 +71,8 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
       :logo,
       :name_short,
       :parent_ancestors,
-      :area_ancestors
+      :area_ancestors,
+      :parent_id
     )
   end
 
