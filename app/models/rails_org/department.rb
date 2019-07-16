@@ -32,7 +32,7 @@ module RailsOrg::Department
   end
 
   def node_name
-    "#{name}(#{organ.name})"
+    "#{name}(#{organ&.name})"
   end
   
   def names
