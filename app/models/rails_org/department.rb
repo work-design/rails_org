@@ -30,10 +30,6 @@ module RailsOrg::Department
   def col_span
     self.class.max_depth - self.depth
   end
-
-  def node_name
-    "#{name}(#{organ&.name})"
-  end
   
   def names
     self_and_ancestors.pluck(:name).reverse
