@@ -3,11 +3,16 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
   before_action :set_job_title, only: [:show, :edit, :update, :move_higher, :move_lower, :destroy]
 
   def index
-    q_params = { department_root_id: nil }
+    q_params = {
+      department_root_id: @department.root.id
+    }
     q_params.merge! default_params
-    q_params.merge! department_root_id: [@department.root&.id, nil] if @department
     q_params.merge! params.permit(:name)
-    @job_titles = JobTitle.default_where(q_params, department_root_id: { allow: nil }).page(params[:page])
+    
+    @job_titles = JobTitle.where(super_job_title_id: nil).default_where(q_params).page(params[:page])
+
+    @selected_job_titles = JobTitle.where.not(super_job_title_id: nil).default_where(q_params).order(grade: :asc)
+    @super_job_titles = SuperJobTitle.default_where(default_params).order(grade: :asc)
   end
 
   def new
@@ -74,11 +79,7 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
 
   private
   def set_department
-    if params[:department_id]
-      @department = Department.find params[:department_id]
-    elsif params[:id]
-      @department = JobTitle.find(params[:id]).department
-    end
+    @department = Department.find params[:department_id]
   end
 
   def set_job_title

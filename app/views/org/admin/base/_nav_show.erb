@@ -1,5 +1,5 @@
 <div class="ui vertical fluid menu">
-  <% @department.self_and_siblings.default_where(default_params).each do |sibling| %>
+  <% @department.self_and_siblings.each do |sibling| %>
   <div class="item">
     <%= link_to admin_department_path(sibling), class: active_helper(id: sibling.id, active_class: 'header', item_class: '') do %>
       <span><%= sibling.name %></span><span class="grey text">(<%= sibling.all_member_departments_count %>)</span>

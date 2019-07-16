@@ -17,6 +17,8 @@ zh:
         department_id: 部门
         office_id: 区域
         role_ids: 权限
+      super_job_title:
+        grade: 级别
       job_transfer:
         member: Employee
         transfer_on: Transfer Date

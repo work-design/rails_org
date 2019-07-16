@@ -24,33 +24,63 @@
       <th><%= JobTitle.human_attribute_name(:department_id) %></th>
       <th><%= JobTitle.human_attribute_name(:role_ids) %></th>
       <th>
-        <%= link_to new_admin_job_title_path(department_id: params[:department_id]), class: 'ui mini primary button', remote: true do %>
+        <%= link_to new_admin_department_job_title_path(params[:department_id]), class: 'ui mini primary button', remote: true do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
     </tr>
   </thead>
   <tbody>
+  <% @super_job_titles.each do |super_job_title| %>
+    <% job_title = @selected_job_titles.find { |i| i.super_job_title_id == super_job_title.id } %>
+    <tr>
+      <td>
+        <%= super_job_title.grade %>
+        <% if job_title %>
+          <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
+            <i class="arrow down icon"></i>
+          <% end %>
+          <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
+            <i class="arrow up icon"></i>
+          <% end %>
+        <% end %>
+      </td>
+      <td><%= super_job_title.name %></td>
+      <td><%= super_job_title.description %></td>
+      <td></td>
+      <td></td>
+      <td>
+        <div class="ui toggle checkbox">
+          <% if job_title %>
+            <%= check_box_tag '', nil, true, data: { method: :delete, remote: true, url: admin_department_job_title_path(@department, job_title), submit: true }, id: nil %>
+          <% end %>
+          <% unless job_title %>
+            <%= check_box_tag '[job_title]super_job_title_id', super_job_title.id, false, data: { method: :post, remote: true, url: admin_department_job_titles_path(@department), submit: true }, id: nil %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
   <% @job_titles.each do |job_title| %>
     <tr>
       <td>
         <%= job_title.grade %>
-        <%= link_to move_higher_admin_job_title_path(job_title), method: :patch do %>
+        <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
           <i class="arrow down icon"></i>
         <% end %>
-        <%= link_to move_lower_admin_job_title_path(job_title), method: :patch do %>
+        <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
           <i class="arrow up icon"></i>
         <% end %>
       </td>
       <td><%= job_title.name %></td>
       <td><%= job_title.description %></td>
       <td>
-        <% if job_title.department_id == params[:department_id].to_i %>
+        <% if job_title.department_id == @department.id %>
           <span><%= job_title.department.full_name %></span>
         <% elsif job_title.department %>
-          <%= link_to job_title.department.full_name, admin_job_titles_path(department_id: job_title.department_id) %>
+          <%= link_to job_title.department.full_name, admin_department_job_titles_path(@department) %>
         <% else %>
-          <%= link_to t('org.admin.job_titles.index.title'), admin_job_titles_path %>
+          <%= link_to t('org.admin.job_titles.index.title'), admin_super_job_titles_path %>
         <% end %>
       </td>
       <td>
@@ -64,11 +94,11 @@
         </div>
       </td>
       <td>
-        <% if job_title.department_id == params[:department_id].to_i %>
-          <%= link_to edit_admin_job_title_path(job_title), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
+        <% if job_title.department_id == @department.id %>
+          <%= link_to edit_admin_department_job_title_path(@department, job_title), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
             <i class="fas fa-pencil-alt"></i>
           <% end %>
-          <%= link_to admin_job_title_path(job_title), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+          <%= link_to admin_department_job_title_path(@department, job_title), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>

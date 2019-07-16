@@ -21,7 +21,7 @@
     <% department.job_titles.each do |job_title| %>
       <div class="ui label" data-tooltip="<%= job_title.grade %>"><%= job_title.name %></div>
     <% end %>
-    <%= link_to admin_job_titles_path(department_id: department.id), data: { tooltip: t('.job_title') }, class: 'ui circular mini icon button' do %>
+    <%= link_to admin_department_job_titles_path(department), data: { tooltip: t('.job_title') }, class: 'ui circular mini icon button' do %>
       <i class="fas fa-user-tag"></i>
     <% end %>
   </td>

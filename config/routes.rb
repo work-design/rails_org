@@ -43,9 +43,15 @@ Rails.application.routes.draw do
         get :filter
       end
       get :need, on: :member
+      resources :job_titles do
+        member do
+          patch :move_lower
+          patch :move_higher
+        end
+      end
       resources :job_descriptions
     end
-    resources :job_titles do
+    resources :super_job_titles do
       member do
         patch :move_lower
         patch :move_higher

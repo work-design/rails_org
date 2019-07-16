@@ -1,0 +1,6 @@
+<%= form_with model: [:admin, @super_job_title] do |f| %>
+  <%= render 'shared/error_messages', target: @super_job_title %>
+  <%= f.text_field :name %>
+  <%= f.text_area :description %>
+  <%= f.submit %>
+<% end %>
