@@ -3,9 +3,12 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   before_action :prepare_form, only: [:new, :edit]
   
   def index
-    q_params = default_params
+    q_params = {
+      'parent_id-not': nil
+    }
+    q_params.merge! default_params
     q_params.merge! params.permit(:type, :name)
-    @departments = Department.roots.default_where(q_params).includes(:children, :leader).order(name: :asc).page(params[:page])
+    @departments = Department.default_where(q_params).includes(:children, :leader).order(name: :asc).page(params[:page])
   end
 
   def supports

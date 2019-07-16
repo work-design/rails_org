@@ -1,7 +1,7 @@
 module RailsOrg::JobTitle
   extend ActiveSupport::Concern
   included do
-    attribute :grade, :integer, default: 1
+    attribute :grade, :integer
     attribute :name, :string
     attribute :description, :string
     attribute :limit_number, :integer
@@ -12,7 +12,7 @@ module RailsOrg::JobTitle
     has_many :member_departments, dependent: :destroy
     has_many :members, through: :member_departments
     
-    acts_as_list column: :grade, scope: :department_root_id, add_new_at: :bottom
+    acts_as_list column: :grade, scope: :department_root_id
     
     default_scope -> { order(grade: :asc) }
     
