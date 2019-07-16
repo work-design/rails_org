@@ -62,11 +62,15 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   def options
     @member = Member.new
     @member_department = @member.member_departments.build
-  
-    department = Department.find params[:department_id]
-    q_params = {}
+    
+    if params[:department_id]
+      department = Department.find params[:department_id]
+      q_params = { type: 'DepartmentJobTitle' }
+      q_params.merge! department_root_id: department.root.id
+    else
+      q_params = { type: 'SuperJobTitle' }
+    end
     q_params.merge! default_params
-    q_params.merge! department_root_id: [department.root&.id, nil] if department
 
     @organs = current_organ.self_and_descendants
     @job_titles = JobTitle.where(q_params)
