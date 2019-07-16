@@ -4,7 +4,7 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
   def index
     q_params = {}
     q_params.merge! default_params
-    @super_job_titles = SuperJobTitle.default_where(default_params).page(params[:page])
+    @super_job_titles = SuperJobTitle.default_where(default_params).order(grade: :asc).page(params[:page])
   end
 
   def new
@@ -13,7 +13,7 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
 
   def create
     @super_job_title = SuperJobTitle.new(super_job_title_params)
-
+    
     respond_to do |format|
       if @super_job_title.save
         format.html.phone

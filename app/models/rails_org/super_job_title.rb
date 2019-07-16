@@ -3,7 +3,7 @@ module RailsOrg::SuperJobTitle
   included do
     attribute :grade, :integer
     
-    has_many :super_job_titles, dependent: :nullify
+    has_many :job_titles, dependent: :nullify
     
     acts_as_list column: :grade, scope: :organ_id
   end

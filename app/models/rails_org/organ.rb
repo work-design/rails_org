@@ -13,6 +13,7 @@ module RailsOrg::Organ
     has_many :members, dependent: :destroy
     has_many :rooms, dependent: :delete_all
     has_many :organ_grants, dependent: :delete_all
+    has_many :super_job_titles, dependent: :destroy
     accepts_nested_attributes_for :members
     
     has_one_attached :logo
@@ -40,6 +41,10 @@ module RailsOrg::Organ
 
   def generate_token(**options)
     JwtHelper.generate_jwt_token(id, organ_uuid, options)
+  end
+  
+  def max_grade
+    super_job_titles.maximum(:grade)
   end
 
 end

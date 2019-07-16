@@ -16,23 +16,27 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
   end
 
   def new
-    p = { department_id: params[:department_id] }.merge! default_params
-    @job_title = JobTitle.new(p)
+    @job_title = @department.job_titles.build
   end
 
   def create
-    @job_title = JobTitle.new(job_title_params)
+    @job_title = @department.job_titles.build(job_title_params)
+    if @job_title.super_job_title
+      r = @job_title.insert_at @job_title.super_job_title.grade
+    else
+      r = @job_title.save
+    end
     
     respond_to do |format|
-      if @job_title.save
+      if r
         format.html.phone
-        format.html { redirect_to admin_job_titles_url(department_id: @job_title.department_id) }
-        format.js { redirect_to admin_job_titles_url(department_id: @job_title.department_id) }
+        format.html { redirect_to admin_department_job_titles_url(@department) }
+        format.js { redirect_to admin_department_job_titles_url(@department) }
         format.json { render :show }
       else
         format.html.phone { render :new }
         format.html { render :new }
-        format.js { redirect_to admin_job_titles_url(department_id: @job_title.department_id), status: :unprocessable_entity }
+        format.js { redirect_to admin_department_job_titles_url(@department), status: :unprocessable_entity }
         format.json { render :show }
       end
     end
@@ -64,17 +68,17 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
 
   def move_higher
     @job_title.move_higher
-    redirect_to admin_job_titles_url(department_id: @job_title.department_id)
+    redirect_to admin_department_job_titles_url(@department)
   end
 
   def move_lower
     @job_title.move_lower
-    redirect_to admin_job_titles_url(department_id: @job_title.department_id)
+    redirect_to admin_department_job_titles_url(@department)
   end
 
   def destroy
     @job_title.destroy
-    redirect_to admin_job_titles_url(department_id: @job_title.department_id)
+    redirect_to admin_department_job_titles_url(@department)
   end
 
   private
@@ -83,7 +87,7 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
   end
 
   def set_job_title
-    @job_title = JobTitle.where(department_root_id: @department&.root&.id).find(params[:id])
+    @job_title = JobTitle.where(department_root_id: @department.root.id).find(params[:id])
   end
 
   def job_title_params
@@ -91,7 +95,7 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
       :name,
       :description,
       :grade,
-      :department_id
+      :super_job_title_id
     )
     p.merge! default_params
   end

@@ -8,11 +8,11 @@ module RailsOrg::JobTitle
 
     belongs_to :department
     belongs_to :department_root, class_name: 'Department'
-    belongs_to :common_job_title, optional: true
+    belongs_to :super_job_title, optional: true
     has_many :member_departments, dependent: :destroy
     has_many :members, through: :member_departments
     
-    acts_as_list column: :grade, scope: :department_root_id
+    acts_as_list column: :grade, scope: :department_root_id, add_new_at: :bottom
     
     default_scope -> { order(grade: :asc) }
     
