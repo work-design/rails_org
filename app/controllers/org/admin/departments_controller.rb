@@ -60,7 +60,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
 
   def create
     @department = Department.new(department_params)
-
+  
     if @department.save
       redirect_to admin_departments_url
     else
@@ -108,8 +108,8 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
       :needed_number,
       :logo,
       :office_id,
-      :parent_id,
-      :parent_ancestors
+      :parent_ancestors,
+      :superior_ancestors
     )
     q.merge! default_params
   end

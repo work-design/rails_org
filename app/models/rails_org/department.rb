@@ -6,6 +6,7 @@ module RailsOrg::Department
     attribute :all_member_departments_count, :integer, default: 0
     
     belongs_to :organ, optional: true
+    belongs_to :superior, class_name: self.name, optional: true
     
     has_many :job_descriptions
     has_many :job_titles
@@ -17,7 +18,7 @@ module RailsOrg::Department
     has_one :leader, through: :member_department, source: :member
     
     has_one_attached :logo
-    
+    has_taxons :superior
     validates :name, presence: true, uniqueness: { scope: :organ_id }
   end
   

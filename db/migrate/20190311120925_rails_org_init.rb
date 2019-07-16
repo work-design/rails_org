@@ -45,11 +45,13 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     create_table :departments do |t|
       t.references :organ
       t.references :parent
+      t.references :superior
       t.string :name
       t.integer :member_departments_count
       t.integer :all_member_departments_count
       t.integer :needed_number
-      t.string :collective_email
+      t.jsonb :parent_ancestors
+      t.jsonb :superior_ancestors
       t.timestamps
     end
 
@@ -117,6 +119,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :job_title
       t.references :department_root
       t.references :department
+      t.references :superior
       t.integer :grade
       t.boolean :major
       t.integer :department_descendant_ids, array: true
