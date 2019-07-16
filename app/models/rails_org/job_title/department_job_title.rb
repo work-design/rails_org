@@ -5,7 +5,7 @@ module RailsOrg::JobTitle::DepartmentJobTitle
     belongs_to :department_root, class_name: 'Department'
     belongs_to :super_job_title, optional: true
 
-    acts_as_list column: :grade, scope: :department_root_id
+    acts_as_list column: :grade, scope: [:department_root_id, :type]
 
     before_validation :init_department_root
   end

@@ -1,0 +1,12 @@
+<div class="ui modal" id="modal">
+  <i class="close icon"></i>
+  <div class="ui header">
+    <%= t('.new') %>
+  </div>
+
+  <div class="content">
+    <%= form_with model: @job_title, scope: :job_title, url: admin_department_job_titles_path(@department) do |f| %>
+      <%= render partial: 'form', locals: { f: f } %>
+    <% end %>
+  </div>
+</div>

@@ -13,7 +13,7 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
 
   def create
     @super_job_title = SuperJobTitle.new(super_job_title_params)
-    
+
     respond_to do |format|
       if @super_job_title.save
         format.html.phone
