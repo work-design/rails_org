@@ -37,10 +37,10 @@
       <td>
         <%= super_job_title.grade %>
         <% if job_title %>
-          <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
+          <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
             <i class="arrow down icon"></i>
           <% end %>
-          <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
+          <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
             <i class="arrow up icon"></i>
           <% end %>
         <% end %>
@@ -65,10 +65,10 @@
     <tr>
       <td>
         <%= job_title.grade %>
-        <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
+        <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
           <i class="arrow down icon"></i>
         <% end %>
-        <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
+        <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
           <i class="arrow up icon"></i>
         <% end %>
       </td>
