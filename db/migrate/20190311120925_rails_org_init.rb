@@ -91,21 +91,13 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.string :comment, limit: 4096
       t.timestamps
     end
-    
-    create_table :super_job_titles do |t|
-      t.references :organ  # For SaaS
-      t.string :name
-      t.string :description
-      t.integer :grade
-      t.integer :cached_role_ids, array: true
-      t.timestamps
-    end
 
     create_table :job_titles do |t|
       t.references :organ
       t.references :department
       t.references :department_root
       t.references :super_job_title
+      t.string :type
       t.string :name
       t.string :description
       t.integer :grade

@@ -133,8 +133,10 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     if params[:department_id]
       department = Department.find params[:department_id]
       q_params.merge! department_id: department.self_and_descendant_ids
+      @job_titles = JobTitle.default_where(q_params)
+    else
+      @job_titles = SuperJobTitle.default_where(q_params)
     end
-    @job_titles = JobTitle.default_where(q_params)
   end
 
   def member_params

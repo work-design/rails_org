@@ -6,8 +6,8 @@ $('[data-title="node_ancestors"]').on('change', function(){
   }
   if (this.value) {
     search_url.searchParams.set('department_id', this.value);
-    Rails.ajax({url: search_url, type: 'GET', dataType: 'script'});
   }
+  Rails.ajax({url: search_url, type: 'GET', dataType: 'script'});
 });
 
 $('#member_member_departments_attributes_0_organ_id').dropdown();
