@@ -36,9 +36,6 @@
       <% member.roles.pluck(:name).each do |role| %>
         <span class="ui label"><%= role %></span>
       <% end %>
-      <%= link_to edit_who_roles_path('Member', member.id), data: { tooltip: t('role.who_roles.edit.title') }, remote: true do %>
-        <i class="fas fa-user-shield"></i>
-      <% end %>
     </div>
   </td>
   <td>
