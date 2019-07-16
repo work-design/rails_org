@@ -26,6 +26,11 @@ module RailsOrg::JobTitle
   
   def init_department_root
     self.department_root = self.department.root
+    if super_job_title
+      self.name = super_job_title.name
+      self.grade = super_job_title.grade
+      self.description = super_job_title.description
+    end
   end
 
   def sync_to_role_ids

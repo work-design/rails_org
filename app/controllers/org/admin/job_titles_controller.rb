@@ -21,14 +21,9 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
 
   def create
     @job_title = @department.job_titles.build(job_title_params)
-    if @job_title.super_job_title
-      r = @job_title.insert_at @job_title.super_job_title.grade
-    else
-      r = @job_title.save
-    end
     
     respond_to do |format|
-      if r
+      if @job_title.save
         format.html.phone
         format.html { redirect_to admin_department_job_titles_url(@department) }
         format.js { redirect_to admin_department_job_titles_url(@department) }
