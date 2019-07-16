@@ -3,12 +3,10 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   before_action :prepare_form, only: [:new, :edit]
   
   def index
-    q_params = {
-      'parent_id-not': nil
-    }
+    q_params = {}
     q_params.merge! default_params
     q_params.merge! params.permit(:type, :name)
-    @departments = Department.default_where(q_params).includes(:children, :leader).order(name: :asc).page(params[:page])
+    @departments = Department.default_where(q_params).roots.includes(:children, :leader).order(name: :asc).page(params[:page])
   end
 
   def supports
@@ -55,7 +53,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
       @root = current_organ.departments.build
     end
     
-    @department = current_organ.departments.build
+    @department = current_organ.departments.build(parent_id: params[:parent_id])
   end
 
   def create
@@ -103,11 +101,9 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   def department_params
     q = params.fetch(:department, {}).permit(
       :name,
-      :type,
-      :title,
       :needed_number,
       :logo,
-      :office_id,
+      :parent_id,
       :parent_ancestors,
       :superior_ancestors
     )

@@ -27,6 +27,9 @@
   </td>
   <td><%= department.leader&.name %></td>
   <td>
+    <%= link_to new_admin_department_path(parent_id: department.id), data: { tooltip: '添加下级' }, remote: true, class: 'ui mini primary button' do %>
+      <i class="fas fa-plus"></i>
+    <% end %>
     <%= link_to admin_department_path(department), data: { tooltip: t('.show') }, class: 'ui circular mini icon button' do %>
       <i class="fas fa-users"></i>
     <% end %>
