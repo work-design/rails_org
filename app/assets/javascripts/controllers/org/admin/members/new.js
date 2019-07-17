@@ -1,5 +1,5 @@
 //= require rails_taxon/outer
-$('[data-title="node_ancestors"]').on('change', function(){
+$('[data-title="outer_ancestors"]').on('change', function(){
   var search_url = new URL('admin/members/options', location.origin);
   if (this.dataset['as']) {
     search_url.searchParams.set('as', this.dataset['as']);
