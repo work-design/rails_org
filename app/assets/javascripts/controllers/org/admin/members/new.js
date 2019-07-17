@@ -10,5 +10,4 @@ $('[data-title="node_ancestors"]').on('change', function(){
   Rails.ajax({url: search_url, type: 'GET', dataType: 'script'});
 });
 
-$('#member_member_departments_attributes_0_organ_id').dropdown();
-$('#member_member_departments_attributes_0_job_title_id').dropdown();
+$('[data-title="job_title_id"]').dropdown();

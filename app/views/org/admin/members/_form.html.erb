@@ -1,7 +1,7 @@
 <%= f.text_field :name %>
-<div class="inline fields">
-  <%= f.label :member_departments %>
-  <%= f.fields :member_departments, on: { wrapper_all: false, label: false }, css: { wrapper_input: 'field' } do |ef| %>
+<%= f.fields :member_departments, on: { wrapper_all: false, label: false }, css: { wrapper_input: 'field' } do |ef| %>
+  <div class="inline fields">
+    <%= f.label :member_departments %>
     <% if params[:department_id] %>
       <%= ef.hidden_field :department_id, value: params[:department_id] %>
     <% else %>
@@ -14,8 +14,8 @@
       <% end %>
     <% end %>
     <%= ef.collection_select :job_title_id, @job_titles, :id, :name, { include_blank: true, on: { wrapper_input_id: true } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 <%= f.text_field :identity %>
 <%= f.date_field :join_on %>
 <%= f.check_box :enabled %>
