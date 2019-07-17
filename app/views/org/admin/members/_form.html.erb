@@ -10,7 +10,7 @@
           <%= render partial: 'nodes/outer_options', locals: { f: ef, node: node, outer: 'department', depth: node.depth } %>
         <% end %>
       <% else %>
-        <%= render partial: 'nodes/outer_options', locals: { f: ef, node: current_organ.departments.root, outer: 'department', depth: 0 } %>
+        <%= render partial: 'nodes/outer_options', locals: { f: ef, node: current_organ.departments.build, outer: 'department', depth: 0 } %>
       <% end %>
     <% end %>
     <%= ef.collection_select :job_title_id, @job_titles, :id, :name, { include_blank: true, on: { wrapper_input_id: true } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
