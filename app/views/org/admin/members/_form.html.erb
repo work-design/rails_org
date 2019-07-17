@@ -13,7 +13,7 @@
         <%= render partial: 'nodes/outer_options', locals: { f: ef, node: current_organ.departments.root, outer: 'department', depth: 0 } %>
       <% end %>
     <% end %>
-    <%= ef.collection_select :job_title_id, @job_titles, :id, :name, { include_blank: true, on: { wrapper_input_id: true } }, { data: { title: 'job_title_id', index: ef.index } } %>
+    <%= ef.collection_select :job_title_id, @job_titles, :id, :name, { include_blank: true, on: { wrapper_input_id: true } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
   <% end %>
 </div>
 <%= f.text_field :identity %>

@@ -1,5 +1,6 @@
-<% form_object = default_form_object(@member_department, index: params[:index], css: { wrapper_input: 'field' }) %>
+<% form_object = default_form_object(@member_department, as: params[:as], css: { wrapper_input: 'field' }) %>
+<%= f_method = form_object.wrapper_id(:job_title_id) %>
 
-$('#member_department_<%= params[:index] %>_job_title_id_input').replaceWith('<%= j(render partial: 'org/admin/member_departments/job_title_options', locals: { f: form_object }) %>');
+$('#<%= j f_method %>_input').replaceWith('<%= j(render partial: 'org/admin/member_departments/job_title_options', locals: { f: form_object }) %>');
 
-$('#member_department_<%= params[:index] %>_job_title_id').dropdown();
+$('#<%= j f_method %>').dropdown();
