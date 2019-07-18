@@ -114,6 +114,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :superior
       t.integer :grade
       t.boolean :major
+      t.jsonb :department_ancestors
       t.timestamps
     end
 

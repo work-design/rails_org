@@ -73,9 +73,9 @@ module RailsOrg::Member
   end
 
   def all_follower_ids
-    member_departments.map do |md|
+    (member_departments.map do |md|
       md.self_and_descendants.pluck(:member_id)
-    end.flatten.uniq
+    end.flatten + [self.id]).uniq
   end
 
   def all_followers
