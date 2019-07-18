@@ -2,7 +2,6 @@ module RailsOrg::MemberDepartment
   extend ActiveSupport::Concern
   included do
     has_taxons :department
-    attribute :department_descendant_ids, :integer, array: true
     
     belongs_to :member
     belongs_to :department, counter_cache: true, inverse_of: :member_departments, optional: true
@@ -15,7 +14,7 @@ module RailsOrg::MemberDepartment
     validates :job_title_id, presence: true, if: -> { department_id.blank? }
     validates :department_id, presence: true, if: -> { job_title_id.blank? }
     
-    before_save :sync_department_and_organ
+    before_save :sync_from_job_title
     after_save_commit :sync_department_members_count, if: -> { saved_change_to_department_id? }
     after_save_commit :sync_role_ids
   end
@@ -41,12 +40,9 @@ module RailsOrg::MemberDepartment
     end
   end
 
-  def sync_department_and_organ
-    if department && department_id_changed?
-      self.department_descendant_ids = self.department.self_and_descendant_ids
-    end
+  def sync_from_job_title
     if job_title && job_title_id_changed?
-      self.department_root_id = job_title.department_id
+      self.department_root_id = job_title.department_root_id
       self.grade = job_title.grade
     end
   end
