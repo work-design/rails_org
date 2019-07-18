@@ -24,14 +24,6 @@ module RailsOrg::MemberDepartment
     self.class.default_where(department_id: department_id, 'grade-gt': self.grade)
   end
   
-  def all_followers
-    if department
-      self.class.default_where(department_id: department.self_and_descendant_ids, 'grade-gt': self.grade)
-    else
-      self.class.none
-    end
-  end
-  
   def same_job_titles
     if job_title
       job_title.same_job_titles

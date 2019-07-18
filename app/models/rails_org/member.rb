@@ -15,7 +15,7 @@ module RailsOrg::Member
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
-    has_many :xx, through: :member_departments, source: :members
+    # has_many :xx, through: :member_departments, source: :members  # todo use one sql to fix this
     accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
     
     has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
@@ -63,12 +63,9 @@ module RailsOrg::Member
   end
 
   def direct_follower_ids
-    return @direct_follower_ids if defined?(@direct_follower_ids)
-    direct_ids = member_departments.map do |md|
+    member_departments.map do |md|
       md.direct_followers.pluck(:member_id)
-    end
-    direct_ids << self.id
-    @direct_follower_ids = direct_ids.flatten.uniq
+    end.flatten.uniq
   end
 
   def direct_followers
@@ -76,12 +73,9 @@ module RailsOrg::Member
   end
 
   def all_follower_ids
-    return @all_follower_ids if defined?(@all_follower_ids)
-    all_ids = member_departments.map do |md|
-      md.all_followers.pluck(:member_id)
-    end
-    all_ids << self.id
-    @all_follower_ids = all_ids.flatten.uniq
+    member_departments.map do |md|
+      md.self_and_descendants.pluck(:member_id)
+    end.flatten.uniq
   end
 
   def all_followers
