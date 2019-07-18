@@ -15,7 +15,7 @@ module RailsOrg::Member
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
-    accepts_nested_attributes_for :member_departments, reject_if: :all_blank
+    accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
     
     has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
     
