@@ -25,7 +25,9 @@
       <i class="fas fa-user-tag"></i>
     <% end %>
   </td>
-  <td><%= department.leader&.name %></td>
+  <td>
+    <%= link_to department.leader.name, admin_member_path(department.leader.id), remote: true if department.leader %>
+  </td>
   <td>
     <%= link_to new_admin_department_path(parent_id: department.id), data: { tooltip: '添加下级' }, remote: true, class: 'ui mini primary button' do %>
       <i class="fas fa-plus"></i>

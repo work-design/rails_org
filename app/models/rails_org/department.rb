@@ -14,7 +14,7 @@ module RailsOrg::Department
     has_many :members, through: :member_departments, source: :member
     has_many :organs, -> { distinct }, through: :member_departments
     
-    has_one :member_department, -> { order(grade: :desc) }
+    has_one :member_department, -> { order(grade: :asc) }
     has_one :leader, through: :member_department, source: :member
     
     has_one_attached :logo
