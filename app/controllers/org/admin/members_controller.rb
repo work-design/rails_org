@@ -107,6 +107,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   def add_item
     @member = Member.new
     @member.member_departments.build
+    prepare_form
   end
 
   def remove_item
