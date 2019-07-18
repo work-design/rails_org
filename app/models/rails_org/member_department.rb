@@ -49,7 +49,9 @@ module RailsOrg::MemberDepartment
 
   def sync_department_members_count
     self.class.transaction do
-      Department.increment_counter :all_member_departments_count, department.self_and_ancestor_ids
+      if department
+        Department.increment_counter :all_member_departments_count, department.self_and_ancestor_ids
+      end
       if department_id_before_last_save
         depart = Department.find(department_id_before_last_save)
         Department.decrement_counter :all_member_departments_count, depart.self_and_ancestor_ids

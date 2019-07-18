@@ -1,7 +1,7 @@
 <%= render 'shared/error_messages', target: @department %>
 <% if @department.parent %>
   <%= f.hidden_field :parent_id %>
-<% else %>
+<% elsif current_organ.parent %>
   <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'superior', node: @root } %>
 <% end %>
 <%= f.text_field :name, required: true %>

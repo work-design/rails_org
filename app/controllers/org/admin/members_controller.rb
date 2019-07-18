@@ -92,7 +92,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def update
     @member.assign_attributes(member_params)
-
+    
     respond_to do |format|
       if @member.save
         format.html { redirect_to admin_members_url }
