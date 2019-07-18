@@ -18,6 +18,10 @@ module RailsOrg::JobTitle
   def sync_grade_member_departments
     member_departments.update_all(grade: self.grade)
   end
+  
+  def same_job_titles
+    self.class.default_where(organ_id: self.organ_id, department_root_id: self.department_root_id)
+  end
 
   def sync_to_role_ids
     self.role_ids = cached_role_ids

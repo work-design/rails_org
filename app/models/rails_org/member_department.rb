@@ -29,6 +29,16 @@ module RailsOrg::MemberDepartment
     end
   end
   
+  def same_job_titles
+    if job_title
+      job_title.same_job_titles
+    elsif department
+      ::DepartmentJobTitle.where(organ_id: department.organ_id, department_root_id: department.root.id)
+    else
+      ::SuperJobTitle.none
+    end
+  end
+  
   def set_major
     self.class.transaction do
       self.update(major: true)

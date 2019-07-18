@@ -15,7 +15,7 @@
       <%= render partial: 'nodes/outer_options', locals: { f: ef, node: current_organ.departments.build, outer: 'department', depth: 0 } %>
     <% end %>
   <% end %>
-  <%= ef.collection_select :job_title_id, @job_titles, :id, :name, { include_blank: true, on: { wrapper_input_id: true } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
+  <%= ef.collection_select :job_title_id, ef.object.same_job_titles, :id, :name, { include_blank: true, on: { wrapper_input_id: true } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
   
   <div class="field">
     <%= link_to add_item_admin_members_path('item', index: ef.index), data: { title: 'add_item' }, remote: true do %>
