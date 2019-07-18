@@ -6,7 +6,7 @@ module RailsOrg::MemberDepartment
     belongs_to :member
     belongs_to :department, counter_cache: true, inverse_of: :member_departments, optional: true
     belongs_to :job_title, optional: true
-    has_many :descendant_hierarchies, class_name: 'DepartmentHierarchy', foreign_key: :ancestor_id, primary_key: :department_id
+    has_many :descendant_hierarchies, class_name: 'DepartmentHierarchy', foreign_key: :ancestor_id, primary_key: :department_ids
     has_many :self_and_descendants, ->(o){ default_where('grade-gt': o.grade) }, through: :descendant_hierarchies, source: :member_department
     has_many :members, through: :self_and_descendants, source: :member
     
@@ -14,7 +14,7 @@ module RailsOrg::MemberDepartment
     validates :job_title_id, presence: true, if: -> { department_id.blank? }
     validates :department_id, presence: true, if: -> { job_title_id.blank? }
     
-    before_save :sync_from_job_title
+    before_save :sync_from_job_title, if: -> { job_title_id_changed? || department_id_changed? }
     after_save_commit :sync_department_members_count, if: -> { saved_change_to_department_id? }
     after_save_commit :sync_role_ids
   end
@@ -41,9 +41,27 @@ module RailsOrg::MemberDepartment
   end
 
   def sync_from_job_title
-    if job_title && job_title_id_changed?
-      self.department_root_id = job_title.department_root_id
+    if job_title
+      if job_title.is_a?(SuperJobTitle)
+        self.department_ids = job_title.department_ids
+      else
+        self.department_root_id = job_title.department_root_id
+      end
       self.grade = job_title.grade
+    else
+      self.department_ids = []
+      self.grade = nil
+    end
+    
+    if department
+      self.superior_id = department.superior_id
+      self.department_root_id = self.department.root&.id
+    else
+      self.superior_id = nil
+    end
+    
+    if department.nil? && job_title.nil?
+      self.department_root_id = nil
     end
   end
 
