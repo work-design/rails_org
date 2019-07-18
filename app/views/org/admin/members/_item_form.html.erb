@@ -22,7 +22,7 @@
       <i class="plus circle icon"></i>
     <% end %>
     <% if ef.object.id %>
-      <%= ef.check_box :_destroy, { on: { offset: false }, css: { wrapper_checkbox: 'ui checkbox' }, checked: true }, 0, 1 %>
+      <%= ef.check_box :_destroy, { label: '移除', on: { offset: false }, css: { wrapper_checkbox: 'ui checkbox' }, checked: false }, 0, 1 %>
     <% else %>
       <%= link_to remove_item_admin_members_path('item', index: ef.index), remote: true do %>
         <i class="minus circle icon"></i>
