@@ -15,6 +15,7 @@ module RailsOrg::Member
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
+    has_many :xx, through: :member_departments, source: :members
     accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
     
     has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
@@ -42,6 +43,10 @@ module RailsOrg::Member
 
   def sync_account_user
     self.user_id ||= account&.user_id
+  end
+  
+  def grade
+    member_departments.minimum(:grade)
   end
 
   def init_user
