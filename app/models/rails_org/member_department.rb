@@ -54,7 +54,7 @@ module RailsOrg::MemberDepartment
     end
     
     if department
-      self.inferior_ids = department.inferior_ids
+      self.superior_id = department.superior_id
       self.department_root_id = self.department.root&.id
     else
       self.superior_id = nil

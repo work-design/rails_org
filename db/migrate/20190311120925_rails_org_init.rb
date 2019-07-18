@@ -111,10 +111,10 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :job_title
       t.references :department_root
       t.references :department
+      t.references :superior
       t.integer :grade
       t.boolean :major
       t.integer :department_ids, array: true
-      t.integer :inferior_ids, array: true
       t.jsonb :department_ancestors
       t.timestamps
     end

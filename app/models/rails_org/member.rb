@@ -18,7 +18,8 @@ module RailsOrg::Member
     # has_many :xx, through: :member_departments, source: :members  # todo use one sql to fix this
     accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
     
-    has_many :leading_departments, class_name: 'Department', foreign_key: :leader_id
+    
+    has_many :inferior_member_departments, class_name: 'MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
     
     has_many :organ_grants, dependent: :delete_all
 
