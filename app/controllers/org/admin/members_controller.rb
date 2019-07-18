@@ -66,7 +66,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     if params[:department_id]
       department = Department.find params[:department_id]
       q_params = { type: 'DepartmentJobTitle' }
-      q_params.merge! department_root_id: department.root.id
+      q_params.merge! department_root_id: department.root.id, super_job_title_id: nil
     else
       q_params = { type: 'SuperJobTitle' }
     end
