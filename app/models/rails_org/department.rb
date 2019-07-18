@@ -7,6 +7,7 @@ module RailsOrg::Department
     
     belongs_to :organ, optional: true
     belongs_to :superior, class_name: self.name, optional: true
+    has_many :inferiors, class_name: self.name, foreign_key: :superior_id
     
     has_many :job_descriptions
     has_many :job_titles
