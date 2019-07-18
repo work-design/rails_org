@@ -8,7 +8,7 @@ module RailsOrg::JobTitle
     attribute :type, :string, default: 'DepartmentJobTitle'
     
     has_many :member_departments, dependent: :destroy
-    has_many :members, through: :member_departments
+    has_many :members, through: :member_departments, source: :member
     
     default_scope -> { order(grade: :asc) }
     
