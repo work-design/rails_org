@@ -56,7 +56,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
 
   def create
     @department = Department.new(department_params)
-  
+    
     if @department.save
       redirect_to admin_departments_url
     else
