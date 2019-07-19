@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th class="six wide">
-        <%= link_to t('.edit'), edit_admin_organ_path(@organ.id), class: 'ui mini blue right floated button', remote: true %>
+        <%= link_to t('.edit'), edit_panel_organ_path, class: 'ui mini blue right floated button', remote: true %>
       </th>
       <th class="ten wide"></th>
     </tr>
@@ -10,19 +10,19 @@
   <tbody>
     <tr>
       <td class="right aligned"><%= Organ.human_attribute_name(:name) %></td>
-      <td><%= @organ.name %></td>
+      <td><%= current_organ.name %></td>
     </tr>
     <tr>
       <td class="right aligned"><%= Organ.human_attribute_name(:organ_uuid) %></td>
-      <td><%= @organ.organ_uuid %></td>
+      <td><%= current_organ.organ_uuid %></td>
     </tr>
     <tr>
       <td class="right aligned"><%= Organ.human_attribute_name(:area_id) %></td>
-      <td><%= @organ.area&.full_name %></td>
+      <td><%= current_organ.area&.full_name %></td>
     </tr>
     <tr>
       <td class="right aligned"><%= Organ.human_attribute_name(:limit_wechat) %></td>
-      <td><%= @organ.limit_wechat %></td>
+      <td><%= current_organ.limit_wechat %></td>
     </tr>
   </tbody>
 </table>

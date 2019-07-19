@@ -66,7 +66,7 @@ class Org::My::MembersController < Org::My::BaseController
     login_organ_as organ_grant
 
     respond_to do |format|
-      format.html { redirect_to current_admin_organs_url }
+      format.html { redirect_to panel_organ_url }
       format.json { render json: { organ_grant: organ_grant } }
     end
   end
