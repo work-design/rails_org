@@ -1,30 +1,30 @@
 class Org::Admin::RoomsController < Org::Admin::BaseController
-  before_action :set_organ
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   def index
     q_params = {}
+    q_params.merge! default_params
     q_params.merge! params.permit(:room_number)
-    @rooms = @organ.rooms.default_where(q_params).page(params[:page])
+    @rooms = Room.default_where(q_params).page(params[:page])
   end
 
   def new
-    @room = @organ.rooms.build
+    @room = Room.new
   end
 
   def create
-    @room = @organ.rooms.build(room_params)
+    @room = Room.new(room_params)
 
     respond_to do |format|
       if @room.save
         format.html.phone
-        format.html { redirect_to admin_organ_rooms_url(@organ) }
-        format.js { redirect_back fallback_location: admin_organ_rooms_url(@organ) }
+        format.html { redirect_to admin_rooms_url }
+        format.js { redirect_back fallback_location: admin_rooms_url }
         format.json { render :show }
       else
         format.html.phone { render :new }
         format.html { render :new }
-        format.js { redirect_back fallback_location: admin_organ_rooms_url(@organ) }
+        format.js { redirect_back fallback_location: admin_rooms_url }
         format.json { render :show }
       end
     end
@@ -42,13 +42,13 @@ class Org::Admin::RoomsController < Org::Admin::BaseController
     respond_to do |format|
       if @room.save
         format.html.phone
-        format.html { redirect_to admin_organ_rooms_url(@organ) }
-        format.js { redirect_back fallback_location: admin_organ_rooms_url(@organ) }
+        format.html { redirect_to admin_rooms_url }
+        format.js { redirect_back fallback_location: admin_rooms_url }
         format.json { render :show }
       else
         format.html.phone { render :edit }
         format.html { render :edit }
-        format.js { redirect_back fallback_location: admin_organ_rooms_url(@organ) }
+        format.js { redirect_back fallback_location: admin_rooms_url }
         format.json { render :show }
       end
     end
@@ -56,24 +56,21 @@ class Org::Admin::RoomsController < Org::Admin::BaseController
 
   def destroy
     @room.destroy
-    redirect_to admin_organ_rooms_url(@organ)
+    redirect_to admin_rooms_url
   end
 
   private
-  def set_organ
-    @organ = Organ.find params[:organ_id]
-  end
-
   def set_room
     @room = Room.find(params[:id])
   end
 
   def room_params
-    params.fetch(:room, {}).permit(
+    p = params.fetch(:room, {}).permit(
       :room_number,
       :color,
       :limit_number
     )
+    p.merge! default_params
   end
 
 end

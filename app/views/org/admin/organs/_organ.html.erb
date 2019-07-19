@@ -19,7 +19,6 @@
     <p><%= organ.address %></p>
   </td>
   <td>
-    <%= link_to Room.human_name, admin_organ_rooms_path(organ.id), class: 'ui mini circular button' %>
     <%= link_to edit_admin_organ_path(organ), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>

@@ -32,8 +32,8 @@ Rails.application.routes.draw do
       get :current, on: :collection
       get :all, on: :collection
       patch :mock, on: :member
-      resources :rooms
     end
+    resources :rooms
     resources :departments do
       collection do
         get :supports
@@ -79,11 +79,9 @@ Rails.application.routes.draw do
     resources :supports do
       get :departments, on: :collection
     end
-
     resources :tutorials do
       get :my, on: :collection
     end
-
     resources :job_transfers do
       patch :trigger, on: :member
       get :my, on: :collection
