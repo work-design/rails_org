@@ -31,8 +31,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def new
     @member = current_organ.members.build
-    @member.member_departments.build
-    prepare_form
+    @member.member_departments.build(department_id: params[:department_id])
 
     respond_to do |format|
       format.js
@@ -52,7 +51,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
         format.html { redirect_to admin_members_url, alert: @member.errors }
         format.js {
           @member.member_departments.build
-          prepare_form
           render :new
         }
       end
@@ -87,7 +85,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     if @member.member_departments.count == 0
       @member.member_departments.build(department_id: params[:department_id])
     end
-    prepare_form
   end
 
   def update
@@ -107,7 +104,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   def add_item
     @member = Member.new
     @member.member_departments.build
-    prepare_form
   end
 
   def remove_item
@@ -131,17 +127,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   private
   def set_member
     @member = Member.find(params[:id])
-  end
-  
-  def prepare_form
-    q_params = { organ_id: current_organ.id }
-    if params[:department_id]
-      department = Department.find params[:department_id]
-      q_params.merge! department_id: department.self_and_descendant_ids
-      @job_titles = JobTitle.default_where(q_params)
-    else
-      @job_titles = SuperJobTitle.default_where(q_params)
-    end
   end
 
   def member_params

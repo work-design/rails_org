@@ -19,8 +19,7 @@ class Org::Admin::JobTransfersController < Org::Admin::BaseController
         #state: JobTransfer::states[:init]
       }
     end
-    q_params.with_indifferent_access
-    q_params.merge! params.fetch(:q, {}).permit('member.name')
+    q_params.merge! params.permit('member.name')
     q_params.merge! params.permit(:member_id, :state)
 
     @job_transfers = JobTransfer.includes(:member, :to_office, :to_department, :from_office, :from_department).default_where(q_params).order(id: :desc).page(params[:page])

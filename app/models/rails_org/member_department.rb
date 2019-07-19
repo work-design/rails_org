@@ -29,7 +29,7 @@ module RailsOrg::MemberDepartment
     elsif department
       ::DepartmentJobTitle.where(organ_id: department.organ_id, department_root_id: department.root.id)
     else
-      ::SuperJobTitle.none
+      ::SuperJobTitle.where(organ_id: member.organ_id)
     end
   end
   
