@@ -42,9 +42,5 @@ module RailsOrg::Organ
   def generate_token(**options)
     JwtHelper.generate_jwt_token(id, organ_uuid, options)
   end
-  
-  def max_grade
-    super_job_titles.maximum(:grade)
-  end
 
 end

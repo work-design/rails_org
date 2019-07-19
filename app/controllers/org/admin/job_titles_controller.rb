@@ -21,7 +21,7 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
 
   def create
     @job_title = @department.job_titles.build(job_title_params)
-    
+
     respond_to do |format|
       if @job_title.save
         format.html.phone

@@ -23,6 +23,10 @@ module RailsOrg::JobTitle
     self.class.default_where(organ_id: self.organ_id, department_root_id: self.department_root_id)
   end
 
+  def top_grade
+    self.class.base_class.where(type: 'SuperJobTitle', organ_id: self.organ_id).maximum(:grade).to_i + 1
+  end
+
   def sync_to_role_ids
     self.role_ids = cached_role_ids
     moved = Array(cached_role_ids_before_last_save) - Array(cached_role_ids)
