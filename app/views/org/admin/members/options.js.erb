@@ -1,5 +1,5 @@
 <% f_object = form_object(@member_department, as: params[:as], css: { wrapper_input: 'field' }) %>
-<% job_title_id_method = form_object.wrapper_id(:job_title_id) %>
+<% job_title_id_method = f_object.wrapper_id(:job_title_id) %>
 <% f_method = f_object.wrapper_input_id(params[:method]) %>
 
 $('#<%= j job_title_id_method %>_input').replaceWith('<%= j(render partial: 'org/admin/member_departments/job_title_options', locals: { f: f_object }) %>');
