@@ -59,8 +59,8 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def options
     @member = current_organ.members.build
+    @department = Department.find(params[:department_id]) if params[:department_id]
     @member_department = @member.member_departments.build(department_id: params[:department_id])
-    @node = params[:node_type].constantize.find(params[:department_id])
   end
 
   def show

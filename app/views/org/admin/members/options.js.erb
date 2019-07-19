@@ -3,17 +3,17 @@
 <% f_method = f_object.wrapper_input_id(params[:method]) %>
 
 $('#<%= j job_title_id_method %>_input').replaceWith('<%= j(render partial: 'org/admin/member_departments/job_title_options', locals: { f: f_object }) %>');
-
 $('#<%= j job_title_id_method %>').dropdown();
 
 
-<% if @node.children.present? %>
-var template = '<%= j(render partial: 'nodes/outer_children_options', locals: { f: f_object, node: @node, depth: @node.depth + 1, outer: params[:outer] }) %>'
-$('#<%= j f_method %>').nextAll('[data-title="outer_ancestors_input"]').remove();
-$('#<%= j f_method %>').after(template);
-remote_js_load(<%= raw remote_js_load %>)
-<% else %>
-if ($('#<%= j f_method %>').next().length > 0) {
+<% if @department && @department.children.present? %>
+  var template = '<%= j(render partial: 'nodes/outer_children_options', locals: { f: f_object, node: @department, depth: @department.depth + 1, outer: params[:outer] }) %>'
   $('#<%= j f_method %>').nextAll('[data-title="outer_ancestors_input"]').remove();
-}
+  $('#<%= j f_method %>').after(template);
+<% else %>
+  if ($('#<%= j f_method %>').next().length > 0) {
+    $('#<%= j f_method %>').nextAll('[data-title="outer_ancestors_input"]').remove();
+  }
 <% end %>
+
+remote_js_load(<%= raw remote_js_load %>)
