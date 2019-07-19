@@ -1,0 +1,14 @@
+<div class="ui modal" id="modal">
+  <i class="close icon"></i>
+  <div class="ui header blue">
+    <%= t('.new') %>
+  </div>
+
+  <div class="content">
+    <%= form_with model: [:admin, @organ] do |f| %>
+      <%= render 'shared/error_messages', target: @organ %>
+      <%= render partial: 'nodes/children_select', locals: { f: f, node: current_organ } %>
+      <%= render partial: 'form', locals: { f: f } %>
+    <% end %>
+  </div>
+</div>

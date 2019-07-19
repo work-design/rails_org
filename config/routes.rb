@@ -26,10 +26,13 @@ Rails.application.routes.draw do
       get :departments, on: :collection
     end
   end
+  
+  scope :panel, module: 'org/panel', as: 'panel' do
+    resource :organ
+  end
 
   scope :admin, module: 'org/admin', as: 'admin' do
     resources :organs do
-      get :current, on: :collection
       get :all, on: :collection
       patch :mock, on: :member
     end
