@@ -4,24 +4,6 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
   def show
   end
 
-  def new
-    @organ = Organ.new
-  end
-  
-  def create
-    if organ_params.select(&->(k, v){ k.start_with?('parent_ancestors') && v.present? }).values.blank?
-      @organ = Organ.new organ_params.merge!(parent_id: current_organ.id)
-    else
-      @organ = Organ.new(organ_params)
-    end
-  
-    if @organ.save
-      render 'create'
-    else
-      render :new
-    end
-  end
-
   def edit
   end
 
@@ -49,7 +31,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
 
   private
   def set_organ
-    @organ = Organ.find params[:id]
+    @organ = current_organ
   end
 
   def organ_params

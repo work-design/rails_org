@@ -16,8 +16,6 @@ zh:
       organs:
         index:
           title: 连锁机构
-        current:
-          title: 本机构
       organ_grants:
         index:
           title: 授权管理
@@ -39,6 +37,10 @@ zh:
           profile: 简历
         show:
           title: 职员信息
+    panel:
+      organs:
+        show:
+          title: 本机构
     my:
       members:
         index:
