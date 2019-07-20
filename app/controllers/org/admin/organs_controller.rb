@@ -3,9 +3,13 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   
   def index
     q_params = {}
-    q_params.merge! parent_id: current_organ.id
+    if current_organ
+      q_params.merge! parent_id: current_organ.id
+    else
+      q_params.merge! parent_id: nil
+    end
     
-    @organs = Organ.default_where(q_params).order(id: :desc).page(params[:page])
+    @organs = Organ.default_where(q_params, parent_id: { allow: nil }).order(id: :desc).page(params[:page])
   end
   
   def show
