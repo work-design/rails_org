@@ -6,7 +6,7 @@ module RailsOrg::Account
   end
 
   def sync_to_members
-    if confirmed?
+    if confirmed? && self.user_id
       members.update_all(user_id: self.user_id)
     end
   end
