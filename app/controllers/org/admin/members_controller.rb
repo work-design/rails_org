@@ -40,7 +40,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   end
 
   def create
-    @member = current_organ.members.find_or_initialize_by(identity: member_params[:identity])
+    @member = current_organ.members.build(identity: member_params[:identity])
     @member.assign_attributes member_params
 
     respond_to do |format|
@@ -50,7 +50,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
       else
         format.html { redirect_to admin_members_url, alert: @member.errors }
         format.js {
-          @member.member_departments.build
           render :new
         }
       end
