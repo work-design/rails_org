@@ -50,7 +50,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
     organ_grant = @organ.get_organ_grant(current_member || current_user)
     login_organ_as(organ_grant)
     
-    redirect_to current_admin_organs_url
+    redirect_to panel_organ_url
   end
 
   def destroy
