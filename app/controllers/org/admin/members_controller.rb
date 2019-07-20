@@ -81,10 +81,10 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     respond_to do |format|
       if @member.save
         format.html { redirect_to admin_members_url }
-        format.js { redirect_to admin_members_url }
+        format.js
       else
         format.html { render :edit }
-        format.js { redirect_to admin_members_url }
+        format.js
       end
     end
   end
