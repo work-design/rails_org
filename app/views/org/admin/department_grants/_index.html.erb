@@ -10,9 +10,9 @@
       <tr>
         <td></td>
         <td class="ui labels">
-          <% @organ_handle.department_grants.where(default_params).includes(:job_title).each do |department_grant| %>
+          <% @organ_handle.department_grants.where(organ_id: current_organ&.id).includes(:job_title).each do |department_grant| %>
           <span class="ui label">
-            <%= department_grant.job_title.name %>
+            <%= department_grant.job_title&.name %>
             <%= link_to admin_department_grant_path(@organ_handle.record_class, @organ_handle.record_column, department_grant), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, remote: true do %>
               <i class="fas fa-trash-alt"></i>
             <% end %>
