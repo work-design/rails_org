@@ -83,7 +83,7 @@ module RailsOrg::Controller
     if defined?(@current_organ_grant)
       token = @current_organ_grant.token
     elsif current_member
-      token = current_member.get_organ_grant.token
+      token = current_member.organ_token
     else
       return
     end

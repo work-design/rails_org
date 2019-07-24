@@ -94,6 +94,10 @@ module RailsOrg::Member
     end
     grant
   end
+  
+  def organ_token
+    get_organ_grant.token
+  end
 
   def leading_members
     Member.where(department_id: leading_department.self_and_descendant_ids)
