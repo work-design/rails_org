@@ -8,7 +8,7 @@ module RailsOrg::JobTitle::DepartmentJobTitle
     acts_as_list column: :grade, scope: [:type, :department_root_id], top_of_list: ->(o){ o.top_grade }
 
     before_validation :init_department_root
-    after_create_commit :sync_to_member_departments, if: -> { super_job_title_id.present? }
+    after_commit :sync_to_member_departments, if: -> { super_job_title_id.present? }, on: [:create, :destroy]
   end
 
   def init_department_root
