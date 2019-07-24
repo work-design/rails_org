@@ -9,6 +9,7 @@ module RailsOrg::JobTitle
     
     has_many :member_departments, dependent: :destroy
     has_many :members, through: :member_departments, source: :member
+    has_many :same_job_titles, ->(o){ where(organ_id: o.organ_id) }, class_name: self.base_class.name, foreign_key: :department_root_id, primary_key: :department_root_id
     
     default_scope -> { order(grade: :asc) }
     
@@ -17,10 +18,6 @@ module RailsOrg::JobTitle
   
   def sync_grade_member_departments
     member_departments.update_all(grade: self.grade)
-  end
-  
-  def same_job_titles
-    self.class.default_where(organ_id: self.organ_id, department_root_id: self.department_root_id)
   end
 
   def top_grade
