@@ -108,7 +108,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     respond_to do |format|
       format.html { redirect_to admin_members_url }
       format.js { redirect_to admin_members_url }
-      format.json { redirect_to admin_members_url }
+      format.json 
     end
   end
 
