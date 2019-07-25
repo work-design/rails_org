@@ -14,6 +14,11 @@ module RailsOrg::JobTitleReference
       end
       self.grade = super_job_title.grade
     end
+    after_commit :sync_to_member_departments, on: [:create, :destroy]
+  end
+
+  def sync_to_member_departments
+    super_job_title.sync_to_member_departments
   end
   
 end
