@@ -18,6 +18,9 @@
     </span>
   </td>
   <td class="ui labels">
+    <% department.super_job_titles.each do |super_job_title| %>
+      <div class="ui grey label" data-tooltip="<%= super_job_title.grade %>"><%= super_job_title.name %></div>
+    <% end %>
     <% department.job_titles.each do |job_title| %>
       <div class="ui label" data-tooltip="<%= job_title.grade %>"><%= job_title.name %></div>
     <% end %>
