@@ -1,5 +1,5 @@
 class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
-  before_action :set_super_job_title, only: [:show, :edit, :update, :destroy]
+  before_action :set_super_job_title, only: [:show, :edit, :update, :create_department, :destroy_department, :destroy]
 
   def index
     q_params = {}
@@ -51,6 +51,16 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
         format.json { render :show }
       end
     end
+  end
+  
+  def create_department
+    jtr = @super_job_title.job_title_references.build(department_id: params[:department_id])
+    jtr.save
+  end
+  
+  def destroy_department
+    jtr = @super_job_title.job_title_references.where(department_id: params[:department_id])
+    jtr.delete_all
   end
 
   def destroy

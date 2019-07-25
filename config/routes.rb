@@ -58,6 +58,8 @@ Rails.application.routes.draw do
       member do
         patch :move_lower
         patch :move_higher
+        post 'department' => :create_department
+        delete 'department' => :destroy_department
       end
     end
     resources :members do

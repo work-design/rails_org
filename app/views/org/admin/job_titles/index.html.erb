@@ -32,30 +32,18 @@
   </thead>
   <tbody>
   <% @super_job_titles.each do |super_job_title| %>
-    <% job_title = @selected_job_titles.find { |i| i.super_job_title_id == super_job_title.id } %>
     <tr>
-      <td>
-        <%= super_job_title.grade %>
-        <% if job_title %>
-          <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
-            <i class="arrow down icon"></i>
-          <% end %>
-          <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
-            <i class="arrow up icon"></i>
-          <% end %>
-        <% end %>
-      </td>
+      <td><%= super_job_title.grade %></td>
       <td><%= super_job_title.name %></td>
       <td><%= super_job_title.description %></td>
       <td></td>
       <td></td>
       <td>
         <div class="ui toggle checkbox">
-          <% if job_title %>
-            <%= check_box_tag '', nil, true, data: { method: :delete, remote: true, url: admin_department_job_title_path(@department, job_title), submit: true }, id: nil %>
-          <% end %>
-          <% unless job_title %>
-            <%= check_box_tag '[job_title]super_job_title_id', super_job_title.id, false, data: { method: :post, remote: true, url: admin_department_job_titles_path(@department), submit: true }, id: nil %>
+          <% if @department.super_job_title_ids.include?(super_job_title.id) %>
+            <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: department_admin_super_job_title_path(super_job_title), submit: true }, id: nil %>
+          <% else %>
+            <%= check_box_tag :department_id, @department.id, false, data: { method: :post, remote: true, url: department_admin_super_job_title_path(super_job_title), submit: true }, id: nil %>
           <% end %>
         </div>
       </td>

@@ -1,11 +1,11 @@
 module RailsOrg::JobTitle::SuperJobTitle
   extend ActiveSupport::Concern
   included do
-    has_many :department_job_titles, dependent: :destroy
-    has_many :departments, through: :department_job_titles
-    has_many :lower_job_titles, ->(o){ default_where('grade-gte': o.grade) }, through: :department_job_titles, source: :same_job_titles
+    has_many :job_title_references, dependent: :delete_all
+    has_many :department_job_titles, through: :job_title_references
+    has_many :departments, through: :job_title_references
     
-    acts_as_list column: :grade, scope: [:organ_id, :type, :super_job_title_id]
+    acts_as_list column: :grade, scope: [:organ_id, :type]
   end
 
   def sync_to_member_departments

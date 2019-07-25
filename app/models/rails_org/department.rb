@@ -11,6 +11,9 @@ module RailsOrg::Department
     
     has_many :job_descriptions
     has_many :job_titles
+    has_many :job_title_references, dependent: :delete_all
+    has_many :super_job_titles, through: :job_title_references
+    
     has_many :member_departments, dependent: :delete_all
     has_many :members, through: :member_departments, source: :member
     has_many :organs, -> { distinct }, through: :member_departments

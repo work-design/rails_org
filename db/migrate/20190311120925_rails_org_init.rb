@@ -96,13 +96,20 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :organ
       t.references :department
       t.references :department_root
-      t.references :super_job_title
       t.string :type
       t.string :name
       t.string :description
       t.integer :grade
       t.integer :limit_number
       t.integer :cached_role_ids, array: true
+      t.timestamps
+    end
+    
+    create_table :job_title_references do |t|
+      t.references :super_job_title
+      t.references :department_root
+      t.references :department
+      t.integer :grade
       t.timestamps
     end
 
