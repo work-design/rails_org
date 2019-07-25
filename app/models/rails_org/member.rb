@@ -83,6 +83,10 @@ module RailsOrg::Member
     Member.where(id: all_follower_ids)
   end
   
+  def lower_job_title_ids
+    job_titles.map(&:lower_job_title_ids).flatten.uniq
+  end
+  
   def leader
   
   end
