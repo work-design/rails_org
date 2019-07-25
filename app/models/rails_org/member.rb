@@ -80,7 +80,7 @@ module RailsOrg::Member
   end
 
   def all_followers
-    Member.where(id: all_follower_ids)
+    Member.where(id: all_lower_ids)
   end
   
   def lower_job_title_ids
