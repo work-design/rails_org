@@ -87,6 +87,10 @@ module RailsOrg::Member
     job_titles.map(&:lower_job_title_ids).flatten.uniq
   end
   
+  def all_lower_ids
+    MemberDepartment.where(job_title_id: lower_job_title_ids).pluck(:member_id)
+  end
+  
   def leader
   
   end
