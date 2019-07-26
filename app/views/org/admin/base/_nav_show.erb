@@ -1,4 +1,4 @@
-<div class="ui vertical fluid menu">
+<div class="ui fluid vertical menu">
   <% @department.self_and_siblings.each do |sibling| %>
   <div class="item">
     <%= link_to admin_department_path(sibling), class: active_helper(id: sibling.id, active_class: 'header', item_class: '') do %>

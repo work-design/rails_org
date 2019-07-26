@@ -7,10 +7,10 @@
     <% end %>
     <%= member.name %>
   </td>
+  <td><%= member.identity %></td>
   <td>
     <%= member.job_titles.where(department_root_id: @department.root.id).pluck(:name).join(',') %>
   </td>
-  <td><%= member.name %></td>
   <td><%= member.join_on %></td>
   <td>
     <%= link_to edit_admin_member_path(member), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
