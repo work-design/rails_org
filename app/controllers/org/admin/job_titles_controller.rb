@@ -1,6 +1,6 @@
 class Org::Admin::JobTitlesController < Org::Admin::BaseController
   before_action :set_department
-  before_action :set_job_title, only: [:show, :edit, :update, :move_higher, :move_lower, :destroy]
+  before_action :set_job_title, only: [:show, :edit, :update, :move_higher, :move_lower, :reorder, :destroy]
 
   def index
     q_params = {
@@ -69,6 +69,20 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
   def move_lower
     @job_title.move_lower
     redirect_to admin_department_job_titles_url(@department)
+  end
+
+  def reorder
+    sort_array = params[:sort_array].select { |i| i.integer? }
+  
+    if params[:new_index] > params[:old_index]
+      prev_one = @job_title.same_job_titles.find(sort_array[params[:new_index].to_i - 1])
+      @job_title.insert_at prev_one.position
+    else
+      next_ones = @job_title.same_job_titles.find(sort_array[(params[:new_index] + 1)..params[:old_index]])
+      next_ones.each do |next_one|
+        next_one.insert_at @job_title.position
+      end
+    end
   end
 
   def destroy

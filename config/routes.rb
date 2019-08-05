@@ -50,6 +50,7 @@ Rails.application.routes.draw do
         member do
           patch :move_lower
           patch :move_higher
+          patch :reorder
         end
       end
       resources :job_descriptions
