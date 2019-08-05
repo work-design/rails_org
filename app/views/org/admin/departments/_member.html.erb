@@ -9,7 +9,9 @@
   </td>
   <td><%= member.identity %></td>
   <td>
-    <%= member.job_titles.where(department_root_id: @department.root.id).pluck(:name).join(',') %>
+    <% member.member_departments.select(&->(o){ @department.self_and_descendant_ids.include?(o.department_id) }).each do |md| %>
+      <span class="ui label"><%= md.job_title.name %></span>
+    <% end %>
   </td>
   <td><%= member.join_on %></td>
   <td>

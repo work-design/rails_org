@@ -43,7 +43,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
       enabled: true
     }
     q_params.merge! params.permit(:enabled)
-    @members = @department.all_members.default_where(q_params).page(params[:page])
+    @members = @department.all_members.includes(:member_departments).default_where(q_params).page(params[:page])
   end
 
   def new
