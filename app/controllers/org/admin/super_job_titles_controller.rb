@@ -58,11 +58,11 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
   
     if params[:new_index] > params[:old_index]
       prev_one = @super_job_title.same_job_titles.find(sort_array[params[:new_index].to_i - 1])
-      @super_job_title.insert_at prev_one.position
+      @super_job_title.insert_at prev_one.grade
     else
       next_ones = @super_job_title.same_job_titles.find(sort_array[(params[:new_index].to_i + 1)..params[:old_index].to_i])
       next_ones.each do |next_one|
-        next_one.insert_at @super_job_title.position
+        next_one.insert_at @super_job_title.grade
       end
     end
   end
