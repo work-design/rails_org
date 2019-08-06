@@ -78,7 +78,7 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
       prev_one = @job_title.same_job_titles.find(sort_array[params[:new_index].to_i - 1])
       @job_title.insert_at prev_one.position
     else
-      next_ones = @job_title.same_job_titles.find(sort_array[(params[:new_index] + 1)..params[:old_index]])
+      next_ones = @job_title.same_job_titles.find(sort_array[(params[:new_index].to_i + 1)..params[:old_index].to_i])
       next_ones.each do |next_one|
         next_one.insert_at @job_title.position
       end
