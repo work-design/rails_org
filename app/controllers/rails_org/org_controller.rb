@@ -16,11 +16,7 @@ module RailsOrg::OrgController
   end
   
   def current_receiver
-    if current_member
-      current_member
-    else
-      current_user
-    end
+    current_user
   end
 
   def current_organ
