@@ -1,0 +1,20 @@
+<div class="ui three cards">
+  <% @organs.each do |organ| %>
+  <div class="card">
+    <div class="content">
+      <div>
+        <i class="fas fa-user"></i>
+        <span class="ui grey text"><%= organ.name %></span>
+        <span class="ui green text"><%= organ.organ_uuid %></span>
+      </div>
+    </div>
+    <div class="extra content">
+      <p>
+        <span><%= organ.address %></span>
+        <%= link_to organ.name, organ_path(organ), class: 'ui mini button' %>
+        <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'right floated mini ui image' %>
+      </p>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :members, only: [:index, :show] do
       get :search, on: :collection
     end
+    resources :organs, only: [:index, :show]
   end
 
   scope :my, module: 'org/my', as: 'my' do

@@ -1,6 +1,6 @@
 class Org::My::MembersController < Org::My::BaseController
   before_action :set_member, only: [:show, :edit, :update, :login]
-  skip_after_action :set_organ_token, only: [:logout]
+  skip_after_action :set_organ_grant, only: [:logout]
   
   def index
     @members = current_user.members.enabled.includes(:organ).order(id: :asc)
