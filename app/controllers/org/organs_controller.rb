@@ -16,7 +16,7 @@ class Org::OrgansController < ApplicationController
     login_organ_as organ_token
   
     respond_to do |format|
-      format.html { redirect_to organ_url(@organ) }
+      format.html { redirect_to org_index_url }
       format.json { render json: { organ_grant: organ_grant } }
     end
   end

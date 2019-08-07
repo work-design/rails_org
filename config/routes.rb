@@ -30,6 +30,12 @@ Rails.application.routes.draw do
     end
   end
   
+  scope :org, module: 'org/org', as: 'org' do
+    controller :home do
+      get :index
+    end
+  end
+  
   scope :panel, module: 'org/panel', as: 'panel' do
     resource :organ
   end
