@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   end
 
   scope :my, module: 'org/my', as: 'my' do
+    controller :home do
+      get :index
+    end
     resources :members do
       patch :login, on: :member
       get :logout, on: :collection
@@ -27,12 +30,6 @@ Rails.application.routes.draw do
     resource :resign
     resources :job_transfers do
       get :departments, on: :collection
-    end
-  end
-  
-  scope :org, module: 'org/org', as: 'org' do
-    controller :home do
-      get :index
     end
   end
   
