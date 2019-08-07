@@ -14,15 +14,6 @@ module RailsOrg::OrgController
       redirect_to RailsOrg.config.default_return_path
     end
   end
-
-  # Must order after RailsRole::Controller
-  def rails_role_user
-    if current_member
-      current_member
-    else
-      current_user
-    end
-  end
   
   def current_receiver
     if current_member
@@ -32,24 +23,17 @@ module RailsOrg::OrgController
     end
   end
 
-  def current_member
-    return @current_member if defined?(@current_member)
-    @current_member, _ = login_from_organ_token
-    @current_member
-  end
-
   def current_organ
     return @current_organ if defined?(@current_organ)
-    _, @current_organ = login_from_organ_token
-    @current_organ
+    @current_organ = login_from_organ_token
   end
 
   def login_from_organ_token
     organ_token = request.headers['Organ-Token'].presence || session[:organ_token]
     return unless organ_token
-    @current_organ_grant = ::OrganGrant.find_by(token: organ_token)
-    if @current_organ_grant
-      @current_member, @current_organ = @current_organ_grant.member, @current_organ_grant.organ
+    @current_organ_token = ::OrganToken.find_by(token: organ_token)
+    if @current_organ_token
+      @current_organ = @current_organ_token.organ
     end
   end
 
@@ -76,14 +60,12 @@ module RailsOrg::OrgController
 
     logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
     
-    @current_organ_grant = organ_grant
+    @current_organ_token = organ_grant
   end
 
   def set_organ_token
-    if defined?(@current_organ_grant)
-      token = @current_organ_grant.token
-    elsif current_member
-      token = current_member.organ_token
+    if defined?(@current_organ_token)
+      token = @current_organ_token.token
     else
       return
     end

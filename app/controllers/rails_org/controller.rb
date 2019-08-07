@@ -2,7 +2,7 @@ module RailsOrg::Controller
   extend ActiveSupport::Concern
   included do
     helper_method :current_organ, :current_member, :other_organs
-    after_action :set_organ_token
+    after_action :set_organ_grant
   end
 
   def require_organ
@@ -34,20 +34,20 @@ module RailsOrg::Controller
 
   def current_member
     return @current_member if defined?(@current_member)
-    @current_member, _ = login_from_organ_token
+    @current_member, _ = login_from_organ_grant
     @current_member
   end
 
   def current_organ
     return @current_organ if defined?(@current_organ)
-    _, @current_organ = login_from_organ_token
+    _, @current_organ = login_from_organ_grant
     @current_organ
   end
 
-  def login_from_organ_token
-    organ_token = request.headers['Organ-Token'].presence || session[:organ_token]
-    return unless organ_token
-    @current_organ_grant = ::OrganGrant.find_by(token: organ_token)
+  def login_from_organ_grant
+    token = request.headers['Organ-Grant'].presence || session[:organ_grant]
+    return unless token
+    @current_organ_grant = ::OrganGrant.find_by(token: token)
     if @current_organ_grant
       @current_member, @current_organ = @current_organ_grant.member, @current_organ_grant.organ
     end
@@ -71,7 +71,7 @@ module RailsOrg::Controller
 
   def login_organ_as(organ_grant)
     unless api_request?
-      session[:organ_token] = organ_grant.token
+      session[:organ_grant] = organ_grant.token
     end
 
     logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
@@ -79,24 +79,22 @@ module RailsOrg::Controller
     @current_organ_grant = organ_grant
   end
 
-  def set_organ_token
+  def set_organ_grant
     if defined?(@current_organ_grant)
       token = @current_organ_grant.token
-    elsif current_member
-      token = current_member.organ_token
     else
       return
     end
 
     if api_request?
-      headers['Organ-Token'] = token
+      headers['Organ-Grant'] = token
     else
-      session[:organ_token] = token
+      session[:organ_grant] = token
     end
   end
 
   def api_request?
-    request.headers['Organ-Token'].present? || request.format.json?
+    request.headers['Organ-Grant'].present? || request.format.json?
   end
 
   def default_params
