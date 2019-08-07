@@ -53,14 +53,14 @@ module RailsOrg::OrgController
     end
   end
 
-  def login_organ_as(organ_grant)
+  def login_organ_as(organ_token)
     unless api_request?
-      session[:organ_token] = organ_grant.token
+      session[:organ_token] = organ_token.token
     end
 
-    logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
+    logger.debug "  ==========> Login as Organ #{organ_token.organ_id}"
     
-    @current_organ_token = organ_grant
+    @current_organ_token = organ_token
   end
 
   def set_organ_token

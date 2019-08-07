@@ -1,5 +1,6 @@
 class Org::OrgansController < ApplicationController
-  before_action :set_organ, only: [:show]
+  include RailsOrg::OrgController
+  before_action :set_organ, only: [:show, :login]
   
   def index
     q_params = { parent_id: nil }
@@ -8,6 +9,16 @@ class Org::OrgansController < ApplicationController
   end
   
   def show
+  end
+  
+  def login
+    organ_token = @organ.get_organ_token(current_user)
+    login_organ_as organ_token
+  
+    respond_to do |format|
+      format.html { redirect_to organ_url(@organ) }
+      format.json { render json: { organ_grant: organ_grant } }
+    end
   end
 
   private
