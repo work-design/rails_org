@@ -1,3 +1,3 @@
 class MemberController < MyController
-  include RailsOrg::Controller
+  include RailsOrg::Application
 end unless defined? MemberController
