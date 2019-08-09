@@ -1,8 +1,7 @@
-class PanelController < AdminController
+class PanelController < ApplicationController
   include RailsOrg::Controller
-  
+  layout 'admin'
   before_action :require_login
-  skip_before_action :require_role
   after_action :set_flash, only: [:update, :create, :destroy]
   
 end unless defined? PanelController
