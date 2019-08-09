@@ -110,6 +110,15 @@ module RailsOrg::Application
       super
     end
   end
+  
+  def filter_params
+    organ = current_organ.self_and_descendants.find_by(organ_uuid: params[:organ_uuid])
+    if organ
+      { organ_id: oragn.id }
+    else
+      organ_descendants_params
+    end
+  end
 
   def organ_ancestors_params
     if current_organ
