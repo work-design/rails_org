@@ -5,7 +5,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     q_params = {
       enabled: true,
     }
-    q_params.merge! organ_descendants_params
+    q_params.merge! filter_params
     q_params.merge! params.permit(:id, :identity, :organ_id, 'name-like', :enabled, :department_ancestors)
     #department = Department.find_by id: Member.new(q_params).department_ancestors&.values.to_a.compact.last
     #q_params.merge! department_id: department.self_and_descendant_ids if department

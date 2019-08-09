@@ -7,21 +7,27 @@ module RailsOrg::Application
 
   def require_organ
     return if current_organ
-
-    if api_request?
-      raise ActionController::UnauthorizedError, 'Organ not login'
-    else
-      redirect_to RailsOrg.config.default_return_path
+    
+    respond_to do |format|
+      format.json do
+        render json: { message: '请登录后操作' }, status: 401
+      end
+      format.html do
+        redirect_to RailsOrg.config.default_return_path
+      end
     end
   end
   
   def require_member
     return if current_member
-    
-    if api_request?
-      raise ActionController::UnauthorizedError, 'Member not login'
-    else
-      redirect_to RailsOrg.config.default_return_path
+
+    respond_to do |format|
+      format.json do
+        render json: { message: '请登录后操作' }, status: 401
+      end
+      format.html do
+        redirect_to RailsOrg.config.default_return_path
+      end
     end
   end
 
@@ -91,16 +97,9 @@ module RailsOrg::Application
     else
       return
     end
-
-    if api_request?
-      headers['Organ-Grant'] = token
-    else
-      session[:organ_grant] = token
-    end
-  end
-
-  def api_request?
-    request.headers['Organ-Grant'].present? || request.format.json?
+    
+    headers['Organ-Grant'] = token
+    session[:organ_grant] = token
   end
 
   def default_params
