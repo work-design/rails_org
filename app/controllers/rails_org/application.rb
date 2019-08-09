@@ -2,7 +2,7 @@ module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
     helper_method :current_organ, :current_member, :other_organs
-    after_action :set_organ_grant
+    after_action :set_organ_grant, :set_filter_params
   end
 
   def require_organ
@@ -82,12 +82,7 @@ module RailsOrg::Application
   end
 
   def login_organ_as(organ_grant)
-    unless api_request?
-      session[:organ_grant] = organ_grant.token
-    end
-
     logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
-    
     @current_organ_grant = organ_grant
   end
 
@@ -101,6 +96,10 @@ module RailsOrg::Application
     headers['Organ-Grant'] = token
     session[:organ_grant] = token
   end
+  
+  def set_filter_params
+    session[:organ_id] = params[:organ_id] if params[:organ_id]
+  end
 
   def default_params
     if current_organ
@@ -111,9 +110,8 @@ module RailsOrg::Application
   end
   
   def filter_params
-    organ = current_organ.self_and_descendants.find_by(organ_uuid: params[:organ_uuid])
-    if organ
-      { organ_id: oragn.id }
+    if current_organ.self_and_descendant_ids.include?(session[:organ_id].to_i)
+      { organ_id: session[:organ_id] }
     else
       organ_descendants_params
     end
