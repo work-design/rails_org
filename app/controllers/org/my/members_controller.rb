@@ -72,7 +72,7 @@ class Org::My::MembersController < Org::My::BaseController
   end
   
   def logout
-    session.delete :organ_token
+    session.delete :organ_grant
 
     redirect_to my_members_url
   end
