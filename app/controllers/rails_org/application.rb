@@ -98,7 +98,7 @@ module RailsOrg::Application
   end
   
   def set_filter_params
-    session[:organ_id] = params[:organ_id] if params[:organ_id]
+    session[:organ_id] = params[:organ_id] if params.key?(:organ_id)
   end
 
   def default_params
