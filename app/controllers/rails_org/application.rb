@@ -44,12 +44,12 @@ module RailsOrg::Application
 
   def current_member
     return @current_member if defined?(@current_member)
-    @current_member = current_organ_grant.member
+    @current_member = current_organ_grant&.member
   end
 
   def current_organ
     return @current_organ if defined?(@current_organ)
-    @current_organ = current_organ_grant.organ
+    @current_organ = current_organ_grant&.organ
   end
 
   def current_organ_grant

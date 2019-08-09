@@ -30,8 +30,10 @@ module RailsOrg::Organ
   def get_organ_grant(user)
     if user.is_a?(User)
       params = { user_id: user.id }
-    else
+    elsif user.is_a?(Member)
       params = { member_id: user.id }
+    else
+      params = {}
     end
     grant = self.organ_grants.find_or_create_by(params)
     unless grant.valid_period?

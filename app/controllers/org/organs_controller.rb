@@ -1,5 +1,4 @@
 class Org::OrgansController < ApplicationController
-  include RailsOrg::OrgController
   before_action :set_organ, only: [:show, :login]
   
   def index

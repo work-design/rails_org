@@ -26,8 +26,8 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
 
     create_table :organ_grants do |t|
       t.references :organ
-      t.references :member
       t.references :user
+      t.references :member
       t.string :token
       t.datetime :expire_at
       t.timestamps
