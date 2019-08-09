@@ -28,14 +28,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :organ
       t.references :member
       t.references :user
-      t.string :token, null: false
-      t.datetime :expire_at
-      t.timestamps
-    end
-    
-    create_table :organ_tokens do |t|
-      t.references :organ
-      t.references :user
       t.string :token
       t.datetime :expire_at
       t.timestamps

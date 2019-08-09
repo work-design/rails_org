@@ -4,7 +4,7 @@ module RailsOrg::OrganGrant
     belongs_to :organ
     belongs_to :member, optional: true
     belongs_to :user, optional: true
-
+    
     after_validation :update_token
   end
 

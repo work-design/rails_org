@@ -39,14 +39,6 @@ module RailsOrg::Organ
     end
     grant
   end
-  
-  def get_organ_token(user)
-    organ_token = self.organ_tokens.find_or_create_by(user_id: user.id)
-    unless organ_token.valid_period?
-      organ_token.update_token!
-    end
-    organ_token
-  end
 
   def generate_token(**options)
     JwtHelper.generate_jwt_token(id, organ_uuid, options)

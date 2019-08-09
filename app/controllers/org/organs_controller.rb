@@ -12,7 +12,7 @@ class Org::OrgansController < ApplicationController
   end
   
   def login
-    organ_token = @organ.get_organ_token(current_user)
+    organ_token = @organ.get_organ_grant(current_user)
     login_organ_as organ_token
   
     respond_to do |format|
