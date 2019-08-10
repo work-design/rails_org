@@ -7,7 +7,7 @@
   <div class="content">
     <%= form_with model: [:admin, @organ] do |f| %>
       <%= render 'shared/error_messages', target: @organ %>
-      <% if current_organ.children.present? %>
+      <% if current_organ&.children.present? %>
         <%= render partial: 'nodes/children_select', locals: { f: f, node: current_organ } %>
       <% end %>
       <%= render partial: 'form', locals: { f: f } %>

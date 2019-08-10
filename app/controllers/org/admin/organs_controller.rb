@@ -21,7 +21,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   
   def create
     if organ_params.select(&->(k, v){ k.start_with?('parent_ancestors') && v.present? }).values.blank?
-      @organ = Organ.new organ_params.merge!(parent_id: current_organ.id)
+      @organ = Organ.new organ_params.merge!(parent_id: current_organ&.id)
     else
       @organ = Organ.new(organ_params)
     end
