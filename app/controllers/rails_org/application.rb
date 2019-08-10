@@ -105,7 +105,7 @@ module RailsOrg::Application
     if current_organ
       { organ_id: current_organ.id }
     else
-      super
+      { organ_id: nil, allow: { organ_id: nil } }
     end
   end
   
