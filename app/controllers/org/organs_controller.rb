@@ -2,9 +2,9 @@ class Org::OrgansController < ApplicationController
   before_action :set_organ, only: [:show, :login]
   
   def index
-    q_params = { parent_id: nil }
+    q_params = { parent_id: nil, allow: { parent_id: nil } }
     
-    @organs = Organ.default_where(q_params, parent_id: { allow: nil }).order(id: :desc).page(params[:page])
+    @organs = Organ.default_where(q_params).order(id: :desc).page(params[:page])
   end
   
   def show
