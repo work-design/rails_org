@@ -1,6 +1,6 @@
 <%= form_with model: @department_grant, url: admin_department_grants_path(@organ_handle.record_class, @organ_handle.record_column), builder: SimpleFormBuilder do |f| %>
   <%= render 'shared/error_messages', target: @department_grant %>
   <%# f.text_field :department_id %>
-  <%= f.collection_select :job_title_id, JobTitle.default_where({ organ_id: current_organ&.id, super_job_title_id: nil }, { super_job_title_id: { allow: nil } }), :id, :name %>
+  <%= f.collection_select :job_title_id, JobTitle.default_where({ organ_id: current_organ&.id, super_job_title_id: nil, allow: { super_job_title_id: nil } }), :id, :name %>
   <%= f.submit %>
 <% end %>

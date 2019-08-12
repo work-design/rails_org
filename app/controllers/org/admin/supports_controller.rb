@@ -3,12 +3,14 @@ class Org::Admin::SupportsController < Org::Admin::BaseController
   before_action :set_from
 
   def index
-    q_params = {}.with_indifferent_access
+    q_params = {
+      allow: { organ_id: nil, department_id: nil }
+    }
     q_params.merge! params.permit(:office_id)
     if params[:department_id]
       @supports = @department.supports
     else
-      @supports = Support.default_where(q_params, { allow: [nil] }).page(params[:page])
+      @supports = Support.default_where(q_params).page(params[:page])
     end
   end
 
