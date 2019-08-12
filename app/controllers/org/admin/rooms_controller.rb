@@ -70,7 +70,7 @@ class Org::Admin::RoomsController < Org::Admin::BaseController
       :color,
       :limit_number
     )
-    p.merge! default_params
+    p.merge! default_form_params
   end
 
 end

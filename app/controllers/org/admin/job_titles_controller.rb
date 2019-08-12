@@ -106,7 +106,7 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
       :grade,
       :super_job_title_id
     )
-    p.merge! default_params
+    p.merge! default_form_params
   end
 
 end

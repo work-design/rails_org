@@ -109,6 +109,14 @@ module RailsOrg::Application
     end
   end
   
+  def default_form_params
+    if current_organ
+      { organ_id: current_organ.id }
+    else
+      {}
+    end
+  end
+  
   def filter_params
     if current_organ.self_and_descendant_ids.include?(session[:organ_id].to_i)
       { organ_id: session[:organ_id] }

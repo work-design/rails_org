@@ -41,7 +41,7 @@ class Org::Admin::DepartmentGrantsController < Org::Admin::BaseController
       :department_id,
       :job_title_id
     )
-    p.merge! default_params
+    p.merge! default_form_params
   end
 
 end

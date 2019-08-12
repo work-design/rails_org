@@ -92,7 +92,7 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
       :name,
       :description
     )
-    p.merge! default_params
+    p.merge! default_form_params
   end
 
 end
