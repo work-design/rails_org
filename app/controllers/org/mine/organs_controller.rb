@@ -1,4 +1,4 @@
-class Org::My::OrgansController < Org::My::BaseController
+class Org::Mine::OrgansController < Org::Mine::BaseController
   before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def index
