@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   end
   
   scope :my, module: 'org/mine', as: 'my' do
-    resources :organs
+    resources :organs do
+      get :logout, on: :collection
+    end
   end
 
   scope :my, module: 'org/my', as: 'my' do
@@ -19,7 +21,6 @@ Rails.application.routes.draw do
     end
     resources :members do
       patch :login, on: :member
-      get :logout, on: :collection
     end
     resources :documents
   end

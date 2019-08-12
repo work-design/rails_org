@@ -48,6 +48,12 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
     end
   end
 
+  def logout
+    session.delete :organ_token
+  
+    redirect_to my_organs_url
+  end
+
   def destroy
     @organ.destroy
     redirect_to admin_organs_url
