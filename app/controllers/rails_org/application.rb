@@ -60,7 +60,7 @@ module RailsOrg::Application
 
   def current_organ_grant
     return @current_organ_grant if defined?(@current_organ_grant)
-    token = request.headers['Organ-Grant'].presence || session[:organ_grant]
+    token = request.headers['Organ-Token'].presence || session[:organ_token]
     return unless token
     @current_organ_grant = ::OrganGrant.find_by(token: token)
   end
@@ -93,8 +93,8 @@ module RailsOrg::Application
       return
     end
     
-    headers['Organ-Grant'] = token
-    session[:organ_grant] = token
+    headers['Organ-Token'] = token
+    session[:organ_token] = token
   end
   
   def set_filter_params
