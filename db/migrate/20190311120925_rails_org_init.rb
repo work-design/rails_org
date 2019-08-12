@@ -5,7 +5,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
     create_table :organs do |t|
       t.references :area
       t.references :parent
-      t.references :creator
       t.string :name
       t.string :organ_uuid
       t.integer :limit_wechat
@@ -73,6 +72,7 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.date :join_on
       t.boolean :enabled, default: true
       t.string :state
+      t.boolean :owner
       t.timestamps
     end
 

@@ -2,27 +2,27 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
   before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def index
-    @organs = current_user.created_organs.page(params[:page])
+    @organs = current_user.organs.page(params[:page])
   end
 
   def new
-    @organ = current_user.created_organs.build
-    @organ.members.build
+    @member = current_user.members.build
+    @organ = @member.build_organ
   end
 
   def create
-    parent_uuid = params.dig(:organ, :parent_uuid)
+    parent_uuid = params.dig(:member, :parent_uuid)
     if parent_uuid.present?
       parent = Organ.find_by organ_uuid: parent_uuid
       organ_params.merge! parent_id: parent.id
     end
-    @organ = current_user.created_organs.build(organ_params)
-    @organ.members.each { |i| i.user = current_user }
+    @member = current_user.members.build(member_params)
+    @member.build_organ(organ_params)
 
     respond_to do |format|
-      if @organ.save
+      if @member.save
         format.html.phone
-        format.html { redirect_to my_members_url }
+        format.html { redirect_to my_organs_url }
         format.js
         format.json { render :show }
       else
@@ -67,17 +67,16 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
   def set_organ
     @organ = Organ.find(params[:id])
   end
+  
+  def member_params
+    p = params.fetch(:member, {}).permit(:identity)
+    p.merge! owned: true
+  end
 
   def organ_params
-    params.fetch(:organ, {}).permit(
+    params.fetch(:member, {}).fetch(:organ_attributes, {}).permit(
       :name,
-      :logo,
-      :name_short,
-      :address,
-      :timezone,
-      :locale,
-      :area_ancestors,
-      members_attributes: {}
+      :logo
     )
   end
 

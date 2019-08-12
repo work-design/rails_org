@@ -6,18 +6,19 @@ module RailsOrg::Member
 
     attribute :experience, :string
     attribute :attendance_number, :string
-
+    attribute :owned, :boolean, default: false
+    
     belongs_to :user, optional: true
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
     belongs_to :profile, ->(o){ where(organ_id: o.organ_id) }, primary_key: :identity, foreign_key: :identity, optional: true
-    belongs_to :organ
+    belongs_to :organ, inverse_of: :members
 
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
     # has_many :xx, through: :member_departments, source: :members  # todo use one sql to fix this
     accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
-    
+    accepts_nested_attributes_for :organ
     
     has_many :inferior_member_departments, class_name: 'MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
     
@@ -39,7 +40,7 @@ module RailsOrg::Member
     validates :identity, uniqueness: { scope: :organ_id }
     #before_save :sync_tutorials, if: -> { join_on_changed? }
     before_save :sync_account_user, if: -> { identity_changed? }
-    after_create :sync_member_roles, if: -> { organ.creator_id.present? && organ.creator_id == user_id }
+    after_create :sync_member_roles, if: -> { owned? }
   end
 
   def sync_account_user

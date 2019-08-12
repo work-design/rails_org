@@ -1,10 +1,10 @@
-<%= form_with model: @organ, url: my_organs_path do |f| %>
-  <%= render 'shared/error_messages', target: @organ %>
+<%= form_with model: @member, url: my_organs_path do |f| %>
+  <%= render 'shared/error_messages', target: @member %>
   <%= f.text_field :parent_uuid %>
-  <%= f.text_field :name, required: true %>
-  <%= f.file_field :logo %>
-  <%= f.fields :members do |ef| %>
-    <%= ef.select :identity, options_for_select(current_user.accounts.pluck(:identity, :identity)) %>
+  <%= f.select :identity, options_for_select(current_user.accounts.pluck(:identity, :identity)) %>
+  <%= f.fields :organ do |ef| %>
+    <%= ef.text_field :name, required: true %>
+    <%= ef.file_field :logo %>
   <% end %>
   <%= f.submit %>
 <% end %>
