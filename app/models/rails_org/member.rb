@@ -38,6 +38,9 @@ module RailsOrg::Member
     scope :enabled, -> { where(enabled: true) }
     
     validates :identity, uniqueness: { scope: :organ_id }
+    after_initialize if: :new_record? do
+      self.name = user&.name
+    end
     #before_save :sync_tutorials, if: -> { join_on_changed? }
     before_save :sync_account_user, if: -> { identity_changed? }
     after_create :sync_member_roles, if: -> { owned? }
