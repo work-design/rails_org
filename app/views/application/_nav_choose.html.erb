@@ -1,0 +1,18 @@
+<% if current_organ %>
+  <div class="header item">
+    <%= link_to filter_params(organ_id: '') do %>
+      <%= image_tag current_organ.logo, class: 'ui avatar image' %>
+      <span><%= current_organ.name %></span>
+    <% end %>
+  </div>
+  <div class="item">
+    <%= link_to '本机构', filter_params(organ_id: current_organ.id), class: active_params(organ_id: current_organ.id) %>
+    <% if current_organ.children.count > 0 %>
+      <%= render partial: 'nodes/outer_search_options', locals: { node: current_organ.children.first } %>
+    <% end %>
+  </div>
+<% else %>
+  <%= link_to index_path, class: 'logo item' do %>
+    <%= image_tag 'logo.jpg', class: 'ui image' %>
+  <% end %>
+<% end %>
