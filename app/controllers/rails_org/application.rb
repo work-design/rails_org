@@ -101,10 +101,16 @@ module RailsOrg::Application
   def set_filter_params
     session[:organ_id] = params[:organ_id] if params.key?(:organ_id)
   end
+  
+  def current_organ_id
+    request.subdomain.delete_prefix('organ_').presence
+  end
 
   def default_params
     if current_organ
       { organ_id: current_organ.id }
+    elsif current_organ_id
+      { organ_id: current_organ_id }
     else
       { organ_id: nil, allow: { organ_id: nil } }
     end
