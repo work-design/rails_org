@@ -5,10 +5,10 @@
       <span><%= current_organ.name %></span>
     <% end %>
   </div>
+  <%= link_to '本机构', filter_params(organ_id: current_organ.id), class: active_params(organ_id: current_organ.id) %>
   <div class="item">
-    <%= link_to '本机构', filter_params(organ_id: current_organ.id), class: active_params(organ_id: current_organ.id) %>
     <% if current_organ.children.count > 0 %>
-      <%= render partial: 'nodes/outer_search_options', locals: { node: current_organ.children.first } %>
+      <%= render partial: 'application/outer_search_options', locals: { node: current_organ.children.first } %>
     <% end %>
   </div>
 <% else %>
