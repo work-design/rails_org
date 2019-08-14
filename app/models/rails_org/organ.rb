@@ -3,6 +3,7 @@ module RailsOrg::Organ
   included do
     attribute :limit_wechat, :integer, default: 1
     attribute :name_short, :string
+    attribute :members_count, :integer, default: 0
 
     has_taxons :area
     belongs_to :area, optional: true

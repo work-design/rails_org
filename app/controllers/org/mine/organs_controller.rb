@@ -3,6 +3,7 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
 
   def index
     @organs = current_user.organs.distinct.page(params[:page])
+    session.delete :organ_token
   end
 
   def new
@@ -46,12 +47,6 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
     else
       render :edit
     end
-  end
-
-  def logout
-    session.delete :organ_token
-  
-    redirect_to my_organs_url
   end
 
   def destroy

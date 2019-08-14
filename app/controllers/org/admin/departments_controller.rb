@@ -105,7 +105,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
       :parent_ancestors,
       :superior_ancestors
     )
-    q.merge! default_params
+    q.merge! default_form_params
   end
 
 end
