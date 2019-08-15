@@ -99,7 +99,7 @@ module RailsOrg::Application
   end
   
   def set_filter_params
-    session[:organ_id] = params[:organ_id] if params.key?(:organ_id)
+    session[:organ_id] = params[:organ_id].presence if params.key?(:organ_id)
   end
   
   def current_organ_id
@@ -124,25 +124,21 @@ module RailsOrg::Application
     end
   end
   
-  def filter_params
+  def default_filter_params
+    unless current_organ
+      return {}
+    end
+    
     if current_organ.self_and_descendant_ids.include?(session[:organ_id].to_i)
       { organ_id: session[:organ_id] }
     else
-      organ_descendants_params
+      { organ_id: current_organ.self_and_descendant_ids }
     end
   end
 
   def organ_ancestors_params
     if current_organ
       { organ_id: current_organ.self_and_ancestor_ids }
-    else
-      default_params
-    end
-  end
-
-  def organ_descendants_params
-    if current_organ
-      { organ_id: current_organ.self_and_descendant_ids }
     else
       default_params
     end
