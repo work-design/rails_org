@@ -3,7 +3,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def index
     q_params = {
-      enabled: true,
+      enabled: true
     }
     q_params.merge! default_filter_params
     q_params.merge! params.permit(:id, :identity, :organ_id, 'name-like', :enabled, :department_ancestors)
