@@ -103,7 +103,7 @@ module RailsOrg::Application
   end
   
   def current_organ_id
-    request.subdomain.delete_prefix('organ_').presence
+    request.subdomain.delete_prefix('organ_').presence if request.subdomain.start_with?('organ_')
   end
 
   def default_params
