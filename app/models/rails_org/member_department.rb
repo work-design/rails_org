@@ -27,7 +27,7 @@ module RailsOrg::MemberDepartment
     if job_title
       job_title.same_job_titles
     elsif department
-      ::DepartmentJobTitle.where(organ_id: department.organ_id, department_id: department.self_and_ancestor_ids, super_job_title_id: nil)  # todo confirm super job title id is or not nil
+      ::DepartmentJobTitle.where(organ_id: department.organ_id, department_root_id: department.root.id)
     else
       ::SuperJobTitle.where(organ_id: member.organ_id)
     end
