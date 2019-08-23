@@ -3,4 +3,4 @@
 var template = '<%= j(render partial: 'item_field', locals: { f: form_object, index: UidHelper.sec_uuid }) %>'
 
 $('#member_member_departments_<%= params[:index] %>').after(template);
-remote_js_load(<%= raw remote_js_load %>)
+remote_js_load('<%= raw remote_js_load %>')
