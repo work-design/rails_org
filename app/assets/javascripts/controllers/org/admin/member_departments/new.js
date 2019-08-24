@@ -1,4 +1,4 @@
-//= require rails_taxon/outer
+import 'rails_taxon/outer'
 $('[data-title="node_ancestors"]').on('change', function(){
   var search_url = new URL(this.form.action + '/options');
   if (this.value) {

@@ -1,4 +1,4 @@
-//= require rails_taxon/outer
+import 'rails_taxon/outer'
 
 $('#support_kind').dropdown();
 $('#support_office_id').dropdown({

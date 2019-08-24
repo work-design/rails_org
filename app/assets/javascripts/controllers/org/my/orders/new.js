@@ -1,1 +1,0 @@
-$("#dinner_id").dropdown();

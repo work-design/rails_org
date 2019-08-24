@@ -1,2 +1,2 @@
-//= require rails_taxon/form
-//= require rails_taxon/outer
+import 'rails_taxon/form'
+import 'rails_taxon/outer'
