@@ -49,8 +49,13 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.integer :member_departments_count
       t.integer :all_member_departments_count
       t.integer :needed_number
-      t.jsonb :parent_ancestors
-      t.jsonb :superior_ancestors
+      if connection.adapter_name == 'PostgreSQL'
+        t.jsonb :parent_ancestors
+        t.jsonb :superior_ancestors
+      else
+        t.json :parent_ancestors
+        t.json :superior_ancestors
+      end
       t.timestamps
     end
 
@@ -122,7 +127,11 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.integer :grade
       t.boolean :major
       t.integer :department_ids, array: true
-      t.jsonb :department_ancestors
+      if connection.adapter_name == 'PostgreSQL'
+        t.jsonb :department_ancestors
+      else
+        t.json :department_ancestors
+      end
       t.timestamps
     end
 

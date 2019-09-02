@@ -1,9 +1,12 @@
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
+ENV['RAILS_ENV'] = 'test'
+require 'factory_bot_rails'
+require_relative '../test/dummy/config/environment'
 require 'rails/test_help'
+require 'minitest/mock'
+
+ActiveRecord::Migrator.migrations_paths = [File.expand_path('../test/dummy/db/migrate', __dir__)]
+Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-
-  # Add more helper methods to be used by all tests here...
+  include FactoryBot::Syntax::Methods if defined?(FactoryBot)
 end
