@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Org::Admin::DepartmentGrantsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @org_admin_department_grant = create org_admin_department_grants
+    @department_grant = create org_admin_department_grants
   end
 
   test 'index ok' do
