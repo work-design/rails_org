@@ -25,9 +25,6 @@ zh:
       department_grants:
         index:
           title: 部门职能设置
-      rooms:
-        index:
-          title: 教室
       members:
         index:
           title: 员工管理

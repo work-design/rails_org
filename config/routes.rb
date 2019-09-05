@@ -44,7 +44,6 @@ Rails.application.routes.draw do
       get :all, on: :collection
       patch :mock, on: :member
     end
-    resources :rooms
     resources :departments do
       collection do
         get :supports

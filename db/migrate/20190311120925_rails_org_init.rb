@@ -32,15 +32,6 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.timestamps
     end
     
-    create_table :rooms do |t|
-      t.references :organ
-      t.string :room_number
-      t.integer :limit_number
-      t.string :color
-      t.integer :time_plans_count, default: 0
-      t.timestamps
-    end
-
     create_table :departments do |t|
       t.references :organ
       t.references :parent
