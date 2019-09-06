@@ -2,7 +2,6 @@ zh:
   activerecord:
     models:
       job_title: 职级
-      room: 教室
     attributes:
       department:
         leader: 负责人
