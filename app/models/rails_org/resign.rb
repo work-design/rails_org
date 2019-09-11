@@ -1,8 +1,6 @@
 module RailsOrg::Resign
   extend ActiveSupport::Concern
   included do
-    include CheckMachine
-
     attribute :state, :string, default: 'init'
 
     validates :leave_on, :reason_note, presence: true

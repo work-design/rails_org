@@ -1,8 +1,6 @@
 module RailsOrg::JobTransfer
   extend ActiveSupport::Concern
   included do
-    include CheckMachine
-
     attr_accessor :department_ancestors
     attribute :state, :string, default: 'init'
 
