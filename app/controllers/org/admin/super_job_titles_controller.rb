@@ -14,18 +14,8 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
   def create
     @super_job_title = SuperJobTitle.new(super_job_title_params)
 
-    respond_to do |format|
-      if @super_job_title.save
-        format.html.phone
-        format.html { redirect_to admin_super_job_titles_url }
-        format.js { redirect_back fallback_location: admin_super_job_titles_url }
-        format.json { render :show }
-      else
-        format.html.phone { render :new }
-        format.html { render :new }
-        format.js { redirect_back fallback_location: admin_super_job_titles_url }
-        format.json { render :show }
-      end
+    unless @super_job_title.save
+      render :new, locals: { model: @super_job_title }, status: :unprocessable_entity
     end
   end
 
@@ -38,18 +28,8 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
   def update
     @super_job_title.assign_attributes(super_job_title_params)
 
-    respond_to do |format|
-      if @super_job_title.save
-        format.html.phone
-        format.html { redirect_to admin_super_job_titles_url }
-        format.js { redirect_back fallback_location: admin_super_job_titles_url }
-        format.json { render :show }
-      else
-        format.html.phone { render :edit }
-        format.html { render :edit }
-        format.js { redirect_back fallback_location: admin_super_job_titles_url }
-        format.json { render :show }
-      end
+    unless @super_job_title.save
+      render :edit, locals: { model: @super_job_title }, status: :unprocessable_entity
     end
   end
 
@@ -79,7 +59,6 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
 
   def destroy
     @super_job_title.destroy
-    redirect_to admin_super_job_titles_url
   end
 
   private

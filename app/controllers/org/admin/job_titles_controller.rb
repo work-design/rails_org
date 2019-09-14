@@ -22,18 +22,8 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
   def create
     @job_title = @department.job_titles.build(job_title_params)
 
-    respond_to do |format|
-      if @job_title.save
-        format.html.phone
-        format.html { redirect_to admin_department_job_titles_url(@department) }
-        format.js { redirect_to admin_department_job_titles_url(@department) }
-        format.json { render :show }
-      else
-        format.html.phone { render :new }
-        format.html { render :new }
-        format.js { redirect_to admin_department_job_titles_url(@department), status: :unprocessable_entity }
-        format.json { render :show }
-      end
+    unless @job_title.save
+      render :new, locals: { model: @job_title }, status: :unprocessable_entity
     end
   end
 
@@ -46,18 +36,8 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
   def update
     @job_title.assign_attributes(job_title_params)
 
-    respond_to do |format|
-      if @job_title.save
-        format.html.phone
-        format.html { redirect_to admin_job_titles_url(department_id: @job_title.department_id) }
-        format.js { redirect_to admin_job_titles_url(department_id: @job_title.department_id) }
-        format.json { render :show }
-      else
-        format.html.phone { render :edit }
-        format.html { render :edit }
-        format.js { redirect_to admin_job_titles_url(department_id: @job_title.department_id) }
-        format.json { render :show }
-      end
+    unless @job_title.save
+      render :edit, locals: { model: @job_title }, status: :unprocessable_entity
     end
   end
 
@@ -87,7 +67,6 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
 
   def destroy
     @job_title.destroy
-    redirect_to admin_department_job_titles_url(@department)
   end
 
   private

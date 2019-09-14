@@ -12,19 +12,9 @@ class Org::Admin::MemberDepartmentsController < Org::Admin::BaseController
 
   def create
     @member_department = @member.member_departments.build(member_department_params)
-   
-    respond_to do |format|
-      if @member_department.save
-        format.html.phone
-        format.html { redirect_to admin_members_url }
-        format.js { redirect_back fallback_location: admin_members_url }
-        format.json { render :show }
-      else
-        format.html.phone { render :new }
-        format.html { render :new }
-        format.js { redirect_back fallback_location: admin_members_url }
-        format.json { render :show }
-      end
+
+    unless @member_department.save
+      render :new, locals: { model: @member_department }, status: :unprocessable_entity
     end
   end
 
@@ -47,24 +37,13 @@ class Org::Admin::MemberDepartmentsController < Org::Admin::BaseController
   def update
     @member_department.assign_attributes(member_department_params)
 
-    respond_to do |format|
-      if @member_department.save
-        format.html.phone
-        format.html { redirect_to admin_members_url }
-        format.js { redirect_back fallback_location: admin_members_url }
-        format.json { render :show }
-      else
-        format.html.phone { render :edit }
-        format.html { render :edit }
-        format.js { redirect_to admin_members_url }
-        format.json { render :show }
-      end
+    unless @member_department.save
+      render :edit, locals: { model: @member_department }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @member_department.destroy
-    redirect_to admin_members_url
   end
 
   private

@@ -12,13 +12,8 @@ class Org::Admin::DepartmentGrantsController < Org::Admin::BaseController
   def create
     @department_grant = @organ_handle.department_grants.build(department_grant_params)
 
-    respond_to do |format|
-      if @department_grant.save
-        format.js
-      else
-        format.js
-        format.json
-      end
+    unless @department_grant.save
+      render :new, locals: { model: @department_grant }, status: :unprocessable_entity
     end
   end
 

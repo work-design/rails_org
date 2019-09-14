@@ -12,10 +12,8 @@ class Org::Admin::ResignReasonsController < Org::Admin::BaseController
   def create
     @resign_reason = ResignReason.new(resign_reason_params)
 
-    if @resign_reason.save
-      redirect_to admin_resign_reasons_url
-    else
-      render :new
+    unless @resign_reason.save
+      render :new, locals: { model: @resign_reason }, status: :unprocessable_entity
     end
   end
 
@@ -28,16 +26,13 @@ class Org::Admin::ResignReasonsController < Org::Admin::BaseController
   def update
     @resign_reason.assign_attributes(resign_reason_params)
 
-    if @resign_reason.save
-      redirect_to admin_resign_reasons_url
-    else
-      render :edit
+    unless @resign_reason.save
+      render :edit, locals: { model: @resign_reason }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @resign_reason.destroy
-    redirect_to admin_resign_reasons_url
   end
 
   private

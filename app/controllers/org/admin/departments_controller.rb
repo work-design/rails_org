@@ -56,36 +56,31 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
 
   def create
     @department = Department.new(department_params)
-    
-    if @department.save
-      redirect_to admin_departments_url
-    else
+
+    unless @department.save
       @root = current_organ.departments.build
-      render :new
+      render :new, locals: { model: @department }, status: :unprocessable_entity
     end
   end
-
-  def update
-    @department.assign_attributes(department_params)
-
-    if @department.save
-      redirect_to admin_departments_url
-    else
-      render :edit
-    end
-  end
-
+  
   def edit
     @root = current_organ.departments.root
   end
+  
+  def update
+    @department.assign_attributes(department_params)
 
+    unless @department.save
+      render :edit, locals: { model: @department }, status: :unprocessable_entity
+    end
+  end
+  
   def need
 
   end
 
   def destroy
     @department.destroy
-    redirect_to admin_departments_url
   end
 
   private

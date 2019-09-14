@@ -26,10 +26,8 @@ class Org::Admin::TutorialsController < Org::Admin::BaseController
   def create
     @tutorial = Tutorial.new(tutorial_params)
 
-    if @tutorial.save
-      redirect_to admin_tutorials_url
-    else
-      render :new
+    unless @tutorial.save
+      render :new, locals: { model: @tutorial }, status: :unprocessable_entity
     end
   end
 
@@ -40,16 +38,15 @@ class Org::Admin::TutorialsController < Org::Admin::BaseController
   end
 
   def update
-    if @tutorial.update(tutorial_params)
-      redirect_to admin_tutorials_url
-    else
-      render :edit
+    @tutorial.assign_attributes(tutorial_params)
+
+    unless @tutorial.save
+      render :edit, locals: { model: @tutorial }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @tutorial.destroy
-    redirect_to admin_tutorials_url
   end
 
   private

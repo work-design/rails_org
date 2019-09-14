@@ -13,18 +13,8 @@ class Org::Admin::OrgConfigsController < Org::Admin::BaseController
   def create
     @org_config = OrgConfig.new(org_config_params)
 
-    respond_to do |format|
-      if @org_config.save
-        format.html.phone
-        format.html { redirect_to admin_org_configs_url }
-        format.js { redirect_back fallback_location: admin_org_configs_url }
-        format.json { render :show }
-      else
-        format.html.phone { render :new }
-        format.html { render :new }
-        format.js { redirect_back fallback_location: admin_org_configs_url }
-        format.json { render :show }
-      end
+    unless @org_config.save
+      render :new, locals: { model: @org_config }, status: :unprocessable_entity
     end
   end
 
@@ -37,24 +27,13 @@ class Org::Admin::OrgConfigsController < Org::Admin::BaseController
   def update
     @org_config.assign_attributes(org_config_params)
 
-    respond_to do |format|
-      if @org_config.save
-        format.html.phone
-        format.html { redirect_to admin_org_configs_url }
-        format.js { redirect_back fallback_location: admin_org_configs_url }
-        format.json { render :show }
-      else
-        format.html.phone { render :edit }
-        format.html { render :edit }
-        format.js { redirect_back fallback_location: admin_org_configs_url }
-        format.json { render :show }
-      end
+    unless @org_config.save
+      render :edit, locals: { model: @org_config }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @org_config.destroy
-    redirect_to admin_org_configs_url
   end
 
   private

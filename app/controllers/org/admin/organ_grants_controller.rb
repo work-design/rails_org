@@ -14,17 +14,14 @@ class Org::Admin::OrganGrantsController < Org::Admin::BaseController
   def create
     @organ_grant = current_organ.organ_grants.build(organ_grant_params)
 
-    if @organ_grant.save
-      redirect_to admin_organ_grants_url(current_organ)
-    else
-      render :new
+    unless @organ_grant.save
+      render :new, locals: { model: @organ_grant }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @organ_grant = current_organ.organ_grants.find(params[:id])
     @organ_grant.destroy
-    redirect_to admin_organ_grants_url(current_organ)
   end
 
   private

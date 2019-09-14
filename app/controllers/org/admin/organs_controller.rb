@@ -21,11 +21,9 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
     else
       @organ = Organ.new(organ_params)
     end
-  
-    if @organ.save
-      render 'create'
-    else
-      render :new
+
+    unless @organ.save
+      render :new, locals: { model: @organ }, status: :unprocessable_entity
     end
   end
 
@@ -35,10 +33,8 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   def update
     @organ.assign_attributes(organ_params)
 
-    if @organ.save
-      render 'update'
-    else
-      render :edit
+    unless @organ.save
+      render :edit, locals: { model: @organ }, status: :unprocessable_entity
     end
   end
   
@@ -51,7 +47,6 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
 
   def destroy
     @organ.destroy
-    redirect_to admin_organs_url
   end
 
   private

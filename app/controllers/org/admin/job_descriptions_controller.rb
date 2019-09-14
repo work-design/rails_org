@@ -19,24 +19,21 @@ class Org::Admin::JobDescriptionsController < Org::Admin::BaseController
   def create
     @job_description = @department.job_descriptions.build(job_description_params)
 
-    if @job_description.save
-      redirect_to admin_department_job_descriptions_url(@department)
-    else
-      render :new
+    unless @job_description.save
+      render :new, locals: { model: @job_description }, status: :unprocessable_entity
     end
   end
 
   def update
-    if @job_description.update(job_description_params)
-      redirect_to admin_department_job_descriptions_url(@department)
-    else
-      render :edit
+    @job_description.assign_attributes(job_description_params)
+
+    unless @job_description.save
+      render :edit, locals: { model: @job_description }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @job_description.destroy
-    redirect_to admin_department_job_descriptions_url(@department)
   end
 
   private

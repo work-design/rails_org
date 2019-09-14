@@ -28,10 +28,8 @@ class Org::Admin::ResignsController < Org::Admin::BaseController
   def create
     @resign = Resign.new(resign_params)
 
-    if @resign.save
-      redirect_to admin_resigns_url
-    else
-      render :new
+    unless @resign.save
+      render :new, locals: { model: @resign }, status: :unprocessable_entity
     end
   end
 
@@ -42,16 +40,15 @@ class Org::Admin::ResignsController < Org::Admin::BaseController
   end
 
   def update
-    if @resign.update(resign_params)
-      redirect_to admin_resigns_url
-    else
-      render :edit
+    @resign.assign_attributes(resign_params)
+
+    unless @resign.save
+      render :edit, locals: { model: @resign }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @resign.destroy
-    redirect_to admin_resigns_url
   end
 
   def charts

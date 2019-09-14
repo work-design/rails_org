@@ -34,10 +34,8 @@ class Org::Admin::JobTransfersController < Org::Admin::BaseController
   def create
     @job_transfer = JobTransfer.new(job_transfer_params)
 
-    if @job_transfer.save
-      redirect_to admin_job_transfers_url
-    else
-      render :new
+    unless @job_transfer.save
+      render :new, locals: { model: @job_transfer }, status: :unprocessable_entity
     end
   end
 
@@ -51,10 +49,8 @@ class Org::Admin::JobTransfersController < Org::Admin::BaseController
     @job_transfer.assign_attributes(job_transfer_params)
     @job_transfer.to_department_id = @job_transfer.department_ancestors&.values.to_a.compact.last
 
-    if @job_transfer.save
-      redirect_to admin_job_transfers_url
-    else
-      render :edit
+    unless @job_transfer.save
+      render :edit, locals: { model: @job_transfer }, status: :unprocessable_entity
     end
   end
 
@@ -65,7 +61,6 @@ class Org::Admin::JobTransfersController < Org::Admin::BaseController
 
   def destroy
     @job_transfer.destroy
-    redirect_to admin_job_transfers_url
   end
 
   private

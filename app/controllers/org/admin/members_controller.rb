@@ -32,27 +32,14 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   def new
     @member = current_organ.members.build
     @member.member_departments.build(department_id: params[:department_id])
-
-    respond_to do |format|
-      format.js
-      format.html
-    end
   end
 
   def create
     @member = current_organ.members.build(identity: member_params[:identity])
     @member.assign_attributes member_params
 
-    respond_to do |format|
-      if @member.save
-        format.html { redirect_to admin_members_url }
-        format.js
-      else
-        format.html { redirect_to admin_members_url, alert: @member.errors }
-        format.js {
-          render :new
-        }
-      end
+    unless @member.save
+      render :new, locals: { model: @member }, status: :unprocessable_entity
     end
   end
 
@@ -77,15 +64,9 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def update
     @member.assign_attributes(member_params)
-    
-    respond_to do |format|
-      if @member.save
-        format.html { redirect_to admin_members_url }
-        format.js
-      else
-        format.html { render :edit }
-        format.js
-      end
+
+    unless @member.save
+      render :edit, locals: { model: @member }, status: :unprocessable_entity
     end
   end
 
@@ -105,11 +86,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def destroy
     @member.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_members_url }
-      format.js { redirect_to admin_members_url }
-      format.json
-    end
   end
 
   private

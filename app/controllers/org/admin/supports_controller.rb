@@ -43,16 +43,13 @@ class Org::Admin::SupportsController < Org::Admin::BaseController
     @support.update(support_params)
     @support.department_id = @support.department_ancestors&.values.to_a.compact.last
 
-    if @support.save
-      redirect_to admin_supports_url
-    else
-      render :edit
+    unless @support.save
+      render :edit, locals: { model: @support }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @support.destroy
-    redirect_to admin_supports_url
   end
 
   private
