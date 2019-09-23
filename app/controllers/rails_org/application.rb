@@ -85,6 +85,7 @@ module RailsOrg::Application
   def login_organ_as(organ_grant)
     logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
     @current_organ_grant = organ_grant
+    session[:organ_id] = organ_grant.organ_id
   end
 
   def set_organ_grant

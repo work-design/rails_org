@@ -20,18 +20,8 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
     @member = current_user.members.build(member_params)
     @member.build_organ(organ_params)
 
-    respond_to do |format|
-      if @member.save
-        format.html.phone
-        format.html { redirect_to my_organs_url }
-        format.js
-        format.json { render :show }
-      else
-        format.html.phone { render :new }
-        format.html { render :new }
-        format.js
-        format.json { render :show }
-      end
+    unless @member.save
+      render :new, locals: { model: @member }, status: :unprocessable_entity
     end
   end
 
@@ -42,16 +32,15 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
   end
 
   def update
-    if @organ.update(organ_params)
-      redirect_to admin_organs_url
-    else
-      render :edit
+    @organ.assign_attributes(organ_params)
+
+    unless @organ.save
+      render :edit, locals: { model: @organ }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @organ.destroy
-    redirect_to admin_organs_url
   end
 
   private

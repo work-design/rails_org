@@ -28,11 +28,6 @@ class Org::My::MembersController < Org::My::BaseController
   end
 
   def show
-    respond_to do |format|
-      format.js
-      format.html
-      format.json
-    end
   end
 
   def cert
@@ -50,14 +45,9 @@ class Org::My::MembersController < Org::My::BaseController
 
   def update
     @member.assign_attributes member_params
-    respond_to do |format|
-      if @member.save
-        format.html { redirect_to my_members_url }
-        format.json { render :show }
-      else
-        format.html { render action: 'edit' }
-        format.json { render :show }
-      end
+
+    unless @member.save
+      render :edit, locals: { model: @member }, status: :unprocessable_entity
     end
   end
 
