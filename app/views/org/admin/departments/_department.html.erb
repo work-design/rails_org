@@ -35,14 +35,14 @@
     <%= link_to new_admin_department_path(parent_id: department.id), data: { tooltip: '添加下级' }, remote: true, class: 'ui mini primary button' do %>
       <i class="fas fa-plus"></i>
     <% end %>
-    <%= link_to admin_department_path(department), data: { tooltip: t('.show') }, class: 'ui circular mini icon button' do %>
+    <%= link_to admin_department_path(department), data: { tooltip: t('.show') }, remote: true, class: 'ui circular mini icon button' do %>
       <i class="fas fa-users"></i>
     <% end %>
     <%#= link_to 'JD', admin_department_job_descriptions_path(department), class: 'ui circular mini icon button' %>
-    <%= link_to edit_admin_department_path(department), data: { tooltip: t('.edit') }, class: 'ui circular mini icon button', remote: true do %>
+    <%= link_to edit_admin_department_path(department), data: { tooltip: t('.edit') }, remote: true, class: 'ui circular mini icon button' do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to admin_department_path(department), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui circular mini icon button' do %>
+    <%= link_to admin_department_path(department), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, remote: true, class: 'ui circular mini icon button' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </td>
