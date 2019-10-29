@@ -47,11 +47,15 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def new
-    if params[:parent_id].blank? && current_organ.parent
-      @root = current_organ.parent.departments.root
+    if current_organ
+      if params[:parent_id].blank? && current_organ.parent
+        @root = current_organ.parent.departments.root
+      end
+  
+      @department = current_organ.departments.build(parent_id: params[:parent_id])
+    else
+      @department = Department.new
     end
-    
-    @department = current_organ.departments.build(parent_id: params[:parent_id])
   end
 
   def create

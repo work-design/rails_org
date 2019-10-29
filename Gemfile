@@ -4,22 +4,22 @@ gemspec
 
 gem 'rails', '6.0.0'
 gem 'puma'
-
-gem 'webpacker'
-#
 gem 'sqlite3'
-gem 'factory_bot_rails', github: 'thoughtbot/factory_bot_rails'
+gem 'webpacker'
+gem 'turbolinks'
+gem 'kaminari'
+
+gem 'factory_bot_rails', require: false
 gem 'default_form', github: 'qinmingyuan/default_form'
 gem 'rails_com', github: 'work-design/rails_com'
+gem 'rails_auth', github: 'work-design/rails_auth'
+gem 'rails_taxon', github: 'work-design/rails_taxon'
 gem 'rails_profile', github: 'work-design/rails_profile'
 gem 'rails_role', github: 'work-design/rails_role'
-gem 'jbuilder'
 
-# gem 'sprockets', '~> 4.0.0.beta4'
-gem 'turbolinks'
-#
-# gem 'omniauth-facebook'
-#
+gem 'jbuilder'
+gem 'image_processing'
+
 gem 'pry-rails'
 gem 'awesome_print'
 gem 'sdoc'
