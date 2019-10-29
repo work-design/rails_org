@@ -8,5 +8,7 @@ test/dummy/log/*.log
 test/dummy/tmp/
 test/dummy/.sass-cache
 docs/
+
+.lock-*
 *.gem
 Gemfile.lock

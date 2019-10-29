@@ -1,5 +1,4 @@
 require 'test_helper'
-
 class Org::Admin::DepartmentGrantsControllerTest < ActionDispatch::IntegrationTest
   
   setup do
