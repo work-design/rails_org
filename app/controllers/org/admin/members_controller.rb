@@ -30,12 +30,20 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   end
 
   def new
-    @member = current_organ.members.build
+    if current_organ
+      @member = current_organ.members.build
+    else
+      @member = Member.new
+    end
     @member.member_departments.build(department_id: params[:department_id])
   end
 
   def create
-    @member = current_organ.members.build(identity: member_params[:identity])
+    if current_organ
+      @member = current_organ.members.build(identity: member_params[:identity])
+    else
+      @member = Member.new(identity: member_params[:identity])
+    end
     @member.assign_attributes member_params
 
     unless @member.save
@@ -44,7 +52,11 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   end
 
   def options
-    @member = current_organ.members.build
+    if current_organ
+      @member = current_organ.members.build
+    else
+      @member = Member.new
+    end
     @department = Department.find(params[:department_id]) if params[:department_id]
     @member_department = @member.member_departments.build(department_id: params[:department_id])
   end
