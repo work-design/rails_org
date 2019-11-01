@@ -68,7 +68,9 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
   
   def edit
-    @root = current_organ.departments.root
+    if current_organ
+      @root = current_organ.departments.root
+    end
   end
   
   def update

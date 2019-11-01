@@ -11,7 +11,7 @@ module RailsOrg::JobTitle
     has_many :members, through: :member_departments, source: :member
     has_many :same_job_titles, ->(o){ where(organ_id: o.organ_id) }, class_name: self.base_class.name, foreign_key: :department_root_id, primary_key: :department_root_id
     
-    default_scope -> { order(grade: :asc) }
+    #default_scope -> { order(grade: :asc) }
     
     after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
   end

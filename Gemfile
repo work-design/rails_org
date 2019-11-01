@@ -16,10 +16,12 @@ gem 'rails_auth', github: 'work-design/rails_auth'
 gem 'rails_taxon', github: 'work-design/rails_taxon'
 gem 'rails_profile', github: 'work-design/rails_profile'
 gem 'rails_role', github: 'work-design/rails_role'
+gem 'acts_as_list', github: 'qinmingyuan/acts_as_list'
 
 gem 'jbuilder'
 gem 'image_processing'
 
 gem 'pry-rails'
+gem 'pry-stack_explorer'
 gem 'awesome_print'
 gem 'sdoc'

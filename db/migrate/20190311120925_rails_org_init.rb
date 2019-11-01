@@ -97,7 +97,11 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.string :description
       t.integer :grade
       t.integer :limit_number
-      t.integer :cached_role_ids, array: true
+      if connection.adapter_name == 'PostgreSQL'
+        t.integer :cached_role_ids, array: true
+      else
+        t.string :cached_role_ids
+      end
       t.timestamps
     end
     
@@ -117,10 +121,11 @@ class RailsOrgInit < ActiveRecord::Migration[6.0]
       t.references :superior
       t.integer :grade
       t.boolean :major
-      t.integer :department_ids, array: true
       if connection.adapter_name == 'PostgreSQL'
+        t.integer :department_ids, array: true
         t.jsonb :department_ancestors
       else
+        t.string :department_ids
         t.json :department_ancestors
       end
       t.timestamps

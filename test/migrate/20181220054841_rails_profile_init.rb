@@ -3,7 +3,11 @@ class RailsProfileInit < ActiveRecord::Migration[5.2]
 
     create_table :areas do |t|
       t.string :name
-      t.string :names, array: true
+      if connection.adapter_name == 'PostgreSQL'
+        t.string :names, array: true
+      else
+        t.string :names
+      end
       t.references :parent
       t.boolean :published, default: true
       t.boolean :popular, default: false
