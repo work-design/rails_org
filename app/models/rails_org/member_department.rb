@@ -6,7 +6,8 @@ module RailsOrg::MemberDepartment
     belongs_to :member
     belongs_to :department, counter_cache: true, inverse_of: :member_departments, optional: true
     belongs_to :job_title, optional: true
-    has_many :descendant_hierarchies, class_name: 'DepartmentHierarchy', foreign_key: :ancestor_id, primary_key: :department_ids
+    belongs_to :super_job_title, optional: true
+    has_many :descendant_hierarchies, class_name: 'DepartmentHierarchy', foreign_key: :ancestor_id, primary_key: :department_id
     has_many :self_and_descendants, ->(o){ default_where('grade-gt': o.grade) }, through: :descendant_hierarchies, source: :member_department
     has_many :members, through: :self_and_descendants, source: :member
     
@@ -27,42 +28,22 @@ module RailsOrg::MemberDepartment
     if job_title
       job_title.same_job_titles
     elsif department
-      ::DepartmentJobTitle.where(organ_id: department.organ_id, department_root_id: department.root.id)
+      ::JobTitle.where(department_root_id: department.root.id)
     else
       ::SuperJobTitle.where(organ_id: member.organ_id)
     end
   end
-  
-  def set_major
-    self.class.transaction do
-      self.update(major: true)
-      self.class.where.not(id: self.id).where(member_id: self.member_id).update_all(major: false)
-    end
-  end
 
   def sync_from_job_title
-    if job_title
-      if job_title.is_a?(SuperJobTitle)
-        self.department_ids = job_title.department_ids
-      else
-        self.department_root_id = job_title.department_root_id
-      end
+    if super_job_title
+      self.grade = super_job_title.grade
+    elsif job_title
+      self.department_id = job_title.department_id
       self.grade = job_title.grade
-    else
-      self.department_ids = []
-      self.grade = nil
     end
     
-    if department
-      self.superior_id = department.superior_id
-      self.department_root_id = self.department.root&.id
-    else
-      self.superior_id = nil
-    end
-    
-    if department.nil? && job_title.nil?
-      self.department_root_id = nil
-    end
+    self.superior_id = department.superior_id
+    self.department_root_id = self.department.root&.id
   end
 
   def sync_department_members_count

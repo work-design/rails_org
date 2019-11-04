@@ -72,7 +72,8 @@ class Org::Admin::MemberDepartmentsController < Org::Admin::BaseController
       :department_id,
       :department_ancestors,
       :organ_id,
-      :job_title_id
+      :job_title_id,
+      :super_job_title_id
     )
   end
 

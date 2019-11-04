@@ -57,5 +57,17 @@ class RailsProfileInit < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
+    create_table :authorized_tokens do |t|
+      t.references :user
+      t.references :oauth_user
+      t.references :account
+      t.string :token, index: { unique: true }
+      t.datetime :expire_at
+      t.string :session_key
+      t.integer :access_counter, default: 0
+      t.timestamps
+    end
+
+
   end
 end

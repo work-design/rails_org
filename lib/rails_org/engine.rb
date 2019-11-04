@@ -1,12 +1,6 @@
 require 'rails_com'
 class RailsOrg::Engine < ::Rails::Engine
   
-  config.autoload_paths += Dir[
-    "#{config.root}/app/models/job_title"
-  ]
-  
-  config.factory_bot.definition_file_paths += Dir["#{config.root}/test/factories"] if defined?(FactoryBotRails)
-
   config.generators do |g|
     g.rails = {
       assets: false,
