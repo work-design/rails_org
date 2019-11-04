@@ -9,7 +9,7 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
     q_params.merge! default_params
     q_params.merge! params.permit(:name)
     
-    @job_titles = DepartmentJobTitle.default_where(q_params).page(params[:page])
+    @job_titles = JobTitle.default_where(q_params).page(params[:page])
 
     @selected_job_titles = JobTitle.where.not(super_job_title_id: nil).default_where(q_params).order(grade: :asc)
     @super_job_titles = SuperJobTitle.default_where(default_params).order(grade: :asc)
