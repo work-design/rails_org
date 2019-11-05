@@ -14,5 +14,5 @@ $('[data-title="outer_ancestors"]').dropdown({
 
     Rails.ajax({url: search_url, type: 'GET', dataType: 'script'});
   }
-});
-$('[data-title="job_title_id"]').dropdown();
+})
+$('[data-title="job_title_id"]').dropdown()
