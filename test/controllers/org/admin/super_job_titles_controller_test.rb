@@ -1,8 +1,8 @@
 require 'test_helper'
-
 class Org::Admin::SuperJobTitlesControllerTest < ActionDispatch::IntegrationTest
+
   setup do
-    @org_admin_super_job_title = create org_admin_super_job_titles
+    @super_job_title = create :super_job_title
   end
 
   test 'index ok' do
@@ -11,38 +11,41 @@ class Org::Admin::SuperJobTitlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'new ok' do
-    get new_admin_super_job_title_url
+    get new_admin_super_job_title_url, xhr: true
     assert_response :success
   end
 
   test 'create ok' do
     assert_difference('SuperJobTitle.count') do
-      post admin_super_job_titles_url, params: { #{singular_table_name}: { #{attributes_string} } }
+      post admin_super_job_titles_url, params: { super_job_title: { name: 'test' } }, xhr: true
     end
 
-    assert_redirected_to org_admin_super_job_title_url(SuperJobTitle.last)
+    assert_response :success
   end
 
   test 'show ok' do
-    get admin_super_job_title_url(@org_admin_super_job_title)
+    get admin_super_job_title_url(@super_job_title), xhr: true
     assert_response :success
   end
 
   test 'edit ok' do
-    get edit_admin_super_job_title_url(@org_admin_super_job_title)
+    get edit_admin_super_job_title_url(@super_job_title), xhr: true
     assert_response :success
   end
 
   test 'update ok' do
-    patch admin_super_job_title_url(@org_admin_super_job_title), params: { #{singular_table_name}: { #{attributes_string} } }
-    assert_redirected_to org_admin_super_job_title_url(@#{singular_table_name})
+    patch admin_super_job_title_url(@super_job_title), params: { super_job_title: { name: '副总' } }, xhr: true
+    
+    @super_job_title.reload
+    assert_equal '副总', @super_job_title.name
+    assert_response :success
   end
 
   test 'destroy ok' do
     assert_difference('SuperJobTitle.count', -1) do
-      delete admin_super_job_title_url(@org_admin_super_job_title)
+      delete admin_super_job_title_url(@super_job_title), xhr: true
     end
 
-    assert_redirected_to admin_super_job_titles_url
+    assert_response :success
   end
 end
