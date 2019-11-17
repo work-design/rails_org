@@ -11,4 +11,3 @@ docs/
 
 .lock-*
 *.gem
-Gemfile.lock
