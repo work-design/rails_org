@@ -1,4 +1,4 @@
-<%= search_form_with model: Member.new do |f| %>
+<%= form_with theme: 'search', model: Member.new do |f| %>
   <div class="fields">
     <%= f.text_field :'name-like' %>
     <%= f.text_field :identity %>

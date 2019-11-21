@@ -1,4 +1,4 @@
-<%= search_form_with model: Support.new, scope: '' do |f| %>
+<%= form_with theme: 'search', model: Support.new, scope: '' do |f| %>
   <div class="fields">
     <%= f.collection_select :office_id, Office.all, :id, :name, { selected: params[:office_id] } %>
     <%= f.submit %>
