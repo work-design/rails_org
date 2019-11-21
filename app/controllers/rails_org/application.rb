@@ -40,14 +40,6 @@ module RailsOrg::Application
       current_user
     end
   end
-  
-  def current_receiver
-    if current_member
-      current_member
-    else
-      current_user
-    end
-  end
 
   def current_member
     return @current_member if defined?(@current_member)
