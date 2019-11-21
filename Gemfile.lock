@@ -7,14 +7,14 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: a19325bc5703403d2dd2173fd4e91fa0b02aa20f
+  revision: 7a3adf3793dd6ebcec93df5028948eb903259261
   specs:
     default_form (1.5.0)
       rails (>= 5.2, <= 6.1)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: a44a683b2f59f0b6cce756ca50b7b2dfa7185577
+  revision: 78131b3236e6a39127ef1f5686540c28301c168f
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 2b57bd65810dbcce719de5a2ba38883fe8a61b0c
+  revision: fb716cf17d01ea7b949988e4306f7ebf246f25d7
   specs:
     rails_com (1.2.9)
       default_form (~> 1.5)
@@ -33,14 +33,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: a1365a9367b0bbc41f191788e3b2cf836a158397
+  revision: 13b3c6263023e8ae1bbc0f867cc653cfd23e61cd
   specs:
     rails_profile (0.1.0)
       rails (>= 5.2.1)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: f6b1dbe9fc84cf26393a553f8e854cc94534ad19
+  revision: 441f02c0975383c92632e46abd4c8e8b008f7a79
   specs:
     rails_role (1.0.3)
       acts_as_list (~> 0.9)

@@ -14,4 +14,4 @@ module RailsOrg::DefaultForm
   
 end
 
-DefaultForm::DefaultBuilder.include RailsOrg::DefaultForm
+DefaultForm::FormBuilder.include RailsOrg::DefaultForm
