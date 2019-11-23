@@ -1,5 +1,5 @@
 <%= f.text_field :name %>
-<%= f.fields :member_departments, on: { wrapper_all: false, label: false }, css: { wrapper_input: 'field' } do |ef| %>
+<%= f.fields :member_departments, on: { wrap_all: false, label: false }, css: { wrap_input: 'field' } do |ef| %>
   <%= render partial: 'item_form', locals: { ef: ef } %>
 <% end %>
 <%= f.text_field :identity %>

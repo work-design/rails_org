@@ -7,14 +7,14 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 7a3adf3793dd6ebcec93df5028948eb903259261
+  revision: ed174659bbe6fed425a41106ebfb356262a4cefb
   specs:
     default_form (1.5.0)
       rails (>= 5.2, <= 6.1)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 0b3bb2117543188b9571c7964cc304445c2723a4
+  revision: bea0d165dab2ba6d65e6ede764426c23739dbdff
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: fb716cf17d01ea7b949988e4306f7ebf246f25d7
+  revision: 0e25c50555370de08d6ce594134300d6ad6b946b
   specs:
     rails_com (1.2.9)
       default_form (~> 1.5)
@@ -36,7 +36,7 @@ GIT
   revision: 13b3c6263023e8ae1bbc0f867cc653cfd23e61cd
   specs:
     rails_profile (0.1.0)
-      rails (>= 5.2.1)
+      rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
@@ -145,9 +145,9 @@ GEM
     ffi (1.11.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    http-2-next (0.1.1)
-    httpx (0.6.0)
-      http-2-next (>= 0.1.1)
+    http-2-next (0.1.2)
+    httpx (0.6.1)
+      http-2-next (>= 0.1.2)
       timers
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
