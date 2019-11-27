@@ -7,14 +7,14 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: ed174659bbe6fed425a41106ebfb356262a4cefb
+  revision: ef01a067868b0afe14015fe1782dc2a2cd7ec90d
   specs:
     default_form (1.5.0)
       rails (>= 5.2, <= 6.1)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: bea0d165dab2ba6d65e6ede764426c23739dbdff
+  revision: 9912b77440cf65a97aa49350567262daf4ba6689
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -33,14 +33,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 75a34f1f81c687407c7ebe6f7aa0a8985e9459c6
+  revision: 6a82061d0ef5b9013595c2b326bb88e0dad9d8ce
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 441f02c0975383c92632e46abd4c8e8b008f7a79
+  revision: c898cc81ee628b5d89232e560db608b721bedd51
   specs:
     rails_role (1.0.3)
       acts_as_list (~> 0.9)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_taxon.git
-  revision: a165ca9a57f3df0515c2899085c0ea143ad62dd8
+  revision: 225fdf8cbfa39f17e693e169d4efbc4784b4666e
   specs:
     rails_taxon (1.0.0)
       acts_as_list (>= 0.9, <= 1.0)
@@ -286,4 +286,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.17.2
+  2.0.2
