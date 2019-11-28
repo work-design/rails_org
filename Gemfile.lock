@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: decd6a5ab2943143d92f306552610064351fae09
+  revision: f6ccbd9dabbf60266c9550050923d17b014785ad
   specs:
     rails_com (1.2.9)
       default_form (~> 1.5)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 2d9900f54e3cdf1da5a6d6c96a1bf503325ccc45
+  revision: 002b7ab767473ac09c7ad7f8331c3446219a1385
   specs:
     rails_notice (1.0.2)
       rails_auth
