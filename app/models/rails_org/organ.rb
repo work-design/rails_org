@@ -1,10 +1,15 @@
 module RailsOrg::Organ
   extend ActiveSupport::Concern
   included do
-    attribute :limit_wechat, :integer, default: 1
+    attribute :name, :string
     attribute :name_short, :string
+    attribute :organ_uuid, :string
+    attribute :address, :string
+    attribute :timezone, :string
+    attribute :locale, :string
+    attribute :limit_wechat, :integer, default: 1
     attribute :members_count, :integer, default: 0
-
+    
     has_taxons :area
     belongs_to :area, optional: true
     

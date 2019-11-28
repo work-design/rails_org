@@ -4,6 +4,13 @@ module RailsOrg::Tutorial
     attribute :state, :string, default: 'init'
     attribute :accepted_status, :string, default: 'normal'
     attribute :verified, :string, default: 'unverified'
+    attribute :kind, :string
+    attribute :start_on, :date
+    attribute :finish_on, :date
+    attribute :performance, :string
+    attribute :allowance, :integer
+    attribute :note, :string, limit: 4096
+    attribute :comment, :string, limit: 4096
 
     belongs_to :member
     belongs_to :tutor, class_name: 'Member', optional: true

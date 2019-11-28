@@ -2,6 +2,10 @@ module RailsOrg::MemberDepartment
   extend ActiveSupport::Concern
   included do
     has_taxons :department
+
+    attribute :department_root_id, :integer
+    attribute :superior_id, :integer
+    attribute :grade, :integer
     
     belongs_to :member
     belongs_to :department, counter_cache: true, inverse_of: :member_departments, optional: true

@@ -1,6 +1,9 @@
 module RailsOrg::OrganGrant
   extend ActiveSupport::Concern
   included do
+    attribute :token, :string
+    attribute :expire_at, :datetime
+    
     belongs_to :organ
     belongs_to :member, optional: true
     belongs_to :user, optional: true

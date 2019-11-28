@@ -7,6 +7,14 @@ module RailsOrg::Member
     attribute :experience, :string
     attribute :attendance_number, :string
     attribute :owned, :boolean, default: false
+    attribute :organ_root_id, :integer
+    attribute :name, :string
+    attribute :identity, :string
+    attribute :number, :string
+    attribute :join_on, :date
+    attribute :enabled, :boolean, default: "1"
+    attribute :state, :string
+    attribute :owner, :boolean
     
     belongs_to :user, optional: true
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true

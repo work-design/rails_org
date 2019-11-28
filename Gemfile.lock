@@ -13,8 +13,15 @@ GIT
       rails (>= 5.2, <= 6.1)
 
 GIT
+  remote: https://github.com/work-design/rails_audit.git
+  revision: 6983d69f752e9ac1c50bbe6194c3f827eb3e9a9f
+  specs:
+    rails_audit (1.0.3)
+      rails_com (~> 1.2)
+
+GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 9912b77440cf65a97aa49350567262daf4ba6689
+  revision: 0bffab8169d0e418429aa0203b61305cc826615f
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -23,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 0e25c50555370de08d6ce594134300d6ad6b946b
+  revision: 87987756f49e52ef307a923c81e76659ac9d3af6
   specs:
     rails_com (1.2.9)
       default_form (~> 1.5)
@@ -32,15 +39,23 @@ GIT
       rails (~> 6.0)
 
 GIT
+  remote: https://github.com/work-design/rails_notice.git
+  revision: 2d9900f54e3cdf1da5a6d6c96a1bf503325ccc45
+  specs:
+    rails_notice (1.0.2)
+      rails_auth
+      rails_com (~> 1.2)
+
+GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 6a82061d0ef5b9013595c2b326bb88e0dad9d8ce
+  revision: ce625fa013b68b2f71563a73ef72f2176f2a07b9
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: c898cc81ee628b5d89232e560db608b721bedd51
+  revision: 885167da9fe4fdd75f0edc827145df7fed559846
   specs:
     rails_role (1.0.3)
       acts_as_list (~> 0.9)
@@ -274,8 +289,10 @@ DEPENDENCIES
   pry-stack_explorer
   puma
   rails (= 6.0.0)
+  rails_audit!
   rails_auth!
   rails_com!
+  rails_notice!
   rails_org!
   rails_profile!
   rails_role!
@@ -286,4 +303,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-  2.0.2
+   2.0.2

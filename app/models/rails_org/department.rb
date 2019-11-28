@@ -1,6 +1,7 @@
 module RailsOrg::Department
   extend ActiveSupport::Concern
   included do
+    attribute :name, :string
     attribute :needed_number, :integer, default: 1
     attribute :member_departments_count, :integer, default: 0
     attribute :all_member_departments_count, :integer, default: 0
