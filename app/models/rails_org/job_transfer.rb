@@ -3,6 +3,8 @@ module RailsOrg::JobTransfer
   included do
     attr_accessor :department_ancestors
     attribute :state, :string, default: 'init'
+    attribute :transfer_on, :date
+    attribute :reason_note, :string, limit: 4096
 
     belongs_to :member
     belongs_to :to_office, class_name: 'Office', optional: true

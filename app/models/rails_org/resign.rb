@@ -2,11 +2,14 @@ module RailsOrg::Resign
   extend ActiveSupport::Concern
   included do
     attribute :state, :string, default: 'init'
+    attribute :leave_on, :date
+    attribute :reason_note, limit: 4096
+    attribute :handover_note, limit: 4096
+    attribute :comment, :string, limit: 4096
 
     validates :leave_on, :reason_note, presence: true
 
     belongs_to :member
-
     has_many :resign_references
     has_many :resign_reasons, through: :resign_references
     validate :validate_resign_reasons

@@ -5,7 +5,8 @@ module RailsOrg::SuperJobTitle
     attribute :name, :string
     attribute :description, :string
     attribute :limit_member, :integer
-  
+    
+    belongs_to :organ, optional: true
     has_many :member_departments, dependent: :destroy
     has_many :members, through: :member_departments, source: :member
     has_many :same_job_titles, ->(o){ where(organ_id: o.organ_id) }, class_name: self.base_class.name, foreign_key: :department_root_id, primary_key: :department_root_id
