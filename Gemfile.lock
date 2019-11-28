@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 87987756f49e52ef307a923c81e76659ac9d3af6
+  revision: decd6a5ab2943143d92f306552610064351fae09
   specs:
     rails_com (1.2.9)
       default_form (~> 1.5)
@@ -48,14 +48,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: ce625fa013b68b2f71563a73ef72f2176f2a07b9
+  revision: ea2db0ed9dfebdf72a9b1226f3d363fea2178ad8
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 885167da9fe4fdd75f0edc827145df7fed559846
+  revision: 8543ebc339013b09700e21dc7f1179cd8dbce933
   specs:
     rails_role (1.0.3)
       acts_as_list (~> 0.9)
@@ -63,7 +63,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_taxon.git
-  revision: 225fdf8cbfa39f17e693e169d4efbc4784b4666e
+  revision: b3bbf19cddab0d1b84d435e1193201d3dda19bbe
   specs:
     rails_taxon (1.0.0)
       acts_as_list (>= 0.9, <= 1.0)

@@ -3,8 +3,8 @@ module RailsOrg::Resign
   included do
     attribute :state, :string, default: 'init'
     attribute :leave_on, :date
-    attribute :reason_note, limit: 4096
-    attribute :handover_note, limit: 4096
+    attribute :reason_note, :string, limit: 4096
+    attribute :handover_note, :string, limit: 4096
     attribute :comment, :string, limit: 4096
 
     validates :leave_on, :reason_note, presence: true
