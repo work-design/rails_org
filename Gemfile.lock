@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 0bffab8169d0e418429aa0203b61305cc826615f
+  revision: 5bca781523c21632a243f2cee94187c0dfbe936e
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 4ed11d977870d0ad5a5942d45c998ad1d6b4d664
+  revision: a42a80812ab0273af4e19ad70cb440ebc23bcce8
   specs:
     rails_com (1.2.9)
       default_form (~> 1.5)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 002b7ab767473ac09c7ad7f8331c3446219a1385
+  revision: 5d51f527c27fe97d2fb16e5894bd37053c24a0db
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -63,7 +63,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_taxon.git
-  revision: b3bbf19cddab0d1b84d435e1193201d3dda19bbe
+  revision: c47ddc4a4ead59ae6726b3d4cfd2dc5415b1af2f
   specs:
     rails_taxon (1.0.0)
       acts_as_list (>= 0.9, <= 1.0)
