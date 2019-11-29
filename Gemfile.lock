@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 6983d69f752e9ac1c50bbe6194c3f827eb3e9a9f
+  revision: dcc4a495f12cf9895471332731b306bf0346dde3
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: f6ccbd9dabbf60266c9550050923d17b014785ad
+  revision: 4ed11d977870d0ad5a5942d45c998ad1d6b4d664
   specs:
     rails_com (1.2.9)
       default_form (~> 1.5)
