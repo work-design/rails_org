@@ -7,21 +7,21 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: ef01a067868b0afe14015fe1782dc2a2cd7ec90d
+  revision: 1b22a7c8ecedeb8e392259640fe409def64257e8
   specs:
     default_form (1.5.0)
       rails (>= 5.2, <= 6.1)
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: dcc4a495f12cf9895471332731b306bf0346dde3
+  revision: 9a2534c3d5c75db353f916a3e295d8124934d01b
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 5bca781523c21632a243f2cee94187c0dfbe936e
+  revision: 083485324eee3fdbe17e1a32eb870d93a113403d
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: a42a80812ab0273af4e19ad70cb440ebc23bcce8
+  revision: a75da90b78ea4e51b88e34f3a346f0f01a241d82
   specs:
     rails_com (1.2.9)
       default_form (~> 1.5)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 5d51f527c27fe97d2fb16e5894bd37053c24a0db
+  revision: ef6f8ff72a01c2f7674aab74201eb51b1f520852
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 8543ebc339013b09700e21dc7f1179cd8dbce933
+  revision: ebbd8ba2226ef7df4a2a5373af5db79af9d8dda9
   specs:
     rails_role (1.0.3)
       acts_as_list (~> 0.9)
@@ -161,7 +161,7 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-2-next (0.1.2)
-    httpx (0.6.1)
+    httpx (0.6.2)
       http-2-next (>= 0.1.2)
       timers
     i18n (1.7.0)
