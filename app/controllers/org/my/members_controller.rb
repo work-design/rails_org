@@ -15,15 +15,9 @@ class Org::My::MembersController < Org::My::BaseController
     @member = Member.find_or_initialize_by(identity: member_params[:identity])
     @member.user = current_user
     @member.assign_attributes member_params
-  
-    respond_to do |format|
-      if @member.save
-        format.html { redirect_to my_members_url }
-        format.js { redirect_to my_members_url }
-      else
-        format.html { redirect_to my_members_url, alert: @member.errors }
-        format.js { render :new }
-      end
+
+    unless @member.save
+      render :new, locals: { model: @member }, status: :unprocessable_entity
     end
   end
 
@@ -52,13 +46,8 @@ class Org::My::MembersController < Org::My::BaseController
   end
 
   def login
-    organ_grant = @member.get_organ_grant
-    login_organ_as organ_grant
-
-    respond_to do |format|
-      format.html { redirect_to panel_organ_url }
-      format.json { render json: { organ_grant: organ_grant } }
-    end
+    @organ_grant = @member.get_organ_grant
+    login_organ_as @organ_grant
   end
 
   private
