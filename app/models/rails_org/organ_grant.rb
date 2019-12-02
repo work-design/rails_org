@@ -4,7 +4,7 @@ module RailsOrg::OrganGrant
     attribute :token, :string
     attribute :expire_at, :datetime
     
-    belongs_to :organ
+    belongs_to :organ, optional: true
     belongs_to :member, optional: true
     belongs_to :user, optional: true
     

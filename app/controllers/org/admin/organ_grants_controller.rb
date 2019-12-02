@@ -3,7 +3,7 @@ class Org::Admin::OrganGrantsController < Org::Admin::BaseController
 
   def index
     q_params = {}
-    q_params.merge! organ_descendants_params
+    q_params.merge! default_filter_params
     @organ_grants = @member.organ_grants.default_where(q_params).page(params[:page])
   end
 
@@ -26,7 +26,7 @@ class Org::Admin::OrganGrantsController < Org::Admin::BaseController
 
   private
   def set_member
-    @member = current_organ.members.find params[:member_id]
+    @member = Member.default_where(default_params).find params[:member_id]
   end
 
   def organ_grant_params

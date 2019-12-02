@@ -9,7 +9,7 @@
       <%= link_to member.name, admin_member_path(member) %>
     </p>
     <p>
-      <span class="ui grey text"><%= member.organ.name %></span>
+      <span class="ui grey text"><%= member.organ&.name %></span>
     </p>
   </td>
   <td>
