@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: ef6f8ff72a01c2f7674aab74201eb51b1f520852
+  revision: a388a0f741450cb448eb44fe1226cdc29c4828de
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -48,10 +48,11 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: ea2db0ed9dfebdf72a9b1226f3d363fea2178ad8
+  revision: c5db1a38d0a01b8d6121a54f20833b72e210bb39
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
+      rails_taxon
 
 GIT
   remote: https://github.com/work-design/rails_role.git

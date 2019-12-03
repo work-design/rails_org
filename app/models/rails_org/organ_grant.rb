@@ -4,9 +4,10 @@ module RailsOrg::OrganGrant
     attribute :token, :string
     attribute :expire_at, :datetime
     
-    belongs_to :organ, optional: true
+    belongs_to :organ
+    belongs_to :session_organ, class_name: 'Organ', optional: true
     belongs_to :member, optional: true
-    belongs_to :user, optional: true
+    belongs_to :user
     
     after_validation :update_token
   end
@@ -14,6 +15,9 @@ module RailsOrg::OrganGrant
   def update_token
     self.expire_at = 14.days.since
     self.token ||= organ.generate_token(sub: 'organ_auth', exp: expire_at.to_i)
+
+    organ.self_and_descendant_ids.include?(session_organ_id)
+    
     self
   end
   

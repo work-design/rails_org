@@ -8,27 +8,21 @@ module RailsOrg::Application
 
   def require_organ
     return if current_organ
-    
-    respond_to do |format|
-      format.json do
-        render json: { message: '请登录后操作' }, status: 401
-      end
-      format.html do
-        redirect_to RailsOrg.config.default_return_path
-      end
+
+    if request.format.html?
+      render 'require_organ', locals: { return_to: RailsOrg.config.default_return_path }, layout: 'application', status: 401
+    else
+      render 'require_organ', locals: { return_to: RailsOrg.config.default_return_path }, status: 401
     end
   end
-  
+
   def require_member
     return if current_member
 
-    respond_to do |format|
-      format.json do
-        render json: { message: '请登录后操作' }, status: 401
-      end
-      format.html do
-        redirect_to RailsOrg.config.default_return_path
-      end
+    if request.format.html?
+      render 'require_member', locals: { return_to: RailsOrg.config.default_return_path }, layout: 'application', status: 401
+    else
+      render 'require_member', locals: { return_to: RailsOrg.config.default_return_path }, status: 401
     end
   end
 
@@ -86,24 +80,22 @@ module RailsOrg::Application
     else
       return
     end
-    
+
     headers['Organ-Token'] = token
     session[:organ_token] = token
   end
-  
+
   def set_filter_params
-    session[:organ_id] = params[:organ_id].presence if params.key?(:organ_id)
-  end
-  
-  def current_organ_id
-    request.subdomain.delete_prefix('organ_').presence if request.subdomain.start_with?('organ_')
+    if params.key?(:organ_id)
+      current_organ_grant.update session_organ_id: params[:organ_id]
+    end
   end
 
   def default_params
     if current_organ
       { organ_id: current_organ.id }
-    elsif current_organ_id
-      { organ_id: current_organ_id }
+    elsif request.subdomain.start_with?('organ_')
+      { organ_id: request.subdomain.delete_prefix('organ_').presence }
     else
       { organ_id: nil, allow: { organ_id: nil } }
     end
@@ -122,8 +114,8 @@ module RailsOrg::Application
       return {}
     end
     
-    if current_organ.self_and_descendant_ids.include?(session[:organ_id].to_i)
-      { organ_id: session[:organ_id] }
+    if current_organ_grant.session_organ_id
+      { organ_id: session_organ_id }
     else
       { organ_id: current_organ.self_and_descendant_ids }
     end
