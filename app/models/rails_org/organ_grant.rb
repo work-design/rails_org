@@ -9,13 +9,13 @@ module RailsOrg::OrganGrant
     belongs_to :member, optional: true
     belongs_to :user
     
-    after_validation :update_token
+    before_validation :update_token
   end
 
   def update_token
     self.expire_at = 14.days.since
     self.token ||= organ.generate_token(sub: 'organ_auth', exp: expire_at.to_i)
-
+    self.user_id = member.user_id
     organ.self_and_descendant_ids.include?(session_organ_id)
     
     self
