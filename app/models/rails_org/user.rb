@@ -10,4 +10,8 @@ module RailsOrg::User
     accounts.where.not(identity: members.pluck(:identity)).confirmed
   end
 
+  def organ_grants
+    members.map { |i| i.get_organ_grant }
+  end
+
 end
