@@ -1,4 +1,4 @@
-class Org::Member::RecruitmentPlansController < Org::Member::BaseController
+class Org::Membership::RecruitmentPlansController < Org::Membership::BaseController
   before_action :set_recruitment_plan, only: [:show, :edit, :update, :destroy, :comment, :handle, :confirm, :repropose]
 
   def index

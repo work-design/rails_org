@@ -9,11 +9,11 @@ Rails.application.routes.draw do
     end
   end
   
-  scope :my, module: 'org/mine', as: 'my' do
+  scope :my, module: 'org/mine', as: :my do
     resources :organs
   end
 
-  scope :my, module: 'org/my', as: 'my' do
+  scope :my, module: 'org/my', as: :my do
     controller :home do
       get :index
     end
@@ -23,7 +23,8 @@ Rails.application.routes.draw do
     resources :documents
   end
   
-  scope :my, module: 'org/member', as: 'my' do
+  scope :my, module: 'org/member', as: :my do
+    resource :member, only: [:show, :edit, :update, :destroy]
     resources :departments
     resources :tutorials do
       get :tutorings, on: :collection
