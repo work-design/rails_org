@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :documents
   end
   
-  scope :my, module: 'org/member', as: :my do
+  scope :my, module: 'org/membership', as: :my do
     resource :member, only: [:show, :edit, :update, :destroy]
     resources :departments
     resources :tutorials do
