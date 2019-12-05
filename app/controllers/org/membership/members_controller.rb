@@ -25,8 +25,7 @@ class Org::Membership::MembersController < Org::Membership::BaseController
   end
 
   def member_params
-    params.fetch(:member, {}).permit(
-    )
+    params.fetch(:member, {}).permit!
   end
 
 end
