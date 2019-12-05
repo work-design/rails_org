@@ -81,10 +81,16 @@ module RailsOrg::Application
     session[:organ_token] = token
   end
 
+  def logout_organ
+    @current_organ_grant = nil
+    headers['Organ-Token'] = nil
+    session.delete :organ_token
+  end
+
   def set_filter_params
     if params.key?(:organ_id)
       if params[:organ_id].blank?
-        @current_organ_grant = nil
+        logout_organ
       else
         current_organ_grant.update session_organ_id: params[:organ_id]
       end
