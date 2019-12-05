@@ -71,23 +71,23 @@ module RailsOrg::Application
   def login_organ_as(organ_grant)
     logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
     @current_organ_grant = organ_grant
-    session[:organ_id] = organ_grant.organ_id
   end
 
   def set_organ_grant
-    if defined?(@current_organ_grant)
-      token = @current_organ_grant.token
-    else
-      return
-    end
-
+    return unless defined?(@current_organ_grant) && @current_organ_grant
+    
+    token = @current_organ_grant.token
     headers['Organ-Token'] = token
     session[:organ_token] = token
   end
 
   def set_filter_params
     if params.key?(:organ_id)
-      current_organ_grant.update session_organ_id: params[:organ_id]
+      if params[:organ_id].blank?
+        @current_organ_grant = nil
+      else
+        current_organ_grant.update session_organ_id: params[:organ_id]
+      end
     end
   end
 
@@ -115,7 +115,7 @@ module RailsOrg::Application
     end
     
     if current_organ_grant.session_organ_id
-      { organ_id: session_organ_id }
+      { organ_id: current_organ_grant.session_organ_id }
     else
       { organ_id: current_organ.self_and_descendant_ids }
     end
