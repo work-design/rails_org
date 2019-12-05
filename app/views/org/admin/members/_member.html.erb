@@ -1,17 +1,13 @@
 <tr>
   <td>
-    <p>
-      <% if member.user && member.user.avatar.attached? %>
-        <%= link_to admin_user_path(member.user_id) do %>
-          <%= image_tag member.user.avatar.variant(resize_to_limit: [35, 35]), class: 'ui avatar image' %>
-        <% end %>
+    <% if member.user && member.user.avatar.attached? %>
+      <%= link_to admin_user_path(member.user_id) do %>
+        <%= image_tag member.user.avatar.variant(resize_to_limit: [35, 35]), class: 'ui avatar image' %>
       <% end %>
-      <%= link_to member.name, admin_member_path(member) %>
-    </p>
-    <p>
-      <span class="ui grey text"><%= member.organ&.name %></span>
-    </p>
+    <% end %>
+    <%= link_to member.name, admin_member_path(member) %>
   </td>
+  <td><%= member.organ&.name %></td>
   <td>
     <% member.member_departments.each do |md| %>
       <p>
