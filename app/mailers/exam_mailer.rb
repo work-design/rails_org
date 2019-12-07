@@ -1,5 +1,4 @@
 class ExamMailer < ApplicationMailer
-  default from: 'training@mdpi.com'
 
   def review(exam_id)
     @exam = Exam.find exam_id

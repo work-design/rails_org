@@ -1,5 +1,4 @@
 class LessonMailer < ApplicationMailer
-  default from: 'training@mdpi.com'
 
   def remind(lesson_member_id)
     @lesson_member = LessonMember.find lesson_member_id

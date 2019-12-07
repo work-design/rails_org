@@ -1,5 +1,4 @@
 class AttendanceMailer < ApplicationMailer
-  default from: 'training@mdpi.com'
 
   def normal_completion(member_id)
     @attendances = Attendance.where(member_id: member_id, finish_at: nil).where.not(start_at: nil)
