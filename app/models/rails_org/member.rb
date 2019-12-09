@@ -46,18 +46,23 @@ module RailsOrg::Member
     scope :enabled, -> { where(enabled: true) }
     
     validates :identity, uniqueness: { scope: :organ_id }
-    after_initialize if: :new_record? do
-      self.name = user&.name
-    end
     #before_save :sync_tutorials, if: -> { join_on_changed? }
     before_save :sync_account_user, if: -> { identity_changed? }
+    before_save :sync_avatar_from_user, if: -> { user_id_changed? }
     after_create :sync_member_roles, if: -> { owned? }
   end
 
   def sync_account_user
     self.user_id ||= account&.user_id
   end
-  
+
+  def sync_avatar_from_user
+    if user
+      self.name ||= user.name
+      self.avatar_blob ||= user.avatar_blob
+    end
+  end
+
   def grade
     member_departments.minimum(:grade)
   end
