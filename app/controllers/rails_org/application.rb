@@ -2,7 +2,7 @@ module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
     helper_method :current_organ, :current_member, :other_organs
-    before_action :set_filter_params, :clear_member
+    before_action :set_filter_params
     after_action :set_organ_grant
   end
 
