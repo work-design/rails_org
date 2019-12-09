@@ -47,8 +47,4 @@ module RailsOrg::Organ
     grant
   end
 
-  def generate_token(**options)
-    JwtHelper.generate_jwt_token(id, organ_uuid, options)
-  end
-
 end

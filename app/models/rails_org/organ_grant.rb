@@ -4,7 +4,7 @@ module RailsOrg::OrganGrant
     attribute :token, :string
     attribute :expire_at, :datetime
 
-    belongs_to :organ
+    belongs_to :organ, optional: true
     belongs_to :session_organ, class_name: 'Organ', optional: true
     belongs_to :member, optional: true
     belongs_to :user
@@ -14,13 +14,23 @@ module RailsOrg::OrganGrant
 
   def update_token
     self.expire_at = 14.days.since
-    self.token ||= organ.generate_token(sub: 'organ_auth', exp: expire_at.to_i)
+    self.token ||= generate_token(sub: 'organ_auth', exp: expire_at.to_i)
     self.user_id = member.user_id if member
     self.session_organ_id ||= self.organ_id
 
-    organ.self_and_descendant_ids.include?(session_organ_id)
+    if organ
+      organ.self_and_descendant_ids.include?(session_organ_id)
+    end
 
     self
+  end
+
+  def generate_token(**options)
+    JwtHelper.generate_jwt_token(id, uuid, options)
+  end
+  
+  def uuid
+    organ&.organ_uuid || member.id
   end
   
   def update_token!
