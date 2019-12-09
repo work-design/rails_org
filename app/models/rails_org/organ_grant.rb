@@ -3,6 +3,7 @@ module RailsOrg::OrganGrant
   included do
     attribute :token, :string
     attribute :expire_at, :datetime
+    attribute :mock, :boolean, default: false
 
     belongs_to :organ, optional: true
     belongs_to :session_organ, class_name: 'Organ', optional: true
