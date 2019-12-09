@@ -2,7 +2,7 @@ module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
     helper_method :current_organ, :current_member, :other_organs
-    before_action :set_filter_params
+    before_action :set_filter_params, :clear_member
     after_action :set_organ_grant
   end
 
@@ -85,6 +85,16 @@ module RailsOrg::Application
     @current_organ_grant = nil
     headers['Organ-Token'] = nil
     session.delete :organ_token
+  end
+
+  def logout_member
+    logout_organ
+  end
+
+  def clear_member
+    unless detect_filter(:require_member)
+      logout_member
+    end
   end
 
   def set_filter_params
