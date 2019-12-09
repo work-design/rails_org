@@ -93,7 +93,7 @@ module RailsOrg::Application
 
   def clear_member
     unless detect_filter(:require_member)
-      logout_member if current_organ_grant.mock
+      logout_member if current_organ_grant&.mock
     end
   end
 
