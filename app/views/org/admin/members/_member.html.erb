@@ -49,6 +49,9 @@
     <%= link_to edit_admin_member_path(member), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
+    <%= link_to mock_admin_member_path(member), method: :patch, data: { tooltip: t('.mock') }, class: 'ui mini circular icon button' do %>
+      <i class="fas fa-hand-point-right"></i>
+    <% end %>
     <%# link_to 'tutorials', admin_tutorials_path(member_id: member.id), class: 'ui mini circular button' %>
   </td>
 </tr>

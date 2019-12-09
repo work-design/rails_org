@@ -84,6 +84,7 @@ Rails.application.routes.draw do
       member do
         get :profile
         get :token
+        patch :mock
       end
       resources :member_departments do
         get :options, on: :collection

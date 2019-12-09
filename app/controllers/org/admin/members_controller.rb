@@ -1,5 +1,5 @@
 class Org::Admin::MembersController < Org::Admin::BaseController
-  before_action :set_member, only: [:show, :edit, :update, :profile, :token, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :mock, :profile, :token, :destroy]
 
   def index
     q_params = {
@@ -80,6 +80,13 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     unless @member.save
       render :edit, locals: { model: @member }, status: :unprocessable_entity
     end
+  end
+
+  def mock
+    organ_grant = @member.get_organ_grant
+    login_organ_as(organ_grant)
+  
+    redirect_to my_agencies_url
   end
 
   def add_item

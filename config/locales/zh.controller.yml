@@ -16,6 +16,7 @@ zh:
       organs:
         index:
           title: 分支机构
+          mock: 以此身份
       organ_grants:
         index:
           title: 授权管理
@@ -32,6 +33,7 @@ zh:
           disabled: 禁用
           role: 授权管理
           profile: 简历
+          mock: 以其身份
         show:
           title: 职员信息
     panel:
