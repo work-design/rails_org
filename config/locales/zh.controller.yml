@@ -16,7 +16,7 @@ zh:
       organs:
         index:
           title: 分支机构
-          mock: 以此身份
+          mock: 进入该组织
       organ_grants:
         index:
           title: 授权管理

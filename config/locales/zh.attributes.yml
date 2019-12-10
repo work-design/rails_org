@@ -43,6 +43,7 @@ zh:
         resume: 简历
         role_ids: 权限
         job_titles: 职级
+        organ_id: 组织
       member_department:
         organ_id: 分支机构
         department_id: 部门
