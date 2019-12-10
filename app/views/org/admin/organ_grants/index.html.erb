@@ -22,7 +22,7 @@
   <tbody>
   <% @organ_grants.each do |organ_grant| %>
     <tr>
-      <td><%= organ_grant.organ.name %></td>
+      <td><%= organ_grant.organ&.name %></td>
       <td><%= organ_grant.token %></td>
       <td><time><%= organ_grant.expire_at.to_s(:rfc822) %></time></td>
       <td>
