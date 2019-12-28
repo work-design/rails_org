@@ -14,14 +14,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 9a2534c3d5c75db353f916a3e295d8124934d01b
+  revision: 957cd3c9ce8d2356d3c671eb266c8de0e04e4e3c
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 21f2575571320a95e11440f266b2e36c966f6ea6
+  revision: c18c78eb956724b7551d61f032e53377c4416133
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 7701a4ca4aa5ca93f583fbba653ecb6c666f4fa6
+  revision: 79ad64e3cd43f4770b1947bcd94907bda7c33692
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 54de7f256eb200e54bb872d8452848cb763c7db1
+  revision: 9088a01869d1ed0367a81b3a8870e26f85cdad74
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -141,7 +141,7 @@ GEM
     bcrypt (3.1.13)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    builder (3.2.3)
+    builder (3.2.4)
     closure_tree (7.0.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
@@ -160,13 +160,13 @@ GEM
     ffi (1.11.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    http-2-next (0.1.2)
-    httpx (0.6.2)
+    http-2-next (0.2.0)
+    httpx (0.6.3)
       http-2-next (>= 0.1.2)
       timers
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
-    image_processing (1.9.3)
+    image_processing (1.10.0)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.13, < 3)
     jbuilder (2.9.1)
@@ -210,7 +210,7 @@ GEM
       pry (>= 0.9.11)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.0.7)
+    rack (2.0.8)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -242,7 +242,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
     rake (13.0.1)
-    rdoc (6.2.0)
+    rdoc (6.2.1)
     ruby-vips (2.0.16)
       ffi (~> 1.9)
     sdoc (1.0.0)
@@ -254,16 +254,16 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.1)
-    thor (0.20.3)
+    sqlite3 (1.4.2)
+    thor (1.0.1)
     thread_safe (0.3.6)
     timers (4.3.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
-    webpacker (4.2.0)
+    webpacker (4.2.2)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
