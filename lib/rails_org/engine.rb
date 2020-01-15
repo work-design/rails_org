@@ -1,6 +1,6 @@
 require 'rails_com'
 class RailsOrg::Engine < ::Rails::Engine
-  
+
   config.generators do |g|
     g.rails = {
       assets: false,
@@ -12,10 +12,6 @@ class RailsOrg::Engine < ::Rails::Engine
       fixture_replacement: :factory_girl
     }
     g.templates.unshift File.expand_path('lib/templates', RailsCom::Engine.root)
-  end
-
-  initializer 'rails_org.assets.precompile' do |app|
-    app.config.assets.precompile += ['rails_org_manifest.js']
   end
 
 end # :nodoc:
