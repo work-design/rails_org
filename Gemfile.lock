@@ -7,21 +7,21 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 976ae4c7fbdfca9c34a8c8abe12db63e3baa7866
+  revision: e4600e93de120cc2d3a49970f6f1606179f8aa06
   specs:
     default_form (1.5.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: d7394de7165e11bde62ea80cc34eb9fe06b25d21
+  revision: 9e508af20628231ca2cf4762eb6eed278313aa01
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: ba132ab825d86970478fe79cba877b86262a32ba
+  revision: fb200bf291bee5bb31d479c36705edc2b8b46074
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -30,16 +30,17 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 96b6d13da7ddc9113de8e381e2ddd5be8f582355
+  revision: 9bab932ab26c9c0566afeb1180e8410fb5fa8944
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
+      http-form_data (~> 2.2)
       httpx (~> 0.5)
       rails (~> 6.0)
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 434e7de2b53292cbd131460d94e2b1933fb336a8
+  revision: 6c8c0bed9d3b7e00bca744183fb1e2c263ce3bcb
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -47,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 7c3ee661720dfdc5e04a124d23964e88a19a95ed
+  revision: 8788f4beb269de3ae462d3413a440b397bffe7f7
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -55,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: b3e9ea89912deab1d958916e3cec10c969a8c9aa
+  revision: 9ef5face27918feb80f2973d84a3bdb4333b07c9
   specs:
     rails_role (1.0.3)
       acts_as_list (~> 0.9)
@@ -63,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_taxon.git
-  revision: e775977047beef0138294342cbc8ba0e3dc01a29
+  revision: b3e873f243bd20b925be22d8e94e7c4736f2a728
   specs:
     rails_taxon (1.0.0)
       acts_as_list (>= 0.9, <= 1.0)
@@ -142,12 +143,12 @@ GEM
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.4)
-    closure_tree (7.0.0)
+    closure_tree (7.1.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
     coderay (1.1.2)
-    concurrent-ruby (1.1.5)
-    crass (1.0.5)
+    concurrent-ruby (1.1.6)
+    crass (1.0.6)
     debug_inspector (0.0.3)
     default_where (2.2.3)
       activerecord (>= 4.0, <= 6.0)
@@ -157,33 +158,34 @@ GEM
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
-    ffi (1.11.3)
+    ffi (1.12.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    http-2-next (0.2.1)
-    httpx (0.6.4)
+    http-2-next (0.2.2)
+    http-form_data (2.2.0)
+    httpx (0.6.6)
       http-2-next (>= 0.1.2)
       timers
-    i18n (1.8.1)
+    i18n (1.8.2)
       concurrent-ruby (~> 1.0)
-    image_processing (1.10.1)
+    image_processing (1.10.3)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
-    jbuilder (2.9.1)
-      activesupport (>= 4.2.0)
+    jbuilder (2.10.0)
+      activesupport (>= 5.0.0)
     jwt (2.2.1)
-    kaminari (1.1.1)
+    kaminari (1.2.0)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.1.1)
-      kaminari-activerecord (= 1.1.1)
-      kaminari-core (= 1.1.1)
-    kaminari-actionview (1.1.1)
+      kaminari-actionview (= 1.2.0)
+      kaminari-activerecord (= 1.2.0)
+      kaminari-core (= 1.2.0)
+    kaminari-actionview (1.2.0)
       actionview
-      kaminari-core (= 1.1.1)
-    kaminari-activerecord (1.1.1)
+      kaminari-core (= 1.2.0)
+    kaminari-activerecord (1.2.0)
       activerecord
-      kaminari-core (= 1.1.1)
-    kaminari-core (1.1.1)
+      kaminari-core (= 1.2.0)
+    kaminari-core (1.2.0)
     loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -192,13 +194,13 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
-    mimemagic (0.3.3)
+    mimemagic (0.3.4)
     mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.13.0)
+    minitest (5.14.0)
     nio4r (2.5.2)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -210,7 +212,7 @@ GEM
       pry (>= 0.9.11)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.0.8)
+    rack (2.2.2)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
