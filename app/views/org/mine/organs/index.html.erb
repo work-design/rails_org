@@ -14,7 +14,7 @@
     <div class="extra content">
       <% organ.members.where(user_id: current_user.id).each do |member| %>
       <p>
-        <%= link_to member.name, login_my_member_path(member), method: :patch, class: 'ui mini button' %>
+        <%= link_to member.name, login_my_member_path(member), method: :patch, remote: true, class: 'ui mini button' %>
         <span><%= member.departments.first&.full_name %></span>
       </p>
       <% end %>
