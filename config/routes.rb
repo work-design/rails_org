@@ -2,15 +2,19 @@ Rails.application.routes.draw do
 
   scope module: 'org' do
     resources :members, only: [:index, :show] do
-      get :search, on: :collection
+      collection do
+        get :search
+      end
     end
-    resources :organs, only: [:index, :show] do
-      patch :login, on: :member
-    end
+    resources :organs, only: [:index, :show]
   end
-  
+
   scope :my, module: 'org/mine', as: :my do
-    resources :organs
+    resources :organs do
+      member do
+        get :login
+      end
+    end
   end
 
   scope :my, module: 'org/my', as: :my do
@@ -22,7 +26,7 @@ Rails.application.routes.draw do
     end
     resources :documents
   end
-  
+
   scope :my, module: 'org/membership', as: :my do
     resource :member, only: [:show, :edit, :update, :destroy]
     resources :departments
@@ -35,7 +39,7 @@ Rails.application.routes.draw do
       get :departments, on: :collection
     end
   end
-  
+
   scope :panel, module: 'org/panel', as: 'panel' do
     resource :organ
   end

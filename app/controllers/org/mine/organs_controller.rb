@@ -1,5 +1,5 @@
 class Org::Mine::OrgansController < Org::Mine::BaseController
-  before_action :set_organ, only: [:show, :edit, :update, :destroy]
+  before_action :set_organ, only: [:show, :login, :edit, :update, :destroy]
 
   def index
     @organs = current_user.organs.page(params[:page])
@@ -28,6 +28,11 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
   def show
   end
 
+  def login
+    @organ_token = @organ.get_organ_grant(current_user)
+    login_organ_as @organ_token
+  end
+
   def edit
   end
 
@@ -47,11 +52,11 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
   def set_member
     @member = current_user.members.find params[:member_id]
   end
-  
+
   def set_organ
     @organ = Organ.find(params[:id])
   end
-  
+
   def member_params
     p = params.fetch(:member, {}).permit(:identity)
     p.merge! owned: true

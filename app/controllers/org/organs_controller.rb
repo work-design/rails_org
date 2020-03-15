@@ -1,5 +1,5 @@
 class Org::OrgansController < ApplicationController
-  before_action :set_organ, only: [:show, :login]
+  before_action :set_organ, only: [:show]
 
   def index
     q_params = { parent_id: nil, allow: { parent_id: nil } }
@@ -9,11 +9,6 @@ class Org::OrgansController < ApplicationController
   end
 
   def show
-  end
-
-  def login
-    @organ_token = @organ.get_organ_grant(current_user)
-    login_organ_as @organ_token
   end
 
   private
