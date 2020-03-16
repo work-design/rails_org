@@ -1,1 +1,7 @@
-<%= link_to t('org.panel.organs.show.title'), panel_organ_path, class: active_helper(controllers: ['org/panel/organs']) %>
+<% if current_organ %>
+  <div class="ui fluid vertical attached menu">
+    <%= link_to panel_organ_path, class: active_helper(controllers: ['org/panel/organs']) do %>
+      <i class="fas fa-home"></i><span><%= t('org.panel.organs.show.title') %></span>
+    <% end %>
+  </div>
+<% end %>
