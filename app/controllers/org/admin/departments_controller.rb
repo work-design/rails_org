@@ -1,7 +1,7 @@
 class Org::Admin::DepartmentsController < Org::Admin::BaseController
   before_action :set_department, only: [:show, :edit, :need, :update, :destroy]
   before_action :prepare_form, only: [:new, :edit]
-  
+
   def index
     q_params = {}
     q_params.merge! default_params
@@ -51,10 +51,10 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
       if params[:parent_id].blank? && current_organ.parent
         @root = current_organ.parent.departments.root
       end
-  
+
       @department = current_organ.departments.build(parent_id: params[:parent_id])
     else
-      @department = Department.new
+      @department = Department.new(parent_id: params[:parent_id])
     end
   end
 
@@ -66,13 +66,13 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
       render :new, locals: { model: @department }, status: :unprocessable_entity
     end
   end
-  
+
   def edit
     if current_organ
       @root = current_organ.departments.root
     end
   end
-  
+
   def update
     @department.assign_attributes(department_params)
 
@@ -80,7 +80,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
       render :edit, locals: { model: @department }, status: :unprocessable_entity
     end
   end
-  
+
   def need
 
   end
@@ -93,7 +93,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   def set_department
     @department = Department.find(params[:id])
   end
-  
+
   def prepare_form
   end
 
