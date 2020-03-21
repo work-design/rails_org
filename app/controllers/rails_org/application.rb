@@ -6,6 +6,14 @@ module RailsOrg::Application
     after_action :set_organ_grant
   end
 
+  def current_title
+    if current_organ
+      current_organ.name
+    else
+      t('.title', default: :site_name)
+    end
+  end
+
   def require_organ
     return if current_organ
 
@@ -55,7 +63,7 @@ module RailsOrg::Application
   def other_organs
     current_user.organs.where.not(id: current_organ.id)
   end
-  
+
   # Must order after RailsAuth::Controller
   def login_by_account(account)
     super
@@ -75,7 +83,7 @@ module RailsOrg::Application
 
   def set_organ_grant
     return unless defined?(@current_organ_grant) && @current_organ_grant
-    
+
     token = @current_organ_grant.token
     headers['Organ-Token'] = token
     session[:organ_token] = token
@@ -92,7 +100,7 @@ module RailsOrg::Application
   end
 
   def clear_member
-    unless detect_filter(:require_member)
+    unless whether_filter(:require_member)
       logout_member if current_organ_grant&.mock
     end
   end
@@ -116,7 +124,7 @@ module RailsOrg::Application
       { organ_id: nil, allow: { organ_id: nil } }
     end
   end
-  
+
   def default_form_params
     if current_organ
       { organ_id: current_organ.id }
@@ -124,12 +132,12 @@ module RailsOrg::Application
       {}
     end
   end
-  
+
   def default_filter_params
     unless current_organ
       return {}
     end
-    
+
     if current_organ_grant.session_organ_id
       { organ_id: current_organ_grant.session_organ_id }
     else

@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 19e85ed037407d6bf4fc603af53d5156cc4fc90b
+  revision: 325f77ec6b5690771568d51b24cd6eb4a378b8a2
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 06973f57b05be9f65d6e97b8efd5289ddc9a2822
+  revision: 25bff9c305c174f18c242bb5caa1bd33d8b41ec2
   specs:
     rails_role (1.0.3)
       acts_as_list (~> 0.9)
