@@ -110,7 +110,7 @@ module RailsOrg::Application
       if params[:organ_id].blank?
         logout_organ
       else
-        current_organ_grant.update session_organ_id: params[:organ_id]
+        current_organ_grant&.update session_organ_id: params[:organ_id]
       end
     end
   end

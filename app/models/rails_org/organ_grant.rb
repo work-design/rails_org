@@ -27,18 +27,19 @@ module RailsOrg::OrganGrant
   end
 
   def generate_token(**options)
+    # fixme uuid 有待优化
     JwtHelper.generate_jwt_token(id, uuid, options)
   end
-  
+
   def uuid
-    organ&.organ_uuid || member.id
+    organ&.organ_uuid || member&.id || user&.id
   end
-  
+
   def update_token!
     update_token
     save
   end
-  
+
   def valid_period?
     self.expire_at > Time.now
   end
