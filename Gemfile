@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
-gem 'rails', '6.0.0'
+gem 'rails'
 gem 'puma'
 gem 'sqlite3'
 gem 'webpacker'
@@ -19,6 +19,7 @@ gem 'rails_profile', github: 'work-design/rails_profile'
 gem 'rails_role', github: 'work-design/rails_role'
 gem 'rails_notice', github: 'work-design/rails_notice'
 gem 'acts_as_list', github: 'qinmingyuan/acts_as_list'
+gem 'default_where', github: 'qinmingyuan/default_where'
 
 gem 'jbuilder'
 gem 'image_processing'
