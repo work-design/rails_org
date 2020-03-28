@@ -1,10 +1,10 @@
-<div class="item" data-controller="menu">
-  <a class="<%= active_helper(modules: 'org/admin', active_class: 'title active', item_class: 'title') %>">
+<div class="<%= active_helper(modules: 'org/admin', active_class: 'menu ex-accordion is-active', item_class: 'menu ex-accordion') %>" data-controller="menu">
+  <a class="menu-label" data-action="menu#toggle">
     <i class="fas fa-sitemap fa-fw"></i>
     <span><%= t('org.admin.title') %></span>
-    <i class="dropdown icon"></i>
+    <i class="fas dropdown"></i>
   </a>
-  <div class="<%= active_helper(modules: 'org/admin', active_class: 'active menu content', item_class: 'menu content') %>">
+  <div class="menu-list">
     <%= link_to t('org.admin.organs.index.title'), admin_organs_path, class: active_helper(controllers: 'org/admin/organs') %>
     <%= link_to t('org.admin.departments.index.title'), admin_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions']) %>
     <%= link_to t('org.admin.members.index.title'), admin_members_path, class: active_helper(controllers: ['members']) %>
