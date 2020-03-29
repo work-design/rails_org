@@ -1,4 +1,4 @@
-<% form_object = search_form_object(:q, on: { wrapper_id: true }) %>
+<% form_object = search_form_object(:q, can: { wrap_id: true }) %>
 <% if @department %>
 var template = '<%= j(render partial: 'department_form', locals: { f: form_object }) %>'
 if ($('#q_department_wrapper_<%= params[:previous_id] %>').next().length > 0) {

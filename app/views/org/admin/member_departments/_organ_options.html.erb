@@ -1,1 +1,1 @@
-<%= f.collection_select :organ_id, @organs, :id, :name, { prompt: true, on: { wrap_input_id: true, wrap_all: false, label: false } }, { data: { title: 'organ_id' } } %>
+<%= f.collection_select :organ_id, @organs, :id, :name, { prompt: true, can: { wrap_input_id: true, wrap_all: false, label: false } }, { data: { title: 'organ_id' } } %>

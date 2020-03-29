@@ -13,7 +13,7 @@
       </th>
       <th>
         <%= Department.human_attribute_name(:job_titles) %>
-        <%= link_to admin_super_job_titles_path, data: { tooltip: '不限部门职级' } do %>
+        <%= link_to admin_super_job_titles_path, aria: { label: '不限部门职级' } do %>
           <i class="fas fa-cog"></i>
         <% end %>
       </th>

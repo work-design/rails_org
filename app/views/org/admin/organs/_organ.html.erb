@@ -18,13 +18,13 @@
     <p><%= organ.address %></p>
   </td>
   <td>
-    <%= link_to edit_admin_organ_path(organ), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
+    <%= link_to edit_admin_organ_path(organ), aria: { label: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to admin_organ_path(organ), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+    <%= link_to admin_organ_path(organ), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
-    <%= link_to mock_admin_organ_path(organ), method: :patch, data: { tooltip: t('.mock') }, class: 'ui mini circular icon button' do %>
+    <%= link_to mock_admin_organ_path(organ), method: :patch, aria: { label: t('.mock') }, class: 'ui mini circular icon button' do %>
       <i class="fas fa-hand-point-right"></i>
     <% end %>
   </td>

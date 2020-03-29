@@ -24,7 +24,7 @@
     <% department.job_titles.each do |job_title| %>
       <div class="ui label" data-tooltip="<%= job_title.grade %>"><%= job_title.name %></div>
     <% end %>
-    <%= link_to admin_department_job_titles_path(department), data: { tooltip: t('.job_title') }, class: 'ui circular mini icon button' do %>
+    <%= link_to admin_department_job_titles_path(department), aria: { label: t('.job_title') }, class: 'ui circular mini icon button' do %>
       <i class="fas fa-user-tag"></i>
     <% end %>
   </td>
@@ -32,17 +32,17 @@
     <%= link_to department.leader.name, admin_member_path(department.leader.id), remote: true if department.leader %>
   </td>
   <td>
-    <%= link_to new_admin_department_path(parent_id: department.id), data: { tooltip: '添加下级' }, remote: true, class: 'ui mini primary button' do %>
+    <%= link_to new_admin_department_path(parent_id: department.id), aria: { label: '添加下级' }, remote: true, class: 'ui mini primary button' do %>
       <i class="fas fa-plus"></i>
     <% end %>
-    <%= link_to admin_department_path(department), data: { tooltip: t('.show') }, remote: true, class: 'ui circular mini icon button' do %>
+    <%= link_to admin_department_path(department), aria: { label: t('.show') }, remote: true, class: 'ui circular mini icon button' do %>
       <i class="fas fa-users"></i>
     <% end %>
     <%#= link_to 'JD', admin_department_job_descriptions_path(department), class: 'ui circular mini icon button' %>
-    <%= link_to edit_admin_department_path(department), data: { tooltip: t('.edit') }, remote: true, class: 'ui circular mini icon button' do %>
+    <%= link_to edit_admin_department_path(department), aria: { label: t('.edit') }, remote: true, class: 'ui circular mini icon button' do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to admin_department_path(department), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, remote: true, class: 'ui circular mini icon button' do %>
+    <%= link_to admin_department_path(department), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'ui circular mini icon button' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </td>
