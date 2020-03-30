@@ -1,0 +1,3 @@
+<%= form_with model: @department, scope: :department, url: admin_department_path(@department) do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
+<% end %>
