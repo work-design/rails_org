@@ -1,4 +1,5 @@
-import 'rails_taxon/outer'
-import 'rails_taxon/form'
+//import 'rails_taxon/outer'
+//import 'rails_taxon/form'
 
-$('#organ_timezone, #organ_locale').dropdown();
+new Choices('#organ_timezone')
+new Choices('#organ_locale')

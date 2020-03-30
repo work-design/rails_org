@@ -16,7 +16,7 @@
   <td><%= member.office&.name %></td>
   <td><%= member.join_on %></td>
   <td>
-    <%= link_to edit_admin_member_path(member), aria: { label: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
+    <%= link_to edit_admin_member_path(member), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
   </td>

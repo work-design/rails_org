@@ -22,7 +22,7 @@
       <th><%= JobTitle.human_attribute_name(:department_id) %></th>
       <th><%= JobTitle.human_attribute_name(:role_ids) %></th>
       <th>
-        <%= link_to new_admin_department_job_title_path(params[:department_id]), class: 'ui mini primary button', remote: true do %>
+        <%= link_to new_admin_department_job_title_path(params[:department_id]), remote: true, class: 'button is-link is-small' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
@@ -81,10 +81,10 @@
       </td>
       <td>
         <% if job_title.department_id == @department.id %>
-          <%= link_to edit_admin_department_job_title_path(@department, job_title), aria: { label: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
+          <%= link_to edit_admin_department_job_title_path(@department, job_title), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light', remote: true do %>
             <i class="fas fa-pencil-alt"></i>
           <% end %>
-          <%= link_to admin_department_job_title_path(@department, job_title), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+          <%= link_to admin_department_job_title_path(@department, job_title), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
