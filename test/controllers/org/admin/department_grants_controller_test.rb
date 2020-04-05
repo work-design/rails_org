@@ -1,6 +1,6 @@
 require 'test_helper'
 class Org::Admin::DepartmentGrantsControllerTest < ActionDispatch::IntegrationTest
-  
+
   setup do
     @department_grant = create org_admin_department_grants
   end
@@ -17,7 +17,7 @@ class Org::Admin::DepartmentGrantsControllerTest < ActionDispatch::IntegrationTe
 
   test 'create ok' do
     assert_difference('DepartmentGrant.count') do
-      post admin_department_grants_url, params: { #{singular_table_name}: { #{attributes_string} } }
+      post admin_department_grants_url, params: { }
     end
 
     assert_redirected_to org_admin_department_grant_url(DepartmentGrant.last)
@@ -34,8 +34,8 @@ class Org::Admin::DepartmentGrantsControllerTest < ActionDispatch::IntegrationTe
   end
 
   test 'update ok' do
-    patch admin_department_grant_url(@org_admin_department_grant), params: { #{singular_table_name}: { #{attributes_string} } }
-    assert_redirected_to org_admin_department_grant_url(@#{singular_table_name})
+    patch admin_department_grant_url(@org_admin_department_grant), params: {  }
+    assert_response :success
   end
 
   test 'destroy ok' do
@@ -43,6 +43,6 @@ class Org::Admin::DepartmentGrantsControllerTest < ActionDispatch::IntegrationTe
       delete admin_department_grant_url(@org_admin_department_grant)
     end
 
-    assert_redirected_to admin_department_grants_url
+    assert_response :success
   end
 end

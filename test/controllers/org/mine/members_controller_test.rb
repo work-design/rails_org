@@ -17,7 +17,7 @@ class Org::Mine::MembersControllerTest < ActionDispatch::IntegrationTest
 
   test 'create ok' do
     assert_difference('Member.count') do
-      post mine_members_url, params: { #{singular_table_name}: { #{attributes_string} } }
+      post mine_members_url, params: {  }
     end
 
     assert_response :success
@@ -34,7 +34,7 @@ class Org::Mine::MembersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'update ok' do
-    patch mine_member_url(@org_mine_member), params: { #{singular_table_name}: { #{attributes_string} } }
+    patch mine_member_url(@org_mine_member), params: {  }
     assert_response :success
   end
 

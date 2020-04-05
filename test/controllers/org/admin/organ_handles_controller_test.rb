@@ -17,7 +17,7 @@ class Org::Admin::OrganHandlesControllerTest < ActionDispatch::IntegrationTest
 
   test 'create ok' do
     assert_difference('OrganHandle.count') do
-      post admin_organ_handles_url, params: { #{singular_table_name}: { #{attributes_string} } }
+      post admin_organ_handles_url, params: {  }
     end
 
     assert_redirected_to org_admin_organ_handle_url(OrganHandle.last)
@@ -34,8 +34,8 @@ class Org::Admin::OrganHandlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'update ok' do
-    patch admin_organ_handle_url(@org_admin_organ_handle), params: { #{singular_table_name}: { #{attributes_string} } }
-    assert_redirected_to org_admin_organ_handle_url(@#{singular_table_name})
+    patch admin_organ_handle_url(@org_admin_organ_handle), params: {  }
+    assert_response :success
   end
 
   test 'destroy ok' do
@@ -43,6 +43,6 @@ class Org::Admin::OrganHandlesControllerTest < ActionDispatch::IntegrationTest
       delete admin_organ_handle_url(@org_admin_organ_handle)
     end
 
-    assert_redirected_to admin_organ_handles_url
+    assert_response :success
   end
 end

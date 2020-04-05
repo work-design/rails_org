@@ -2,7 +2,7 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
   before_action :set_organ, only: [:show, :login, :edit, :update, :destroy]
 
   def index
-    @organs = current_user.organs.page(params[:page])
+    @members = current_user.members.page(params[:page])
     session.delete :organ_token
   end
 
