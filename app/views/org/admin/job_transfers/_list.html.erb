@@ -10,7 +10,6 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody>
   <% @job_transfers.each do |job_transfer| %>
     <tr>
@@ -27,7 +26,7 @@
         <p><%= job_transfer.to_job_title&.name %></p>
       </td>
       <td><%= job_transfer.transfer_on %></td>
-      <td class="ui labels">
+      <td>
         <label class="ui label"><%= job_transfer.state_i18n %></label>
         <% if job_transfer.next_operator == current_user %>
           <div class="ui mini buttons">
@@ -39,8 +38,8 @@
       </td>
       <td class="ui labels">
         <%= link_to 'Detail', admin_job_transfer_path(job_transfer), class: 'ui blue label' %>
-        <%= link_to 'Edit', edit_admin_job_transfer_path(job_transfer), class: 'ui pink label' %>
-        <%= link_to t('.destroy'), admin_job_transfer_path(job_transfer), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
+        <%= link_to 'Edit', edit_admin_job_transfer_path(job_transfer), remote: true, class: 'ui pink label' %>
+        <%= link_to t('.destroy'), admin_job_transfer_path(job_transfer), method: :delete, data: { confirm: t('.confirm') }, remote: true, class: 'ui red label' %>
       </td>
     </tr>
   <% end %>

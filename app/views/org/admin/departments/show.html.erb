@@ -1,25 +1,20 @@
 <%= content_for :breadcrumb do %>
-  <div class="ui basic segment breadcrumb">
-    <%= link_to t('org.admin.departments.index.title'), admin_departments_path, class: 'section' %>
-    <i class="fas fa-angle-right divider"></i>
+  <ul>
+    <li><%= link_to t('org.admin.departments.index.title'), admin_departments_path %></li>
     <% @department.ancestors.reverse.each do |ancestor| %>
       <% if controller_path == 'org/admin/departments' %>
-        <%= link_to ancestor.name, { id: ancestor.id }, { class: 'section' } %>
+        <li><%= link_to ancestor.name, { id: ancestor.id } %></li>
       <% else %>
-        <%= link_to ancestor.name, { department_id: ancestor.id }, { class: 'section' } %>
+        <li><%= link_to ancestor.name, { department_id: ancestor.id } %></li>
       <% end %>
-      <i class="fas fa-angle-right divider"></i>
     <% end %>
-    <div class="section"><%= @department.name %></div>
-  </div>
+    <li class="is-active"><%= @department.name %></li>
+  </ul>
 <% end %>
 
-<div class="ui segment">
-  <%= render 'filter' %>
-</div>
-
-<div class="ui grid">
-  <div class="thirteen wide column">
+<%= render 'filter' %>
+<div class="columns">
+  <div class="column">
     <table class="table is-hoverable is-fullwidth">
       <thead>
       <tr>
@@ -44,10 +39,7 @@
   
     <%= paginate @members %>
   </div>
-  <div class="three wide column">
+  <div class="column is-narrow">
     <%= render 'nav_show' %>
   </div>
 </div>
-
-
-

@@ -1,0 +1,11 @@
+<table class="as-search">
+  <tr>
+    <th><%= JobTransfer.human_attribute_name(:state) %></th>
+    <td>
+      <%= link_to t('.all'), filter_params(except: [:state]), class: active_params(state: '', active_class: 'button is-info', item_class: 'button is-light') %>
+      <% JobTransfer.states.keys.each do |state| %>
+        <%= link_to JobTransfer.enum_i18n(:state, state), filter_params(state: state), class: active_params(state: state, active_class: 'button is-info', item_class: 'button is-light') %>
+      <% end %>
+    </td>
+  </tr>
+</table>

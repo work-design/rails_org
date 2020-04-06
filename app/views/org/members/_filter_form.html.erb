@@ -1,0 +1,9 @@
+<%= form_with theme: 'search', model: Member.new do |f| %>
+  <div class="field-table">
+    <%= f.text_field :'name-like' %>
+    <%= f.email_field :email %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

@@ -54,7 +54,7 @@
           <tr>
             <td colspan="3">
               <% Tutorial.options_i18n(:kind).each do |text, value| %>
-                <%= link_to text, new_admin_tutorial_path(kind: value, member_id: @member.id), remote: true, class: 'ui mini green button' %>
+                <%= link_to text, new_admin_tutorial_path(kind: value, member_id: @member.id), remote: true, class: 'button is-link is-small' %>
               <% end %>
             </td>
           </tr>
