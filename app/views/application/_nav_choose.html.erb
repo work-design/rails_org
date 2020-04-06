@@ -1,9 +1,9 @@
 <% if current_organ %>
   <%= link_to filter_params(organ_id: ''), class: 'navbar-item' do %>
-    <%= image_pack_tag 'logo.jpg', class: 'image is-24x24' %>
+    <%= image_pack_tag 'logo.jpg', class: 'image' %>
   <% end %>
   <%= link_to filter_params(organ_id: current_organ.id), class: active_params(organ_id: current_organ.id) do %>
-    <%= image_tag current_organ.logo, class: 'image is-24x24' %>
+    <%= image_tag current_organ.logo, class: 'image' %>
     <span><%= current_organ.name %></span>
   <% end %>
   <div class="navbar-item">
@@ -13,6 +13,6 @@
   </div>
 <% else %>
   <%= link_to index_path, class: 'navbar-item' do %>
-    <%= image_pack_tag 'logo.jpg', class: 'image is-24x24' %>
+    <%= image_pack_tag 'logo.jpg', class: 'image' %>
   <% end %>
 <% end %>
