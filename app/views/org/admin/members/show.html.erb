@@ -1,0 +1,8 @@
+<% content_for :breadcrumb do %>
+  <ul>
+    <li><%= link_to t('org.admin.members.index.title'), admin_members_path %></li>
+    <li class="is-active"><%= t('.title') %></li>
+  </ul>
+<% end %>
+
+<%= render 'show_table' %>
