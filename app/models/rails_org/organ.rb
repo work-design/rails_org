@@ -44,19 +44,4 @@ module RailsOrg::Organ
     self.code = code.downcase
   end
 
-  def get_organ_grant(user)
-    if user.is_a?(User)
-      params = { user_id: user.id }
-    elsif user.is_a?(Member)
-      params = { member_id: user.id }
-    else
-      params = {}
-    end
-    grant = self.organ_grants.find_or_create_by(params)
-    unless grant.valid_period?
-      grant.update_token!
-    end
-    grant
-  end
-
 end
