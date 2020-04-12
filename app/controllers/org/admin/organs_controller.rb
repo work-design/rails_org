@@ -38,13 +38,6 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
     end
   end
 
-  def mock
-    organ_grant = @organ.get_organ_grant(current_member || current_user)
-    login_organ_as(organ_grant)
-
-    redirect_to panel_organ_url
-  end
-
   def destroy
     @organ.destroy
   end
