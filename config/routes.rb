@@ -10,11 +10,7 @@ Rails.application.routes.draw do
   end
 
   scope :my, module: 'org/mine', as: :my do
-    resources :organs do
-      member do
-        get :login
-      end
-    end
+    resources :organs
   end
 
   scope :my, module: 'org/my', as: :my do

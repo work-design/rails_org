@@ -28,11 +28,6 @@ class Org::Mine::OrgansController < Org::Mine::BaseController
   def show
   end
 
-  def login
-    @organ_token = @organ.get_organ_grant(current_user)
-    login_organ_as @organ_token
-  end
-
   def edit
   end
 

@@ -12,6 +12,7 @@ module RailsOrg #:nodoc:
     config.membership_controller = 'MembershipController'
     config.default_return_path = '/my/members'
     config.super_role_code = 'organ_admin'
+    config.subdomain = 't'
   end
 
 end

@@ -7,8 +7,7 @@ module RailsOrg::OrganGrant
 
     belongs_to :organ, optional: true
     belongs_to :session_organ, class_name: 'Organ', optional: true
-    belongs_to :member, optional: true
-    belongs_to :user
+    belongs_to :member
 
     before_validation :update_token
   end

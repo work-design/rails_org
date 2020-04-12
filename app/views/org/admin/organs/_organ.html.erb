@@ -11,6 +11,7 @@
       (<%= organ.name_short %>)
     <% end %>
   </td>
+  <td><%= organ.code %></td>
   <td><%= image_tag organ.logo.variant(resize_to_limit: [30, 30]) if organ.logo.attached? %></td>
   <td><%= organ.organ_uuid %></td>
   <td>

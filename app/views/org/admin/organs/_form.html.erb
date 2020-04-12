@@ -1,4 +1,5 @@
 <%= f.text_field :name, required: true %>
+<%= f.text_field :code, required: true %>
 <%= f.text_field :name_short %>
 <%= f.file_field :logo %>
 <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'area' } %>

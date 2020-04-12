@@ -2,7 +2,7 @@
   <% @organs.each do |organ| %>
   <div class="media">
     <div class="media-left">
-      <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'image' %>
+      <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'image' if organ.logo.attached? %>
     </div>
     <div class="media-content">
       <div>
@@ -11,7 +11,7 @@
       <p><%= organ.address %></p>
     </div>
     <div class="media-right">
-      <%= link_to organ.name, login_my_organ_path(organ), remote: true, class: 'button is-link' %>
+      <%= link_to organ.name, my_index_url(subdomain: organ.subdomain), class: 'button is-link' %>
     </div>
   </div>
   <% end %>
