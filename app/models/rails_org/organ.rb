@@ -30,6 +30,7 @@ module RailsOrg::Organ
     validates :organ_uuid, uniqueness: true
 
     before_validation do
+      self.code ||= UidHelper.sec_uuid('CO')
       self.organ_uuid ||= UidHelper.nsec_uuid('ORG')
     end
   end

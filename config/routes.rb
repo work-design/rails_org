@@ -37,7 +37,9 @@ Rails.application.routes.draw do
   end
 
   scope :panel, module: 'org/panel', as: 'panel' do
-    resource :organ
+    resource :organ do
+      get :logout
+    end
   end
 
   scope :admin, module: 'org/admin', as: 'admin' do

@@ -3,8 +3,13 @@
     <%= image_pack_tag 'logo.jpg', class: 'image' %>
   <% end %>
   <%= link_to filter_params(organ_id: current_organ.id), class: active_params(organ_id: current_organ.id) do %>
-    <%= image_tag current_organ.logo, class: 'image' %>
+    <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
     <span><%= current_organ.name %></span>
+  <% end %>
+  <% if current_organ_grant&.mock %>
+    <%= link_to logout_panel_organ_path, remote: true, class: 'navbar-item' do %>
+      <i class="fas fa-user-secret"></i>
+    <% end %>
   <% end %>
   <div class="navbar-item">
     <% if current_organ.children.count > 0 %>

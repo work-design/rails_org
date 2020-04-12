@@ -2,7 +2,7 @@
   <% @members.each do |member| %>
   <div class="media is-middle">
     <div class="media-left">
-      <%= image_tag member.organ.logo.variant(resize_to_limit: [150, 150]), class: 'image is-48x48' %>
+      <%= image_tag member.organ.logo.variant(resize_to_limit: [150, 150]), class: 'image is-48x48' if member.organ.logo.attached? %>
     </div>
     <div class="media-content">
       <strong><%= member.organ.name %></strong>

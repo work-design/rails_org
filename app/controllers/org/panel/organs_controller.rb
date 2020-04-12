@@ -1,6 +1,6 @@
 class Org::Panel::OrgansController < Org::Panel::BaseController
   before_action :set_organ, only: [:edit, :update, :mock, :destroy]
-  
+
   def show
   end
 
@@ -16,12 +16,16 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
       render :edit
     end
   end
-  
+
   def mock
     organ_grant = @organ.get_organ_grant(current_member || current_user)
     login_organ_as(organ_grant)
-    
+
     redirect_to current_admin_organs_url
+  end
+
+  def logout
+    logout_organ
   end
 
   def destroy

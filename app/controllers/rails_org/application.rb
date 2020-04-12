@@ -1,8 +1,7 @@
 module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
-    helper_method :current_organ, :current_member, :other_organs
-    before_action :clear_member
+    helper_method :current_organ_grant, :current_organ, :current_member, :other_organs
     after_action :set_organ_grant
   end
 
@@ -93,16 +92,6 @@ module RailsOrg::Application
     @current_organ_grant = nil
     headers['Organ-Token'] = nil
     session.delete :organ_token
-  end
-
-  def logout_member
-    logout_organ
-  end
-
-  def clear_member
-    unless whether_filter(:require_member)
-      logout_member if current_organ_grant&.mock
-    end
   end
 
   def default_params
