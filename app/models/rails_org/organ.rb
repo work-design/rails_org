@@ -33,10 +33,15 @@ module RailsOrg::Organ
       self.code ||= UidHelper.sec_uuid('CO')
       self.organ_uuid ||= UidHelper.nsec_uuid('ORG')
     end
+    before_save :downcase_code, if: -> { code_changed? }
   end
 
   def subdomain
     [self.code, RailsOrg.config.subdomain].join('.')
+  end
+
+  def downcase_code
+    self.code = code.downcase
   end
 
   def get_organ_grant(user)
