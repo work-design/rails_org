@@ -118,7 +118,6 @@ module RailsOrg::Application
       return {}
     end
 
-
     { organ_id: current_organ.self_and_descendant_ids }
   end
 
