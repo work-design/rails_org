@@ -2,7 +2,7 @@ module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
     helper_method :current_organ, :current_member, :other_organs
-    before_action :set_filter_params, :clear_member
+    before_action :clear_member
     after_action :set_organ_grant
   end
 
@@ -105,16 +105,6 @@ module RailsOrg::Application
     end
   end
 
-  def set_filter_params
-    if params.key?(:organ_id)
-      if params[:organ_id].blank?
-        logout_organ
-      else
-        current_organ_grant&.update session_organ_id: params[:organ_id]
-      end
-    end
-  end
-
   def default_params
     if current_organ
       { organ_id: current_organ.id }
@@ -138,11 +128,8 @@ module RailsOrg::Application
       return {}
     end
 
-    if current_organ_grant.session_organ_id
-      { organ_id: current_organ_grant.session_organ_id }
-    else
-      { organ_id: current_organ.self_and_descendant_ids }
-    end
+
+    { organ_id: current_organ.self_and_descendant_ids }
   end
 
   def organ_ancestors_params

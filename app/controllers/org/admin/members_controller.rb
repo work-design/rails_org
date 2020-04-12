@@ -83,10 +83,10 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   end
 
   def mock
-    organ_grant = @member.get_organ_grant
+    organ_grant = @member.mock_organ_grant(current_user.id)
     login_organ_as(organ_grant)
-  
-    redirect_to my_agencies_url
+
+    redirect_to panel_organ_url
   end
 
   def add_item

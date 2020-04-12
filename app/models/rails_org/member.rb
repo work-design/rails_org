@@ -15,7 +15,7 @@ module RailsOrg::Member
     attribute :enabled, :boolean, default: "1"
     attribute :state, :string
     attribute :owner, :boolean
-    
+
     belongs_to :user, optional: true
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
     belongs_to :profile, ->(o){ where(organ_id: o.organ_id) }, primary_key: :identity, foreign_key: :identity, optional: true
@@ -27,9 +27,9 @@ module RailsOrg::Member
     # has_many :xx, through: :member_departments, source: :members  # todo use one sql to fix this
     accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
     accepts_nested_attributes_for :organ
-    
+
     has_many :inferior_member_departments, class_name: 'MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
-    
+
     has_many :organ_grants, dependent: :delete_all
 
     has_one :resign
@@ -42,9 +42,9 @@ module RailsOrg::Member
 
     has_one_attached :avatar
     has_one_attached :resume
-    
+
     scope :enabled, -> { where(enabled: true) }
-    
+
     validates :identity, uniqueness: { scope: :organ_id }
     #before_save :sync_tutorials, if: -> { join_on_changed? }
     before_save :sync_account_user, if: -> { identity_changed? }
@@ -71,12 +71,12 @@ module RailsOrg::Member
     account || build_account
     account.user || account.build_user
     self.user = account.user
-  
+
     self.class.transaction do
       self.save!
       account.save!
     end
-  
+
     user
   end
 
@@ -99,27 +99,27 @@ module RailsOrg::Member
   def all_followers
     Member.where(id: all_lower_ids)
   end
-  
+
   def lower_job_title_ids
     job_titles.map(&:lower_job_title_ids).flatten.uniq
   end
-  
+
   def all_lower_ids
     MemberDepartment.where(job_title_id: lower_job_title_ids).pluck(:member_id)
   end
-  
+
   def leader
-  
+
   end
-  
-  def get_organ_grant
-    grant = self.organ_grants.find_or_create_by(organ_id: self.organ_id)
+
+  def mock_organ_grant(user_id)
+    grant = self.organ_grants.find_or_create_by(user_id: user_id)
     unless grant.valid_period?
       grant.update_token!
     end
     grant
   end
-  
+
   def organ_token
     get_organ_grant.token
   end

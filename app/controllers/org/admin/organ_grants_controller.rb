@@ -26,7 +26,8 @@ class Org::Admin::OrganGrantsController < Org::Admin::BaseController
 
   private
   def set_member
-    @member = Member.default_where(default_params).find params[:member_id]
+    @member = Member.find params[:member_id]
+    #@member = Member.default_where(default_params).find params[:member_id]
   end
 
   def organ_grant_params

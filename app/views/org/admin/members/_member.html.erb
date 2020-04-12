@@ -25,9 +25,9 @@
   <td><%= member.identity %></td>
   <td><%= member.join_on %></td>
   <td>
-    <div class="ui labels">
+    <div class="buttons">
       <% member.roles.pluck(:name).each do |role| %>
-        <span class="ui label"><%= role %></span>
+        <span class="button"><%= role %></span>
       <% end %>
     </div>
   </td>
@@ -44,8 +44,10 @@
     <%= link_to edit_admin_member_path(member), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to mock_admin_member_path(member), method: :patch, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
-      <i class="fas fa-hand-point-right"></i>
+    <% if member.user_id != current_user.id %>
+      <%= link_to mock_admin_member_path(member), method: :patch, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
+        <i class="fas fa-hand-point-right"></i>
+      <% end %>
     <% end %>
     <%# link_to 'tutorials', admin_tutorials_path(member_id: member.id), class: 'ui mini circular button' %>
   </td>

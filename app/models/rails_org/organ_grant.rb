@@ -6,23 +6,22 @@ module RailsOrg::OrganGrant
     attribute :mock, :boolean, default: false
 
     belongs_to :organ, optional: true
-    belongs_to :session_organ, class_name: 'Organ', optional: true
     belongs_to :member
+    belongs_to :user
 
+    after_initialize if: :new_record? do
+      if member
+        self.organ_id = member.organ_id
+        self.user_id ||= member.user_id
+        self.mock = true if user_id != member.user_id
+      end
+    end
     before_validation :update_token
   end
 
   def update_token
     self.expire_at = 14.days.since
     self.token ||= generate_token(sub: 'organ_auth', exp: expire_at.to_i)
-    self.user_id = member.user_id if member
-    self.session_organ_id ||= self.organ_id
-
-    if organ
-      organ.self_and_descendant_ids.include?(session_organ_id)
-    end
-
-    self
   end
 
   def generate_token(**options)
