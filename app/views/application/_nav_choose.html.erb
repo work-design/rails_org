@@ -17,7 +17,7 @@
     <% end %>
   </div>
 <% else %>
-  <%= link_to index_path, class: 'navbar-item' do %>
+  <%= link_to index_url(subdomain: nil), class: 'navbar-item' do %>
     <%= image_pack_tag 'logo.jpg', class: 'image' %>
   <% end %>
 <% end %>

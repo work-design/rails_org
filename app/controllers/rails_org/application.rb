@@ -97,8 +97,9 @@ module RailsOrg::Application
   def default_params
     if current_organ
       { organ_id: current_organ.id }
-    elsif request.subdomain.start_with?('organ_')
-      { organ_id: request.subdomain.delete_prefix('organ_').presence }
+    elsif request.subdomain.end_with?(".#{RailsOrg.config.subdomain}")
+      organ_code = request.subdomain.delete_suffix(".#{RailsOrg.config.subdomain}").presence
+      { organ_id: Organ.find_by(code: organ_code) }
     else
       { organ_id: nil, allow: { organ_id: nil } }
     end
