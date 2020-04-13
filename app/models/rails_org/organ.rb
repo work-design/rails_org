@@ -40,6 +40,10 @@ module RailsOrg::Organ
     [self.code, RailsOrg.config.subdomain].join('.')
   end
 
+  def host
+    ActionDispatch::Http::URL.url_for host: Rails.application.routes.default_url_options[:host], subdomain: subdomain, trailing_slash: true
+  end
+
   def downcase_code
     self.code = code.downcase
   end
