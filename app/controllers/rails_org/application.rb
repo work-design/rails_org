@@ -6,8 +6,8 @@ module RailsOrg::Application
   end
 
   def current_title
-    if current_organ
-      current_organ.name
+    if current_session_organ
+      current_session_organ.name
     else
       t('.title', default: :site_name)
     end
@@ -50,6 +50,14 @@ module RailsOrg::Application
   def current_organ
     return @current_organ if defined?(@current_organ)
     @current_organ = current_organ_grant&.organ
+  end
+
+  def current_session_organ
+    return @current_session_organ if defined?(@current_session_organ)
+    sd = request.subdomains
+    if sd.size == 2 && sd[1] == RailsOrg.config.subdomain
+      @current_session_organ = Organ.find_by(code: sd[0])
+    end
   end
 
   def current_organ_grant
@@ -97,9 +105,8 @@ module RailsOrg::Application
   def default_params
     if current_organ
       { organ_id: current_organ.id }
-    elsif request.subdomain.end_with?(".#{RailsOrg.config.subdomain}")
-      organ_code = request.subdomain.delete_suffix(".#{RailsOrg.config.subdomain}").presence
-      { organ_id: Organ.find_by(code: organ_code) }
+    elsif current_session_organ
+      { organ_id: current_session_organ.id }
     else
       { organ_id: nil, allow: { organ_id: nil } }
     end
