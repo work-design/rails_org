@@ -6,7 +6,7 @@ module RailsOrg #:nodoc:
   configure do |config|
     config.app_controller = 'ApplicationController'
     config.admin_controller = 'AdminController'
-    config.panel_controller = 'PanelController'
+    config.our_controller = 'OurController'
     config.my_controller = 'MyController'
     config.mine_controller = 'MineController'
     config.membership_controller = 'MembershipController'

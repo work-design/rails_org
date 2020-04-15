@@ -1,4 +1,4 @@
-<%= form_with model: @organ, url: panel_organ_path do |f| %>
+<%= form_with model: @organ, url: our_organ_path do |f| %>
   <%= render 'shared/error_messages', target: @organ %>
   <%= f.text_field :name, required: true %>
   <%= f.text_field :name_short %>

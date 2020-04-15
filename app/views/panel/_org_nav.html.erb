@@ -1,7 +1,0 @@
-<% if current_organ %>
-  <div class="menu ex-accordion">
-    <%= link_to panel_organ_path, class: active_helper(controllers: ['org/panel/organs'], active_class: 'menu-label is-active', item_class: 'menu-label') do %>
-      <i class="fas fa-home"></i><span><%= t('org.panel.organs.show.title') %></span>
-    <% end %>
-  </div>
-<% end %>

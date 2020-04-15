@@ -36,13 +36,13 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :panel, module: 'org/panel', as: 'panel' do
+  scope :our, module: 'org/our', as: :our do
     resource :organ do
       get :logout
     end
   end
 
-  scope :admin, module: 'org/admin', as: 'admin' do
+  scope :admin, module: 'org/admin', as: :admin do
     resources :organs do
       get :all, on: :collection
       patch :mock, on: :member

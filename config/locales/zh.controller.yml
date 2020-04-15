@@ -36,7 +36,7 @@ zh:
           mock: 以其身份
         show:
           title: 职员信息
-    panel:
+    our:
       organs:
         show:
           title: 首页

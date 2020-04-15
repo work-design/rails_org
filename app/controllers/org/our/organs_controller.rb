@@ -1,5 +1,5 @@
-class Org::Panel::OrgansController < Org::Panel::BaseController
-  before_action :set_organ, only: [:edit, :update, :mock, :destroy]
+class Org::Our::OrgansController < Org::Our::BaseController
+  before_action :set_organ, only: [:edit, :update, :destroy]
 
   def show
   end
@@ -23,7 +23,6 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
 
   def destroy
     @organ.destroy
-    redirect_to admin_organs_url
   end
 
   private
