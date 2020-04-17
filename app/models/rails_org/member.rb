@@ -12,9 +12,8 @@ module RailsOrg::Member
     attribute :identity, :string
     attribute :number, :string
     attribute :join_on, :date
-    attribute :enabled, :boolean, default: "1"
+    attribute :enabled, :boolean, default: true
     attribute :state, :string
-    attribute :owner, :boolean
 
     belongs_to :user, optional: true
     belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
