@@ -1,0 +1,3 @@
+<%= form_with model: @job_title, scope: :job_title, url: admin_department_job_title_path(@department, @job_title) do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
+<% end %>

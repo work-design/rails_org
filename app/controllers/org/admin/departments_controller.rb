@@ -1,6 +1,6 @@
 class Org::Admin::DepartmentsController < Org::Admin::BaseController
   before_action :set_department, only: [:show, :edit, :need, :update, :destroy]
-  before_action :prepare_form, only: [:new, :edit]
+  before_action :prepare_form, only: [:new, :create, :edit, :update]
 
   def index
     q_params = {}
@@ -47,30 +47,18 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def new
-    if current_organ
-      if params[:parent_id].blank? && current_organ.parent
-        @root = current_organ.parent.departments.root
-      end
-
-      @department = current_organ.departments.build(parent_id: params[:parent_id])
-    else
-      @department = Department.new(parent_id: params[:parent_id])
-    end
+    @department = Department.new(parent_id: params[:parent_id])
   end
 
   def create
     @department = Department.new(department_params)
 
     unless @department.save
-      @root = current_organ.departments.build
       render :new, locals: { model: @department }, status: :unprocessable_entity
     end
   end
 
   def edit
-    if current_organ
-      @root = current_organ.departments.root
-    end
   end
 
   def update
@@ -95,6 +83,15 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def prepare_form
+    if current_organ
+      if params[:parent_id].blank? && current_organ.parent
+        @root = current_organ.parent.departments.root
+      else
+        @root = current_organ.departments.root
+      end
+    else
+      Department.where(organ_id: nil).root
+    end
   end
 
   def department_params

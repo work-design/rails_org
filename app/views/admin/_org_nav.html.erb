@@ -1,6 +1,5 @@
 <div class="<%= active_helper(modules: 'org/admin', active_class: 'menu ex-accordion is-active', item_class: 'menu ex-accordion') %>" data-controller="menu">
   <%= content_tag :div, class: 'menu-list' do %>
-    <%= link_to t('org.admin.organs.index.title'), admin_organs_path, class: active_helper(controllers: 'org/admin/organs', active_class: 'is-active', item_class: nil) %>
     <%= link_to t('org.admin.departments.index.title'), admin_departments_path, class: active_helper(controllers: ['departments', 'job_descriptions'], active_class: 'is-active', item_class: nil) %>
     <%= link_to t('org.admin.members.index.title'), admin_members_path, class: active_helper(controllers: ['members'], active_class: 'is-active', item_class: nil) -%>
     <%# link_to 'Supports', admin_supports_path, class: active_helper(controllers: 'supports') %>

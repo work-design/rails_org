@@ -40,13 +40,16 @@ Rails.application.routes.draw do
     resource :organ do
       get :logout
     end
+    resources :organs do
+      get :all, on: :collection
+    end
+  end
+
+  scope :panel, module: 'org/panel', as: :panel do
+    resources :organs
   end
 
   scope :admin, module: 'org/admin', as: :admin do
-    resources :organs do
-      get :all, on: :collection
-      patch :mock, on: :member
-    end
     resources :departments do
       collection do
         get :supports

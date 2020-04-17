@@ -1,9 +1,9 @@
-class Org::Admin::OrgansController < Org::Admin::BaseController
-  before_action :set_organ, only: [:edit, :update, :mock, :destroy]
+class Org::Panel::OrgansController < Org::Panel::BaseController
+  before_action :set_organ, only: [:edit, :update, :destroy]
 
   def index
     q_params = {}
-    q_params.merge! parent_id: current_organ&.id, allow: { parent_id: nil}
+    q_params.merge! params.permit(:name)
 
     @organs = Organ.default_where(q_params).order(id: :desc).page(params[:page])
   end
@@ -16,11 +16,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   end
 
   def create
-    if organ_params.select(&->(k, v){ k.start_with?('parent_ancestors') && v.present? }).values.blank?
-      @organ = Organ.new organ_params.merge!(parent_id: current_organ&.id)
-    else
-      @organ = Organ.new(organ_params)
-    end
+    @organ = Organ.new(organ_params)
 
     unless @organ.save
       render :new, locals: { model: @organ }, status: :unprocessable_entity

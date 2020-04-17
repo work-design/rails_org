@@ -1,0 +1,32 @@
+<%= render 'filter_form' %>
+
+<table class="table is-hoverable is-fullwidth">
+  <thead>
+    <tr>
+      <th>
+        <%= Organ.human_attribute_name(:name) %>(<%= Organ.human_attribute_name(:name_short) %>)
+      </th>
+      <th><%= Organ.human_attribute_name(:code) %></th>
+      <th><%= Organ.human_attribute_name(:logo) %></th>
+      <th><%= Organ.human_attribute_name(:organ_uuid) %></th>
+      <th>
+        <p><%= Organ.human_attribute_name(:area_id) %></p>
+        <p><%= Organ.human_attribute_name(:address) %></p>
+      </th>
+      <th>
+        <%= link_to new_admin_organ_path, remote: true, class: 'button is-link is-small' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @organs.each do |organ| %>
+    <%= render partial: 'organ', object: organ %>
+    <%= draw_tree(partial: 'org/admin/organs/organ', object: organ) %>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @organs %>

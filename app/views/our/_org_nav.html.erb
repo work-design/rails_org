@@ -1,5 +1,6 @@
 <div class="menu ex-accordion">
-  <%= link_to our_organ_path, class: active_helper(controllers: ['org/our/organs'], active_class: 'menu-label is-active', item_class: 'menu-label') do %>
+  <%= link_to our_home_path, class: active_helper(controllers: ['org/our/organs'], active_class: 'menu-label is-active', item_class: 'menu-label') do %>
     <i class="fas fa-home"></i><span><%= t('org.our.organs.show.title') %></span>
   <% end %>
+  <%= link_to t('org.admin.organs.index.title'), our_organs_path, class: active_helper(controllers: 'org/admin/organs', active_class: 'is-active', item_class: nil) %>
 </div>

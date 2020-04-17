@@ -1,13 +1,9 @@
 <% content_for :breadcrumb do %>
-  <div class="ui basic segment breadcrumb">
-    <%= link_to t('org.admin.departments.index.title'), admin_departments_path, class: 'section' %>
-    <% if params[:department_id] %>
-    <i class="fas fa-angle-right divider"></i>
-    <%= link_to @department.name, admin_department_path(params[:department_id]), class: 'section' %>
-    <% end %>
-    <i class="fas fa-angle-right divider"></i>
-    <div class="active section"><%= JobTitle.human_name %></div>
-  </div>
+  <ul>
+    <li><%= link_to t('org.admin.departments.index.title'), admin_departments_path %></li>
+    <li><%= link_to @department.name, admin_department_path(params[:department_id]) %></li>
+    <li class="is-active"><%= JobTitle.human_name %></li>
+  </ul>
 <% end %>
 
 <table class="ui selectable table">
