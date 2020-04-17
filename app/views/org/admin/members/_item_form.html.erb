@@ -1,4 +1,4 @@
-<div class="inline fields" id="member_member_departments_<%= ef.index %>" data-title="member_member_departments">
+<div class="field is-horizontal" id="member_member_departments_<%= ef.index %>" data-title="member_member_departments">
   <% if ef.index == 0 %>
     <%= ef.options[:parent_builder].label :member_departments %>
   <% else %>
@@ -16,7 +16,7 @@
     <% end %>
   <% end %>
   <%= ef.collection_select :job_title_id, ef.object.same_job_titles, :id, :name, { include_blank: true, on: { wrap_input_id: true } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
-  
+
   <div class="field">
     <%= link_to add_item_admin_members_path('item', index: ef.index), data: { title: 'add_item' }, remote: true do %>
       <i class="fas fa-plus"></i>
