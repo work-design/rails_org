@@ -35,7 +35,7 @@
     <%= link_to new_admin_department_path(parent_id: department.id), aria: { label: '添加下级' }, remote: true, class: 'button is-link is-small' do %>
       <i class="fas fa-plus"></i>
     <% end %>
-    <%= link_to admin_department_path(department), aria: { label: t('.show') }, remote: true, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to admin_department_path(department), aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-users"></i>
     <% end %>
     <%#= link_to 'JD', admin_department_job_descriptions_path(department), class: 'button is-small is-rounded is-light' %>

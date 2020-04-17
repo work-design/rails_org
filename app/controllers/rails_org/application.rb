@@ -121,11 +121,11 @@ module RailsOrg::Application
   end
 
   def default_filter_params
-    unless current_organ
-      return {}
+    if current_organ
+      { organ_id: current_organ.self_and_descendant_ids }
+    else
+      default_params
     end
-
-    { organ_id: current_organ.self_and_descendant_ids }
   end
 
   def organ_ancestors_params
