@@ -2,8 +2,9 @@
   <% if ef.index == 0 %>
     <%= ef.options[:parent_builder].label :member_departments %>
   <% else %>
-    <label class="six wide field"></label>
+    <label class="field-label"></label>
   <% end %>
+  <div class="field-body control">
   <% if params[:department_id] %>
     <%= ef.hidden_field :department_id, value: params[:department_id] %>
   <% else %>
@@ -28,5 +29,6 @@
         <i class="fas fa-minus"></i>
       <% end %>
     <% end %>
+  </div>
   </div>
 </div>

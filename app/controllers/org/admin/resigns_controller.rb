@@ -117,13 +117,13 @@ class Org::Admin::ResignsController < Org::Admin::BaseController
 
   def resign_params
     params.fetch(:resign, {}).permit(
-                                  :leave_on,
-                                  :reason_note,
-                                  :handover_note,
-                                  :state,
-                                  :comment,
-                                  resign_reason_ids: []
-                                )
+      :leave_on,
+      :reason_note,
+      :handover_note,
+      :state,
+      :comment,
+      resign_reason_ids: []
+    )
   end
 
 end
