@@ -1,4 +1,4 @@
-class Org::Admin::OrgansController < Org::Admin::BaseController
+class Org::Our::OrgansController < Org::Our::BaseController
   before_action :set_organ, only: [:edit, :update, :destroy]
 
   def index

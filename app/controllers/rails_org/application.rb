@@ -1,7 +1,7 @@
 module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
-    helper_method :current_organ_grant, :current_organ, :current_member, :other_organs
+    helper_method :current_organ_grant, :current_member, :other_organs
     after_action :set_organ_grant
   end
 
@@ -10,16 +10,6 @@ module RailsOrg::Application
       current_session_organ.name
     else
       t('.title', default: :site_name)
-    end
-  end
-
-  def require_organ
-    return if current_organ
-
-    if request.format.html?
-      render 'require_organ', locals: { return_to: RailsOrg.config.default_return_path }, layout: 'application', status: 401
-    else
-      render 'require_organ', locals: { return_to: RailsOrg.config.default_return_path }, status: 401
     end
   end
 
@@ -47,11 +37,6 @@ module RailsOrg::Application
     @current_member = current_organ_grant&.member
   end
 
-  def current_organ
-    return @current_organ if defined?(@current_organ)
-    @current_organ = current_organ_grant&.organ
-  end
-
   def current_session_organ
     return @current_session_organ if defined?(@current_session_organ)
     sd = request.subdomains
@@ -76,7 +61,7 @@ module RailsOrg::Application
     super
     if account.members.size == 1
       @current_member = account.members.first
-      @current_organ = @current_member.organ
+      @current_organ_grant = @current_member.get_organ_grant
       logger.debug "  ==========> Login by account as member: #{@current_member.id}"
     else
       logger.debug "  ==========> There are more than one organs, please goto select one;"
@@ -103,9 +88,7 @@ module RailsOrg::Application
   end
 
   def default_params
-    if current_organ
-      { organ_id: current_organ.id }
-    elsif current_session_organ
+    if current_session_organ
       { organ_id: current_session_organ.id }
     else
       { organ_id: nil, allow: { organ_id: nil } }
@@ -113,8 +96,8 @@ module RailsOrg::Application
   end
 
   def default_form_params
-    if current_organ
-      { organ_id: current_organ.id }
+    if current_session_organ
+      { organ_id: current_session_organ.id }
     else
       {}
     end

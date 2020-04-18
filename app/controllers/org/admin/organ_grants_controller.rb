@@ -8,11 +8,11 @@ class Org::Admin::OrganGrantsController < Org::Admin::BaseController
   end
 
   def new
-    @organ_grant = current_organ.organ_grants.build
+    @organ_grant = @member.organ_grants.build
   end
 
   def create
-    @organ_grant = current_organ.organ_grants.build(organ_grant_params)
+    @organ_grant = @member.organ_grants.build(organ_grant_params)
 
     unless @organ_grant.save
       render :new, locals: { model: @organ_grant }, status: :unprocessable_entity
@@ -20,7 +20,7 @@ class Org::Admin::OrganGrantsController < Org::Admin::BaseController
   end
 
   def destroy
-    @organ_grant = current_organ.organ_grants.find(params[:id])
+    @organ_grant = @member.organ_grants.find(params[:id])
     @organ_grant.destroy
   end
 

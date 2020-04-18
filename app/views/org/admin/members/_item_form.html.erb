@@ -13,7 +13,7 @@
         <%= render partial: 'nodes/outer_options', locals: { f: ef, node: node, outer: 'department', depth: node.depth } %>
       <% end %>
     <% else %>
-      <%= render partial: 'nodes/outer_options', locals: { f: ef, node: Department.new(organ_id: current_organ&.id), outer: 'department', depth: 0 } %>
+      <%= render partial: 'nodes/outer_options', locals: { f: ef, node: Department.new(organ_id: current_session_organ&.id), outer: 'department', depth: 0 } %>
     <% end %>
   <% end %>
   <%= ef.collection_select :job_title_id, ef.object.same_job_titles, :id, :name, { include_blank: true, on: { wrap_input_id: true } }, { data: { title: 'job_title_id', as: ef.object_name } } %>

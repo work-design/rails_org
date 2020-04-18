@@ -83,11 +83,11 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def prepare_form
-    if current_organ
-      if params[:parent_id].blank? && current_organ.parent
-        @root = current_organ.parent.departments.root
+    if current_session_organ
+      if params[:parent_id].blank? && current_session_organ.parent
+        @root = current_session_organ.parent.departments.root
       else
-        @root = current_organ.departments.root
+        @root = current_session_organ.departments.root
       end
     else
       Department.where(organ_id: nil).root

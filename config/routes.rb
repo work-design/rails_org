@@ -37,7 +37,9 @@ Rails.application.routes.draw do
   end
 
   scope :our, module: 'org/our', as: :our do
-    resource :organ do
+    root 'home#show'
+    controller :home do
+      get :show
       get :logout
     end
     resources :organs do

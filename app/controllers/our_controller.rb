@@ -1,3 +1,4 @@
-class OurController < ApplicationController
-  layout 'admin'
+class OurController < AdminController
+  include RailsOrg::Our
+
 end unless defined? OurController
