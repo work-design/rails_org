@@ -1,10 +1,10 @@
-<% if current_organ %>
+<% if current_session_organ %>
   <%= link_to filter_params(subdomain: false), class: 'navbar-item' do %>
     <%= image_pack_tag 'logo.jpg', class: 'image' %>
   <% end %>
-  <%= link_to filter_params(subdomain: current_organ.subdomain), class: active_params(organ_id: current_organ.id) do %>
-    <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
-    <span><%= current_organ.name %></span>
+  <%= link_to filter_params(subdomain: current_session_organ.subdomain), class: active_params(organ_id: current_session_organ.id) do %>
+    <%= image_tag current_session_organ.logo, class: 'image' if current_session_organ.logo.attached? %>
+    <span><%= current_session_organ.name %></span>
   <% end %>
   <% if current_organ_grant&.mock %>
     <%= link_to logout_panel_organ_path, remote: true, class: 'navbar-item' do %>
@@ -12,8 +12,8 @@
     <% end %>
   <% end %>
   <div class="navbar-item">
-    <% if current_organ.children.count > 0 %>
-      <%= render partial: 'application/outer_search_options', locals: { node: current_organ.children.first } %>
+    <% if current_session_organ.children.count > 0 %>
+      <%= render partial: 'application/outer_search_options', locals: { node: current_session_organ.children.first } %>
     <% end %>
   </div>
 <% else %>

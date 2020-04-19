@@ -1,7 +1,7 @@
 module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
-    helper_method :current_organ_grant, :current_member, :other_organs
+    helper_method :current_organ_grant, :current_member, :current_session_organ, :other_organs
     after_action :set_organ_grant
   end
 
