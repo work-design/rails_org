@@ -1,6 +1,6 @@
 <div class="ui mini pad steps">
   <% Badge.all.each do |badge| %>
-  <div class="<%= active_assert(member.badge_ids.include?(badge.id), expected: 'active step', unexpected: 'disabled step') %>">
+  <div class="<%= member.badge_ids.include?(badge.id) ? 'active step' : 'disabled step' %>">
     <% if member.badge_ids.include?(badge.id) %>
       <%= link_to cert_my_member_path(member_badge_id: member.member_badges.find { |eb| eb.badge_id == badge.id }, format: 'pdf') do %>
         <%= image_tag badge.enabled_badge, class: 'ui mini image' %>

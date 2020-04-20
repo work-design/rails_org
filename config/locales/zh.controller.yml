@@ -36,6 +36,11 @@ zh:
           mock: 以其身份
         show:
           title: 职员信息
+    panel:
+      title: 组织管理
+      organs:
+        index:
+          title: 组织列表
     our:
       title: 分支机构
       organs:
