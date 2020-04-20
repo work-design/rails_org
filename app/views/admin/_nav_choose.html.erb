@@ -1,21 +1,41 @@
 <% if current_session_organ %>
-  <%= link_to filter_params(subdomain: false), class: 'navbar-item' do %>
+  <%= link_to root_url(subdomain: false), class: 'navbar-item' do %>
     <%= image_pack_tag 'logo.jpg', class: 'image' %>
   <% end %>
-  <%= link_to filter_params(subdomain: current_session_organ.subdomain), class: active_params(organ_id: current_session_organ.id) do %>
-    <%= image_tag current_session_organ.logo, class: 'image' if current_session_organ.logo.attached? %>
-    <span><%= current_session_organ.name %></span>
+  <% current_session_organ.ancestors.reverse.each do |node| %>
+    <%= link_to filter_params(host: request.host, subdomain: node.subdomain), class: active_helper(subdomain: current_session_organ.subdomain) do %>
+      <%= image_tag node.logo, class: 'image' if node.logo.attached? %>
+      <span><%= node.name %></span>
+    <% end %>
+  <% end %>
+  <div class="navbar-item has-dropdown is-hoverable">
+    <div class="navbar-link">
+      <%= image_tag current_session_organ.logo, class: 'image' if current_session_organ.logo.attached? %>
+      <%= current_session_organ.name %>
+    </div>
+    <% unless current_session_organ.root? %>
+    <div class="navbar-dropdown">
+      <% current_session_organ.siblings.each do |node| %>
+        <%= link_to node.name, filter_params(host: request.host, subdomain: node.subdomain), class: 'navbar-item' %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <% if current_session_organ.children.count > 0 %>
+    <div class="navbar-item has-dropdown is-hoverable">
+      <div class="navbar-link">More</div>
+      <div class="navbar-dropdown">
+        <% current_session_organ.children.each do |node| %>
+          <%= link_to node.name, filter_params(host: request.host, subdomain: node.subdomain), class: 'navbar-item' %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
   <% if current_organ_grant&.mock %>
     <%= link_to logout_panel_organ_path, remote: true, class: 'navbar-item' do %>
       <i class="fas fa-user-secret"></i>
     <% end %>
   <% end %>
-  <div class="navbar-item">
-    <% if current_session_organ.children.count > 0 %>
-      <%= render partial: 'application/outer_search_options', locals: { node: current_session_organ.children.first } %>
-    <% end %>
-  </div>
 <% else %>
   <%= link_to index_url(subdomain: nil), class: 'navbar-item' do %>
     <%= image_pack_tag 'logo.jpg', class: 'image' %>
