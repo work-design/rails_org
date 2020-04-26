@@ -1,7 +1,3 @@
-<% content_for :breadcrumb do %>
-  <%= render 'breadcrumb' %>
-<% end %>
-
 <%= render 'filter_form' %>
 <%= render 'filter_table' %>
 
@@ -10,7 +6,7 @@
     <tr>
       <th><%= Member.human_attribute_name(:name) %></th>
       <th><%= Member.human_attribute_name(:organ_id) %></th>
-      <th class="center aligned"><%= MemberDepartment.human_attribute_name(:department_id) %></th>
+      <th><%= MemberDepartment.human_attribute_name(:department_id) %></th>
       <th><%= Member.human_attribute_name(:identity) %></th>
       <th><%= Member.human_attribute_name(:join_on) %></th>
       <th><%= Member.human_attribute_name(:role_ids) %></th>
@@ -24,7 +20,6 @@
       </th>
     </tr>
   </thead>
-
   <tbody>
     <% @members.each do |member| %>
       <%= render partial: 'member', locals: { member: member } %>
