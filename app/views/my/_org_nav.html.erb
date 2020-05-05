@@ -1,10 +1,9 @@
-<div class="item">
-  <span class="header">工作管理</span>
-  <div class="menu">
-    <%= link_to t('org.my.members.index.title'), my_members_path, class: active_helper(controllers: ['members']) %>
-    <%# link_to t('org.member.departments.index.title'), my_departments_path, class: active_helper(controllers: 'departments') %>
-    <%# link_to 'Job Transfer', my_job_transfers_path, class: active_helper(controllers: ['job_transfers']) %>
-    <%# link_to 'Resign', my_resign_path, class: active_helper(controllers: ['resigns']) %>
-    <%# link_to 'Tutorials', my_tutorials_path, class: active_helper(controllers: ['tutorials']) %>
-  </div>
+<div class="menu-label">工作管理</div>
+<div class="menu-list">
+  <%= link_to t('org.my.members.index.title'), my_members_path, class: active_helper(controllers: ['members']) %>
+  <%= link_to t('org.my.organs.index.title'), my_organs_path, class: active_helper(controllers: ['organs'], active: 'is-active', item: nil) %>
+  <%# link_to t('org.member.departments.index.title'), my_departments_path, class: active_helper(controllers: 'departments') %>
+  <%# link_to 'Job Transfer', my_job_transfers_path, class: active_helper(controllers: ['job_transfers']) %>
+  <%# link_to 'Resign', my_resign_path, class: active_helper(controllers: ['resigns']) %>
+  <%# link_to 'Tutorials', my_tutorials_path, class: active_helper(controllers: ['tutorials']) %>
 </div>
