@@ -28,7 +28,7 @@ module RailsOrg::Member
     accepts_nested_attributes_for :organ
 
     has_many :inferior_member_departments, class_name: 'MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
-    has_many :organ_grants, dependent: :delete_all
+    has_many :authorized_tokens, dependent: :delete_all
 
     has_one :resign
     has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
@@ -111,7 +111,9 @@ module RailsOrg::Member
   end
 
   def get_organ_grant
-    organ_grants.default_where('expire_at-gt': Time.current).take || organ_grants.create
+    at = account.authorized_token
+    at.update member_id: self.id
+    at
   end
 
   def mock_organ_grant(user_id)
