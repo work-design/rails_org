@@ -2,7 +2,6 @@ module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
     helper_method :current_organ_grant, :current_member, :current_session_organ, :other_organs
-    after_action :set_organ_grant
   end
 
   def current_title
@@ -45,13 +44,6 @@ module RailsOrg::Application
     end
   end
 
-  def current_organ_grant
-    return @current_organ_grant if defined?(@current_organ_grant)
-    token = request.headers['Organ-Token'].presence || session[:organ_token] || params[:organ_token]
-    return unless token
-    @current_organ_grant = ::OrganGrant.find_by(token: token)
-  end
-
   def other_organs
     current_user.organs.where.not(id: current_organ.id)
   end
@@ -61,7 +53,7 @@ module RailsOrg::Application
     super
     if account.members.size == 1
       @current_member = account.members.first
-      @current_organ_grant = @current_member.get_organ_grant
+      @current_authorized_token = @current_member.get_organ_grant
       logger.debug "  ==========> Login by account as member: #{@current_member.id}"
     else
       logger.debug "  ==========> There are more than one organs, please goto select one;"
@@ -70,19 +62,11 @@ module RailsOrg::Application
 
   def login_organ_as(organ_grant)
     logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
-    @current_organ_grant = organ_grant
-  end
-
-  def set_organ_grant
-    return unless defined?(@current_organ_grant) && @current_organ_grant
-
-    token = @current_organ_grant.token
-    headers['Organ-Token'] = token
-    session[:organ_token] = token
+    @current_authorized_token = organ_grant
   end
 
   def logout_organ
-    @current_organ_grant = nil
+    @current_authorized_token = nil
     headers['Organ-Token'] = nil
     session.delete :organ_token
   end

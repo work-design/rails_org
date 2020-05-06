@@ -118,7 +118,7 @@ module RailsOrg::Member
 
   def mock_organ_grant(user_id)
     grant = self.organ_grants.find_or_create_by(user_id: user_id)
-    unless grant.valid_period?
+    unless grant.verify_token?
       grant.update_token!
     end
     grant
