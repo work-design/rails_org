@@ -9,10 +9,6 @@ Rails.application.routes.draw do
     resources :organs, only: [:index, :show]
   end
 
-  scope :my, module: 'org/mine', as: :my do
-    resources :organs
-  end
-
   scope :my, module: 'org/my', as: :my do
     controller :home do
       get :index
@@ -20,6 +16,7 @@ Rails.application.routes.draw do
     resources :members do
       patch :login, on: :member
     end
+    resources :organs
     resources :documents
   end
 

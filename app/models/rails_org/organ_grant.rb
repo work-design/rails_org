@@ -1,12 +1,11 @@
 module RailsOrg::OrganGrant
   extend ActiveSupport::Concern
+
   included do
     attribute :token, :string
     attribute :expire_at, :datetime
-    attribute :mock, :boolean, default: false
 
-    belongs_to :organ, optional: true
-    belongs_to :member
+
     belongs_to :user
 
     after_initialize if: :new_record? do

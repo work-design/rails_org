@@ -1,8 +1,5 @@
 <%= render 'tabs' %>
 
-<div class="ui attached segment">
-</div>
-
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
@@ -25,7 +22,7 @@
       <td><%= job_transfer.reason_note %></td>
       <td><%= job_transfer.transfer_on %></td>
       <td>
-        <span class="ui label"><%= job_transfer.state_i18n %></span>
+        <span><%= job_transfer.state_i18n %></span>
       </td>
       <td>
         <% if job_transfer.init? %>

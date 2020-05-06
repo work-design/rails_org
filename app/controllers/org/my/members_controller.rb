@@ -1,6 +1,6 @@
 class Org::My::MembersController < Org::My::BaseController
   before_action :set_member, only: [:show, :edit, :update, :login]
-  
+
   def index
     @members = current_user.members.enabled.includes(:organ).order(id: :asc)
   end
@@ -21,16 +21,6 @@ class Org::My::MembersController < Org::My::BaseController
   end
 
   def show
-  end
-
-  def cert
-    disposition = params[:disposition] || 'inline'
-    @pdf ||= CertificationPdf.new(params[:member_badge_id])
-    respond_to do |format|
-      format.html
-      format.js
-      format.pdf { send_data @pdf.render, filename: 'cert_file', disposition: disposition, type: 'application/pdf' }
-    end
   end
 
   def edit
