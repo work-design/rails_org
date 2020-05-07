@@ -41,6 +41,8 @@ module RailsOrg::Application
     sd = request.subdomains
     if sd.size == 2 && sd[1] == RailsOrg.config.subdomain
       @current_session_organ = Organ.find_by(code: sd[0])
+    else
+      @current_session_organ = Organ.find_by(code: nil)
     end
   end
 
@@ -71,19 +73,11 @@ module RailsOrg::Application
   end
 
   def default_params
-    if current_session_organ
-      { organ_id: current_session_organ.id }
-    else
-      { organ_id: nil, allow: { organ_id: nil } }
-    end
+    { organ_id: current_session_organ.id }
   end
 
   def default_form_params
-    if current_session_organ
-      { organ_id: current_session_organ.id }
-    else
-      {}
-    end
+    { organ_id: current_session_organ.id }
   end
 
   def default_filter_params
