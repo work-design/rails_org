@@ -53,8 +53,14 @@ class Org::My::OrgansController < Org::My::BaseController
   end
 
   def member_params
-    p = params.fetch(:member, {}).permit(:identity)
+    p = params.fetch(:member, {}).permit(
+      :identity
+    )
     p.merge! owned: true
+    unless p[:identity]
+      p.merge! identity: current_account.identity
+    end
+    p
   end
 
   def organ_params

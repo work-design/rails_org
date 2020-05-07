@@ -58,6 +58,7 @@ module RailsOrg::Application
       @current_authorized_token = @current_member.get_organ_grant
       logger.debug "  ==========> Login by account as member: #{@current_member.id}"
     else
+      @current_authorized_token = account.authorized_token
       logger.debug "  ==========> There are more than one organs, please goto select one;"
     end
   end

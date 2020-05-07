@@ -1,6 +1,6 @@
 <% if current_session_organ %>
   <%= link_to root_url(subdomain: false), class: 'navbar-item' do %>
-    <%= image_pack_tag 'logo.jpg', class: 'image' %>
+    <%= image_pack_tag 'logo.png', class: 'image' %>
   <% end %>
   <% current_session_organ.ancestors.reverse.each do |node| %>
     <%= link_to filter_params(host: request.host, subdomain: node.subdomain), class: active_helper(subdomain: current_session_organ.subdomain) do %>
