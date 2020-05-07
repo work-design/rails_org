@@ -6,10 +6,14 @@
 * 非常经典的OA部门管理模型设计；
 
 ## 命名空间规则
-* panel: 平台级功能，不支持 organ_id 字段
-* admin: 组织型功能，支持 organ_id 字段，且 organ_id 可以 nil
-* our: 组织型功能，支持 current_organ, current_organ 不可为空。
-* my: 
+平台级：不支持 organ_id 字段
+* panel: 后端
+* profile: 前端
+
+组织型：支持 organ_id 字段；
+* admin: 后端，可不采用 organ_id 字段
+* our: 后端，支持 current_organ, current_organ 不可为空。
+* my: 前端
 
 
 ## License
