@@ -6,7 +6,7 @@ module RailsOrg::Our
 
   def current_organ
     return @current_organ if defined?(@current_organ)
-    @current_organ = current_organ_grant&.organ
+    @current_organ = current_authorized_token&.organ
   end
 
   def require_organ

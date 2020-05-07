@@ -6,7 +6,7 @@
     <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
     <span><%= current_organ.name %></span>
   <% end %>
-  <% if current_organ_grant&.mock %>
+  <% if current_authorized_token&.mock %>
     <%= link_to logout_panel_organ_path, remote: true, class: 'navbar-item' do %>
       <i class="fas fa-user-secret"></i>
     <% end %>

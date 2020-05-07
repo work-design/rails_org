@@ -1,7 +1,7 @@
 module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
-    helper_method :current_organ_grant, :current_member, :current_session_organ, :other_organs
+    helper_method :current_member, :current_session_organ, :other_organs
   end
 
   def current_title
@@ -33,7 +33,7 @@ module RailsOrg::Application
 
   def current_member
     return @current_member if defined?(@current_member)
-    @current_member = current_organ_grant&.member
+    @current_member = current_authorized_token&.member
   end
 
   def current_session_organ
@@ -67,7 +67,6 @@ module RailsOrg::Application
 
   def logout_organ
     @current_authorized_token = nil
-    headers['Organ-Token'] = nil
     session.delete :organ_token
   end
 
