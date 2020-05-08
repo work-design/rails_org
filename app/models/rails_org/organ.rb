@@ -26,14 +26,13 @@ module RailsOrg::Organ
     has_one_attached :logo
 
     validates :name, presence: true
-    validates :code, presence: true
     validates :organ_uuid, uniqueness: true
 
-    before_validation do
+    after_initialize if: :new_record? do
       self.code ||= UidHelper.sec_uuid('CO')
       self.organ_uuid ||= UidHelper.nsec_uuid('ORG')
     end
-    before_save :downcase_code, if: -> { code_changed? }
+    before_save :downcase_code, if: -> { code && code_changed? }
   end
 
   def subdomain
