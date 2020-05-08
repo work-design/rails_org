@@ -1,5 +1,5 @@
-class Org::My::OrgansController < Org::My::BaseController
-  before_action :set_organ, only: [:show, :login, :edit, :update, :destroy]
+class Org::Board::OrgansController < Org::Board::BaseController
+  before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def index
     @members = current_user.members.page(params[:page])
