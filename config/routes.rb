@@ -14,7 +14,10 @@ Rails.application.routes.draw do
       get :index
     end
     resources :members do
-      patch :login, on: :member
+      member do
+        patch :login_admin
+        patch :login_my
+      end
     end
     resources :departments
     resources :tutorials do

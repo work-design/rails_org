@@ -12,7 +12,8 @@
       </p>
     </div>
     <div class="media-right">
-      <%= link_to '进入', login_my_member_path(member), method: :patch, remote: true, class: 'button' %>
+      <%= link_to '前台', login_my_my_member_path(member), method: :patch, remote: true, class: 'button' %>
+      <%= link_to '后台', login_admin_my_member_path(member), method: :patch, remote: true, class: 'button' %>
     </div>
   </div>
   <% end %>

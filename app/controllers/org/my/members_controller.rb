@@ -1,5 +1,5 @@
 class Org::My::MembersController < Org::My::BaseController
-  before_action :set_member, only: [:show, :edit, :update, :login]
+  before_action :set_member, only: [:show, :edit, :update, :login_my, :login_admin]
 
   def index
     @members = current_user.members.enabled.includes(:organ).order(id: :asc)
@@ -34,7 +34,12 @@ class Org::My::MembersController < Org::My::BaseController
     end
   end
 
-  def login
+  def login_my
+    @organ_grant = @member.get_organ_grant
+    login_organ_as @organ_grant
+  end
+
+  def login_admin
     @organ_grant = @member.get_organ_grant
     login_organ_as @organ_grant
   end
