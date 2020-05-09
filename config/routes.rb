@@ -13,12 +13,7 @@ Rails.application.routes.draw do
     controller :home do
       get :index
     end
-    resources :members do
-      member do
-        patch :login_admin
-        patch :login_my
-      end
-    end
+    resource :member
     resources :departments
     resources :tutorials do
       get :tutorings, on: :collection
@@ -32,10 +27,12 @@ Rails.application.routes.draw do
 
   scope :my, module: 'org/board', as: :my do
     resources :organs
-  end
-
-  scope :mem, module: 'org/membership', as: :mem do
-    resource :member, only: [:show, :edit, :update, :destroy]
+    resources :members do
+      member do
+        patch :login_admin
+        patch :login_my
+      end
+    end
   end
 
   scope :our, module: 'org/our', as: :our do

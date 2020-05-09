@@ -26,6 +26,7 @@ module RailsOrg::Organ
     has_one_attached :logo
 
     validates :name, presence: true
+    validates :code, presence: true
     validates :organ_uuid, uniqueness: true
 
     after_initialize if: :new_record? do
