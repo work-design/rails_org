@@ -4,6 +4,12 @@ module RailsOrg::Application
     helper_method :current_member, :current_session_organ, :other_organs
   end
 
+  def require_session_organ
+    return if current_session_organ
+
+    raise ActionController::RoutingError, 'Not Found'
+  end
+
   def current_title
     if current_session_organ
       current_session_organ.name
@@ -41,8 +47,6 @@ module RailsOrg::Application
     sd = request.subdomains
     if sd.size == 2 && sd[1] == RailsOrg.config.subdomain
       @current_session_organ = Organ.find_by(code: sd[0])
-    else
-      @current_session_organ = Organ.find_by(code: nil)
     end
   end
 
@@ -66,11 +70,6 @@ module RailsOrg::Application
   def login_organ_as(organ_grant)
     logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
     @current_authorized_token = organ_grant
-  end
-
-  def logout_organ
-    @current_authorized_token = nil
-    session.delete :organ_token
   end
 
   def default_params

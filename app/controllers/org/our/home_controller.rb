@@ -17,10 +17,6 @@ class Org::Our::HomeController < Org::Our::BaseController
     end
   end
 
-  def logout
-    logout_organ
-  end
-
   def destroy
     @organ.destroy
   end

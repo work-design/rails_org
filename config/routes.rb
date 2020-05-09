@@ -42,7 +42,6 @@ Rails.application.routes.draw do
     root 'home#show'
     controller :home do
       get :show
-      get :logout
     end
     resources :organs do
       get :all, on: :collection
