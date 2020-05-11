@@ -1,4 +1,4 @@
-class Org::Membership::DepartmentsController < Org::Membership::BaseController
+class Org::My::DepartmentsController < Org::My::BaseController
 
   def index
     @departments = current_member.departments
