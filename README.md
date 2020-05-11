@@ -15,6 +15,9 @@
 * our: 后端，支持 current_organ, current_organ 不可为空。
 * my: 前端，支持 current_member/current_organ
 
+商店型，这部分功能支持 organ_id 为 nil，即平台级数据；
+* mine: 用户端，支持 user_id + organ_id
+
 
 ## License
 License 采用 [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0).

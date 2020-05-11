@@ -1,5 +1,22 @@
 module RailsOrg::Admin
   extend ActiveSupport::Concern
+  included do
+    helper_method :current_session_organ
+  end
+
+  def require_session_organ
+    return if current_session_organ
+
+    raise ActionController::RoutingError, 'Not Found'
+  end
+
+  def current_title
+    if current_session_organ
+      current_session_organ.name
+    else
+      t('.title', default: :site_name)
+    end
+  end
 
   def current_session_organ
     return @current_session_organ if defined?(@current_session_organ)

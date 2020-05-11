@@ -1,21 +1,7 @@
 module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
-    helper_method :current_member, :current_session_organ, :other_organs
-  end
-
-  def require_session_organ
-    return if current_session_organ
-
-    raise ActionController::RoutingError, 'Not Found'
-  end
-
-  def current_title
-    if current_session_organ
-      current_session_organ.name
-    else
-      t('.title', default: :site_name)
-    end
+    helper_method :current_member, :other_organs
   end
 
   def require_member
