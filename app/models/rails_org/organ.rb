@@ -10,6 +10,7 @@ module RailsOrg::Organ
     attribute :locale, :string
     attribute :limit_wechat, :integer, default: 1
     attribute :members_count, :integer, default: 0
+    attribute :official, :boolean, default: false, comment: '是否官方'
 
     has_taxons :area
     belongs_to :area, optional: true

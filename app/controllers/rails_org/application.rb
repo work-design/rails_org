@@ -23,6 +23,14 @@ module RailsOrg::Application
     end
   end
 
+  def current_session_organ
+    return @current_session_organ if defined?(@current_session_organ)
+    sd = request.subdomains
+    if sd.size == 2 && sd[1] == RailsOrg.config.subdomain
+      @current_session_organ = Organ.find_by(code: sd[0])
+    end
+  end
+
   def current_member
     return @current_member if defined?(@current_member)
     @current_member = current_authorized_token&.member
@@ -48,6 +56,22 @@ module RailsOrg::Application
   def login_organ_as(organ_grant)
     logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
     @current_authorized_token = organ_grant
+  end
+
+  def default_params
+    if current_session_organ
+      { organ_id: current_session_organ.id }
+    else
+      super
+    end
+  end
+
+  def default_form_params
+    if current_session_organ
+      { organ_id: current_session_organ.id }
+    else
+      super
+    end
   end
 
 end

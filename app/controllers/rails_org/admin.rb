@@ -18,14 +18,6 @@ module RailsOrg::Admin
     end
   end
 
-  def current_session_organ
-    return @current_session_organ if defined?(@current_session_organ)
-    sd = request.subdomains
-    if sd.size == 2 && sd[1] == RailsOrg.config.subdomain
-      @current_session_organ = Organ.find_by(code: sd[0])
-    end
-  end
-
   def default_params
     { organ_id: current_session_organ.id }
   end
