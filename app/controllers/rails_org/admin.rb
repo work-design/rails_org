@@ -10,14 +10,6 @@ module RailsOrg::Admin
     raise ActionController::RoutingError, 'Not Found'
   end
 
-  def current_title
-    if current_session_organ
-      current_session_organ.name
-    else
-      t('.title', default: :site_name)
-    end
-  end
-
   def default_params
     { organ_id: current_session_organ.id }
   end

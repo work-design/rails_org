@@ -4,6 +4,14 @@ module RailsOrg::Application
     helper_method :current_member, :other_organs
   end
 
+  def current_title
+    if current_session_organ
+      current_session_organ.name
+    else
+      t('.title', default: :site_name)
+    end
+  end
+
   def require_member
     return if current_member
 
