@@ -45,7 +45,11 @@ module RailsOrg::Application
   end
 
   def other_organs
-    current_user.organs.where.not(id: current_session_organ.id)
+    if current_session_organ
+      current_user.organs.where.not(id: current_session_organ.id)
+    else
+      current_user.organs
+    end
   end
 
   # Must order after RailsAuth::Controller
