@@ -1,7 +1,7 @@
 module RailsOrg::Application
   extend ActiveSupport::Concern
   included do
-    helper_method :current_member, :other_organs
+    helper_method :current_session_organ, :current_member, :other_organs
   end
 
   def current_title
@@ -45,7 +45,7 @@ module RailsOrg::Application
   end
 
   def other_organs
-    current_user.organs.where.not(id: current_organ.id)
+    current_user.organs.where.not(id: current_session_organ.id)
   end
 
   # Must order after RailsAuth::Controller

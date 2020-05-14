@@ -1,8 +1,5 @@
 module RailsOrg::Admin
   extend ActiveSupport::Concern
-  included do
-    helper_method :current_session_organ
-  end
 
   def require_session_organ
     return if current_session_organ
