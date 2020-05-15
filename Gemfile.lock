@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 697077f98490c7230ac48a7ba5f1088573abcd86
+  revision: bea5fd0b1f1a44cd67009d6a55035d86dbd3000a
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -21,14 +21,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: f962982a0f54297297f29092aa35c12f924c823d
+  revision: 35f870d8fb259ff8367a20a93a269cb7caace750
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 230984b3c8bb94429ee0d711759049299372cf86
+  revision: 8b63bcbcc069edff6be519a00c4c6992c3ecd271
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 883158bc59c3d16b5a24b067e776ce790d914137
+  revision: cec53ff302ba54c254006183767b189694ba8d96
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_taxon.git
-  revision: 00011608ee39ac7705b71b29225d1b83892d513b
+  revision: dcfc07fddb66304f83be21fd4ef7db940be312ef
   specs:
     rails_taxon (1.0.0)
       acts_as_list (>= 0.9, <= 1.0)
