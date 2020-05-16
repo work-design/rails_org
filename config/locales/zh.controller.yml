@@ -57,6 +57,9 @@ zh:
           title: 我的团队
         new:
           title: 创建新团队
+      departments:
+        index:
+          title: 我的部门
     member:
       departments:
         index:

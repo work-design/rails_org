@@ -1,8 +1,0 @@
-<%= form_with theme: 'search', model: Member.new do |f| %>
-  <div class="fields">
-    <%= f.text_field :'name-like' %>
-    <%= f.text_field :identity %>
-    <%= f.submit %>
-    <%= link_to t('.clear'), filter_params(except: [:'name-like', :identity]), class: 'ui button' %>
-  </div>
-<% end %>

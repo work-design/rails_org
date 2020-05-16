@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 84bf5280d55dcb52d0a5b575f5dcf27d356bfe20
+  revision: c523caab68487af3639c928ef222ff27884639da
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 2f35d2b2b64276f3f2fa4ec7d49c03fe64db4f21
+  revision: 205363359e064983f5601af764ba2d66b8a5aff9
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -63,7 +63,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: b110f9f4c138a953095f82e66d810c28d71d72c2
+  revision: 4deda9696aa0bc6135113af6bb360584f56bdfe2
   specs:
     rails_role (1.0.3)
       acts_as_list (~> 0.9)
@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_taxon.git
-  revision: dcfc07fddb66304f83be21fd4ef7db940be312ef
+  revision: 5934f0b5fab674a06f284b2b2312c2651da04046
   specs:
     rails_taxon (1.0.0)
       acts_as_list (>= 0.9, <= 1.0)
