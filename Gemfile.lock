@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 2c9a69ca1789bf4a5928481a0e883d3a6a6ccf3b
+  revision: 4c14ed2916dc8ac50b357752a8aba4adaa9e5a6f
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 270f45e4fad4f1e17c123e4c49850e7f7d83f8a4
+  revision: 4e1c9d6d422895557d5c2488d2a5d605cb755f47
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: c00c5e691d4507edc941fcf7fedde3de36dd03ad
+  revision: 48adc26b3f733e38d671c082dbc8c3a6275c9f72
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 205363359e064983f5601af764ba2d66b8a5aff9
+  revision: db70062e9db772da9c4880634f1f76b40c2450c7
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -179,18 +179,18 @@ GEM
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jwt (2.2.1)
-    kaminari (1.2.0)
+    kaminari (1.2.1)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.0)
-      kaminari-activerecord (= 1.2.0)
-      kaminari-core (= 1.2.0)
-    kaminari-actionview (1.2.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
       actionview
-      kaminari-core (= 1.2.0)
-    kaminari-activerecord (1.2.0)
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
       activerecord
-      kaminari-core (= 1.2.0)
-    kaminari-core (1.2.0)
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     loofah (2.5.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
