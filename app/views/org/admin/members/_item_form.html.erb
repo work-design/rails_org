@@ -17,7 +17,7 @@
       <% end %>
     <% end %>
     <div class="field is-narrow">
-      <%= ef.collection_select :job_title_id, ef.object.same_job_titles, :id, :name, { include_blank: true }, { data: { title: 'job_title_id', as: ef.object_name } } %>
+      <%= ef.collection_select :job_title_id, ef.object.same_job_titles, :id, :name, { include_blank: true, label: false }, { data: { title: 'job_title_id', as: ef.object_name } } %>
     </div>
     <div class="field">
       <%= link_to add_item_admin_members_path('item', index: ef.index), data: { title: 'add_item' }, remote: true do %>
