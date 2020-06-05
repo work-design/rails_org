@@ -3,13 +3,3 @@
     <i class="fas fa-home"></i><span><%= t('org.our.organs.show.title') %></span>
   <% end %>
 </div>
-<div class="<%= active_helper(modules: 'org/our', active: 'menu ex-accordion is-active', item: 'menu ex-accordion') %>" data-controller="menu">
-  <%= content_tag :div, class: 'menu-list' do %>
-    <%= link_to t('org.admin.organs.index.title'), our_organs_path, class: active_helper(controllers: 'org/our/organs', active: 'is-active', item: nil) -%>
-  <% end %>
-  <a class="menu-label" data-action="menu#toggle">
-    <i class="fas fa-sitemap fa-fw"></i>
-    <span><%= t('org.our.title') %></span>
-    <i class="fas dropdown"></i>
-  </a>
-</div>

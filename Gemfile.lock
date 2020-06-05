@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 4c14ed2916dc8ac50b357752a8aba4adaa9e5a6f
+  revision: 2f56f33a823bf5689e84478aee7595d0d8a5b64b
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 4e1c9d6d422895557d5c2488d2a5d605cb755f47
+  revision: e684847634b71a9f3f6f7d48f2818a45e07449a4
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 48adc26b3f733e38d671c082dbc8c3a6275c9f72
+  revision: 6caef1c18a8cdaf348281f4a496d50f1c558658f
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: c523caab68487af3639c928ef222ff27884639da
+  revision: c9654ad1ba358d27adefaae7348b1e38e3e4c08c
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -63,7 +63,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 4deda9696aa0bc6135113af6bb360584f56bdfe2
+  revision: 09ba2a20640a843358bba59924ba629b16bc0ff2
   specs:
     rails_role (1.0.3)
       acts_as_list (~> 0.9)
@@ -153,7 +153,7 @@ GEM
     closure_tree (7.1.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
-    coderay (1.1.2)
+    coderay (1.1.3)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     debug_inspector (0.0.3)
@@ -163,7 +163,7 @@ GEM
     factory_bot_rails (5.2.0)
       factory_bot (~> 5.2.0)
       railties (>= 4.2.0)
-    ffi (1.12.2)
+    ffi (1.13.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-2-next (0.2.6)
@@ -276,7 +276,7 @@ GEM
       semantic_range (>= 2.3.0)
     websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
     with_advisory_lock (4.6.0)
       activerecord (>= 4.2)
     zeitwerk (2.3.0)

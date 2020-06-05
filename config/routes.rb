@@ -36,13 +36,8 @@ Rails.application.routes.draw do
   end
 
   scope :our, module: 'org/our', as: :our do
-    root 'home#show'
-    controller :home do
-      get :show
-    end
-    resources :organs do
-      get :all, on: :collection
-    end
+    root 'organs#show'
+    resource :organ
   end
 
   scope :panel, module: 'org/panel', as: :panel do
@@ -50,6 +45,9 @@ Rails.application.routes.draw do
   end
 
   scope :admin, module: 'org/admin', as: :admin do
+    resources :organs do
+      get :all, on: :collection
+    end
     resources :departments do
       collection do
         get :supports
