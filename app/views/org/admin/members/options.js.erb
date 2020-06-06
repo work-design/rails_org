@@ -1,10 +1,7 @@
-<% f_object = form_object(@member_department, as: params[:as], css: { wrap_input: 'field' }) %>
-<% job_title_id_method = f_object.wrap_id(:job_title_id) %>
-<% f_method = f_object.wrap_input_id(params[:method]) %>
+<% f_object = form_object(@member_department, as: params[:as], wrap: { select: 'select is-fullwidth' }) %>
 
-$('#<%= j job_title_id_method %>_input').replaceWith('<%= j(render partial: 'org/admin/member_departments/job_title_options', locals: { f: f_object }) %>');
-$('#<%= j job_title_id_method %>').dropdown();
-
+var title = document.getElementById('job_title_id_wrap_<%= params[:index] %>')
+title.innerHTML = '<%= j(render partial: 'org/admin/member_departments/job_title_options', locals: { f: f_object }) %>'
 
 <% if @department && @department.children.present? %>
   var template = '<%= j(render partial: 'nodes/outer_children_options', locals: { f: f_object, node: @department, depth: @department.depth + 1, outer: params[:outer] }) %>'
@@ -15,5 +12,3 @@ $('#<%= j job_title_id_method %>').dropdown();
     $('#<%= j f_method %>').nextAll('[data-title="outer_ancestors_input"]').remove();
   }
 <% end %>
-
-remote_js_load('<%= raw remote_js_load %>')

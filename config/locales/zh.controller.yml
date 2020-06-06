@@ -28,7 +28,7 @@ zh:
           title: 部门职能设置
       members:
         index:
-          title: 员工管理
+          title: 成员管理
           enabled: 可用
           disabled: 禁用
           role: 授权管理

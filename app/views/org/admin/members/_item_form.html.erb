@@ -10,21 +10,21 @@
     <% else %>
       <% if ef.object.department %>
         <% ef.object.department.self_and_ancestors.reverse_each do |node| %>
-          <%= render partial: 'nodes/outer_options', locals: { f: ef, node: node, outer: 'department', depth: node.depth } %>
+          <%= render partial: 'outer_options', locals: { f: ef, node: node, outer: 'department', depth: node.depth } %>
         <% end %>
       <% else %>
-        <%= render partial: 'nodes/outer_options', locals: { f: ef, node: Department.new(organ_id: current_session_organ&.id), outer: 'department', depth: 0 } %>
+        <%= render partial: 'outer_options', locals: { f: ef, node: Department.new(organ_id: current_session_organ&.id), outer: 'department', depth: 0 } %>
       <% end %>
     <% end %>
-    <div class="field is-narrow">
-      <%= ef.collection_select :job_title_id, ef.object.same_job_titles, :id, :name, { include_blank: true, label: false }, { data: { title: 'job_title_id', as: ef.object_name } } %>
+    <div class="field is-narrow" id="job_title_id_wrap_<%= ef.index %>">
+      <%= ef.collection_select :job_title_id, ef.object.same_job_titles, :id, :name, { include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
     </div>
-    <div class="field">
+    <div class="field has-addons">
       <%= link_to add_item_admin_members_path('item', index: ef.index), data: { title: 'add_item' }, remote: true do %>
         <i class="fas fa-plus"></i>
       <% end %>
       <% if ef.object.id %>
-        <%= ef.check_box :_destroy, { label: '移除', on: { offset: false }, css: { wrapper_checkbox: 'ui checkbox' }, checked: false } %>
+        <%= ef.check_box :_destroy, { label: '移除', offset: false, checked: false } %>
       <% else %>
         <%= link_to remove_item_admin_members_path('item', index: ef.index), remote: true do %>
           <i class="fas fa-minus"></i>
