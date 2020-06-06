@@ -4,11 +4,11 @@
     <% if department.leaf? %>
       <i class="fas fa-minus fa-fw"></i>
     <% else %>
-      <i class="fas fa-caret-right fa-fw grey link"></i>
+      <i class="fas fa-caret-right fa-fw grey link" data-action="click->tree#expand"></i>
     <% end %>
     <%= link_to admin_department_path(department) do %>
       <span><%= department.name %></span>
-      <span class="grey text">(<%= department.all_member_departments_count %>)</span>
+      <span class="has-text-grey">(<%= department.all_member_departments_count %>)</span>
     <% end %>
   </td>
   <td>

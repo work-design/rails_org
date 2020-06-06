@@ -21,18 +21,18 @@
     </tr>
   </thead>
 
-  <tbody>
-  <% @departments.each do |department| %>
-    <%= render partial: 'department', object: department, locals: { display: 'table-row' } %>
-    <%= draw_tree(partial: 'org/admin/departments/department', object: department, locals: { display: 'none' }) %>
-  <% end %>
-  <tr>
-    <td colspan="6">
-      <%= link_to new_admin_department_path, remote: true, class: 'button is-link is-small' do %>
-        <i class="fas fa-plus"></i><%= t('.new') %>
-      <% end %>
-    </td>
-  </tr>
+  <tbody data-controller="tree">
+    <% @departments.each do |department| %>
+      <%= render partial: 'department', object: department, locals: { display: 'table-row' } %>
+      <%= draw_tree(partial: 'org/admin/departments/department', object: department, locals: { display: 'none' }) %>
+    <% end %>
+    <tr>
+      <td colspan="6">
+        <%= link_to new_admin_department_path, remote: true, class: 'button is-link is-small' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+      </td>
+    </tr>
   </tbody>
 </table>
 
