@@ -1,5 +1,5 @@
 <%= form_with model: [:admin, @organ] do |f| %>
   <%= render 'shared/error_messages', target: @organ %>
-  <%= render partial: 'nodes/children_select', locals: { f: f, node: current_organ } %>
+  <%= render partial: 'nodes/children_select', locals: { f: f, node: current_session_organ } %>
   <%= render partial: 'form', locals: { f: f } %>
 <% end %>

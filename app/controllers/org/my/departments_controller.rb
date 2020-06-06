@@ -1,7 +1,9 @@
 class Org::My::DepartmentsController < Org::My::BaseController
 
   def index
-    @departments = current_member.departments
+    q_params = {}
+    q_params.merge! default_params
+    @departments = current_member.departments.default_where(q_params)
     @members = current_member.all_followers.page(params[:page])
   end
 
@@ -57,7 +59,6 @@ class Org::My::DepartmentsController < Org::My::BaseController
       render :new
     end
   end
-
 
   private
   def set_department

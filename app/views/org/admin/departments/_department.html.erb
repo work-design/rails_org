@@ -2,9 +2,9 @@
   <td>
     <span style="width: <%= department.depth * 1.43 %>em; display: inline-block;"></span>
     <% if department.leaf? %>
-      <i class="fas fa-minus fa-fw"></i>
+      <i class="fas fa-fw fa-minus"></i>
     <% else %>
-      <i class="fas fa-caret-right fa-fw grey link" data-action="click->tree#expand"></i>
+      <i class="fas fa-fw fa-caret-right" data-action="click->tree#expand" style="cursor: pointer;"></i>
     <% end %>
     <%= link_to admin_department_path(department) do %>
       <span><%= department.name %></span>

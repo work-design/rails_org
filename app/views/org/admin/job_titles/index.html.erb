@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<table class="ui selectable table">
+<table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
       <th>
@@ -33,12 +33,13 @@
       <td></td>
       <td></td>
       <td>
-        <div class="ui toggle checkbox">
+        <div data-controller="input">
           <% if @department.super_job_title_ids.include?(super_job_title.id) %>
-            <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: department_admin_super_job_title_path(super_job_title), submit: true }, id: nil %>
+            <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: department_admin_super_job_title_path(super_job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
           <% else %>
-            <%= check_box_tag :department_id, @department.id, false, data: { method: :post, remote: true, url: department_admin_super_job_title_path(super_job_title), submit: true }, id: nil %>
+            <%= check_box_tag :department_id, @department.id, false, data: { method: :post, remote: true, url: department_admin_super_job_title_path(super_job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
           <% end %>
+          <label></label>
         </div>
       </td>
     </tr>

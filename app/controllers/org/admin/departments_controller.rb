@@ -15,7 +15,9 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
   end
 
   def filter
-    q_params.merge! params.fetch(:q, {}).permit!
+    q_params = {}
+    q_params.merge! params.permit!
+
     if params[:department_id].present?
       @departments = Department.where(parent_id: params[:department_id])
     else
