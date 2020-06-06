@@ -15,12 +15,12 @@
       <%= child.member_departments_count %>
     </span>
   </td>
-  <td class="ui labels">
+  <td>
     <% child.members.each do |member| %>
-      <span class="ui label"><%= member.name %></span>
+      <span><%= member.name %></span>
     <% end %>
   </td>
-  <td class="ui labels">
+  <td>
     <%#= link_to 'JD', admin_department_job_descriptions_path(child), class: 'ui blue label' %>
     <%= link_to 'Supports', admin_supports_path(department_id: child.id), class: 'ui yellow label' %>
     <%= link_to 'Need', need_admin_department_path(child), class: 'ui pink label' %>
