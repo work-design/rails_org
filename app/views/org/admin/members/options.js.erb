@@ -3,12 +3,13 @@
 var title = document.getElementById('job_title_id_wrap_<%= params[:index] %>')
 title.innerHTML = '<%= j(render partial: 'org/admin/member_departments/job_title_options', locals: { f: f_object }) %>'
 
+var node = document.getElementById('<%= params[:method] %>_input')
+var el = node.nextElementSibling
+while (el && el.dataset.title === 'outer_ancestors_input') {
+  el.remove()
+  el = node.nextElementSibling
+}
+
 <% if @department && @department.children.present? %>
-  var template = '<%= j(render partial: 'nodes/outer_children_options', locals: { f: f_object, node: @department, depth: @department.depth + 1, outer: params[:outer] }) %>'
-  $('#<%= j f_method %>').nextAll('[data-title="outer_ancestors_input"]').remove();
-  $('#<%= j f_method %>').after(template);
-<% else %>
-  if ($('#<%= j f_method %>').next().length > 0) {
-    $('#<%= j f_method %>').nextAll('[data-title="outer_ancestors_input"]').remove();
-  }
+node.insertAdjacentHTML('afterend', '<%= j(render partial: 'nodes/outer_children_options', locals: { f: f_object, node: @department, depth: @department.depth + 1, outer: params[:outer] }) %>')
 <% end %>

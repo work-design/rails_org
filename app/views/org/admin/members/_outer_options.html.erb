@@ -1,5 +1,5 @@
 <% f_method = "#{outer}_ancestors(#{depth}i)" %>
-<div class="field is-narrow control" id="<%= "#{f_method}_input" %>" data-controller="member">
+<div class="field is-narrow control" id="<%= "#{f_method}_input" %>" data-title="outer_ancestors_input" data-controller="member">
   <%=
     f.collection_select(
       f_method,
