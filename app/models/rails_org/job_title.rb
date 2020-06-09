@@ -19,7 +19,7 @@ module RailsOrg::JobTitle
     before_validation :init_department_root
     after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
 
-    acts_as_list column: :grade, scope: [:department_root_id], top_of_list: ->(o){ o.top_grade }
+    acts_as_list column: :grade, scope: [:department_root_id]
   end
 
   def init_department_root
@@ -28,10 +28,6 @@ module RailsOrg::JobTitle
 
   def sync_grade_member_departments
     member_departments.update_all(grade: self.grade)
-  end
-
-  def top_grade
-    JobTitleReference.where(department_root_id: department_root_id).maximum(:grade).to_i + 1
   end
 
   def sync_to_role_ids

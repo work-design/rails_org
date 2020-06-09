@@ -42,7 +42,7 @@ module RailsOrg::MemberDepartment
 
   def sync_from_job_title
     if super_job_title
-      self.grade = super_job_title.grade
+      self.super_grade = super_job_title.grade
     elsif job_title
       self.department_id = job_title.department_id
       self.grade = job_title.grade

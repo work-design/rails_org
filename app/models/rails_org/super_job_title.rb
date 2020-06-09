@@ -19,7 +19,7 @@ module RailsOrg::SuperJobTitle
 
     after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
 
-    acts_as_list column: :grade, scope: :organ_id, top_of_list: -1, step: -1
+    acts_as_list column: :grade, scope: :organ_id
   end
 
   def lower_job_title_ids
@@ -27,7 +27,7 @@ module RailsOrg::SuperJobTitle
   end
 
   def sync_grade_member_departments
-    member_departments.update_all(grade: self.grade)
+    member_departments.update_all(super_grade: self.grade)
   end
 
   def sync_to_role_ids
