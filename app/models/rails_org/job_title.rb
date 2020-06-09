@@ -1,5 +1,6 @@
 module RailsOrg::JobTitle
   extend ActiveSupport::Concern
+
   included do
     attribute :grade, :integer
     attribute :name, :string
@@ -30,7 +31,7 @@ module RailsOrg::JobTitle
   end
 
   def top_grade
-    SuperJobTitle.where(organ_id: department.organ_id).maximum(:grade).to_i + 1
+    JobTitleReference.where(department_root_id: department_root_id).maximum(:grade).to_i + 1
   end
 
   def sync_to_role_ids

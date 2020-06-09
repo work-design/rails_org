@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/qinmingyuan/acts_as_list.git
-  revision: 63cc2c9687cf0fa534e3a33077b470a7c984a354
+  revision: 0a5caee8131a8f947388e5491cefb6c0cbac5bf5
   specs:
-    acts_as_list (0.9.19)
-      activerecord (>= 3.0)
+    acts_as_list (1.0.1)
+      activerecord (>= 4.2)
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
@@ -63,10 +63,9 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 09ba2a20640a843358bba59924ba629b16bc0ff2
+  revision: 1dc3bc1d1fc0bf08526dd5d06e35230f25af04d9
   specs:
     rails_role (1.0.3)
-      acts_as_list (~> 0.9)
       rails_com (~> 1.2)
 
 GIT
@@ -74,7 +73,7 @@ GIT
   revision: 52ea4b98099d0dffac1b5447a89c12e2537ce0b1
   specs:
     rails_taxon (1.0.0)
-      acts_as_list (>= 0.9, <= 1.0)
+      acts_as_list (>= 1.0)
       closure_tree (>= 6.6, <= 7.1)
       rails_com (~> 1.2)
 
