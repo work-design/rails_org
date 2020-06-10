@@ -30,16 +30,6 @@ module RailsOrg::MemberDepartment
     self.class.default_where(department_id: department_id, 'grade-lt': self.grade)
   end
 
-  def same_job_titles
-    if job_title
-      job_title.same_job_titles
-    elsif department
-      ::JobTitle.where(department_root_id: department.root.id)
-    else
-      ::SuperJobTitle.where(organ_id: member.organ_id)
-    end
-  end
-
   def sync_from_job_title
     if super_job_title
       self.super_grade = super_job_title.grade
@@ -48,8 +38,10 @@ module RailsOrg::MemberDepartment
       self.grade = job_title.grade
     end
 
-    self.superior_id = department.superior_id
-    self.department_root_id = self.department.root&.id
+    if department
+      self.superior_id = department.superior_id
+      self.department_root_id = department.root.id
+    end
   end
 
   def sync_department_members_count

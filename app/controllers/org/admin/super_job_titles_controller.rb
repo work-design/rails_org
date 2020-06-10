@@ -35,23 +35,23 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
 
   def reorder
     sort_array = params[:sort_array].select { |i| i.integer? }
-  
+
     if params[:new_index] > params[:old_index]
-      prev_one = @super_job_title.same_job_titles.find(sort_array[params[:new_index].to_i - 1])
+      prev_one = SuperJobTitle.where(organ_id: @super_job_title.organ_id).find(sort_array[params[:new_index].to_i - 1])
       @super_job_title.insert_at prev_one.grade
     else
-      next_ones = @super_job_title.same_job_titles.find(sort_array[(params[:new_index].to_i + 1)..params[:old_index].to_i])
+      next_ones = SuperJobTitle.where(organ_id: @super_job_title.organ_id).find(sort_array[(params[:new_index].to_i + 1)..params[:old_index].to_i])
       next_ones.each do |next_one|
         next_one.insert_at @super_job_title.grade
       end
     end
   end
-  
+
   def create_department
     jtr = @super_job_title.job_title_references.build(department_id: params[:department_id])
     jtr.save
   end
-  
+
   def destroy_department
     jtr = @super_job_title.job_title_references.where(department_id: params[:department_id])
     jtr.delete_all

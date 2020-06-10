@@ -10,7 +10,6 @@ module RailsOrg::SuperJobTitle
     belongs_to :organ, optional: true
     has_many :member_departments, dependent: :destroy
     has_many :members, through: :member_departments, source: :member
-    has_many :same_job_titles, ->(o){ where(organ_id: o.organ_id) }, class_name: self.base_class.name, foreign_key: :department_root_id, primary_key: :department_root_id
     has_many :job_title_references, dependent: :delete_all
     has_many :lower_job_titles, through: :job_title_references, source: :department_job_titles
     has_many :departments, through: :job_title_references
