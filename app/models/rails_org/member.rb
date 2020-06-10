@@ -21,6 +21,7 @@ module RailsOrg::Member
     belongs_to :organ, counter_cache: true, inverse_of: :members, optional: true
 
     has_many :member_departments, dependent: :delete_all
+    has_many :super_member_departments, ->{ where.not(super_job_title_id: nil) }, class_name: 'MemberDepartment'
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
     # has_many :xx, through: :member_departments, source: :members  # todo use one sql to fix this

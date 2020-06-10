@@ -1,9 +1,9 @@
 <%= render 'shared/error_messages', target: @member %>
 <%= f.text_field :name %>
-<%= f.fields :member_departments, label: false, wrap: { all: nil, input: 'field' } do |ef| %>
+<%= f.fields :member_departments, model: @member.member_departments, label: false, wrap: { all: nil, input: 'field' } do |ef| %>
   <%= render partial: 'item_form', locals: { ef: ef } %>
 <% end %>
-<%= f.fields :member_departments, label: false, wrap: { all: nil, input: 'field' } do |ef| %>
+<%= f.fields :member_departments, model: @member.super_member_departments, label: false, wrap: { all: nil, input: 'field' } do |ef| %>
   <%= render partial: 'super_item_form', locals: { ef: ef } %>
 <% end %>
 <%= f.text_field :identity %>
