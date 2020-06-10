@@ -2,7 +2,7 @@ module RailsOrg::Account
   extend ActiveSupport::Concern
   included do
     has_many :members, foreign_key: :identity, primary_key: :identity
-    after_save :sync_to_members, if: -> { saved_change_to_identity? || saved_change_to_user_id? || saved_change_to_confirmed? }
+    after_save :sync_to_members, if: -> { (saved_changes.keys & ['identity', 'user_id', 'confirmed']).present? }
   end
 
   def sync_to_members
