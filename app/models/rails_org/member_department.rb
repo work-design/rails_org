@@ -6,7 +6,7 @@ module RailsOrg::MemberDepartment
 
     attribute :department_root_id, :integer
     attribute :superior_id, :integer
-    attribute :grade, :integer
+    attribute :grade, :integer, default: 0
     attribute :super_grade, :integer, default: 0
 
     belongs_to :member
@@ -14,7 +14,7 @@ module RailsOrg::MemberDepartment
     belongs_to :job_title, optional: true
     belongs_to :super_job_title, optional: true
     has_many :descendant_hierarchies, class_name: 'DepartmentHierarchy', foreign_key: :ancestor_id, primary_key: :department_id
-    has_many :self_and_descendants, ->(o){ default_where('super_grade-lte': o.super_grade, 'grade-lt': o.grade) }, through: :descendant_hierarchies, source: :member_department
+    has_many :self_and_descendants, ->(o){ default_where('super_grade-lte': o.super_grade, 'grade-gt': o.grade) }, through: :descendant_hierarchies, source: :member_department
     has_many :members, through: :self_and_descendants, source: :member
 
     validates :department_id, uniqueness: { scope: :member_id }
@@ -27,7 +27,7 @@ module RailsOrg::MemberDepartment
   end
 
   def direct_followers
-    self.class.default_where(department_id: department_id, 'grade-lt': self.grade)
+    self.class.default_where(department_id: department_id, 'grade-gt': self.grade)
   end
 
   def super_job_title_options

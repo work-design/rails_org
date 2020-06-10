@@ -14,12 +14,12 @@ module RailsOrg::JobTitle
     has_many :same_job_titles, class_name: self.base_class.name, foreign_key: :department_root_id, primary_key: :department_root_id
     has_many :lower_job_titles, ->(o){ default_where('grade-lte': o.grade) }, class_name: self.name, foreign_key: :department_root_id, primary_key: :department_root_id
 
-    default_scope -> { order(grade: :desc) }
+    default_scope -> { order(grade: :asc) }
 
     before_validation :init_department_root
     after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
 
-    acts_as_list column: :grade, scope: [:department_root_id], add_new_at: :top
+    acts_as_list column: :grade, scope: [:department_root_id]
   end
 
   def init_department_root
