@@ -18,8 +18,8 @@ module RailsOrg::MemberDepartment
     has_many :members, through: :self_and_descendants, source: :member
 
     validates :department_id, uniqueness: { scope: :member_id }
-    validates :job_title_id, presence: true, if: -> { department_id.blank? }
-    validates :department_id, presence: true, if: -> { job_title_id.blank? }
+    validates :super_job_title_id, presence: true, if: -> { job_title_id.blank? }
+    validates :department_id, presence: true, if: -> { super_job_title_id.blank? }
 
     before_save :sync_from_job_title, if: -> { job_title_id_changed? || department_id_changed? }
     after_save_commit :sync_department_members_count, if: -> { saved_change_to_department_id? }
@@ -28,6 +28,16 @@ module RailsOrg::MemberDepartment
 
   def direct_followers
     self.class.default_where(department_id: department_id, 'grade-lt': self.grade)
+  end
+
+  def same_job_titles
+    if job_title
+      job_title.same_job_titles
+    elsif department
+      ::JobTitle.where(department_root_id: department.root.id)
+    else
+      ::SuperJobTitle.where(organ_id: member.organ_id)
+    end
   end
 
   def sync_from_job_title

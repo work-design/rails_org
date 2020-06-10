@@ -17,7 +17,11 @@
       <% end %>
     <% end %>
     <div class="field is-narrow" id="job_title_id_wrap_<%= ef.index %>">
-      <%= ef.collection_select :job_title_id, ef.object.same_job_titles, :id, :name, { include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
+      <% if ef.object.job_title %>
+        <%= ef.collection_select :job_title_id, ef.object.same_job_titles, :id, :name, { include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
+      <% else %>
+        <%= ef.collection_select :super_job_title_id, ef.object.same_job_titles, :id, :name, { include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
+      <% end %>
     </div>
     <div class="field has-addons">
       <%= link_to add_item_admin_members_path('item', index: ef.index), data: { title: 'add_item' }, remote: true do %>

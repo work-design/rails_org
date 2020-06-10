@@ -17,7 +17,11 @@
           <% end %>
         </span>
         <span>
-          <%= md.job_title&.name %>
+          <% if md.super_job_title %>
+            <%= md.super_job_title.name %>
+          <% else %>
+            <%= md.job_title.name %>
+          <% end %>
         </span>
       </p>
     <% end %>

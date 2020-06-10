@@ -40,12 +40,12 @@ class Org::Admin::MembersController < Org::Admin::BaseController
 
   def create
     if current_organ
-      @member = current_organ.members.build(identity: member_params[:identity])
+      @member = current_organ.members.build
     else
-      @member = Member.new(identity: member_params[:identity])
+      @member = Member.new
     end
     @member.assign_attributes member_params
-
+    binding.pry
     unless @member.save
       render :new, locals: { model: @member }, status: :unprocessable_entity
     end
