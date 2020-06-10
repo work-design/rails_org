@@ -2,7 +2,7 @@
   <% if ef.index == 0 %>
     <%= ef.options[:parent_builder].label :member_departments %>
   <% else %>
-    <label class="field-label"></label>
+    <label class="field-label">管辖</label>
   <% end %>
   <div class="field-body control">
     <% if params[:department_id] %>
@@ -17,7 +17,7 @@
       <% end %>
     <% end %>
     <div class="field is-narrow" id="job_title_id_wrap_<%= ef.index %>">
-      <%= ef.collection_select :job_title_id, ef.object.job_title_options, :id, :name, { include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
+      <%= ef.collection_select :super_job_title_id, ef.object.super_job_title_options, :id, :name, { include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
     </div>
     <div class="field has-addons">
       <%= link_to add_item_admin_members_path('item', index: ef.index), data: { title: 'add_item' }, remote: true do %>

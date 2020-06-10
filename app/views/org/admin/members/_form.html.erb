@@ -3,6 +3,9 @@
 <%= f.fields :member_departments, label: false, wrap: { all: nil, input: 'field' } do |ef| %>
   <%= render partial: 'item_form', locals: { ef: ef } %>
 <% end %>
+<%= f.fields :member_departments, label: false, wrap: { all: nil, input: 'field' } do |ef| %>
+  <%= render partial: 'super_item_form', locals: { ef: ef } %>
+<% end %>
 <%= f.text_field :identity %>
 <%= f.date_field :join_on, value: Date.today %>
 <%= f.check_box :enabled %>

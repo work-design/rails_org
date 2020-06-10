@@ -10,7 +10,7 @@ module RailsOrg::MemberDepartment
     attribute :super_grade, :integer, default: 0
 
     belongs_to :member
-    belongs_to :department, counter_cache: true, inverse_of: :member_departments, optional: true
+    belongs_to :department, counter_cache: true, inverse_of: :member_departments
     belongs_to :job_title, optional: true
     belongs_to :super_job_title, optional: true
     has_many :descendant_hierarchies, class_name: 'DepartmentHierarchy', foreign_key: :ancestor_id, primary_key: :department_id
@@ -19,9 +19,9 @@ module RailsOrg::MemberDepartment
 
     validates :department_id, uniqueness: { scope: :member_id }
     validates :super_job_title_id, presence: true, if: -> { job_title_id.blank? }
-    validates :department_id, presence: true, if: -> { super_job_title_id.blank? }
+    validates :job_title_id, presence: true, if: -> { super_job_title_id.blank? }
 
-    before_save :sync_from_job_title, if: -> { job_title_id_changed? || department_id_changed? }
+    before_save :sync_from_job_title, if: -> { (changes.keys & ['job_title_id', 'department_id', 'super_job_title_id']).present? }
     after_save_commit :sync_department_members_count, if: -> { saved_change_to_department_id? }
     after_save_commit :sync_role_ids
   end
@@ -30,13 +30,19 @@ module RailsOrg::MemberDepartment
     self.class.default_where(department_id: department_id, 'grade-lt': self.grade)
   end
 
-  def same_job_titles
-    if job_title
-      job_title.same_job_titles
-    elsif department
-      ::JobTitle.where(department_root_id: department.root.id)
+  def super_job_title_options
+    if department
+      department.root.super_job_titles
     else
-      ::SuperJobTitle.where(organ_id: member.organ_id)
+      SuperJobTitle.none
+    end
+  end
+
+  def job_title_options
+    if department
+      JobTitle.where(department_root_id: department.root.id)
+    else
+      JobTitle.none
     end
   end
 
