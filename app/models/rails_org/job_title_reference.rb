@@ -19,7 +19,7 @@ module RailsOrg::JobTitleReference
   end
 
   def sync_to_member_departments
-    super_job_title.sync_to_member_departments
+
   end
 
 end

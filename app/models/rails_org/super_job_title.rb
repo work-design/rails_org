@@ -15,11 +15,11 @@ module RailsOrg::SuperJobTitle
     has_many :lower_job_titles, through: :job_title_references, source: :department_job_titles
     has_many :departments, through: :job_title_references
 
-    default_scope -> { order(grade: :asc) }
+    default_scope -> { order(grade: :desc) }
 
     after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
 
-    acts_as_list column: :grade, scope: :organ_id
+    acts_as_list column: :grade, scope: :organ_id, add_new_at: :top
   end
 
   def lower_job_title_ids

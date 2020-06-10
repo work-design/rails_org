@@ -8,7 +8,7 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
     }
     q_params.merge! default_params
     q_params.merge! params.permit(:name)
-    
+
     @job_titles = JobTitle.default_where(q_params).page(params[:page])
 
     @selected_job_titles = JobTitle.where.not(super_job_title_id: nil).default_where(q_params).order(grade: :asc)
@@ -53,7 +53,7 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
 
   def reorder
     sort_array = params[:sort_array].select { |i| i.integer? }
-  
+
     if params[:new_index] > params[:old_index]
       prev_one = @job_title.same_job_titles.find(sort_array[params[:new_index].to_i - 1])
       @job_title.insert_at prev_one.grade
@@ -79,13 +79,11 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
   end
 
   def job_title_params
-    p = params.fetch(:job_title, {}).permit(
+    params.fetch(:job_title, {}).permit(
       :name,
       :description,
-      :grade,
-      :super_job_title_id
+      :grade
     )
-    p.merge! default_form_params
   end
 
 end

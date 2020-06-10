@@ -12,14 +12,14 @@ module RailsOrg::JobTitle
     has_many :member_departments, dependent: :destroy
     has_many :members, through: :member_departments, source: :member
     has_many :same_job_titles, class_name: self.base_class.name, foreign_key: :department_root_id, primary_key: :department_root_id
-    has_many :lower_job_titles, ->(o){ default_where('grade-gte': o.grade) }, class_name: self.name, foreign_key: :department_root_id, primary_key: :department_root_id
+    has_many :lower_job_titles, ->(o){ default_where('grade-lte': o.grade) }, class_name: self.name, foreign_key: :department_root_id, primary_key: :department_root_id
 
-    default_scope -> { order(grade: :asc) }
+    default_scope -> { order(grade: :desc) }
 
     before_validation :init_department_root
     after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
 
-    acts_as_list column: :grade, scope: [:department_root_id]
+    acts_as_list column: :grade, scope: [:department_root_id], add_new_at: :top
   end
 
   def init_department_root
