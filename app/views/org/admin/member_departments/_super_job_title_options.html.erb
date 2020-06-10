@@ -1,7 +1,7 @@
 <%=
   f.collection_select(
-      :job_title_id,
-      f.object.job_title_options,
+      :super_job_title_id,
+      f.object.super_job_title_options,
       :id,
       :name,
       { warp: { all: nil, select: 'select is-fullwidth' }, label: false },
