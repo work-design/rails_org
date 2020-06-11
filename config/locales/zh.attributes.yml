@@ -7,7 +7,8 @@ zh:
         leader: 负责人
         needed_number: 岗位计划
         members_count: 现有人数
-        job_titles: 部门可选职级
+        job_titles: 部门职级
+        super_job_titles: 部门负责职务
         superior_id: 上级主管机构
       department_grant:
         department_id: 部门
