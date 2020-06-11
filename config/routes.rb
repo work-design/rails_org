@@ -56,7 +56,10 @@ Rails.application.routes.draw do
         get :search
         get :filter
       end
-      get :need, on: :member
+      member do
+        get :need
+        get :super_job_titles
+      end
       resources :job_titles do
         member do
           patch :move_lower

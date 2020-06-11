@@ -27,9 +27,9 @@
   </td>
   <td>
     <% department.super_job_titles.each do |super_job_title| %>
-      <div class="button" aria-label="<%= super_job_title.grade %>"><%= super_job_title.name %></div>
+      <div class="button is-small is-light" aria-label="<%= super_job_title.grade %>"><%= super_job_title.name %></div>
     <% end %>
-    <%= link_to admin_department_job_titles_path(department), aria: { label: t('.job_title') }, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to super_job_titles_admin_department_path(department), aria: { label: t('.job_title') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-user-tag"></i>
     <% end %>
   </td>

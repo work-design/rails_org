@@ -25,34 +25,15 @@
     </tr>
   </thead>
   <tbody>
-  <% @super_job_titles.each do |super_job_title| %>
-    <tr>
-      <td><%= super_job_title.grade %></td>
-      <td><%= super_job_title.name %></td>
-      <td><%= super_job_title.description %></td>
-      <td>
-        <div data-controller="input">
-          <% if @department.root.super_job_title_ids.include?(super_job_title.id) %>
-            <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: department_admin_super_job_title_path(super_job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
-          <% else %>
-            <%= check_box_tag :department_id, @department.id, false, data: { method: :post, remote: true, url: department_admin_super_job_title_path(super_job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
-          <% end %>
-          <label></label>
-        </div>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-  <% end %>
   <% @job_titles.each do |job_title| %>
     <tr>
       <td>
         <%= job_title.grade %>
         <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
-          <i class="arrow down icon"></i>
+          <i class="fas fa-arrow-down"></i>
         <% end %>
         <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
-          <i class="arrow up icon"></i>
+          <i class="fas fa-arrow-up"></i>
         <% end %>
       </td>
       <td><%= job_title.name %></td>
@@ -67,7 +48,7 @@
         <% end %>
       </td>
       <td>
-        <div class="ui labels">
+        <div>
           <% job_title.roles.pluck(:name).each do |role| %>
             <span class="ui label"><%= role %></span>
           <% end %>

@@ -12,7 +12,6 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
     @job_titles = JobTitle.default_where(q_params).page(params[:page])
 
     @selected_job_titles = JobTitle.where.not(super_job_title_id: nil).default_where(q_params).order(grade: :asc)
-    @super_job_titles = SuperJobTitle.default_where(default_params).order(grade: :asc)
   end
 
   def new

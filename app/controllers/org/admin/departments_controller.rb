@@ -1,5 +1,5 @@
 class Org::Admin::DepartmentsController < Org::Admin::BaseController
-  before_action :set_department, only: [:show, :edit, :need, :update, :destroy]
+  before_action :set_department, only: [:show, :super_job_titles, :edit, :need, :update, :destroy]
   before_action :prepare_form, only: [:new, :create, :edit, :update]
 
   def index
@@ -46,6 +46,10 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
     }
     q_params.merge! params.permit(:enabled)
     @members = @department.all_members.includes(:member_departments).default_where(q_params).page(params[:page])
+  end
+
+  def super_job_titles
+    @super_job_titles = SuperJobTitle.default_where(default_params).order(grade: :asc)
   end
 
   def new
