@@ -21,10 +21,10 @@ module RailsOrg::Member
     belongs_to :organ, counter_cache: true, inverse_of: :members, optional: true
 
     has_many :member_departments, dependent: :delete_all
-    has_many :super_member_departments, ->{ where.not(super_job_title_id: nil) }, class_name: 'MemberDepartment'
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
     # has_many :xx, through: :member_departments, source: :members  # todo use one sql to fix this
+    has_many :member_supers, dependent: :delete_all
     accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
     accepts_nested_attributes_for :organ
 
@@ -51,6 +51,10 @@ module RailsOrg::Member
     after_create :sync_member_roles, if: -> { owned? }
   end
 
+  def grade
+    member_departments.minimum(:grade)
+  end
+
   def sync_account_user
     self.user_id ||= account&.user_id
   end
@@ -60,10 +64,6 @@ module RailsOrg::Member
       self.name ||= user.name
       self.avatar_blob ||= user.avatar_blob
     end
-  end
-
-  def grade
-    member_departments.minimum(:grade)
   end
 
   def init_user

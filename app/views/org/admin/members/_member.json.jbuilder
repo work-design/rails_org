@@ -1,3 +1,5 @@
-json.extract! member,
-              :id,
-              :name
+json.extract!(
+  member,
+  :id,
+  :name
+)

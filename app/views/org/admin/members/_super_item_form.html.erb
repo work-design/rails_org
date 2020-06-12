@@ -1,21 +1,10 @@
 <div class="field is-horizontal" id="member_member_departments_<%= ef.index %>" data-title="member_member_departments">
   <% if ef.index == 0 %>
-    <%= ef.options[:parent_builder].label :member_departments %>
+    <%= ef.options[:parent_builder].label :member_supers %>
   <% else %>
     <label class="field-label">负责部门</label>
   <% end %>
   <div class="field-body control">
-    <% if params[:department_id] %>
-      <%= ef.hidden_field :department_id, value: params[:department_id] %>
-    <% else %>
-      <% if ef.object.department %>
-        <% ef.object.department.self_and_ancestors.reverse_each do |node| %>
-          <%= render partial: 'outer_options', locals: { f: ef, node: node, outer: 'department', depth: node.depth } %>
-        <% end %>
-      <% else %>
-        <%= render partial: 'outer_options', locals: { f: ef, node: Department.new(organ_id: current_session_organ&.id), outer: 'department', depth: 0 } %>
-      <% end %>
-    <% end %>
     <div class="field is-narrow" id="job_title_id_wrap_<%= ef.index %>">
       <%= ef.collection_select :super_job_title_id, ef.object.super_job_title_options, :id, :name, { include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
     </div>

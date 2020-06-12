@@ -11,16 +11,8 @@
   <td>
     <% member.member_departments.each do |md| %>
       <p>
-        <span>
-          <%= link_to md.department.full_name, admin_department_path(md.department_id) %>
-        </span>
-        <span>
-          <% if md.super_job_title %>
-            <%= md.super_job_title.name %>
-          <% else %>
-            <%= md.job_title.name %>
-          <% end %>
-        </span>
+        <%= link_to md.department.full_name, admin_department_path(md.department_id) %>
+        <span><%= md.job_title.name %></span>
       </p>
     <% end %>
   </td>

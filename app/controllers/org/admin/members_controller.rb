@@ -36,6 +36,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
       @member = Member.new
     end
     @member.member_departments.build(department_id: params[:department_id])
+    @member.member_supers.build
   end
 
   def create
@@ -45,7 +46,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
       @member = Member.new
     end
     @member.assign_attributes member_params
-    binding.pry
+
     unless @member.save
       render :new, locals: { model: @member }, status: :unprocessable_entity
     end
@@ -71,6 +72,9 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   def edit
     if @member.member_departments.count == 0
       @member.member_departments.build(department_id: params[:department_id])
+    end
+    if @member.member_supers.count == 0
+      @member.member_supers.build
     end
   end
 
