@@ -13,11 +13,7 @@ module RailsOrg::MemberSuper
   end
 
   def super_job_title_options
-    if department
-      department.root.super_job_titles
-    else
-      SuperJobTitle.none
-    end
+    SuperJobTitle.all
   end
 
 end

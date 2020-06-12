@@ -41,6 +41,7 @@ zh:
         name: 姓名
         name-like: 姓名包含
         member_departments: 部门
+        member_supers: 上级
         resume: 简历
         role_ids: 权限
         job_titles: 职级

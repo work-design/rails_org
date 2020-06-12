@@ -26,6 +26,7 @@ module RailsOrg::Member
     # has_many :xx, through: :member_departments, source: :members  # todo use one sql to fix this
     has_many :member_supers, dependent: :delete_all
     accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
+    accepts_nested_attributes_for :member_supers, reject_if: :all_blank, allow_destroy: true
     accepts_nested_attributes_for :organ
 
     has_many :inferior_member_departments, class_name: 'MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
