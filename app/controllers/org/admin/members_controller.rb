@@ -99,7 +99,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   end
 
   def remove_item
-
   end
 
   def token
@@ -126,7 +125,8 @@ class Org::Admin::MembersController < Org::Admin::BaseController
       :avatar,
       :resume,
       role_ids: [],
-      member_departments_attributes: {}
+      member_departments_attributes: {},
+      member_supers_attributes: {}
     )
   end
 

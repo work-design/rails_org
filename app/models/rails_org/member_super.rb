@@ -13,7 +13,7 @@ module RailsOrg::MemberSuper
   end
 
   def super_job_title_options
-    SuperJobTitle.all
+    SuperJobTitle.where(organ_id: member.organ_id)
   end
 
 end
