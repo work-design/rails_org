@@ -12,7 +12,7 @@ module RailsOrg::MemberDepartment
     belongs_to :department, counter_cache: true, inverse_of: :member_departments
     belongs_to :job_title
     has_many :descendant_hierarchies, class_name: 'DepartmentHierarchy', foreign_key: :ancestor_id, primary_key: :department_id
-    has_many :self_and_descendants, ->(o){ default_where('super_grade-lte': o.super_grade, 'grade-gt': o.grade) }, through: :descendant_hierarchies, source: :member_department
+    has_many :self_and_descendants, ->(o){ default_where('grade-gt': o.grade) }, through: :descendant_hierarchies, source: :member_department
     has_many :members, through: :self_and_descendants, source: :member
 
     validates :department_id, uniqueness: { scope: :member_id }
