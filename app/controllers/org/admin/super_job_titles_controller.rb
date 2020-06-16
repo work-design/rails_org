@@ -47,16 +47,6 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
     end
   end
 
-  def create_department
-    jtr = @super_job_title.job_titles.build(department_id: params[:department_id])
-    jtr.insert_at x
-  end
-
-  def destroy_department
-    jtr = @super_job_title.job_titles.find_by(department_id: params[:department_id])
-    jtr.destroy
-  end
-
   def destroy
     @super_job_title.destroy
   end

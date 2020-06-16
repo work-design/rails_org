@@ -58,9 +58,12 @@ Rails.application.routes.draw do
       end
       member do
         get :need
-        get :super_job_titles
       end
       resources :job_titles do
+        collection do
+          post 'department' => :create_department
+          delete 'department' => :destroy_department
+        end
         member do
           patch :move_lower
           patch :move_higher
@@ -74,8 +77,6 @@ Rails.application.routes.draw do
         patch :move_lower
         patch :move_higher
         patch :reorder
-        post 'department' => :create_department
-        delete 'department' => :destroy_department
       end
     end
     resources :members do
@@ -93,8 +94,12 @@ Rails.application.routes.draw do
         patch :mock
       end
       resources :member_departments do
-        get :options, on: :collection
-        get 'options' => :member_options, on: :member
+        collection do
+          get :options
+        end
+        member do
+          get 'options' => :member_options
+        end
       end
       resources :organ_grants
     end

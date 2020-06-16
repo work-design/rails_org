@@ -40,6 +40,17 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
     end
   end
 
+  def create_department
+    jtr = @super_job_title.job_titles.build(department_id: params[:department_id])
+    x = JobTitle.where.not(super_job_title_id: nil).where(department_root_id: @department.root.id).pluck(:super_job_title_id)
+    jtr.insert_at x
+  end
+
+  def destroy_department
+    jtr = @super_job_title.job_titles.find_by(department_id: params[:department_id])
+    jtr.destroy
+  end
+
   def move_higher
     @job_title.move_higher
     redirect_to admin_department_job_titles_url(@department)
