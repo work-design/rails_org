@@ -1,0 +1,21 @@
+<tbody>
+<% @super_job_titles.each do |super_job_title| %>
+  <tr>
+    <td><%= super_job_title.grade %></td>
+    <td><%= super_job_title.name %></td>
+    <td><%= super_job_title.description %></td>
+    <td>
+      <div data-controller="input">
+        <% if @department.root.all_job_titles.pluck(:super_job_title_id).include?(super_job_title.id) %>
+          <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: department_admin_super_job_title_path(super_job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+        <% else %>
+          <%= check_box_tag :department_id, @department.id, false, data: { method: :post, remote: true, url: department_admin_super_job_title_path(super_job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+        <% end %>
+        <label></label>
+      </div>
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+<% end %>
+</tbody>
