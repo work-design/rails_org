@@ -49,7 +49,7 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
 
   def create_department
     jtr = @super_job_title.job_titles.build(department_id: params[:department_id])
-    jtr.save
+    jtr.insert_at x
   end
 
   def destroy_department
