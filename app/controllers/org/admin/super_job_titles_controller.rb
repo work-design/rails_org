@@ -48,13 +48,13 @@ class Org::Admin::SuperJobTitlesController < Org::Admin::BaseController
   end
 
   def create_department
-    jtr = @super_job_title.job_title_references.build(department_id: params[:department_id])
+    jtr = @super_job_title.job_titles.build(department_id: params[:department_id])
     jtr.save
   end
 
   def destroy_department
-    jtr = @super_job_title.job_title_references.where(department_id: params[:department_id])
-    jtr.delete_all
+    jtr = @super_job_title.job_titles.find_by(department_id: params[:department_id])
+    jtr.destroy
   end
 
   def destroy

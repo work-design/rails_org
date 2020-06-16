@@ -12,13 +12,17 @@
     </td>
     <td><%= job_title.name %></td>
     <td><%= job_title.description %></td>
-    <td>
+    <td data-controller="input">
       <% if job_title.department_id == @department.id %>
         <span><%= job_title.department.full_name %></span>
       <% elsif job_title.department %>
         <%= link_to job_title.department.full_name, admin_department_job_titles_path(job_title.department_id) %>
       <% else %>
         <%= link_to t('org.admin.job_titles.index.title'), admin_super_job_titles_path %>
+      <% end %>
+      <% if job_title.super_job_title %>
+        <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: department_admin_super_job_title_path(job_title.super_job_title_id), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+        <label></label>
       <% end %>
     </td>
     <td>
