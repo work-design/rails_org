@@ -23,9 +23,8 @@ module RailsOrg::Member
     has_many :member_departments, dependent: :delete_all
     has_many :departments, through: :member_departments
     has_many :job_titles, through: :member_departments
-    has_many :member_supers, dependent: :delete_all
+    has_many :members, through: :member_departments, source: :members
     accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
-    accepts_nested_attributes_for :member_supers, reject_if: :all_blank, allow_destroy: true
     accepts_nested_attributes_for :organ
 
     has_many :inferior_member_departments, class_name: 'MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids

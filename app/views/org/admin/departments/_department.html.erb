@@ -26,14 +26,6 @@
     <% end %>
   </td>
   <td>
-    <% department.super_job_titles.each do |super_job_title| %>
-      <div class="button is-small is-light" aria-label="<%= super_job_title.grade %>"><%= super_job_title.name %></div>
-    <% end %>
-    <%= link_to super_job_titles_admin_department_path(department), aria: { label: t('.job_title') }, class: 'button is-small is-rounded is-light' do %>
-      <i class="fas fa-user-tag"></i>
-    <% end %>
-  </td>
-  <td>
     <%= link_to department.leader.name, admin_member_path(department.leader.id), remote: true if department.leader %>
   </td>
   <td>

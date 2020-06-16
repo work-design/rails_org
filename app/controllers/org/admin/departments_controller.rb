@@ -48,10 +48,6 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
     @members = @department.all_members.includes(:member_departments).default_where(q_params).page(params[:page])
   end
 
-  def super_job_titles
-    @super_job_titles = SuperJobTitle.default_where(default_params).order(grade: :asc)
-  end
-
   def new
     @department = Department.new(parent_id: params[:parent_id])
   end

@@ -9,6 +9,7 @@ module RailsOrg::JobTitle
 
     belongs_to :department
     belongs_to :department_root, class_name: 'Department'
+    belongs_to :super_job_title, optional: true
     has_many :member_departments, dependent: :destroy
     has_many :members, through: :member_departments, source: :member
     has_many :same_job_titles, class_name: self.base_class.name, foreign_key: :department_root_id, primary_key: :department_root_id

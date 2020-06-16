@@ -8,26 +8,17 @@ module RailsOrg::SuperJobTitle
     attribute :limit_member, :integer
 
     belongs_to :organ, optional: true
-    has_many :member_departments, dependent: :destroy
-    has_many :members, through: :member_departments, source: :member
-    has_many :job_title_references, dependent: :delete_all
-    has_many :lower_job_titles, through: :job_title_references, source: :department_job_titles
-    has_many :departments, through: :job_title_references
+    has_many :job_titles, dependent: :destroy
 
-    default_scope -> { order(grade: :desc) }
+    default_scope -> { order(grade: :asc) }
 
-    after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
+    #after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
 
-    acts_as_list column: :grade, scope: :organ_id, add_new_at: :top
+    acts_as_list column: :grade, scope: :organ_id
   end
 
-  def lower_job_title_ids
-    lower_job_titles.pluck(:id)
-  end
 
-  def sync_grade_member_departments
-    member_departments.update_all(super_grade: self.grade)
-  end
+
 
   def sync_to_role_ids
     self.role_ids = cached_role_ids

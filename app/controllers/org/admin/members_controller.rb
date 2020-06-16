@@ -36,7 +36,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
       @member = Member.new
     end
     @member.member_departments.build(department_id: params[:department_id])
-    @member.member_supers.build
   end
 
   def create
@@ -72,9 +71,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   def edit
     if @member.member_departments.count == 0
       @member.member_departments.build(department_id: params[:department_id])
-    end
-    if @member.member_supers.count == 0
-      @member.member_supers.build
     end
   end
 
@@ -126,7 +122,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
       :resume,
       role_ids: [],
       member_departments_attributes: {},
-      member_supers_attributes: {}
     )
   end
 
