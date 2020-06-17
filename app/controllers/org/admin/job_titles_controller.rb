@@ -43,7 +43,7 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
   def create_department
     @super_job_title = SuperJobTitle.find params[:super_job_title_id]
     jtr = @super_job_title.job_titles.build(department_id: params[:department_id])
-    x = JobTitle.where.not(super_job_title_id: nil).where(department_root_id: @department.root.id).max(:super_grade)
+    x = @department.root.all_job_titles.where.not(super_job_title_id: nil).default_where('super_grade-lte': @super_job_title.grade).minimum(:grade) || 1
     jtr.insert_at x
   end
 

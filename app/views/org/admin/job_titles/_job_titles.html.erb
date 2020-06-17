@@ -1,4 +1,3 @@
-<tbody>
 <% @job_titles.each do |job_title| %>
   <tr>
     <td>
@@ -20,10 +19,6 @@
       <% else %>
         <%= link_to t('org.admin.job_titles.index.title'), admin_super_job_titles_path %>
       <% end %>
-      <% if job_title.super_job_title %>
-        <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: admin_department_job_title_path(@department, job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
-        <label></label>
-      <% end %>
     </td>
     <td>
       <div>
@@ -35,11 +30,16 @@
         <% end %>
       </div>
     </td>
-    <td>
+    <td data-controller="input">
       <% if job_title.department_id == @department.id %>
         <%= link_to edit_admin_department_job_title_path(@department, job_title), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light', remote: true do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
+      <% end %>
+      <% if job_title.super_job_title %>
+        <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: admin_department_job_title_path(@department, job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+        <label></label>
+      <% else %>
         <%= link_to admin_department_job_title_path(@department, job_title), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
@@ -47,4 +47,3 @@
     </td>
   </tr>
 <% end %>
-</tbody>

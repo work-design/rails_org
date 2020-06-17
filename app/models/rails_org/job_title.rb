@@ -3,7 +3,7 @@ module RailsOrg::JobTitle
 
   included do
     attribute :grade, :integer
-    attribute :super_grade, :integer
+    attribute :super_grade, :integer, default: 0
     attribute :name, :string
     attribute :description, :string
     attribute :limit_member, :integer
@@ -27,7 +27,7 @@ module RailsOrg::JobTitle
   def init_department_root
     self.department_root = self.department.root
     if super_job_title
-      self.super_grade = super_job_title.super_grade
+      self.super_grade = super_job_title.grade
       self.name = super_job_title.name
       self.description = super_job_title.description
     end
