@@ -21,7 +21,7 @@
         <%= link_to t('org.admin.job_titles.index.title'), admin_super_job_titles_path %>
       <% end %>
       <% if job_title.super_job_title %>
-        <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: department_admin_super_job_title_path(job_title.super_job_title_id), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+        <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: admin_department_job_title_path(@department, job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
         <label></label>
       <% end %>
     </td>

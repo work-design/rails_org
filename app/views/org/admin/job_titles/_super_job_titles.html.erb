@@ -7,7 +7,7 @@
     <td>
       <div data-controller="input">
         <% unless @selected_job_title_ids.include?(super_job_title.id) %>
-          <%= check_box_tag :department_id, @department.id, false, data: { method: :post, remote: true, url: department_admin_super_job_title_path(super_job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+          <%= check_box_tag :department_id, @department.id, false, data: { method: :post, remote: true, url: department_admin_department_job_titles_path(@department, super_job_title_id: super_job_title.id), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
         <% end %>
         <label></label>
       </div>

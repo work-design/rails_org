@@ -62,7 +62,6 @@ Rails.application.routes.draw do
       resources :job_titles do
         collection do
           post 'department' => :create_department
-          delete 'department' => :destroy_department
         end
         member do
           patch :move_lower

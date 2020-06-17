@@ -41,14 +41,10 @@ class Org::Admin::JobTitlesController < Org::Admin::BaseController
   end
 
   def create_department
+    @super_job_title = SuperJobTitle.find params[:super_job_title_id]
     jtr = @super_job_title.job_titles.build(department_id: params[:department_id])
-    x = JobTitle.where.not(super_job_title_id: nil).where(department_root_id: @department.root.id).pluck(:super_job_title_id)
+    x = JobTitle.where.not(super_job_title_id: nil).where(department_root_id: @department.root.id).max(:super_grade)
     jtr.insert_at x
-  end
-
-  def destroy_department
-    jtr = @super_job_title.job_titles.find_by(department_id: params[:department_id])
-    jtr.destroy
   end
 
   def move_higher
