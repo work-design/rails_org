@@ -18,9 +18,6 @@ module RailsOrg::Organ
     has_many :supports, -> { where(department_id: nil) }, dependent: :destroy
     has_many :departments, dependent: :destroy
     has_many :members, dependent: :destroy
-    has_many :rooms, dependent: :delete_all
-    has_many :organ_grants, dependent: :delete_all
-    has_many :organ_tokens, dependent: :delete_all
     has_many :super_job_titles, dependent: :destroy
     accepts_nested_attributes_for :members
 

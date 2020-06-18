@@ -28,7 +28,7 @@ module RailsOrg::Member
     accepts_nested_attributes_for :organ
 
     has_many :inferior_member_departments, class_name: 'MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
-    has_many :authorized_tokens, dependent: :delete_all
+    has_many :authorized_tokens, dependent: :nullify
 
     has_one :resign
     has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
