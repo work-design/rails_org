@@ -5,7 +5,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
     q_params = {}
     q_params.merge! params.permit(:name)
 
-    @organs = Organ.default_where(q_params).order(id: :desc).page(params[:page])
+    @organs = Organ.roots.default_where(q_params).order(id: :desc).page(params[:page])
   end
 
   def show

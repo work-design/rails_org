@@ -41,6 +41,7 @@ zh:
       organs:
         index:
           title: 组织列表
+          mock: 进入该组织
     our:
       title: 分支机构
       organs:

@@ -13,6 +13,7 @@
         <p><%= Organ.human_attribute_name(:area_id) %></p>
         <p><%= Organ.human_attribute_name(:address) %></p>
       </th>
+      <th></th>
       <th>
         <%= link_to new_panel_organ_path, remote: true, class: 'button is-link is-small' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
@@ -21,7 +22,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody data-controller="tree">
   <% @organs.each do |organ| %>
     <%= render partial: 'organ', object: organ %>
     <%= draw_tree(partial: 'org/panel/organs/organ', object: organ) %>

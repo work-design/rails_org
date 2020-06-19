@@ -2,7 +2,7 @@
   <td>
     <span style="width: <%= organ.depth * 1.43 %>em; display: inline-block;"></span>
     <% if !organ.leaf? %>
-      <i class="fas fa-caret-down fa-fw"></i>
+      <i class="fas fa-caret-down fa-fw" style="cursor: pointer;"></i>
     <% else %>
       <i class="fas fa-minus fa-fw"></i>
     <% end %>
@@ -25,7 +25,7 @@
     <%= link_to our_organ_path(organ), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
-    <%= link_to our_organs_url(subdomain: organ.subdomain), aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to our_organ_url(subdomain: organ.subdomain), aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-hand-point-right"></i>
     <% end %>
   </td>

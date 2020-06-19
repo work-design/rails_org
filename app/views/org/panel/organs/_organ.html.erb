@@ -2,9 +2,9 @@
   <td>
     <span style="width: <%= organ.depth * 1.43 %>em; display: inline-block;"></span>
     <% if !organ.leaf? %>
-      <i class="fas fa-caret-down fa-fw"></i>
+      <i class="fas fa-fw fa-caret-down" data-action="click->tree#collapse" style="cursor: pointer;"></i>
     <% else %>
-      <i class="fas fa-minus fa-fw"></i>
+      <i class="fas fa-fw fa-minus"></i>
     <% end %>
     <%= organ.name %>
     <% if organ.name_short %>
@@ -17,6 +17,16 @@
   <td>
     <p><%= organ.area&.full_name %></p>
     <p><%= organ.address %></p>
+  </td>
+  <td>
+    <div>
+      <% organ.roles.pluck(:name).each do |role| %>
+        <span><%= role %></span>
+      <% end %>
+      <%= link_to edit_admin_who_roles_path('Organ', organ.id), aria: { label: t('role.admin.who_roles.edit.title') }, remote: true do %>
+        <i class="fas fa-user-shield"></i>
+      <% end %>
+    </div>
   </td>
   <td>
     <%= link_to edit_panel_organ_path(organ), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
