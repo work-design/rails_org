@@ -1,4 +1,4 @@
-<table class="ui very basic large table">
+<table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
       <th class="six wide">
@@ -9,11 +9,11 @@
   </thead>
   <tbody>
     <tr>
-      <td class="right aligned"><%= MemberDepartment.human_attribute_name(:office_id) %></td>
+      <td class="has-text-right"><%= MemberDepartment.human_attribute_name(:office_id) %></td>
       <td><%= @member_department.office_id %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= MemberDepartment.human_attribute_name(:job_title_id) %></td>
+      <td class="has-text-right"><%= MemberDepartment.human_attribute_name(:job_title_id) %></td>
       <td><%= @member_department.job_title_id %></td>
     </tr>
   </tbody>

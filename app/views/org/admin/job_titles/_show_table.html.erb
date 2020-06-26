@@ -1,4 +1,4 @@
-<table class="ui very basic large table">
+<table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
       <th class="six wide">
@@ -9,15 +9,15 @@
   </thead>
   <tbody>
     <tr>
-      <td class="right aligned"><%= JobTitle.human_attribute_name(:department) %></td>
+      <td class="has-text-right"><%= JobTitle.human_attribute_name(:department) %></td>
       <td><%= @job_title.department %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= JobTitle.human_attribute_name(:name) %></td>
+      <td class="has-text-right"><%= JobTitle.human_attribute_name(:name) %></td>
       <td><%= @job_title.name %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= JobTitle.human_attribute_name(:grade) %></td>
+      <td class="has-text-right"><%= JobTitle.human_attribute_name(:grade) %></td>
       <td><%= @job_title.grade %></td>
     </tr>
   </tbody>

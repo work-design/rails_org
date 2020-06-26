@@ -9,11 +9,11 @@
   </thead>
   <tbody>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:leader) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:leader) %></td>
       <td><%= @member.leader&.name %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:role_ids) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:role_ids) %></td>
       <td class="ui labels">
         <% @member.roles.each do |role| %>
           <span class="ui label"><%= role.name %></span>
@@ -24,11 +24,11 @@
       </td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:identity) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:identity) %></td>
       <td><%= @member.identity %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:department) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:department) %></td>
       <td>
         <% @member.departments.each do |department| %>
           <p><%= link_to department.full_name, admin_department_path(department) %></p>
@@ -36,11 +36,11 @@
       </td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:join_on) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:join_on) %></td>
       <td><%= @member.join_on %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:tutorials) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:tutorials) %></td>
       <td>
         <table class="ui very basic table">
           <% @member.tutorials.each do |tutorial| %>

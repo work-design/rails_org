@@ -1,4 +1,4 @@
-<table class="ui very basic large table">
+<table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
       <th class="three wide"></th>
@@ -9,31 +9,31 @@
   </thead>
   <tbody>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:number) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:number) %></td>
       <td><%= @member.number %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:name) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:name) %></td>
       <td><%= @member.name %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:join_on) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:join_on) %></td>
       <td><%= @member.join_on %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:department) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:department) %></td>
       <td><%= @member.department&.full_name %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:office) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:office) %></td>
       <td><%= @member.office&.name %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:experience) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:experience) %></td>
       <td><%= simple_format(@member.experience) %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Member.human_attribute_name(:attendance_number) %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:attendance_number) %></td>
       <td><%= @member.attendance_number %></td>
     </tr>
   </tbody>

@@ -1,4 +1,4 @@
-<table class="ui very basic large table">
+<table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
       <th class="six wide">
@@ -9,19 +9,19 @@
   </thead>
   <tbody>
     <tr>
-      <td class="right aligned"><%= Organ.human_attribute_name(:name) %></td>
+      <td class="has-text-right"><%= Organ.human_attribute_name(:name) %></td>
       <td><%= @organ.name %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Organ.human_attribute_name(:organ_uuid) %></td>
+      <td class="has-text-right"><%= Organ.human_attribute_name(:organ_uuid) %></td>
       <td><%= @organ.organ_uuid %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Organ.human_attribute_name(:area_id) %></td>
+      <td class="has-text-right"><%= Organ.human_attribute_name(:area_id) %></td>
       <td><%= @organ.area&.full_name %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Organ.human_attribute_name(:limit_wechat) %></td>
+      <td class="has-text-right"><%= Organ.human_attribute_name(:limit_wechat) %></td>
       <td><%= @organ.limit_wechat %></td>
     </tr>
   </tbody>
