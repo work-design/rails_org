@@ -11,6 +11,7 @@ module RailsOrg::Organ
     attribute :limit_wechat, :integer, default: 1
     attribute :members_count, :integer, default: 0
     attribute :official, :boolean, default: false, comment: '是否官方'
+    attribute :domain, :string
 
     has_taxons :area
     belongs_to :area, optional: true
@@ -40,6 +41,16 @@ module RailsOrg::Organ
 
   def host
     ActionDispatch::Http::URL.url_for host: Rails.application.routes.default_url_options[:host], subdomain: subdomain, trailing_slash: true
+  end
+
+  def auth_host(request_host = nil)
+    if domain
+      r = URI(domain)
+      ActionDispatch::Http::URL.url_for host: r.host, port: r.port, protocol: r.scheme
+    elsif request_host
+      r = URI(request_host)
+      ActionDispatch::Http::URL.url_for host: r.host, port: r.port, protocol: r.scheme
+    end
   end
 
   def downcase_code

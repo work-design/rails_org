@@ -1,9 +1,0 @@
-.main .ui.cards {
-  flex-direction: column;
-  align-content: center;
-}
-
-.main .ui.cards .card {
-  width: auto;
-  flex-grow: 1;
-}
