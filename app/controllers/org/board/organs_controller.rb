@@ -2,7 +2,7 @@ class Org::Board::OrgansController < Org::Board::BaseController
   before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def index
-    @members = current_user.members.page(params[:page])
+    @organs = current_user.members.includes(:organ).group_by(&:organ)
     session.delete :organ_token
   end
 
