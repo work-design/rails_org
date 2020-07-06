@@ -45,8 +45,9 @@ module RailsOrg::Member
     scope :enabled, -> { where(enabled: true) }
 
     validates :identity, uniqueness: { scope: :organ_id }
+
     #before_save :sync_tutorials, if: -> { join_on_changed? }
-    before_save :sync_account_user, if: -> { identity_changed? }
+    before_save :sync_account_user
     before_save :sync_avatar_from_user, if: -> { user_id_changed? }
     after_create :sync_member_roles, if: -> { owned? }
   end
@@ -56,7 +57,11 @@ module RailsOrg::Member
   end
 
   def sync_account_user
-    self.user_id ||= account&.user_id
+    if identity.blank? && user.present?
+      self.identity = user.primary_account&.identity
+    elsif identity_changed? && user.blank?
+      self.user_id = account&.user_id
+    end
   end
 
   def sync_avatar_from_user
