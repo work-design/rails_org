@@ -1,1 +1,0 @@
-$('#resign_state').dropdown();

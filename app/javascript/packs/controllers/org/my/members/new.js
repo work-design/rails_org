@@ -1,2 +1,0 @@
-$('#member_identity').dropdown();
-
