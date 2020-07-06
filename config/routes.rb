@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     controller :home do
       get :index
     end
-    resource :member
+    resource :member, except: [:new, :create]
     resources :departments
     resources :tutorials do
       get :tutorings, on: :collection
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   scope :my, module: 'org/board', as: :my do
     resources :organs
-    resources :members do
+    resources :members, only: [:new, :create] do
       member do
         patch :login_admin
         patch :login_my

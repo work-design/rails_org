@@ -1,9 +1,10 @@
 import { Controller } from 'stimulus'
 
 class MemberController extends Controller {
+  static targets = ['input', 'value']
 
   connect() {
-    console.log('Member Controller works!')
+    console.debug('Member Controller works!')
   }
 
   request(element) {
@@ -24,6 +25,13 @@ class MemberController extends Controller {
       type: 'GET',
       dataType: 'script'
     })
+  }
+
+  // click->member#choose
+  choose(event) {
+    let ele = event.currentTarget
+    this.valueTarget.value = ele.dataset['id']
+    this.inputTarget.value = ele.dataset['name']
   }
 
 }

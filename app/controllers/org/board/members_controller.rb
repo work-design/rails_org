@@ -1,36 +1,20 @@
 class Org::Board::MembersController < Org::Board::BaseController
-  before_action :set_member, only: [:show, :edit, :update, :login_my, :login_admin]
-
-  def index
-    @members = current_user.members.enabled.includes(:organ).order(id: :asc)
-  end
+  before_action :set_member, only: [:login_my, :login_admin]
 
   def new
     @member = current_user.members.build
+    @organs = Organ.limit(5)
     @identities = current_user.available_account_identities.pluck(:identity).map { |i| [i, i] }
   end
 
   def create
-    @member = Member.find_or_initialize_by(identity: member_params[:identity])
-    @member.user = current_user
+    @member = current_user.members.build
     @member.assign_attributes member_params
 
-    unless @member.save
+    if @member.save
+      render 'create', locals: { return_to: params[:return_to].presence || my_user_url }
+    else
       render :new, locals: { model: @member }, status: :unprocessable_entity
-    end
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    @member.assign_attributes member_params
-
-    unless @member.save
-      render :edit, locals: { model: @member }, status: :unprocessable_entity
     end
   end
 
@@ -52,6 +36,7 @@ class Org::Board::MembersController < Org::Board::BaseController
   def member_params
     params.fetch(:member, {}).permit(
       :name,
+      :organ_id,
       :identity,
       :profession,
       :attendance_number,
