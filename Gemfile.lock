@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 10744237a6fc7f1a94ab07b2bfd2c38dc3a74f1c
+  revision: 3ace4fde1d7bac2a05819eabc75e2cf74f1e1db2
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 96cd3c20603e8107cde7063433ca45342934db72
+  revision: a7fd35e34d879ec505428fb545e03d6090dd84eb
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -37,12 +37,13 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 65a5bc1df9a99dabb623d5d87c7bb6efb42f0ad9
+  revision: 7230e62059a66f185976dac40fb1813fbba18ba4
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
       http-form_data (~> 2.2)
       httpx (~> 0.8)
+      kaminari
       rails (~> 6.0)
 
 GIT
@@ -55,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 0fa6f7d39efb731c7dd08700e1d57410fa7b241c
+  revision: 0e9f0204c966e55c0c1e8946f7d75ea465897818
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)

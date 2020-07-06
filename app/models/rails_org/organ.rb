@@ -11,6 +11,7 @@ module RailsOrg::Organ
     attribute :limit_wechat, :integer, default: 1
     attribute :members_count, :integer, default: 0
     attribute :official, :boolean, default: false, comment: '是否官方'
+    attribute :joinable, :boolean, default: false, comment: '是否可搜索并加入'
     attribute :domain, :string
 
     has_taxons :area

@@ -13,6 +13,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
 
   def new
     @organ = Organ.new
+    @organ.area = Area.root
   end
 
   def create
@@ -24,6 +25,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
   end
 
   def edit
+    @organ.area ||= Area.root
   end
 
   def update
