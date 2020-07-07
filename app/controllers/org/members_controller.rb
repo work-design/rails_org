@@ -1,4 +1,4 @@
-class Org::MembersController < ApplicationController
+class Org::MembersController < Org::BaseController
   before_action :set_member, only: [:show]
 
   def index

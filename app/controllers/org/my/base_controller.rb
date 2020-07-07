@@ -1,3 +1,4 @@
-class Org::My::BaseController < RailsOrg.config.my_controller.constantize
+class Org::My::BaseController < MyController
   include RailsOrg::Application
-end
+
+end unless defined? Org::My::BaseController

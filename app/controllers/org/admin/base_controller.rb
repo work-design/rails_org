@@ -1,3 +1,3 @@
-class Org::Admin::BaseController < RailsOrg.config.admin_controller.constantize
+class Org::Admin::BaseController < AdminController
 
-end
+end unless defined? Org::Admin::BaseController

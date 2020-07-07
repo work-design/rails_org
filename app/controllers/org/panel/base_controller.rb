@@ -1,3 +1,3 @@
-class Org::Panel::BaseController < RailsOrg.config.panel_controller.constantize
+class Org::Panel::BaseController < PanelController
 
-end
+end unless defined? Org::Panel::BaseController

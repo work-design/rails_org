@@ -1,3 +1,4 @@
-class Org::Our::BaseController < RailsOrg.config.our_controller.constantize
+class Org::Our::BaseController < OurController
   before_action :require_organ
-end
+
+end unless defined? Org::Our::BaseController

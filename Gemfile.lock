@@ -7,14 +7,14 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: ca5596d8f8fb40a31964190759887624219e5e88
+  revision: 99aded6b6ccf3a323eb361b9e23bb8c848e39bed
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: cdd7f29202535f0d5179e875a9f588f8f945bb90
+  revision: c965b22763d7b3e6446b942d7e98c3ad67058d6b
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 6.1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 185310022755f3ca0601ab5fb98f586cab616e2b
+  revision: 0ee8e458accd8d59641d4ac342a84f072bd6a26e
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 1d361e0051fa661a511dd2a428ccd1ed46864d9c
+  revision: cfec597782b003d11e83c0d5c3c7a296e26a715f
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: f5933e7793d2194d8b5cb47a10677c5280d3fdc4
+  revision: 661d8ef37a963297d25af8c4f240de7347f1d81b
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)

@@ -1,3 +1,3 @@
-class Org::Board::BaseController < RailsOrg.config.board_controller.constantize
+class Org::Board::BaseController < BoardController
 
-end
+end unless defined? Org::Board::BaseController

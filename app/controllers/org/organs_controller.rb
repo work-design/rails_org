@@ -1,4 +1,4 @@
-class Org::OrgansController < ApplicationController
+class Org::OrgansController < Org::BaseController
   before_action :set_organ, only: [:show]
 
   def index
