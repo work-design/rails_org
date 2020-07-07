@@ -58,4 +58,8 @@ module RailsOrg::Organ
     self.code = code.downcase
   end
 
+  def admin?
+    official?
+  end
+
 end
