@@ -1,7 +1,7 @@
 <table class="table is-fullwidth">
   <thead>
     <tr>
-      <th class="three wide"></th>
+      <th></th>
       <th>
         <%= link_to t('.edit'), edit_admin_member_path, class: 'is-pulled-right' %>
       </th>
@@ -14,11 +14,11 @@
     </tr>
     <tr>
       <td class="has-text-right"><%= Member.human_attribute_name(:role_ids) %></td>
-      <td class="ui labels">
+      <td>
         <% @member.roles.each do |role| %>
-          <span class="ui label"><%= role.name %></span>
+          <span class="tag"><%= role.name %></span>
         <% end %>
-        <%= link_to edit_who_roles_path('Member', @member.id), aria: { label: t('.role') }, remote: true do %>
+        <%= link_to edit_admin_who_roles_path('Member', @member.id), aria: { label: t('.role') }, remote: true do %>
           <i class="fas fa-user-shield"></i>
         <% end %>
       </td>

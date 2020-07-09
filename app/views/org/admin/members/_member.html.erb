@@ -19,9 +19,9 @@
   <td><%= member.identity %></td>
   <td><%= member.join_on %></td>
   <td>
-    <div class="buttons">
+    <div class="tags">
       <% member.roles.pluck(:name).each do |role| %>
-        <span class="button"><%= role %></span>
+        <span class="tag"><%= role %></span>
       <% end %>
     </div>
   </td>
