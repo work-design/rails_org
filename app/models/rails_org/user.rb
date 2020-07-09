@@ -5,6 +5,7 @@ module RailsOrg::User
     has_many :members, dependent: :nullify
     has_many :organs, through: :members
     has_many :organ_grants, dependent: :nullify
+    after_save :copy_avatar_to_members, if: -> { attachment_changes['avatar'].present? }
   end
 
   def available_account_identities
@@ -13,6 +14,12 @@ module RailsOrg::User
 
   def member_organ_grants
     members.map { |i| i.get_organ_grant }
+  end
+
+  def copy_avatar_to_members
+    members.each do |member|
+      member.avatar.attach attachment_changes['avatar'].blob
+    end
   end
 
 end
