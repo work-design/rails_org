@@ -1,5 +1,6 @@
 module RailsOrg::Application
   extend ActiveSupport::Concern
+
   included do
     helper_method :current_session_organ, :current_member, :other_organs
   end
@@ -9,25 +10,6 @@ module RailsOrg::Application
       current_session_organ.name
     else
       t('.title', default: :site_name)
-    end
-  end
-
-  def require_member
-    return if current_member
-
-    if request.format.html?
-      render 'require_member', locals: { return_to: RailsOrg.config.default_return_path }, layout: 'application', status: 401
-    else
-      render 'require_member', locals: { return_to: RailsOrg.config.default_return_path }, status: 401
-    end
-  end
-
-  # Must order after RailsRole::Controller
-  def rails_role_user
-    if current_session_organ && current_member
-      current_member
-    else
-      current_user
     end
   end
 
