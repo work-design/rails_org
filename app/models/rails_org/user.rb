@@ -18,7 +18,7 @@ module RailsOrg::User
 
   def copy_avatar_to_members
     members.each do |member|
-      member.avatar.attach attachment_changes['avatar'].blob
+      member.avatar.attach attachment_changes['avatar'].blob if member.avatar.blank?
     end
   end
 
