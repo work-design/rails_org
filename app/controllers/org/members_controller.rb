@@ -2,9 +2,11 @@ class Org::MembersController < Org::BaseController
   before_action :set_member, only: [:show]
 
   def index
-    q_params = params.fetch(:q, {}).permit!
-    q_params.merge! params.permit(:office_id)
-    @members = Member.includes(:department, user: { avatar_attachment: :blob }).where(enabled: true).default_where(q_params).page(params[:page]).per(30)
+    q_params = {}
+    q_params.merge! default_params
+    q_params.merge! params.permit('name-like')
+
+    @members = Member.includes(:departments, avatar_attachment: :blob).where(enabled: true).default_where(q_params).page(params[:page]).per(30)
   end
 
   def search

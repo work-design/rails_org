@@ -1,20 +1,16 @@
 <%= render 'filter_form' %>
 <%= render 'filter_table' %>
 
-<div class="ui six cards">
+<div class="box">
   <% @members.each do |member| %>
   <div class="card">
     <%= link_to member_path(member), class: 'image' do %>
-      <% if member.user && member.user.avatar.attached? %>
-        <%= image_tag member.user.avatar.variant(resize_to_limit: [150, 150]) %>
-      <% else %>
-        <%= image_tag 'default_avatar.jpg' %>
-      <% end %>
+      <%= image_tag member.avatar.variant(resize_to_limit: [150, 150]) if member.avatar.attached? %>
     <% end %>
     <div class="content">
       <span>
         <%= link_to member_path(member) do %>
-          <i class="user icon"></i><%= member.name %>
+          <i class="fas fa-user"></i><%= member.name %>
         <% end %>
       </span>
     </div>

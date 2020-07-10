@@ -1,10 +1,6 @@
 <tr>
   <td>
-    <% if member.user && member.user.avatar.attached? %>
-      <%= link_to admin_user_path(member.user_id) do %>
-        <%= image_tag member.user.avatar.variant(resize_to_limit: [35, 35]), class: 'ui avatar image' %>
-      <% end %>
-    <% end %>
+    <%= image_tag member.avatar.variant(resize_to_limit: [35, 35]), class: 'image is-32x32' if member.avatar.attached? %>
     <%= link_to member.name, admin_member_path(member) %>
   </td>
   <td><%= member.organ&.name %></td>

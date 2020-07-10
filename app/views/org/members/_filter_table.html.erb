@@ -1,10 +1,10 @@
 <table class="as-search">
   <tr>
-    <th>Office:</th>
+    <th><%= Member.human_attribute_name(:organ_id) %></th>
     <td>
-      <%= link_to t('.all'), filter_params(except: [:office_id]), class: active_params(office_id: '', active: 'button is-info', item: 'button is-light') %>
-      <% Office.all.each do |office| %>
-        <%= link_to "#{office.name}（#{office.enabled_members_count}）", filter_params(office_id: office.id), class: active_params(office_id: office.id, active: 'button is-info', item: 'button is-light') %>
+      <%= link_to t('.all'), filter_params(except: [:organ_id]), class: active_params(organ_id: '', active: 'button is-info', item: 'button is-light') %>
+      <% Organ.all.each do |organ| %>
+        <%= link_to "#{organ.name}（#{organ.members_count}）", filter_params(organ_id: organ.id), class: active_params(organ_id: organ.id, active: 'button is-info', item: 'button is-light') %>
       <% end %>
     </td>
   </tr>
