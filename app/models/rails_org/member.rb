@@ -52,6 +52,10 @@ module RailsOrg::Member
     after_create :sync_member_roles, if: -> { owned? }
   end
 
+  def admin?
+    owned?
+  end
+
   def grade
     member_departments.minimum(:grade)
   end
