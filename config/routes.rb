@@ -6,7 +6,11 @@ Rails.application.routes.draw do
         get :search
       end
     end
-    resources :organs, only: [:index, :show]
+    resources :organs, only: [:index, :show] do
+      collection do
+        get :form_search
+      end
+    end
   end
 
   scope :my, module: 'org/my', as: :my do

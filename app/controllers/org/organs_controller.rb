@@ -11,6 +11,13 @@ class Org::OrgansController < Org::BaseController
   def show
   end
 
+  def form_search
+    q_params = {}
+    q_params.merge! params.permit('name-like')
+
+    @organs = Organ.default_where(q_params)
+  end
+
   private
   def set_organ
     @organ = Organ.find params[:id]

@@ -1,0 +1,11 @@
+<div class="weui-cells__title">
+  医院结果
+</div>
+<div class="weui-cells">
+  <% @organs.each do |organ| %>
+    <div class="weui-cell" data-action="click->member#choose" data-id="<%= organ.id %>" data-name="<%= organ.name %>">
+      <div class="weui-cell__hd"></div>
+      <div class="weui-cell__bd"><%= organ.name %></div>
+    </div>
+  <% end %>
+</div>
