@@ -3,6 +3,7 @@ class Org::Board::MembersController < Org::Board::BaseController
 
   def new
     @member = current_user.members.build
+    @member.build_organ
     @organs = Organ.limit(5)
     @identities = current_user.available_account_identities.pluck(:identity).map { |i| [i, i] }
   end
@@ -43,7 +44,8 @@ class Org::Board::MembersController < Org::Board::BaseController
       :next_on_time,
       :next_off_time,
       :experience,
-      :avatar
+      :avatar,
+      organ_attributes: {}
     )
   end
 

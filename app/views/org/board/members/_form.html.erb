@@ -1,5 +1,8 @@
 <%= form_with model: @member, url: my_members_path, data: { controller: 'member' } do |f| %>
   <%= f.hidden_field :organ_id, data: { member_target: 'value' } %>
-  <%= f.text_field :organ_name, label: Member.human_attribute_name(:organ_id), data: { member_target: 'input' } %>
+  <%= f.fields :organ do |ef| %>
+    <%= ef.text_field :name, required: true %>
+    <%= ef.file_field :logo %>
+  <% end %>
   <%= f.submit %>
 <% end %>
