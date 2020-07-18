@@ -22,4 +22,10 @@ module RailsOrg::User
     end
   end
 
+  def init_avatar_to_members
+    members.each do |member|
+      member.avatar.attach avatar_blob if avatar_blob
+    end
+  end
+
 end
