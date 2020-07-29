@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: c965b22763d7b3e6446b942d7e98c3ad67058d6b
+  revision: b7a2a88fb0293a1c2d341276fcc37d9153a3186c
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 6.1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 3733a654dfded5c69450f98cb66a4a692001e23b
+  revision: 6309bc7e77a06da2f69ecddec3e66e08745519cb
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 9a0bf3a5e33d7099c1d70d834d19ccc5169b154d
+  revision: 32c4069df8167401386338750de3d2c232b64a8a
   specs:
     rails_com (1.2.9)
       acme-client
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 5693373a50b055796c9fe5f5819fed7b91deaa37
+  revision: 1666adc33032659de12b82cea02d97e26858703b
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 17e3216ea12d449e9cdf20053c0e2b079ab13a3d
+  revision: d2dcbaaa909104077a9160a5f8e5089692e54bc8
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_taxon.git
-  revision: 78ef6e3e1685fdf34787bc8a52dda6fb9c80264d
+  revision: 62e18e58cc3eeb7c4a2d39656bf0e1a332e758b2
   specs:
     rails_taxon (1.0.0)
       acts_as_list (>= 1.0)
@@ -149,7 +149,7 @@ GEM
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
     awesome_print (1.8.0)
-    bcrypt (3.1.13)
+    bcrypt (3.1.15)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.4)

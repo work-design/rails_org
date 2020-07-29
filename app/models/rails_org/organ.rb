@@ -26,6 +26,8 @@ module RailsOrg::Organ
 
     has_one_attached :logo
 
+    scope :official, -> { where(official: true) }
+
     validates :name, presence: true
     validates :code, presence: true
     validates :organ_uuid, uniqueness: true

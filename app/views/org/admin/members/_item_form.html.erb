@@ -19,7 +19,7 @@
     <div class="field is-narrow" id="job_title_id_wrap_<%= ef.index %>">
       <%= ef.collection_select :job_title_id, ef.object.job_title_options, :id, :name, { include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
     </div>
-    <div class="field has-addons">
+    <div class="field has-addons has-addons-middle">
       <%= link_to add_item_admin_members_path('item', index: ef.index), data: { title: 'add_item' }, remote: true do %>
         <i class="fas fa-plus"></i>
       <% end %>
