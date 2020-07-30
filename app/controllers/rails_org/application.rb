@@ -16,8 +16,9 @@ module RailsOrg::Application
   def current_session_organ
     return @current_session_organ if defined?(@current_session_organ)
     sd = request.subdomains
-    if sd.size == 2 && sd[1] == RailsOrg.config.subdomain
-      @current_session_organ = Organ.find_by(code: sd[0])
+    if sd.size == 2 && sd[1] == RailsCom.config.subdomain
+      id = sd[0].split('_')[1]
+      @current_session_organ = Organ.find_by(id: id)
     end
   end
 

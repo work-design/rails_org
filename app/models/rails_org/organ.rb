@@ -39,8 +39,12 @@ module RailsOrg::Organ
     before_save :downcase_code, if: -> { code && code_changed? }
   end
 
+  def subdomain_code
+    ['org', id].join('_')
+  end
+
   def subdomain
-    [self.code, RailsOrg.config.subdomain].join('.')
+    [subdomain_code, RailsCom.config.subdomain].join('.')
   end
 
   def host
