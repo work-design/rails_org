@@ -13,7 +13,6 @@ module RailsOrg::Organ
     attribute :members_count, :integer, default: 0
     attribute :official, :boolean, default: false, comment: '是否官方'
     attribute :joinable, :boolean, default: false, comment: '是否可搜索并加入'
-    attribute :auth_domain, :json, default: Rails.application.routes.default_url_options
 
     has_taxons :area
     belongs_to :area, optional: true
@@ -49,15 +48,6 @@ module RailsOrg::Organ
 
   def host
     ActionDispatch::Http::URL.url_for host: Rails.application.routes.default_url_options[:host], subdomain: subdomain, trailing_slash: true
-  end
-
-  def auth_host(request_host = nil)
-    if auth_domain
-      ActionDispatch::Http::URL.url_for host: auth_domain['host'], port: auth_domain['port'], protocol: auth_domain['protocol']
-    elsif request_host
-      r = URI(request_host)
-      ActionDispatch::Http::URL.url_for host: r.host, port: r.port, protocol: r.scheme
-    end
   end
 
   def downcase_code
