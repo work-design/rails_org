@@ -46,8 +46,8 @@ module RailsOrg::Organ
     [subdomain_code, RailsCom.config.subdomain].join('.')
   end
 
-  def host
-    ActionDispatch::Http::URL.url_for host: Rails.application.routes.default_url_options[:host], subdomain: subdomain, trailing_slash: true
+  def host(sub = subdomain)
+    ActionDispatch::Http::URL.url_for host: Rails.application.routes.default_url_options[:host], subdomain: sub, trailing_slash: true
   end
 
   def downcase_code
