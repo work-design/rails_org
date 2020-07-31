@@ -41,7 +41,7 @@ module RailsOrg::Application
     if account.members.size == 1
       @current_member = account.members.first
       @current_authorized_token = @current_member.get_organ_grant
-      logger.debug "  ==========> Login by account as member: #{@current_member.id}"
+      logger.debug "  ==========> Login by account #{account.id} as member: #{@current_member.id}"
     else
       @current_authorized_token = account.authorized_token
       logger.debug "  ==========> There are more than one organs, please goto select one;"
