@@ -4,7 +4,6 @@ module RailsOrg::User
   included do
     has_many :members, dependent: :nullify
     has_many :organs, through: :members
-    has_many :organ_grants, dependent: :nullify
     after_save :copy_avatar_to_members, if: -> { attachment_changes['avatar'].present? }
   end
 
