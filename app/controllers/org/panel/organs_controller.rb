@@ -50,6 +50,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
       :name,
       :code,
       :logo,
+      :official,
       :name_short,
       :parent_ancestors,
       :area_ancestors

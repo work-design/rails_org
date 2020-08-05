@@ -13,6 +13,7 @@
         <p><%= Organ.human_attribute_name(:area_id) %></p>
         <p><%= Organ.human_attribute_name(:address) %></p>
       </th>
+      <th><%= Organ.human_attribute_name(:official) %></th>
       <th><%= Organ.human_attribute_name(:roles) %></th>
       <th>
         <%= link_to new_panel_organ_path, remote: true, class: 'button is-link is-small' do %>

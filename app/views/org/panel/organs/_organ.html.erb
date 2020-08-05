@@ -19,6 +19,12 @@
     <p><%= organ.address %></p>
   </td>
   <td>
+    <div data-controller="input">
+      <%= check_box_tag '[organ]official', nil, organ.official, data: { method: :patch, remote: true, confirm: t('.confirm'), url: panel_organ_path(organ), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+      <label></label>
+    </div>
+  </td>
+  <td>
     <div>
       <% organ.roles.pluck(:name).each do |role| %>
         <span><%= role %></span>

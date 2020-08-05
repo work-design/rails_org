@@ -57,6 +57,7 @@ zh:
         address: 地址
         timezone: 时区
         locale: 语言
+        official: 是否官方
         organ_uuid: 机构编码
         limit_wechat: 允许微信数
         limit_office: 允许分支机构数
