@@ -39,7 +39,7 @@ module RailsOrg::Organ
   end
 
   def subdomain_code
-    ['org', id].join('_')
+    ['org', id].join('-')
   end
 
   def subdomain
