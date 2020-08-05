@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   scope :my, module: 'org/board', as: :my do
     resources :organs
     resources :members, only: [:new, :create] do
+      collection do
+        get :near
+      end
       member do
         patch :login_admin
         patch :login_my

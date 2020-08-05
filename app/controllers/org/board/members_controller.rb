@@ -1,11 +1,15 @@
 class Org::Board::MembersController < Org::Board::BaseController
   before_action :set_member, only: [:login_my, :login_admin]
+  before_action :set_organs, only: [:new]
 
   def new
     @member = current_user.members.build
     @member.build_organ
-    @organs = Organ.limit(5)
     @identities = current_user.available_account_identities.pluck(:identity).map { |i| [i, i] }
+  end
+
+  def near
+    @organs = Organ.where(official: false).limit(5)
   end
 
   def create
@@ -30,6 +34,10 @@ class Org::Board::MembersController < Org::Board::BaseController
   end
 
   private
+  def set_organs
+    @organs = Organ.where(official: false).limit(5)
+  end
+
   def set_member
     @member = current_user.members.find params[:id]
   end
