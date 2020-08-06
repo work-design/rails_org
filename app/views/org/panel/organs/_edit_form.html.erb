@@ -1,5 +1,5 @@
 <%= form_with model: [:panel, @organ] do |f| %>
   <%= render 'shared/error_messages', target: @organ %>
-  <%= render partial: 'nodes/children_select', locals: { f: f, node: Organ.root } %>
+  <%= render partial: 'taxon/nodes/children_select', locals: { f: f, node: Organ.root } %>
   <%= render partial: 'form', locals: { f: f } %>
 <% end %>
