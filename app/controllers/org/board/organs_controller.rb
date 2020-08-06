@@ -4,6 +4,13 @@ class Org::Board::OrgansController < Org::Board::BaseController
   def index
     @organs = current_user.members.includes(:organ).where.not(organ_id: nil).group_by(&:organ)
     session.delete :organ_token
+    if @organs.blank?
+      @member = current_user.members.build
+      @organ = @member.build_organ
+      render :new
+    else
+      render 'index'
+    end
   end
 
   def new
