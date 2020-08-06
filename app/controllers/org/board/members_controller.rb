@@ -1,11 +1,19 @@
 class Org::Board::MembersController < Org::Board::BaseController
   before_action :set_member, only: [:login_my, :login_admin]
-  before_action :set_organs, only: [:new]
+
+  def index
+    @organs = current_user.members.includes(:organ).where.not(organ_id: nil).group_by(&:organ)
+    session.delete :organ_token
+    if @organs.blank?
+      set_organs
+      render :new
+    else
+      render 'index'
+    end
+  end
 
   def new
-    @member = current_user.members.build
-    @member.build_organ
-    @identities = current_user.available_account_identities.pluck(:identity).map { |i| [i, i] }
+    set_organs
   end
 
   def near
@@ -17,7 +25,7 @@ class Org::Board::MembersController < Org::Board::BaseController
     @member.assign_attributes member_params
 
     if @member.save
-      render 'create', locals: { return_to: params[:return_to].presence || my_organs_url }
+      render 'create', locals: { return_to: params[:return_to].presence || my_members_url }
     else
       render :new, locals: { model: @member }, status: :unprocessable_entity
     end
@@ -36,6 +44,9 @@ class Org::Board::MembersController < Org::Board::BaseController
   private
   def set_organs
     @organs = Organ.where(official: false).limit(5)
+    @member = current_user.members.build
+    @organ = @member.build_organ
+    @identities = current_user.available_account_identities.pluck(:identity).map { |i| [i, i] }
   end
 
   def set_member

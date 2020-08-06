@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   scope :my, module: 'org/board', as: :my do
     resources :organs
-    resources :members, only: [:new, :create] do
+    resources :members, only: [:index, :new, :create] do
       collection do
         get :near
       end

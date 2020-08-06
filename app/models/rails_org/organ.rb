@@ -55,7 +55,7 @@ module RailsOrg::Organ
   end
 
   def admin?
-    cached_role_ids.compact.blank? && official?
+    Array(cached_role_ids).compact.blank? && official?
   end
 
 end
