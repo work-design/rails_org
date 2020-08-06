@@ -3,7 +3,7 @@
   <%= f.text_field :name, required: true %>
   <%= f.text_field :name_short %>
   <%= f.file_field :logo %>
-  <%= render partial: 'nodes/outer_select', locals: { f: f, node: @organ.area || Area.new, outer: 'area' } %>
+  <%= render partial: 'taxon/nodes/outer_select', locals: { f: f, node: @organ.area || Area.new, outer: 'area' } %>
   <%= f.text_area :address %>
   <%= f.time_zone_select :timezone %>
   <%= f.select :locale, options_for_select(User.options_i18n(:locale), @organ.locale) %>

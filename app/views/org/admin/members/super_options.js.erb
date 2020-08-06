@@ -11,5 +11,5 @@ while (el && el.dataset.title === 'outer_ancestors_input') {
 }
 
 <% if @department && @department.children.present? %>
-node.insertAdjacentHTML('afterend', '<%= j(render partial: 'nodes/outer_children_options', locals: { f: f_object, node: @department, depth: @department.depth + 1, outer: params[:outer] }) %>')
+node.insertAdjacentHTML('afterend', '<%= j(render partial: 'taxon/nodes/outer_children_options', locals: { f: f_object, node: @department, depth: @department.depth + 1, outer: params[:outer] }) %>')
 <% end %>

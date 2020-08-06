@@ -2,7 +2,7 @@
 <% if @department.parent %>
   <%= f.hidden_field :parent_id %>
 <% elsif current_session_organ&.parent %>
-  <%= render partial: 'nodes/outer_select', locals: { f: f, outer: 'superior', node: @root } %>
+  <%= render partial: 'taxon/nodes/outer_select', locals: { f: f, outer: 'superior', node: @root } %>
 <% end %>
 <%= f.text_field :name, required: true %>
 <%= f.number_field :needed_number %>
