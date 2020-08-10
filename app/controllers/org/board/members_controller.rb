@@ -32,13 +32,11 @@ class Org::Board::MembersController < Org::Board::BaseController
   end
 
   def login_my
-    @organ_grant = @member.get_organ_grant
-    login_organ_as @organ_grant
+    current_authorized_token.update member_id: @member.id
   end
 
   def login_admin
-    @organ_grant = @member.get_organ_grant
-    login_organ_as @organ_grant
+    current_authorized_token.update member_id: @member.id
   end
 
   private

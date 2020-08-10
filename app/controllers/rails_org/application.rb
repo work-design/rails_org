@@ -23,14 +23,8 @@ module RailsOrg::Application
   end
 
   def current_member
-    if defined?(@current_member)
-      logger.debug "  ==========> Login as member #{@current_member&.id}"
-      @current_member
-    else
-      @current_member = current_authorized_token&.member
-      logger.debug "  ==========> Login as member now #{@current_member&.id}"
-      @current_member
-    end
+    return @current_member if defined?(@current_member)
+    @current_member = current_authorized_token&.member
   end
 
   def other_organs
@@ -46,17 +40,12 @@ module RailsOrg::Application
     super
     if account.members.size == 1
       @current_member = account.members.first
-      @current_authorized_token = @current_member.get_organ_grant
+      current_authorized_token.update member_id: @current_member
       logger.debug "  ==========> Login by account #{account.id} as member: #{@current_member.id}"
     else
       @current_authorized_token = account.authorized_token
       logger.debug "  ==========> There are more than one organs, please goto select one;"
     end
-  end
-
-  def login_organ_as(organ_grant)
-    logger.debug "  ==========> Login as Organ #{organ_grant.organ_id}"
-    @current_authorized_token = organ_grant
   end
 
   def default_params

@@ -11,10 +11,6 @@ module RailsOrg::User
     accounts.where.not(identity: members.pluck(:identity)).confirmed
   end
 
-  def member_organ_grants
-    members.map { |i| i.get_organ_grant }
-  end
-
   def copy_avatar_to_members
     members.each do |member|
       member.avatar.attach attachment_changes['avatar'].blob if member.avatar.blank?
