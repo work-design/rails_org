@@ -2,7 +2,7 @@ module RailsOrg::Application
   extend ActiveSupport::Concern
 
   included do
-    helper_method :current_session_organ, :current_member, :other_organs
+    helper_method :current_session_organ, :current_member, :current_organ, :other_organs
   end
 
   def current_title
@@ -22,6 +22,11 @@ module RailsOrg::Application
     end
   end
 
+  def current_organ
+    return @current_organ if defined?(@current_organ)
+    @current_organ = current_member.organ
+  end
+
   def current_member
     return @current_member if defined?(@current_member)
     @current_member = current_authorized_token&.member
@@ -35,13 +40,11 @@ module RailsOrg::Application
     end
   end
 
-  # Must order after RailsAuth::Controller
-  def login_by_account(account)
-    super
-    @current_member = account.members.find_by(organ_id: current_session_organ&.id)
+  def set_authorized_member
+    @current_member = current_account.members.find_by(organ_id: current_session_organ&.id)
     if @current_member
       current_authorized_token.update member_id: @current_member.id
-      logger.debug "  ==========> Login by account #{account.id} as member: #{@current_member.id}"
+      logger.debug "  ==========> Login as member: #{@current_member.id}"
     end
   end
 

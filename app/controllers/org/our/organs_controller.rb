@@ -1,5 +1,6 @@
 class Org::Our::OrgansController < Org::Our::BaseController
   before_action :set_organ, only: [:edit, :update, :destroy]
+  before_action :set_authorized_member, only: [:show]
 
   def show
   end
