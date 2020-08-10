@@ -1,5 +1,4 @@
 class Org::Board::MembersController < Org::Board::BaseController
-  before_action :set_member, only: [:login_my, :login_admin]
 
   def index
     @organs = current_user.members.includes(:organ).where.not(organ_id: nil).group_by(&:organ)
