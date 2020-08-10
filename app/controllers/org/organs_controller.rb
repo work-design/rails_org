@@ -4,8 +4,6 @@ class Org::OrgansController < Org::BaseController
   def index
     q_params = { parent_id: nil, allow: { parent_id: nil } }
     @organs = Organ.default_where(q_params).order(id: :desc).page(params[:page])
-
-    session.delete :organ_token
   end
 
   def show

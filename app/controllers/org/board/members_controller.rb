@@ -3,7 +3,6 @@ class Org::Board::MembersController < Org::Board::BaseController
 
   def index
     @organs = current_user.members.includes(:organ).where.not(organ_id: nil).group_by(&:organ)
-    session.delete :organ_token
     if @organs.blank?
       set_organs
       render :new
