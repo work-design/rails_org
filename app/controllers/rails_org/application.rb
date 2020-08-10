@@ -29,7 +29,9 @@ module RailsOrg::Application
 
   def current_member
     return @current_member if defined?(@current_member)
-    @current_member = current_authorized_token&.member
+    @current_member = current_authorized_token&.member || current_account.members.find_by(organ_id: current_session_organ&.id)
+    logger.debug "  ==========> Login as member: #{@current_member&.id}"
+    @current_member
   end
 
   def other_organs
@@ -37,14 +39,6 @@ module RailsOrg::Application
       current_user.organs.where.not(id: current_session_organ.id)
     else
       current_user.organs
-    end
-  end
-
-  def set_authorized_member
-    @current_member = current_account.members.find_by(organ_id: current_session_organ&.id)
-    if @current_member
-      current_authorized_token.update member_id: @current_member.id
-      logger.debug "  ==========> Login as member: #{@current_member.id}"
     end
   end
 
