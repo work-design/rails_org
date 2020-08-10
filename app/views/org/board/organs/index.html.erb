@@ -25,8 +25,8 @@
             </div>
           </div>
           <div class="card-footer">
-            <%= link_to '前台', login_my_my_member_path(member), method: :patch, remote: true, class: 'card-footer-item' %>
-            <%= link_to '后台', login_admin_my_member_path(member), method: :patch, remote: true, class: 'card-footer-item' %>
+            <%= link_to '前台', my_root_url(subdomain: member.organ.subdomain), class: 'card-footer-item' %>
+            <%= link_to '后台', our_root_url(subdomain: member.organ.subdomain), class: 'card-footer-item' %>
           </div>
         </div>
       <% end %>

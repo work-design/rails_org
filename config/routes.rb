@@ -35,10 +35,6 @@ Rails.application.routes.draw do
       collection do
         get :near
       end
-      member do
-        patch :login_admin
-        patch :login_my
-      end
     end
   end
 

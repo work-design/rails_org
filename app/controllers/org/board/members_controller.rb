@@ -31,14 +31,6 @@ class Org::Board::MembersController < Org::Board::BaseController
     end
   end
 
-  def login_my
-    current_authorized_token.update member_id: @member.id
-  end
-
-  def login_admin
-    current_authorized_token.update member_id: @member.id
-  end
-
   private
   def set_organs
     @organs = Organ.where(official: false).limit(5)

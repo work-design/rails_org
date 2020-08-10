@@ -38,7 +38,7 @@ module RailsOrg::Application
   # Must order after RailsAuth::Controller
   def login_by_account(account)
     super
-    @current_member = account.members.find_by(organ_id: current_session_organ.id)
+    @current_member = account.members.find_by(organ_id: current_session_organ&.id)
     if @current_member
       current_authorized_token.update member_id: @current_member.id
       logger.debug "  ==========> Login by account #{account.id} as member: #{@current_member.id}"
