@@ -38,14 +38,9 @@ module RailsOrg::Application
   # Must order after RailsAuth::Controller
   def login_by_account(account)
     super
-    if account.members.size == 1
-      @current_member = account.members.first
-      current_authorized_token.update member_id: @current_member
-      logger.debug "  ==========> Login by account #{account.id} as member: #{@current_member.id}"
-    else
-      @current_authorized_token = account.authorized_token
-      logger.debug "  ==========> There are more than one organs, please goto select one;"
-    end
+    @current_member = account.members.find_by(organ_id: current_session_organ.id)
+    current_authorized_token.update member_id: @current_member.id
+    logger.debug "  ==========> Login by account #{account.id} as member: #{@current_member.id}"
   end
 
   def default_params
