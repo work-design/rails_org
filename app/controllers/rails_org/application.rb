@@ -25,9 +25,11 @@ module RailsOrg::Application
   def current_member
     if defined?(@current_member)
       logger.debug "  ==========> Login as member #{@current_member&.id}"
-      return @current_member
+      @current_member
+    else
+      @current_member = current_authorized_token&.member
+      logger.debug "  ==========> Login as member now #{@current_member&.id}"
     end
-    @current_member = current_authorized_token&.member
   end
 
   def other_organs
