@@ -29,6 +29,7 @@ module RailsOrg::Application
     else
       @current_member = current_authorized_token&.member
       logger.debug "  ==========> Login as member now #{@current_member&.id}"
+      @current_member
     end
   end
 
