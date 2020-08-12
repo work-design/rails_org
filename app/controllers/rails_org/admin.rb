@@ -1,18 +1,18 @@
 module RailsOrg::Admin
   extend ActiveSupport::Concern
 
-  def require_session_organ
-    return if current_session_organ
+  def require_organ
+    return if current_organ
 
     raise ActionController::RoutingError, 'Not Found'
   end
 
   def default_params
-    { organ_id: current_session_organ.id }
+    { organ_id: current_organ.id }
   end
 
   def default_form_params
-    { organ_id: current_session_organ.id }
+    { organ_id: current_organ.id }
   end
 
   def default_filter_params

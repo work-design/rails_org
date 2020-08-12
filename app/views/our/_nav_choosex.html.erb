@@ -1,5 +1,5 @@
 <% if current_organ %>
-  <%= link_to root_url(subdomain: false), class: 'navbar-item' do %>
+  <%= link_to root_url(subdomain: RailsCom.config.subdomain), class: 'navbar-item' do %>
     <%= image_pack_tag 'logo.jpg', class: 'image' %>
   <% end %>
   <%= link_to filter_params(subdomain: current_organ.subdomain), class: active_params(organ_id: current_organ.id) do %>
@@ -17,7 +17,7 @@
     <% end %>
   </div>
 <% else %>
-  <%= link_to root_url(subdomain: false), class: 'navbar-item' do %>
+  <%= link_to root_url(subdomain: RailsCom.config.subdomain), class: 'navbar-item' do %>
     <%= image_pack_tag 'logo.jpg', class: 'image' %>
   <% end %>
 <% end %>

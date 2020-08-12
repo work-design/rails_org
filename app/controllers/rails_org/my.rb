@@ -13,7 +13,7 @@ module RailsOrg::My
 
   # Must order after RailsRole::Controller
   def rails_role_user
-    if current_session_organ && current_member
+    if current_organ && current_member
       current_member
     else
       current_user
