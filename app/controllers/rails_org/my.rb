@@ -11,13 +11,4 @@ module RailsOrg::My
     end
   end
 
-  # Must order after RailsRole::Controller
-  def rails_role_user
-    if current_organ && current_member
-      current_member
-    else
-      current_user
-    end
-  end
-
 end

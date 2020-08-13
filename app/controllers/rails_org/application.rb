@@ -29,6 +29,15 @@ module RailsOrg::Application
     @current_member
   end
 
+  # Must order after RailsRole::Controller
+  def rails_role_user
+    if current_organ && current_member
+      current_member
+    else
+      current_user
+    end
+  end
+
   def other_organs
     if current_organ
       current_user.organs.where.not(id: current_organ.id)
