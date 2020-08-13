@@ -7,14 +7,6 @@ module RailsOrg::Admin
     raise ActionController::RoutingError, 'Not Found'
   end
 
-  def default_params
-    { organ_id: current_organ.id }
-  end
-
-  def default_form_params
-    { organ_id: current_organ.id }
-  end
-
   def default_filter_params
     if current_organ
       { organ_id: current_organ.self_and_descendant_ids }
