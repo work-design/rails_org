@@ -1,5 +1,6 @@
 module RailsOrg::JobTransfer
   extend ActiveSupport::Concern
+
   included do
     attr_accessor :department_ancestors
     attribute :state, :string, default: 'init'
