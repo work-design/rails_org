@@ -43,7 +43,7 @@ module RailsOrg::Organ
   end
 
   def subdomain
-    [subdomain_code, RailsCom.config.subdomain].join('.')
+    [subdomain_code, RailsCom.config.subdomain].compact.join('.')
   end
 
   def host(sub = subdomain)
