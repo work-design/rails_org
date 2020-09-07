@@ -5,6 +5,6 @@
   <%= render partial: 'item_form', locals: { ef: ef } %>
 <% end %>
 <%= f.text_field :identity %>
-<%= f.date_field :join_on, value: Date.today %>
+<%= f.date_field :join_on %>
 <%= f.check_box :enabled %>
 <%= f.submit %>

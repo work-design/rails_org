@@ -35,6 +35,7 @@ class Org::Admin::MembersController < Org::Admin::BaseController
     else
       @member = Member.new
     end
+    @member.join_on ||= Date.today
     @member.member_departments.build(department_id: params[:department_id])
   end
 

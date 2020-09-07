@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 988e004c02c0e9017d723d96e1704ef8cc2be08c
+  revision: 2977ddb5f1f231c19ef81547c613f83c901fc05d
   specs:
     rails_com (1.2.9)
       acme-client
@@ -270,7 +270,7 @@ GEM
     sqlite3 (1.4.2)
     thor (1.0.1)
     thread_safe (0.3.6)
-    timers (4.3.0)
+    timers (4.3.2)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
