@@ -45,6 +45,9 @@ class Org::My::DepartmentsController < Org::My::BaseController
     @members = Member.where(department_id: @department.self_and_descendant_ids, enabled: true).page(params[:page])
   end
 
+  def edit
+  end
+
   def new
     @roots = current_organ.departments.roots
     @department = current_organ.departments.build
