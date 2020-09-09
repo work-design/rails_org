@@ -26,9 +26,7 @@ class Org::Board::OrgansController < Org::Board::BaseController
     @member = current_user.members.build(member_params)
     @member.build_organ(organ_params)
 
-    unless @member.save
-      render :new, locals: { model: @member }, status: :unprocessable_entity
-    end
+    render :new, locals: { model: @member }, status: :unprocessable_entity unless @member.save
   end
 
   def show
@@ -40,9 +38,7 @@ class Org::Board::OrgansController < Org::Board::BaseController
   def update
     @organ.assign_attributes(organ_params)
 
-    unless @organ.save
-      render :edit, locals: { model: @organ }, status: :unprocessable_entity
-    end
+    render :edit, locals: { model: @organ }, status: :unprocessable_entity unless @organ.save
   end
 
   def destroy
@@ -50,30 +46,23 @@ class Org::Board::OrgansController < Org::Board::BaseController
   end
 
   private
-  def set_member
-    @member = current_user.members.find params[:member_id]
-  end
 
-  def set_organ
-    @organ = Organ.find(params[:id])
-  end
-
-  def member_params
-    p = params.fetch(:member, {}).permit(
-      :identity
-    )
-    p.merge! owned: true
-    unless p[:identity]
-      p.merge! identity: current_account.identity
+    def set_member
+      @member = current_user.members.find params[:member_id]
     end
-    p
-  end
 
-  def organ_params
-    params.fetch(:member, {}).fetch(:organ_attributes, {}).permit(
-      :name,
-      :logo
-    )
-  end
+    def set_organ
+      @organ = Organ.find(params[:id])
+    end
 
+    def member_params
+      p = params.fetch(:member, {}).permit(:identity)
+      p.merge! owned: true
+      p.merge! identity: current_account.identity unless p[:identity]
+      p
+    end
+
+    def organ_params
+      params.fetch(:member, {}).fetch(:organ_attributes, {}).permit(:name, :logo)
+    end
 end

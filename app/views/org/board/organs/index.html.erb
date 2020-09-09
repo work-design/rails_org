@@ -9,8 +9,10 @@
           <strong><%= organ.name %></strong>
         </div>
         <div class="media-right">
+          <%= link_to '删除', my_organ_path(organ), method: :delete, data: { confirm: '确认删除？' } %>
         </div>
       </div>
+
       <% members.each do |member| %>
         <div class="card">
           <div class="card-content">
