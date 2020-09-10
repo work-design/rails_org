@@ -15,10 +15,8 @@ module RailsOrg::Application
 
   def current_organ
     return @current_organ if defined?(@current_organ)
-    sd = request.subdomains
-    if sd.present? && sd[1] == RailsCom.config.subdomain
-      id = sd[0].split('-')[1]
-      @current_organ = Organ.find_by(id: id)
+    if request.subdomains.present? && request.subdomains[1] == RailsCom.config.subdomain.presence
+      current_domain_organ
     else
       current_member&.organ
     end
@@ -26,9 +24,20 @@ module RailsOrg::Application
 
   def current_member
     return @current_member if defined?(@current_member)
-    @current_member = current_authorized_token&.member || current_account.members.find_by(organ_id: current_organ&.id)
+    m = current_account.members.find_by(organ_id: current_domain_organ&.id) || current_user.members.find_by(organ_id: current_domain_organ&.id)
+    @current_member = current_authorized_token&.member || m
     logger.debug "  ==========> Login as member: #{@current_member&.id}"
     @current_member
+  end
+
+  def current_domain_organ
+    return @current_domain_organ if defined? @current_domain_organ
+    id = request.subdomains[0].split('-')[1]
+    if id
+      @current_domain_organ = Organ.find_by(id: id)
+    else
+      @current_domain_organ = nil
+    end
   end
 
   # Must order after RailsRole::Controller
