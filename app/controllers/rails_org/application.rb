@@ -19,6 +19,8 @@ module RailsOrg::Application
     if sd.present? && sd[1] == RailsCom.config.subdomain
       id = sd[0].split('-')[1]
       @current_organ = Organ.find_by(id: id)
+    else
+      current_member&.organ
     end
   end
 
