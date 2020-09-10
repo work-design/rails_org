@@ -32,7 +32,7 @@ module RailsOrg::Application
 
   def current_domain_organ
     return @current_domain_organ if defined? @current_domain_organ
-    id = request.subdomains[0].split('-')[1]
+    id = request.subdomains[0].to_s.split('-')[1]
     if id
       @current_domain_organ = Organ.find_by(id: id)
     else
