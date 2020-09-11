@@ -3,7 +3,7 @@
     <tr>
       <th class="three wide"></th>
       <th>
-        <%= link_to t('.edit'), edit_my_member_path(@member), class: 'ui mini blue right floated button' %>
+        <%= link_to t('.edit'), edit_my_member_path, remote: true, class: 'ui mini blue right floated button' %>
       </th>
     </tr>
   </thead>
@@ -22,11 +22,15 @@
     </tr>
     <tr>
       <td class="has-text-right"><%= Member.human_attribute_name(:department) %></td>
-      <td><%= @member.department&.full_name %></td>
+      <td>
+        <% @member.departments.each do |department| %>
+          <p><%= department.full_name %></p>
+        <% end %>
+      </td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:office) %></td>
-      <td><%= @member.office&.name %></td>
+      <td class="has-text-right"><%= Member.human_attribute_name(:organ) %></td>
+      <td><%= @member.organ.name %></td>
     </tr>
     <tr>
       <td class="has-text-right"><%= Member.human_attribute_name(:experience) %></td>
