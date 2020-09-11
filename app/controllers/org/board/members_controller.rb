@@ -18,7 +18,7 @@ class Org::Board::MembersController < Org::Board::BaseController
   end
 
   def create
-    @member = current_user.members.build
+    @member = current_user.members.build(owned: true)
     @member.assign_attributes member_params
 
     if @member.save

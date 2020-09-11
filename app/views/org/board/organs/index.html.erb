@@ -9,7 +9,9 @@
           <strong><%= organ.name %></strong>
         </div>
         <div class="media-right">
-          <%= link_to '删除', my_organ_path(organ), method: :delete, data: { confirm: '确认删除？' }, class: 'button is-danger is-light is-small' %>
+          <% if current_user.owned_organ?(organ) %>
+            <%= link_to '删除', my_organ_path(organ), method: :delete, data: { confirm: '确认删除？' }, class: 'button is-danger is-light is-small' %>
+          <% end %>
         </div>
       </div>
 
