@@ -1,7 +1,7 @@
 <div class="hero-body">
   <% @organs.each do |organ, members| %>
     <div class="box">
-      <div class="media is-middle">
+      <div class="media is-middle" style="height: 48px;">
         <div class="media-left">
           <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'image is-48x48' if organ.logo.attached? %>
         </div>
@@ -9,8 +9,12 @@
           <strong><%= organ.name %></strong>
         </div>
         <div class="media-right">
+          <% if current_user.owned_organ?(organ) %>
+            <%= link_to '删除', my_organ_path(organ), method: :delete, data: { confirm: '确认删除？' }, class: 'button is-danger is-light is-small' %>
+          <% end %>
         </div>
       </div>
+
       <% members.each do |member| %>
         <div class="card">
           <div class="card-content">
@@ -34,7 +38,7 @@
   <% end %>
   <div class="media">
     <div class="media-content">
-      <%= link_to new_my_member_path, remote: true do %>
+      <%= link_to new_my_member_path, remote: true, class: 'button is-primary is-small' do %>
         <i class="fas fa-plus"></i><span><%= t('org.my.organs.new.title') %></span>
       <% end %>
     </div>

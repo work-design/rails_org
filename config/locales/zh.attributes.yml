@@ -62,6 +62,7 @@ zh:
         limit_wechat: 允许微信数
         limit_office: 允许分支机构数
         parent_uuid: 上级机构编码
+        logo: 封面
       organ_grant:
         organ_id: 机构
         role_ids: 权限

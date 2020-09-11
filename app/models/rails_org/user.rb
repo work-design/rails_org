@@ -7,6 +7,16 @@ module RailsOrg::User
     after_save :copy_avatar_to_members, if: -> { attachment_changes['avatar'].present? }
   end
 
+  # 拥有的组织
+  def owned_organs
+    organs.where(members: { owned: true })
+  end
+
+  # 是否拥有指定组织
+  def owned_organ?(organ)
+    owned_organs.include?(organ)
+  end
+
   def available_account_identities
     accounts.where.not(identity: members.pluck(:identity)).confirmed
   end
@@ -22,5 +32,4 @@ module RailsOrg::User
       member.avatar.attach avatar_blob if avatar_blob
     end
   end
-
 end
