@@ -1,4 +1,4 @@
-class Org::My::DocumentsController < Org::My::BaseController
+class Org::Me::DocumentsController < Org::Me::BaseController
   before_action :set_document, only: [:show]
 
   def index

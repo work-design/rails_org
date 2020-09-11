@@ -1,4 +1,4 @@
-class Org::My::JobTransfersController < Org::My::BaseController
+class Org::Me::JobTransfersController < Org::Me::BaseController
   before_action :set_job_transfer, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, only: [:departments]
 

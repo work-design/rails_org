@@ -1,4 +1,4 @@
-class Org::My::DepartmentsController < Org::My::BaseController
+class Org::Me::DepartmentsController < Org::Me::BaseController
 
   def index
     q_params = {}

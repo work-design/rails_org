@@ -1,0 +1,8 @@
+<div class="menu-label">工作管理</div>
+<div class="menu-list">
+  <%= link_to t('org.me.members.index.title'), me_member_path, class: active_helper(controllers: ['members'], active: 'is-active') %>
+  <%= link_to t('org.me.departments.index.title'), me_departments_path, class: active_helper(controllers: 'departments', active: 'is-active') %>
+  <%# link_to 'Job Transfer', me_job_transfers_path, class: active_helper(controllers: ['job_transfers'], active: 'is-active') %>
+  <%# link_to 'Resign', me_resign_path, class: active_helper(controllers: ['resigns'], active: 'is-active') %>
+  <%# link_to 'Tutorials', me_tutorials_path, class: active_helper(controllers: ['tutorials'], active: 'is-active') %>
+</div>

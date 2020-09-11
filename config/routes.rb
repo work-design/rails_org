@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :my, module: 'org/my', as: :my do
+  scope :me, module: 'org/me', as: :me do
     controller :home do
       get :index
     end

@@ -1,4 +1,4 @@
-class Org::My::SchedulesController < Org::My::BaseController
+class Org::Me::SchedulesController < Org::Me::BaseController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
   # GET /schedules

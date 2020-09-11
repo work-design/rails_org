@@ -1,4 +1,4 @@
-class Org::My::WorkersController < Org::My::BaseController
+class Org::Me::WorkersController < Org::Me::BaseController
   before_action :set_user
   before_action :set_worker, only: [:show, :edit, :update, :present, :destroy]
 
