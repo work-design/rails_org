@@ -1,4 +1,4 @@
-module RailsOrg::My
+module RailsOrg::Me
   extend ActiveSupport::Concern
 
   def require_member
