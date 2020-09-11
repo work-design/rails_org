@@ -1,8 +1,10 @@
 <%= form_with model: @member, url: my_organs_path do |f| %>
   <%= render 'shared/error_messages', target: @member %>
+
   <%= f.fields :organ do |ef| %>
-    <%= ef.text_field :name, required: true %>
-    <%= ef.file_field :logo %>
+    <%= ef.text_field :name, required: true, class: 'input is-small', label: { class: 'label is-small' } %>
+    <%= ef.file_field :logo, class: 'input is-small', label: { class: 'label is-small' } %>
   <% end %>
-  <%= f.submit %>
+
+  <%= f.submit class: 'button is-primary is-small' %>
 <% end %>
