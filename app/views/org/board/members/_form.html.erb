@@ -1,4 +1,4 @@
-<%= form_with model: @member, url: my_members_path, data: { controller: 'member' } do |f| %>
+<%= form_with model: @member, url: board_members_path, data: { controller: 'member' } do |f| %>
   <%= f.hidden_field :organ_id, data: { member_target: 'value' } %>
   <%= f.fields :organ do |ef| %>
     <%= ef.text_field :name, required: true %>

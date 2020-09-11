@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :my, module: 'org/board', as: :my do
+  scope :board, module: 'org/board', as: :board do
     resources :organs
     resources :members, only: [:index, :new, :create] do
       collection do
