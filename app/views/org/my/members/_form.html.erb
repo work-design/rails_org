@@ -1,5 +1,6 @@
 <%= form_with model: [:my, @member] do |f| %>
   <%= render 'shared/error_messages', target: @member %>
+  <%= f.file_field :avatar %>
   <%= f.text_field :name %>
   <%= f.submit %>
 <% end %>
