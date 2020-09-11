@@ -40,5 +40,8 @@
     <%= link_to panel_organ_path(organ), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
+    <%= link_to our_root_url(subdomain: organ.subdomain), aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
+      <i class="fas fa-hand-point-right"></i>
+    <% end %>
   </td>
 </tr>
