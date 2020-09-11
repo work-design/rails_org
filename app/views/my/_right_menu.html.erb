@@ -1,5 +1,16 @@
 <%= render partial: 'shared/locales' %>
 <%= render partial: 'notice_link' %>
+<% if current_authorized_token.member %>
+  <div class="navbar-item has-dropdown is-hoverable">
+    <div class="navbar-link is-arrowless">
+      <i class="fas fa-user-secret"></i>
+      <span>Mock 模式</span>
+    </div>
+    <div class="navbar-dropdown">
+      <%= link_to '退出mock', admin_root_url, class: 'navbar-item' %>
+    </div>
+  </div>
+<% end %>
 <div class="navbar-item has-dropdown is-hoverable">
   <div class="navbar-link">
     <%= image_tag current_member.avatar, class: 'image is-24x24' if current_member.avatar.attached? %>
