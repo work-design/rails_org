@@ -15,7 +15,7 @@ module RailsOrg::Application
 
   def current_organ
     return @current_organ if defined?(@current_organ)
-    if request.subdomains.present? && request.subdomains[1] == RailsCom.config.subdomain.presence
+    if request.subdomains.present? && request.subdomains[1].presence == RailsCom.config.subdomain.presence
       current_domain_organ
     end
   end
