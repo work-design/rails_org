@@ -24,7 +24,7 @@ module RailsOrg::Department
 
     has_one_attached :logo
     has_taxons :superior
-    validates :name, presence: true, uniqueness: { scope: :organ_id }
+    validates :name, presence: true, uniqueness: { scope: [:superior_id, :organ_id] }
   end
 
   def all_members
