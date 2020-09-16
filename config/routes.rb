@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   scope :me, module: 'org/me', as: :me do
+    root 'home#index'
     controller :home do
       get :index
     end

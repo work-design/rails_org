@@ -31,11 +31,6 @@
       </div>
     </div>
   <% end %>
-  <% if current_authorized_token&.mock_organ %>
-    <%= link_to logout_panel_organ_path, remote: true, class: 'navbar-item' do %>
-      <i class="fas fa-user-secret"></i>
-    <% end %>
-  <% end %>
 <% else %>
   <%= link_to index_url(subdomain: RailsCom.config.subdomain), class: 'navbar-item' do %>
     <%= image_pack_tag 'logo.png', class: 'image' %>
