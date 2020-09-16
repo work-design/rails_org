@@ -49,8 +49,13 @@ Rails.application.routes.draw do
   end
 
   scope :admin, module: 'org/admin', as: :admin do
+    controller :home do
+      get :index
+    end
     resources :organs do
-      get :all, on: :collection
+      collection do
+        get :all
+      end
     end
     resources :departments do
       collection do
@@ -107,21 +112,33 @@ Rails.application.routes.draw do
       resources :organ_grants
     end
     resources :supports do
-      get :departments, on: :collection
+      collection do
+        get :departments
+      end
     end
     resources :tutorials do
-      get :my, on: :collection
+      collection do
+        get :my
+      end
     end
     resources :job_transfers do
-      patch :trigger, on: :member
-      get :my, on: :collection
+      member do
+        patch :trigger
+      end
+      collection do
+        get :my
+      end
     end
     resources :resigns do
-      get :my, on: :collection
-      get :charts, on: :collection
+      collection do
+        get :my
+        get :charts
+      end
     end
     resources :resign_reasons do
-      get :parents, on: :collection
+      collection do
+        get :parents
+      end
     end
     scope ':record_class/:record_column' do
       resources :department_grants
