@@ -13,6 +13,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
 
   def new
     @organ = Organ.new
+    @organ.area ||= Area.new
   end
 
   def create
