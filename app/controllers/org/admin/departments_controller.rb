@@ -6,7 +6,7 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
     q_params = {}
     q_params.merge! default_params
     q_params.merge! params.permit(:type, :name)
-    @departments = Department.default_where(q_params).roots.includes(:children, :leader).order(name: :asc).page(params[:page])
+    @departments = Department.default_where(q_params).roots.includes(:children, :leader, :inferiors).order(name: :asc).page(params[:page])
   end
 
   def supports
@@ -101,6 +101,8 @@ class Org::Admin::DepartmentsController < Org::Admin::BaseController
       :name,
       :needed_number,
       :logo,
+      :organ_id,
+      :superior_id,
       :parent_id,
       :parent_ancestors,
       :superior_ancestors
