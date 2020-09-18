@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: dc530c684b137392a85783752ef19453f661b3d3
+  revision: 61830e962ab2ed2f98f91cd61a4ba58ad1930109
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 51e89ed0d3fa4ebc40f757711f6586a0d0df384d
+  revision: 1f74cfec8ec9d54cbce473f100562060ad566132
   specs:
     rails_com (1.2.9)
       acme-client
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 60ced55a21e7b44369426e0fe0e16b46dad75b20
+  revision: 7043153f91c95d03dbbd5baec7bb11955dfd9e3f
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -66,14 +66,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 2be60ec93579d0764c5f90b66717edfeec4009a7
+  revision: fffe4971479fcc0239af38530f4969582933d4ad
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_taxon.git
-  revision: 6ac552627e82aa6bab847e38960b68a1d12ab557
+  revision: 60dfae4187a5b928c4b3ba5cd429486d57d02866
   specs:
     rails_taxon (1.0.0)
       acts_as_list (>= 1.0)
