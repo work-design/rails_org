@@ -3,7 +3,6 @@ module RailsOrg::Organ
 
   included do
     attribute :name, :string
-    attribute :code, :string
     attribute :name_short, :string
     attribute :organ_uuid, :string
     attribute :address, :string
@@ -28,14 +27,11 @@ module RailsOrg::Organ
     scope :official, -> { where(official: true) }
 
     validates :name, presence: true
-    validates :code, presence: true
     validates :organ_uuid, uniqueness: true
 
     after_initialize if: :new_record? do
-      self.code ||= UidHelper.sec_uuid('CO')
       self.organ_uuid ||= UidHelper.nsec_uuid('ORG')
     end
-    before_save :downcase_code, if: -> { code && code_changed? }
   end
 
   def subdomain_code
@@ -48,10 +44,6 @@ module RailsOrg::Organ
 
   def host(sub = subdomain)
     ActionDispatch::Http::URL.url_for host: Rails.application.routes.default_url_options[:host], subdomain: sub, trailing_slash: true
-  end
-
-  def downcase_code
-    self.code = code.downcase
   end
 
   def admin?
