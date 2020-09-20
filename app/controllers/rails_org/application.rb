@@ -15,7 +15,8 @@ module RailsOrg::Application
 
   def current_organ
     return @current_organ if defined?(@current_organ)
-    if request.subdomains.present? && request.subdomains[1..-1].join('.') == RailsCom.config.subdomain.to_s
+
+    if request.subdomain.start_with? /org-/
       @current_organ = current_domain_organ
     else
       @current_organ = current_official_organ

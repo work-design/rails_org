@@ -1,9 +1,9 @@
 <% if current_organ %>
-  <%= link_to root_url(subdomain: RailsCom.config.subdomain), class: 'navbar-item' do %>
+  <%= link_to root_url(host: RailsCom.config.host), class: 'navbar-item' do %>
     <%= image_pack_tag 'logo.png', class: 'image' %>
   <% end %>
   <% current_organ.ancestors.reverse.each do |node| %>
-    <%= link_to filter_params(host: request.host, subdomain: node.subdomain), class: active_helper(subdomain: current_organ.subdomain) do %>
+    <%= link_to filter_params(host: request.host, subdomain: node.subdomain), class: active_helper(host: current_organ.host) do %>
       <%= image_tag node.logo, class: 'image' if node.logo.attached? %>
       <span><%= node.name %></span>
     <% end %>
@@ -32,7 +32,7 @@
     </div>
   <% end %>
 <% else %>
-  <%= link_to root_url(subdomain: RailsCom.config.subdomain), class: 'navbar-item' do %>
+  <%= link_to root_url(host: RailsCom.config.host), class: 'navbar-item' do %>
     <%= image_pack_tag 'logo.png', class: 'image' %>
   <% end %>
 <% end %>
