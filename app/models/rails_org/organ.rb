@@ -45,7 +45,11 @@ module RailsOrg::Organ
   end
 
   def host(sub = subdomain)
-    ActionDispatch::Http::URL.url_for host: Rails.application.routes.default_url_options[:host], subdomain: sub, trailing_slash: true
+    if domain.present?
+      domain
+    else
+      ActionDispatch::Http::URL.url_for host: Rails.application.routes.default_url_options[:host], subdomain: sub, trailing_slash: true
+    end
   end
 
   def admin?

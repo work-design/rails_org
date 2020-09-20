@@ -25,8 +25,8 @@
             </div>
           </div>
           <div class="card-footer">
-            <%= link_to '前台', me_root_url(subdomain: organ.subdomain, member_id: member.id), class: 'card-footer-item' %>
-            <%= link_to '后台', our_root_url(subdomain: organ.subdomain, member_id: member.id), class: 'card-footer-item' %>
+            <%= link_to '前台', me_root_url(host: organ.host, member_id: member.id), class: 'card-footer-item' %>
+            <%= link_to '后台', our_root_url(host: organ.host, member_id: member.id), class: 'card-footer-item' %>
           </div>
         </div>
       <% end %>
