@@ -16,7 +16,7 @@ module RailsOrg::Application
   def current_organ
     return @current_organ if defined?(@current_organ)
 
-    if request.subdomain.start_with? /org-/
+    if request.subdomain.start_with? /org-|app-/
       @current_organ = current_domain_organ
     else
       @current_organ = current_official_organ
