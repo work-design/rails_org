@@ -23,7 +23,7 @@ class Org::Board::MembersController < Org::Board::BaseController
     @member.assign_attributes member_params
 
     if @member.save
-      render 'create', locals: { return_to: params[:return_to].presence || my_members_url }
+      render 'create', locals: { return_to: params[:return_to].presence || me_members_url }
     else
       render :new, locals: { model: @member }, status: :unprocessable_entity
     end

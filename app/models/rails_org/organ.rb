@@ -48,7 +48,12 @@ module RailsOrg::Organ
     if domain.present?
       domain
     else
-      ActionDispatch::Http::URL.url_for host: Rails.application.routes.default_url_options[:host], subdomain: sub, trailing_slash: true
+      ActionDispatch::Http::URL.url_for(
+        host: Rails.application.routes.default_url_options[:host],
+        port: Rails.application.routes.default_url_options[:port],
+        subdomain: sub,
+        trailing_slash: true
+      )
     end
   end
 
