@@ -36,12 +36,10 @@ module RailsOrg::Organ
     end
   end
 
-  def subdomain_code
-    ['org', id].join('-')
-  end
-
   def subdomain
-    [subdomain_code, RailsCom.config.subdomain].compact.join('.')
+    code = ['org', id].join('-')
+    sub = ActionDispatch::Http::URL.extract_subdomain RailsCom.config.host, 1
+    [code, sub.presence].compact.join('.')
   end
 
   def host(sub = subdomain)
