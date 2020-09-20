@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   scope :me, module: 'org/me', as: :me do
-    root 'home#index'
+    root 'home#index' unless has_named_route? 'me_root'
     controller :home do
       get :index
     end
@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   end
 
   scope :admin, module: 'org/admin', as: :admin do
+    root 'home#index' unless has_named_route? 'admin_root'
     controller :home do
       get :index
     end
