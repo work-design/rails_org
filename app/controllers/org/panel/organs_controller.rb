@@ -25,7 +25,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
   end
 
   def edit
-    @organ.area ||= Area.root
+    @organ.area = @organ.area || Area.root || Area.new
   end
 
   def update
@@ -48,7 +48,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
   def organ_params
     params.fetch(:organ, {}).permit(
       :name,
-      :code,
+      :domain,
       :logo,
       :official,
       :name_short,

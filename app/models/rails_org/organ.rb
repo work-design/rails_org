@@ -3,6 +3,7 @@ module RailsOrg::Organ
 
   included do
     attribute :name, :string
+    attribute :domain, :string
     attribute :name_short, :string
     attribute :organ_uuid, :string
     attribute :address, :string
@@ -28,6 +29,7 @@ module RailsOrg::Organ
 
     validates :name, presence: true
     validates :organ_uuid, uniqueness: true
+    validates :domain, uniqueness: true, allow_blank: true
 
     after_initialize if: :new_record? do
       self.organ_uuid ||= UidHelper.nsec_uuid('ORG')

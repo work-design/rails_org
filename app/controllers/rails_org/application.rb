@@ -15,9 +15,17 @@ module RailsOrg::Application
 
   def current_organ
     return @current_organ if defined?(@current_organ)
-    if request.subdomains.present? && request.subdomains[1].presence == RailsCom.config.subdomain.presence
-      current_domain_organ
+    if request.subdomains.present? && request.subdomains[1..-1].join('.') == RailsCom.config.subdomain.to_s
+      @current_organ = current_domain_organ
+    else
+      @current_organ = current_official_organ
     end
+    logger.debug "  ==========> Login as organ: #{@current_organ&.name}"
+    @current_organ
+  end
+
+  def current_official_organ
+    Organ.find_by domain: request.host_with_port
   end
 
   def current_domain_organ

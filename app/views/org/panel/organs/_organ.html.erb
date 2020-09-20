@@ -12,7 +12,7 @@
     <% end %>
   </td>
   <td><%= image_tag organ.logo.variant(resize_to_limit: [30, 30]) if organ.logo.attached? %></td>
-  <td><%= organ.organ_uuid %></td>
+  <td><%= organ.domain %></td>
   <td>
     <p><%= organ.area&.full_name %></p>
     <p><%= organ.address %></p>
