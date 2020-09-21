@@ -11,6 +11,13 @@
       </div>
       <div class="column as-body">
         <div class="as-main">
+          <% if content_for?(:breadcrumb) %>
+            <div class="breadcrumb has-succeeds-separator">
+              <%= yield(:breadcrumb) %>
+            </div>
+          <% else %>
+            <%= render 'breadcrumb' %>
+          <% end %>
           <%= yield %>
         </div>
         <%# render 'footer' %>

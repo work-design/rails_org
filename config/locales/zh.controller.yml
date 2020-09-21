@@ -60,7 +60,7 @@ zh:
           title: 创建新团队
     me:
       members:
-        index:
+        show:
           title: 我的工作台
         new:
           title: 申请为职员
