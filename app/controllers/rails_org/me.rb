@@ -16,11 +16,15 @@ module RailsOrg::Me
 
   def current_organ
     return @current_organ if defined?(@current_organ)
-    if request.subdomains.present? && request.subdomains[1] == RailsCom.config.subdomain.presence
-      current_domain_organ
+
+    if request.subdomain.start_with? /org-|app-/
+      @current_organ = current_domain_organ
     else
-      current_member&.organ
+      @current_organ = current_official_organ
     end
+    @current_organ = current_member&.organ if @current_organ.nil?
+    logger.debug "  ==========> Login as organ: #{@current_organ&.name}"
+    @current_organ
   end
 
   def current_member
