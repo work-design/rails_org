@@ -33,7 +33,7 @@ module RailsOrg::Me
       m = current_user.members.find_by(id: params[:member_id])
       current_authorized_token.update member_id: m.id if m
     else
-      m = current_account.members.find_by(organ_id: current_domain_organ&.id) || current_user.members.find_by(organ_id: current_domain_organ&.id)
+      m = current_account.members.find_by(organ_id: current_organ&.id) || current_user.members.find_by(organ_id: current_organ&.id)
     end
     @current_member = current_authorized_token&.member || m
     logger.debug "  ==========> Login as member: #{@current_member&.id}"
