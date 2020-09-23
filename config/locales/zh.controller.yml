@@ -59,6 +59,9 @@ zh:
         new:
           title: 创建新团队
     me:
+      home:
+        index:
+          title: 首页
       members:
         show:
           title: 我的工作台
