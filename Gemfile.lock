@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: e8eec43ac347e8867889fe94c834e2f8d8e035b2
+  revision: 5fc7bdd06644f2d0a5455a1246f1af7f641c6d93
   specs:
     rails_com (1.2.9)
       acme-client
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: b5f29a4a3f126169f6ce35bf436aafe316b1a257
+  revision: aa0ee5b6b344e0539d587f532b10431a6795cc2e
   specs:
     rails_notice (1.0.2)
       rails_auth
