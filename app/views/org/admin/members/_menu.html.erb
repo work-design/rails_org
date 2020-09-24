@@ -1,8 +1,9 @@
 <%= content_for :breadcrumb do %>
-<div class="ui basic segment breadcrumb">
-  <%= link_to t('org.admin.members.index.title'), admin_members_path, class: 'section' %>
-  <i class="fas fa-angle-right divider"></i>
-  <div class="active section"><%= @member.name %></div>
+<div class="breadcrumb has-succeeds-separator">
+  <ul>
+    <%= link_to t('org.admin.members.index.title'), admin_members_path, class: 'section' %>
+    <div class="is-active"><%= @member.name %></div>
+  </ul>
 </div>
 <% end %>
 

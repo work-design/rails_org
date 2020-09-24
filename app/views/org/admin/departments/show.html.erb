@@ -1,4 +1,5 @@
 <%= content_for :breadcrumb do %>
+<div class="breadcrumb has-succeeds-separator">
   <ul>
     <li><%= link_to t('org.admin.departments.index.title'), admin_departments_path %></li>
     <% @department.ancestors.reverse.each do |ancestor| %>
@@ -10,6 +11,7 @@
     <% end %>
     <li class="is-active"><%= @department.name %></li>
   </ul>
+</div>
 <% end %>
 
 <%= render 'filter_form' %>
