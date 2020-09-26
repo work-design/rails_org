@@ -1,4 +1,5 @@
 class Org::Me::DepartmentsController < Org::Me::BaseController
+  before_action :set_department, only: [:show]
 
   def index
     q_params = {}

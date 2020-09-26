@@ -1,7 +1,9 @@
 <%= content_for :breadcrumb do %>
+<div class="breadcrumb has-succeeds-separator">
   <ul>
-    <li><%= link_to t('org.member.departments.index.title'), me_departments_path %></li>
+    <li class="is-active"><%= link_to t('org.member.departments.index.title'), me_departments_path %></li>
   </ul>
+</div>
 <% end %>
 
 <%= render 'filter_form' %>

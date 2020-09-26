@@ -1,7 +1,7 @@
 <div class="ui vertical fluid menu">
   <% @departments.each do |department| %>
   <div class="item">
-    <%= link_to my_department_path(department), class: active_helper(id: department.id, active: 'header', item: nil) do %>
+    <%= link_to me_department_path(department), class: active_helper(id: department.id, active: 'header', item: nil) do %>
       <span><%= department.name %></span><span class="grey text">(<%= department.all_member_departments_count %>)</span>
     <% end %>
     <div class="<%= (department.child_ids + [department.id]).include?(params[:department_id]) ? 'menu' : 'menu' %>">
@@ -14,4 +14,3 @@
   </div>
   <% end %>
 </div>
-
