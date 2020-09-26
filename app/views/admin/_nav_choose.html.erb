@@ -3,7 +3,7 @@
     <%= image_pack_tag 'logo.png', class: 'image' %>
   <% end %>
   <% current_organ.ancestors.reverse.each do |node| %>
-    <%= link_to filter_params(host: request.host, subdomain: node.subdomain), class: active_helper(host: current_organ.host) do %>
+    <%= link_to filter_params(host: request.host, subdomain: node.subdomain), class: active_helper(host: current_organ.host, active: 'navbar-item', item: 'navbar-item') do %>
       <%= image_tag node.logo, class: 'image' if node.logo.attached? %>
       <span><%= node.name %></span>
     <% end %>
