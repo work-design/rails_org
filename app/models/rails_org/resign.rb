@@ -32,7 +32,7 @@ module RailsOrg::Resign
       self.save!
       to_notification(
         sender: self.member.office.leader,
-        receiver: self.member,
+        member: self.member,
         title: "Your resignation request has been #{self.state_i18n}.",
         body: "Your resignation request has been #{self.state_i18n}.",
         link: url_helpers.my_resign_url,
@@ -46,7 +46,7 @@ module RailsOrg::Resign
   def send_notification
     to_notification(
       sender: self.member,
-      receiver: self.member.office.leader,
+      member: self.member.office.leader,
       body: "#{self.member.name} has requested resignation",
       title: "#{self.member.name} has requested resignation",
       cc_emails: [

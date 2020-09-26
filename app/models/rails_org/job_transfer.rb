@@ -61,7 +61,7 @@ module RailsOrg::JobTransfer
     self.class.transaction do
       self.save!
       to_notification(
-        receiver: self.member,
+        member: self.member,
         title: "Your Job Transfer request has been #{self.state_i18n}",
         body: "Your Job Transfer request has been #{self.state_i18n}.",
         link: url_helpers.my_job_transfers_url(id: self.id),
@@ -78,7 +78,7 @@ module RailsOrg::JobTransfer
   def send_notification
     to = next_operator
     to_notification(
-      receiver: to,
+      member: to,
       title: "#{self.member.name} has requested Job Transfer",
       body: "#{self.member.name} has requested Job Transfer.",
       code: self.state,
