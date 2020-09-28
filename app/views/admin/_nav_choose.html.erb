@@ -1,7 +1,4 @@
 <% if current_organ %>
-  <%= link_to root_url(host: RailsCom.config.host), class: 'navbar-item' do %>
-    <%= image_pack_tag 'logo.png', class: 'image' %>
-  <% end %>
   <% current_organ.ancestors.reverse.each do |node| %>
     <%= link_to filter_params(host: node.host), class: active_helper(host: current_organ.host, active: 'navbar-item', item: 'navbar-item') do %>
       <%= image_tag node.logo, class: 'image' if node.logo.attached? %>
@@ -30,9 +27,5 @@
         <% end %>
       </div>
     </div>
-  <% end %>
-<% else %>
-  <%= link_to root_url(host: RailsCom.config.host), class: 'navbar-item' do %>
-    <%= image_pack_tag 'logo.png', class: 'image' %>
   <% end %>
 <% end %>
