@@ -1,8 +1,0 @@
-<%= form_with model: @organ_grant, url: admin_organ_grants_url(@organ) do |f| %>
-  <%= render 'shared/error_messages', target: @organ_grant %>
-  <%= f.text_field :user_id %>
-  <%= f.text_field :member_id %>
-  <%= f.text_field :token %>
-  <%= f.text_field :expired_at %>
-  <%= f.submit %>
-<% end %>

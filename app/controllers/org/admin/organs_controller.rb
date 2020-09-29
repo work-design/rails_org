@@ -1,5 +1,5 @@
 class Org::Admin::OrgansController < Org::Admin::BaseController
-  before_action :set_organ, only: [:edit, :update, :destroy]
+  before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def index
     q_params = {}

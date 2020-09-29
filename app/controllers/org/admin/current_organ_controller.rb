@@ -1,4 +1,4 @@
-class Org::Our::OrgansController < Org::Our::BaseController
+class Org::Admin::OrgansController < Org::Admin::BaseController
   before_action :set_organ, only: [:edit, :update, :destroy]
 
   def show
@@ -8,9 +8,9 @@ class Org::Our::OrgansController < Org::Our::BaseController
   end
 
   def update
-    @organ.assign_attributes(organ_params)
+    current_organ.assign_attributes(organ_params)
 
-    if @organ.save
+    if current_organ.save
       render 'update'
     else
       render :edit
@@ -22,10 +22,6 @@ class Org::Our::OrgansController < Org::Our::BaseController
   end
 
   private
-  def set_organ
-    @organ = current_organ
-  end
-
   def organ_params
     params.fetch(:organ, {}).permit(
       :name,
