@@ -1,5 +1,4 @@
-class MeController < ApplicationController
+class MeController < AdminController
   include RailsOrg::Me
-  before_action :require_login
 
 end unless defined? MeController

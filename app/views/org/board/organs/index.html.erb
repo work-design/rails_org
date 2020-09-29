@@ -26,7 +26,7 @@
           </div>
           <div class="card-footer">
             <%= link_to '工作台', me_root_url(host: organ.host, member_id: member.id), class: 'card-footer-item' %>
-            <%= link_to '管理', our_root_url(host: organ.host, member_id: member.id), class: 'card-footer-item' %>
+            <%= link_to '管理', admin_root_url(host: organ.host, member_id: member.id), class: 'card-footer-item' %>
           </div>
         </div>
       <% end %>
