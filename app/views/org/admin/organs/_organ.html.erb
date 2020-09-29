@@ -24,7 +24,7 @@
     <%= link_to admin_organ_path(organ), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
-    <%= link_to admin_organ_url(host: organ.host), aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to admin_current_organ_url(host: organ.host), aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-hand-point-right"></i>
     <% end %>
   </td>

@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     controller :home do
       get :index
     end
-    resource :organs
+    resource :current_organ, controller: 'current_organ'
     resources :organs do
       collection do
         get :all

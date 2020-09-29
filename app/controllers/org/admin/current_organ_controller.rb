@@ -1,5 +1,4 @@
-class Org::Admin::OrgansController < Org::Admin::BaseController
-  before_action :set_organ, only: [:edit, :update, :destroy]
+class Org::Admin::CurrentOrganController < Org::Admin::BaseController
 
   def show
   end
@@ -18,7 +17,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   end
 
   def destroy
-    @organ.destroy
+    current_organ.destroy
   end
 
   private
