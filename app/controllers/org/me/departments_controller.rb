@@ -1,9 +1,11 @@
-class Org::Me::DepartmentsController < Org::Me::BaseController
+class Org::Me::DepartmentsController < Org::Admin::DepartmentsController
+  include OrgController::Me
   before_action :set_department, only: [:show]
 
   def index
     q_params = {}
     q_params.merge! default_params
+
     @departments = current_member.departments.default_where(q_params)
     @members = current_member.all_followers.page(params[:page])
   end

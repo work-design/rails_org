@@ -1,6 +1,6 @@
-class Org::Me::JobTransfersController < Org::Me::BaseController
+class Org::Me::JobTransfersController < Org::Admin::JobTransfersController
+  include OrgController::Me
   before_action :set_job_transfer, only: [:show, :edit, :update, :destroy]
-  skip_before_action :verify_authenticity_token, only: [:departments]
 
   def index
     @job_transfers = current_user.job_transfers.page(params[:page])
@@ -40,7 +40,6 @@ class Org::Me::JobTransfersController < Org::Me::BaseController
 
   def destroy
     @job_transfer.destroy
-    redirect_to my_job_transfers_url
   end
 
   private

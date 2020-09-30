@@ -1,4 +1,5 @@
-class Org::Me::OrdersController < Org::Me::BaseController
+class Org::Me::OrdersController < MeController
+  include OrgController::Me
 
   def confirm
     @order = Order.find params[:id]

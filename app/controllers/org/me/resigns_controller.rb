@@ -1,4 +1,5 @@
-class Org::Me::ResignsController < Org::Me::BaseController
+class Org::Me::ResignsController < Org::Admin::ResignsController
+  include OrgController::Me
   before_action :set_resign, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def show

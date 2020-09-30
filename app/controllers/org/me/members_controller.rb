@@ -1,4 +1,5 @@
-class Org::Me::MembersController < Org::Me::BaseController
+class Org::Me::MembersController < Org::Admin::MembersController
+  include OrgController::Me
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def show
