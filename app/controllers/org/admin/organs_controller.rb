@@ -29,6 +29,7 @@ class Org::Admin::OrgansController < Org::Admin::BaseController
   end
 
   def edit
+    @organ.area ||= Area.new
   end
 
   def update
