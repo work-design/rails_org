@@ -1,5 +1,6 @@
 module RailsOrg::Support
   extend ActiveSupport::Concern
+
   included do
     attribute :name, :string
     attribute :grade, :integer
@@ -9,7 +10,7 @@ module RailsOrg::Support
     belongs_to :department, optional: true
     belongs_to :organ, optional: true
     belongs_to :supporter, class_name: 'Member'
-    
+
     has_taxons :department
   end
 

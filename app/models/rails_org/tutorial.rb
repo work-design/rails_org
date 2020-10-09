@@ -1,5 +1,6 @@
 module RailsOrg::Tutorial
   extend ActiveSupport::Concern
+
   included do
     attribute :state, :string, default: 'init'
     attribute :accepted_status, :string, default: 'normal'

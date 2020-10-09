@@ -1,5 +1,6 @@
 module RailsOrg::Resign
   extend ActiveSupport::Concern
+
   included do
     attribute :state, :string, default: 'init'
     attribute :leave_on, :date
@@ -60,4 +61,5 @@ module RailsOrg::Resign
   def validate_resign_reasons
     self.errors.add :base, 'Please select one reason at least' if self.resign_reasons.empty?
   end
+
 end
