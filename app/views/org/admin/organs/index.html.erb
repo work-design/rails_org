@@ -13,17 +13,16 @@
         <p><%= Organ.human_attribute_name(:address) %></p>
       </th>
       <th>
-        <%= link_to new_admin_organ_path, remote: true, class: 'button is-link is-small' do %>
+        <%= link_to({ action: 'new' }, { remote: true, class: 'button is-link is-small' }) do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
     </tr>
   </thead>
-
   <tbody>
   <% @organs.each do |organ| %>
     <%= render partial: 'organ', object: organ %>
-    <%= draw_tree(partial: 'org/admin/organs/organ', object: organ) %>
+    <%= draw_tree(partial: 'organ', object: organ) %>
   <% end %>
   </tbody>
 </table>
