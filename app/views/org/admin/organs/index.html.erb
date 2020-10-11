@@ -19,7 +19,7 @@
       </th>
     </tr>
   </thead>
-  <tbody>
+  <tbody data-controller="tree">
   <%= render partial: 'organ', object: current_organ %>
   <% @organs.each do |organ| %>
     <%= render partial: 'organ', object: organ %>

@@ -1,10 +1,10 @@
 <tr data-depth="<%= department.depth_str %>" style="display: <%= display %>">
   <td>
-    <span style="width: <%= department.depth * 1.43 %>em; display: inline-block;"></span>
+    <span style="width: <%= department.depth * 1.43 %>em; display: inline-block"></span>
     <% if department.leaf? %>
       <i class="fas fa-fw fa-minus"></i>
     <% else %>
-      <i class="fas fa-fw fa-caret-right" data-action="click->tree#expand" style="cursor: pointer;"></i>
+      <i class="fas fa-fw fa-caret-right" data-action="click->tree#expand" style="cursor: pointer"></i>
     <% end %>
     <%= link_to admin_department_path(department) do %>
       <span><%= department.name %></span>

@@ -2,7 +2,7 @@
   <td>
     <span style="width: <%= organ.depth * 1.43 %>em; display: inline-block"></span>
     <% if !organ.leaf? %>
-      <i class="fas fa-caret-down fa-fw" style="cursor: pointer"></i>
+      <i class="fas fa-caret-down fa-fw" data-action="click->tree#collapse" style="cursor: pointer"></i>
     <% else %>
       <i class="fas fa-minus fa-fw"></i>
     <% end %>

@@ -20,7 +20,6 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody data-controller="tree">
     <% @departments.each do |department| %>
       <%= render partial: 'department', object: department, locals: { display: 'table-row' } %>
