@@ -34,10 +34,10 @@
     </div>
   </td>
   <td>
-    <%= link_to edit_panel_organ_path(organ), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to({ action: 'edit', id: organ.id }, { aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' }) do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to panel_organ_path(organ), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to({ action: 'destroy', id: organ.id }, { method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' }) do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
     <%= link_to admin_root_url(host: organ.host), aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
