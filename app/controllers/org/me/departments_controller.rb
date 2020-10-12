@@ -45,7 +45,9 @@ class Org::Me::DepartmentsController < Org::Admin::DepartmentsController
     else
       @department_parent = @department
     end
-    @members = Member.where(department_id: @department.self_and_descendant_ids, enabled: true).page(params[:page])
+    @departments = @department.self_and_siblings
+    member_ids = MemberDepartment.where(department_id: @department.self_and_descendant_ids).pluck(:member_id)
+    @members = Member.where(id: member_ids, enabled: true).page(params[:page])
   end
 
   def edit
@@ -70,6 +72,5 @@ class Org::Me::DepartmentsController < Org::Admin::DepartmentsController
   def set_department
     @department = Department.find(params[:id])
   end
-
 
 end

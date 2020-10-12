@@ -3,11 +3,7 @@
   <ul>
     <li><%= link_to t('org.admin.departments.index.title'), admin_departments_path %></li>
     <% @department.ancestors.reverse.each do |ancestor| %>
-      <% if controller_path == 'org/admin/departments' %>
-        <li><%= link_to ancestor.name, { id: ancestor.id } %></li>
-      <% else %>
-        <li><%= link_to ancestor.name, { department_id: ancestor.id } %></li>
-      <% end %>
+      <li><%= link_to ancestor.name, { action: 'show', id: ancestor.id } %></li>
     <% end %>
     <li class="is-active"><%= @department.name %></li>
   </ul>
