@@ -7,8 +7,6 @@ module RailsOrg::Organ
     attribute :name_short, :string
     attribute :organ_uuid, :string
     attribute :address, :string
-    attribute :timezone, :string
-    attribute :locale, :string
     attribute :limit_wechat, :integer, default: 1
     attribute :members_count, :integer, default: 0
     attribute :official, :boolean, default: false, comment: '是否官方'
