@@ -66,7 +66,7 @@ module RailsOrg::Application
     end
   end
 
-  def organ_ancestors_params
+  def default_ancestors_params
     if current_organ
       { organ_id: current_organ.self_and_ancestor_ids }
     else

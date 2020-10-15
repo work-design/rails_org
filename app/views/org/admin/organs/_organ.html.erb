@@ -7,7 +7,7 @@
       <i class="fas fa-minus fa-fw"></i>
     <% end %>
     <%= organ.name %>
-    <% if organ.name_short %>
+    <% if organ.name_short.present? %>
       (<%= organ.name_short %>)
     <% end %>
   </td>
