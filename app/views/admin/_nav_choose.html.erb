@@ -1,31 +1,37 @@
-<% if current_organ %>
-  <% current_organ.ancestors.reverse.each do |node| %>
-    <%= link_to filter_params(host: node.host), class: active_helper(host: current_organ.host, active: 'navbar-item', item: 'navbar-item') do %>
-      <%= image_tag node.logo, class: 'image' if node.logo.attached? %>
-      <span><%= node.name %></span>
-    <% end %>
+<%= link_to '管理后台', panel_root_url, class: 'navbar-item' %>
+<% current_organ.ancestors.reverse.each do |node| %>
+  <%= link_to filter_params(host: node.host), class: 'navbar-item' do %>
+    <%= image_tag node.logo, class: 'image' if node.logo.attached? %>
+    <span><%= node.name %></span>
   <% end %>
+<% end %>
+<% if current_organ.siblings.present? && !current_organ.root? %>
+<div class="navbar-item has-dropdown is-hoverable">
+  <div class="navbar-link">
+    <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
+    <%= current_organ.name %>
+  </div>
+  <% unless current_organ.root? %>
+  <div class="navbar-dropdown">
+    <% current_organ.siblings.each do |node| %>
+      <%= link_to node.name, filter_params(host: node.host), class: 'navbar-item' %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<% else %>
+  <div class="navbar-item">
+    <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
+    <%= current_organ.name %>
+  </div>
+<% end %>
+<% if current_organ.children.count > 0 %>
   <div class="navbar-item has-dropdown is-hoverable">
-    <div class="navbar-link">
-      <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
-      <%= current_organ.name %>
-    </div>
-    <% unless current_organ.root? %>
+    <div class="navbar-link">More</div>
     <div class="navbar-dropdown">
-      <% current_organ.siblings.each do |node| %>
+      <% current_organ.children.each do |node| %>
         <%= link_to node.name, filter_params(host: node.host), class: 'navbar-item' %>
       <% end %>
     </div>
-    <% end %>
   </div>
-  <% if current_organ.children.count > 0 %>
-    <div class="navbar-item has-dropdown is-hoverable">
-      <div class="navbar-link">More</div>
-      <div class="navbar-dropdown">
-        <% current_organ.children.each do |node| %>
-          <%= link_to node.name, filter_params(host: node.host), class: 'navbar-item' %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
 <% end %>
