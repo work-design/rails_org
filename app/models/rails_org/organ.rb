@@ -5,11 +5,10 @@ module RailsOrg::Organ
     attribute :name, :string
     attribute :domain, :string
     attribute :name_short, :string
-    attribute :organ_uuid, :string
     attribute :address, :string
-    attribute :limit_wechat, :integer, default: 1
     attribute :members_count, :integer, default: 0
     attribute :official, :boolean, default: false, comment: '是否官方'
+    attribute :operational, :boolean, default: false, comment: '是否运营方'
     attribute :joinable, :boolean, default: false, comment: '是否可搜索并加入'
 
     has_taxons :area
@@ -26,12 +25,13 @@ module RailsOrg::Organ
     scope :official, -> { where(official: true) }
 
     validates :name, presence: true
-    validates :organ_uuid, uniqueness: true
     validates :domain, uniqueness: true, allow_blank: true
 
-    after_initialize if: :new_record? do
-      self.organ_uuid ||= UidHelper.nsec_uuid('ORG')
-    end
+    after_save :set_operational, if: -> { self.operational? && saved_change_to_operational? }
+  end
+
+  def set_operational
+    self.class.base_class.unscoped.where.not(id: self.id).where(operational: true).update_all(operational: false)
   end
 
   def subdomain
