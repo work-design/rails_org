@@ -1,7 +1,7 @@
 <%= form_with model: [:admin, @job_transfer], local: true do |f| %>
   <%= render 'shared/error_messages', target: @job_transfer %>
   <%= f.collection_select :to_office_id, Office.all, :id, :name, prompt: true, required: true %>
-  <%= render partial: 'taxon/nodes/outer_select', locals: { f: f, outer: 'to_department', class_name: 'Department' } %>
+  <%= render partial: 'com/nodes/outer_select', locals: { f: f, outer: 'to_department', class_name: 'Department' } %>
   <%= f.date_field :transfer_on, required: true %>
   <%= f.text_area :reason_note, required: true %>
   <%= f.select :state, options_for_select(JobTransfer.options_i18n(:state), @job_transfer.state) %>
