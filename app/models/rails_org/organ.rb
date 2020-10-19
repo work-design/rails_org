@@ -8,7 +8,6 @@ module RailsOrg::Organ
     attribute :address, :string
     attribute :members_count, :integer, default: 0
     attribute :official, :boolean, default: false, comment: '是否官方'
-    attribute :operational, :boolean, default: false, comment: '是否运营方'
     attribute :joinable, :boolean, default: false, comment: '是否可搜索并加入'
 
     has_taxons :area
