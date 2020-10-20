@@ -25,12 +25,6 @@ module RailsOrg::Organ
 
     validates :name, presence: true
     validates :domain, uniqueness: true, allow_blank: true
-
-    after_save :set_operational, if: -> { self.operational? && saved_change_to_operational? }
-  end
-
-  def set_operational
-    self.class.base_class.unscoped.where.not(id: self.id).where(operational: true).update_all(operational: false)
   end
 
   def subdomain

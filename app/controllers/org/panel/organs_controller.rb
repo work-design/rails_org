@@ -51,7 +51,6 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
       :domain,
       :logo,
       :official,
-      :operational,
       :name_short,
       :parent_ancestors,
       :area_ancestors
