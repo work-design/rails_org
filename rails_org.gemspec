@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails_com', '~> 1.2'
   s.add_dependency 'rails_auth'
-  s.add_dependency 'rails_taxon'
   s.add_dependency 'rails_profile'
   s.add_dependency 'rails_notice'
 end
