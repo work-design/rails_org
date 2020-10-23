@@ -1,21 +1,18 @@
 <tr>
   <td>
     <% if member.user && member.user.avatar.present? %>
-      <%= link_to panel_user_path(member.user_id) do %>
-        <%= image_tag member.user.avatar.variant(resize_to_limit: [35, 35]), class: 'ui avatar image' %>
+      <%= link_to({ controller: '/auth/users', action: 'show', id: member.user_id }, { remote: true }) do %>
+        <%= image_tag member.user.avatar.variant(resize_to_limit: [35, 35]), class: 'image' %>
       <% end %>
     <% end %>
     <%= member.name %>
   </td>
-  <td>
-
-  </td>
+  <td></td>
   <td><%= member.organ&.name %></td>
   <td><%= member.join_on %></td>
   <td>
-    <%= link_to edit_admin_member_path(member), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to({ action: 'edit', id: member.id }, { aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' }) do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
   </td>
 </tr>
-
