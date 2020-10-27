@@ -1,0 +1,7 @@
+<%= form_with theme: 'search', model: Tutorial.new do |f| %>
+  <div class="fields">
+    <%= f.text_field 'member.name' %>
+    <%= f.text_field 'tutor.name' %>
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+<tr>
+  <td><%= super_job_title.grade %></td>
+  <td><%= super_job_title.name %></td>
+  <td><%= super_job_title.description %></td>
+  <td>
+    <div class="tags">
+      <% super_job_title.roles.pluck(:name).each do |role| %>
+        <span class="tag"><%= role %></span>
+      <% end %>
+      <%= link_to edit_who_roles_path('JobTitle', super_job_title.id), aria: { label: t('role.admin.who_roles.edit.title') }, remote: true do %>
+        <i class="fas fa-user-shield"></i>
+      <% end %>
+    </div>
+  </td>
+  <td>
+    <%= link_to({ action: 'show', id: @super_job_title.id }, aria: { label: t('.show') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+      <i class="fas fa-eye"></i>
+    <% end %>
+    <%= link_to({ action: 'edit', id: @super_job_title.id }, aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+      <i class="fas fa-pencil-alt"></i>
+    <% end %>
+    <%= link_to({ action: 'destroy', id: @super_job_title.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </td>
+</tr>
