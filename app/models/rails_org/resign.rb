@@ -2,11 +2,10 @@ module RailsOrg::Resign
   extend ActiveSupport::Concern
 
   included do
-    attribute :state, :string, default: 'init'
     attribute :leave_on, :date
-    attribute :reason_note, :string, limit: 4096
-    attribute :handover_note, :string, limit: 4096
-    attribute :comment, :string, limit: 4096
+    attribute :reason_note, :string
+    attribute :handover_note, :string
+    attribute :comment, :string
 
     validates :leave_on, :reason_note, presence: true
 
@@ -19,7 +18,7 @@ module RailsOrg::Resign
       init: 'init',
       approved: 'approved',
       rejected: 'rejected'
-    }
+    }, _default: 'init'
 
     after_create_commit :send_notification
 

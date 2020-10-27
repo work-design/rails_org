@@ -150,14 +150,6 @@ module RailsOrg::Member
     leading_departments.first
   end
 
-  def timezone
-    user.timezone || office.timezone || 'Beijing'
-  end
-
-  def locale
-    user.locale || office.locale.presence || I18n.default_locale
-  end
-
   def avatar_url
     url_helpers.rails_blob_url(avatar) if avatar.attachment.present?
   end
