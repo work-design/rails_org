@@ -1,3 +1,4 @@
-<%= form_with model: @job_title, scope: :job_title, url: admin_department_job_titles_path(@department) do |f| %>
+<%= form_with model: @job_title, scope: :job_title, url: { action: 'create' } do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
+  <%= f.submit %>
 <% end %>

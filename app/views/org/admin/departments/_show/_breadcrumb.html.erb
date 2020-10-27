@@ -1,0 +1,9 @@
+<div class="breadcrumb has-succeeds-separator">
+  <ul>
+    <li><%= link_to t('org.admin.departments.index.title'), { action: 'index' } %></li>
+    <% @department.ancestors.reverse.each do |ancestor| %>
+      <li><%= link_to ancestor.name, { action: 'show', id: ancestor.id } %></li>
+    <% end %>
+    <li class="is-active"><%= @department.name %></li>
+  </ul>
+</div>

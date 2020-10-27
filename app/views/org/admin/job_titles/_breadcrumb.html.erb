@@ -1,0 +1,7 @@
+<div class="breadcrumb has-succeeds-separator">
+  <ul>
+    <li><%= link_to t('org.admin.departments.index.title'), { controller: 'departments' } %></li>
+    <li><%= link_to @department.name, { controller: 'departments', action: 'show', id: params[:department_id] } %></li>
+    <li class="is-active"><%= JobTitle.human_name %></li>
+  </ul>
+</div>
