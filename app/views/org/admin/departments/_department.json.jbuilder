@@ -1,4 +1,6 @@
-json.extract! department,
-              :id,
-              :name,
-              :created_at
+json.extract!(
+  department,
+  :id,
+  :name,
+  :created_at
+)

@@ -1,0 +1,6 @@
+<%= link_to new_admin_member_path, remote: true, class: 'button is-link' do %>
+  <i class="fas fa-plus"></i><%= t('.new') %>
+<% end %>
+<%= link_to find_data_list_table_lists_path('MemberExport', params.permit(:organ_id)), class: 'button is-light', remote: true do %>
+  <i class="file excel icon"></i><%= t('.export') %>
+<% end %>

@@ -1,30 +1,5 @@
-<%= render 'filter_form' %>
-<%= render 'filter_table' %>
-
-<table class="table is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th><%= Member.human_attribute_name(:name) %></th>
-      <th><%= Member.human_attribute_name(:organ_id) %></th>
-      <th><%= MemberDepartment.human_attribute_name(:department_id) %></th>
-      <th><%= Member.human_attribute_name(:identity) %></th>
-      <th><%= Member.human_attribute_name(:join_on) %></th>
-      <th><%= Member.human_attribute_name(:role_ids) %></th>
-      <th>
-        <%= link_to new_admin_member_path, remote: true, class: 'button is-link is-small' do %>
-          <i class="fas fa-plus"></i><%= t('.new') %>
-        <% end %>
-        <%# link_to find_data_list_table_lists_path('MemberExport', params.permit(:office_id)), class: 'ui mini secondary button', remote: true do %>
-<!--          <i class="file excel icon"></i><%#= t('.export') %>-->
-        <%# end %>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @members.each do |member| %>
-      <%= render partial: 'member', locals: { member: member } %>
-    <% end %>
-  </tbody>
-</table>
+<%= render layout: 'index_table', locals: { cache_key: Member.column_names.hash } do %>
+  <%= render partial: 'index_tbody', collection: @members, as: :member %>
+<% end %>
 
 <%= paginate @members %>

@@ -1,7 +1,8 @@
-<%= form_with model: [:admin, @organ] do |f| %>
+<%= form_with model: @organ, url: { action: 'create' } do |f| %>
   <%= render 'shared/error_messages', target: @organ %>
   <% if current_organ&.children.present? %>
     <%= render partial: 'com/nodes/children_select', locals: { f: f, node: current_organ } %>
   <% end %>
   <%= render partial: 'form', locals: { f: f } %>
+  <%= f.submit %>
 <% end %>

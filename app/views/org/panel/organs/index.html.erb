@@ -1,31 +1,5 @@
-<%= render 'filter_form' %>
-
-<table class="table is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th>
-        <%= Organ.human_attribute_name(:name) %>(<%= Organ.human_attribute_name(:name_short) %>)
-      </th>
-      <th><%= Organ.human_attribute_name(:logo) %></th>
-      <th><%= Organ.human_attribute_name(:domain) %></th>
-      <th>
-        <p><%= Organ.human_attribute_name(:area_id) %></p>
-        <p><%= Organ.human_attribute_name(:address) %></p>
-      </th>
-      <th><%= Organ.human_attribute_name(:official) %></th>
-      <th><%= Organ.human_attribute_name(:roles) %></th>
-      <th>
-        <%= link_to({ action: 'new' }, { remote: true, class: 'button is-link is-small' }) do %>
-          <i class="fas fa-plus"></i><span><%= t('.new') %></span>
-        <% end %>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @organs.each do |organ| %>
-    <%= render partial: 'organ', object: organ %>
-  <% end %>
-  </tbody>
-</table>
+<%= render layout: 'index_table', locals: { cache_key: Organ.column_names.hash } do %>
+  <%= render partial: 'index_tbody', collection: @organs, as: :organ %>
+<% end %>
 
 <%= paginate @organs %>

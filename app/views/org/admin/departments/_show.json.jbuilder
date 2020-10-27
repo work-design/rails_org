@@ -1,1 +1,1 @@
-json.maintain @maintain, partial: 'maintain', as: :maintain
+json.department @department, partial: 'department', as: :department

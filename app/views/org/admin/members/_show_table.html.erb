@@ -1,66 +1,54 @@
-<table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <th></th>
-      <th>
-        <%= link_to t('.edit'), edit_admin_member_path, class: 'is-pulled-right' %>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:leader) %></td>
-      <td><%= @member.leader&.name %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:role_ids) %></td>
-      <td>
-        <% @member.roles.each do |role| %>
-          <span class="tag"><%= role.name %></span>
-        <% end %>
-        <%= link_to edit_admin_who_roles_path('Member', @member.id), aria: { label: t('.role') }, remote: true do %>
-          <i class="fas fa-user-shield"></i>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:identity) %></td>
-      <td><%= @member.identity %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:department) %></td>
-      <td>
-        <% @member.departments.each do |department| %>
-          <p><%= link_to department.full_name, admin_department_path(department) %></p>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:join_on) %></td>
-      <td><%= @member.join_on %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:tutorials) %></td>
-      <td>
-        <table class="table">
-          <% @member.tutorials.each do |tutorial| %>
-            <tr>
-              <td><%= tutorial.id %></td>
-              <td><%= tutorial.kind_i18n %></td>
-              <td><%= tutorial.tutor&.name %></td>
-            </tr>
+<tr>
+  <td class="has-text-right"><%= Member.human_attribute_name(:leader) %></td>
+  <td><%= @member.leader&.name %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Member.human_attribute_name(:role_ids) %></td>
+  <td>
+    <% @member.roles.each do |role| %>
+      <span class="tag"><%= role.name %></span>
+    <% end %>
+    <%= link_to edit_admin_who_roles_path('Member', @member.id), aria: { label: t('.role') }, remote: true do %>
+      <i class="fas fa-user-shield"></i>
+    <% end %>
+  </td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Member.human_attribute_name(:identity) %></td>
+  <td><%= @member.identity %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Member.human_attribute_name(:department) %></td>
+  <td>
+    <% @member.departments.each do |department| %>
+      <p><%= link_to department.full_name, admin_department_path(department) %></p>
+    <% end %>
+  </td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Member.human_attribute_name(:join_on) %></td>
+  <td><%= @member.join_on %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Member.human_attribute_name(:tutorials) %></td>
+  <td>
+    <table class="table">
+      <% @member.tutorials.each do |tutorial| %>
+        <tr>
+          <td><%= tutorial.id %></td>
+          <td><%= tutorial.kind_i18n %></td>
+          <td><%= tutorial.tutor&.name %></td>
+        </tr>
+      <% end %>
+      <tfoot>
+      <tr>
+        <td colspan="3">
+          <% Tutorial.options_i18n(:kind).each do |text, value| %>
+            <%= link_to text, new_admin_tutorial_path(kind: value, member_id: @member.id), remote: true, class: 'tag' %>
           <% end %>
-          <tfoot>
-          <tr>
-            <td colspan="3">
-              <% Tutorial.options_i18n(:kind).each do |text, value| %>
-                <%= link_to text, new_admin_tutorial_path(kind: value, member_id: @member.id), remote: true, class: 'tag' %>
-              <% end %>
-            </td>
-          </tr>
-          </tfoot>
-        </table>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </td>
+</tr>

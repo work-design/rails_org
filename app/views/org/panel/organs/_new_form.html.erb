@@ -1,5 +1,6 @@
-<%= form_with model: [:panel, @organ] do |f| %>
+<%= form_with model: @organ, url: { action: 'create' } do |f| %>
   <%= render 'shared/error_messages', target: @organ %>
   <%= render partial: 'com/nodes/children_select', locals: { f: f, node: Organ.new } %>
   <%= render partial: 'form', locals: { f: f } %>
+  <%= f.submit %>
 <% end %>
