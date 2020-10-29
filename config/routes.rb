@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope module: 'org' do
+  scope module: 'org', defaults: { business: 'org' } do
     resources :members, only: [:index, :show] do
       collection do
         get :search
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :me, module: 'org/me', as: :me do
+  scope :me, module: 'org/me', as: :me, defaults: { namespace: 'me', business: 'org' } do
     root 'home#index' unless has_named_route? 'me_root'
     controller :home do
       get :index
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :board, module: 'org/board', as: :board do
+  scope :board, module: 'org/board', as: :board, defaults: { namespace: 'board', business: 'org' } do
     resources :organs
     resources :members, only: [:index, :new, :create] do
       collection do
@@ -39,11 +39,11 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :panel, module: 'org/panel', as: :panel do
+  scope :panel, module: 'org/panel', as: :panel, defaults: { namespace: 'panel', business: 'org' } do
     resources :organs
   end
 
-  scope :admin, module: 'org/admin', as: :admin do
+  scope :admin, module: 'org/admin', as: :admin, defaults: { namespace: 'admin', business: 'org' } do
     root 'home#index' unless has_named_route? 'admin_root'
     controller :home do
       get :index
