@@ -1,8 +1,3 @@
-<div class="menu ex-accordion">
-  <%= link_to admin_root_path, class: active_helper(controllers: ['org/our/home'], active: 'menu-label is-active', item: 'menu-label') do %>
-    <i class="fas fa-home"></i><span><%= t('org.our.organs.show.title') %></span>
-  <% end %>
-</div>
 <div class="<%= active_helper(modules: 'org/admin', active: 'menu ex-accordion is-active', item: 'menu ex-accordion') %>" data-controller="menu">
   <%= content_tag :div, class: 'menu-list' do %>
     <%= link_to t('org.admin.organs.index.title'), admin_organs_path, class: active_helper(controllers: 'organs', active: 'is-active') %>
