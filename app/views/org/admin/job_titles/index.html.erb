@@ -1,11 +1,4 @@
-<table class="table is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-    
-    </tr>
-  </thead>
-  <tbody>
-    <%= render 'super_job_titles' %>
-    <%= render 'job_titles' %>
-  </tbody>
-</table>
+<%= render layout: 'index_table', locals: { cache_key: JobTitle.column_names.hash } do %>
+  <%= render partial: 'super_job_titles', collection: @super_job_titles, as: :super_job_title %>
+  <%= render partial: 'job_titles', collection: @job_titles, as: :job_title %>
+<% end %>

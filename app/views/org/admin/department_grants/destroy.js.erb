@@ -1,7 +1,0 @@
-$('#modal').replaceWith('<%= j(render 'index') %>');
-$('#modal').modal({
-  onHide: function(element) {
-    remote_js_load(location);
-  }
-}).modal('show');
-remote_js_load('<%= raw remote_js_load %>')

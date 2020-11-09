@@ -1,49 +1,47 @@
-<% @job_titles.each do |job_title| %>
-  <tr>
-    <td>
-      <%= job_title.grade %>
-      <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
-        <i class="fas fa-arrow-down"></i>
+<tr>
+  <td>
+    <%= job_title.grade %>
+    <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
+      <i class="fas fa-arrow-down"></i>
+    <% end %>
+    <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
+      <i class="fas fa-arrow-up"></i>
+    <% end %>
+  </td>
+  <td><%= job_title.name %></td>
+  <td><%= job_title.description %></td>
+  <td data-controller="input">
+    <% if job_title.department_id == @department.id %>
+      <span><%= job_title.department.full_name %></span>
+    <% elsif job_title.department %>
+      <%= link_to job_title.department.full_name, admin_department_job_titles_path(job_title.department_id) %>
+    <% else %>
+      <%= link_to t('org.admin.job_titles.index.title'), admin_super_job_titles_path %>
+    <% end %>
+  </td>
+  <td>
+    <div>
+      <% job_title.roles.pluck(:name).each do |role| %>
+        <span><%= role %></span>
       <% end %>
-      <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
-        <i class="fas fa-arrow-up"></i>
+      <%= link_to edit_admin_who_roles_path('JobTitle', job_title.id), aria: { label: t('role.admin.who_roles.edit.title') }, remote: true do %>
+        <i class="fas fa-user-shield"></i>
       <% end %>
-    </td>
-    <td><%= job_title.name %></td>
-    <td><%= job_title.description %></td>
-    <td data-controller="input">
-      <% if job_title.department_id == @department.id %>
-        <span><%= job_title.department.full_name %></span>
-      <% elsif job_title.department %>
-        <%= link_to job_title.department.full_name, admin_department_job_titles_path(job_title.department_id) %>
-      <% else %>
-        <%= link_to t('org.admin.job_titles.index.title'), admin_super_job_titles_path %>
+    </div>
+  </td>
+  <td data-controller="input">
+    <% if job_title.department_id == @department.id %>
+      <%= link_to edit_admin_department_job_title_path(@department, job_title), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light', remote: true do %>
+        <i class="fas fa-pencil-alt"></i>
       <% end %>
-    </td>
-    <td>
-      <div>
-        <% job_title.roles.pluck(:name).each do |role| %>
-          <span><%= role %></span>
-        <% end %>
-        <%= link_to edit_admin_who_roles_path('JobTitle', job_title.id), aria: { label: t('role.admin.who_roles.edit.title') }, remote: true do %>
-          <i class="fas fa-user-shield"></i>
-        <% end %>
-      </div>
-    </td>
-    <td data-controller="input">
-      <% if job_title.department_id == @department.id %>
-        <%= link_to edit_admin_department_job_title_path(@department, job_title), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light', remote: true do %>
-          <i class="fas fa-pencil-alt"></i>
-        <% end %>
+    <% end %>
+    <% if job_title.super_job_title %>
+      <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: admin_department_job_title_path(@department, job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+      <label></label>
+    <% else %>
+      <%= link_to admin_department_job_title_path(@department, job_title), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
+        <i class="fas fa-trash-alt"></i>
       <% end %>
-      <% if job_title.super_job_title %>
-        <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: admin_department_job_title_path(@department, job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
-        <label></label>
-      <% else %>
-        <%= link_to admin_department_job_title_path(@department, job_title), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
+    <% end %>
+  </td>
+</tr>
