@@ -21,8 +21,12 @@ Rails.application.routes.draw do
     resource :member, except: [:new, :create]
     resources :departments
     resources :tutorials do
-      get :tutorings, on: :collection
-      get :perform, on: :member
+      collection do
+        get :tutorings
+      end
+      member do
+        get :perform
+      end
     end
     resource :resign
     resources :job_transfers do
