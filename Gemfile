@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
-gem 'rails'
-gem 'sqlite3'
+gem 'rails', '6.1.0.rc1'
+gem 'pg'
 gem 'webpacker'
 gem 'turbolinks'
 gem 'kaminari'
@@ -25,3 +25,4 @@ gem 'pry-rails'
 gem 'pry-stack_explorer'
 gem 'awesome_print'
 gem 'sdoc'
+gem 'listen'

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :me, module: 'org/me', as: :me, defaults: { namespace: 'me', business: 'org' } do
+  scope 'me', module: 'org/me', as: :me, defaults: { namespace: 'me', business: 'org' } do
     root 'home#index' unless has_named_route? 'me_root'
     controller :home do
       get :index
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     resources :organs
   end
 
-  scope :admin, module: 'org/admin', as: :admin, defaults: { namespace: 'admin', business: 'org' } do
+  scope 'admin', module: 'org/admin', as: :admin, defaults: { namespace: 'admin', business: 'org' } do
     root 'home#index' unless has_named_route? 'admin_root'
     controller :home do
       get :index
@@ -57,6 +57,7 @@ Rails.application.routes.draw do
       collection do
         get :all
       end
+      resources :organ_domains
     end
     resources :departments do
       collection do

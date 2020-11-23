@@ -3,7 +3,6 @@ module RailsOrg::Organ
 
   included do
     attribute :name, :string
-    attribute :domain, :string
     attribute :name_short, :string
     attribute :address, :string
     attribute :members_count, :integer, default: 0
