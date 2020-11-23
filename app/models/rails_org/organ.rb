@@ -16,6 +16,7 @@ module RailsOrg::Organ
     has_many :departments, dependent: :destroy
     has_many :members, dependent: :destroy
     has_many :super_job_titles, dependent: :destroy
+    has_many :organ_domains, dependent: :destroy
     accepts_nested_attributes_for :members
 
     has_one_attached :logo
@@ -23,26 +24,10 @@ module RailsOrg::Organ
     scope :official, -> { where(official: true) }
 
     validates :name, presence: true
-    validates :domain, uniqueness: true, allow_blank: true
   end
 
-  def subdomain
-    code = ['org', id].join('-')
-    sub = ActionDispatch::Http::URL.extract_subdomain RailsCom.config.host, 1
-    [code, sub.presence].compact.join('.')
-  end
-
-  def host(sub = subdomain)
-    if domain.present?
-      domain
-    else
-      ActionDispatch::Http::URL.url_for(
-        host: Rails.application.routes.default_url_options[:host],
-        port: Rails.application.routes.default_url_options[:port],
-        subdomain: sub,
-        trailing_slash: true
-      )
-    end
+  def host
+    organ_domains.default.host
   end
 
   def admin?
