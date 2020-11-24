@@ -29,7 +29,7 @@
   </td>
   <td>
     <span data-show-target="item" style="visibility: hidden">
-      <%= link_to({ controller: 'organ_domains', organ_id: organ.id }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ controller: 'organ_domains', organ_id: organ.id }, aria: { label: t('org.panel.organ_domains.index.title') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-mobile"></i>
       <% end %>
       <%= link_to({ action: 'edit', id: organ.id }, aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light') do %>

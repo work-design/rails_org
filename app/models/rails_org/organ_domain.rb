@@ -15,6 +15,7 @@ module RailsOrg::OrganDomain
 
     validates :identifier, uniqueness: true
 
+    after_initialize :init_subdomain, if: :new_record?
     before_validation :compute_identifier, if: -> { (changes.keys & ['domain', 'subdomain', 'port', 'host']).present? }
     after_update :set_default, if: -> { default? && saved_change_to_default? }
   end
@@ -28,8 +29,8 @@ module RailsOrg::OrganDomain
     self.identifier = ActionDispatch::Http::URL.url_for(host: host, port: port, subdomain: subdomain, trailing_slash: true)
   end
 
-  def subdomain
-    code = ['org', id].join('-')
+  def init_subdomain
+    code = ['org', organ_id].join('-')
     sub = ActionDispatch::Http::URL.extract_subdomain RailsCom.config.host, 1
     [code, sub.presence].compact.join('.')
   end
