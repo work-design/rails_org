@@ -6,7 +6,7 @@
     <% end %>
   </td>
   <td><%= image_tag organ.logo.variant(resize_to_limit: [30, 30]) if organ.logo.attached? %></td>
-  <td><%= organ.domain %></td>
+  <td><%= simple_format organ.domains %></td>
   <td>
     <p><%= organ.area&.full_name %></p>
     <p><%= organ.address %></p>
@@ -22,20 +22,23 @@
       <% organ.roles.pluck(:name).each do |role| %>
         <span><%= role %></span>
       <% end %>
-      <%= link_to edit_admin_who_roles_path('Organ', organ.id), aria: { label: t('role.admin.who_roles.edit.title') }, remote: true do %>
+      <%= link_to({ controller: 'role/admin/who_roles', action: 'edit', who_type: 'Organ', who_id: organ.id }, aria: { label: t('role.admin.who_roles.edit.title') }, remote: true) do %>
         <i class="fas fa-user-shield"></i>
       <% end %>
     </div>
   </td>
   <td>
     <span data-show-target="item" style="visibility: hidden">
-      <%= link_to({ action: 'edit', id: organ.id }, { aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' }) do %>
+      <%= link_to({ controller: 'organ_domains', organ_id: organ.id }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fas fa-mobile"></i>
+      <% end %>
+      <%= link_to({ action: 'edit', id: organ.id }, aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-pencil-alt"></i>
       <% end %>
-      <%= link_to({ action: 'destroy', id: organ.id }, { method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' }) do %>
+      <%= link_to({ action: 'destroy', id: organ.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-trash-alt"></i>
       <% end %>
-      <%= link_to admin_root_url(host: organ.host), aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
+      <%= link_to({ controller: 'org/admin/home', host: organ.host }, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-hand-point-right"></i>
       <% end %>
     </span>

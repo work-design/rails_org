@@ -44,7 +44,9 @@ Rails.application.routes.draw do
   end
 
   scope :panel, module: 'org/panel', as: :panel, defaults: { namespace: 'panel', business: 'org' } do
-    resources :organs
+    resources :organs do
+      resources :organ_domains
+    end
   end
 
   scope 'admin', module: 'org/admin', as: :admin, defaults: { namespace: 'admin', business: 'org' } do

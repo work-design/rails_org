@@ -31,6 +31,10 @@ module RailsOrg::Organ
     organ_domain&.host
   end
 
+  def domains
+    organ_domains.pluck(:identifier)
+  end
+
   def admin?
     Array(cached_role_ids).compact.blank? && official?
   end

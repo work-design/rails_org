@@ -5,7 +5,7 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
     q_params = {}
     q_params.merge! params.permit(:name)
 
-    @organs = Organ.roots.default_where(q_params).order(id: :desc).page(params[:page])
+    @organs = Organ.roots.includes(:organ_domains).default_where(q_params).order(id: :desc).page(params[:page])
   end
 
   def show
@@ -48,7 +48,6 @@ class Org::Panel::OrgansController < Org::Panel::BaseController
   def organ_params
     params.fetch(:organ, {}).permit(
       :name,
-      :domain,
       :logo,
       :official,
       :name_short,
