@@ -12,6 +12,7 @@ module RailsOrg::Organ
     has_taxons :area
     belongs_to :area, optional: true
 
+    has_one :organ_domain, -> { where(default: true) }
     has_many :supports, -> { where(department_id: nil) }, dependent: :destroy
     has_many :departments, dependent: :destroy
     has_many :members, dependent: :destroy
@@ -27,7 +28,7 @@ module RailsOrg::Organ
   end
 
   def host
-    organ_domains.default.host
+    organ_domain&.host
   end
 
   def admin?

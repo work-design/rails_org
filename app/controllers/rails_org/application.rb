@@ -16,22 +16,9 @@ module RailsOrg::Application
   def current_organ
     return @current_organ if defined?(@current_organ)
 
-    if request.subdomain.start_with? /org-|app-/
-      @current_organ = current_domain_organ
-    else
-      @current_organ = current_official_organ
-    end
+    @current_organ = OrganDomain.find_by(identifier: request.host_with_port)&.organ
     logger.debug "  ==========> Login as organ: #{@current_organ&.name}"
     @current_organ
-  end
-
-  def current_official_organ
-    Organ.find_by domain: request.host_with_port
-  end
-
-  def current_domain_organ
-    id = request.subdomains[0].to_s.split('-')[1]
-    Organ.find_by(id: id)
   end
 
   def other_organs
