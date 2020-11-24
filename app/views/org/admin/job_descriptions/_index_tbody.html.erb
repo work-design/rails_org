@@ -1,0 +1,13 @@
+<tr>
+  <td><%= job_description.duties %></td>
+  <td><%= job_description.requirements %></td>
+  <td><%= job_description.advanced_requirements %></td>
+  <td><%= job_description.english_requirement %></td>
+  <td><%= job_description.degree_requirement %></td>
+  <td><%= job_description.salary_min %></td>
+  <td><%= job_description.salary_max %></td>
+  <td>
+    <%= link_to t('.edit'), edit_admin_department_job_description_path(@department, job_description), class: 'ui pink label' %>
+    <%= link_to t('.destroy'), admin_department_job_description_path(@department, job_description), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
+  </td>
+</tr>
