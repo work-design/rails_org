@@ -6,7 +6,7 @@ module RailsOrg::OrganDomain
     attribute :domain, :string, default: Rails.application.routes.default_url_options[:host]
     attribute :port, :string, default: Rails.application.routes.default_url_options[:port]
     attribute :host, :string
-    attribute :identifier, :string
+    attribute :identifier, :string, index: true
     attribute :appid, :string
     attribute :default, :boolean, default: false
 
@@ -15,7 +15,7 @@ module RailsOrg::OrganDomain
 
     validates :identifier, uniqueness: true
 
-    after_initialize :init_subdomain, if: :new_record?
+    after_initialize :init_subdomain, if: -> { new_record? && subdomain.nil? }
     before_validation :compute_identifier, if: -> { (changes.keys & ['domain', 'subdomain', 'port', 'host']).present? }
     after_update :set_default, if: -> { default? && saved_change_to_default? }
   end
@@ -25,22 +25,12 @@ module RailsOrg::OrganDomain
   end
 
   def compute_identifier
-    self.host = [subdomain, domain].join('.')
-    self.identifier = ActionDispatch::Http::URL.url_for(host: host, port: port, subdomain: subdomain, trailing_slash: true)
+    self.host = [subdomain.presence, domain].compact.join('.')
+    self.identifier = [host, port].join(':')
   end
 
   def init_subdomain
-    code = ['org', organ_id].join('-')
-    sub = ActionDispatch::Http::URL.extract_subdomain RailsCom.config.host, 1
-    [code, sub.presence].compact.join('.')
-  end
-
-  def host
-    if domain.present?
-      domain
-    else
-
-    end
+    self.subdomain = ['org', organ_id].join('-')
   end
 
 end

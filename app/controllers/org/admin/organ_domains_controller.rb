@@ -3,15 +3,15 @@ class Org::Admin::OrganDomainsController < Org::Admin::BaseController
   before_action :set_organ_domain, only: [:show, :edit, :update, :destroy]
 
   def index
-    @organ_domains = OrganDomain.page(params[:page])
+    @organ_domains = @organ.organ_domains.page(params[:page])
   end
 
   def new
-    @organ_domain = OrganDomain.new
+    @organ_domain = @organ.organ_domains.build
   end
 
   def create
-    @organ_domain = OrganDomain.new(organ_domain_params)
+    @organ_domain = @organ.organ_domains.build(organ_domain_params)
 
     unless @organ_domain.save
       render :new, locals: { model: @organ_domain }, status: :unprocessable_entity
@@ -51,6 +51,7 @@ class Org::Admin::OrganDomainsController < Org::Admin::BaseController
       :port,
       :subdomain,
       :host,
+      :default,
       :appid
     )
   end
