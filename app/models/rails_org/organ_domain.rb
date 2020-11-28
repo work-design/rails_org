@@ -26,7 +26,7 @@ module RailsOrg::OrganDomain
 
   def compute_identifier
     self.host = [subdomain.presence, domain].compact.join('.')
-    self.identifier = [host, port].join(':')
+    self.identifier = [host, port.presence].compact.join(':')
   end
 
   def init_subdomain

@@ -1,46 +1,15 @@
-<%= render 'filter_form' %>
-<%= render 'filter_table' %>
-
-<table class="table is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th><%= Department.human_attribute_name(:name) %></th>
-      <th>
-        <%= Department.human_attribute_name(:needed_number) %>
-        <span class="has-grey-text">/</span>
-        <%= Department.human_attribute_name(:members_count) %>
-      </th>
-      <th>
-        <%= Department.human_attribute_name(:job_titles) %>
-        <%= link_to admin_super_job_titles_path, aria: { label: '不限部门职级' } do %>
-          <i class="fas fa-cog"></i>
-        <% end %>
-      </th>
-      <th><%= Department.human_attribute_name(:leader) %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody data-controller="tree">
-    <% @departments.each do |department| %>
-      <%= render partial: 'department', object: department, locals: { display: 'table-row' } %>
-      <%= draw_tree(partial: 'org/admin/departments/department', object: department, locals: { display: 'none' }) %>
-
-      <%# 防止非新建下级按钮创建部门时无 parent_id 导致重复显示 %>
-      <% (department.inferiors - @departments).each do |inferior| %>
-        <%# 防止特殊情况下重复显示 %>
-        <% unless inferior.superior_id == inferior.parent_id %>
-          <%= render partial: 'department', object: inferior, locals: { display: 'table-row' } %>
-        <% end %>
+<%= render layout: 'index_tree_table', locals: { cache_key: Department.column_names.hash } do %>
+  <% @departments.each do |department| %>
+    <%= render partial: 'department', object: department, locals: { display: 'table-row' } %>
+    <%= draw_tree(partial: 'department', object: department, locals: { display: 'none' }) %>
+    <%# 防止非新建下级按钮创建部门时无 parent_id 导致重复显示 %>
+    <% (department.inferiors - @departments).each do |inferior| %>
+      <%# 防止特殊情况下重复显示 %>
+      <% unless inferior.superior_id == inferior.parent_id %>
+        <%= render partial: 'department', object: inferior, locals: { display: 'table-row' } %>
       <% end %>
     <% end %>
-    <tr>
-      <td colspan="6">
-        <%= link_to new_admin_department_path, remote: true, class: 'button is-link is-small' do %>
-          <i class="fas fa-plus"></i><%= t('.new') %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <% end %>
+<% end %>
 
 <%= paginate @departments %>
