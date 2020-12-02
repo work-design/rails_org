@@ -86,8 +86,6 @@ class Org::Admin::MembersController < Org::Admin::BaseController
   def mock
     organ_grant = @member.mock_organ_grant(current_user.id)
     current_authorized_token.update member_id: @member.id
-
-    redirect_to panel_organ_url
   end
 
   def add_item
