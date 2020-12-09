@@ -14,19 +14,6 @@ module RailsOrg::Me
     end
   end
 
-  def current_organ
-    return @current_organ if defined?(@current_organ)
-
-    if request.subdomain.start_with? /org-|app-/
-      @current_organ = current_domain_organ
-    else
-      @current_organ = current_official_organ
-    end
-    @current_organ = current_member&.organ if @current_organ.nil?
-    logger.debug "  ==========> Login as organ: #{@current_organ&.name}"
-    @current_organ
-  end
-
   def current_member
     return @current_member if defined?(@current_member)
     if params[:member_id]
