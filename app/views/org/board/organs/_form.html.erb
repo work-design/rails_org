@@ -1,8 +1,5 @@
-<%= form_with model: @member, url: board_organs_path do |f| %>
-  <%= render 'shared/error_messages', target: @member %>
-  <%= f.fields :organ do |ef| %>
-    <%= ef.text_field :name, required: true %>
-    <%= ef.file_field :logo %>
-  <% end %>
-  <%= f.submit %>
+<%= render 'shared/error_messages', target: f.object %>
+<%= f.fields :organ do |ef| %>
+  <%= ef.text_field :name, required: true %>
+  <%= ef.file_field :logo %>
 <% end %>
