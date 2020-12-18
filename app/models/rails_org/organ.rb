@@ -28,7 +28,10 @@ module RailsOrg::Organ
   end
 
   def host
-    organ_domain&.host
+    ActionDispatch::Http::URL.url_for(
+      host: organ_domain&.host,
+      protocol: Rails.application.routes.default_url_options[:protocol]
+    )
   end
 
   def domains
