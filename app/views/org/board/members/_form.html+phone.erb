@@ -1,31 +1,29 @@
-<%= form_with theme: 'weui', model: @member, url: board_members_path, data: { controller: 'member' } do |f| %>
-  <div class="weui-form__control-area">
-    <div class="weui-cells__group weui-cells__group_form">
-      <div class="weui-cells__title">选择或搜索医院</div>
-      <div class="weui-cells weui-cells_form">
-        <%= f.hidden_field :organ_id, data: { member_target: 'value' } %>
-        <div class="weui-cell weui-cell_active">
-          <div class="weui-cell__hd"><%= Member.human_attribute_name(:organ_id) %></div>
-          <div class="weui-cell__bd">
-            <%= text_field_tag 'name-like', nil, data: { member_target: 'input', controller: 'typer', url: form_search_organs_path }, class: 'weui-input' %>
-          </div>
+<div class="weui-form__control-area">
+  <div class="weui-cells__group weui-cells__group_form">
+    <div class="weui-cells__title">选择或搜索医院</div>
+    <div class="weui-cells weui-cells_form">
+      <%= f.hidden_field :organ_id, data: { member_target: 'value' } %>
+      <div class="weui-cell weui-cell_active">
+        <div class="weui-cell__hd"><%= Member.human_attribute_name(:organ_id) %></div>
+        <div class="weui-cell__bd">
+          <%= text_field_tag 'name-like', nil, data: { member_target: 'input', controller: 'typer', url: form_search_organs_path }, class: 'weui-input' %>
         </div>
       </div>
     </div>
   </div>
-  <div class="weui-form__tips-area" id="search_content">
-    <div class="weui-cells__title">
-      你附近的医院
-      <%= link_to '获取定位' %>
-    </div>
-    <div class="weui-cells">
-    <% @organs.each do |organ| %>
-      <div class="weui-cell" data-action="click->member#choose" data-id="<%= organ.id %>" data-name="<%= organ.name %>">
-        <div class="weui-cell__hd"></div>
-        <div class="weui-cell__bd"><%= organ.name %></div>
-      </div>
-    <% end %>
-    </div>
+</div>
+<div class="weui-form__tips-area" id="search_content">
+  <div class="weui-cells__title">
+    你附近的医院
+    <%= link_to '获取定位' %>
   </div>
-  <%= f.submit '提交', wrap: { all: nil } %>
-<% end %>
+  <div class="weui-cells">
+  <% @organs.each do |organ| %>
+    <div class="weui-cell" data-action="click->member#choose" data-id="<%= organ.id %>" data-name="<%= organ.name %>">
+      <div class="weui-cell__hd"></div>
+      <div class="weui-cell__bd"><%= organ.name %></div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
