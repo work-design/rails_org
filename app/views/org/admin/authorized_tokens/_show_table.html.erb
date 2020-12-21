@@ -1,0 +1,20 @@
+<tr>
+  <td class="has-text-right"><%= AuthorizedToken.human_attribute_name(:user_id) %></td>
+  <td><%= @authorized_token.user_id %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= AuthorizedToken.human_attribute_name(:oauth_user_id) %></td>
+  <td><%= @authorized_token.oauth_user_id %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= AuthorizedToken.human_attribute_name(:token) %></td>
+  <td><%= @authorized_token.token %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= AuthorizedToken.human_attribute_name(:expire_at) %></td>
+  <td><%= @authorized_token.expire_at %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= AuthorizedToken.human_attribute_name(:mock_member) %></td>
+  <td><%= @authorized_token.mock_member %></td>
+</tr>

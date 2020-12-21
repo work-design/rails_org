@@ -113,7 +113,7 @@ Rails.application.routes.draw do
           get 'options' => :member_options
         end
       end
-      resources :organ_grants
+      resources :authorized_tokens
     end
     resources :supports do
       collection do
