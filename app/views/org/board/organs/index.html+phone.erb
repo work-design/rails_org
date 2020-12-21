@@ -1,0 +1,9 @@
+<% @organs.each do |organ| %>
+<%= link_to({ controller: 'organs', action: 'show', id: organ.id }, class: 'weui-cell weui-cell_access') do %>
+  <div class="weui-cell__bd"><%= organ.name %></div>
+  <div class="weui-cell__ft"></div>
+<% end %>
+<% end %>
+<%= link_to({ controller: 'members', action: 'new' }, class: 'weui-cell weui-cell_access') do %>
+  <i class="fas fa-plus"></i><span><%= t('org.board.organs.new.title') %></span>
+<% end %>

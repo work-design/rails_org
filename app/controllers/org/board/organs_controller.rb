@@ -2,7 +2,7 @@ class Org::Board::OrgansController < Org::Board::BaseController
   before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
   def index
-    @organs = current_user.members.includes(:organ).where.not(organ_id: nil).group_by(&:organ)
+    @organs = current_user.organs
     if @organs.blank?
       @member = current_user.members.build
       @organ = @member.build_organ
