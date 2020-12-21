@@ -8,7 +8,7 @@
     </div>
     <div class="navbar-dropdown is-right">
       <%= link_to '个人中心', { controller: '/board/home' }, class: active_helper(controllers: ['users'], active: 'navbar-item is-active', item: 'navbar-item') %>
-      <%= link_to '加入', { controller: 'organs' }, class: active_helper(controllers: ['organs'], active: 'navbar-item is-active', item: 'navbar-item') %>
+      <%= link_to '加入', { controller: 'org/board/organs' }, class: active_helper(controllers: ['organs'], active: 'navbar-item is-active', item: 'navbar-item') %>
       <%= link_to '退出', logout_path, data: { confirm: '确认退出' }, remote: true, class: 'navbar-item' %>
     </div>
   </div>
