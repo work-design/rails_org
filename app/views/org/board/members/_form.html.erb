@@ -1,5 +1,4 @@
 <%= f.hidden_field :organ_id, data: { member_target: 'value' } %>
 <%= f.fields :organ do |ef| %>
   <%= ef.text_field :name, required: true %>
-  <%= ef.file_field :logo %>
 <% end %>
