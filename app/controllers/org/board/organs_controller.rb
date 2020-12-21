@@ -55,7 +55,7 @@ class Org::Board::OrgansController < Org::Board::BaseController
   end
 
   def set_organ
-    @organ = Organ.find(params[:id])
+    @organ = current_user.organs.find(params[:id])
   end
 
   def member_params
