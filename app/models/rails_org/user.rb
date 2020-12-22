@@ -3,7 +3,7 @@ module RailsOrg::User
 
   included do
     has_many :members, dependent: :nullify
-    has_many :organs, through: :members
+    has_many :organs, -> { distinct }, through: :members
     after_save :copy_avatar_to_members, if: -> { attachment_changes['avatar'].present? }
   end
 
