@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope module: 'org', defaults: { business: 'org' } do
+  scope module: 'org', defaults: { namespace: 'application', business: 'org' } do
     resources :members, only: [:index, :show] do
       collection do
         get :search
