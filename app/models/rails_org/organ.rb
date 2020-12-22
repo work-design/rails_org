@@ -28,8 +28,11 @@ module RailsOrg::Organ
   end
 
   def host
+    domain = organ_domain || build_organ_domain
+
+    # todo deal with port
     ActionDispatch::Http::URL.url_for(
-      host: organ_domain&.host,
+      host: domain.host,
       protocol: Rails.application.routes.default_url_options[:protocol]
     )
   end

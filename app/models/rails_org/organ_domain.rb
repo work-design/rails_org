@@ -31,6 +31,7 @@ module RailsOrg::OrganDomain
 
   def init_subdomain
     self.subdomain = ['org', organ_id].join('-')
+    compute_identifier
   end
 
 end
