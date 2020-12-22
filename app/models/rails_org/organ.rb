@@ -29,6 +29,7 @@ module RailsOrg::Organ
 
   def host
     domain = organ_domain || build_organ_domain
+    domain.save if domain.new_record?
 
     # todo deal with port
     ActionDispatch::Http::URL.url_for(
