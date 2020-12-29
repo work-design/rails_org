@@ -1,8 +1,8 @@
 <%= render layout: 'index_tree_table', locals: { cache_key: Organ.column_names.hash } do %>
-  <%= render partial: 'organ', object: current_organ %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: current_organ } %>
   <% @organs.each do |organ| %>
-    <%= render partial: 'organ', object: organ %>
-    <%= draw_tree(partial: 'organ', object: organ) %>
+    <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: organ } %>
+    <%= draw_tree(partial: 'index_tbody', layout: 'index_tr', locals: { model: ogran }) %>
   <% end %>
 <% end %>
 

@@ -1,0 +1,17 @@
+<td>
+  <span style="width: <%= model.depth * 1.43 %>em; display: inline-block"></span>
+  <% if !model.leaf? %>
+    <i class="fas fa-caret-down fa-fw" data-action="click->tree#collapse" style="cursor: pointer"></i>
+  <% else %>
+    <i class="fas fa-minus fa-fw"></i>
+  <% end %>
+  <%= model.name %>
+  <% if model.name_short.present? %>
+    (<%= model.name_short %>)
+  <% end %>
+</td>
+<td><%= image_tag model.logo.variant(resize_to_limit: [30, 30]) if model.logo.attached? %></td>
+<td>
+  <p><%= model.area&.full_name %></p>
+  <p><%= model.address %></p>
+</td>
