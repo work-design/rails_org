@@ -11,7 +11,7 @@
         <th><%= Member.human_attribute_name(:job_titles) %></th>
         <th><%= Member.human_attribute_name(:join_on) %></th>
         <th>
-          <%= link_to new_admin_member_path(department_id: @department.id), remote: true, class: 'button is-link is-small' do %>
+          <%= link_to new_admin_member_path(department_id: @department.id), class: 'button is-link is-small' do %>
             <i class="fas fa-plus"></i><%= t('.new') %>
           <% end %>
         </th>

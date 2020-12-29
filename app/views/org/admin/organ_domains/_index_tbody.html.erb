@@ -7,18 +7,18 @@
   <td><%= organ_domain.appid %></td>
   <td>
     <div data-controller="input">
-      <%= check_box_tag '[organ_domain]default', nil, organ_domain.default, data: { method: :patch, remote: true, url: admin_organ_organ_domain_path(@organ, organ_domain), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+      <%= check_box_tag '[organ_domain]default', nil, organ_domain.default, data: { method: :patch, url: admin_organ_organ_domain_path(@organ, organ_domain), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
       <label></label>
     </div>
   </td>
   <td>
-    <%= link_to({ action: 'show', id: organ_domain.id }, { aria: { label: t('.show') }, remote: true, class: 'button is-small is-rounded is-light' }) do %>
+    <%= link_to({ action: 'show', id: organ_domain.id }, { aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' }) do %>
       <i class="fas fa-eye"></i>
     <% end %>
-    <%= link_to({ action: 'edit', id: organ_domain.id }, { aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' }) do %>
+    <%= link_to({ action: 'edit', id: organ_domain.id }, { aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' }) do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to({ action: 'destroy', id: organ_domain.id }, { method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light' }) do %>
+    <%= link_to({ action: 'destroy', id: organ_domain.id }, { method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' }) do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </td>

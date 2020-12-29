@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: ac31a38225b03689bf533ca3973b538a65abde36
+  revision: 0eddbc13834a470f413a22bb87a342bab4e8879b
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -14,14 +14,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 71a417eb74dcc9393068e4d79da36ef5b0f765f6
+  revision: 65691d4351d434901a020be7a0008d5d9729a215
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 0ee280853567984e038227555ec03dd4237c9ded
+  revision: 3286bf20877021bd9e6e544d2a17f39fd6a9f01c
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 2de290bb9fe0373dc8139db04d3621866cafe61f
+  revision: 3ef6a195f9d38798621233ed59b57112fcf19cb7
   specs:
     rails_com (1.2.9)
       acme-client
@@ -52,14 +52,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 931fa57d75533cecda6b4bbfa07132bce63a9864
+  revision: 66e9d658d30bed67d00df1eaf392aff3c4cfb08e
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 8d569b196a3edd31c3a434af624187e012369b82
+  revision: f6836e41ee6820bda66b669c0156a36c8b0914eb
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -137,7 +137,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    acts_as_list (1.0.2)
+    acts_as_list (1.0.3)
       activerecord (>= 4.2)
     awesome_print (1.8.0)
     bcrypt (3.1.16)
@@ -157,7 +157,7 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faraday (1.1.0)
+    faraday (1.2.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     ffi (1.13.1)

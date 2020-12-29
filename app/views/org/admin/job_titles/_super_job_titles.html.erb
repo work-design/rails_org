@@ -6,7 +6,7 @@
   <td></td>
   <td>
     <div data-controller="input">
-      <%= check_box_tag :department_id, @department.id, false, data: { method: :post, remote: true, url: department_admin_department_job_titles_path(@department, super_job_title_id: super_job_title.id), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+      <%= check_box_tag :department_id, @department.id, false, data: { method: :post, url: department_admin_department_job_titles_path(@department, super_job_title_id: super_job_title.id), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
       <label></label>
     </div>
   </td>

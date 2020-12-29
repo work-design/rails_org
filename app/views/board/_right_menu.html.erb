@@ -9,7 +9,7 @@
     <div class="navbar-dropdown is-right">
       <%= link_to '个人中心', { controller: '/board/home' }, class: active_helper(controllers: ['users'], active: 'navbar-item is-active', item: 'navbar-item') %>
       <%= link_to '我的团队', { controller: 'org/board/organs' }, class: active_helper(controllers: ['organs'], active: 'navbar-item is-active', item: 'navbar-item') %>
-      <%= link_to '退出', logout_path, data: { confirm: '确认退出' }, remote: true, class: 'navbar-item' %>
+      <%= link_to '退出', logout_path, data: { confirm: '确认退出' }, class: 'navbar-item' %>
     </div>
   </div>
 <% elsif defined?(RailsAuth) %>

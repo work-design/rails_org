@@ -15,15 +15,15 @@
     <label class="ui label"><%= job_transfer.state_i18n %></label>
     <% if job_transfer.next_operator == current_user %>
       <div class="ui mini buttons">
-        <%= link_to 'Approve', new_check_path(JobTransfer.name, job_transfer.id, state: job_transfer.next_state_state), remote: true, class: 'ui positive button' %>
+        <%= link_to 'Approve', new_check_path(JobTransfer.name, job_transfer.id, state: job_transfer.next_state_state), class: 'ui positive button' %>
         <div class="or"></div>
-        <%= link_to 'Reject', new_check_path(JobTransfer.name, job_transfer.id, state: JobTransfer.states[:rejected]), remote: true, class: 'ui negative button' %>
+        <%= link_to 'Reject', new_check_path(JobTransfer.name, job_transfer.id, state: JobTransfer.states[:rejected]), class: 'ui negative button' %>
       </div>
     <% end %>
   </td>
   <td class="ui labels">
     <%= link_to 'Detail', admin_job_transfer_path(job_transfer), class: 'ui blue label' %>
-    <%= link_to 'Edit', edit_admin_job_transfer_path(job_transfer), remote: true, class: 'ui pink label' %>
-    <%= link_to t('.destroy'), admin_job_transfer_path(job_transfer), method: :delete, data: { confirm: t('.confirm') }, remote: true, class: 'ui red label' %>
+    <%= link_to 'Edit', edit_admin_job_transfer_path(job_transfer), class: 'ui pink label' %>
+    <%= link_to t('.destroy'), admin_job_transfer_path(job_transfer), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
   </td>
 </tr>

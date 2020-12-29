@@ -1,5 +1,5 @@
 <%= render layout: 'index_table', locals: { cache_key: OrganDomain.column_names.hash } do %>
-  <%= render partial: 'index_tbody', collection: @organ_domains, as: :organ_domain %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @organ_domains, as: :organ_domain %>
 <% end %>
 
 <%= paginate @organ_domains %>

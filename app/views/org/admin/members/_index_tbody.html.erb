@@ -22,7 +22,7 @@
     </div>
   </td>
   <td>
-    <%= link_to({ action: 'show', id: member.id }, aria: { label: t('.show') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+    <%= link_to({ action: 'show', id: member.id }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
       <i class="fas fa-info"></i>
     <% end %>
     <%= link_to profile_admin_member_path(member), aria: { label: t('.profile') }, class: 'button is-small is-rounded is-light' do %>
@@ -31,7 +31,7 @@
     <%= link_to({ controller: 'authorized_tokens', member_id: member.id }, aria: { label: t('.role') }, class: 'button is-small is-rounded is-light') do %>
       <i class="fas fa-user-shield"></i>
     <% end %>
-    <%= link_to({ action: 'edit', id: member }, aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+    <%= link_to({ action: 'edit', id: member }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
     <% if member.user_id != current_user.id %>

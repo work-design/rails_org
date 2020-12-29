@@ -24,19 +24,19 @@
       <% job_title.roles.pluck(:name).each do |role| %>
         <span><%= role %></span>
       <% end %>
-      <%= link_to edit_admin_who_roles_path('JobTitle', job_title.id), aria: { label: t('role.admin.who_roles.edit.title') }, remote: true do %>
+      <%= link_to edit_admin_who_roles_path('JobTitle', job_title.id), aria: { label: t('role.admin.who_roles.edit.title') } do %>
         <i class="fas fa-user-shield"></i>
       <% end %>
     </div>
   </td>
   <td data-controller="input">
     <% if job_title.department_id == @department.id %>
-      <%= link_to edit_admin_department_job_title_path(@department, job_title), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light', remote: true do %>
+      <%= link_to edit_admin_department_job_title_path(@department, job_title), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' do %>
         <i class="fas fa-pencil-alt"></i>
       <% end %>
     <% end %>
     <% if job_title.super_job_title %>
-      <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, remote: true, url: admin_department_job_title_path(@department, job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+      <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, url: admin_department_job_title_path(@department, job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
       <label></label>
     <% else %>
       <%= link_to admin_department_job_title_path(@department, job_title), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>

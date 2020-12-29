@@ -9,9 +9,9 @@
     <%= resign.state_i18n %>
     <% if resign.init? %>
       <div class="buttons">
-        <%= link_to 'Approve', new_check_path(Resign.name, resign.id, state: Resign::states[:approved]), remote: true, class: 'ui positive button' %>
+        <%= link_to 'Approve', new_check_path(Resign.name, resign.id, state: Resign::states[:approved]), class: 'ui positive button' %>
         <div class="or"></div>
-        <%= link_to 'Reject', new_check_path(Resign.name, resign.id, state: Resign::states[:rejected]), remote: true, class: 'ui negative button' %>
+        <%= link_to 'Reject', new_check_path(Resign.name, resign.id, state: Resign::states[:rejected]), class: 'ui negative button' %>
       </div>
     <% end %>
   </td>

@@ -13,7 +13,7 @@
   </td>
   <td>
     <div data-controller="input">
-      <%= check_box_tag '[organ]official', nil, organ.official, data: { method: :patch, remote: true, confirm: t('.confirm'), url: panel_organ_path(organ), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+      <%= check_box_tag '[organ]official', nil, organ.official, data: { method: :patch, confirm: t('.confirm'), url: panel_organ_path(organ), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
       <label></label>
     </div>
   </td>
@@ -22,7 +22,7 @@
       <% organ.roles.pluck(:name).each do |role| %>
         <span><%= role %></span>
       <% end %>
-      <%= link_to({ controller: 'role/admin/who_roles', action: 'edit', who_type: 'Organ', who_id: organ.id }, aria: { label: t('role.admin.who_roles.edit.title') }, remote: true) do %>
+      <%= link_to({ controller: 'role/admin/who_roles', action: 'edit', who_type: 'Organ', who_id: organ.id }, aria: { label: t('role.admin.who_roles.edit.title') }) do %>
         <i class="fas fa-user-shield"></i>
       <% end %>
     </div>
@@ -32,7 +32,7 @@
       <%= link_to({ controller: 'organ_domains', organ_id: organ.id }, aria: { label: t('org.panel.organ_domains.index.title') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-mobile"></i>
       <% end %>
-      <%= link_to({ action: 'edit', id: organ.id }, aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ action: 'edit', id: organ.id }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-pencil-alt"></i>
       <% end %>
       <%= link_to({ action: 'destroy', id: organ.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
