@@ -1,25 +1,13 @@
-<tr>
-  <td><%= organ_domain.subdomain %></td>
-  <td><%= organ_domain.domain %></td>
-  <td><%= organ_domain.host %></td>
-  <td><%= organ_domain.port %></td>
-  <td><%= organ_domain.identifier %></td>
-  <td><%= organ_domain.appid %></td>
-  <td>
-    <div data-controller="input">
-      <%= check_box_tag '[organ_domain]default', nil, organ_domain.default, data: { method: :patch, url: admin_organ_organ_domain_path(@organ, organ_domain), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
-      <label></label>
-    </div>
-  </td>
-  <td>
-    <%= link_to({ action: 'show', id: organ_domain.id }, { aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' }) do %>
-      <i class="fas fa-eye"></i>
-    <% end %>
-    <%= link_to({ action: 'edit', id: organ_domain.id }, { aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' }) do %>
-      <i class="fas fa-pencil-alt"></i>
-    <% end %>
-    <%= link_to({ action: 'destroy', id: organ_domain.id }, { method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' }) do %>
-      <i class="fas fa-trash-alt"></i>
-    <% end %>
-  </td>
-</tr>
+<td><%= model.subdomain %></td>
+<td><%= model.domain %></td>
+<td><%= model.host %></td>
+<td><%= model.port %></td>
+<td><%= model.identifier %></td>
+<td><%= model.appid %></td>
+<td>
+  <%= form_with theme: nil, model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
+    <%= f.check_box :default, data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
+    <label data-action="click->input#check"></label>
+    <%= f.submit nil, data: { input_target: 'submit' }, style: 'display: none' %>
+  <% end %>
+</td>

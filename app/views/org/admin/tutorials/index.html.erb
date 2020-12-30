@@ -1,13 +1,5 @@
-<div class="content-breadcrumb-section">
-  <%= render 'layouts/breadcrumb' %>
-</div>
-
-<div class="ui attached segment">
-  <%= render 'search_form' %>
-  <%= render 'right_menu_table_tool'%>
-</div>
-
-<%= render 'list' %>
+<%= render layout: 'index_table', locals: { cache_key: Tutorial.column_names.hash } do %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @tutorials, as: :model %>
+<% end %>
 
 <%= paginate @tutorials %>
-

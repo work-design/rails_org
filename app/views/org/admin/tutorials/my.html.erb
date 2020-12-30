@@ -1,7 +1,5 @@
-<%= render 'my/tutorials/menu' %>
+<%= render layout: 'index_table', locals: { cache_key: Tutorial.column_names.hash } do %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @tutorials, as: :model %>
+<% end %>
 
-<div class="ui attached segment">
-  <%= render 'search_form' %>
-</div>
-
-<%= render 'list' %>
+<%= paginate @tutorials %>
