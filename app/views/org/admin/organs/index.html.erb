@@ -2,7 +2,7 @@
   <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: current_organ } %>
   <% @organs.each do |organ| %>
     <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: organ } %>
-    <%= draw_tree(partial: 'index_tbody', layout: 'index_tr', locals: { model: ogran }) %>
+    <%= draw_tree(partial: 'index_tbody', layout: 'index_tr', object: organ, locals: { model: organ }) %>
   <% end %>
 <% end %>
 

@@ -24,9 +24,9 @@ zh:
         index:
           title: 分支机构
           mock: 进入该组织
-      organ_grants:
+      organ_domains:
         index:
-          title: 授权管理
+          title: 域名管理
       organ_handles:
         index:
           title: 部门职能设置

@@ -1,4 +1,3 @@
-<tr data-depth="<%= department.depth_str %>" style="display: <%= display %>">
   <td>
     <span style="width: <%= department.depth * 1.43 %>em; display: inline-block"></span>
     <% if department.leaf? %>
@@ -29,18 +28,6 @@
     <%= link_to department.leader.name, admin_member_path(department.leader.id) if department.leader %>
   </td>
   <td>
-    <%= link_to new_admin_department_path(parent_id: department.id), aria: { label: '添加下级' }, class: 'button is-link is-small' do %>
-      <i class="fas fa-plus"></i>
-    <% end %>
-    <%= link_to admin_department_path(department), aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' do %>
-      <i class="fas fa-users"></i>
-    <% end %>
-    <%#= link_to 'JD', admin_department_job_descriptions_path(department), class: 'button is-small is-rounded is-light' %>
-    <%= link_to edit_admin_department_path(department), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' do %>
-      <i class="fas fa-pencil-alt"></i>
-    <% end %>
-    <%= link_to admin_department_path(department), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
-      <i class="fas fa-trash-alt"></i>
-    <% end %>
+  
   </td>
 </tr>
