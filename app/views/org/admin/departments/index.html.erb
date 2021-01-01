@@ -1,12 +1,12 @@
 <%= render layout: 'index_tree_table', locals: { cache_key: Department.column_names.hash } do %>
   <% @departments.each do |department| %>
-    <%= render partial: 'department', object: department, locals: { display: 'table-row' } %>
-    <%= draw_tree(partial: 'department', object: department, locals: { display: 'none' }) %>
+    <%= render partial: 'index_tbody', layout: 'index_tr', object: department, locals: { model: department, display: 'table-row' } %>
+    <%= draw_tree(partial: 'index_tbody', layout: 'index_tr', object: department, locals: { model: department, display: 'none' }) %>
     <%# 防止非新建下级按钮创建部门时无 parent_id 导致重复显示 %>
     <% (department.inferiors - @departments).each do |inferior| %>
       <%# 防止特殊情况下重复显示 %>
       <% unless inferior.superior_id == inferior.parent_id %>
-        <%= render partial: 'department', object: inferior, locals: { display: 'table-row' } %>
+        <%= render partial: 'index_tbody', layout: 'index_tr', object: inferior, locals: { model: inferior, display: 'table-row' } %>
       <% end %>
     <% end %>
   <% end %>

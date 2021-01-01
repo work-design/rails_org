@@ -1,44 +1,22 @@
-<tr>
-  <td>
-    <%= image_tag member.avatar.variant(resize_to_limit: [35, 35]), class: 'image is-32x32' if member.avatar.attached? %>
-    <%= link_to member.name, admin_member_path(member) %>
-  </td>
-  <td><%= member.organ&.name %></td>
-  <td>
-    <% member.member_departments.each do |md| %>
-      <p>
-        <%= link_to md.department.full_name, admin_department_path(md.department_id) %>
-        <span><%= md.job_title.name %></span>
-      </p>
+<td>
+  <%= image_tag model.avatar.variant(resize_to_limit: [35, 35]), class: 'image is-32x32' if model.avatar.attached? %>
+  <%= link_to model.name, { action: 'show', id: model }, data: { turbo_frame: '_top' } %>
+</td>
+<td><%= model.organ&.name %></td>
+<td>
+  <% model.member_departments.each do |md| %>
+    <p>
+      <%= link_to md.department.full_name, { controller: 'departments', action: 'show', id: md.department_id } %>
+      <span><%= md.job_title.name %></span>
+    </p>
+  <% end %>
+</td>
+<td><%= model.identity %></td>
+<td><%= model.join_on %></td>
+<td>
+  <div class="tags">
+    <% model.roles.pluck(:name).each do |role| %>
+      <span class="tag"><%= role %></span>
     <% end %>
-  </td>
-  <td><%= member.identity %></td>
-  <td><%= member.join_on %></td>
-  <td>
-    <div class="tags">
-      <% member.roles.pluck(:name).each do |role| %>
-        <span class="tag"><%= role %></span>
-      <% end %>
-    </div>
-  </td>
-  <td>
-    <%= link_to({ action: 'show', id: member.id }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
-      <i class="fas fa-info"></i>
-    <% end %>
-    <%= link_to profile_admin_member_path(member), aria: { label: t('.profile') }, class: 'button is-small is-rounded is-light' do %>
-      <i class="fas fa-id-card"></i>
-    <% end %>
-    <%= link_to({ controller: 'authorized_tokens', member_id: member.id }, aria: { label: t('.role') }, class: 'button is-small is-rounded is-light') do %>
-      <i class="fas fa-user-shield"></i>
-    <% end %>
-    <%= link_to({ action: 'edit', id: member }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
-      <i class="fas fa-pencil-alt"></i>
-    <% end %>
-    <% if member.user_id != current_user.id %>
-      <%= link_to mock_admin_member_path(member), method: :patch, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
-        <i class="fas fa-hand-point-right"></i>
-      <% end %>
-    <% end %>
-    <%# link_to 'tutorials', admin_tutorials_path(member_id: member.id), class: 'ui mini circular button' %>
-  </td>
-</tr>
+  </div>
+</td>

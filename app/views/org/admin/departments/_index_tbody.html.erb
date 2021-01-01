@@ -1,33 +1,29 @@
-  <td>
-    <span style="width: <%= department.depth * 1.43 %>em; display: inline-block"></span>
-    <% if department.leaf? %>
-      <i class="fas fa-fw fa-minus"></i>
-    <% else %>
-      <i class="fas fa-fw fa-caret-right" data-action="click->tree#expand" style="cursor: pointer"></i>
-    <% end %>
-    <%= link_to admin_department_path(department) do %>
-      <span><%= department.name %></span>
-      <span class="has-text-grey">(<%= department.all_member_departments_count %>)</span>
-    <% end %>
-  </td>
-  <td>
-    <%= department.needed_number %> /
-    <span class="<%= active_asserts('red': department.needed_number.to_i > department.member_departments_count, 'grey': department.needed_number.to_i == department.member_departments_count, 'green': department.needed_number.to_i < department.member_departments_count) %> text">
-      <%= department.member_departments_count %>
-    </span>
-  </td>
-  <td>
-    <% department.job_titles.each do |job_title| %>
-      <div class="button is-small is-light" aria-label="<%= job_title.grade %>"><%= job_title.name %></div>
-    <% end %>
-    <%= link_to admin_department_job_titles_path(department), aria: { label: t('.job_title') }, class: 'button is-small is-rounded is-light' do %>
-      <i class="fas fa-user-tag"></i>
-    <% end %>
-  </td>
-  <td>
-    <%= link_to department.leader.name, admin_member_path(department.leader.id) if department.leader %>
-  </td>
-  <td>
-  
-  </td>
-</tr>
+<td>
+  <span style="width: <%= model.depth * 1.43 %>em; display: inline-block"></span>
+  <% if model.leaf? %>
+    <i class="fas fa-fw fa-minus"></i>
+  <% else %>
+    <i class="fas fa-fw fa-caret-right" data-action="click->tree#expand" style="cursor: pointer"></i>
+  <% end %>
+  <%= link_to admin_department_path(model) do %>
+    <span><%= model.name %></span>
+    <span class="has-text-grey">(<%= model.all_member_departments_count %>)</span>
+  <% end %>
+</td>
+<td>
+  <%= model.needed_number %> /
+  <span class="<%= active_asserts('red': model.needed_number.to_i > model.member_departments_count, 'grey': model.needed_number.to_i == model.member_departments_count, 'green': model.needed_number.to_i < model.member_departments_count) %> text">
+    <%= model.member_departments_count %>
+  </span>
+</td>
+<td>
+  <% model.job_titles.each do |job_title| %>
+    <div class="button is-small is-light" aria-label="<%= job_title.grade %>"><%= job_title.name %></div>
+  <% end %>
+  <%= link_to admin_department_job_titles_path(model), aria: { label: t('.job_title') }, class: 'button is-small is-rounded is-light' do %>
+    <i class="fas fa-user-tag"></i>
+  <% end %>
+</td>
+<td>
+  <%= link_to model.leader.name, admin_member_path(model.leader.id) if model.leader %>
+</td>

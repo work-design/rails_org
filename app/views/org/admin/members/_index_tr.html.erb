@@ -1,0 +1,25 @@
+<tr id="tr_<%= model.id %>" data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
+  <%= yield %>
+  <td>
+    <turbo-frame data-show-target="item" style="visibility: hidden">
+      <%= link_to({ action: 'show', id: model.id }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fas fa-info"></i>
+      <% end %>
+      <%= link_to profile_admin_member_path(model), aria: { label: t('.profile') }, class: 'button is-small is-rounded is-light' do %>
+        <i class="fas fa-id-card"></i>
+      <% end %>
+      <%= link_to({ controller: 'authorized_tokens', member_id: model.id }, aria: { label: t('.role') }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fas fa-user-shield"></i>
+      <% end %>
+      <%= link_to({ action: 'edit', id: model }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fas fa-pencil-alt"></i>
+      <% end %>
+      <% if model.user_id != current_user.id %>
+        <%= link_to mock_admin_member_path(model), method: :patch, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
+          <i class="fas fa-hand-point-right"></i>
+        <% end %>
+      <% end %>
+      <%# link_to 'tutorials', admin_tutorials_path(member_id: model.id), class: 'ui mini circular button' %>
+    </turbo-frame>
+  </td>
+</tr>
