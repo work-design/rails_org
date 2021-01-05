@@ -1,0 +1,19 @@
+<div class="navbar-item has-dropdown is-hoverable">
+  <div class="navbar-link">
+    <%= image_tag current_member.avatar if current_member && current_member.avatar.attached? %>
+    <span>团队列表</span>
+  </div>
+  <div class="navbar-dropdown is-right">
+    <div class="navbar-item">
+      <%= current_account.identity %>
+    </div>
+    <div class="navbar-divider"></div>
+    <% current_user.organs.each do |organ| %>
+      <%= link_to({ controller: 'org/board/organs', host: organ.host }, class: active_helper(id: 'organs', active: 'navbar-item is-active', item: 'navbar-item')) do %>
+        <span><%= organ.name %></span>
+      <% end %>
+    <% end %>
+    <div class="navbar-divider"></div>
+    <%= link_to '新建团队', { controller: 'org/board/organs' }, class: active_helper(organs: ['new'], active: 'navbar-item is-active', item: 'navbar-item') %>
+  </div>
+</div>
