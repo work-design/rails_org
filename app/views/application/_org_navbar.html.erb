@@ -14,6 +14,6 @@
       <% end %>
     <% end %>
     <div class="navbar-divider"></div>
-    <%= link_to '新建团队', { controller: 'org/board/organs' }, class: active_helper(organs: ['new'], active: 'navbar-item is-active', item: 'navbar-item') %>
+    <%= link_to '新建团队', { controller: 'org/board/organs', action: 'new' }, class: active_helper(organs: ['new'], active: 'navbar-item is-active', item: 'navbar-item') %>
   </div>
 </div>

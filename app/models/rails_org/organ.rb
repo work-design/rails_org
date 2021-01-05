@@ -28,7 +28,7 @@ module RailsOrg::Organ
   end
 
   def host
-    domain = organ_domain || build_organ_domain
+    domain = organ_domain || build_organ_domain(default: true)
     domain.save if domain.new_record?
 
     # todo deal with port
