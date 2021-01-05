@@ -7,7 +7,7 @@ module OrgController::Me
 
   class_methods do
     def local_prefixes
-      [controller_path, 'org/me/base']
+      [controller_path, 'org/me/base', 'me']
     end
   end
 

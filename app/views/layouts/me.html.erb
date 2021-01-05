@@ -2,7 +2,7 @@
   <body>
     <%= render 'nav_bar' %>
     <main class="columns">
-      <div class="column is-narrow" style="width: 260px;">
+      <div class="column is-narrow p-0" style="width: 260px">
         <% if content_for?(:nav) %>
           <%= yield :nav %>
         <% else %>
