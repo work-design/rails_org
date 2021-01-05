@@ -1,12 +1,12 @@
 <%= render layout: 'layouts/application_head' do %>
   <body>
-    <%= render 'me/nav_bar' %>
+    <%= render 'nav_bar' %>
     <main class="columns">
       <div class="column is-narrow" style="width: 260px;">
         <% if content_for?(:nav) %>
           <%= yield :nav %>
         <% else %>
-          <%= render 'me/nav' %>
+          <%= render 'nav' %>
         <% end %>
       </div>
       <div class="column">
