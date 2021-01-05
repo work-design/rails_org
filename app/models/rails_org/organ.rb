@@ -8,6 +8,7 @@ module RailsOrg::Organ
     attribute :members_count, :integer, default: 0
     attribute :official, :boolean, default: false, comment: '是否官方'
     attribute :joinable, :boolean, default: false, comment: '是否可搜索并加入'
+    attribute :domain, :string
 
     has_taxons :area
     belongs_to :area, optional: true
@@ -25,17 +26,20 @@ module RailsOrg::Organ
     scope :official, -> { where(official: true) }
 
     validates :name, presence: true
+
+    before_create :init_organ_domain
   end
 
   def host
-    domain = organ_domain || build_organ_domain(default: true)
-    domain.save if domain.new_record?
-
     # todo deal with port
     ActionDispatch::Http::URL.url_for(
-      host: domain.host,
+      host: domain,
       protocol: Rails.application.routes.default_url_options[:protocol]
     )
+  end
+
+  def init_organ_domain
+    organ_domain || build_organ_domain(default: true)
   end
 
   def domains

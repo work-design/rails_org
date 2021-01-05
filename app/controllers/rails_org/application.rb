@@ -16,7 +16,7 @@ module RailsOrg::Application
   def current_organ
     return @current_organ if defined?(@current_organ)
 
-    @current_organ = current_organ_domain&.organ
+    @current_organ = Organ.find_by(domain: request.host_with_port)
     logger.debug "  ==========> Login as organ: #{@current_organ&.name}"
     @current_organ
   end

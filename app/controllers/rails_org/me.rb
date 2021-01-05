@@ -17,7 +17,9 @@ module RailsOrg::Me
   def current_member
     return @current_member if defined?(@current_member)
 
-    @current_member = current_authorized_token.members.find_by(organ_id: current_organ&.id)
+    if current_authorized_token
+      @current_member = current_authorized_token.members.find_by(organ_id: current_organ&.id)
+    end
     logger.debug "  ==========> Login as member: #{@current_member&.id}"
     @current_member
   end

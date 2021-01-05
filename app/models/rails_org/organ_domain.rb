@@ -22,6 +22,7 @@ module RailsOrg::OrganDomain
 
   def set_default
     self.class.where.not(id: self.id).where(organ_id: self.organ_id).update_all(default: false)
+    organ.update domain: identifier
   end
 
   def compute_identifier

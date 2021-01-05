@@ -2,7 +2,7 @@ zh:
   org:
     title: 组织架构
     admin:
-      title: 组织机构管理
+      title: 组织架构
       authorized_tokens:
         index:
           title: 登陆Token
