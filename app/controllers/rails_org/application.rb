@@ -2,7 +2,7 @@ module RailsOrg::Application
   extend ActiveSupport::Concern
 
   included do
-    helper_method :current_organ, :other_organs
+    helper_method :current_organ, :current_member, :other_organs
   end
 
   def current_title
@@ -11,6 +11,16 @@ module RailsOrg::Application
     else
       t('.title', default: :site_name)
     end
+  end
+
+  def current_member
+    return @current_member if defined?(@current_member)
+
+    if current_authorized_token
+      @current_member = current_authorized_token.members.find_by(organ_id: current_organ&.id)
+    end
+    logger.debug "  ==========> Login as member: #{@current_member&.id}"
+    @current_member
   end
 
   def current_organ
