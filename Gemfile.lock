@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 0eddbc13834a470f413a22bb87a342bab4e8879b
+  revision: 1e72c95dd3d13dbfa70661d63bdf644169c8d03f
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -14,14 +14,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 65691d4351d434901a020be7a0008d5d9729a215
+  revision: e05b36493cd09995390bcddab4dfce7f0350eb7b
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 3286bf20877021bd9e6e544d2a17f39fd6a9f01c
+  revision: 631d43ff4043482d1ba8ff62376d885d4adcee7d
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 3ef6a195f9d38798621233ed59b57112fcf19cb7
+  revision: 34f5d34cb58cec62f3e62d67ca5bb2e2e1afcca0
   specs:
     rails_com (1.2.9)
       acme-client
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: c987a66471903271b0f22153e9ba7a1c9bca4cc5
+  revision: 7ca422217ca90276b04bd3c918396a4a859ee871
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -52,14 +52,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 66e9d658d30bed67d00df1eaf392aff3c4cfb08e
+  revision: 97f6055503c98f10c9d6e257ef12c6fc2db86692
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: f6836e41ee6820bda66b669c0156a36c8b0914eb
+  revision: 50cb29611608ab70b6b920013a786a5b7fe23e3b
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -157,9 +157,11 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faraday (1.2.0)
+    faraday (1.3.0)
+      faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
+    faraday-net_http (1.0.0)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -313,4 +315,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   2.2.0.rc.1
+   2.2.3
