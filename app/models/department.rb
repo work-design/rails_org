@@ -1,5 +1,5 @@
 class Department < ApplicationRecord
-  include RailsCom::Taxon
+  include Com::Ext::Taxon
   include RailsOrg::Department
   DepartmentHierarchy.include RailsOrg::DepartmentHierarchy
 end unless defined? Department

@@ -21,16 +21,16 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 631d43ff4043482d1ba8ff62376d885d4adcee7d
+  revision: c2fd752a1e060553fd0421d5360b669024e478ea
   specs:
-    rails_auth (1.0.6)
+    rails_auth (1.1.0)
       bcrypt (~> 3.1)
       jwt (>= 2.0, <= 3.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 34f5d34cb58cec62f3e62d67ca5bb2e2e1afcca0
+  revision: 3fdfffbfdb25b99a445a71c5f5a16a789c4a4287
   specs:
     rails_com (1.2.9)
       acme-client
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 7ca422217ca90276b04bd3c918396a4a859ee871
+  revision: a7f621f2acf6d5b408dea3a7a27bf2507b81325a
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 50cb29611608ab70b6b920013a786a5b7fe23e3b
+  revision: 6f1ed47545ecda528f76a0a04dfe24b9664eda7e
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -161,7 +161,7 @@ GEM
       faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
-    faraday-net_http (1.0.0)
+    faraday-net_http (1.0.1)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)

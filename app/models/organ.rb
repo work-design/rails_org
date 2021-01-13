@@ -1,5 +1,5 @@
 class Organ < ApplicationRecord
-  include RailsCom::Taxon
+  include Com::Ext::Taxon
   include RailsOrg::Organ
-  include RailsRole::User if defined? RailsRole
+  include Roled::Model::User if defined? RailsRole
 end unless defined? Organ
