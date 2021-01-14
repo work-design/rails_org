@@ -1,3 +1,4 @@
-class Me::BaseController < MeController
-
-end unless defined? Me::BaseController
+module Me
+  class BaseController < MeController
+  end
+end
