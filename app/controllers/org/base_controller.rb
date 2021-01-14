@@ -1,3 +1,4 @@
-class Org::BaseController < BaseController
-
-end unless defined? Org::BaseController
+module Org
+  class BaseController < BaseController
+  end
+end
