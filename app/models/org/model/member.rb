@@ -6,12 +6,12 @@ module Org
       delegate :url_helpers, to: 'Rails.application.routes'
       has_taxons :department
 
+      attribute :identity, :string, index: true
       attribute :experience, :string
       attribute :attendance_number, :string
       attribute :owned, :boolean, default: false
       attribute :organ_root_id, :integer
       attribute :name, :string
-      attribute :identity, :string
       attribute :number, :string
       attribute :join_on, :date
       attribute :enabled, :boolean, default: true
