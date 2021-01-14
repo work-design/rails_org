@@ -1,3 +1,4 @@
-class Org::Me::BaseController < MeController
-
+module Org
+  class Me::BaseController < MeController
+  end
 end

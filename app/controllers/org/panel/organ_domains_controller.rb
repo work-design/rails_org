@@ -1,4 +1,5 @@
-class Org::Panel::OrganDomainsController < Org::Admin::OrganDomainsController
-  include OrgController::Panel
-
+module Org
+  class Panel::OrganDomainsController < Admin::OrganDomainsController
+    include Org::Layout::Panel
+  end
 end

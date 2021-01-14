@@ -1,79 +1,81 @@
-class Org::Board::OrgansController < Org::Board::BaseController
-  before_action :set_organ, only: [:show, :edit, :update, :destroy]
+module Org
+  class Board::OrgansController < Board::BaseController
+    before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @organs = current_user.organs
-    if @organs.blank?
+    def index
+      @organs = current_user.organs
+      if @organs.blank?
+        @member = current_user.members.build
+        @organ = @member.build_organ
+        render :new
+      else
+        render 'index'
+      end
+    end
+
+    def new
       @member = current_user.members.build
       @organ = @member.build_organ
-      render :new
-    else
-      render 'index'
     end
-  end
 
-  def new
-    @member = current_user.members.build
-    @organ = @member.build_organ
-  end
+    def create
+      parent_uuid = params.dig(:member, :parent_uuid)
+      if parent_uuid.present?
+        parent = Organ.find_by organ_uuid: parent_uuid
+        organ_params.merge! parent_id: parent.id
+      end
+      @member = current_user.members.build(member_params)
+      @member.build_organ(organ_params)
 
-  def create
-    parent_uuid = params.dig(:member, :parent_uuid)
-    if parent_uuid.present?
-      parent = Organ.find_by organ_uuid: parent_uuid
-      organ_params.merge! parent_id: parent.id
+      unless @member.save
+        render :new, locals: { model: @member }, status: :unprocessable_entity
+      end
     end
-    @member = current_user.members.build(member_params)
-    @member.build_organ(organ_params)
 
-    unless @member.save
-      render :new, locals: { model: @member }, status: :unprocessable_entity
+    def show
     end
-  end
 
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    @organ.assign_attributes(organ_params)
-
-    unless @organ.save
-      render :edit, locals: { model: @organ }, status: :unprocessable_entity
+    def edit
     end
-  end
 
-  def destroy
-    @organ.destroy
-  end
+    def update
+      @organ.assign_attributes(organ_params)
 
-  private
-  def set_member
-    @member = current_user.members.find params[:member_id]
-  end
-
-  def set_organ
-    @organ = current_user.organs.find(params[:id])
-  end
-
-  def member_params
-    p = params.fetch(:member, {}).permit(
-      :identity
-    )
-    p.merge! owned: true
-    unless p[:identity]
-      p.merge! identity: current_account.identity
+      unless @organ.save
+        render :edit, locals: { model: @organ }, status: :unprocessable_entity
+      end
     end
-    p
-  end
 
-  def organ_params
-    params.fetch(:member, {}).fetch(:organ_attributes, {}).permit(
-      :name,
-      :logo
-    )
-  end
+    def destroy
+      @organ.destroy
+    end
 
+    private
+    def set_member
+      @member = current_user.members.find params[:member_id]
+    end
+
+    def set_organ
+      @organ = current_user.organs.find(params[:id])
+    end
+
+    def member_params
+      p = params.fetch(:member, {}).permit(
+        :identity
+      )
+      p.merge! owned: true
+      unless p[:identity]
+        p.merge! identity: current_account.identity
+      end
+      p
+    end
+
+    def organ_params
+      params.fetch(:member, {}).fetch(:organ_attributes, {}).permit(
+        :name,
+        :logo
+      )
+    end
+
+  end
 end

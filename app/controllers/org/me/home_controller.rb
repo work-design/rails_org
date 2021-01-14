@@ -1,9 +1,10 @@
-class Org::Me::HomeController < Org::Admin::HomeController
-  include OrgController::Me
+module Org
+  class Me::HomeController < Admin::HomeController
+    include Org::Layout::Me
 
-  def index
+    def index
+      @notifications = Notification.none
+    end
 
-    @notifications = Notification.none
   end
-
 end

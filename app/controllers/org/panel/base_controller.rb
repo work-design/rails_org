@@ -1,3 +1,4 @@
-class Org::Panel::BaseController < PanelController
-
+module Org
+  class Panel::BaseController < PanelController
+  end
 end
