@@ -3,4 +3,3 @@ class Organ < ApplicationRecord
   include Org::Model::Organ
   include Roled::Model::User if defined? RailsRole
 end
-

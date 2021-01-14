@@ -1,3 +1,4 @@
-class Org::Admin::BaseController < AdminController
-
+module Org
+  class Admin::BaseController < AdminController
+  end
 end

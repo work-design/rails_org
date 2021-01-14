@@ -1,6 +1,8 @@
-class Org::Admin::HomeController < Org::Admin::BaseController
+module Org
+  class Admin::HomeController < Admin::BaseController
 
-  def index
+    def index
+    end
+
   end
-
 end
