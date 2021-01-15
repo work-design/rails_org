@@ -33,9 +33,9 @@ module Org
       @job_transfer.to_department_id = @job_transfer.department_ancestors&.values.to_a.compact.last
 
       if @job_transfer.save
-        redirect_to my_job_transfers_url
+        render 'update'
       else
-        render :edit
+        render :edit, locals: { model: @job_transfer }, status: :unprocessable_entity
       end
     end
 
