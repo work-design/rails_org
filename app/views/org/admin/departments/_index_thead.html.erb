@@ -1,14 +1,14 @@
-<th><%= Department.human_attribute_name(:name) %></th>
+<th><%= Org::Department.human_attribute_name(:name) %></th>
 <th>
-  <%= Department.human_attribute_name(:needed_number) %>
+  <%= Org::Department.human_attribute_name(:needed_number) %>
   <span class="has-grey-text">/</span>
-  <%= Department.human_attribute_name(:members_count) %>
+  <%= Org::Department.human_attribute_name(:members_count) %>
 </th>
 <th>
-  <%= Department.human_attribute_name(:job_titles) %>
+  <%= Org::Department.human_attribute_name(:job_titles) %>
   <%= link_to admin_super_job_titles_path, aria: { label: '不限部门职级' } do %>
     <i class="fas fa-cog"></i>
   <% end %>
 </th>
-<th><%= Department.human_attribute_name(:leader) %></th>
+<th><%= Org::Department.human_attribute_name(:leader) %></th>
 <th></th>

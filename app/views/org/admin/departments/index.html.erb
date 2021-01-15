@@ -1,4 +1,4 @@
-<%= render layout: 'index_tree_table', locals: { cache_key: Department.column_names.hash } do %>
+<%= render layout: 'index_tree_table', locals: { cache_key: Org::Department.column_names.hash } do %>
   <% @departments.each do |department| %>
     <%= render partial: 'index_tbody', layout: 'index_tr', object: department, locals: { model: department, display: 'table-row' } %>
     <%= draw_tree(partial: 'index_tbody', layout: 'index_tr', object: department, locals: { model: department, display: 'none' }) %>

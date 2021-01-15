@@ -1,9 +1,9 @@
 <table class="as-search">
   <tr>
-    <th><%= Department.human_attribute_name(:type) %></th>
+    <th><%= Org::Department.human_attribute_name(:type) %></th>
     <td>
       <%= link_to t('.all'), filter_params(except: [:type]), class: active_params(type: '', active: 'button is-info', item: 'button is-light') %>
-      <% Department.options_i18n(:type).each do |text, value| %>
+      <% Org::Department.options_i18n(:type).each do |text, value| %>
         <%= link_to text, filter_params(type: value), class: active_params(type: value, active: 'button is-info', item: 'button is-light') %>
       <% end %>
     </td>

@@ -1,4 +1,4 @@
 class MeController < AdminController
-  include RailsOrg::Me
+  include Org::Controller::Me
 
 end
