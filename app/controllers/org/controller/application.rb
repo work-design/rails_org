@@ -20,7 +20,7 @@ module Org
       if current_authorized_token
         @current_member = current_authorized_token.members.find_by(organ_id: current_organ&.id)
       end
-      logger.debug "  \e[35m========== Login as member: #{@current_member&.id} ==========\e[0m"
+      logger.debug "  \e[35m===== Login as member: #{@current_member&.id} =====\e[0m"
       @current_member
     end
 
@@ -28,7 +28,7 @@ module Org
       return @current_organ if defined?(@current_organ)
 
       @current_organ = Organ.find_by(domain: request.host_with_port)
-      logger.debug "  \e[35m========== Login as organ: #{@current_organ&.name}, ID: #{@current_organ&.id} ===========\e[0m"
+      logger.debug "  \e[35m===== Login as organ: #{@current_organ&.name}, ID: #{@current_organ&.id} =====\e[0m"
       @current_organ
     end
 
