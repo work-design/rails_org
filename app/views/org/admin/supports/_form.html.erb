@@ -1,6 +1,6 @@
 <%= render 'shared/error_messages', target: @support %>
 <%= render partial: 'com/nodes/outer_select', locals: { f: f, outer: 'department' } %>
-<%= f.collection_select :office_id, Office.all, :id, :name, { include_blank: true } %>
+<%= f.collection_select :office_id, Organ.all, :id, :name, { include_blank: true } %>
 <%= f.select :member_id, options_for_select([[@support.supporter&.name, @support.supporter_id]], @support.supporter_id) %>
 <%= f.select :kind, options_for_select(Support.options_i18n(:kind), @support.kind) %>
 <%= f.select :supporter_id, options_for_select([[@support.supporter&.name, @support.supporter_id]], @support.supporter_id) %>

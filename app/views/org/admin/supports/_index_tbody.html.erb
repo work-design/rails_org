@@ -1,11 +1,5 @@
-<tr>
-  <td><%= support.department&.name %></td>
-  <td><%= support.office&.name %></td>
-  <td><%= support.member&.name %></td>
-  <td><%= support.kind %></td>
-  <td><%= support.supporter&.name %></td>
-  <td>
-    <%= link_to t('.edit'), edit_admin_support_path(support), class: 'ui pink label' %>
-    <%= link_to t('.destroy'), admin_support_path(support), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
-  </td>
-</tr>
+<td><%= support.department&.name %></td>
+<td><%= support.office&.name %></td>
+<td><%= support.member&.name %></td>
+<td><%= support.kind %></td>
+<td><%= support.supporter&.name %></td>

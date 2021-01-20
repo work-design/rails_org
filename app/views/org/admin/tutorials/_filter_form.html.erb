@@ -1,7 +1,9 @@
-<%= form_with theme: 'search', model: Tutorial.new do |f| %>
-  <div class="fields">
+<%= form_with theme: 'search', model: Org::Tutorial.new do |f| %>
+  <div class="field-body">
     <%= f.text_field 'member.name' %>
     <%= f.text_field 'tutor.name' %>
-    <%= f.submit %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>

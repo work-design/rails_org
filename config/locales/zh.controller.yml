@@ -24,6 +24,9 @@ zh:
       job_titles:
         index:
           title: 部门职级
+      job_transfers:
+        index:
+          title: 转岗
       organs:
         index:
           title: 分支机构
@@ -47,6 +50,18 @@ zh:
           mock: 以其身份
         show:
           title: 职员信息
+      resigns:
+        index:
+          title: 离职
+      resign_reasons:
+        index:
+          title: 离职原因
+      supports:
+        index:
+          title: 部门支持
+      tutorials:
+        index:
+          title: 新人指导
     panel:
       title: 组织管理
       organs:

@@ -1,6 +1,6 @@
-<%= form_with theme: 'search', model: Support.new do |f| %>
+<%= form_with theme: 'search', model: Org::Support.new do |f| %>
   <div class="fields">
-    <%= f.collection_select :office_id, Office.all, :id, :name, { selected: params[:office_id] } %>
+    <%= f.collection_select :office_id, Organ.all, :id, :name, { selected: params[:office_id] } %>
     <%= f.submit %>
   </div>
 <% end %>
