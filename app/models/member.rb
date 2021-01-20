@@ -1,4 +1,5 @@
 class Member < ApplicationRecord
+  include Org::Model::Member
   include Roled::Model::User if defined? RailsRole
-  include RailsProfile::Profile if defined? RailsProfile
+  include Profiled::Model::Profile if defined? RailsProfile
 end

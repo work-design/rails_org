@@ -12,7 +12,7 @@ module Org
       attribute :default, :boolean, default: false
 
       belongs_to :organ
-      belongs_to :wechat_app, foreign_key: :appid, primary_key: :appid, optional: true
+      belongs_to :wechat_app, class_name: 'Wechat::WechatApp', foreign_key: :appid, primary_key: :appid, optional: true
 
       validates :identifier, uniqueness: true
 
