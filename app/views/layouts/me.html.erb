@@ -3,24 +3,15 @@
     <%= render 'nav_bar' %>
     <main class="columns container">
       <div class="column is-narrow" style="width: 260px">
-        <% if content_for?(:nav) %>
-          <%= yield :nav %>
-        <% else %>
-          <%= render 'nav' %>
-        <% end %>
+        <%= render 'nav' %>
       </div>
       <div class="column">
         <div class="as-main">
-          <% if content_for?(:breadcrumb) %>
-            <%= yield(:breadcrumb) %>
-          <% else %>
-            <%= render 'breadcrumb' %>
-          <% end %>
+          <%= render 'breadcrumb' %>
           <%= yield %>
         </div>
         <%# render 'footer' %>
       </div>
     </main>
-    <div id="modal"></div>
   </body>
 <% end %>
