@@ -9,7 +9,7 @@
     </div>
     <% current_organ.role_hash.fetch(busyness.identifier ,{}).fetch('admin', {}).each do |controller, actions| %>
     <div>
-      <%= link_to controller, { controller: controller }, target: '_blank' if actions.include?('index') %>
+      <%= link_to controller, { controller: controller, **params.except(:business, :namespace).permit! }, target: '_blank' if actions.include?('index') %>
     </div>
     <% end %>
   </div>

@@ -14,21 +14,17 @@ module Org
     end
 
     def new
-      @member = current_user.members.build
-      @organ = @member.build_organ
+      @organ = Organ.new
+      @member = @organ.members.build(owned: true)
     end
 
     def create
-      parent_uuid = params.dig(:member, :parent_uuid)
-      if parent_uuid.present?
-        parent = Organ.find_by organ_uuid: parent_uuid
-        organ_params.merge! parent_id: parent.id
-      end
-      @member = current_user.members.build(member_params)
-      @member.build_organ(organ_params)
+      @organ = Organ.new
+      @member = @organ.members.build(owned: true)
+      @member.user_id = current_user.id
 
-      unless @member.save
-        render :new, locals: { model: @member }, status: :unprocessable_entity
+      unless @organ.save
+        render :new, locals: { model: @organ }, status: :unprocessable_entity
       end
     end
 
