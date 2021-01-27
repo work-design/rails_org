@@ -1,27 +1,27 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 1e72c95dd3d13dbfa70661d63bdf644169c8d03f
+  revision: 8368c576e145bfb5d6175e8fc7b64a6557883d09
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: e2085480367e97f9786b851134ee87fa06d78125
+  revision: b7266e6fd7ae090bb21f04fc1681d9a239f3e043
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 0358bc6533831f9f27952e5cec3020bb591a0f69
+  revision: 22baa7b64e7a8407bc7f542682e964a61c810ac3
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 513d1d0a701c9e9f7c26714a601fa864a0c07b90
+  revision: 31d94209305f5903b0910c41f765738a3300348a
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 9a5f5eddfd9caac627ce5e0ad0ac6d1ecd41a020
+  revision: 1e2447ea0c6709fa581a1b49d1c8eb8ab41ce5b5
   specs:
     rails_com (1.2.9)
       acme-client
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 1ed242912c53e4d89ebe6552abbdc15f82c05c1e
+  revision: bfcfd1d8df449c2f14e609afd6c371c9a1a2161c
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -167,7 +167,7 @@ GEM
       activesupport (>= 4.2.0)
     http-2-next (0.3.0)
     http-form_data (2.3.0)
-    httpx (0.10.2)
+    httpx (0.11.0)
       http-2-next (>= 0.1.2)
       timers
     i18n (1.8.5)
@@ -257,7 +257,7 @@ GEM
     rdoc (6.2.1)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
-    ruby2_keywords (0.0.2)
+    ruby2_keywords (0.0.4)
     sdoc (2.0.3)
       rdoc (>= 5.0)
     semantic_range (2.3.1)
