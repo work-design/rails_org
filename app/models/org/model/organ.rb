@@ -12,7 +12,7 @@ module Org
       attribute :domain, :string
 
       has_taxons :area
-      belongs_to :area, optional: true
+      belongs_to :area, class_name: 'Profiled::Area', optional: true
 
       has_one :organ_domain, -> { where(default: true) }
       has_many :supports, -> { where(department_id: nil) }, dependent: :destroy

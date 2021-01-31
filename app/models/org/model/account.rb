@@ -3,8 +3,8 @@ module Org
     extend ActiveSupport::Concern
 
     included do
-      has_many :members, foreign_key: :identity, primary_key: :identity
-      has_many :organs, through: :members
+      has_many :members, class_name: 'Org::Member', foreign_key: :identity, primary_key: :identity
+      has_many :organs, class_name: 'Org::Organ', through: :members
       after_save :sync_to_members, if: -> { (saved_changes.keys & ['identity', 'user_id', 'confirmed']).present? }
     end
 

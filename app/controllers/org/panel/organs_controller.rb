@@ -26,7 +26,7 @@ module Org
     end
 
     def edit
-      @organ.area = @organ.area || Area.root || Area.new
+      @organ.area || @organ.build_area
     end
 
     def update

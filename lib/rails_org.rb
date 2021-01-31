@@ -1,4 +1,12 @@
-require_relative 'rails_org/version'
-require_relative 'rails_org/engine'
-require_relative 'rails_org/config'
-require_relative 'rails_org/default_form'
+require 'rails_org/version'
+require 'rails_org/engine'
+require 'rails_org/config'
+require 'rails_org/default_form'
+
+module Org
+
+  def self.use_relative_model_naming?
+    true
+  end
+
+end

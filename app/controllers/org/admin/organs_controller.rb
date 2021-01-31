@@ -14,7 +14,7 @@ module Org
 
     def new
       @organ = Organ.new
-      @organ.area ||= Area.new
+      @organ.area || @organ.build_area
     end
 
     def create
@@ -30,7 +30,7 @@ module Org
     end
 
     def edit
-      @organ.area ||= Area.new
+      @organ.area || @organ.build_area
     end
 
     def update
