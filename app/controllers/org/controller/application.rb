@@ -28,6 +28,9 @@ module Org
       return @current_organ if defined?(@current_organ)
 
       @current_organ = Organ.find_by(domain: request.host_with_port)
+      if @current_organ.nil? && current_organ_domain
+        @current_organ = @current_organ_domain.organ
+      end
       logger.debug "  \e[35m===== Login as organ: #{@current_organ&.name}, ID: #{@current_organ&.id} =====\e[0m"
       @current_organ
     end
