@@ -4,12 +4,12 @@
 <div class="box">
   <% @members.each do |member| %>
   <div class="card">
-    <%= link_to member_path(member), class: 'image' do %>
+    <%= link_to({ controller: '/org/members', action: 'show', id: member.id }, class: 'image') do %>
       <%= image_tag member.avatar.variant(resize_to_limit: [150, 150]) if member.avatar.attached? %>
     <% end %>
     <div class="content">
       <span>
-        <%= link_to member_path(member) do %>
+        <%= link_to({ action: 'show', id: member.id }) do %>
           <i class="fas fa-user"></i><%= member.name %>
         <% end %>
       </span>
