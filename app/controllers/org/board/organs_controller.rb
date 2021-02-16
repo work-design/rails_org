@@ -19,10 +19,10 @@ module Org
     end
 
     def create
-      @organ = Organ.new
+      @organ = Organ.new(organ_params)
       @member = @organ.members.build(owned: true)
       @member.user_id = current_user.id
-
+      binding.pry
       unless @organ.save
         render :new, locals: { model: @organ }, status: :unprocessable_entity
       end
@@ -67,7 +67,7 @@ module Org
     end
 
     def organ_params
-      params.fetch(:member, {}).fetch(:organ_attributes, {}).permit(
+      params.fetch(:organ, {}).permit(
         :name,
         :logo
       )
