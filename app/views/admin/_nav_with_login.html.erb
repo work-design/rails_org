@@ -4,7 +4,7 @@
     <%= image_tag node.logo, class: 'image' if node.logo.attached? %>
     <span><%= node.name %></span>
   <% end %>
-<% end %>
+<% end if current_organ %>
 <% if current_organ.siblings.present? && !current_organ.root? %>
 <div class="navbar-item has-dropdown is-hoverable">
   <div class="navbar-link">
@@ -24,7 +24,7 @@
     <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
     <%= current_organ.name %>
   <% end %>
-<% end %>
+<% end if current_organ %>
 <% if current_organ.children.count > 0 %>
   <div class="navbar-item has-dropdown is-hoverable">
     <div class="navbar-link">More</div>
@@ -34,4 +34,4 @@
       <% end %>
     </div>
   </div>
-<% end %>
+<% end if current_organ %>
