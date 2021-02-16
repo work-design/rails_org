@@ -29,14 +29,14 @@ module Org
       accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
       accepts_nested_attributes_for :organ
 
-      has_many :inferior_member_departments, class_name: 'MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
+      has_many :inferior_member_departments, class_name: 'Org::MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
       has_many :authorized_tokens, dependent: :nullify
 
       has_one :resign
       has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
       has_one :tutor, through: :tutorial
       has_many :tutorials, dependent: :nullify
-      has_many :tutorings, class_name: 'Tutorial', foreign_key: :tutor_id
+      has_many :tutorings, class_name: 'Org::Tutorial', foreign_key: :tutor_id
       has_many :tutees, through: :tutorings, source: :member
       #has_many :job_transfers, dependent: :destroy
 

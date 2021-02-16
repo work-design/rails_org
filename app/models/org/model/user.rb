@@ -3,8 +3,8 @@ module Org
     extend ActiveSupport::Concern
 
     included do
-      has_many :members, dependent: :nullify
-      has_many :organs, -> { distinct }, through: :members
+      has_many :members, class_name: 'Org::Member', dependent: :nullify
+      has_many :organs, -> { distinct_on(:id) }, class_name: 'Org::Organ', through: :members
       after_save :copy_avatar_to_members, if: -> { attachment_changes['avatar'].present? }
     end
 
