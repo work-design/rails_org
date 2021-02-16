@@ -21,6 +21,7 @@ module Org
     def create
       @organ = Organ.new(organ_params)
       @member = @organ.members.build(owned: true)
+      @member.account = current_account
       @member.user_id = current_user.id
 
       unless @organ.save

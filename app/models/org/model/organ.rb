@@ -14,7 +14,7 @@ module Org
       has_taxons :area
       belongs_to :area, class_name: 'Profiled::Area', optional: true
 
-      has_one :organ_domain, -> { where(default: true) }
+      has_one :organ_domain, -> { where(default: true) }, inverse_of: :organ
       has_many :supports, -> { where(department_id: nil) }, dependent: :destroy
       has_many :departments, dependent: :destroy
       has_many :members, dependent: :destroy
@@ -27,11 +27,13 @@ module Org
       scope :official, -> { where(official: true) }
 
       validates :name, presence: true
-
-      before_create :init_organ_domain
     end
 
     def host
+      if domain.blank?
+        init_organ_domain
+        save
+      end
       # todo deal with port
       ActionDispatch::Http::URL.url_for(
         host: domain,
@@ -40,7 +42,7 @@ module Org
     end
 
     def init_organ_domain
-      organ_domain || build_organ_domain(default: true)
+      organ_domain || build_organ_domain
     end
 
     def domains
