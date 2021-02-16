@@ -17,8 +17,8 @@ module Org
       attribute :enabled, :boolean, default: true
       attribute :state, :string
 
-      belongs_to :user, optional: true
-      belongs_to :account, -> { where(confirmed: true) }, primary_key: :identity, foreign_key: :identity, optional: true
+      belongs_to :user, class_name: 'Auth::User', optional: true
+      belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
       belongs_to :profile, ->(o){ where(organ_id: o.organ_id) }, primary_key: :identity, foreign_key: :identity, optional: true
       belongs_to :organ, counter_cache: true, inverse_of: :members
 
