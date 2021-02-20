@@ -10,7 +10,7 @@
       </thead>
       <tbody>
       <% @members.each do |member| %>
-        <%= render partial: 'member', locals: { member: member } %>
+        <%= render partial: 'member', locals: { model: member } %>
       <% end %>
       </tbody>
     </table>
