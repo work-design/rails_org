@@ -3,21 +3,21 @@
     <tr>
       <th class="three wide"></th>
       <th>
-        <%= link_to t('.edit'), edit_me_member_path, class: 'ui mini blue right floated button' %>
+        <%= link_to t('.edit'), { action: 'edit' }, data: { turbo_frame: 'modal' }, class: 'ui mini blue right floated button' %>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:name) %></td>
+      <td class="has-text-right"><%= Org::Member.human_attribute_name(:name) %></td>
       <td><%= @member.name %></td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:join_on) %></td>
+      <td class="has-text-right"><%= Org::Member.human_attribute_name(:join_on) %></td>
       <td><%= @member.join_on %></td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:department) %></td>
+      <td class="has-text-right"><%= Org::Member.human_attribute_name(:department) %></td>
       <td>
         <% @member.departments.each do |department| %>
           <p><%= department.full_name %></p>
@@ -25,11 +25,11 @@
       </td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:experience) %></td>
+      <td class="has-text-right"><%= Org::Member.human_attribute_name(:experience) %></td>
       <td><%= simple_format(@member.experience) %></td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:attendance_number) %></td>
+      <td class="has-text-right"><%= Org::Member.human_attribute_name(:attendance_number) %></td>
       <td><%= @member.attendance_number %></td>
     </tr>
   </tbody>
