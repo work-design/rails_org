@@ -3,27 +3,14 @@
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th><%= JobTransfer.human_attribute_name(:id) %></th>
-      <th><%= JobTransfer.human_attribute_name(:to_office) %></th>
-      <th><%= JobTransfer.human_attribute_name(:to_department) %></th>
-      <th><%= JobTransfer.human_attribute_name(:reason_note) %></th>
-      <th><%= JobTransfer.human_attribute_name(:transfer_on) %></th>
-      <th><%= JobTransfer.human_attribute_name(:state) %></th>
-      <th></th>
+    
     </tr>
   </thead>
 
   <tbody>
   <% @job_transfers.each do |job_transfer| %>
     <tr>
-      <td><%= job_transfer.id %></td>
-      <td><%= job_transfer.to_office.name %></td>
-      <td><%= job_transfer.to_department&.full_name %></td>
-      <td><%= job_transfer.reason_note %></td>
-      <td><%= job_transfer.transfer_on %></td>
-      <td>
-        <span><%= job_transfer.state_i18n %></span>
-      </td>
+      
       <td>
         <% if job_transfer.init? %>
           <%= link_to t('.edit'), edit_my_job_transfer_path(job_transfer), class: 'ui pink label' %>
