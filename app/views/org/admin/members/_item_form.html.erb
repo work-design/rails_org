@@ -13,7 +13,7 @@
           <%= render partial: 'outer_options', locals: { f: ef, node: node, outer: 'department', depth: node.depth } %>
         <% end %>
       <% else %>
-        <%= render partial: 'outer_options', locals: { f: ef, node: Department.new(organ_id: current_organ&.id), outer: 'department', depth: 0 } %>
+        <%= render partial: 'outer_options', locals: { f: ef, node: Org::Department.new(organ_id: current_organ&.id), outer: 'department', depth: 0 } %>
       <% end %>
     <% end %>
     <div class="field is-narrow" id="job_title_id_wrap_<%= ef.index %>">

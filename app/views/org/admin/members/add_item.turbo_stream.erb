@@ -1,0 +1,1 @@
+<%= turbo_stream.after "member_member_departments_#{params[:index]}", partial: 'item_field', locals: { f: form_object(@member), index: UidHelper.sec_uuid } %>

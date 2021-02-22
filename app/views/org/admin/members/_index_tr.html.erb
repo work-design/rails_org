@@ -1,7 +1,7 @@
 <tr id="tr_<%= model.id %>" data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
   <%= yield %>
   <td>
-    <turbo-frame data-show-target="item" style="visibility: hidden">
+    <span data-show-target="item" style="visibility: hidden">
       <%= link_to({ action: 'show', id: model.id }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-info"></i>
       <% end %>
@@ -11,7 +11,7 @@
       <%= link_to({ controller: 'authorized_tokens', member_id: model.id }, aria: { label: t('.role') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-user-shield"></i>
       <% end %>
-      <%= link_to({ action: 'edit', id: model }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ action: 'edit', id: model }, data: { turbo_frame: 'modal' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-pencil-alt"></i>
       <% end %>
       <% if model.user_id != current_user.id %>
@@ -20,6 +20,6 @@
         <% end %>
       <% end %>
       <%# link_to 'tutorials', admin_tutorials_path(member_id: model.id), class: 'ui mini circular button' %>
-    </turbo-frame>
+    </span>
   </td>
 </tr>

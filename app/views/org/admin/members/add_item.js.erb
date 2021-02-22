@@ -1,5 +1,0 @@
-<% form_object = form_object(@member) %>
-
-var template = '<%= j(render partial: 'item_field', locals: { f: form_object, index: UidHelper.sec_uuid }) %>'
-
-document.getElementById('member_member_departments_<%= params[:index] %>').insertAdjacentHTML('afterend', template)
