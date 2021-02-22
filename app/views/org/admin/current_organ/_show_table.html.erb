@@ -1,28 +1,16 @@
-<table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <th>
-        <%= link_to t('.edit'), edit_admin_current_organ_path, class: 'button' %>
-      </th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="has-text-right"><%= Organ.human_attribute_name(:name) %></td>
-      <td><%= current_organ.name %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Organ.human_attribute_name(:organ_uuid) %></td>
-      <td><%= current_organ.organ_uuid %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Organ.human_attribute_name(:area_id) %></td>
-      <td><%= current_organ.area&.full_name %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Organ.human_attribute_name(:limit_wechat) %></td>
-      <td><%= current_organ.limit_wechat %></td>
-    </tr>
-  </tbody>
-</table>
+<tr>
+  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:name) %></td>
+  <td><%= current_organ.name %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:organ_uuid) %></td>
+  <td><%= current_organ.organ_uuid %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:area_id) %></td>
+  <td><%= current_organ.area&.full_name %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:limit_wechat) %></td>
+  <td><%= current_organ.limit_wechat %></td>
+</tr>

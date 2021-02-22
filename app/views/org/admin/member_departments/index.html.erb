@@ -3,9 +3,9 @@
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th><%= MemberDepartment.human_attribute_name(:id) %></th>
-      <th><%= MemberDepartment.human_attribute_name(:office_id) %></th>
-      <th><%= MemberDepartment.human_attribute_name(:job_title_id) %></th>
+      <th><%= Org::MemberDepartment.human_attribute_name(:id) %></th>
+      <th><%= Org::MemberDepartment.human_attribute_name(:office_id) %></th>
+      <th><%= Org::MemberDepartment.human_attribute_name(:job_title_id) %></th>
       <th>
         <%= link_to new_admin_member_department_path, class: 'button is-link is-small' do %>
           <i class="fas fa-plus"></i><% t('.new') %>
