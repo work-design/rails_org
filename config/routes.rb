@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :me do
+    root 'home#index'
+  end
+
   scope module: 'org', defaults: { namespace: 'application', business: 'org' } do
     resources :members, only: [:index, :show] do
       collection do
@@ -14,10 +18,6 @@ Rails.application.routes.draw do
   end
 
   scope 'me', module: 'org/me', as: :me, defaults: { namespace: 'me', business: 'org' } do
-    root 'home#index' unless has_named_route? 'me_root'
-    controller :home do
-      get :index
-    end
     resource :member, except: [:new, :create]
     resources :departments
     resources :tutorials do
