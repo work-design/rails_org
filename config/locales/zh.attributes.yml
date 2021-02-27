@@ -3,32 +3,32 @@ zh:
     models:
       job_title: 职级
     attributes:
-      department:
+      org/department:
         leader: 负责人
         needed_number: 岗位计划
         members_count: 现有人数
         job_titles: 部门职级
         super_job_titles: 部门负责职务
         superior_id: 上级主管机构
-      department_grant:
+      org/department_grant:
         department_id: 部门
         job_title_id: 职级
-      job_title:
+      org/job_title:
         grade: 级别
         department_id: 部门
         office_id: 区域
         role_ids: 权限
-      super_job_title:
+      org/super_job_title:
         grade: 级别
-      job_transfer:
+      org/job_transfer:
         member: Employee
         transfer_on: Transfer Date
         state: Status
-      journal:
+      org/journal:
         name_short: Journal
         editors: Managing Editor(s)
         idatabases: Indexing
-      member:
+      org/member:
         join_on: 入职日期
         on_time: Current work shift (on)
         off_time: Current work shift (off)
@@ -46,11 +46,11 @@ zh:
         role_ids: 权限
         job_titles: 职级
         organ_id: 组织
-      member_department:
+      org/member_department:
         organ_id: 分支机构
         department_id: 部门
         job_title_id: 职级
-      organ:
+      org/organ:
         name: 名称
         name_short: 简称
         area_id: 地区
@@ -63,27 +63,27 @@ zh:
         limit_wechat: 允许微信数
         limit_office: 允许分支机构数
         parent_uuid: 上级机构编码
-      organ_grant:
+      org/organ_grant:
         organ_id: 机构
         role_ids: 权限
         token: 授权码
         expire_at: 过期时间
-      room:
+      org/room:
         room_number: 房间号
         color: 颜色
         limit_number: 容纳人数
         time_plans_count: 预定情况
-      profile:
+      org/profile:
         real_name: 中文名字
         work_experience: 工作经历
         birtheday_type: 生日类型
-      resign:
+      org/resign:
         member: 职员
         leave_on: 最后工作日
         resign_reason: 离职原因
         reason_note: 详情
         state: 状态
-      tutorial:
+      org/tutorial:
         member: 职员
-      user:
+      org/user:
         name: 姓名
