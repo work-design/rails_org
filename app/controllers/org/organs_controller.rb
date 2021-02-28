@@ -8,7 +8,7 @@ module Org
         allow: { parent_id: nil }
       }
 
-      @organs = Organ.default_where(q_params).order(id: :desc).page(params[:page])
+      @organs = Organ.with_attached_logo.default_where(q_params).order(id: :desc).page(params[:page])
     end
 
     def show

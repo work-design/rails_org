@@ -21,17 +21,5 @@ module Org
       job_titles.update_all(name: name)
     end
 
-    def sync_to_role_ids
-      self.role_ids = cached_role_ids
-      moved = Array(cached_role_ids_before_last_save) - Array(cached_role_ids)
-
-      self.members.each do |member|
-        r = Array(member.cached_role_ids) - moved
-        r |= Array(cached_role_ids)
-        member.cached_role_ids = r
-        member.save
-      end
-    end
-
   end
 end
