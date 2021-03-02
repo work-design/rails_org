@@ -2,7 +2,7 @@
   <%= yield %>
   <td>
     <span data-show-target="item" style="visibility: hidden">
-      <%= link_to({ action: 'new', parent_id: model.id }, aria: { label: '添加下级' }, class: 'button is-link is-small') do %>
+      <%= link_to({ action: 'new', parent_id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: '添加下级' }, class: 'button is-link is-small') do %>
         <i class="fas fa-plus"></i>
       <% end %>
       <%#= link_to 'JD', admin_department_job_descriptions_path(model), class: 'button is-small is-rounded is-light' %>

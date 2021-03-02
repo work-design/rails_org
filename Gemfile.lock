@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: e4162f595651bcd2e8ad733ad79ea78999137b2f
+  revision: e17f243a3ae84256135a8bfa126900eba2b1e133
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: dad3b5a7dc5dce1d816cca52b972d43fa151ff8e
+  revision: c0c193d9c7da86b143ac3722923b7fecf452b574
   specs:
     rails_com (1.2.9)
       acme-client
@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 74fe427c32170d9e8ab59694910c672a3a6c87a0
+  revision: 91c6d5071e43198925e35104a490d71ac9557991
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -141,16 +141,16 @@ GEM
       activerecord (>= 4.2)
     awesome_print (1.8.0)
     bcrypt (3.1.16)
-    binding_of_caller (0.8.0)
+    binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.4)
     closure_tree (7.2.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
     coderay (1.1.3)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     crass (1.0.6)
-    debug_inspector (0.0.3)
+    debug_inspector (1.0.0)
     erubi (1.10.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
@@ -162,20 +162,20 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     faraday-net_http (1.0.1)
-    ffi (1.13.1)
+    ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    http-2-next (0.3.0)
+    http-2-next (0.4.0)
     http-form_data (2.3.0)
-    httpx (0.11.3)
+    httpx (0.12.0)
       http-2-next (>= 0.1.2)
       timers
-    i18n (1.8.5)
+    i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
-    jbuilder (2.10.1)
+    jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jwt (2.2.2)
     kaminari (1.2.1)
@@ -190,10 +190,10 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    listen (3.3.3)
+    listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.8.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -204,21 +204,23 @@ GEM
     mimemagic (0.3.5)
     mini_magick (4.11.0)
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
-    minitest (5.14.2)
+    mini_portile2 (2.5.0)
+    minitest (5.14.4)
     multipart-post (2.1.1)
-    nio4r (2.5.4)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nio4r (2.5.5)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     pg (1.2.3)
-    pry (0.13.1)
+    pry (0.14.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    pry-stack_explorer (0.5.1)
-      binding_of_caller (~> 0.7)
+    pry-stack_explorer (0.6.1)
+      binding_of_caller (~> 1.0)
       pry (~> 0.13)
+    racc (1.5.2)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -250,15 +252,15 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (~> 1.0)
-    rake (13.0.1)
+    rake (13.0.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    rdoc (6.2.1)
+    rdoc (6.3.0)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby2_keywords (0.0.4)
-    sdoc (2.0.3)
+    sdoc (2.0.4)
       rdoc (>= 5.0)
     semantic_range (2.3.1)
     sprockets (4.0.2)
@@ -268,12 +270,12 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    thor (1.0.1)
+    thor (1.1.0)
     timers (4.3.3)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (2.0.3)
+    tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     webpacker (5.2.1)
       activesupport (>= 5.2)
@@ -302,7 +304,7 @@ DEPENDENCIES
   pg
   pry-rails
   pry-stack_explorer
-  rails (= 6.1.0)
+  rails
   rails_audit!
   rails_auth!
   rails_com!
