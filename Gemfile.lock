@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: 2e2abf3947bce9c5c1fb9359a5eaf0c9d255e650
+  revision: 0a0812c516cc853314b9abaf9b6fdcc1471cb23f
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: beec0716c95561ec8379678df6bb742dfef8842c
+  revision: a03ded18c299d27ab44a1e1bd0bdaebd2ae260bc
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: c0c193d9c7da86b143ac3722923b7fecf452b574
+  revision: d52ecfa24af4587335c85fb5226c9704353d0b5e
   specs:
     rails_com (1.2.9)
       acme-client
@@ -52,14 +52,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 851c9b2754b034befe413ede5ce6a45fc4660479
+  revision: a85948c866dbe87688986a8c37800f1d2165be5e
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 91c6d5071e43198925e35104a490d71ac9557991
+  revision: 98492a0b647ae74ce1358a834774dd543e9132ee
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)

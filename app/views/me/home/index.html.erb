@@ -9,7 +9,7 @@
     </div>
     <% rules.each do |rule| %>
     <div>
-      <%= link_to rule.name, { controller: rule.controller_path, action: rule.action_name, **params.except(:business, :namespace, :controller, :action).permit! }, target: '_blank' %>
+      <%= link_to rule.name, { controller: rule.controller_path, action: rule.action_name, **params.except(:business, :namespace, :controller, :action).permit! } %>
     </div>
     <% end %>
   </div>
