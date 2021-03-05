@@ -88,6 +88,7 @@ zh:
         new:
           title: 创建新团队
     me:
+      title: 团队管理
       home:
         index:
           title: 首页
