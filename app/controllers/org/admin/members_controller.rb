@@ -59,8 +59,8 @@ module Org
       else
         @member = Member.new
       end
-      @department = Department.find(params[:department_id]) if params[:department_id]
-      @member_department = @member.member_departments.build(department_id: params[:department_id])
+      @department = Department.find(params[:node_id]) if params[:node_id]
+      @member_department = @member.member_departments.build(department_id: params[:node_id])
     end
 
     def show
