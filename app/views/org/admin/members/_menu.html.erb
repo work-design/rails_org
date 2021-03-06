@@ -1,11 +1,9 @@
-<%= content_for :breadcrumb do %>
 <div class="breadcrumb has-succeeds-separator">
   <ul>
-    <%= link_to t('org.admin.members.index.title'), admin_members_path, class: 'section' %>
+    <%= link_to t('org.admin.members.index.title'), { controller: 'members' } %>
     <div class="is-active"><%= @member.name %></div>
   </ul>
 </div>
-<% end %>
 
 <div class="ui top attached tabular menu">
   <%= link_to t('org.admin.members.show.title'), admin_member_path(@member), class: active_helper('org/admin/members': 'show') %>

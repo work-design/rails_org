@@ -1,3 +1,4 @@
-<%= form_with model: @member, scope: :member, url: admin_member_path(@member) do |f| %>
+<%= form_with model: @member, url: { action: 'update' } do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
+  <%= f.submit %>
 <% end %>

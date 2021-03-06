@@ -20,16 +20,8 @@
       <%= ef.collection_select :job_title_id, ef.object.job_title_options, :id, :name, { include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
     </div>
     <div class="field has-addons has-addons-middle">
-      <%= link_to({ action: 'add_item', item: 'item', index: ef.index }, data: { title: 'add_item' }) do %>
-        <i class="fas fa-plus"></i>
-      <% end %>
-      <% if ef.object.id %>
-        <%= ef.check_box :_destroy, { checked: false, label: '移除', origin: { offset: nil }, wrap: { checkbox: nil } } %>
-      <% else %>
-        <%= link_to({ action: 'remove_item', item: 'item', index: ef.index }) do %>
-          <i class="fas fa-minus"></i>
-        <% end %>
-      <% end %>
+      <i class="fas fa-plus"></i>
+      <i class="fas fa-minus"></i>
     </div>
   </div>
 </div>
