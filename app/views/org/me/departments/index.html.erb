@@ -1,21 +1,8 @@
-<%= render 'filter_form' %>
-
 <div class="columns">
   <div class="column">
-    
-    <table class="table is-hoverable is-fullwidth">
-      <thead>
-        <tr>
-        
-        </tr>
-      </thead>
-      <tbody>
-      <% @members.each do |member| %>
-        <%= render partial: 'member', locals: { model: member } %>
-      <% end %>
-      </tbody>
-    </table>
-  
+    <%= render layout: 'index_table', locals: { cache_key: Org::Member.column_names.hash } do %>
+      <%= render partial: 'member', layout: 'index_tr', collection: @members, as: :model %>
+    <% end %>
     <%= paginate @members %>
   </div>
   <div class="column is-narrow" style="width: 260px;">
