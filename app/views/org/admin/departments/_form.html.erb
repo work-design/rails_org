@@ -1,5 +1,5 @@
-<%= render 'shared/error_messages', target: @department %>
-<% if @department.parent %>
+<%= render 'shared/error_messages', target: f.object %>
+<% if f.object.parent %>
   <%= f.hidden_field :parent_id %>
 <%# elsif current_organ&.parent %>
   <%#= render partial: 'com/nodes/outer_select', locals: { f: f, outer: 'superior', node: @root } %>
@@ -9,7 +9,7 @@
   <% if current_organ.parent %>
     <%# 上级组织不为空时，可选上级组织下的根部门 %>
     <%= f.collection_select :superior_id, current_organ.parent.departments.roots, :id, :name, { include_blank: true } %>
-  <% elsif current_organ == @department.organ && current_organ.departments.include?(@department) %>
+  <% elsif current_organ == f.object.organ && current_organ.departments.include?(f.object) %>
     <%# 所选部门的组织是当前组织时，什么都不显示 %>
   <% else %>
     <%# 上级组织为空时，可选当前组织下根部门 %>
@@ -18,7 +18,6 @@
 <% else %>
   <%# 当前组织为空时不显示 superior 选择器 %>
 <% end %>
-
 <%= f.text_field :name, required: true %>
 <%= f.number_field :needed_number %>
 <%= f.file_field :logo %>
