@@ -1,10 +1,10 @@
 <tr>
   <td>
     <%= job_title.grade %>
-    <%= link_to move_lower_admin_department_job_title_path(@department, job_title), method: :patch do %>
+    <%= button_to({ action: 'move_lower', id: job_title }, method: :patch) do %>
       <i class="fas fa-arrow-down"></i>
     <% end %>
-    <%= link_to move_higher_admin_department_job_title_path(@department, job_title), method: :patch do %>
+    <%= button_to({ action: 'move_higher', id: job_title }, method: :patch) do %>
       <i class="fas fa-arrow-up"></i>
     <% end %>
   </td>
@@ -24,22 +24,24 @@
       <% job_title.roles.pluck(:name).each do |role| %>
         <span><%= role %></span>
       <% end %>
-      <%= link_to edit_admin_who_roles_path('JobTitle', job_title.id), aria: { label: t('role.admin.who_roles.edit.title') } do %>
+      <%= link_to edit_admin_who_roles_path('JobTitle', job_title.id), aria: { label: t('roled.admin.who_roles.edit.title') } do %>
         <i class="fas fa-user-shield"></i>
       <% end %>
     </div>
   </td>
   <td data-controller="input">
     <% if job_title.department_id == @department.id %>
-      <%= link_to edit_admin_department_job_title_path(@department, job_title), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' do %>
+      <%= link_to({ action: 'edit', id: job_title.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-pencil-alt"></i>
       <% end %>
     <% end %>
     <% if job_title.super_job_title %>
-      <%= check_box_tag :department_id, @department.id, true, data: { method: :delete, url: admin_department_job_title_path(@department, job_title), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
-      <label></label>
+      <%= form_with theme: nil, scope: nil, url: { action: 'destroy', id: job_title.id }, method: :delete, data: { controller: 'input' } do |f| %>
+        <%= f.check_box :department_id, checked: true, data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
+        <label data-action="click->input#check"></label>
+      <% end %>
     <% else %>
-      <%= link_to admin_department_job_title_path(@department, job_title), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
+      <%= button_to({ action: 'destroy', id: job_title.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-trash-alt"></i>
       <% end %>
     <% end %>
