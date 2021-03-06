@@ -50,12 +50,10 @@ module Org
 
     def move_higher
       @job_title.move_higher
-      redirect_to admin_department_job_titles_url(@department)
     end
 
     def move_lower
       @job_title.move_lower
-      redirect_to admin_department_job_titles_url(@department)
     end
 
     def reorder

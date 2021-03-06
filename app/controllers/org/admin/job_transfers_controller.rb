@@ -20,6 +20,8 @@ module Org
           member_id: current_user.leading_section_members.map(&:id),
           #state: JobTransfer::states[:init]
         }
+      else
+        q_params = {}
       end
       q_params.merge! params.permit('member.name')
       q_params.merge! params.permit(:member_id, :state)
