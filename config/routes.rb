@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root 'home#index'
   end
 
-  scope module: 'org', defaults: { namespace: 'application', business: 'org' } do
+  scope module: 'org', defaults: { business: 'org' } do
     resources :members, only: [:index, :show] do
       collection do
         get :search
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope 'me', module: 'org/me', as: :me, defaults: { namespace: 'me', business: 'org' } do
+  scope 'me', module: 'org/me', as: :me, defaults: { business: 'org', namespace: 'me' } do
     resource :member, except: [:new, :create]
     resources :departments
     resources :tutorials do
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :board, module: 'org/board', as: :board, defaults: { namespace: 'board', business: 'org' } do
+  scope :board, module: 'org/board', as: :board, defaults: { business: 'org', namespace: 'board' } do
     resources :organs
     resources :members, only: [:index, :new, :create] do
       collection do
@@ -43,13 +43,13 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :panel, module: 'org/panel', as: :panel, defaults: { namespace: 'panel', business: 'org' } do
+  scope :panel, module: 'org/panel', as: :panel, defaults: { business: 'org', namespace: 'panel' } do
     resources :organs do
       resources :organ_domains
     end
   end
 
-  scope 'admin', module: 'org/admin', as: :admin, defaults: { namespace: 'admin', business: 'org' } do
+  scope 'admin', module: 'org/admin', as: :admin, defaults: { business: 'org', namespace: 'admin' } do
     root 'home#index' unless has_named_route? 'admin_root'
     controller :home do
       get :index
