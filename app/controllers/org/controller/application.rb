@@ -37,7 +37,7 @@ module Org
     def current_organ_domain
       return @current_organ_domain if defined?(@current_organ_domain)
 
-      @current_organ_domain = OrganDomain.find_by(identifier: request.host_with_port)
+      @current_organ_domain = OrganDomain.annotate('get organ domain in org application').find_by(identifier: request.host_with_port)
     end
 
     def other_organs
