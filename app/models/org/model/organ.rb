@@ -42,7 +42,7 @@ module Org
     end
 
     def url_options
-      organ_domain || build_organ_domain
+      organ_domain || organ_domains.take || build_organ_domain
       organ_domain.as_json(only: [:host, :port])
     end
 
