@@ -7,30 +7,31 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: 0a0812c516cc853314b9abaf9b6fdcc1471cb23f
+  revision: 0a20b2d58f2572fe6cafdaa2cc7be6a9411930c0
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: dbd0cd44abe4f4980b50c5e4288aba12e5132666
+  revision: 0f47634e404f55bdac17979cdc71679e76ea6e23
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 5d7701c340b8628f84efd583defbb74a600fdcbd
+  revision: 8958eb9763315eaf2008c123ecd84d4646f072fd
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
+      groupdate
       jwt (>= 2.0, <= 3.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 97e04ba8056cfe28e739902fd6c5b70d1dd47840
+  revision: bf3d28de7e3638e7e7987b5a11062c01af7ddc31
   specs:
     rails_com (1.2.9)
       acme-client
@@ -44,7 +45,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: f7eec2108940315a3e2566f5e9e0b31166a195c1
+  revision: cc58f61735f63c3e1ed21e654741424c50f05de9
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -52,7 +53,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 199b243d89fcfd5c493e048be64d93092801dead
+  revision: b90056c0022c42e0460892d3569b537d1c6d6d37
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -165,6 +166,8 @@ GEM
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (5.2.2)
+      activesupport (>= 5)
     http-2-next (0.4.0)
     http-form_data (2.3.0)
     httpx (0.12.0)

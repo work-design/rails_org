@@ -9,11 +9,11 @@ module Org
       attribute :comment, :string
 
       validates :leave_on, :reason_note, presence: true
+      validate :validate_resign_reasons
 
       belongs_to :member
       has_many :resign_references
       has_many :resign_reasons, through: :resign_references
-      validate :validate_resign_reasons
 
       enum state: {
         init: 'init',
@@ -53,7 +53,7 @@ module Org
         cc_emails: [
           self.member.email
         ],
-        link: url_helpers.hr_resign_url(id: self.id),
+        link: url_helpers.admin_resign_url(id: self.id),
         verbose: true
       )
     end
