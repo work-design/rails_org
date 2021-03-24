@@ -3,5 +3,5 @@
 <%= turbo_stream.update "job_title_id_wrap_#{params[:index]}", partial: 'org/admin/member_departments/job_title_options', locals: { f: f_object } %>
 
 <% if @department && @department.children.present? %>
-  <%= turbo_stream.after params[:html_id], partial: 'com/nodesouter_children_options', locals: { f: f_object, node: @department, depth: @department.depth + 1, outer: params[:outer] } %>
+  <%= turbo_stream.after params[:html_id], partial: 'com/nodes/outer_children_options', locals: { f: f_object, node: @department, depth: @department.depth + 1, outer: params[:outer] } %>
 <% end %>
