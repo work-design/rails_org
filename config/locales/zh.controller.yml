@@ -48,6 +48,8 @@ zh:
           role: 授权管理
           profile: 简历
           mock: 以其身份
+        new:
+          title: 添加成员
         show:
           title: 职员信息
       resigns:
