@@ -5,6 +5,7 @@ module Org
     included do
       has_many :members, class_name: 'Org::Member', foreign_key: :identity, primary_key: :identity
       has_many :organs, ->{ includes(:organ_domain).order(id: :asc) }, class_name: 'Org::Organ', through: :members
+
       after_save :sync_to_members, if: -> { (saved_changes.keys & ['identity', 'user_id', 'confirmed']).present? }
     end
 
