@@ -17,8 +17,8 @@ module Org
       attribute :enabled, :boolean, default: true
       attribute :state, :string
 
-      belongs_to :user, class_name: 'Auth::User', optional: true
       belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
+      has_one :user, class_name: 'Auth::User', through: :account
       belongs_to :profile, ->(o){ where(organ_id: o.organ_id) }, class_name: 'Profiled::Profile', primary_key: :identity, foreign_key: :identity, optional: true
 
       belongs_to :organ, counter_cache: true, inverse_of: :members
@@ -49,8 +49,7 @@ module Org
       validates :identity, uniqueness: { scope: :organ_id }
 
       #before_save :sync_tutorials, if: -> { join_on_changed? }
-      before_validation :sync_account_user, if: -> { identity_changed? }
-      before_save :sync_avatar_from_user, if: -> { user_id_changed? }
+      before_save :sync_avatar_from_user, if: -> { identity_changed? }
       after_create :sync_member_roles, if: -> { owned? }
     end
 
@@ -62,28 +61,11 @@ module Org
       member_departments.minimum(:grade)
     end
 
-    def sync_account_user
-      self.user = account&.user
-    end
-
     def sync_avatar_from_user
       if user
         self.name ||= user.name
         self.avatar_blob ||= user.avatar_blob
       end
-    end
-
-    def init_user
-      account || build_account
-      account.user || account.build_user
-      self.user = account.user
-
-      self.class.transaction do
-        self.save!
-        account.save!
-      end
-
-      user
     end
 
     def direct_follower_ids
