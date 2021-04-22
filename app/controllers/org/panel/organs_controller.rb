@@ -14,7 +14,7 @@ module Org
 
     def new
       @organ = Organ.new
-      @organ.area = Area.root || Area.new
+      @organ.area = Profiled::Area.root || Profiled::Area.new
     end
 
     def create
