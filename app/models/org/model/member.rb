@@ -28,7 +28,6 @@ module Org
       has_many :job_titles, through: :member_departments
       has_many :members, through: :member_departments, source: :members
       accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
-      accepts_nested_attributes_for :organ
 
       has_many :inferior_member_departments, class_name: 'Org::MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
       has_many :authorized_tokens, dependent: :nullify
@@ -50,7 +49,7 @@ module Org
 
       #before_save :sync_tutorials, if: -> { join_on_changed? }
       before_save :sync_avatar_from_user, if: -> { identity_changed? }
-      after_create :sync_member_roles, if: -> { owned? }
+      #after_create :sync_member_roles, if: -> { owned? }
     end
 
     def admin?
@@ -135,7 +134,7 @@ module Org
     end
 
     def sync_member_roles
-      role = Role.default_where('who_types-any': 'Member', code: RailsOrg.config.super_role_code).take
+      role = Roled::Role.default_where('who_types-any': 'Member', code: RailsOrg.config.super_role_code).take
       who_roles.create(role_id: role.id) if role
     end
 
