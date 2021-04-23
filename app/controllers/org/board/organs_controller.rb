@@ -23,7 +23,7 @@ module Org
       @member = @organ.members.build(owned: true)
       @member.account = current_account
       @member.user_id = current_user.id
-      binding.pry
+
       unless @organ.save
         render :new, locals: { model: @organ }, status: :unprocessable_entity
       end

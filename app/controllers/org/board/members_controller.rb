@@ -52,8 +52,7 @@ module Org
         :next_on_time,
         :next_off_time,
         :experience,
-        :avatar,
-        organ_attributes: {}
+        :avatar
       )
     end
 
