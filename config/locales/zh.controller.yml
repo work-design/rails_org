@@ -1,4 +1,7 @@
 zh:
+  application:
+    org_navbar:
+      title: 团队
   me:
     home:
       index:
