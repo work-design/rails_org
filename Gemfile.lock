@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: c8535a527eb4a1dc55cd384a5c6689cde15c68bd
+  revision: ec64ba96ad7bada8945c04a12552290984c4bbfb
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
@@ -45,7 +45,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 3ce425405a2e3f65a9cd1b3e7b91065a80cc6674
+  revision: e5beb874205835a7da4a2218e0bbbb6936170d36
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -60,7 +60,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: bd6a100387d0bf82f2bc039ca2cbdfdcc77a4683
+  revision: 6d65e28b9aa6c872f8d3fdce8a8c39b33ac17458
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
