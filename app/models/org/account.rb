@@ -3,5 +3,6 @@ module Org
     include Model::Account
 
     self.table_name = 'auth_accounts'
+
   end
 end
