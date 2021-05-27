@@ -20,7 +20,7 @@ module Org
       if current_authorized_token
         @current_member = current_authorized_token.members.find_by(organ_id: current_organ&.id)
       end
-      logger.debug "  \e[35m===== Login as member: #{@current_member&.id} =====\e[0m"
+      logger.debug "  \e[35mLogin as member: #{@current_member&.id}\e[0m"
       @current_member
     end
 
@@ -30,7 +30,7 @@ module Org
       if current_organ_domain
         @current_organ = @current_organ_domain.organ
       end
-      logger.debug "  \e[35m===== Login as organ: #{@current_organ&.name}, ID: #{@current_organ&.id} =====\e[0m"
+      logger.debug "  \e[35mLogin as organ: #{@current_organ&.name}, ID: #{@current_organ&.id}\e[0m"
       @current_organ
     end
 
