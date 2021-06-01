@@ -63,9 +63,9 @@ module Org
       @department = Department.new(department_params)
 
       if @department.save
-        redirect_to admin_departments_url
+        render 'create'
       else
-        render :new
+        render :new, locals: { model: @department }, status: :unprocessable_entity
       end
     end
 
