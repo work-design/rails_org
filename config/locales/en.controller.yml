@@ -1,0 +1,116 @@
+en:
+  application:
+    org_navbar:
+      title: Teams
+  me:
+    home:
+      index:
+        title: 我的
+  org:
+    title: 组织架构
+    admin:
+      title: 组织架构
+      authorized_tokens:
+        index:
+          title: 登陆Token
+      home:
+        index:
+          title: 首页
+      departments:
+        index:
+          title: 部门
+          show: 职员列表
+          job_title: 职级设置
+      super_job_titles:
+        index:
+          title: 跨部门职级
+      job_titles:
+        index:
+          title: 部门职级
+      job_transfers:
+        index:
+          title: 转岗
+      organs:
+        index:
+          title: 分支机构
+          mock: 进入该组织
+      organ_domains:
+        index:
+          title: 域名管理
+      organ_handles:
+        index:
+          title: 部门职能设置
+      department_grants:
+        index:
+          title: 部门职能设置
+      members:
+        index:
+          title: 成员管理
+          enabled: 可用
+          disabled: 禁用
+          role: 授权管理
+          profile: 简历
+          mock: 以其身份
+        new:
+          title: 添加成员
+        show:
+          title: 职员信息
+      resigns:
+        index:
+          title: 离职
+      resign_reasons:
+        index:
+          title: 离职原因
+      supports:
+        index:
+          title: 部门支持
+      tutorials:
+        index:
+          title: 新人指导
+    panel:
+      title: 组织管理
+      organs:
+        index:
+          title: 组织列表
+          mock: 进入该组织
+      organ_domains:
+        index:
+          title: 组织域名
+    our:
+      title: 分支机构
+      organs:
+        show:
+          title: 首页
+    board:
+      members:
+        index:
+          title: 我的工作台
+        new:
+          title: 申请为职员
+      organs:
+        index:
+          title: 我的团队
+        new:
+          title: 创建新团队
+    me:
+      title: 团队管理
+      home:
+        index:
+          title: 首页
+      members:
+        show:
+          title: 我的信息
+        new:
+          title: 申请为职员
+      organs:
+        index:
+          title: 我的团队
+        new:
+          title: 创建新团队
+      departments:
+        index:
+          title: 我的部门
+    member:
+      departments:
+        index:
+          title: 我的部门

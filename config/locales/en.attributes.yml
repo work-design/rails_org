@@ -1,20 +1,20 @@
 en:
   activerecord:
     attributes:
-      department:
+      org/department:
         editorial: Editorial Director
         hr: HR
         financial: Financial Assistant
         marketing: Marketing Assistant
-      job_transfer:
+      org/job_transfer:
         member: Employee
         transfer_on: Transfer Date
         state: Status
-      journal:
+      org/journal:
         name_short: Journal
         editors: Managing Editor(s)
         idatabases: Indexing
-      member:
+      org/member:
         join_on: Join date
         on_time: Current work shift (on)
         off_time: Current work shift (off)
@@ -23,17 +23,15 @@ en:
         experience: Profile in MDPI
         parent: Leader
         enabled: Status
-      profile:
+      org/profile:
         real_name: Chinese name
         work_experience: Work Experience
         birtheday_type: Gregorian/Lunar
-      resign:
+      org/resign:
         member: Employee
         leave_on: Final working day
         resign_reason: Resign Reasons
         reason_note: Detail
         state: Status
-      tutorial:
+      org/tutorial:
         member: Employee
-      user:
-        name: Name
