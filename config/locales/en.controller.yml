@@ -7,18 +7,15 @@ en:
       index:
         title: 我的
   org:
-    title: 组织架构
+    title: Organ Admin
     admin:
-      title: 组织架构
-      authorized_tokens:
-        index:
-          title: 登陆Token
+      title: Organations
       home:
         index:
           title: 首页
       departments:
         index:
-          title: 部门
+          title: Departments
           show: 职员列表
           job_title: 职级设置
       super_job_titles:
@@ -32,7 +29,7 @@ en:
           title: 转岗
       organs:
         index:
-          title: 分支机构
+          title: Organations
           mock: 进入该组织
       organ_domains:
         index:
@@ -45,7 +42,7 @@ en:
           title: 部门职能设置
       members:
         index:
-          title: 成员管理
+          title: Members
           enabled: 可用
           disabled: 禁用
           role: 授权管理
