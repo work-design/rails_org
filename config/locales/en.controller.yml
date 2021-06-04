@@ -36,7 +36,7 @@ en:
           mock: 进入该组织
       organ_domains:
         index:
-          title: 域名管理
+          title: Domains
       organ_handles:
         index:
           title: 部门职能设置
