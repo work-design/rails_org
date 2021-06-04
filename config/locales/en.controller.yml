@@ -93,13 +93,13 @@ en:
         new:
           title: New Team
     me:
-      title: 团队管理
+      title: Team
       home:
         index:
           title: 首页
       members:
         show:
-          title: 我的信息
+          title: Job Info
         new:
           title: 申请为职员
       organs:
@@ -109,7 +109,7 @@ en:
           title: 创建新团队
       departments:
         index:
-          title: 我的部门
+          title: Departments
     member:
       departments:
         index:
