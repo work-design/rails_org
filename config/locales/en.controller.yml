@@ -89,9 +89,9 @@ en:
           title: 申请为职员
       organs:
         index:
-          title: 我的团队
+          title: My Teams
         new:
-          title: 创建新团队
+          title: New Team
     me:
       title: 团队管理
       home:
