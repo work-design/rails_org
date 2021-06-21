@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: a2a743a744574795db74331b52bf46942dd3bb2d
+  revision: d0fbf0383bf8f9ec7941f79ad2dabd95a478e53b
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: 0a20b2d58f2572fe6cafdaa2cc7be6a9411930c0
+  revision: 73338e8c9bf69cb2cb25ea0a62fee1fe0a0905ba
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 9bd60ff5b62722d1e57093f3c3b2268046ec2438
+  revision: a24cd7732195ac44f293b15883319a71bb9c599b
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 078496d3998e22b1fcede081d1330854105507a7
+  revision: 530a995d7a28fd750002a518269a23e420531408
   specs:
     rails_com (1.2.9)
       acme-client
@@ -60,7 +60,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: dfa0ec92cd3866cd06c3d670c2e375f379e25391
+  revision: 72f7b4d05bbc425d88cf09dfad9af82b00f679fd
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -178,7 +178,7 @@ GEM
       activesupport (>= 5)
     http-2-next (0.4.3)
     http-form_data (2.3.0)
-    httpx (0.14.4)
+    httpx (0.14.5)
       http-2-next (>= 0.4.1)
       timers
     i18n (1.8.10)
