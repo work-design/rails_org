@@ -4,7 +4,6 @@ gemspec
 
 gem 'rails'
 gem 'pg'
-gem 'webpacker'
 gem 'kaminari'
 
 gem 'factory_bot_rails', require: false

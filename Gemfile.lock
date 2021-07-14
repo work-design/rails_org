@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: a24cd7732195ac44f293b15883319a71bb9c599b
+  revision: c7cf3436642c9ad8e9a8d5a9fe4e2e85c42aad4a
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 530a995d7a28fd750002a518269a23e420531408
+  revision: ff2fa793ea78f7c6b1d824a86c4910dab26223cd
   specs:
     rails_com (1.2.9)
       acme-client
@@ -42,6 +42,7 @@ GIT
       httpx (~> 0.8)
       kaminari
       rails (~> 6.0)
+      turbo-rails
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
@@ -60,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 72f7b4d05bbc425d88cf09dfad9af82b00f679fd
+  revision: 15165da2f9328810b8ae61a564bdd7834e5135ad
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -145,7 +146,7 @@ GEM
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.4)
-    closure_tree (7.2.0)
+    closure_tree (7.3.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
     coderay (1.1.3)
@@ -158,19 +159,23 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (1.4.2)
+    faraday (1.5.1)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0.1)
       faraday-net_http (~> 1.0)
       faraday-net_http_persistent (~> 1.1)
+      faraday-patron (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords (>= 0.0.4)
     faraday-em_http (1.0.0)
     faraday-em_synchrony (1.0.0)
     faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
     faraday-net_http (1.0.1)
-    faraday-net_http_persistent (1.1.0)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
     ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -178,7 +183,7 @@ GEM
       activesupport (>= 5)
     http-2-next (0.4.3)
     http-form_data (2.3.0)
-    httpx (0.14.5)
+    httpx (0.15.4)
       http-2-next (>= 0.4.1)
       timers
     i18n (1.8.10)
@@ -231,8 +236,6 @@ GEM
       pry (~> 0.13)
     racc (1.5.2)
     rack (2.2.3)
-    rack-proxy (0.6.5)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.1.3.2)
@@ -271,7 +274,6 @@ GEM
     ruby2_keywords (0.0.4)
     sdoc (2.1.0)
       rdoc (>= 5.0)
-    semantic_range (3.0.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -281,13 +283,10 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.1.0)
     timers (4.3.3)
+    turbo-rails (0.5.12)
+      rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    webpacker (5.3.0)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -319,7 +318,6 @@ DEPENDENCIES
   rails_profile!
   rails_role!
   sdoc
-  webpacker
 
 BUNDLED WITH
-   2.2.15
+   2.2.22
