@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: d0fbf0383bf8f9ec7941f79ad2dabd95a478e53b
+  revision: 476ba7231079b1071415ad4e953b55ce16ae1d0d
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: 73338e8c9bf69cb2cb25ea0a62fee1fe0a0905ba
+  revision: f3a5fafcafd4eaffc0c8eff1385e12c7bd939e83
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
@@ -21,17 +21,16 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: c7cf3436642c9ad8e9a8d5a9fe4e2e85c42aad4a
+  revision: 280a6ef450cccf27734ca478e4532d38ee48099e
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
-      groupdate
       jwt (>= 2.0, <= 3.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: ff2fa793ea78f7c6b1d824a86c4910dab26223cd
+  revision: c36a61af1ae68a6f517ab95576f849488bfc4c8c
   specs:
     rails_com (1.2.9)
       acme-client
@@ -46,7 +45,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 1d9a303e7e9e34452cad2a9ff84c04b45d9914e4
+  revision: 7e1f7a0d73004f5e24b15a613f09b434c987157f
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -54,14 +53,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 9495bdc77c3003bd6f552581c81faf86d909904f
+  revision: 20a9938c32e05442af54fe1886f2d266bf321678
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 15165da2f9328810b8ae61a564bdd7834e5135ad
+  revision: a0101ee14e6e4b2f24fcf9fe3cbde31a48478540
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -70,7 +69,6 @@ PATH
   remote: .
   specs:
     rails_org (0.1)
-      rails_auth
       rails_com (~> 1.2)
       rails_notice
       rails_profile
@@ -159,7 +157,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (1.5.1)
+    faraday (1.7.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -167,6 +165,7 @@ GEM
       faraday-net_http (~> 1.0)
       faraday-net_http_persistent (~> 1.1)
       faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords (>= 0.0.4)
     faraday-em_http (1.0.0)
@@ -176,14 +175,13 @@ GEM
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
     ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    groupdate (5.2.2)
-      activesupport (>= 5)
-    http-2-next (0.4.3)
+    http-2-next (0.5.0)
     http-form_data (2.3.0)
-    httpx (0.15.4)
+    httpx (0.16.1)
       http-2-next (>= 0.4.1)
       timers
     i18n (1.8.10)
@@ -271,7 +269,7 @@ GEM
     rdoc (6.3.1)
     ruby-vips (2.1.2)
       ffi (~> 1.12)
-    ruby2_keywords (0.0.4)
+    ruby2_keywords (0.0.5)
     sdoc (2.1.0)
       rdoc (>= 5.0)
     sprockets (4.0.2)
@@ -283,7 +281,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.1.0)
     timers (4.3.3)
-    turbo-rails (0.5.12)
+    turbo-rails (0.7.0)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
