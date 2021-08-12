@@ -13,6 +13,13 @@ GIT
       activerecord (>= 4.0, <= 7.0)
 
 GIT
+  remote: https://github.com/qinmingyuan/viter.git
+  revision: 69e5b6e5585471aa973aa1fd807e38544295b886
+  specs:
+    viter (0.1.0)
+      rails
+
+GIT
   remote: https://github.com/work-design/rails_audit.git
   revision: ec64ba96ad7bada8945c04a12552290984c4bbfb
   specs:
@@ -152,11 +159,6 @@ GEM
     crass (1.0.6)
     debug_inspector (1.1.0)
     erubi (1.10.0)
-    factory_bot (6.2.0)
-      activesupport (>= 5.0.0)
-    factory_bot_rails (6.2.0)
-      factory_bot (~> 6.2.0)
-      railties (>= 5.0.0)
     faraday (1.7.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -299,7 +301,6 @@ DEPENDENCIES
   awesome_print
   default_form!
   default_where!
-  factory_bot_rails
   image_processing
   jbuilder
   kaminari
@@ -307,7 +308,6 @@ DEPENDENCIES
   pg
   pry-rails
   pry-stack_explorer
-  rails
   rails_audit!
   rails_auth!
   rails_com!
@@ -316,6 +316,7 @@ DEPENDENCIES
   rails_profile!
   rails_role!
   sdoc
+  viter!
 
 BUNDLED WITH
    2.2.22

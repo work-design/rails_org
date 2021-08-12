@@ -1,5 +1,7 @@
 # RailsOrg
 
+组织架构管理
+
 ## 概述
 
 * 用于 `SaaS` 多租户
@@ -20,5 +22,5 @@
 * my: 用户端，支持 user_id + organ_id
 
 
-## License
-License 采用 [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0).
+## 许可证
+遵循 [MIT](https://opensource.org/licenses/MIT) 协议

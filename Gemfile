@@ -6,6 +6,7 @@ gem 'pg'
 gem 'kaminari'
 
 gem 'default_form', github: 'qinmingyuan/default_form'
+gem 'viter', github: 'qinmingyuan/viter'
 gem 'rails_com', github: 'work-design/rails_com'
 gem 'rails_audit', github: 'work-design/rails_audit'
 gem 'rails_auth', github: 'work-design/rails_auth'
