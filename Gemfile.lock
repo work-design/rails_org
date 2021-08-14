@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: f3a5fafcafd4eaffc0c8eff1385e12c7bd939e83
+  revision: bd6a1950ec0aea030cf741a38b58111a20d14b38
   specs:
-    default_where (2.2.3)
+    default_where (2.3.0)
       activerecord (>= 4.0, <= 7.0)
 
 GIT
@@ -37,17 +37,17 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: c36a61af1ae68a6f517ab95576f849488bfc4c8c
+  revision: a2e0f725a5dc374cf06e4d113183953e0e703af2
   specs:
     rails_com (1.2.9)
       acme-client
       acts_as_list (>= 1.0)
-      closure_tree (>= 7.2)
+      closure_tree (>= 7.3)
       default_where (~> 2.2)
-      http-form_data (~> 2.2)
-      httpx (~> 0.8)
+      http-form_data (~> 2.3)
+      httpx (~> 0.16)
       kaminari
-      rails (~> 6.0)
+      rails (~> 6.1)
       turbo-rails
 
 GIT
@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: a0101ee14e6e4b2f24fcf9fe3cbde31a48478540
+  revision: 2b88c7197e2f33656c236f18d5d0a7acf1e8f514
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
