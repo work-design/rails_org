@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/viter.git
-  revision: 69e5b6e5585471aa973aa1fd807e38544295b886
+  revision: 997cbc807babe4380f76ad0051518de12135702e
   specs:
     viter (0.1.0)
       rails
@@ -28,16 +28,16 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 280a6ef450cccf27734ca478e4532d38ee48099e
+  revision: 0d4f6adb73969f3104b75197629fb51e8fe245f1
   specs:
-    rails_auth (1.1.0)
+    rails_auth (1.2.0)
       bcrypt (~> 3.1)
       jwt (>= 2.0, <= 3.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: a2e0f725a5dc374cf06e4d113183953e0e703af2
+  revision: 4829a61208ab5a358d43f43795c3e998b636a5b1
   specs:
     rails_com (1.2.9)
       acme-client
@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 2b88c7197e2f33656c236f18d5d0a7acf1e8f514
+  revision: 6e67263eb1ee87c9de283a2df9338e8ed8529772
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -179,8 +179,8 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     ffi (1.15.0)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
+    globalid (0.5.2)
+      activesupport (>= 5.0)
     http-2-next (0.5.0)
     http-form_data (2.3.0)
     httpx (0.16.1)
@@ -221,7 +221,7 @@ GEM
     mini_portile2 (2.5.1)
     minitest (5.14.4)
     multipart-post (2.1.1)
-    nio4r (2.5.7)
+    nio4r (2.5.8)
     nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
@@ -264,7 +264,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (~> 1.0)
-    rake (13.0.3)
+    rake (13.0.6)
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -283,11 +283,11 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.1.0)
     timers (4.3.3)
-    turbo-rails (0.7.0)
+    turbo-rails (0.7.3)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    websocket-driver (0.7.3)
+    websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     with_advisory_lock (4.6.0)

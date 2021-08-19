@@ -1,5 +1,5 @@
 <%= form_with model: [:my, @job_transfer], local: true do |f| %>
-  <%= render 'shared/error_messages', target: @job_transfer %>
+  <%= render 'error_messages', target: @job_transfer %>
   <%= f.collection_select :to_office_id, Office.all, :id, :name, prompt: true, required: true %>
   <%= render partial: 'com/nodes/outer_select', locals: { f: f, outer: 'to_department', class_name: 'Department' } %>
   <%= f.date_field :transfer_on, required: true %>

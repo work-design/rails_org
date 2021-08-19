@@ -1,4 +1,4 @@
-<%= render 'shared/error_messages', target: f.object %>
+<%= render 'error_messages', target: f.object %>
 <% if f.object.parent %>
   <%= f.hidden_field :parent_id %>
 <%# elsif current_organ&.parent %>

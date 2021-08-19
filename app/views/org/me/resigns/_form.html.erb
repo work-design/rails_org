@@ -1,5 +1,5 @@
 <%= form_with model: @resign, url: my_resign_path, local: true do |f| %>
-  <%= render 'shared/error_messages', target: @resign %>
+  <%= render 'error_messages', target: @resign %>
   <div class="inline required fields">
     <label class="six wide field">Reason: </label>
   </div>

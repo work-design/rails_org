@@ -1,4 +1,4 @@
-<%= render 'shared/error_messages', target: @member %>
+<%= render 'error_messages', target: @member %>
 <%= f.text_field :name %>
 <%= f.file_field :avatar %>
 <%= f.fields :member_departments, label: false, wrap: { all: nil, input: 'field' } do |ef| %>
