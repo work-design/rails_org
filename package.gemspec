@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'rails_org'
-  s.version = RailsOrg::VERSION
+  s.version = '0.1'
   s.authors = ['qinmingyuan']
   s.email = ['mingyuan0715@foxmail.com']
   s.homepage = 'https://github.com/work-design/rails_org'
