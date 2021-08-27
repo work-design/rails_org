@@ -1,6 +1,6 @@
 <%= link_to({ action: 'new' }, data: { turbo_frame: 'modal' }, class: 'button is-link') do %>
   <i class="fas fa-plus"></i><span><%= t('.new') %></span>
 <% end %>
-<%= link_to find_data_list_table_lists_path('MemberExport', params.permit(:organ_id)), class: 'button is-light' do %>
-  <i class="file excel icon"></i><%= t('.export') %>
+<%= link_to({ controller: 'datum/panel/table_lists', action: 'find', data_list_id: 'MemberExport', **params.permit(:organ_id) }, class: 'button is-light') do %>
+  <i class="fas fa-file-excel"></i><%= t('.export') %>
 <% end %>
