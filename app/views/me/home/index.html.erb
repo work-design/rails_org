@@ -1,15 +1,15 @@
-<% @busynesses.each do |busyness, rules| %>
+<% @meta_businesses.each do |meta_business, meta_actions| %>
 <div class="media">
   <figure class="media-left">
-    <%= image_tag busyness.logo, class: 'image is-64x64' if busyness.logo.attached? %>
+    <%= image_tag meta_business.logo, class: 'image is-64x64' if meta_business.logo.attached? %>
   </figure>
   <div class="media-content">
     <div class="content">
-      <strong><%= busyness.name %></strong>
+      <strong><%= meta_business.name %></strong>
     </div>
-    <% rules.each do |rule| %>
+    <% meta_actions.each do |meta_action| %>
     <div>
-      <%= link_to rule.name, { controller: rule.controller_path, action: rule.action_name, **params.except(:business, :namespace, :controller, :action).permit! } %>
+      <%= link_to meta_action.name, { controller: meta_action.controller_path, action: meta_action.action_name, **params.except(:business, :namespace, :controller, :action).permit! } %>
     </div>
     <% end %>
   </div>

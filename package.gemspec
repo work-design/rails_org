@@ -1,6 +1,3 @@
-$:.push File.expand_path('lib', __dir__)
-require 'rails_org/version'
-
 Gem::Specification.new do |s|
   s.name = 'rails_org'
   s.version = RailsOrg::VERSION
