@@ -13,6 +13,6 @@ module RailsOrg
       collection_select(method, collection, value_method, text_method, options, html_options)
     end
 
-    DefaultForm::FormBuilder.include self
+    ::DefaultForm::FormBuilder.include self
   end
 end
