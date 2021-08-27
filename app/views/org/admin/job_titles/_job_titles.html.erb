@@ -24,7 +24,7 @@
       <% job_title.roles.pluck(:name).each do |role| %>
         <span><%= role %></span>
       <% end %>
-      <%= link_to edit_admin_who_roles_path('JobTitle', job_title.id), aria: { label: t('roled.admin.who_roles.edit.title') } do %>
+      <%= link_to({ controller: 'roled/admin/who_roles', action: 'edit', who_type: 'JobTitle', who_id: job_title.id }, aria: { label: t('roled.admin.who_roles.edit.title') }) do %>
         <i class="fas fa-user-shield"></i>
       <% end %>
     </div>
