@@ -8,7 +8,7 @@
     <% @member.roles.each do |role| %>
       <span class="tag"><%= role.name %></span>
     <% end %>
-    <%= link_to edit_admin_who_roles_path('Org::Member', @member.id), aria: { label: t('.role') } do %>
+    <%= link_to({ controller: 'roled/admin/who_roles', action: 'edit', who_type: 'Org::Member', who_id: @member.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.role') }) do %>
       <i class="fas fa-user-shield"></i>
     <% end %>
   </td>
