@@ -1,7 +1,7 @@
 <% @meta_businesses.each do |meta_business, meta_actions| %>
 <div class="media">
   <figure class="media-left">
-    <%= image_tag meta_business.logo, class: 'image is-64x64' if meta_business.logo.attached? %>
+    <%= image_tag meta_business.logo, class: 'image is-64x64' if meta_business.logo.present? %>
   </figure>
   <div class="media-content">
     <div class="content">
