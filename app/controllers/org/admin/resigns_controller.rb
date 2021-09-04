@@ -24,36 +24,6 @@ module Org
       render :my, layout: 'my'
     end
 
-    def new
-      @resign = Resign.new
-    end
-
-    def create
-      @resign = Resign.new(resign_params)
-
-      unless @resign.save
-        render :new, locals: { model: @resign }, status: :unprocessable_entity
-      end
-    end
-
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @resign.assign_attributes(resign_params)
-
-      unless @resign.save
-        render :edit, locals: { model: @resign }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @resign.destroy
-    end
-
     def charts
       q_params = params.fetch(:q, {}).permit(:id, 'leave_on-gte', 'leave_on-lte')
       resigns = Resign.select(:id, :member_id).default_where(q_params)

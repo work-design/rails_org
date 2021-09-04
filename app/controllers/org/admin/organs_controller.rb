@@ -9,9 +9,6 @@ module Org
       @organs = Organ.default_where(q_params).order(id: :desc).page(params[:page])
     end
 
-    def show
-    end
-
     def new
       @organ = Organ.new
       @organ.area || @organ.build_area
@@ -31,18 +28,6 @@ module Org
 
     def edit
       @organ.area || @organ.build_area
-    end
-
-    def update
-      @organ.assign_attributes(organ_params)
-
-      unless @organ.save
-        render :edit, locals: { model: @organ }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @organ.destroy
     end
 
     private

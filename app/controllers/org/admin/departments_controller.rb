@@ -54,31 +54,7 @@ module Org
       @department = Department.new(parent_id: params[:parent_id])
     end
 
-    def create
-      @department = Department.new(department_params)
-
-      unless @department.save
-        render :new, locals: { model: @department }, status: :unprocessable_entity
-      end
-    end
-
-    def edit
-    end
-
-    def update
-      @department.assign_attributes(department_params)
-
-      unless @department.save
-        render :edit, locals: { model: @department }, status: :unprocessable_entity
-      end
-    end
-
     def need
-
-    end
-
-    def destroy
-      @department.destroy
     end
 
     private

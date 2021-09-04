@@ -7,14 +7,8 @@ module Org
       @job_descriptions = @department.job_descriptions
     end
 
-    def show
-    end
-
     def new
       @job_description = @department.job_descriptions.build
-    end
-
-    def edit
     end
 
     def create
@@ -23,18 +17,6 @@ module Org
       unless @job_description.save
         render :new, locals: { model: @job_description }, status: :unprocessable_entity
       end
-    end
-
-    def update
-      @job_description.assign_attributes(job_description_params)
-
-      unless @job_description.save
-        render :edit, locals: { model: @job_description }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @job_description.destroy
     end
 
     private

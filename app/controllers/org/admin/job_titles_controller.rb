@@ -27,33 +27,11 @@ module Org
       end
     end
 
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @job_title.assign_attributes(job_title_params)
-
-      unless @job_title.save
-        render :edit, locals: { model: @job_title }, status: :unprocessable_entity
-      end
-    end
-
     def create_department
       @super_job_title = SuperJobTitle.find params[:super_job_title_id]
       jtr = @super_job_title.job_titles.build(department_id: params[:department_id])
       x = @department.root.all_job_titles.where.not(super_job_title_id: nil).default_where('super_grade-lte': @super_job_title.grade).minimum(:grade) || 1
       jtr.insert_at x
-    end
-
-    def move_higher
-      @job_title.move_higher
-    end
-
-    def move_lower
-      @job_title.move_lower
     end
 
     def reorder
@@ -68,10 +46,6 @@ module Org
           next_one.insert_at @job_title.grade
         end
       end
-    end
-
-    def destroy
-      @job_title.destroy
     end
 
     private
