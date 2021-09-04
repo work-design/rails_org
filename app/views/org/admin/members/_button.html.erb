@@ -3,4 +3,4 @@
 <% end %>
 <%= link_to({ controller: 'datum/panel/table_lists', action: 'find', data_list_id: 'MemberExport', **params.permit(:organ_id) }, class: 'button is-light') do %>
   <i class="fas fa-file-excel"></i><%= t('.export') %>
-<% end %>
+<% end if defined? RailsData %>

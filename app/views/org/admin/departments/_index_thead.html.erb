@@ -6,7 +6,7 @@
 </th>
 <th>
   <%= Org::Department.human_attribute_name(:job_titles) %>
-  <%= link_to admin_super_job_titles_path, aria: { label: '不限部门职级' } do %>
+  <%= link_to({ controller: 'super_job_titles' }, aria: { label: '不限部门职级' }) do %>
     <i class="fas fa-cog"></i>
   <% end %>
 </th>
