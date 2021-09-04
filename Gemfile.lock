@@ -149,6 +149,13 @@ GIT
     rails_role (1.0.3)
       rails_com (~> 1.2)
 
+GIT
+  remote: https://github.com/work-design/rails_ui.git
+  revision: b915e58f8582043db65dccf5ea014fc73ef98dc6
+  specs:
+    rails_ui (0.0.1)
+      rails
+
 PATH
   remote: .
   specs:
@@ -243,6 +250,8 @@ GEM
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     pg (1.2.3)
+    puma (5.4.0)
+      nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -292,6 +301,7 @@ DEPENDENCIES
   jbuilder
   kaminari
   pg
+  puma
   rails!
   rails_audit!
   rails_auth!
@@ -300,6 +310,7 @@ DEPENDENCIES
   rails_org!
   rails_profile!
   rails_role!
+  rails_ui!
   sdoc
   viter!
 

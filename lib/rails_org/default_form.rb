@@ -1,4 +1,3 @@
-require 'default_form'
 module RailsOrg
   module DefaultForm
 
