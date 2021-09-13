@@ -99,14 +99,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: b9b28915e8d48dce58bc715ee3d8a005e539cfe5
+  revision: b28360f3df12b621c7d62214b881f7e4b19e4ea2
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: d7e4b097b28d1906a5e96d06f07d92b53baab31d
+  revision: 94b24f83e9ac5e8ecf374a9163d76ebbd89ac050
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -115,7 +115,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 806cc320be3056c8c53cc6c8d89461216e898546
+  revision: 0fa82f6df70ac2222a9a5fdeb8f0d209ba01eeb7
   specs:
     rails_com (1.2.9)
       acme-client
@@ -126,13 +126,28 @@ GIT
       httpx (~> 0.16)
       kaminari
       rails (>= 6.1)
+      rails_extend
       turbo-rails
 
 GIT
-  remote: https://github.com/work-design/rails_notice.git
-  revision: 73bfbcee42ccd1338289a3813b554b461f64c192
+  remote: https://github.com/work-design/rails_design.git
+  revision: 074ee48cd8cd754977c8946f73479fe4a7e9b3f5
   specs:
-    rails_notice (1.0.2)
+    rails_design (0.0.1)
+      rails
+
+GIT
+  remote: https://github.com/work-design/rails_extend.git
+  revision: c7ce04eaa13e09fc5156b8938a71e17821b7fe59
+  specs:
+    rails_extend (1.0.0)
+      rails (>= 6.0)
+
+GIT
+  remote: https://github.com/work-design/rails_notice.git
+  revision: 5aca04e1830b0c9020f2c1ce1f415aaefa70d484
+  specs:
+    rails_notice (1.0.3)
       rails_com (~> 1.2)
 
 GIT
@@ -144,25 +159,16 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: af7b809ed87a38632860aca02a1ae843b4c85924
+  revision: 024a83b8d5f58f3d6c3f5666c328d95af5a280fe
   specs:
-    rails_role (1.0.3)
+    rails_role (1.0.4)
       rails_com (~> 1.2)
-
-GIT
-  remote: https://github.com/work-design/rails_ui.git
-  revision: b915e58f8582043db65dccf5ea014fc73ef98dc6
-  specs:
-    rails_ui (0.0.1)
-      rails
 
 PATH
   remote: .
   specs:
-    rails_org (0.1)
+    rails_org (0.0.1)
       rails_com (~> 1.2)
-      rails_notice
-      rails_profile
 
 GEM
   remote: https://rubygems.org/
@@ -295,22 +301,22 @@ PLATFORMS
 
 DEPENDENCIES
   amazing_print
-  debug (>= 1.0.0.rc)
+  debug
   default_where!
   image_processing
   jbuilder
-  kaminari
   pg
   puma
   rails!
   rails_audit!
   rails_auth!
   rails_com!
+  rails_design!
+  rails_extend!
   rails_notice!
   rails_org!
   rails_profile!
   rails_role!
-  rails_ui!
   sdoc
   viter!
 
