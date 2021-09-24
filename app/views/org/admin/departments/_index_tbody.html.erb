@@ -5,7 +5,7 @@
   <% else %>
     <i class="fas fa-fw fa-caret-right" data-action="click->tree#expand" style="cursor: pointer"></i>
   <% end %>
-  <%= link_to admin_department_path(model) do %>
+  <%= link_to({ action: 'show', id: model.id}) do %>
     <span><%= model.name %></span>
     <span class="has-text-grey">(<%= model.all_member_departments_count %>)</span>
   <% end %>
@@ -20,10 +20,10 @@
   <% model.job_titles.each do |job_title| %>
     <div class="button is-small is-light" aria-label="<%= job_title.grade %>"><%= job_title.name %></div>
   <% end %>
-  <%= link_to admin_department_job_titles_path(model), aria: { label: t('.job_title') }, class: 'button is-small is-rounded is-light' do %>
+  <%= link_to({ controller: 'job_titles', department_id: model.id }, aria: { label: t('.job_title') }, class: 'button is-small is-rounded is-light') do %>
     <i class="fas fa-user-tag"></i>
   <% end %>
 </td>
 <td>
-  <%= link_to model.leader.name, admin_member_path(model.leader.id) if model.leader %>
+  <%= link_to model.leader.name, { controller: 'members', action: 'show', id: model.leader.id } if model.leader %>
 </td>

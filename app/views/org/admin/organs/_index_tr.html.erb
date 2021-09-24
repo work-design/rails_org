@@ -11,7 +11,7 @@
       <%= button_to({ action: 'destroy', id: model.id }, method: :delete, data: { confirm: t('.confirm') }, aria: { label: t('.destroy') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-trash-alt"></i>
       <% end %>
-      <%= link_to admin_current_organ_url(host: model.host), aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
+      <%= link_to({ controller: 'current_organ', action: 'show', host: model.host }, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-hand-point-right"></i>
       <% end %>
     </span>
