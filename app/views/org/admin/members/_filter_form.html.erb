@@ -4,7 +4,7 @@
     <%= f.text_field :identity %>
     <div class="field is-narrow">
       <%= f.submit %>
-      <%= link_to t('.clear'), filter_params(except: ['name-like', :identity]), class: 'button is-light' %>
+      <%= link_to t('.clear'), filter_params(except: ['name-like', :enabled, :identity]), class: 'button is-light' %>
     </div>
   </div>
 <% end %>
