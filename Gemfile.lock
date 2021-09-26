@@ -7,14 +7,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: b28360f3df12b621c7d62214b881f7e4b19e4ea2
+  revision: f788ad13b9b1c418d50980a295e5bc2a64999bd7
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 94b24f83e9ac5e8ecf374a9163d76ebbd89ac050
+  revision: 82d5f4ba6117a98be22b725534cd7316fa72ba3d
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 2377ede7104b675247bf7b26bc279591d54d0a21
+  revision: 804e713f38f9a204c0c6f934b4a2bb6a4c51a0b2
   specs:
     rails_com (1.2.9)
       acme-client
@@ -40,21 +40,21 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 383e4a7423663c8233b14d1eeaec2507569310ca
+  revision: 17b43fce2ddc8fcc98f5380c7cdb8e8de581c409
   specs:
     rails_design (0.0.1)
       rails
 
 GIT
   remote: https://github.com/work-design/rails_extend.git
-  revision: 55221ffc89fed5836a60bdc037bfa727ef3fd048
+  revision: a01f5bcfbe28b070f92ef4edefe781497cc69a23
   specs:
     rails_extend (1.0.0)
       rails (>= 5.0)
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 5aca04e1830b0c9020f2c1ce1f415aaefa70d484
+  revision: ad9e76f4ffe460618ccec35727ac54845fceaef0
   specs:
     rails_notice (1.0.3)
       rails_com (~> 1.2)
@@ -75,7 +75,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_vite.git
-  revision: ef130e9069c8f980bcc749dfbdeb026c632d4b8a
+  revision: fc5c34bce125a277b71b61b8f9764b4555f477f8
   specs:
     rails_vite (0.0.1)
       rails
@@ -160,7 +160,7 @@ GEM
       with_advisory_lock (>= 4.0.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
-    debug (1.0.0.rc2)
+    debug (1.1.0)
       irb
       reline (>= 0.2.7)
     erubi (1.10.0)
@@ -231,7 +231,7 @@ GEM
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     pg (1.2.3)
-    puma (5.4.0)
+    puma (5.5.0)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -281,7 +281,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.1.0)
     timers (4.3.3)
-    turbo-rails (0.7.14)
+    turbo-rails (0.8.1)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)

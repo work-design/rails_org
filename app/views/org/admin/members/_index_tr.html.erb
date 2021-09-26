@@ -8,14 +8,12 @@
       <%= link_to({ action: 'profile', id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.profile') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-id-card"></i>
       <% end %>
-      <%= link_to({ action: 'edit', id: model }, data: { turbo_frame: 'modal' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ action: 'edit', id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-pencil-alt"></i>
       <% end %>
-      <% if model.user_id != current_user.id %>
-        <%= link_to mock_admin_member_path(model), method: :patch, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light' do %>
-          <i class="fas fa-hand-point-right"></i>
-        <% end %>
-      <% end %>
+      <%= link_to({ action: 'mock', id: model.id }, method: :patch, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fas fa-hand-point-right"></i>
+      <% end if model.user_id != current_user.id %>
       <%# link_to 'tutorials', admin_tutorials_path(member_id: model.id), class: 'ui mini circular button' %>
     </span>
   </td>
