@@ -1,0 +1,4 @@
+<%= form_with theme: 'weui', model: @organ, url: { action: 'create' } do |f| %>
+  <%= f.text_field :name, required: true %>
+  <%= f.submit %>
+<% end %>
