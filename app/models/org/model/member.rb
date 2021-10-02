@@ -30,7 +30,7 @@ module Org
       accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
 
       has_many :inferior_member_departments, class_name: 'Org::MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
-      has_many :authorized_tokens, dependent: :nullify
+      has_many :authorized_tokens, class_name: 'Auth::AuthorizedToken', foreign_key: :identity, primary_key: :identity, dependent: :delete_all
 
       has_one :resign
       has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
