@@ -1,6 +1,5 @@
-<% @organs.each do |organ, members| %>
-  <%= render partial: 'organ', locals: { organ: organ, members: members } %>
-<% end %>
+<%= render partial: 'organ', collection: @organs, as: :model %>
+
 <div class="weui-panel weui-panel_access">
   <div class="weui-panel__ft">
     <%= link_to({ controller: 'org/board/organs', action: 'new' }, class: 'weui-cell weui-cell_access') do %>

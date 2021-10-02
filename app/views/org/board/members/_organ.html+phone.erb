@@ -1,15 +1,15 @@
 <div class="weui-panel">
   <div class="weui-panel__hd media">
     <div class="media-left">
-      <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'image is-48x48' if organ.logo.attached? %>
+      <%= image_tag model[0].logo.variant(resize_to_limit: [150, 150]), class: 'image is-48x48' if model[0].logo.attached? %>
     </div>
     <div class="media-content">
-      <strong><%= organ.name %></strong>
+      <strong><%= model[0].name %></strong>
     </div>
     <div class="media-right"></div>
   </div>
   <div class="weui-panel__bd">
-    <% members.each do |member| %>
+    <% model[1].each do |member| %>
       <div class="weui-media-box weui-media-box_small-appmsg">
         <div class="weui-cells">
           <div class="weui-cell weui-cell_access">
@@ -21,7 +21,7 @@
               <span><%= member.name %></span>
             </div>
             <div class="weui-cell__ft">
-              <%= link_to '工作台', { controller: '/me/home', **organ.url_options }, class: 'card-footer-item' %>
+              <%= link_to '工作台', { controller: '/me/home', **model[0].url_options }, class: 'card-footer-item' %>
             </div>
           </div>
         </div>

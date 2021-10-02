@@ -12,8 +12,8 @@
               <%= image_tag member.avatar.variant(resize_to_limit: [150, 150]), class: 'image is-48x48' if member.avatar.attached? %>
             </div>
             <div class="weui-cell__bd">
-              <span><%= member.departments.first&.full_name %></span>
-              <span class="is-size-7"><%= member.identity %></span>
+              <p><%= member.departments.first&.full_name %></p>
+              <p class="is-size-7"><%= member.identity %></p>
             </div>
             <div class="weui-cell__ft">
               <%= link_to '工作台', { controller: '/me/home', **model[0].url_options }, class: 'card-footer-item' %>
