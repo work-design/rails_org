@@ -39,6 +39,9 @@ Rails.application.routes.draw do
         collection do
           get :near
         end
+        member do
+          get :qrcode
+        end
       end
     end
 

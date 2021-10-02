@@ -1,5 +1,6 @@
 module Org
   class Board::MembersController < Board::BaseController
+    before_action :set_member, only: [:qrcode]
 
     def index
       @organs = current_user.members.includes(:organ).where.not(organ_id: nil).group_by(&:organ)
@@ -29,6 +30,10 @@ module Org
       else
         render :new, locals: { model: @member }, status: :unprocessable_entity
       end
+    end
+
+    def qrcode
+      @scene = @member.invite_scene(current_wechat_app)
     end
 
     private
