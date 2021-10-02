@@ -1,0 +1,22 @@
+<div class="weui-panel">
+  <div class="weui-panel__hd">
+    <span><%= @member.organ.name %></span>
+    <span><%= @member.name %></span>
+  </div>
+  <div class="weui-panel__bd">
+    <div class="weui-media-box weui-media-box_small-appmsg">
+      <div class="weui-cells">
+      <% @wechat_apps.each do |app| %>
+        <%= link_to({ controller: 'org/board/members', action: 'qrcode', id: @member.id, app_id: app.id }, class: 'weui-cell weui-cell_access') do %>
+          <div class="weui-cell__bd">
+            <p><%= app.type_i18n %></p>
+          </div>
+          <div class="weui-cell__ft">
+            <i class="fas fa-qrcode"></i>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

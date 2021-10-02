@@ -40,6 +40,7 @@ Rails.application.routes.draw do
           get :near
         end
         member do
+          get :qrcodes
           get :qrcode
         end
       end

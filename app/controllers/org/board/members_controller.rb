@@ -1,6 +1,6 @@
 module Org
   class Board::MembersController < Board::BaseController
-    before_action :set_member, only: [:qrcode]
+    before_action :set_member, only: [:qrcodes, :qrcode]
 
     def index
       @organs = current_user.members.includes(:organ).where.not(organ_id: nil).group_by(&:organ)
@@ -32,8 +32,13 @@ module Org
       end
     end
 
+    def qrcodes
+      @wechat_apps = Wechat::App.enabled.where(organ_id: @member.organ_id)
+    end
+
     def qrcode
-      @scene = @member.invite_scene(current_wechat_app)
+      app = Wechat::App.find(params[:app_id]) || current_wechat_app
+      @scene = @member.invite_scene(app)
     end
 
     private
