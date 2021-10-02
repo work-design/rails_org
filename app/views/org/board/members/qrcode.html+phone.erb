@@ -1,0 +1,6 @@
+<div class="box">
+  <p class="has-text-centered"><%= @member.name %></p>
+  <figure class="image">
+    <%= image_tag @scene.qrcode_file_url if @scene %>
+  </figure>
+</div>
