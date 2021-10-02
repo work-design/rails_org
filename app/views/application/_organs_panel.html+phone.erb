@@ -13,7 +13,7 @@
             </div>
             <div class="weui-cell__bd">
               <span><%= member.departments.first&.full_name %></span>
-              <span><%= member.name %></span>
+              <span class="is-size-7"><%= member.identity %></span>
             </div>
             <div class="weui-cell__ft">
               <%= link_to '工作台', { controller: '/me/home', **model[0].url_options }, class: 'card-footer-item' %>
