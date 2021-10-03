@@ -9,7 +9,7 @@
       <% model[1].each do |member| %>
         <%= link_to({ controller: 'org/board/members', action: 'qrcodes', id: member.id }, class: 'weui-cell weui-cell_access') do %>
           <div class="weui-cell__hd">
-            <%= image_tag member.avatar.variant(resize_to_limit: [150, 150]), class: 'image is-48x48' if member.avatar.attached? %>
+            <%= member.name %>
           </div>
           <div class="weui-cell__bd">
             <p><%= member.departments.first&.full_name %></p>
