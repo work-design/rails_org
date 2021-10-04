@@ -8,7 +8,7 @@ module Org
       attribute :name, :string
       attribute :description, :string
 
-      has_many :department_grants, dependent: :destroy
+      has_many :department_grants, dependent: :destroy_async
     end
 
   end

@@ -8,7 +8,7 @@ module Org
       attribute :description, :string
 
       belongs_to :organ, optional: true
-      has_many :job_titles, dependent: :destroy
+      has_many :job_titles, dependent: :destroy_async
 
       default_scope -> { order(grade: :asc) }
 

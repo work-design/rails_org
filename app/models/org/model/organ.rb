@@ -15,11 +15,11 @@ module Org
       belongs_to :area, class_name: 'Profiled::Area', optional: true
 
       has_one :organ_domain, -> { where(default: true) }, inverse_of: :organ
-      has_many :supports, -> { where(department_id: nil) }, dependent: :destroy
-      has_many :departments, dependent: :destroy
-      has_many :members, dependent: :destroy
-      has_many :super_job_titles, dependent: :destroy
-      has_many :organ_domains, dependent: :destroy
+      has_many :supports, -> { where(department_id: nil) }, dependent: :destroy_async
+      has_many :departments, dependent: :destroy_async
+      has_many :members, dependent: :destroy_async
+      has_many :super_job_titles, dependent: :destroy_async
+      has_many :organ_domains, dependent: :destroy_async
       accepts_nested_attributes_for :members
 
       has_one_attached :logo
