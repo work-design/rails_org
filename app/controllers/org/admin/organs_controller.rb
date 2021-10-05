@@ -41,6 +41,7 @@ module Org
         :code,
         :logo,
         :name_short,
+        :address,
         :parent_ancestors,
         :area_ancestors
       )
