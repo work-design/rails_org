@@ -9,12 +9,13 @@ module Org
       attribute :identity, :string, index: true
       attribute :experience, :string
       attribute :attendance_number, :string
-      attribute :owned, :boolean, default: false
       attribute :organ_root_id, :integer
       attribute :name, :string
       attribute :number, :string
       attribute :join_on, :date
       attribute :enabled, :boolean, default: true
+      attribute :owned, :boolean, default: false
+      attribute :inviter, :boolean, default: false
       attribute :state, :string
 
       belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
@@ -44,6 +45,7 @@ module Org
       has_one_attached :resume
 
       scope :enabled, -> { where(enabled: true) }
+      scope :inviter, -> { where(inviter: true) }
 
       validates :identity, uniqueness: { scope: :organ_id }
 

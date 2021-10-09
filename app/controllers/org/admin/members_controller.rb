@@ -63,9 +63,6 @@ module Org
       @member_department = @member.member_departments.build(department_id: params[:node_id])
     end
 
-    def show
-    end
-
     def profile
       @profile = @member.profile || @member.create_profile
     end
@@ -73,14 +70,6 @@ module Org
     def edit
       if @member.member_departments.count == 0
         @member.member_departments.build(department_id: params[:department_id])
-      end
-    end
-
-    def update
-      @member.assign_attributes(member_params)
-
-      unless @member.save
-        render :edit, locals: { model: @member }, status: :unprocessable_entity
       end
     end
 
@@ -102,10 +91,6 @@ module Org
       redirect_back fallback_location: admin_members_url
     end
 
-    def destroy
-      @member.destroy
-    end
-
     private
     def set_member
       @member = Member.find(params[:id])
@@ -118,6 +103,7 @@ module Org
         :type,
         :join_on,
         :enabled,
+        :inviter,
         :avatar,
         :resume,
         role_ids: [],

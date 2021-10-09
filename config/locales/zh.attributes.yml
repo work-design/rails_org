@@ -37,7 +37,8 @@ zh:
         experience: Profile
         identity: 手机号或邮箱
         parent: 上级
-        enabled: 状态
+        enabled: 正常
+        inviter: 可邀请
         name: 姓名
         name-like: 姓名包含
         member_departments: 部门
