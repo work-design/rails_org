@@ -33,7 +33,7 @@ module Org
     end
 
     def qrcodes
-      @wechat_apps = Wechat::App.enabled.where(organ_id: current_organ.id)
+      @wechat_apps = Wechat::App.inviting.where(organ_id: current_organ.id)
     end
 
     def qrcode
