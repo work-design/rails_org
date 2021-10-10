@@ -8,12 +8,13 @@
       <div class="weui-cells">
       <% model[1].each do |member| %>
         <%= link_to({ controller: 'org/board/members', action: 'qrcodes', id: member.id }, class: 'weui-cell weui-cell_access') do %>
-          <div class="weui-cell__hd">
-            <%= member.name %>
-          </div>
+          <div class="weui-cell__hd"><%= t('org.board.members.qrcodes.title') %></div>
           <div class="weui-cell__bd">
             <p><%= member.departments.first&.full_name %></p>
-            <p class="is-size-7"><%= member.identity %></p>
+            <p class="is-size-7">
+              <%= member.name %>
+              <%= member.identity %>
+            </p>
           </div>
           <div class="weui-cell__ft">
             <i class="fa-light fa-qrcode"></i>
