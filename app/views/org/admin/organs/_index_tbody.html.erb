@@ -1,9 +1,9 @@
 <td>
   <span style="width: <%= model.depth * 1.43 %>em; display: inline-block"></span>
   <% if !model.leaf? %>
-    <i class="fas fa-caret-down fa-fw" data-action="click->tree#collapse" style="cursor: pointer"></i>
+    <i class="fa-light fa-caret-down fa-fw" data-action="click->tree#collapse" style="cursor: pointer"></i>
   <% else %>
-    <i class="fas fa-minus fa-fw"></i>
+    <i class="fa-light fa-minus fa-fw"></i>
   <% end %>
   <%= model.name %>
   <% if model.name_short.present? %>
