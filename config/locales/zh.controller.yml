@@ -87,6 +87,8 @@ zh:
           title: 我的工作台
         new:
           title: 申请为职员
+        qrcodes:
+          title: 团队邀请码
       organs:
         index:
           title: 我的团队

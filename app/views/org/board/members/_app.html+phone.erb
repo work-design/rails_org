@@ -1,6 +1,8 @@
 <%= link_to({ controller: 'org/board/members', action: 'qrcode', id: @member.id, app_id: app.id }, class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
-    <p><%= app.type_i18n %></p>
+    <span><%= app.type_i18n %></span>
+    <span><%= @member.organ.name %></span>
+    <span><%= @member.name %></span>
   </div>
   <div class="weui-cell__ft">
     <i class="fa-light fa-qrcode"></i>
