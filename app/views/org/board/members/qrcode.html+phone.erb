@@ -1,9 +1,1 @@
-<div class="box">
-  <p class="has-text-centered">
-    <strong><%= @member.organ.name %></strong>
-    <span><%= @member.name %></span>
-  </p>
-  <figure class="image">
-    <%= image_tag @scene.qrcode_file_url if @scene %>
-  </figure>
-</div>
+<%= render 'qrcode', locals: { scene: @scene } %>

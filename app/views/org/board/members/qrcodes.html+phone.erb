@@ -6,15 +6,10 @@
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_small-appmsg">
       <div class="weui-cells">
-      <% @wechat_apps.each do |app| %>
-        <%= link_to({ controller: 'org/board/members', action: 'qrcode', id: @member.id, app_id: app.id }, class: 'weui-cell weui-cell_access') do %>
-          <div class="weui-cell__bd">
-            <p><%= app.type_i18n %></p>
-          </div>
-          <div class="weui-cell__ft">
-            <i class="fa-light fa-qrcode"></i>
-          </div>
-        <% end %>
+      <% if @wechat_apps.size > 1 %>
+        <%= render partial: 'app', collection: @wechat_apps, as: :app %>
+      <% elsif app = @wechat_apps[0] %>
+        <%= render 'qrcode', locals: { scene: @member.invite_scene(app) } %>
       <% end %>
       </div>
     </div>
