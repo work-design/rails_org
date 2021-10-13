@@ -13,7 +13,7 @@
       <% end %>
       <%= link_to({ action: 'mock', id: model.id }, method: :patch, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-light fa-hand-point-right"></i>
-      <% end if model.user_id != current_user.id %>
+      <% end if model.user != current_user %>
       <%# link_to 'tutorials', admin_tutorials_path(member_id: model.id), class: 'ui mini circular button' %>
     </span>
   </td>
