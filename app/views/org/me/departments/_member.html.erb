@@ -1,10 +1,12 @@
 <td>
-  <% if model.user && model.user.avatar.present? %>
-    <%= link_to({ controller: '/auth/users', action: 'show', id: model.user_id }) do %>
-      <%= image_tag model.user.avatar.variant(resize_to_limit: [35, 35]), class: 'image' %>
+  <div class="is-several">
+    <% if model.user && model.user.avatar.present? %>
+      <%= link_to({ controller: '/auth/users', action: 'show', id: model.user.id }) do %>
+        <%= image_tag model.user.avatar.variant(resize_to_limit: [35, 35]), class: 'image' %>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= model.name %>
+    <span><%= model.name %></span>
+  </div>
 </td>
 <td></td>
 <td><%= model.organ&.name %></td>

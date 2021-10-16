@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 901e67366cef140563b0df3c1103255a5190127d
+  revision: 6685408920c0c350b1ec49bf97d14289aae28955
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 3af7acecca30116eb8f5cc8bd31ad4cc167ef83e
+  revision: 1e2f7f62cb8223f0e9ceb679f1c9093d73c0501f
   specs:
     rails_com (1.2.9)
       acme-client
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 7498ce9e8436d982113e60db21f996cfa2f3669a
+  revision: 65eb236b8d21433f2308c38fcc61240d8bde2bc1
   specs:
     rails_design (0.0.1)
       rails
@@ -54,21 +54,21 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 3e7c21919577e4fa477738e0faa6b922b4c9ffdd
+  revision: c6b7efc6b3a9092c53c658c1cfcebf935894566a
   specs:
     rails_notice (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: cf79b807fb17bdb9e98b644e03322a1828fbc3b1
+  revision: 3aa4d579f262147d26788506871bf779555caffd
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 1883149abcf6eec1001c2144da666a26683ad5e7
+  revision: bc1ce090f30d526f59360dcac9d14e1a28e8c3ca
   specs:
     rails_role (1.0.4)
       rails_com (~> 1.2)
@@ -279,7 +279,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     thor (1.1.0)
-    turbo-rails (0.8.1)
+    turbo-rails (7.1.0)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
