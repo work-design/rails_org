@@ -1,6 +1,6 @@
 <%= form_with model: @organ, url: { action: 'update' } do |f| %>
   <%= render 'error_messages', target: @organ %>
-  <%= render partial: 'com/nodes/children_select', locals: { f: f, node: current_organ } %>
+  <%# render partial: 'com/nodes/children_select', locals: { f: f, node: @organ.root } %>
   <%= render partial: 'form', locals: { f: f } %>
   <%= f.submit %>
 <% end %>
