@@ -10,7 +10,9 @@
     </div>
     <div class="weui-media-box__bd">
       <span class="weui-media-box__title">
-        <%= link_to organ.name, my_root_url(host: organ.host) %>
+      <% if organ.host.present? %>
+        <%= link_to organ.name, { controller: 'my/home', host: organ.host } %>
+      <% end %>
       </span>
       <span class="weui-media-box__desc"><%= organ.address %></span>
     </div>

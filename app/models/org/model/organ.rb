@@ -36,7 +36,7 @@ module Org
       end
       # todo deal with port
       ActionDispatch::Http::URL.url_for(
-        host: domain,
+        host: domain || Rails.application.routes.default_url_options[:host],
         protocol: Rails.application.routes.default_url_options[:protocol]
       )
     end
