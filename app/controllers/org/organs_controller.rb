@@ -4,7 +4,7 @@ module Org
 
     def index
       q_params = {
-        parent_id: nil,
+        parent_id: current_organ.id,
         allow: { parent_id: nil }
       }
 
