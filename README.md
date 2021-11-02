@@ -25,6 +25,8 @@
 商店型：支持 organ_id 字段；
 * my: 用户端，支持 user_id + organ_id
 
+## 使用
+`org/board/organs` 我的企业列表
 
 ## 许可证
 遵循 [MIT](https://opensource.org/licenses/MIT) 协议
