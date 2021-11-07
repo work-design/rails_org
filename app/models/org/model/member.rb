@@ -16,7 +16,12 @@ module Org
       attribute :enabled, :boolean, default: true
       attribute :owned, :boolean, default: false
       attribute :inviter, :boolean, default: false
-      attribute :state, :string
+
+      enum state: {
+        init: 'init',
+        pending_trial: 'pending_trial',
+        approved: 'approved'
+      }, _default: 'init'
 
       belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
       has_one :user, class_name: 'Auth::User', through: :account
