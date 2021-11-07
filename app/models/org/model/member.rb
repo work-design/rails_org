@@ -37,6 +37,7 @@ module Org
 
       has_many :inferior_member_departments, class_name: 'Org::MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
       has_many :authorized_tokens, class_name: 'Auth::AuthorizedToken', foreign_key: :identity, primary_key: :identity, dependent: :delete_all
+      has_many :carts, class_name: 'Trade::Cart'
 
       has_one :resign
       has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
@@ -57,6 +58,12 @@ module Org
       #before_save :sync_tutorials, if: -> { join_on_changed? }
       before_save :sync_avatar_from_user, if: -> { identity_changed? }
       #after_create :sync_member_roles, if: -> { owned? }
+    end
+
+    def set_current_cart(organ_id)
+      cart = carts.find_or_initialize_by(organ_id: organ_id)
+      cart.user = user
+      cart.current = true
     end
 
     def admin?
@@ -103,7 +110,6 @@ module Org
     end
 
     def leader
-
     end
 
     def get_organ_grant
