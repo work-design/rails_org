@@ -64,6 +64,7 @@ module Org
       cart = carts.find_or_initialize_by(organ_id: organ_id)
       cart.user = user
       cart.current = true
+      cart.save if cart.persisted?
     end
 
     def admin?
