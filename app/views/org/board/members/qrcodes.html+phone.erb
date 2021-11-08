@@ -5,8 +5,8 @@
       <div class="weui-cells">
       <% if @wechat_apps.size > 1 %>
         <%= render partial: 'app', collection: @wechat_apps, as: :app %>
-      <% elsif @wechat_apps[0] %>
-        <%= render partial: 'qrcode', locals: { scene: @member.invite_scene(@wechat_apps[0]) } %>
+      <% elsif @wechat_apps.size == 1 %>
+        <%= render partial: 'qrcode', locals: { scene: @scene } %>
       <% end %>
       </div>
     </div>

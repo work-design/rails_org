@@ -7,3 +7,12 @@
     <%= image_tag scene.qrcode_file_url if scene %>
   </figure>
 </div>
+
+<div class="weui-panel" style="padding-top: 1px">
+  <div class="weui-panel__hd">邀请记录</div>
+  <div class="weui-panel__bd">
+    <div class="weui-cells mt-0">
+      <%= render partial: 'request', collection: @requests, as: :request %>
+    </div>
+  </div>
+</div>
