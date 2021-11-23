@@ -10,6 +10,7 @@ module Org
       attribute :official, :boolean, default: false, comment: '是否官方'
       attribute :joinable, :boolean, default: false, comment: '是否可搜索并加入'
       attribute :domain, :string
+      attribute :code, :string
 
       has_taxons :area
       belongs_to :area, class_name: 'Profiled::Area', optional: true
@@ -27,6 +28,7 @@ module Org
       scope :official, -> { where(official: true) }
 
       validates :name, presence: true
+      validates :code, uniqueness: true, allow_blank: true
     end
 
     def host
