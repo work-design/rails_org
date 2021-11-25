@@ -21,7 +21,7 @@
   <td class="has-text-right"><%= Org::Member.human_attribute_name(:department) %></td>
   <td>
     <% @member.departments.each do |department| %>
-      <p><%= link_to department.full_name, admin_department_path(department) %></p>
+      <p><%= link_to department.full_name, { controller: 'departments', action: 'show', id: department.id } %></p>
     <% end %>
   </td>
 </tr>
@@ -44,7 +44,7 @@
       <tr>
         <td colspan="3">
           <% Org::Tutorial.options_i18n(:kind).each do |text, value| %>
-            <%= link_to text, new_admin_tutorial_path(kind: value, member_id: @member.id), class: 'tag' %>
+            <%= link_to text, { controller: 'tutorials', action: 'new', kind: value, member_id: @member.id }, class: 'tag' %>
           <% end %>
         </td>
       </tr>
