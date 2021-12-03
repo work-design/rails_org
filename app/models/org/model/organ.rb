@@ -57,7 +57,7 @@ module Org
     end
 
     def admin?
-      roles.blank? && official?
+      official?
     end
 
   end
