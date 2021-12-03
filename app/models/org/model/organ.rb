@@ -57,7 +57,7 @@ module Org
     end
 
     def admin?
-      Array(cached_role_ids).compact.blank? && official?
+      roles.blank? && official?
     end
 
   end
