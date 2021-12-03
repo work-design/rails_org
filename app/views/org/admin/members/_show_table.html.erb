@@ -5,11 +5,13 @@
 <tr>
   <td class="has-text-right"><%= Org::Member.human_attribute_name(:role_ids) %></td>
   <td>
-    <% @member.roles.each do |role| %>
-      <span class="tag"><%= role.name %></span>
-    <% end %>
-    <%= link_to({ controller: 'roled/admin/who_roles', action: 'edit', who_type: 'Org::Member', who_id: @member.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.role') }) do %>
-      <i class="fa-light fa-user-shield"></i>
+    <% @member.available_roles.each do |role| %>
+      <%= form_with theme: nil, url: { controller: 'roled/admin/who_roles', action: 'update', who_type: 'Org::Member', who_id: @member.id }, method: 'patch', data: { controller: 'input' }, class: 'is-inline' do |f| %>
+        <label>
+          <%= f.check_box :role_id, { checked: @member.role_ids.include?(role.id), data: { input_target: 'checkbox', action: 'input#toggle' }, id: nil }, role.id, role.id %>
+          <%= role.name %>
+        </label>
+      <% end %>
     <% end %>
   </td>
 </tr>
