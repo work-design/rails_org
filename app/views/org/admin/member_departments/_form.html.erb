@@ -1,4 +1,3 @@
 <%= render 'error_messages', target: @member_department %>
 <%= render partial: 'com/nodes/outer_select', locals: { f: f, outer: 'department' } %>
 <%= f.collection_select :job_title_id, JobTitle.default_where(default_params), :id, :name, { include_blank: true, on: { wrap_input_id: true } }, { data: { title: 'job_title_id' } } %>
-<%= f.submit %>
