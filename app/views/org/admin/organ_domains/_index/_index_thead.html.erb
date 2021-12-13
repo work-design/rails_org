@@ -1,8 +1,14 @@
-<th><%= Org::OrganDomain.human_attribute_name(:subdomain) %></th>
-<th><%= Org::OrganDomain.human_attribute_name(:domain) %></th>
-<th><%= Org::OrganDomain.human_attribute_name(:host) %></th>
-<th><%= Org::OrganDomain.human_attribute_name(:port) %></th>
+<th>
+  <p><%= Org::OrganDomain.human_attribute_name(:subdomain) %></p>
+  <p><%= Org::OrganDomain.human_attribute_name(:domain) %></p>
+</th>
+<th>
+  <span><%= Org::OrganDomain.human_attribute_name(:host) %></span>
+  <span>:</span>
+  <span><%= Org::OrganDomain.human_attribute_name(:port) %></span>
+</th>
 <th><%= Org::OrganDomain.human_attribute_name(:identifier) %></th>
 <th><%= Org::OrganDomain.human_attribute_name(:appid) %></th>
+<th><%= Org::OrganDomain.human_attribute_name(:beian) %></th>
 <th><%= Org::OrganDomain.human_attribute_name(:default) %></th>
 <th></th>

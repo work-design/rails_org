@@ -69,6 +69,8 @@ zh:
         role_ids: 权限
         token: 授权码
         expire_at: 过期时间
+      org/organ_domain:
+        beian: 备案号
       org/room:
         room_number: 房间号
         color: 颜色

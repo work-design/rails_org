@@ -7,14 +7,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 1f64970d210e4e345a980c066e797dd37911d5fe
+  revision: c842f143e2b9340fd07ba660e830eddd041bb488
   specs:
     rails_audit (1.0.4)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: f3fe5d12f37e1e2701af6f318afdca0c2f476845
+  revision: c6d360c8a24b4f4f137e40699a8e12bca2be8c3f
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 6b38ef68dcf48d3bf2bfe4c76b15b2d9eedd8909
+  revision: 8481f2d85c2c1d96a895bb3ce3e3288f67352f6d
   specs:
     rails_com (1.3.0)
       acme-client
@@ -51,21 +51,21 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_extend.git
-  revision: 8e233c0762bdde532d589ea683ddc22063db98e6
+  revision: 01f83dba45125e1fe26b985334652953e7eb0df9
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 6d37912823c6ce7a10b1a9a94de28f1da7f69a3f
+  revision: a5513ec0fa6e988c30e056cbe296873a481913ae
   specs:
     rails_notice (1.0.3)
       rails_extend
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 852bff612bbed4ffc2ef582acab494b9079eb3a6
+  revision: 47b117ebbfdcc6dd539305c6cf08cc022871825a
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
@@ -193,7 +193,7 @@ GEM
       activesupport (>= 5.0)
     http-2-next (0.5.0)
     http-form_data (2.3.0)
-    httpx (0.18.0)
+    httpx (0.18.1)
       http-2-next (>= 0.4.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
@@ -245,7 +245,7 @@ GEM
     net-protocol (0.1.2)
       io-wait
       timeout
-    net-smtp (0.3.0)
+    net-smtp (0.3.1)
       digest
       net-protocol
       timeout
@@ -305,7 +305,7 @@ GEM
     strscan (3.0.1)
     thor (1.1.0)
     timeout (0.2.0)
-    turbo-rails (7.1.1)
+    turbo-rails (0.9.0)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -341,4 +341,4 @@ DEPENDENCIES
   sdoc
 
 BUNDLED WITH
-   2.2.22
+   2.3.0.dev

@@ -10,6 +10,7 @@ module Org
       attribute :identifier, :string, index: true
       attribute :appid, :string
       attribute :default, :boolean, default: false
+      attribute :beian, :string, comment: '备案号'
 
       belongs_to :organ
       belongs_to :wechat_app, class_name: 'Wechat::App', foreign_key: :appid, primary_key: :appid, optional: true
