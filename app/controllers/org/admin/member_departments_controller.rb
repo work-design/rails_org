@@ -29,24 +29,6 @@ module Org
       render 'options'
     end
 
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @member_department.assign_attributes(member_department_params)
-
-      unless @member_department.save
-        render :edit, locals: { model: @member_department }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @member_department.destroy
-    end
-
     private
     def set_member
       @member = Member.find params[:member_id]

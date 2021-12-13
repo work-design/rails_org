@@ -21,20 +21,6 @@ module Org
       end
     end
 
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @super_job_title.assign_attributes(super_job_title_params)
-
-      unless @super_job_title.save
-        render :edit, locals: { model: @super_job_title }, status: :unprocessable_entity
-      end
-    end
-
     def reorder
       sort_array = params[:sort_array].select { |i| i.integer? }
 
@@ -47,10 +33,6 @@ module Org
           next_one.insert_at @super_job_title.grade
         end
       end
-    end
-
-    def destroy
-      @super_job_title.destroy
     end
 
     private

@@ -19,24 +19,6 @@ module Org
       end
     end
 
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @organ_domain.assign_attributes(organ_domain_params)
-
-      unless @organ_domain.save
-        render :edit, locals: { model: @organ_domain }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @organ_domain.destroy
-    end
-
     private
     def set_organ
       @organ = Organ.find params[:organ_id]
@@ -53,7 +35,8 @@ module Org
         :subdomain,
         :host,
         :default,
-        :appid
+        :appid,
+        :beian
       )
     end
 

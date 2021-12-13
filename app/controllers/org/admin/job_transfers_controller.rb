@@ -43,12 +43,6 @@ module Org
       end
     end
 
-    def show
-    end
-
-    def edit
-    end
-
     def update
       @job_transfer.assign_attributes(job_transfer_params)
       @job_transfer.to_department_id = @job_transfer.department_ancestors&.values.to_a.compact.last
@@ -61,10 +55,6 @@ module Org
     def trigger
       @job_transfer.do_trigger(state: params[:state], auditor_id: current_user.id)
       redirect_to admin_job_transfers_url(member_id: @job_transfer.member_id)
-    end
-
-    def destroy
-      @job_transfer.destroy
     end
 
     private
