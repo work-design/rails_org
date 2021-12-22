@@ -43,6 +43,10 @@ module Org
       )
     end
 
+    def address_detail
+      "#{area&.full_name} #{address}"
+    end
+
     def url_options
       od = organ_domain || organ_domains.take || build_organ_domain
       od.as_json(only: [:host, :port])
