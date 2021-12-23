@@ -1,0 +1,16 @@
+<td>
+  <%= link_to model.member.name, admin_member_path(model.member_id) if model.member %>
+</td>
+<td><%= model.member&.office&.name %></td>
+<td><%= model.member&.department&.full_name %></td>
+<td><%= model.leave_on %></td>
+<td>
+  <%= model.state_i18n %>
+  <% if model.init? %>
+    <div class="buttons">
+      <%= link_to 'Approve', new_check_path(model.name, model.id, state: model::states[:approved]), class: 'ui positive button' %>
+      <div class="or"></div>
+      <%= link_to 'Reject', new_check_path(model.name, model.id, state: model::states[:rejected]), class: 'ui negative button' %>
+    </div>
+  <% end %>
+</td>
