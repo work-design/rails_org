@@ -151,6 +151,11 @@ Rails.application.routes.draw do
         resources :department_grants
       end
     end
+
+    namespace :group, defaults: { namespace: 'group' } do
+      resources :members
+    end
+
   end
 
 end
