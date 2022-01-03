@@ -1,5 +1,5 @@
 module Org
-  class Admin::MembersController < Admin::BaseController
+  class Group::MembersController < Group::BaseController
     before_action :set_member, only: [:show, :edit, :update, :mock, :profile, :token, :destroy]
 
     def index
