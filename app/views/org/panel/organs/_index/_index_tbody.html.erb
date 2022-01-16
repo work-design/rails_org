@@ -21,7 +21,7 @@
     <% model.roles.pluck(:name).each do |role| %>
       <span><%= role %></span>
     <% end %>
-    <%= link_to({ controller: 'roled/admin/who_roles', action: 'edit', who_type: 'Organ', who_id: model.id }, aria: { label: t('role.admin.who_roles.edit.title') }) do %>
+    <%= link_to({ controller: 'roled/admin/who_roles', action: 'edit', who_type: 'Org::Organ', who_id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: t('role.panel.who_roles.edit.title') }) do %>
       <i class="fa-light fa-user-shield"></i>
     <% end %>
   </div>
