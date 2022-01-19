@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 8736139220b286281b581e9e25db0da048880301
+  revision: bdffceccb3622ed70ff749b7373eb08f660b5b82
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 33afbf3fa94303c5fd84241d689506c6a02e08f4
+  revision: 9124284146ee5dafac98585abb56e677b9f980eb
   specs:
     rails_com (1.3.0)
       acme-client
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 6c6698789e772aefa2f88b3cec69f75874b60516
+  revision: 42ab8fdc371c4e539d1887664eddb0b482fbd93a
   specs:
     rails_design (0.0.1)
       rails
@@ -185,7 +185,7 @@ GEM
     faraday-em_synchrony (1.0.0)
     faraday-excon (1.1.0)
     faraday-httpclient (1.0.1)
-    faraday-multipart (1.0.2)
+    faraday-multipart (1.0.3)
       multipart-post (>= 1.2, < 3)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.2.0)
@@ -303,7 +303,7 @@ GEM
     strscan (3.0.1)
     thor (1.1.0)
     timeout (0.2.0)
-    turbo-rails (1.0.0)
+    turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.4)
