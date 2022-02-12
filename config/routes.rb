@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
 
-  namespace :me do
+  namespace :me, defaults: { namespace: 'me' } do
     root 'home#index'
+  end
+
+  namespace :board, defaults: { namespace: 'board' } do
+    root 'home#index'
+    controller :home do
+      get :direct
+    end
   end
 
   namespace 'org', defaults: { business: 'org' } do

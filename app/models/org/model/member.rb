@@ -37,7 +37,6 @@ module Org
 
       has_many :inferior_member_departments, class_name: 'Org::MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
       has_many :authorized_tokens, class_name: 'Auth::AuthorizedToken', foreign_key: :identity, primary_key: :identity, dependent: :delete_all
-      has_many :carts, class_name: 'Trade::Cart'
 
       has_one :resign
       has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
