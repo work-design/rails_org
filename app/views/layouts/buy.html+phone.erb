@@ -1,0 +1,12 @@
+<%= render layout: 'layouts/phone_head' do %>
+  <body>
+    <div class="weui-tab">
+      <div class="weui-tab__panel">
+        <div class="box is-radiusless">
+          <%= yield %>
+        </div>
+      </div>
+      <%= render 'tab_bar' %>
+    </div>
+  </body>
+<% end %>
