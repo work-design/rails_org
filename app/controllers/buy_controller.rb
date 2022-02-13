@@ -1,3 +1,3 @@
-class BuyController < ApplicationController
+class BuyController < MeController
 
 end
