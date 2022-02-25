@@ -2,7 +2,7 @@
   <td><%= authorized_token.user_id %></td>
   <td><%= authorized_token.oauth_user_id %></td>
   <td style="word-break: break-all"><%= authorized_token.token %></td>
-  <td><time data-controller="time"><%= authorized_token.expire_at.to_formatted_s(:iso8601) %></time></td>
+  <td><time data-controller="time"><%= authorized_token.expire_at.to_fs(:iso8601) %></time></td>
   <td><%= authorized_token.mock_member %></td>
   <td>
     <%= link_to({ action: 'show', id: authorized_token.id }, { aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' }) do %>

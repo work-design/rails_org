@@ -1,20 +1,20 @@
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: f8251dc0d22081a7474f68ed272637ec14941af0
+  revision: d55177c3df619100e5c7e0593252b69647ba9f2a
   specs:
     default_where (2.3.0)
       activerecord (>= 4.0, <= 7.1)
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 16d7c2827b53751ac877147055e6bdbec2408839
+  revision: b1b8e097491412b5f21616deba33af7f0459629b
   specs:
     rails_audit (1.0.4)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 88d851c0c9d76adcbc9cc32e2051baeb2c8c60d9
+  revision: 007e5b44dcb2aa3da7fa5f5bbe8f3148fc185f27
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 0e64d06609bdd9947cd701e637c57e860679bdea
+  revision: da132d037d68251a76aef916cc4176f75c0b2049
   specs:
     rails_com (1.3.0)
       acme-client
@@ -44,35 +44,35 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 9ce1696ed81609ffe566863c1952019aeb93aa40
+  revision: c46e8935f36a56f8c4fa0cbd274cc291892e0d0f
   specs:
     rails_design (0.0.1)
       rails
 
 GIT
   remote: https://github.com/work-design/rails_extend.git
-  revision: 067da5cf1cf443e85f86cfc4f044f2bd3f1e5a31
+  revision: 0db60266d5ddc582757eb73f0b1875d0c9011d20
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 61fa44513be362bdd28d23b2346d84d3a8b5bf7d
+  revision: 448a7da5d7c5029913336169491f9396804a0a1d
   specs:
     rails_notice (1.0.3)
       rails_extend
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 5b34b2f9de005069b06e5b769347398e4d0272a3
+  revision: f04527213672addb197ec0efad727d3d45519175
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 44c4b94409d9b950a79fc11372bc325318cf9037
+  revision: 23de303d90dd75415080b17c4cd006d8cd88e3d7
   specs:
     rails_role (1.0.4)
       rails_com (~> 1.2)
@@ -175,7 +175,7 @@ GEM
       reline (>= 0.2.7)
     digest (3.1.0)
     erubi (1.10.0)
-    faraday (1.9.3)
+    faraday (1.10.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -203,7 +203,7 @@ GEM
       activesupport (>= 5.0)
     http-2-next (0.5.0)
     http-form_data (2.3.0)
-    httpx (0.19.2)
+    httpx (0.19.3)
       http-2-next (>= 0.4.1)
     i18n (1.9.1)
       concurrent-ruby (~> 1.0)

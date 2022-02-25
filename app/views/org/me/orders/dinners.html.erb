@@ -19,7 +19,7 @@
         <% end %>
       </td>
       <td><%= order.note %></td>
-      <td><time data-controller="time"><%= order.created_at.to_formatted_s(:iso8601) %></time></td>
+      <td><time data-controller="time"><%= order.created_at.to_fs(:iso8601) %></time></td>
       <td>
         <% if Dinner.enabled? %>
           <%= link_to 'Note', edit_my_order_path(order), class: 'ui pink label' %>
