@@ -15,7 +15,7 @@ module Org
 
     def new
       @organ = Organ.new
-      @member = @organ.members.build(owned: true)
+      @organ.who_roles.build(role_id: params[:role_id]) if params[:role_id].present?
     end
 
     def create
@@ -69,7 +69,8 @@ module Org
     def organ_params
       params.fetch(:organ, {}).permit(
         :name,
-        :logo
+        :logo,
+        who_roles_attributes: {}
       )
     end
 
