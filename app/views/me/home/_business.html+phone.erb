@@ -1,0 +1,20 @@
+<div class="weui-panel">
+  <div class="weui-panel__hd">
+    <%= image_tag meta[0].logo, class: 'image is-32x32' if meta[0].logo.present? %>
+    <span><%= meta[0].name %></span>
+  </div>
+  <div class="weui-panel__bd">
+    <div class="weui-media-box weui-media-box_small-appmsg">
+      <div class="weui-cells">
+      <% meta[1].each do |meta_action| %>
+        <%= link_to({ controller: meta_action.controller_path, action: meta_action.action_name, **params.except(:business, :namespace, :controller, :action).permit! }, class: 'weui-cell weui-cell_access') do %>
+          <div class="weui-cell__bd">
+            <span><%= meta_action.name %></span>
+          </div>
+          <div class="weui-cell__ft"></div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

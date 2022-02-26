@@ -4,6 +4,7 @@ module Org
 
     def index
       @organs = current_user.organs.includes(:organ_domains)
+
       if @organs.blank?
         @member = current_user.members.build
         @organ = @member.build_organ
