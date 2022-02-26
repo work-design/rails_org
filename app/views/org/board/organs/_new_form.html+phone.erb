@@ -1,4 +1,8 @@
 <%= form_with theme: 'weui', model: @organ, url: { action: 'create' } do |f| %>
-  <%= f.text_field :name, required: true %>
+  <div class="weui-form__control-area">
+    <div class="weui-cells">
+      <%= f.text_field :name, required: true %>
+    </div>
+  </div>
   <%= f.submit %>
 <% end %>
