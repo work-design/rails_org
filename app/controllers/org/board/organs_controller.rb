@@ -3,10 +3,10 @@ module Org
     before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
     def index
-      @organs = current_user.organs.includes(:organ_domains)
+      @organs = current_account.organs.includes(:organ_domains)
 
       if @organs.blank?
-        @member = current_user.members.build
+        @member = current_account.members.build
         @organ = @member.build_organ
         render :new
       else
@@ -48,10 +48,6 @@ module Org
     end
 
     private
-    def set_member
-      @member = current_user.members.find params[:member_id]
-    end
-
     def set_organ
       @organ = current_user.organs.find(params[:id])
     end
