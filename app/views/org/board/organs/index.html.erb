@@ -9,33 +9,9 @@
           <strong><%= organ.name %></strong>
         </div>
         <div class="media-right">
+          <%= link_to '我的', { controller: '/me/home', host: organ.host }, class: 'card-footer-item' %>
         </div>
       </div>
-      <% organ.members.each do |member| %>
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <%= image_tag member.avatar.variant(resize_to_limit: [150, 150]), class: 'image is-48x48' if member.avatar.attached? %>
-              </div>
-              <div class="media-content">
-                <span><%= member.departments.first&.full_name %></span>
-                <span><%= member.name %></span>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <%= link_to '我的', { controller: '/me/home', host: organ.host, member_id: member.id }, class: 'card-footer-item' %>
-          </div>
-        </div>
-      <% end %>
     </div>
   <% end %>
-  <div class="media">
-    <div class="media-content">
-      <%= link_to({ controller: 'organs', action: 'new' }) do %>
-        <i class="fa-light fa-plus"></i><span><%= t('org.board.organs.new.title') %></span>
-      <% end %>
-    </div>
-  </div>
 </div>
