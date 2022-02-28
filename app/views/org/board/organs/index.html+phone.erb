@@ -4,6 +4,9 @@
     <div class="weui-cell__ft"></div>
   <% end %>
 <% end %>
-<%= link_to({ controller: 'organs', action: 'new' }, class: 'weui-cell weui-cell_access') do %>
-  <i class="fa-light fa-plus"></i><span><%= t('org.board.organs.new.title') %></span>
+<% Roled::OrganRole.all.each do |role| %>
+  <%= link_to({ controller: 'organs', action: 'new', role_id: role.id }, class: 'weui-cell weui-cell_access') do %>
+    <i class="fa-light fa-plus"></i>
+    <span><%= role.name %></span>
+  <% end %>
 <% end %>
