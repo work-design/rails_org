@@ -1,12 +1,12 @@
 <div class="ui fluid vertical menu">
   <% @department.self_and_siblings.each do |sibling| %>
   <div class="item">
-    <%= link_to admin_department_path(sibling), class: active_helper(id: sibling.id, active: 'header', item: nil) do %>
+    <%= link_to({ controller: 'departments', action: 'show', id: sibling.id }, class: active_helper(id: sibling.id, active: 'header', item: nil)) do %>
       <span><%= sibling.name %></span><span class="grey text">(<%= sibling.all_member_departments_count %>)</span>
     <% end %>
     <div class="<%= (sibling.child_ids + [sibling.id]).include?(@department.id) ? 'menu' : 'menu' %>">
       <% sibling.children.each do |child| %>
-        <%= link_to admin_department_path(child), class: active_helper(id: child.id) do %>
+        <%= link_to({ controller: 'departments', action: 'show', id: child.id }, class: active_helper(id: child.id)) do %>
           <span><%= child.name %></span><span class="grey text">(<%= child.all_member_departments_count %>)</span>
         <% end %>
       <% end %>

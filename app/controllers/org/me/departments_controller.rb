@@ -1,7 +1,7 @@
 module Org
   class Me::DepartmentsController < Admin::DepartmentsController
     include Org::Layout::Me
-    before_action :set_department, only: [:show]
+    before_action :set_department, only: [:show, :edit]
 
     def index
       q_params = {}

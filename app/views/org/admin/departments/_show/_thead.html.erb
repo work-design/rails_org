@@ -3,7 +3,7 @@
 <th><%= Member.human_attribute_name(:job_titles) %></th>
 <th><%= Member.human_attribute_name(:join_on) %></th>
 <th>
-  <%= link_to new_admin_member_path(department_id: @department.id), class: 'button is-link is-small' do %>
-    <i class="fa-light fa-plus"></i><%= t('.new') %>
+  <%= link_to({ controller: 'members', action: 'new', department_id: @department.id }, class: 'button is-link is-small') do %>
+    <i class="fa-light fa-plus"></i><span><%= t('.new') %></span>
   <% end %>
 </th>
