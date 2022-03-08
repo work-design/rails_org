@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: b75ac44d75bce8faa73dc5d20b1a6dabb7dfe176
+  revision: 86084c393175daf1e1b5c45870875569caa3865a
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: da10e79f192e779913a55e3dbd299995f2576d9e
+  revision: 23c825c3e1031bd444f94d6f0c97f02005100726
   specs:
     rails_design (0.0.1)
       rails
@@ -203,11 +203,11 @@ GEM
       activesupport (>= 5.0)
     http-2-next (0.5.0)
     http-form_data (2.3.0)
-    httpx (0.19.3)
+    httpx (0.19.4)
       http-2-next (>= 0.4.1)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
-    image_processing (1.12.1)
+    image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     io-console (0.5.11)
