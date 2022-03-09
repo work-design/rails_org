@@ -8,7 +8,7 @@ module Board
     def direct
       organ = current_account.organs[0]
       if organ
-        render 'direct', locals: { url: url_for(controller: 'factory/buy/home', host: organ.host) }
+        render 'direct', locals: { url: url_for(controller: 'factory/buy/home', host: organ.host, disposable_token: current_account.once_token) }
       else
         render 'direct', locals: { url: root_url }
       end
