@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :board, defaults: { namespace: 'board' } do
     root 'home#index'
     controller :home do
-      get :direct
+      get :index
     end
   end
 
