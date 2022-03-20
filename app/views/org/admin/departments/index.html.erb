@@ -1,4 +1,4 @@
-<%= render layout: 'index_tree_table', locals: { cache_key: Org::Department.column_names.hash } do %>
+<%= render layout: 'index_table', locals: { cache_key: Org::Department.column_names.hash } do %>
   <% @departments.each do |department| %>
     <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: department, display: 'table-row' } %>
     <%# 防止非新建下级按钮创建部门时无 parent_id 导致重复显示 %>
