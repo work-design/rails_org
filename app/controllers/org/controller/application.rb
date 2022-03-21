@@ -6,16 +6,6 @@ module Org
       helper_method :current_organ, :current_member, :other_organs
     end
 
-    def current_title
-      if defined?(current_corp_user) && current_corp_user
-        current_corp_user.suite.name
-      elsif current_organ
-        current_organ.name
-      else
-        t('.title', default: :site_name)
-      end
-    end
-
     def current_member
       return @current_member if defined?(@current_member)
 
