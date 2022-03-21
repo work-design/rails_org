@@ -7,7 +7,9 @@ module Org
     end
 
     def current_title
-      if current_organ
+      if defined?(current_corp_user) && current_corp_user
+        current_corp_user.suite.name
+      elsif current_organ
         current_organ.name
       else
         t('.title', default: :site_name)
