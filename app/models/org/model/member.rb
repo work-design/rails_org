@@ -3,7 +3,6 @@ module Org
     extend ActiveSupport::Concern
 
     included do
-      delegate :url_helpers, to: 'Rails.application.routes'
       has_taxons :department
 
       attribute :identity, :string, index: true
@@ -143,7 +142,7 @@ module Org
     end
 
     def avatar_url
-      url_helpers.rails_blob_url(avatar) if avatar.attachment.present?
+      Rails.application.routes.rails_blob_url(avatar) if avatar.attachment.present?
     end
 
     def sync_member_roles
