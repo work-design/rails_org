@@ -9,8 +9,8 @@ module Org
     def current_member
       return @current_member if defined?(@current_member)
 
-      if current_authorized_token
-        @current_member = current_authorized_token.members.find_by(organ_id: current_organ&.id)
+      if current_account
+        @current_member = current_account.members.find_by(organ_id: current_organ&.id)
       end
       logger.debug "\e[35m  Login as member: #{@current_member&.id}  \e[0m"
       @current_member
