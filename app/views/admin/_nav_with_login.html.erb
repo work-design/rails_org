@@ -20,7 +20,7 @@
   <% end %>
 </div>
 <% else %>
-  <%= link_to admin_root_url, class: 'navbar-item' do %>
+  <%= link_to '/admin', class: 'navbar-item' do %>
     <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
     <%= current_organ.name %>
   <% end %>
