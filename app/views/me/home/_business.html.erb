@@ -7,9 +7,7 @@
       <strong><%= meta[0].name %></strong>
     </div>
     <% meta[1].each do |meta_action| %>
-      <div>
-        <%= link_to meta_action.name, { controller: meta_action.controller_path, action: meta_action.action_name, **params.except(:business, :namespace, :controller, :action, :disposable_token).permit! } %>
-      </div>
+      <%= link_to meta_action.name, { controller: meta_action.controller_path, action: meta_action.action_name, **params.except(:business, :namespace, :controller, :action, :disposable_token).permit! }, class: 'tag' %>
     <% end %>
   </div>
 </div>
