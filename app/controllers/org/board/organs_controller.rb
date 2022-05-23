@@ -1,6 +1,7 @@
 module Org
   class Board::OrgansController < Board::BaseController
     before_action :set_organ, only: [:show, :edit, :update, :destroy]
+    before_action :set_new_organ, only: [:new, :create]
 
     def index
       @organs = current_account.organs.includes(:organ_domains)
@@ -15,24 +16,16 @@ module Org
     end
 
     def new
-      @organ = Organ.new
       @organ.who_roles.build(role_id: params[:role_id]) if params[:role_id].present?
     end
 
     def create
-      @organ = Organ.new(organ_params)
       @member = @organ.members.build(owned: true)
       @member.account = current_account
 
       unless @organ.save
         render :new, locals: { model: @organ }, status: :unprocessable_entity
       end
-    end
-
-    def show
-    end
-
-    def edit
     end
 
     def update
@@ -50,6 +43,10 @@ module Org
     private
     def set_organ
       @organ = current_user.organs.find(params[:id])
+    end
+
+    def set_new_organ
+      @organ = Organ.new(organ_params)
     end
 
     def member_params
