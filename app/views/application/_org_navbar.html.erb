@@ -3,12 +3,13 @@
 <% end %>
 <div class="navbar-item has-dropdown is-hoverable is-hidden-touch">
   <div class="navbar-link">
-    <%= image_tag current_member.avatar if current_member && current_member.avatar.attached? %>
-    <span><%= t('.title') %></span>
+    <%= image_tag current_organ.logo if current_organ && current_organ.logo.attached? %>
+    <span><%= current_organ.present? ? current_organ.name : t('.title') %></span>
   </div>
   <div class="navbar-dropdown is-right">
     <div class="navbar-item">
-      <%= current_account.identity %>
+      <%= image_tag current_member.avatar if current_member && current_member.avatar.attached? %>
+      <span><%= current_account.identity %></span>
     </div>
     <div class="navbar-divider"></div>
     <% current_account.organs.includes(:organ_domains).each do |organ| %>
