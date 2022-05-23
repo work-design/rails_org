@@ -1,1 +1,10 @@
-<%= render partial: 'business', collection: @meta_businesses, as: :meta %>
+<div class="columns">
+  <div class="column">
+    <%= render partial: 'business', collection: @meta_businesses, as: :meta %>
+  </div>
+  <div class="column">
+    <div class="box">
+      <%= render partial: 'profile' %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<table class="table is-borderless is-striped is-hoverable is-fullwidth">
+  <tr>
+    <th>组织角色</th>
+    <td>
+    <% current_organ.roles.each do |role| %>
+      <span class="tag"><%= role.name %></span>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>用户角色</th>
+    <td>
+    <% current_member.roles.each do |role| %>
+      <span class="tag"><%= role.name %></span>
+    <% end %>
+    </td>
+  </tr>
+</table>
