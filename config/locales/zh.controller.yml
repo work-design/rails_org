@@ -82,6 +82,7 @@ zh:
         show:
           title: 首页
     board:
+      title: 我的组织
       members:
         index:
           title: 我的工作台
@@ -91,11 +92,11 @@ zh:
           title: 邀请同事
       organs:
         index:
-          title: 我的团队
+          title: 我的组织
         new:
-          title: 创建新团队
+          title: 创建新组织
     me:
-      title: 团队管理
+      title: 组织管理
       home:
         index:
           title: 首页
@@ -106,9 +107,9 @@ zh:
           title: 申请为职员
       organs:
         index:
-          title: 我的团队
+          title: 我的组织
         new:
-          title: 创建新团队
+          title: 创建新组织
       departments:
         index:
           title: 我的部门
