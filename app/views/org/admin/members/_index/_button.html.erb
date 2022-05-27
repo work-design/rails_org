@@ -1,0 +1,10 @@
+<div class="buttons are-small mb-0">
+  <%= link_to({ action: 'new' }, data: { turbo_frame: 'modal' }, class: 'button is-link') do %>
+    <i class="fa-light fa-plus"></i>
+    <span class="pl-1"><%= t('.new') %></span>
+  <% end %>
+  <%= link_to({ controller: 'datum/panel/table_lists', action: 'find', data_list_id: 'MemberExport', **params.permit(:organ_id) }, class: 'button is-light') do %>
+    <i class="fa-light fa-file-excel"></i>
+    <span class="pl-1"><%= t('.export') %></span>
+  <% end if defined? RailsData %>
+</div>
