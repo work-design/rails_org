@@ -1,14 +1,16 @@
-<%= render layout: 'index_table', locals: { cache_key: Org::Department.column_names.hash } do %>
-  <% @departments.each do |department| %>
-    <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: department, display: 'table-row' } %>
-    <%# 防止非新建下级按钮创建部门时无 parent_id 导致重复显示 %>
-    <% (department.inferiors - @departments).each do |inferior| %>
-      <%# 防止特殊情况下重复显示 %>
-      <% unless inferior.superior_id == inferior.parent_id %>
-        <%= render partial: 'index_tbody', layout: 'index_tr', object: inferior, locals: { model: inferior, display: 'table-row' } %>
-      <% end %>
+<%= render 'button' %>
+
+<%= render layout: 'index_table' do %>
+<% @departments.each do |department| %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: department, display: 'table-row' } %>
+  <%# 防止非新建下级按钮创建部门时无 parent_id 导致重复显示 %>
+  <% (department.inferiors - @departments).each do |inferior| %>
+    <%# 防止特殊情况下重复显示 %>
+    <% unless inferior.superior_id == inferior.parent_id %>
+      <%= render partial: 'index_tbody', layout: 'index_tr', object: inferior, locals: { model: inferior, display: 'table-row' } %>
     <% end %>
   <% end %>
+<% end %>
 <% end %>
 
 <%= paginate @departments %>

@@ -1,0 +1,22 @@
+<td><%= model.member.name %></td>
+<td>
+  <p><%= model.from_office&.name %></p>
+  <p><%= model.from_department&.full_name %></p>
+  <p><%= model.from_job_title&.name %></p>
+</td>
+<td>
+  <p><%= model.to_office&.name %></p>
+  <p><%= model.to_department&.full_name %></p>
+  <p><%= model.to_job_title&.name %></p>
+</td>
+<td><%= model.transfer_on %></td>
+<td>
+  <label class="tag"><%= model.state_i18n %></label>
+  <% if model.next_operator == current_user %>
+    <div class="ui mini buttons">
+      <%= link_to 'Approve', new_check_path(JobTransfer.name, model.id, state: model.next_state_state), class: 'ui positive button' %>
+      <div class="or"></div>
+      <%= link_to 'Reject', new_check_path(JobTransfer.name, model.id, state: JobTransfer.states[:rejected]), class: 'ui negative button' %>
+    </div>
+  <% end %>
+</td>
