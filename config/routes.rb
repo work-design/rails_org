@@ -164,7 +164,7 @@ Rails.application.routes.draw do
     end
 
     namespace :my, defaults: { namespace: 'my' } do
-      resources :authorized_tokens
+      resource :authorized_token
     end
 
   end
