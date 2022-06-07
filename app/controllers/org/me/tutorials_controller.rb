@@ -14,40 +14,7 @@ module Org
       @tutorials = current_user.tutorings.default_where(q_params).page(params[:page])
     end
 
-    def new
-      @tutorial = Tutorial.new
-    end
-
-    def create
-      @tutorial = Tutorial.new(tutorial_params)
-
-      if @tutorial.save
-        redirect_to my_tutorials_url
-      else
-        render :new
-      end
-    end
-
-    def show
-    end
-
-    def edit
-    end
-
     def perform
-    end
-
-    def update
-      if @tutorial.update(tutorial_params)
-        redirect_to my_tutorials_url
-      else
-        render :edit
-      end
-    end
-
-    def destroy
-      @tutorial.destroy
-      redirect_to my_tutorials_url
     end
 
     private

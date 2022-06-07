@@ -22,12 +22,6 @@ module Org
       end
     end
 
-    def show
-    end
-
-    def edit
-    end
-
     def update
       @job_transfer.assign_attributes(job_transfer_params)
       @job_transfer.to_department_id = @job_transfer.department_ancestors&.values.to_a.compact.last
@@ -37,10 +31,6 @@ module Org
       else
         render :edit, locals: { model: @job_transfer }, status: :unprocessable_entity
       end
-    end
-
-    def destroy
-      @job_transfer.destroy
     end
 
     private

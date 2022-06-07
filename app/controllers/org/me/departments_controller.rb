@@ -51,9 +51,6 @@ module Org
       @members = Member.where(id: member_ids, enabled: true).page(params[:page])
     end
 
-    def edit
-    end
-
     def new
       @roots = current_organ.departments.roots
       @department = current_organ.departments.build

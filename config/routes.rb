@@ -163,6 +163,10 @@ Rails.application.routes.draw do
       resources :members
     end
 
+    namespace :my, defaults: { namespace: 'my' } do
+      resources :authorized_tokens
+    end
+
   end
 
 end
