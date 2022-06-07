@@ -7,8 +7,6 @@ gem 'puma'
 gem 'pg'
 gem 'image_processing'
 
-gem 'default_where', github: 'qinmingyuan/default_where'
-
 gem 'rails_com', github: 'work-design/rails_com'
 gem 'rails_extend', github: 'work-design/rails_extend'
 gem 'rails_audit', github: 'work-design/rails_audit'
