@@ -1,6 +1,6 @@
 <div class="columns">
   <div class="column">
-    <%= render layout: 'index_table', locals: { cache_key: Org::Member.column_names.hash } do %>
+    <%= render layout: 'index_table' do %>
       <%= render partial: 'member', layout: 'index_tr', collection: @members, as: :model %>
     <% end %>
     <%= paginate @members %>

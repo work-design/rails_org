@@ -1,0 +1,4 @@
+
+<%= render layout: 'index_table' do %>
+  <%= render partial: 'member', layout: 'index_tr', collection: @members, as: :model %>
+<% end %>
