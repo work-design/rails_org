@@ -2,6 +2,16 @@ module Org
   class My::AuthorizedTokensController < My::BaseController
     before_action :set_authorized_token, only: [:update]
 
+    def update
+      @authorized_token.assign_attributes(authorized_token_params)
+
+      if @authorized_token.save
+        render :update, locals: { url: params[:return_url].presence || url_for(controller: '/my/home') }
+      else
+        render :update, locals: { url: url_for(controller: 'trade/my/carts', action: 'list') }
+      end
+    end
+
     private
     def set_authorized_token
       @authorized_token = current_authorized_token
