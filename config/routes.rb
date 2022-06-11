@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
 
     namespace :me, defaults: { namespace: 'me' } do
+      root 'home#index'
       resource :member, except: [:new, :create]
       resources :departments
       resources :tutorials do

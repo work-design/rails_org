@@ -56,16 +56,6 @@ module Org
       @department = current_organ.departments.build
     end
 
-    def create
-      @department = Department.new(department_params)
-
-      if @department.save
-        render 'create'
-      else
-        render :new, locals: { model: @department }, status: :unprocessable_entity
-      end
-    end
-
     private
     def set_department
       @department = Department.find(params[:id])
