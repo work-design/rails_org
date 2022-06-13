@@ -6,7 +6,12 @@ module Org
       @authorized_token.assign_attributes(authorized_token_params)
 
       if @authorized_token.save
-        render :update, locals: { url: params[:return_url].presence || url_for(controller: '/my/home') }
+        if @authorized_token.member
+          url = url_for(controller: '/client/home')
+        else
+          url = url_for(controller: '/my/home')
+        end
+        render :update, locals: { url: params[:return_url].presence || url }
       else
         render :update, locals: { url: url_for(controller: 'trade/my/carts', action: 'list') }
       end
