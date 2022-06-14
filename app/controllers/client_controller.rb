@@ -1,0 +1,3 @@
+class ClientController < MyController
+
+end
