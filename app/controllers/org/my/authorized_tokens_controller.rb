@@ -7,7 +7,7 @@ module Org
 
       if @authorized_token.save
         if @authorized_token.member
-          url = url_for(controller: '/client/home')
+          url = url_for(controller: '/our/home')
         else
           url = url_for(controller: '/my/home')
         end

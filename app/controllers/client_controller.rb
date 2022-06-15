@@ -1,3 +1,0 @@
-class ClientController < MyController
-
-end

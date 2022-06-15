@@ -1,0 +1,3 @@
+class OurController < MyController
+
+end

@@ -1,3 +1,0 @@
-class BuyController < MeController
-
-end

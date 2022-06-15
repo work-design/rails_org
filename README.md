@@ -21,9 +21,11 @@
   - 必须
 * me: 前端，与 current_member 相关的功能
   - 信息
+* into: 引入。  
 
 商店型：支持 organ_id 字段；
 * my: 用户端，支持 user_id + organ_id
+* our: member（属于 organ）作为消费者
 
 ## 使用
 `org/board/organs` 我的企业列表
