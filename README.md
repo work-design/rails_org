@@ -19,9 +19,11 @@
 组织型功能：organ_id 字段；
 * admin: 后端，支持 organ，也可不采用 organ_id 字段
   - 必须
+* in: 在上下游中，物资流入。如：购入、租入
+* out: 在上下有中，物资流出。如：售出、租出
+
 * me: 前端，与 current_member 相关的功能
   - 信息
-* into: 引入。  
 
 商店型：支持 organ_id 字段；
 * my: 用户端，支持 user_id + organ_id

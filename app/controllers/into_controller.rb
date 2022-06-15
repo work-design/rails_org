@@ -1,3 +1,0 @@
-class IntoController < AdminController
-
-end
