@@ -4,7 +4,7 @@
     <span><%= t('org.admin.title') %></span>
     <i class="fa-solid dropdown"></i>
   </a>
-  <div class="menu-list">
+  <div class="menu-list" data-empty-target="content">
     <%= link_to t('org.admin.organs.index.title'), { controller: 'org/admin/organs' }, class: active_helper(controllers: ['organs', 'organ_domains'], active: 'is-active') %>
     <%= link_to t('org.admin.departments.index.title'), { controller: 'org/admin/departments' }, class: active_helper(controllers: ['departments', 'job_descriptions'], active: 'is-active') %>
     <%= link_to t('org.admin.members.index.title'), { controller: 'org/admin/members' }, class: active_helper(controllers: ['members'], active: 'is-active') %>
