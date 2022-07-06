@@ -1,16 +1,16 @@
-<div class="<%= active_helper(modules: 'org/admin', active: 'menu ex-accordion is-active', item: 'menu ex-accordion is-active') %>" data-controller="menu">
-  <%= content_tag :div, class: 'menu-list' do %>
-    <%= link_to t('org.admin.organs.index.title'), { controller: 'org/admin/organs' }, class: active_helper(controllers: ['organs', 'organ_domains'], active: 'is-active') %>
-    <%= link_to t('org.admin.departments.index.title'), { controller: 'org/admin/departments' }, class: active_helper(controllers: ['departments', 'job_descriptions'], active: 'is-active') %>
-    <%= link_to t('org.admin.members.index.title'), { controller: 'org/admin/members' }, class: active_helper(controllers: ['members'], active: 'is-active') -%>
-    <%# link_to 'Supports', admin_supports_path, class: active_helper(controllers: 'supports') %>
-    <%# link_to 'Tutorials', admin_tutorials_path, class: active_helper(controllers: ['tutorials']) %>
-    <%# link_to 'Job Transfers', admin_job_transfers_path, class: active_helper(controllers: ['job_transfers']) %>
-    <%# link_to 'Resigns', admin_resigns_path, class: active_helper(controllers: ['resigns', 'resign_reasons']) %>
-  <% end %>
+<div class="<%= active_helper(modules: 'org/admin', active: 'menu ex-accordion is-active', item: 'menu ex-accordion is-active') %>" data-controller="menu empty">
   <a class="menu-label" data-action="menu#toggle">
     <i class="fa-solid fa-sitemap fa-fw"></i>
     <span><%= t('org.admin.title') %></span>
     <i class="fa-solid dropdown"></i>
   </a>
+  <div class="menu-list">
+    <%= link_to t('org.admin.organs.index.title'), { controller: 'org/admin/organs' }, class: active_helper(controllers: ['organs', 'organ_domains'], active: 'is-active') %>
+    <%= link_to t('org.admin.departments.index.title'), { controller: 'org/admin/departments' }, class: active_helper(controllers: ['departments', 'job_descriptions'], active: 'is-active') %>
+    <%= link_to t('org.admin.members.index.title'), { controller: 'org/admin/members' }, class: active_helper(controllers: ['members'], active: 'is-active') %>
+    <%# link_to 'Supports', admin_supports_path, class: active_helper(controllers: 'supports') %>
+    <%# link_to 'Tutorials', admin_tutorials_path, class: active_helper(controllers: ['tutorials']) %>
+    <%# link_to 'Job Transfers', admin_job_transfers_path, class: active_helper(controllers: ['job_transfers']) %>
+    <%# link_to 'Resigns', admin_resigns_path, class: active_helper(controllers: ['resigns', 'resign_reasons']) %>
+  </div>>
 </div>
