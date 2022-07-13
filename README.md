@@ -33,4 +33,4 @@
 `org/board/organs` 我的企业列表
 
 ## 许可证
-遵循 [MIT](https://opensource.org/licenses/MIT) 协议
+遵循 [MIT](LICENSE) 协议
