@@ -1,8 +1,10 @@
-<div class="weui-panel">
-  <div class="weui-panel__hd"><%= account.identity %></div>
+<div class="weui-panel" data-controller="empty">
+  <div class="weui-panel__hd">
+    <%= account.identity %>
+  </div>
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_small-appmsg">
-      <div class="weui-cells">
+      <div class="weui-cells" data-empty-target="content">
       <% account.members.each do |member| %>
         <%= link_to({ controller: '/me/home', disposable_token: account.once_token, **member.organ.url_options }, class: 'weui-cell weui-cell_access') do %>
           <div class="weui-cell__bd">
