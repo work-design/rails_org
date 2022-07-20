@@ -10,12 +10,12 @@
         data-mini-program-url-value="/pages/print/config/index"
         data-mini-program-data-value="<%= { url: url_for(only_path: false) }.to_json %>"
       >
-        <%= link_to({ action: 'index' }, data: { action: 'mini-program#link' }, class: 'weui-cell weui-cell_access') do %>
+        <div data-action="click->mini-program#link" class="weui-cell weui-cell_access">
           <div class="weui-cell__bd">
             <span><%= '设置打印机' %></span>
           </div>
           <div class="weui-cell__ft"></div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
