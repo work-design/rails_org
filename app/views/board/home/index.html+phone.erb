@@ -9,12 +9,7 @@
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_small-appmsg">
       <div class="weui-cells" data-empty-target="content">
-        <%= link_to({ controller: '/my/home', disposable_token: current_account.once_token }, class: 'weui-cell weui-cell_access') do %>
-          <div class="weui-cell__bd">
-            <span><%= current_organ.name %></span>
-          </div>
-          <div class="weui-cell__ft"></div>
-        <% end %>
+        <%= render partial: 'organ', collection: Org::Organ.all.limit(10), as: :organ %>
       </div>
     </div>
   </div>
