@@ -1,21 +1,29 @@
 <div class="weui-panel">
   <div class="weui-panel__hd">
-    <span>打印机</span>
+    <span>其他</span>
   </div>
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_small-appmsg">
-      <div
-        class="weui-cells"
-        data-controller="mini-program"
-        data-mini-program-url-value="/pages/print/config/index"
-        data-mini-program-data-value="<%= { url: url_for(only_path: false) }.to_json %>"
-      >
-        <div data-action="click->mini-program#link" class="weui-cell weui-cell_access">
+      <div class="weui-cells">
+        <div
+          data-controller="mini-program"
+          data-mini-program-url-value="/pages/print/config/index"
+          data-mini-program-data-value="<%= { url: url_for(only_path: false) }.to_json %>"
+          data-action="click->mini-program#link"
+          class="weui-cell weui-cell_access"
+        >
           <div class="weui-cell__bd">
             <span><%= '设置打印机' %></span>
           </div>
           <div class="weui-cell__ft"></div>
         </div>
+        <%= link_to({ controller: 'auth/my/home' }, class: 'weui-cell weui-cell_access') do %>
+          <div class="weui-cell__bd">
+            <i class="fa-solid fa-fw fa-xl fa-ellipsis"></i>
+            <span class="has-text-dark"><%= t('auth.my.home.index.title') %></span>
+          </div>
+          <div class="weui-cell__ft"></div>
+        <% end %>
       </div>
     </div>
   </div>
