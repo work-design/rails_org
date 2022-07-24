@@ -19,7 +19,10 @@ module Org
     def current_organ
       return @current_organ if defined?(@current_organ)
 
-      if current_organ_domain
+      if params[:org_id] && params[:org_id].start_with?('org_')
+        r = params[:org_id].delete_prefix('org_')
+        @current_organ = Organ.find r
+      elsif current_organ_domain
         @current_organ = @current_organ_domain.organ
       end
       logger.debug "\e[35m  Login as organ: #{@current_organ&.name}, ID: #{@current_organ&.id}  \e[0m"
