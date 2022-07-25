@@ -1,0 +1,10 @@
+<div class="weui-panel is-borderless">
+  <div class="weui-panel__bd">
+    <div class="pr-4">
+      <%= render 'profile_item' %>
+    </div>
+  </div>
+</div>
+
+<%= render partial: 'business', collection: @meta_businesses, as: :meta %>
+<%= render 'printer' %>

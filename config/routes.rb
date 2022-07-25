@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
   scope RailsCom.default_routes_scope do
     namespace :me, defaults: { namespace: 'me' } do
-      root 'home#index'
+      root 'home#index' unless has_named_route? 'me_root'
     end
 
     namespace :board, defaults: { namespace: 'board' } do
       root 'home#index' unless has_named_route? 'board_root'
+      controller :home do
+        get :index
+      end
+    end
+
+    namespace :admin, defaults: { namespace: 'admin' } do
+      root 'home#index' unless has_named_route? 'admin_root'
       controller :home do
         get :index
       end
