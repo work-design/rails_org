@@ -9,10 +9,8 @@
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_small-appmsg">
       <div class="weui-cells" data-empty-target="content">
-      <% if params[:org_id] && current_organ %>
+      <% if current_organ %>
         <%= render partial: 'organ', locals: { organ: current_organ } %>
-      <% else %>
-        <%= render partial: 'organ', collection: Org::Organ.all.limit(10), as: :organ %>
       <% end %>
       </div>
     </div>
