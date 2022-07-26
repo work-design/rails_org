@@ -1,4 +1,4 @@
-<div class="weui-panel">
+<div class="weui-panel" data-controller="empty">
   <div class="weui-panel__hd">
     <div class="is-several">
       <%= image_tag meta[0].logo, class: 'image is-32x32' if meta[0].logo.present? %>
@@ -7,7 +7,7 @@
   </div>
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_small-appmsg">
-      <div class="weui-cells">
+      <div class="weui-cells" data-empty-target="content">
       <% meta[1].each do |meta_action| %>
         <%= link_to({ controller: meta_action.controller_path, action: meta_action.action_name, **params.except(:business, :namespace, :controller, :action).permit! }, class: 'weui-cell weui-cell_access') do %>
           <div class="weui-cell__bd">
