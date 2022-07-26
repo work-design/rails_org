@@ -1,0 +1,18 @@
+<div class="weui-panel is-borderless">
+  <div class="weui-panel__hd">选择身份进入</div>
+</div>
+
+<%= render partial: 'account', collection: @accounts, as: :account %>
+
+<div class="weui-panel" data-controller="empty">
+  <div class="weui-panel__hd">用户身份</div>
+  <div class="weui-panel__bd">
+    <div class="weui-media-box weui-media-box_small-appmsg">
+      <div class="weui-cells" data-empty-target="content">
+      <% if current_organ %>
+        <%= render partial: 'organ', locals: { organ: current_organ } %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
