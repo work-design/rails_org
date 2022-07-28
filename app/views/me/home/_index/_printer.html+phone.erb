@@ -4,7 +4,7 @@
   </div>
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_small-appmsg">
-      <div class="weui-cells">
+      <div class="weui-cells" data-empty-target="content">
         <% if request.variant.any?(:mini_program) %>
         <div
           data-controller="mini-program"
