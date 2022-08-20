@@ -68,7 +68,7 @@ Rails.application.routes.draw do
       end
 
       namespace :admin, defaults: { namespace: 'admin' } do
-        root 'home#index' unless has_named_route? 'admin_root'
+        root 'home#index'
         controller :home do
           get :index
         end
