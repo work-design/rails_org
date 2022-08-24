@@ -3,17 +3,17 @@
   <td>
     <div data-show-target="item" style="visibility: hidden">
       <%= link_to({ action: 'new', parent_id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: '添加下级' }, class: 'button is-link is-small') do %>
-        <i class="fa-light fa-plus"></i>
+        <i class="fa-regular fa-plus"></i>
       <% end %>
       <%#= link_to 'JD', admin_department_job_descriptions_path(model), class: 'button is-small is-rounded is-light' %>
       <%= link_to({ action: 'show', id: model.id }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-light fa-users"></i>
+        <i class="fa-regular fa-users"></i>
       <% end %>
       <%= link_to({ action: 'edit', id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-light fa-pencil"></i>
+        <i class="fa-regular fa-pencil"></i>
       <% end %>
       <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy') }, class: 'button is-small is-rounded is-light', form: { data: { turbo_confirm: t('.confirm') } }) do %>
-        <i class="fa-light fa-trash"></i>
+        <i class="fa-regular fa-trash"></i>
       <% end %>
     </div>
   </td>

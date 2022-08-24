@@ -20,8 +20,8 @@
       <%= ef.collection_select :job_title_id, ef.object.job_title_options, :id, :name, { include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'job_title_id', as: ef.object_name } } %>
     </div>
     <div class="field has-addons has-addons-middle">
-      <i class="fa-light fa-plus fa-lg" data-action="click->field#add" style="cursor: pointer"></i>
-      <i class="fa-light fa-minus fa-lg" data-action="click->field#remove" style="cursor: pointer"></i>
+      <i class="fa-regular fa-plus fa-lg" data-action="click->field#add" style="cursor: pointer"></i>
+      <i class="fa-regular fa-minus fa-lg" data-action="click->field#remove" style="cursor: pointer"></i>
     </div>
   </div>
 </div>
