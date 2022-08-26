@@ -16,7 +16,13 @@
 </tr>
 <tr>
   <td class="has-text-right"><%= Org::Member.human_attribute_name(:join_on) %></td>
-  <td><%= @member.join_on %></td>
+  <td>
+  <% if @member.join_on %>
+    <span><%= @member.join_on %></span>
+  <% else %>
+    <time data-controller="time"><%= @member.created_at.to_fs(:iso8601) %></time>
+  <% end %>
+  </td>
 </tr>
 <tr>
   <td class="has-text-right"><%= Org::Member.human_attribute_name(:tutorials) %></td>
