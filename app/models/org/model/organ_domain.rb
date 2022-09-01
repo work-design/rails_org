@@ -47,11 +47,13 @@ module Org
     end
 
     def options
-      {
+      r = {
         host: host,
-        port: port.presence || '80',
+        port: port,
         protocol: scheme.presence || 'https'
       }
+      r.delete(:port) if r[:port].blank? || r[:port] == '80'
+      r
     end
 
   end

@@ -49,7 +49,8 @@ module Org
 
     def url_options(request = nil)
       if request.is_a? ActionDispatch::Request
-        cur = { host: request.host, port: request.port.to_s, protocol: request.scheme }
+        cur = { host: request.host, protocol: request.scheme }
+        cur.merge! port: request.port.to_s unless request.port.to_s == '80'
         return cur if organ_domains.map(&:options).include?(cur)
       end
 
