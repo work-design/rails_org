@@ -15,6 +15,10 @@
   <td><%= @organ_domain.host %></td>
 </tr>
 <tr>
+  <td class="has-text-right"><%= Org::OrganDomain.human_attribute_name(:identifier) %></td>
+  <td><%= @organ_domain.identifier %></td>
+</tr>
+<tr>
   <td class="has-text-right"><%= Org::OrganDomain.human_attribute_name(:appid) %></td>
   <td><%= @organ_domain.appid %></td>
 </tr>

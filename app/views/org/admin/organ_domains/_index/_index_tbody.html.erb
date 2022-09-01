@@ -2,12 +2,7 @@
   <p><%= model.subdomain %></p>
   <p><%= model.domain %></p>
 </td>
-<td>
-  <span><%= model.host %></span>
-  <span>:</span>
-  <span><%= model.port %></span>
-</td>
-<td><%= model.identifier %></td>
+<td><%= model.scheme %>://<%= model.host %>:<%= model.port %></td>
 <td><%= model.appid %></td>
 <td><%= model.beian %></td>
 <td>

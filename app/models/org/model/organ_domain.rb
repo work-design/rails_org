@@ -12,6 +12,11 @@ module Org
       attribute :default, :boolean, default: false
       attribute :beian, :string, comment: '备案号'
 
+      enum scheme: {
+        http: 'http',
+        https: 'https'
+      }, _default: 'https'
+
       belongs_to :organ
       belongs_to :wechat_app, class_name: 'Wechat::App', foreign_key: :appid, primary_key: :appid, optional: true
 
@@ -39,6 +44,14 @@ module Org
     def init_subdomain
       self.subdomain = ['org', organ_id].join('-')
       compute_identifier
+    end
+
+    def options
+      {
+        host: host,
+        port: port.presence || '80',
+        scheme: scheme.presence || 'https'
+      }
     end
 
   end

@@ -13,7 +13,7 @@
     </div>
     <div class="navbar-divider"></div>
     <% current_account.organs.includes(:organ_domains).each do |organ| %>
-      <%= link_to({ controller: '/me/home', disposable_token: current_account.once_token, **organ.url_options }, class: active_helper(id: 'organs', active: 'navbar-item is-active', item: 'navbar-item')) do %>
+      <%= link_to({ controller: '/me/home', disposable_token: current_account.once_token, **organ.url_options(request) }, class: active_helper(id: 'organs', active: 'navbar-item is-active', item: 'navbar-item')) do %>
         <span><%= organ.name %></span>
       <% end %>
     <% end %>

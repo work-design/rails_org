@@ -47,9 +47,16 @@ module Org
       "#{area&.full_name} #{address}"
     end
 
-    def url_options
-      od = organ_domain || organ_domains.take || build_organ_domain
-      od.as_json(only: [:host, :port])
+    def url_options(request = nil)
+      if request.is_a? ActionDispatch::Request
+        cur = { host: request.host, port: request.port.to_s, scheme: request.scheme }
+        return cur if organ_domains.map(&:options).include?(cur)
+      end
+
+      od = organ_domain || organ_domains.take
+      return od.options if od
+
+      {}
     end
 
     def init_organ_domain
