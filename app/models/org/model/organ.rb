@@ -49,7 +49,7 @@ module Org
 
     def url_options(request = nil)
       if request.is_a? ActionDispatch::Request
-        cur = { host: request.host, port: request.port.to_s, scheme: request.scheme }
+        cur = { host: request.host, port: request.port.to_s, protocol: request.scheme }
         return cur if organ_domains.map(&:options).include?(cur)
       end
 

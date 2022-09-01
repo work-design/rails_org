@@ -50,7 +50,7 @@ module Org
       {
         host: host,
         port: port.presence || '80',
-        scheme: scheme.presence || 'https'
+        protocol: scheme.presence || 'https'
       }
     end
 
