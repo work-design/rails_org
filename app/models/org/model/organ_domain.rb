@@ -8,7 +8,6 @@ module Org
       attribute :port, :string, default: Rails.application.routes.default_url_options[:port]
       attribute :host, :string
       attribute :identifier, :string, index: true
-      attribute :appid, :string
       attribute :default, :boolean, default: false
       attribute :beian, :string, comment: '备案号'
 
@@ -18,7 +17,6 @@ module Org
       }, _default: 'https'
 
       belongs_to :organ
-      belongs_to :wechat_app, class_name: 'Wechat::App', foreign_key: :appid, primary_key: :appid, optional: true
 
       validates :identifier, uniqueness: true
 
