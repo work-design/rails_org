@@ -11,7 +11,7 @@
       <div>
         <%= md.job_title&.name %>
         <%= button_to({ controller: 'member_departments', action: 'destroy', member_id: member.id, id: md.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }) do %>
-          <i class="fa-regular fa-trash"></i>
+          <i class="fa-solid fa-trash"></i>
         <% end %>
       </div>
     <% end %>
@@ -19,10 +19,10 @@
   <td><%= member.join_on %></td>
   <td>
     <%= link_to({ controller: 'members', action: 'edit', id: member.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
-      <i class="fa-regular fa-pencil"></i>
+      <i class="fa-solid fa-pencil"></i>
     <% end %>
     <%= button_to({ controller: 'members', action: 'destroy', id: member.id }, method: :delete, aria: { label: t('.destroy') }, class: 'button is-small is-rounded is-light', form: { data: { turbo_confirm: t('.confirm') } }) do %>
-      <i class="fa-regular fa-trash"></i>
+      <i class="fa-solid fa-trash"></i>
     <% end %>
   </td>
 </tr>

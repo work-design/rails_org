@@ -32,7 +32,7 @@
   <td data-controller="input">
     <% if job_title.department_id == @department.id %>
       <%= link_to({ action: 'edit', id: job_title.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-regular fa-pencil"></i>
+        <i class="fa-solid fa-pencil"></i>
       <% end %>
     <% end %>
     <% if job_title.super_job_title %>
@@ -42,7 +42,7 @@
       <% end %>
     <% else %>
       <%= button_to({ action: 'destroy', id: job_title.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-regular fa-trash"></i>
+        <i class="fa-solid fa-trash"></i>
       <% end %>
     <% end %>
   </td>
