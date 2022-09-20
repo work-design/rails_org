@@ -3,7 +3,6 @@
   <p><%= model.domain %></p>
 </td>
 <td><%= model.scheme %>://<%= model.host %>:<%= model.port %></td>
-<td><%= model.appid %></td>
 <td><%= model.beian %></td>
 <td>
   <%= form_with theme: nil, model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
