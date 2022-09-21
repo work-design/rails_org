@@ -1,7 +1,7 @@
 <td>
   <span style="width: <%= model.depth * 1.43 %>em; display: inline-block"></span>
   <% if model.leaf? %>
-    <i class="fa-regular fa-fw fa-minus"></i>
+    <i class="fa-solid fa-fw fa-minus"></i>
   <% else %>
     <i class="fa-solid fa-fw fa-caret-right" style="cursor: pointer" data-action="click->tree#expand"></i>
   <% end %>

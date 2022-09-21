@@ -1,7 +1,7 @@
 <%= render partial: 'organ', collection: @organs, as: :organ %>
 <% Roled::OrganRole.visible.each do |role| %>
   <%= link_to({ controller: 'organs', action: 'new', role_id: role.id }, class: 'weui-cell weui-cell_access') do %>
-    <i class="fa-regular fa-plus"></i>
+    <i class="fa-solid fa-plus"></i>
     <span class="pl-1"><%= role.name %></span>
   <% end %>
 <% end %>

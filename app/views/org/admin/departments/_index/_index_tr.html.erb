@@ -3,7 +3,7 @@
   <td>
     <div data-show-target="item" style="visibility: hidden">
       <%= link_to({ action: 'new', parent_id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: '添加下级' }, class: 'button is-link is-small') do %>
-        <i class="fa-regular fa-plus"></i>
+        <i class="fa-solid fa-plus"></i>
       <% end %>
       <%#= link_to 'JD', admin_department_job_descriptions_path(model), class: 'button is-small is-rounded is-light' %>
       <%= link_to({ action: 'show', id: model.id }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
