@@ -6,7 +6,7 @@
         <i class="fa-solid fa-circle-info"></i>
       <% end %>
       <%= link_to({ action: 'profile', id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.profile') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-regular fa-id-card"></i>
+        <i class="fa-solid fa-id-card"></i>
       <% end %>
       <%= link_to({ action: 'edit', id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-pencil"></i>
@@ -15,7 +15,7 @@
         <i class="fa-solid fa-trash"></i>
       <% end %>
       <%= link_to({ action: 'mock', id: model.id }, method: :patch, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-regular fa-hand-point-right"></i>
+        <i class="fa-solid fa-hand-point-right"></i>
       <% end if model.user != current_user %>
       <%# link_to 'tutorials', admin_tutorials_path(member_id: model.id), class: 'ui mini circular button' %>
     </div>
