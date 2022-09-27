@@ -11,7 +11,7 @@
     <%= link_to({ action: 'edit', id: authorized_token.id }, { aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' }) do %>
       <i class="fa-solid fa-pencil"></i>
     <% end %>
-    <%= link_to({ action: 'destroy', id: authorized_token.id }, { method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' }) do %>
+    <%= link_to({ action: 'destroy', id: authorized_token.id }, { method: :delete, aria: { label: t('.destroy') }, data: { turbo_confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' }) do %>
       <i class="fa-solid fa-trash"></i>
     <% end %>
   </td>

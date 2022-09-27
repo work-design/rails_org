@@ -10,7 +10,7 @@
     <% member.member_departments.select(&->(o){ @department.self_and_descendant_ids.include?(o.department_id) }).each do |md| %>
       <div>
         <%= md.job_title&.name %>
-        <%= button_to({ controller: 'member_departments', action: 'destroy', member_id: member.id, id: md.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }) do %>
+        <%= button_to({ controller: 'member_departments', action: 'destroy', member_id: member.id, id: md.id }, method: :delete, aria: { label: t('.destroy') }, data: { turbo_confirm: t('.confirm') }) do %>
           <i class="fa-solid fa-trash"></i>
         <% end %>
       </div>
