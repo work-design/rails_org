@@ -2,6 +2,6 @@
 <%= render 'button' %>
 
 <%= render layout: 'index_table' do %>
-  <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: current_organ } %>
+  <%= render partial: 'current_tbody', layout: 'index_tr', locals: { model: current_organ } %>
   <%= render partial: 'index_tbody', layout: 'index_tr', collection: @organs, as: :model %>
 <% end %>

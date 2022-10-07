@@ -1,0 +1,22 @@
+<td>
+  <div class="is-several">
+    <i class="fa-solid fa-fw fa-minus"></i>
+    <%= image_tag model.logo.variant(resize_to_limit: [30, 30]), class: 'image is-24x24' if model.logo.attached? %>
+    <span><%= model.name %></span>
+    <% if model.name_short.present? %>
+      <span>（<%= model.name_short %>）</span>
+    <% end %>
+  </div>
+</td>
+<td><%= model.code %></td>
+<td>
+  <p><%= model.area&.full_name %></p>
+  <p><%= model.address %></p>
+</td>
+<td>
+  <div class="tags">
+    <% model.roles.pluck(:name).each do |role| %>
+      <span class="tag"><%= role %></span>
+    <% end %>
+  </div>
+</td>
