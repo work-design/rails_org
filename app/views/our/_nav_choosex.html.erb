@@ -2,7 +2,7 @@
   <%= link_to root_url(host: RailsCom.config.host), class: 'navbar-item' do %>
     <%= image_pack_tag 'logo.jpg', class: 'image' %>
   <% end %>
-  <%= link_to filter_params(host: current_organ.host), class: active_params(organ_id: current_organ.id) do %>
+  <%= link_to filter_params(host: current_organ.host), class: active_helper(organ_id: current_organ.id) do %>
     <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
     <span><%= current_organ.name %></span>
   <% end %>

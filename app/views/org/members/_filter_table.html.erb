@@ -2,9 +2,9 @@
   <tr>
     <th><%= Member.human_attribute_name(:organ_id) %></th>
     <td>
-      <%= link_to t('.all'), filter_params(except: [:organ_id]), class: active_params(organ_id: '', active: 'button is-info', item: 'button is-light') %>
+      <%= link_to t('.all'), filter_params(except: [:organ_id]), class: active_helper(organ_id: '', active: 'button is-info', item: 'button is-light') %>
       <% Organ.all.each do |organ| %>
-        <%= link_to "#{organ.name}（#{organ.members_count}）", filter_params(organ_id: organ.id), class: active_params(organ_id: organ.id, active: 'button is-info', item: 'button is-light') %>
+        <%= link_to "#{organ.name}（#{organ.members_count}）", filter_params(organ_id: organ.id), class: active_helper(organ_id: organ.id, active: 'button is-info', item: 'button is-light') %>
       <% end %>
     </td>
   </tr>
