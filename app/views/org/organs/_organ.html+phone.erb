@@ -1,5 +1,5 @@
 <div class="weui-media-box weui-media-box_appmsg">
-  <div class="weui-media-box__hd">
+  <div data-controller="empty" class="weui-media-box__hd">
     <%= image_tag model.logo.variant(resize_to_limit: [150, 150]), class: 'weui-media-box__thumb' if model.logo.attached? %>
   </div>
   <div class="weui-media-box__bd">
@@ -13,7 +13,7 @@
       <span><%= model.address %></span>
     </span>
   </div>
-  <%= link_to({ controller: '/factory/products' }, class: 'weui-media-box__ft pr-4') do %>
-    <p>去下单</p>
+  <%= link_to({ controller: '/space/stations' }, class: 'weui-media-box__ft pr-4') do %>
+    <p>列表</p>
   <% end %>
 </div>

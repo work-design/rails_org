@@ -22,22 +22,6 @@ module Org
     def create
       @member = @organ.members.build(owned: true)
       @member.account = current_account
-
-      unless @organ.save
-        render :new, locals: { model: @organ }, status: :unprocessable_entity
-      end
-    end
-
-    def update
-      @organ.assign_attributes(organ_params)
-
-      unless @organ.save
-        render :edit, locals: { model: @organ }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @organ.destroy
     end
 
     private
