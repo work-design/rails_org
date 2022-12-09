@@ -1,5 +1,5 @@
 <% Roled::OrganRole.visible.each do |role| %>
-  <%= link_to role.name, { controller: 'org/board/organs', action: 'new', role_id: role.id }, class: active_helper(controller: 'org/board/organs', action: 'new', role_id: role.id, check_parameters: true, active: 'navbar-item is-active', item: 'navbar-item') %>
+  <%= link_to role.name, { controller: 'org/board/organs', action: 'new', role_id: role.id }, class: active_helper(controller: 'org/board/organs', action: 'new', role_id: role.id, active: 'navbar-item is-active', item: 'navbar-item') %>
 <% end %>
 <div class="navbar-item has-dropdown is-hoverable is-hidden-touch">
   <div class="navbar-link">
