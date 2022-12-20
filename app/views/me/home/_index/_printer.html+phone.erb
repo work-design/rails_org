@@ -3,30 +3,32 @@
     <span>其他</span>
   </div>
   <div class="weui-panel__bd">
-    <div class="weui-media-box weui-media-box_small-appmsg">
-      <div class="weui-cells" data-empty-target="content">
+    <div class="columns is-4-mobile is-flex is-vcentered is-centered m-0 is-shadow" data-empty-target="content">
       <% if request.variant.any?(:mini_program) %>
         <div
           data-controller="mini-program"
           data-mini-program-url-value="/pages/print/config/index"
           data-mini-program-data-value="<%= { url: url_for(only_path: false) }.to_json %>"
           data-action="click->mini-program#link"
-          class="weui-cell weui-cell_access"
+          class="column has-block-centered"
         >
-          <div class="weui-cell__bd">
+          <div class="has-text-dark">
             <span><%= '设置打印机' %></span>
           </div>
-          <div class="weui-cell__ft"></div>
         </div>
       <% end %>
-        <%= link_to({ controller: 'auth/my/home' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
-          <div class="weui-cell__bd">
-            <i class="fa-solid fa-fw fa-xl fa-ellipsis"></i>
-            <span class="has-text-dark"><%= t('auth.my.home.index.title') %></span>
-          </div>
-          <div class="weui-cell__ft"></div>
+      <%= link_to({ controller: 'auth/my/home' }, state: 'enter', class: 'column has-block-centered') do %>
+        <div class="has-text-grey-dark">
+          <i class="fa-solid fa-fw fa-xl fa-ellipsis"></i>
+        </div>
+        <span class="has-text-dark"><%= t('auth.my.home.index.title') %></span>
       <% end %>
-      </div>
+      <%= link_to({ controller: 'jia_bo/admin/devices' }, class: 'column has-block-centered') do %>
+        <div class="has-text-grey-dark">
+          <i class="fa-solid fa-fw fa-xl fa-print"></i>
+        </div>
+        <span class="has-text-dark"><%= t('jia_bo.admin.devices.index.title') %></span>
+      <% end %>
     </div>
   </div>
 </div>
