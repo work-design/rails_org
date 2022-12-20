@@ -5,7 +5,7 @@
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_small-appmsg">
       <div class="weui-cells" data-empty-target="content">
-        <% if request.variant.any?(:mini_program) %>
+      <% if request.variant.any?(:mini_program) %>
         <div
           data-controller="mini-program"
           data-mini-program-url-value="/pages/print/config/index"
@@ -18,14 +18,14 @@
           </div>
           <div class="weui-cell__ft"></div>
         </div>
-        <% end %>
+      <% end %>
         <%= link_to({ controller: 'auth/my/home' }, class: 'weui-cell weui-cell_access') do %>
           <div class="weui-cell__bd">
             <i class="fa-solid fa-fw fa-xl fa-ellipsis"></i>
             <span class="has-text-dark"><%= t('auth.my.home.index.title') %></span>
           </div>
           <div class="weui-cell__ft"></div>
-        <% end %>
+      <% end %>
       </div>
     </div>
   </div>

@@ -1,14 +1,22 @@
-<div class="weui-media-box weui-media-box_appmsg">
+<%= link_to({ controller: 'auth/my/home' }, state: 'enter', class: 'weui-media-box weui-media-box_appmsg') do %>
   <div class="weui-media-box__hd">
-  <% if current_member.avatar_url.present? %>
-    <%= image_tag current_member.avatar_url, class: 'weui-media-box__thumb is-radius' %>
+  <% if current_member.avatar.attached? %>
+    <%= image_tag current_member.avatar, class: 'weui-media-box__thumb is-radius' %>
+  <% elsif current_member.name %>
+    <div class="is-avatar">
+      <div class="text">一</div>
+    </div>
   <% else %>
     <%= image_tag 'default_avatar.jpg', class: 'weui-media-box__thumb' %>
   <% end %>
   </div>
   <div class="weui-media-box__bd">
     <strong class="weui-media-box__title">
-      <span><%= current_member.name %></span>
+      <% if request.variant.any?(:work_wechat) %>
+        <ww-open-data type="userName" openid="<%= current_corp_user&.user_id %>"></ww-open-data>
+      <% else %>
+        <span><%= current_member&.name %></span>
+      <% end %>
       <span class="weui-badge weui-badge__primary">
         <i class="fa-solid fa-building-user"></i>
         <span><%= current_organ.name %></span>
@@ -18,11 +26,7 @@
       <span class="has-text-weight-normal is-size-7"><%= current_member.identity %></span>
     </div>
   </div>
-  <div class="weui-media-box__ft">
-    <%= link_to({ controller: '/board/home' }, class: 'has-text-grey') do %>
-      <span class="has-text-grey has-text-weight-normal">切换</span>
-      <i class="fa-solid fa-angle-right pl-0"></i>
-    <% end %>
+  <div class="weui-media-box__ft pr-4">
+    <i class="fa-solid fa-qrcode has-text-grey pl-0"></i>
   </div>
-</div>
-
+<% end %>

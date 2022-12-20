@@ -139,10 +139,6 @@ module Org
       leading_departments.first
     end
 
-    def avatar_url
-      Rails.application.routes.rails_blob_url(avatar) if avatar.attachment.present?
-    end
-
     def sync_member_roles
       role = Roled::Role.default_where('who_types-any': 'Member', code: RailsOrg.config.super_role_code).take
       who_roles.create(role_id: role.id) if role

@@ -1,7 +1,7 @@
 <div class="weui-media-box weui-media-box_appmsg">
   <div class="weui-media-box__hd">
-  <% if current_member.avatar_url.present? %>
-    <%= image_tag current_member.avatar_url, class: 'weui-media-box__thumb is-radius' %>
+  <% if current_member.avatar.present? %>
+    <%= image_tag current_member.avatar, class: 'weui-media-box__thumb is-radius' %>
   <% else %>
     <%= image_tag 'default_avatar.jpg', class: 'weui-media-box__thumb' %>
   <% end %>
@@ -19,9 +19,9 @@
     </div>
   </div>
   <div class="weui-media-box__ft">
-    <%= link_to({ controller: '/board/home' }, class: 'has-text-grey') do %>
-      <span class="has-text-grey has-text-weight-normal">切换</span>
-      <i class="fa-solid fa-angle-right pl-0"></i>
+    <%= link_to({ controller: 'auth/my/home' }, class: 'has-text-grey') do %>
+      <span class="has-text-grey has-text-weight-normal"></span>
+      <i class="fa-solid fa-qrcode pl-0"></i>
     <% end %>
   </div>
 </div>
