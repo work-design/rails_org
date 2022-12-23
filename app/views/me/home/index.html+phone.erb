@@ -8,4 +8,4 @@
 <%= render 'crm_nav' %>
 <%= render 'bench_nav' %>
 <%= render 'printer' %>
-<%= render 'business' %>
+<%= render partial: 'business', collection: @meta_businesses, as: :meta %>
