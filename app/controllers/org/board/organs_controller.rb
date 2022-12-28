@@ -1,7 +1,7 @@
 module Org
   class Board::OrgansController < Board::BaseController
     before_action :set_organ, only: [:show, :edit, :update, :destroy]
-    before_action :set_new_organ, only: [:new, :index, :create]
+    before_action :set_new_organ, only: [:new, :create]
 
     def index
       q_params = {}
@@ -9,6 +9,7 @@ module Org
 
       @organs = current_account.organs.includes(:organ_domains).default_where(q_params)
       if @organs.blank?
+        set_new_organ
         render :new
       else
         render 'index'
