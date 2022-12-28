@@ -6,7 +6,7 @@ module Org
       q_params = {}
       q_params.merge! params.permit(:name)
 
-      @organs = Organ.roots.includes(:organ_domains).default_where(q_params).order(id: :desc).page(params[:page])
+      @organs = Organ.roots.includes(:organ_domains).default_where(q_params).unscope(:order).order(id: :desc).page(params[:page])
     end
 
     def new
