@@ -2,7 +2,13 @@
   <%= render 'error_messages', target: f.object %>
   <div class="weui-form__control-area">
     <div class="weui-cells__group weui-cells__group_form">
-      <div class="weui-cells__title"><%= t('.title') %></div>
+      <div class="weui-cells__title">
+      <% if params[:role_id].present? %>
+        <span><%= @role.name %></span>
+      <% else %>
+        <span><%= t('.title') %></span>
+      <% end %>
+      </div>
       <div class="weui-cells">
         <%= render partial: 'form', locals: { f: f } %>
       </div>

@@ -2,6 +2,7 @@ module Org
   class Board::OrgansController < Board::BaseController
     before_action :set_organ, only: [:show, :edit, :update, :destroy]
     before_action :set_new_organ, only: [:new, :create]
+    before_action :set_role, only: [:new, :index]
 
     def index
       q_params = {}
@@ -25,6 +26,10 @@ module Org
       @member = current_account.members.build(owned: true)
       @organ = @member.build_organ(organ_params)
       @organ.who_roles.build(role_id: params[:role_id]) if params[:role_id].present?
+    end
+
+    def set_role
+      @role = Roled::Role.find params[:role_id] if params[:role_id].present?
     end
 
     def organ_params
