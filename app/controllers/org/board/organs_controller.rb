@@ -37,7 +37,7 @@ module Org
 
     def set_roles
       if params[:role_id].present?
-        @roles = Roled::OrganRole.visible.where(role_id: params[:role_id])
+        @roles = Roled::OrganRole.visible.where(id: params[:role_id])
       else
         @roles = Roled::OrganRole.visible
       end
