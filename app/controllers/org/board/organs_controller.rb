@@ -3,6 +3,7 @@ module Org
     before_action :set_organ, only: [:show, :edit, :update, :destroy]
     before_action :set_new_organ, only: [:new, :create]
     before_action :set_role, only: [:new, :index]
+    before_action :set_roles, only:[:index]
 
     def index
       q_params = {}
@@ -29,7 +30,17 @@ module Org
     end
 
     def set_role
-      @role = Roled::Role.find params[:role_id] if params[:role_id].present?
+      if params[:role_id].present?
+        @role = Roled::Role.find params[:role_id]
+      end
+    end
+
+    def set_roles
+      if params[:role_id].present?
+        @roles = Roled::OrganRole.visible.where(role_id: params[:role_id])
+      else
+        @roles = Roled::OrganRole.visible
+      end
     end
 
     def organ_params
