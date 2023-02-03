@@ -3,14 +3,18 @@
   <td><%= @organ.name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:organ_uuid) %></td>
-  <td><%= @organ.organ_uuid %></td>
+  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:code) %></td>
+  <td><%= @organ.code %></td>
 </tr>
 <tr>
   <td class="has-text-right"><%= Org::Organ.human_attribute_name(:area_id) %></td>
   <td><%= @organ.area&.full_name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:limit_wechat) %></td>
-  <td><%= @organ.limit_wechat %></td>
+  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:redirect_controller) %></td>
+  <td><%= @organ.redirect_controller %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:redirect_action) %></td>
+  <td><%= @organ.redirect_action %></td>
 </tr>

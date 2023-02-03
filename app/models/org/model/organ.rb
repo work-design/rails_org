@@ -11,6 +11,8 @@ module Org
       attribute :joinable, :boolean, default: false, comment: '是否可搜索并加入'
       attribute :domain, :string
       attribute :code, :string
+      attribute :redirect_controller, :string, default: '/home'
+      attribute :redirect_action, :string, default: 'index', comment: '默认跳转'
 
       has_taxons :area
       belongs_to :area, class_name: 'Profiled::Area', optional: true
