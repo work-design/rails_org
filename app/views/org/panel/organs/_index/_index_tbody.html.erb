@@ -7,7 +7,10 @@
     <% end %>
   </div>
 </td>
-<td><%= simple_format model.domains %></td>
+<td>
+  <p><%= simple_format model.domains %></p>
+  <p class="has-text-grey"><%= model.corpid %></p>
+</td>
 <td>
   <p><%= model.area&.full_name %></p>
   <p><%= model.address %></p>
