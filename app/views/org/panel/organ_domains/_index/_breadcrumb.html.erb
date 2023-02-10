@@ -1,6 +1,6 @@
 <div class="breadcrumb has-succeeds-separator">
   <ul>
-    <li><%= link_to t('org.panel.organs.index.title.'), { controller: 'organs' } %></li>
+    <li><%= link_to t('org.panel.organs.index.title.'), { controller: 'organs', anchor: "tr_#{@organ.id}" } %></li>
     <li><span class="px-3"><%= @organ.name %></span></li>
     <li class="is-active"><%= t('.title') %></li>
   </ul>
