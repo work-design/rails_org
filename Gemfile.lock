@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: b9ce1144df731da7cd4fe593e3e245b4e05b98e5
+  revision: 18ce13be2993486dc14bbde0cf30eda96a7b004a
   specs:
     rails_com (1.3.0)
       acme-client
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: bc0d12ea23a60ff9e0bb072f3378f01303af85b9
+  revision: f8a961dff7062102ad13f09992396d43fd6784e3
   specs:
     rails_design (0.0.1)
       rails
@@ -154,7 +154,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
-    faraday-retry (2.0.0)
+    faraday-retry (2.1.0)
       faraday (~> 2.0)
     ffi (1.15.5)
     globalid (1.1.0)
@@ -193,7 +193,7 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
-    minitest (5.17.0)
+    minitest (5.18.0)
     net-http (0.3.2)
       uri
     net-imap (0.3.4)
@@ -210,7 +210,7 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     pg (1.4.6)
-    propshaft (0.6.4)
+    propshaft (0.7.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
@@ -220,7 +220,7 @@ GEM
     puma (6.1.1)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.2)
+    rack (2.2.6.3)
     rack-test (2.0.2)
       rack (>= 1.3)
     rails (7.0.4.2)
@@ -260,7 +260,7 @@ GEM
     stringio (3.0.5)
     thor (1.2.1)
     timeout (0.3.2)
-    turbo-rails (1.3.3)
+    turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
