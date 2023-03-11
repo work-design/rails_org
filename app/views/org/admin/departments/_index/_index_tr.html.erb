@@ -18,6 +18,5 @@
     </div>
   </td>
 </tr>
-<% model.children.each do |child| %>
-  <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: child, display: 'none' } %>
-<% end %>
+
+<%= render partial: 'index_tbody', layout: 'index_tr', collection: model.children, as: :model, locals: { display: 'none' } %>

@@ -1,4 +1,4 @@
-<td>
+<p>
   <span style="width: <%= model.depth * 1.43 %>em; display: inline-block"></span>
   <% if model.leaf? %>
     <i class="fa-solid fa-fw fa-minus"></i>
@@ -9,21 +9,21 @@
     <span><%= model.name %></span>
     <span class="has-text-grey">(<%= model.all_member_departments_count %>)</span>
   <% end %>
-</td>
-<td>
+</p>
+<p>
   <%= model.needed_number %> /
   <span class="<%= active_asserts('red': model.needed_number.to_i > model.member_departments_count, 'grey': model.needed_number.to_i == model.member_departments_count, 'green': model.needed_number.to_i < model.member_departments_count) %> text">
     <%= model.member_departments_count %>
   </span>
-</td>
-<td>
+</p>
+<div>
   <% model.job_titles.each do |job_title| %>
     <div class="button is-small is-light" aria-label="<%= job_title.grade %>"><%= job_title.name %></div>
   <% end %>
   <%= link_to({ controller: 'job_titles', department_id: model.id }, aria: { label: t('.job_title') }, class: 'button is-small is-rounded is-light') do %>
     <i class="fa-solid fa-user-tag"></i>
   <% end %>
-</td>
-<td>
+</div>
+<p>
   <%= link_to model.leader.name, { controller: 'members', action: 'show', id: model.leader.id } if model.leader %>
-</td>
+</p>
