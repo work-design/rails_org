@@ -11,10 +11,10 @@ module Org
       end
     end
 
-    def require_member(url: url_for(controller: 'org/board/organs'))
+    def require_member
       return if current_member
 
-      redirect_to url
+      redirect_to url_for(controller: 'org/board/organs', **params.permit(:auth_token))
     end
 
   end
