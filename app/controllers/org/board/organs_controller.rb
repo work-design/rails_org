@@ -10,12 +10,6 @@ module Org
       q_params.merge! 'who_roles.role_id' => params[:role_id] if params[:role_id].present?
 
       @organs = current_account.organs.includes(:organ_domains).default_where(q_params)
-      if @organs.blank?
-        set_new_organ
-        render :new
-      else
-        render 'index'
-      end
     end
 
     private
