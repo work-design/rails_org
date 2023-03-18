@@ -88,8 +88,6 @@ zh:
           title: 我的工作台
         new:
           title: 申请为职员
-        qrcodes:
-          title: 邀请同事
       organs:
         index:
           title: 我的组织
@@ -105,6 +103,8 @@ zh:
           title: 我的信息
         new:
           title: 申请为职员
+        qrcodes:
+          title: 邀请同事
       organs:
         index:
           title: 我的组织
