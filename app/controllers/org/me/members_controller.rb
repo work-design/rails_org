@@ -1,7 +1,7 @@
 module Org
   class Me::MembersController < Me::BaseController
     include Org::Layout::Me
-    before_action :set_member, only: [:show, :edit, :update, :destroy]
+    before_action :set_member, only: [:show, :edit, :update, :destroy, :qrcodes, :qrcode]
 
     def qrcodes
       @wechat_apps = Wechat::App.inviting.where(organ_id: current_organ.id)

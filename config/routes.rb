@@ -32,7 +32,12 @@ Rails.application.routes.draw do
 
       namespace :me, defaults: { namespace: 'me' } do
         root 'home#index'
-        resource :member, except: [:new, :create]
+        resource :member, except: [:new, :create] do
+          member do
+            get :qrcodes
+            get :qrcode
+          end
+        end
         resources :departments
         resources :tutorials do
           collection do
@@ -53,10 +58,6 @@ Rails.application.routes.draw do
         resources :members, only: [:index, :new, :create] do
           collection do
             get :near
-          end
-          member do
-            get :qrcodes
-            get :qrcode
           end
         end
       end
