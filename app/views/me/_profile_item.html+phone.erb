@@ -2,9 +2,9 @@
   <div class="weui-media-box__hd">
   <% if current_member.avatar.attached? %>
     <%= image_tag current_member.avatar, class: 'weui-media-box__thumb is-radius' %>
-  <% elsif current_member.name %>
+  <% elsif current_member.name.present? %>
     <div class="is-avatar">
-      <div class="text">一</div>
+      <div class="text"><%= current_member.name[0] %></div>
     </div>
   <% else %>
     <%= image_tag 'default_avatar.jpg', class: 'weui-media-box__thumb' %>
