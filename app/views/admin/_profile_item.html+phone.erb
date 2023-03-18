@@ -1,9 +1,11 @@
-<div class="weui-media-box weui-media-box_appmsg">
+<%= link_to({ controller: 'auth/my/home' }, class: 'weui-media-box weui-media-box_appmsg') do %>
   <div class="weui-media-box__hd">
   <% if current_member.avatar.present? %>
     <%= image_tag current_member.avatar, class: 'weui-media-box__thumb is-radius' %>
   <% else %>
-    <%= image_tag 'default_avatar.jpg', class: 'weui-media-box__thumb' %>
+    <div class="is-avatar">
+      <div class="text"><%= current_user.name[0] %></div>
+    </div>
   <% end %>
   </div>
   <div class="weui-media-box__bd">
@@ -19,10 +21,6 @@
     </div>
   </div>
   <div class="weui-media-box__ft">
-    <%= link_to({ controller: 'auth/my/home' }, class: 'has-text-grey') do %>
-      <span class="has-text-grey has-text-weight-normal"></span>
-      <i class="fa-solid fa-qrcode pl-0"></i>
-    <% end %>
+    <i class="fa-solid fa-qrcode pl-0"></i>
   </div>
-</div>
-
+<% end %>
