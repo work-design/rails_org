@@ -1,14 +1,29 @@
+<%= render 'top_bar' %>
+
 <div class="weui-panel">
   <div class="weui-panel__hd"><%= t('.title') %></div>
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_small-appmsg">
       <div class="weui-cells">
-      <% if @wechat_apps.size > 1 %>
-        <%= render partial: 'app', collection: @wechat_apps, as: :app %>
-      <% elsif @wechat_apps.size == 1 %>
-        <%= render partial: 'qrcode', locals: { scene: @scene } %>
-      <% end %>
+        <div class="box is-radiusless">
+          <p class="has-text-centered">
+            <strong><%= @member.organ.name %></strong>
+            <span><%= @member.name %></span>
+          </p>
+          <figure class="image">
+            <%= image_tag @scene.qrcode_data_url if @scene %>
+          </figure>
+        </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="weui-panel">
+  <div class="weui-panel__hd">邀请记录</div>
+  <div class="weui-panel__bd">
+    <div class="weui-cells mt-0">
+      <%= render partial: 'request', collection: @requests, as: :request %>
     </div>
   </div>
 </div>
