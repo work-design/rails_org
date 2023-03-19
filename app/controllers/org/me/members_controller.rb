@@ -1,21 +1,16 @@
 module Org
   class Me::MembersController < Me::BaseController
     include Org::Layout::Me
-    before_action :set_member, only: [:show, :edit, :update, :destroy, :qrcodes, :qrcode]
+    before_action :set_wechat_app, only: [:qrcodes]
+    before_action :set_member, only: [:show, :edit, :update, :destroy, :qrcodes]
 
     def qrcodes
-      @wechat_apps = Wechat::App.inviting.where(organ_id: current_organ.id)
-
-      if @wechat_apps.size == 1
-        @scene = @member.invite_scene!(@wechat_apps[0])
-        set_requests
+      @scene = @member.invite_scene!(@wechat_app)
+      if @scene.tag
+        @requests = @scene.tag.requests.includes(:wechat_user).page(params[:page])
+      else
+        @requests = Wechat::Request.none.page(params[:page])
       end
-    end
-
-    def qrcode
-      app = Wechat::App.find(params[:app_id]) || current_wechat_app
-      @scene = @member.invite_scene!(app)
-      set_requests
     end
 
     private
@@ -23,12 +18,8 @@ module Org
       @member = current_member
     end
 
-    def set_requests
-      if @scene.tag
-        @requests = @scene.tag.requests.includes(:wechat_user).page(params[:page])
-      else
-        @requests = Wechat::Request.none.page(params[:page])
-      end
+    def set_wechat_app
+      @wechat_app = Wechat::App.inviting.take
     end
 
     def member_params
