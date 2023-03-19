@@ -61,7 +61,6 @@ module Org
     def set_current_cart(organ_id)
       cart = carts.find_or_initialize_by(organ_id: organ_id)
       cart.user = user
-      cart.current = true
       cart.save if cart.persisted?
     end
 
