@@ -10,15 +10,21 @@
   </div>
   <div class="weui-panel__bd">
     <div class="columns is-4-mobile is-flex is-vcentered is-centered m-0 is-shadow" data-empty-target="content">
-      <%= link_to({ controller: 'org/me/members', action: 'show' }, class: 'column has-block-centered') do %>
+      <%= link_to({ controller: 'org/me/members', action: 'show' }, state: 'enter', class: 'column has-block-centered') do %>
         <div class="has-text-grey-dark">
-          <i class="fa-solid fa-user-gear fa-fw fa-xl"></i>
+          <i class="fa-solid fa-fw fa-xl fa-user-gear"></i>
         </div>
         <div class="has-text-dark"><%= t('org.me.members.show.title') %></div>
       <% end %>
+      <%= link_to({ controller: 'org/me/members', action: 'qrcodes' }, state: 'enter', class: 'column has-block-centered') do %>
+        <div class="has-text-grey-dark">
+          <i class="fa-solid fa-fw fa-xl fa-qrcode has-text-primary"></i>
+        </div>
+        <div class="has-text-dark"><%= t('org.me.members.qrcodes.title') %></div>
+      <% end %>
       <%= link_to({ controller: 'org/me/departments' }, class: 'column has-block-centered') do %>
         <div class="has-text-grey-dark">
-          <i class="fa-solid fa-chalkboard-user fa-fw fa-xl"></i>
+          <i class="fa-solid fa-fw fa-xl fa-chalkboard-user"></i>
         </div>
         <div class="has-text-dark"><%= t('org.me.departments.index.title') %></div>
       <% end %>
