@@ -1,7 +1,7 @@
 <div data-controller="empty" class="weui-panel is-box is-borderless">
   <div class="weui-panel__hd is-flex is-justify-content-space-between">
     <div>
-      <i class="fa-solid fa-fw fa-building"></i>
+      <i class="fa-solid fa-fw fa-building has-text-primary"></i>
       <span><%= t('org.me.title') %></span>
     </div>
     <%= link_to({ controller: 'org/admin/home' }, class: 'has-text-grey') do %>
@@ -12,7 +12,7 @@
     <div class="columns is-4-mobile is-flex is-vcentered is-centered m-0 is-shadow" data-empty-target="content">
       <%= link_to({ controller: 'org/me/members', action: 'show' }, state: 'enter', class: 'column has-block-centered') do %>
         <div class="has-text-grey-dark">
-          <i class="fa-solid fa-fw fa-xl fa-user-gear"></i>
+          <i class="fa-solid fa-fw fa-xl fa-user-gear has-text-primary"></i>
         </div>
         <div class="has-text-dark"><%= t('org.me.members.show.title') %></div>
       <% end %>
@@ -24,7 +24,7 @@
       <% end %>
       <%= link_to({ controller: 'org/me/departments' }, class: 'column has-block-centered') do %>
         <div class="has-text-grey-dark">
-          <i class="fa-solid fa-fw fa-xl fa-chalkboard-user"></i>
+          <i class="fa-solid fa-fw fa-xl fa-chalkboard-user has-text-primary"></i>
         </div>
         <div class="has-text-dark"><%= t('org.me.departments.index.title') %></div>
       <% end %>
