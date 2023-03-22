@@ -26,8 +26,8 @@
   - 信息
 
 商店型：支持 organ_id 字段；
-* my: 用户端，支持 user_id + organ_id
-* our: B2B场景，member（属于 organ）作为消费者
+* my: 用户端，支持 user_id + organ_id，user 作为消费者
+* our: B2B 场景，member（属于 member_organ）作为消费者
 
 ## 使用
 `org/board/organs` 我的企业列表
