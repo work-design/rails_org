@@ -12,6 +12,10 @@ zh:
         title: 我的
       organs:
         title: 我的企业
+  our:
+    home:
+      index:
+        title: 我的
   org:
     title: 组织架构
     admin:
