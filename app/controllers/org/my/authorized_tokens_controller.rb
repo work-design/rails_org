@@ -7,7 +7,7 @@ module Org
 
       if @authorized_token.save
         if @authorized_token.member
-          url = url_for(controller: '/in/home', **params.permit(:org_id))
+          url = url_for(controller: '/our/home', **params.permit(:org_id))
         else
           url = url_for(controller: '/my/home', **params.permit(:org_id))
         end
