@@ -8,17 +8,14 @@
   </div>
   <div class="weui-media-box__bd">
     <strong class="weui-media-box__title">
-      <span class="weui-badge weui-badge__primary">
-        <i class="fa-solid fa-building-user"></i>
-        <span><%= current_client.organ.name %></span>
-      </span>
       <span class="is-size-0_9"><%= current_user.name %></span>
     </strong>
     <div class="weui-media-box__desc">
-      <span class="has-text-weight-normal is-size-7"><%= current_account.identity %></span>
+      <span class="has-text-weight-normal is-size-7"><%= current_client.organ.name %></span>
     </div>
   </div>
   <div class="weui-media-box__ft pr-4">
-    <i class="fa-solid fa-qrcode"></i>
+    <i class="fa-solid fa-qrcode has-text-grey"></i>
+    <i class="fa-solid fa-chevron-right pl-2 has-text-grey"></i>
   </div>
 <% end %>
