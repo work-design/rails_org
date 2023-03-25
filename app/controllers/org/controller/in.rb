@@ -14,7 +14,7 @@ module Org
     def require_member
       return if current_member
 
-      redirect_to url_for(controller: 'factory/in/home', action: 'organs', **params.permit(:auth_token, :role_id))
+      redirect_to url_for(controller: '/in/home', action: 'organs', **params.permit(:auth_token, :role_id))
     end
 
   end
