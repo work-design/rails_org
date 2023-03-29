@@ -11,6 +11,7 @@ module Org
       attribute :joinable, :boolean, default: false, comment: '是否可搜索并加入'
       attribute :domain, :string
       attribute :code, :string
+      attribute :service_url, :string, comment: '客服 url'
       attribute :redirect_controller, :string, default: '/home'
       attribute :redirect_action, :string, default: 'index', comment: '默认跳转'
 
