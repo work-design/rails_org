@@ -1,5 +1,5 @@
 module Our
-  class HomeController < Our::BaseController
+  class HomeController < My::HomeController
     before_action :set_roles, only: [:organs]
 
     def index
