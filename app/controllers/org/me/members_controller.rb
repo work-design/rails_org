@@ -5,7 +5,7 @@ module Org
     before_action :set_member, only: [:show, :edit, :update, :destroy, :qrcodes]
 
     def qrcodes
-      @scene = @member.invite_scene!(@wechat_app)
+      @scene = @member.invite_scene!(current_wechat_app)
       if @scene.tag
         @requests = @scene.tag.requests.includes(:wechat_user).page(params[:page])
       else
@@ -19,7 +19,7 @@ module Org
     end
 
     def set_wechat_app
-      @wechat_app = Wechat::App.inviting.take
+      @wechat_app = current_wechat_app || Wechat::App.inviting.take
     end
 
     def member_params
