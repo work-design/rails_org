@@ -51,7 +51,7 @@ module Org
       scope :enabled, -> { where(enabled: true) }
       scope :inviter, -> { where(inviter: true) }
 
-      validates :identity, uniqueness: { scope: :organ_id }
+      validates :identity, uniqueness: { scope: :organ_id }, allow_blank: true
 
       #before_save :sync_tutorials, if: -> { join_on_changed? }
       before_save :sync_avatar_from_user, if: -> { identity_changed? && user }
