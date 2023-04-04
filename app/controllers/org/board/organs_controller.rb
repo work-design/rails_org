@@ -2,7 +2,7 @@ module Org
   class Board::OrgansController < Board::BaseController
     before_action :set_organ, only: [:show, :edit, :update, :destroy]
     before_action :set_new_organ, only: [:new, :create]
-    before_action :set_role, only: [:new, :index]
+    before_action :set_role, only: [:new]
     before_action :set_roles, only:[:index]
 
     def index

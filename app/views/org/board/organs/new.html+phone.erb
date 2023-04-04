@@ -1,4 +1,6 @@
-<%= form_with theme: 'weui', model: @organ, url: { action: 'create' } do |f| %>
+<%= render 'top_bar' %>
+
+<%= form_with theme: 'weui', model: @organ, url: { action: 'create' }, state: 'redirect' do |f| %>
   <%= render 'error_messages', target: f.object %>
   <div class="weui-form__control-area">
     <div class="weui-cells__group weui-cells__group_form">
