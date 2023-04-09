@@ -21,13 +21,13 @@
   - 必须
 * in: 在上下游中，物资流入。如：购入、租入
 * out: 在上下有中，物资流出。如：售出、租出
-
 * me: 前端，与 current_member 相关的功能
   - 信息
 
 商店型：支持 organ_id 字段；
-* my: 用户端，支持 user_id + organ_id，user 作为消费者
-* our: B2B 场景，member（属于 member_organ）作为消费者
+* my: B2C 场景，user 作为消费者，user_id + organ_id；
+* mem: B2B 场景，Member（属于 member_organ）作为消费者；
+* our: B2B 场景，Organ 做为消费者；
 
 ## 使用
 `org/board/organs` 我的企业列表

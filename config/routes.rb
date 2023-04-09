@@ -30,6 +30,10 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :mem, defaults: { namespace: 'mem' } do
+      root 'home#index'
+    end
+
     namespace 'org', defaults: { business: 'org' } do
       resources :members, only: [:index, :show] do
         collection do
