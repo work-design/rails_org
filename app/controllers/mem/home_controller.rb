@@ -1,5 +1,5 @@
 module Mem
-  class HomeController < ::Our::HomeController
+  class HomeController < My::HomeController
     include Org::Controller::Mem
     before_action :set_roles, only: [:organs]
 
