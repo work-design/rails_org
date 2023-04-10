@@ -25,7 +25,7 @@
   - 信息
 
 商店型：支持 organ_id 字段；
-* my: B2C 场景，user 作为消费者，user_id + organ_id；
+* my: B2C 场景，User 作为消费者，user_id + organ_id；
 * mem: B2B 场景，Member（属于 member_organ）作为消费者；
 * our: B2B 场景，Organ 做为消费者；
 
