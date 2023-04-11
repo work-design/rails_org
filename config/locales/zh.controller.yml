@@ -16,6 +16,10 @@ zh:
     home:
       index:
         title: 我的
+  mem:
+    home:
+      index:
+        title: 我的
   org:
     title: 组织架构
     admin:
