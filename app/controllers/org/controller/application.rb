@@ -9,7 +9,7 @@ module Org
     def current_member
       return @current_member if defined?(@current_member)
 
-      @current_member = (current_account && current_account.members.find_by(organ_id: current_organ&.id)) || current_corp_user.member
+      @current_member = (current_account && current_account.members.find_by(organ_id: current_organ&.id)) || current_corp_user&.member
       logger.debug "\e[35m  Login as member: #{@current_member&.id}  \e[0m"
       @current_member
     end
