@@ -16,7 +16,7 @@ module Org
     end
 
     def require_org_member
-      return if current_organ.self_and_ancestor_ids.include?(current_member.organ_id)
+      return if (current_organ.self_and_ancestor_ids & current_account.organ_ids).present?
 
       if request.format.html?
         render 'require_member', locals: { return_to: RailsOrg.config.default_return_path }, layout: 'application', status: 401
