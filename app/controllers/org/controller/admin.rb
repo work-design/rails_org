@@ -4,8 +4,10 @@ module Org
 
     # Must order after RailsRole::Controller
     def rails_role_user
-      if current_organ && current_member
-        current_member
+      return @rails_role_user if defined? @rails_role_user
+      r = (current_organ.self_and_ancestor_ids & current_account.organ_ids)
+      if r.present?
+        @rails_role_user = current_account.members.where(organ_id: r).take
       else
         super
       end
