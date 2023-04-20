@@ -2,10 +2,6 @@ module Org
   module Controller::Admin
     extend ActiveSupport::Concern
 
-    included do
-      before_action :require_org_member
-    end
-
     # Must order after RailsRole::Controller
     def rails_role_user
       if current_organ && current_member
