@@ -2,15 +2,12 @@ module Org
   module Controller::Admin
     extend ActiveSupport::Concern
 
-    # Must order after RailsRole::Controller
-    def rails_role_user
-      return @rails_role_user if defined? @rails_role_user
-      r = (current_organ.self_and_ancestor_ids & current_account.organ_ids)
-      if r.present?
-        @rails_role_user = current_account.members.where(organ_id: r).take
-      else
-        super
-      end
+    def current_member
+      return @current_member if defined?(@current_member)
+
+      @current_member = current_corp_user&.member || (current_account && current_account.members.where(organ_id: (current_organ.self_and_ancestor_ids & current_account.organ_ids)).take)
+      logger.debug "\e[35m  Login as member: #{@current_member&.id}  \e[0m"
+      @current_member
     end
 
     def require_org_member
