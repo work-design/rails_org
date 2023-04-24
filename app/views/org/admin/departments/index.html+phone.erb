@@ -1,3 +1,5 @@
+<%= render 'top_bar' %>
+
 <%= render layout: 'index_table' do %>
 <% @departments.each do |department| %>
   <%= render partial: 'index_tbody', layout: 'index_tr', locals: { model: department, display: 'table-row' } %>
