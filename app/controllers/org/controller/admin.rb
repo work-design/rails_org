@@ -12,12 +12,12 @@ module Org
 
     def require_org_member
       return if current_member
-      return if (current_organ.self_and_ancestor_ids & current_account.organ_ids).present?
+      return if (current_organ.self_and_ancestor_ids & Array(current_account&.organ_ids)).present?
 
-      if request.format.html?
-        render 'require_member', locals: { return_to: RailsOrg.config.default_return_path }, layout: 'application', status: 401
+      if current_user
+        redirect_to controller: '/home'
       else
-        render 'require_member', locals: { return_to: RailsOrg.config.default_return_path }, status: 401
+        require_user
       end
     end
 
