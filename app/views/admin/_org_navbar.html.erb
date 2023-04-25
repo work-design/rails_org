@@ -6,12 +6,18 @@
   <div class="navbar-dropdown is-right">
     <div class="navbar-item">
       <%= image_tag current_member.avatar if current_member && current_member.avatar.attached? %>
-      <span><%= current_account.identity %></span>
+      <span class="is-size-7 has-text-grey"><%= current_account.identity %></span>
     </div>
     <div class="navbar-divider"></div>
     <% current_account.organs.includes(:organ_domains).each do |organ| %>
-      <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.url_options(request) }, class: active_helper(controller: '/me/home', action: 'index', id: 'organs', active: 'navbar-item is-active', item: 'navbar-item')) do %>
-        <span><%= organ.name %></span>
+      <% if current_organ.self_and_ancestor_ids.include?(organ.id) %>
+        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.url_options(request) }, class: 'navbar-item is-active') do %>
+          <span><%= organ.name %></span>
+        <% end %>
+      <% else %>
+        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.url_options(request) }, class: 'navbar-item') do %>
+          <span><%= organ.name %></span>
+        <% end %>
       <% end %>
     <% end %>
   </div>
