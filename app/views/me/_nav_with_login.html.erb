@@ -1,3 +1,12 @@
-<div class="navbar-item">
-  <%= current_organ.name %>
+<% if current_organ.children.present? %>
+<div class="navbar-item has-dropdown is-hoverable ">
+  <div class="navbar-link"><%= current_organ.name %></div>
+  <div class="navbar-dropdown is-left">
+  <% current_organ.children.each do |child| %>
+    <%= link_to child.name, { controller: '/me/home', auth_token: current_authorized_token.id, **child.url_options(request) }, class: 'navbar-item' %>
+  <% end %>
+  </div>
 </div>
+<% else %>
+<div class="navbar-item is-active"><%= current_organ.name %></div>
+<% end %>
