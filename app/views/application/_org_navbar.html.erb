@@ -14,7 +14,9 @@
     <div class="navbar-divider"></div>
     <% current_account.organs.includes(:organ_domains).each do |organ| %>
       <% if current_organ.self_and_ancestor_ids.include?(organ.id) %>
-        <div class="navbar-item is-active"><%= organ.name %></div>
+        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.url_options(request) }, class: 'navbar-item is-active') do %>
+          <span><%= organ.name %></span>
+        <% end %>
       <% else %>
         <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.url_options(request) }, class: 'navbar-item') do %>
           <span><%= organ.name %></span>
