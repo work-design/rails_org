@@ -5,7 +5,7 @@ module Org
     def current_member
       return @current_member if defined?(@current_member)
 
-      @current_member = current_corp_user&.member || (current_account && current_account.members.where(organ_id: (current_organ.self_and_ancestor_ids & current_account.organ_ids)).take)
+      @current_member = current_corp_user&.member || (current_user && current_user.members.where(organ_id: (current_organ.self_and_ancestor_ids & current_account.organ_ids)).take)
       logger.debug "\e[35m  Login as member: #{@current_member&.id}  \e[0m"
       @current_member
     end
