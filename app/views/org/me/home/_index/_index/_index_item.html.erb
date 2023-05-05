@@ -1,0 +1,7 @@
+<%= link_to({ controller: 'profiled/me/profiles', action: 'qrcode' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
+  <div class="weui-cell__bd">
+    <i class="fa-solid fa-fw fa-qrcode has-text-primary"></i>
+    <span class="pl-1"><%= t('profiled.me.profiles.qrcode.title') %></span>
+  </div>
+  <div class="weui-cell__ft"></div>
+<% end %>
