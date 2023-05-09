@@ -23,7 +23,7 @@ module Org
       }, _default: 'init'
 
       belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
-      has_one :user, class_name: 'Auth::User', through: :account
+      belongs_to :user, class_name: 'Auth::User', optional: true
       belongs_to :profile, ->(o){ where(organ_id: o.organ_id) }, class_name: 'Profiled::Profile', primary_key: :identity, foreign_key: :identity, optional: true
 
       belongs_to :organ, counter_cache: true, inverse_of: :members
