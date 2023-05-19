@@ -9,7 +9,7 @@
       <span><%= current_account.identity %></span>
     </div>
     <div class="navbar-divider"></div>
-    <% current_account.organs.includes(:organ_domains).each do |organ| %>
+    <% current_user.organs.includes(:organ_domains).each do |organ| %>
       <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.url_options(request) }, class: active_helper(id: 'organs', active: 'navbar-item is-active', item: 'navbar-item')) do %>
         <span><%= organ.name %></span>
       <% end %>
