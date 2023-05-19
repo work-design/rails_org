@@ -32,6 +32,8 @@ module Org
 
       validates :name, presence: true
       validates :code, uniqueness: true, allow_blank: true
+
+      before_save :init_organ_domain, if: -> { domain.blank? }
     end
 
     def host
