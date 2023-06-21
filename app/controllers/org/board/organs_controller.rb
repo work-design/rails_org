@@ -9,7 +9,7 @@ module Org
       q_params = {}
       q_params.merge! 'who_roles.role_id' => params[:role_id] if params[:role_id].present?
 
-      @organs = current_user.organs.includes(:organ_domains).default_where(q_params)
+      @organs = current_user.organs.includes(:organ_domains).default_where(q_params).order(id: :desc)
     end
 
     private
