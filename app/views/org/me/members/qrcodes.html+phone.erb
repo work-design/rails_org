@@ -1,22 +1,20 @@
 <%= render 'top_bar' %>
 
-<div class="weui-panel">
+<div class="weui-panel is-box">
   <div class="weui-panel__bd">
-    <div class="weui-cells">
-        <div class="box is-radiusless">
-          <p class="has-text-centered">
-            <strong><%= @member.organ.name %></strong>
-            <span><%= @member.name %></span>
-          </p>
-          <figure class="image">
-            <%= image_tag @scene.qrcode_data_url if @scene %>
-          </figure>
-        </div>
-      </div>
+    <div class="box is-radiusless">
+      <p class="has-text-centered">
+        <strong><%= @member.organ.name %></strong>
+        <span><%= @member.name %></span>
+      </p>
+      <figure class="image">
+        <%= image_tag @scene.qrcode_data_url if @scene %>
+      </figure>
+    </div>
   </div>
 </div>
 
-<div class="weui-panel">
+<div class="weui-panel is-box">
   <div class="weui-panel__hd">邀请记录</div>
   <div class="weui-panel__bd">
     <div class="weui-cells mt-0">

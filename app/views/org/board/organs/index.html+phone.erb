@@ -1,16 +1,16 @@
-<div class="weui-panel is-borderless">
+<div class="weui-panel is-box is-borderless mt-2">
   <div class="weui-panel__bd">
     <%= render 'profile_item' %>
   </div>
 </div>
 
-<div class="weui-panel">
+<div class="weui-panel is-box">
   <div class="weui-panel__bd">
     <%= render partial: 'organ', collection: @organs, as: :organ %>
   </div>
 </div>
 
-<div class="weui-panel">
+<div class="weui-panel is-box">
   <div class="weui-panel__bd">
   <% @roles.each do |role| %>
     <%= link_to({ controller: 'organs', action: 'new', role_id: role.id }, class: 'weui-cell weui-cell_access') do %>
