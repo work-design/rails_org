@@ -1,0 +1,10 @@
+<%= render 'top_bar' %>
+
+<div class="weui-panel is-box">
+  <div class="weui-panel__ft">
+    <%= button_to({ action: 'destroy' }, form: { class: 'weui-cell weui-cell_access' }) do %>
+      <i class="fa-solid fa-trash"></i>
+      <span><%= t('org.me.organs.destroy.title') %></span>
+    <% end %>
+  </div>
+</div>

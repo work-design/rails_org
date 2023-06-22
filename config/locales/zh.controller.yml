@@ -124,10 +124,12 @@ zh:
         qrcodes:
           title: 邀请同事
       organs:
-        index:
-          title: 我的组织
+        show:
+          title: 注销组织
         new:
           title: 创建新组织
+        destroy:
+          title: 注销组织
       departments:
         index:
           title: 我的部门
