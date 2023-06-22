@@ -75,5 +75,13 @@ module Org
       end
     end
 
+    def default_platform_params
+      if current_organ
+        { organ_id: [current_organ.id, nil] }
+      else
+        { organ_id: nil }
+      end
+    end
+
   end
 end
