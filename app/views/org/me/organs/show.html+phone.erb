@@ -2,7 +2,7 @@
 
 <div class="weui-panel is-box">
   <div class="weui-panel__ft">
-    <%= button_to({ action: 'destroy' }, class: 'button is-danger', form: { class: 'weui-cell weui-cell_access is-justify-content-center' }) do %>
+    <%= button_to({ action: 'destroy' }, method: :delete, class: 'button is-danger', form: { class: 'weui-cell weui-cell_access is-justify-content-center' }) do %>
       <i class="fa-solid fa-trash"></i>
       <span class="pl-1"><%= t('org.me.organs.destroy.title') %></span>
     <% end %>
