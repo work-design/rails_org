@@ -1,5 +1,0 @@
-<%= form_with model: @order, url: my_orders_path,  method: :post, local: true  do |f| %>
-  <%= f.select :dinner_id, options_from_collection_for_select(@dinners, :id, :name) %>
-  <%= f.text_area :note %>
-  <%= f.submit %>
-<% end %>
