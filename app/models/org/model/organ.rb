@@ -77,5 +77,13 @@ module Org
       official?
     end
 
+    def redirect_path
+      Rails.application.routes.url_for(
+        controller: redirect_controller,
+        action: redirect_action,
+        only_path: true
+      )
+    end
+
   end
 end
