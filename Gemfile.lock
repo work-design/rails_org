@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 8c4c0a09aa878aaa8a9c9d8fac710ed2280d52e3
+  revision: a6c797c6aa4fe0695228ec573b4f2f17b234d850
   specs:
     rails_design (0.0.1)
       rails
@@ -152,7 +152,7 @@ GEM
     default_where (2.2.0)
       activerecord (>= 4.0.0)
     erubi (1.12.0)
-    faraday (2.7.8)
+    faraday (2.7.9)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
