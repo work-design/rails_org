@@ -59,7 +59,7 @@ module Org
         return cur if organ_domains.map(&:options).include?(cur)
       end
 
-      od = organ_domain || organ_domains.take
+      od = organ_domains.find(&:default) || organ_domains.take
       return od.options if od
 
       {}
