@@ -1,0 +1,16 @@
+<div data-controller="empty" class="weui-panel is-box is-borderless">
+  <div class="weui-panel__hd">
+    <i class="fa-solid fa-fw fa-building has-text-primary"></i>
+    <span><%= t('org.panel.title') %></span>
+  </div>
+  <div class="weui-panel__bd">
+    <div class="columns is-4-mobile is-flex is-vcentered is-centered m-0 is-shadow" data-empty-target="content">
+      <%= link_to({ controller: 'org/panel/organs' }, class: 'column has-block-centered') do %>
+        <div class="has-text-primary">
+          <i class="fa-solid fa-fw fa-xl fa-user-gear"></i>
+        </div>
+        <div class="has-text-grey is-size-7 mt-1"><%= t('org.panel.organs.index.title') %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
