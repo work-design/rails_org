@@ -94,6 +94,9 @@ zh:
       organ_domains:
         index:
           title: 组织域名
+      members:
+        index:
+          title: 员工列表
     our:
       title: 分支机构
       organs:
