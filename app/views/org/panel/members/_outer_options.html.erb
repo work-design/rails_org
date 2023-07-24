@@ -1,0 +1,4 @@
+<% f_method = "#{outer}_ancestors(#{depth}i)" %>
+<div class="field is-narrow" id="<%= "#{f_method}_input" %>" data-controller="taxon" data-taxon-url-value="<%= url_for(action: 'options') %>" data-taxon-title-value="outer_ancestors_input" data-taxon-params-value="<%= { node_type: node.class.base_class.name, index: f.index, as: f.object_name, method: f_method, outer: outer }.to_json %>">
+  <%= f.collection_select(f_method, node.self_and_siblings, :id, :name, { selected: node.id, include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { title: 'outer_ancestors', action: 'taxon#choose' } }) %>
+</div>

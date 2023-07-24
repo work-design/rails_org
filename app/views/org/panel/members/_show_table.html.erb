@@ -1,0 +1,49 @@
+<tr>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:leader) %></td>
+  <td><%= @member.leader&.name %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:identity) %></td>
+  <td><%= @member.identity %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:department) %></td>
+  <td>
+    <% @member.departments.each do |department| %>
+      <p><%= link_to department.full_name, { controller: 'departments', action: 'show', id: department.id } %></p>
+    <% end %>
+  </td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:join_on) %></td>
+  <td>
+  <% if @member.join_on %>
+    <span><%= @member.join_on %></span>
+  <% else %>
+    <time data-controller="time"><%= @member.created_at.to_fs(:iso8601) %></time>
+  <% end %>
+  </td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:tutorials) %></td>
+  <td>
+    <table class="table">
+      <% @member.tutorials.each do |tutorial| %>
+        <tr>
+          <td><%= tutorial.id %></td>
+          <td><%= tutorial.kind_i18n %></td>
+          <td><%= tutorial.tutor&.name %></td>
+        </tr>
+      <% end %>
+      <tfoot>
+      <tr>
+        <td colspan="3">
+          <% Org::Tutorial.options_i18n(:kind).each do |text, value| %>
+            <%= link_to text, { controller: 'tutorials', action: 'new', kind: value, member_id: @member.id }, class: 'tag' %>
+          <% end %>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </td>
+</tr>

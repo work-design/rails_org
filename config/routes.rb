@@ -82,6 +82,7 @@ Rails.application.routes.draw do
       namespace :panel, defaults: { namespace: 'panel' } do
         resources :organs do
           resources :organ_domains
+          resources :members
         end
       end
 

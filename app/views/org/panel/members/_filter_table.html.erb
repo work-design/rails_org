@@ -1,0 +1,9 @@
+<table class="table as-search">
+  <tr>
+    <th><%= Org::Member.human_attribute_name(:enabled) %></th>
+    <td>
+      <%= link_to t('.enabled'), filter_params(enabled: 1), class: active_helper(enabled: 1, active: 'button is-info', item: 'button is-light') %>
+      <%= link_to t('.disabled'), filter_params(enabled: 0), class: active_helper(enabled: 0, active: 'button is-info', item: 'button is-light') %>
+    </td>
+  </tr>
+</table>

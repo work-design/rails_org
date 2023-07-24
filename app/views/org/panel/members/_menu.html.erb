@@ -1,0 +1,11 @@
+<div class="breadcrumb has-succeeds-separator">
+  <ul>
+    <%= link_to t('org.admin.members.index.title'), { controller: 'members' } %>
+    <div class="is-active"><%= @member.name %></div>
+  </ul>
+</div>
+
+<div class="ui top attached tabular menu">
+  <%= link_to t('org.admin.members.show.title'), { controller: 'members', action: 'show', id: @member.id }, class: active_helper('org/admin/members': 'show') %>
+  <%# link_to 'Profile', profile_admin_member_path(@member), class: active_helper('org/admin/members': 'profile') %>
+</div>
