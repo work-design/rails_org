@@ -5,9 +5,6 @@
       <%= link_to({ controller: 'organ_domains', organ_id: model.id }, aria: { label: t('org.panel.organ_domains.index.title') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-mobile has-text-info"></i>
       <% end %>
-      <%= link_to({ controller: 'members', organ_id: model.id }, aria: { label: t('org.panel.members.index.title') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-solid fa-users has-text-info"></i>
-      <% end %>
       <%= link_to({ action: 'edit', id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-pencil has-text-link"></i>
       <% end %>
