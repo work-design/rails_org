@@ -6,6 +6,7 @@
       <span class="has-text-grey">(<%= model.name_short %>)</span>
     <% end %>
   </div>
+  <p class="has-text-grey"><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
 </td>
 <td><%= simple_format model.domains %></td>
 <td>
