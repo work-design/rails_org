@@ -16,11 +16,11 @@
     <% end %>
     <% current_user.organs.includes(:organ_domains).each do |organ| %>
       <% if current_organ.self_and_ancestor_ids.include?(organ.id) %>
-        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.url_options(request) }, text: true, class: 'navbar-item is-active') do %>
+        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.admin_url_options(request) }, text: true, class: 'navbar-item is-active') do %>
           <span><%= organ.name %></span>
         <% end %>
       <% else %>
-        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.url_options(request) }, text: true, class: 'navbar-item') do %>
+        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.admin_url_options(request) }, text: true, class: 'navbar-item') do %>
           <span><%= organ.name %></span>
         <% end %>
       <% end %>

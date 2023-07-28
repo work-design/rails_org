@@ -34,18 +34,13 @@ module Org
       validates :code, uniqueness: true, allow_blank: true
     end
 
-    def host
-      domain = organ_domains.find(&:frontend?) || organ_domains.create
-      domain.identity
-    end
-
-    def admin_host
-      admin_domain = organ_domains.find(&:backend?) || organ_domains.create(kind: 'backend')
-      admin_domain.identifier
-    end
-
     def address_detail
       "#{area&.full_name} #{address}"
+    end
+
+    def host
+      domain = organ_domains.find(&:frontend?) || organ_domains.create
+      domain.identifier
     end
 
     def url_options(request = nil)
@@ -55,7 +50,25 @@ module Org
         return cur if organ_domains.map(&:options).include?(cur)
       end
 
-      od = organ_domains.find(&:frontend) || organ_domains
+      od = organ_domains.find(&:frontend?) || organ_domains.create
+      return od.options if od
+
+      {}
+    end
+
+    def admin_host
+      admin_domain = organ_domains.find(&:backend?) || organ_domains.create(kind: 'backend')
+      admin_domain.identifier
+    end
+
+    def admin_url_options(request = nil)
+      if request.is_a? ActionDispatch::Request
+        cur = { host: request.host, protocol: request.scheme }
+        cur.merge! port: request.port.to_s unless request.port.to_s == '80'
+        return cur if organ_domains.map(&:options).include?(cur)
+      end
+
+      od = organ_domains.find(&:backend?) || organ_domains.create(kind: 'backend')
       return od.options if od
 
       {}
