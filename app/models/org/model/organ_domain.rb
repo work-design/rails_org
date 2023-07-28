@@ -14,7 +14,7 @@ module Org
       enum scheme: {
         http: 'http',
         https: 'https'
-      }, _default: 'https'
+      }, _default: Rails.application.routes.default_url_options[:protocol].presence || 'https'
 
       enum kind: {
         frontend: 'frontend',
@@ -56,7 +56,7 @@ module Org
     def options
       r = {
         host: host || Rails.application.routes.default_url_options[:host],
-        port: port,
+        port: port || Rails.application.routes.default_url_options[:port],
         protocol: scheme.presence || Rails.application.routes.default_url_options[:protocol]
       }
       r.delete(:port) if r[:port].blank? || r[:port] == '80'
