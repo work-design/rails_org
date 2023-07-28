@@ -9,7 +9,6 @@ module Org
       attribute :members_count, :integer, default: 0
       attribute :official, :boolean, default: false, comment: '是否官方'
       attribute :joinable, :boolean, default: false, comment: '是否可搜索并加入'
-      attribute :domain, :string
       attribute :code, :string
       attribute :service_url, :string, comment: '客服 url'
       attribute :redirect_controller, :string, default: '/home'
@@ -20,7 +19,6 @@ module Org
       belongs_to :creator, class_name: 'Auth::User', optional: true
       belongs_to :provider, class_name: 'Org::Organ', optional: true
 
-      has_one :organ_domain, -> { where(default: true) }, inverse_of: :organ
       has_many :supports, -> { where(department_id: nil) }, dependent: :destroy_async
       has_many :departments, dependent: :destroy_async
       has_many :members, dependent: :destroy_async
@@ -34,20 +32,11 @@ module Org
 
       validates :name, presence: true
       validates :code, uniqueness: true, allow_blank: true
-
-      before_save :init_organ_domain, if: -> { domain.blank? }
     end
 
     def host
-      if domain.blank?
-        init_organ_domain
-        save
-      end
-      # todo deal with port
-      ActionDispatch::Http::URL.url_for(
-        host: domain || Rails.application.routes.default_url_options[:host],
-        protocol: Rails.application.routes.default_url_options[:protocol]
-      )
+      domain = organ_domains.find(&:frontend?) || organ_domains.create
+      domain.identity
     end
 
     def admin_host
@@ -66,14 +55,10 @@ module Org
         return cur if organ_domains.map(&:options).include?(cur)
       end
 
-      od = organ_domains.find(&:default) || organ_domains.take
+      od = organ_domains.find(&:frontend) || organ_domains
       return od.options if od
 
       {}
-    end
-
-    def init_organ_domain
-      organ_domain || build_organ_domain
     end
 
     def domains

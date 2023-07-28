@@ -55,9 +55,9 @@ module Org
 
     def options
       r = {
-        host: host,
+        host: host || Rails.application.routes.default_url_options[:host],
         port: port,
-        protocol: scheme.presence || 'https'
+        protocol: scheme.presence || Rails.application.routes.default_url_options[:protocol]
       }
       r.delete(:port) if r[:port].blank? || r[:port] == '80'
       r
