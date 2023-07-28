@@ -13,7 +13,6 @@ module Org
       attribute :number, :string
       attribute :join_on, :date
       attribute :enabled, :boolean, default: true
-      attribute :owned, :boolean, default: false
       attribute :inviter, :boolean, default: false
 
       enum state: {
@@ -65,7 +64,7 @@ module Org
     end
 
     def admin?
-      owned?
+      user == organ.creator
     end
 
     def grade

@@ -3,8 +3,9 @@ module Org
     extend ActiveSupport::Concern
 
     included do
-      has_many :members, class_name: 'Org::Member'
-      has_many :organs, -> { distinct }, class_name: 'Org::Organ', through: :members
+      has_many :created_organs, class_name: 'Org::Organ', foreign_key: :creator_id
+      has_many :members, class_name: 'Org::Member', through: :accounts
+      has_many :organs, class_name: 'Org::Organ', through: :members
 
       after_save :copy_avatar_to_members, if: -> { attachment_changes['avatar'].present? }
     end

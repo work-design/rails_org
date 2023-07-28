@@ -18,8 +18,7 @@ module Org
     end
 
     def set_new_organ
-      @member = current_user.members.build(owned: true)
-      @organ = @member.build_organ(organ_params)
+      @organ = current_user.created_organs.build(organ_params)
       @organ.who_roles.build(role_id: params[:role_id]) if params[:role_id].present?
     end
 

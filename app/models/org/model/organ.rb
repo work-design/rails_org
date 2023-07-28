@@ -17,6 +17,8 @@ module Org
 
       has_taxons :area
       belongs_to :area, class_name: 'Profiled::Area', optional: true
+      belongs_to :creator, class_name: 'Auth::User', optional: true
+      belongs_to :provider, class_name: 'Org::Organ', optional: true
 
       has_one :organ_domain, -> { where(default: true) }, inverse_of: :organ
       has_many :supports, -> { where(department_id: nil) }, dependent: :destroy_async

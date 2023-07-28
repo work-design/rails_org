@@ -5,6 +5,14 @@
 </div>
 
 <div class="weui-panel is-box">
+  <div class="weui-panel__hd">我创建的</div>
+  <div class="weui-panel__bd">
+    <%= render partial: 'organ', collection: current_user.created_organs, as: :organ %>
+  </div>
+</div>
+
+<div class="weui-panel is-box">
+  <div class="weui-panel__hd">我加入的</div>
   <div class="weui-panel__bd">
     <%= render partial: 'organ', collection: @organs, as: :organ %>
   </div>
