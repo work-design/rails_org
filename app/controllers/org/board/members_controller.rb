@@ -32,10 +32,13 @@ module Org
     end
 
     private
+    def set_accounts
+      @accounts = current_user.accounts
+    end
+
     def set_organs
       @organs = Organ.where(official: false).limit(5)
-      @member = current_user.members.build
-      @organ = @member.build_organ
+      @member = current_account.members.build
       @identities = current_user.available_account_identities.pluck(:identity).map { |i| [i, i] }
     end
 

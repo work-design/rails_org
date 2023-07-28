@@ -18,7 +18,7 @@
     <span class="has-text-grey is-size-7"><%= account.identity %></span>
   </div>
   <div class="weui-panel__bd">
-    <%= render partial: 'organ', collection: account.organs, as: :organ %>
+    <%= render partial: 'organ', collection: account.organs.where.not(id: current_user.created_organ_ids), as: :organ %>
   </div>
 </div>
 <% end %>
