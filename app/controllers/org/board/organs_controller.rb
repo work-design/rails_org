@@ -37,11 +37,12 @@ module Org
     end
 
     def organ_params
-      params.fetch(:organ, {}).permit(
+      p = params.fetch(:organ, {}).permit(
         :name,
         :logo,
         who_roles_attributes: {}
       )
+      p.merge! provider_id: current_organ&.id
     end
 
   end
