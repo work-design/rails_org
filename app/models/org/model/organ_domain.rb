@@ -16,6 +16,11 @@ module Org
         https: 'https'
       }, _default: 'https'
 
+      enum kind: {
+        frontend: 'frontend',
+        backend: 'backend'
+      }, _default: 'frontend'
+
       belongs_to :organ
 
       validates :identifier, uniqueness: true
@@ -40,7 +45,11 @@ module Org
     end
 
     def init_subdomain
-      self.subdomain = ['org', organ_id].join('-')
+      if backend?
+        self.subdomain = ['admin', organ_id].join('-')
+      else
+        self.subdomain = ['org', organ_id].join('-')
+      end
       compute_identifier
     end
 

@@ -50,6 +50,11 @@ module Org
       )
     end
 
+    def admin_host
+      admin_domain = organ_domains.find(&:backend?) || organ_domains.create(kind: 'backend')
+      admin_domain.identifier
+    end
+
     def address_detail
       "#{area&.full_name} #{address}"
     end
