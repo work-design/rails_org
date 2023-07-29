@@ -7,7 +7,7 @@ module Org
 
     def index
       q_params = {
-        provider_id: current_organ.id
+        provider_id: current_organ&.id
       }
       q_params.merge! 'who_roles.role_id' => params[:role_id] if params[:role_id].present?
 
