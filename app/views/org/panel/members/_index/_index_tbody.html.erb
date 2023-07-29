@@ -6,12 +6,8 @@
   <p class="has-text-grey"><%= model.identity %></p>
 </td>
 <td>
-  <% model.member_departments.each do |md| %>
-    <p>
-      <%= link_to md.department.full_name, { controller: 'departments', action: 'show', id: md.department_id } %>
-      <span><%= md.job_title.name %></span>
-    </p>
-  <% end %>
+  <p><%= model.wechat_openid %></p>
+  <p><%= model.corp_userid %></p>
 </td>
 <td><%= model.join_on %></td>
 <td>

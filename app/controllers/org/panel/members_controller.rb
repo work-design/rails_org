@@ -23,12 +23,11 @@ module Org
       params.fetch(:member, {}).permit(
         :name,
         :identity,
-        :type,
         :join_on,
         :enabled,
-        :inviter,
+        :wechat_openid,
+        :corp_userid,
         :avatar,
-        :resume,
         role_ids: [],
         member_departments_attributes: {},
       )

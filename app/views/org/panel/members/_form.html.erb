@@ -1,8 +1,6 @@
 <%= f.text_field :name %>
-<%= f.file_field :avatar %>
-<%= f.fields :member_departments, label: false, wrap: { all: nil, input: 'field' } do |ef| %>
-  <%= render partial: 'item_form', locals: { ef: ef } %>
-<% end %>
 <%= f.text_field :identity %>
+<%= f.text_field :wechat_openid %>
+<%= f.text_field :corp_userid %>
 <%= f.date_field :join_on %>
 <%= f.check_box :enabled %>
