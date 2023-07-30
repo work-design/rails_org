@@ -28,15 +28,10 @@ module Org
       after_initialize :init_subdomain, if: -> { new_record? && subdomain.nil? }
       before_validation :compute_identifier, if: -> { (changes.keys & ['domain', 'subdomain', 'port', 'host']).present? }
       after_update :set_default, if: -> { default? && saved_change_to_default? }
-      after_save :sync_domain_to_organ, if: -> { saved_change_to_identifier? || (default? && saved_change_to_default?) }
     end
 
     def set_default
       self.class.where.not(id: self.id).where(organ_id: self.organ_id).update_all(default: false)
-    end
-
-    def sync_domain_to_organ
-      organ.update domain: identifier
     end
 
     def compute_identifier
