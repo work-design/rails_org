@@ -3,11 +3,13 @@
   <p><%= model.domain %></p>
 </td>
 <td>
-  <span><%= model.host %></span>
-  <span>:</span>
-  <span><%= model.port %></span>
+  <p>
+    <span><%= model.host %></span>
+    <span>:</span>
+    <span><%= model.port %></span>
+  </p>
+  <p><%= model.kind_i18n %></p>
 </td>
-<td><%= model.identifier %></td>
 <td><%= model.beian %></td>
 <td>
   <%= form_with theme: nil, model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
