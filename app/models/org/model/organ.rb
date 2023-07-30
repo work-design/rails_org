@@ -19,6 +19,7 @@ module Org
       belongs_to :creator, class_name: 'Auth::User', optional: true
       belongs_to :provider, class_name: 'Org::Organ', optional: true
 
+      has_many :organs, class_name: self.name, primary_key: :provider_id
       has_many :supports, -> { where(department_id: nil) }, dependent: :destroy_async
       has_many :departments, dependent: :destroy_async
       has_many :members, dependent: :destroy_async
