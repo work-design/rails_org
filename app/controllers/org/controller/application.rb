@@ -13,7 +13,7 @@ module Org
         @current_member = current_wechat_user.org_members.find_by(organ_id: current_organ&.self_and_ancestor_ids)
       elsif current_corp_user
         @current_member = current_corp_user.member
-      else
+      elsif current_user
         @current_member = current_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)
       end
       logger.debug "\e[35m  Login as member: #{@current_member&.id}  \e[0m"
