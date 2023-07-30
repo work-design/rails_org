@@ -6,12 +6,13 @@ module Org
     before_action :set_roles, only:[:index]
 
     def index
-      @q_params = {
+      q_params = {
         provider_id: current_organ&.id
       }
-      @q_params.merge! 'who_roles.role_id' => params[:role_id] if params[:role_id].present?
+      q_params.merge! 'who_roles.role_id' => params[:role_id] if params[:role_id].present?
 
-      @created_organs = current_user.created_organs.includes(:organ_domains).default_where(@q_params).order(id: :desc)
+      @created_organs = current_user.created_organs.includes(:organ_domains).default_where(q_params).order(id: :desc)
+      @accounts = current_user.accounts.each_with_object({}) { |k, h| h[k] = k.organs.where.not(id: current_user.created_organ_ids).default_where(q_params) }
     end
 
     private

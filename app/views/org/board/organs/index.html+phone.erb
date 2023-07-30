@@ -13,15 +13,15 @@
 </div>
 <% end %>
 
-<% current_user.accounts.each do |account| %>
-  <% if account.organs.present? %>
+<% @accounts.each do |account, organs| %>
+  <% if organs.present? %>
   <div class="weui-panel is-box">
     <div class="weui-panel__hd has-block-space-between">
       <span>我加入的</span>
       <span class="has-text-grey is-size-7"><%= account.identity %></span>
     </div>
     <div class="weui-panel__bd">
-      <%= render partial: 'organ', collection: account.organs.where.not(id: current_user.created_organ_ids).default_where(@q_params), as: :organ %>
+      <%= render partial: 'organ', collection: organs, as: :organ %>
     </div>
   </div>
   <% end %>
