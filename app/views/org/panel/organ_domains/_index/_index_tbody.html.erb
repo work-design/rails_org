@@ -5,8 +5,10 @@
 <td>
   <p>
     <span><%= model.host %></span>
+    <% if model.port.present? && model.port != 80 %>
     <span>:</span>
     <span><%= model.port %></span>
+    <% end %>
   </p>
   <p><%= model.kind_i18n %></p>
 </td>
