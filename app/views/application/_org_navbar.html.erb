@@ -7,23 +7,22 @@
     <span><%= current_organ.present? ? current_organ.name : t('.title') %></span>
   </div>
   <div class="navbar-dropdown is-right">
-    <% if current_member %>
+  <% current_user.accounts.each do |account| %>
     <div class="navbar-item">
-      <%= image_tag current_member.avatar if current_member.avatar.attached? %>
-      <span class="is-size-7 has-text-grey"><%= current_member.identity %></span>
+      <span class="is-size-7 has-text-grey"><%= account.identity %></span>
     </div>
     <div class="navbar-divider"></div>
-    <% end %>
-    <% current_user.organs.includes(:organ_domains).each do |organ| %>
-      <% if current_organ.self_and_ancestor_ids.include?(organ.id) %>
-        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.admin_url_options(request) }, text: true, class: 'navbar-item is-active') do %>
-          <span><%= organ.name %></span>
+    <% account.members.each do |member| %>
+      <% if current_organ.self_and_ancestor_ids.include?(member.organ_id) %>
+        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **member.organ.admin_url_options(request) }, text: true, class: 'navbar-item is-active') do %>
+          <span><%= member.organ.name %></span>
         <% end %>
       <% else %>
-        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **organ.admin_url_options(request) }, text: true, class: 'navbar-item') do %>
-          <span><%= organ.name %></span>
+        <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **member.organ.admin_url_options(request) }, text: true, class: 'navbar-item') do %>
+          <span><%= member.organ.name %></span>
         <% end %>
       <% end %>
     <% end %>
+  <% end %>
   </div>
 </div>
