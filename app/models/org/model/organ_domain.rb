@@ -43,6 +43,8 @@ module Org
     def init_subdomain
       if backend?
         self.subdomain = ['admin', organ_id].join('-')
+      elsif mp?
+        self.subdomain = ['mp', organ_id].join('-')
       else
         self.subdomain = ['org', organ_id].join('-')
       end

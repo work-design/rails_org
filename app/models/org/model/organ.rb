@@ -75,6 +75,11 @@ module Org
       {}
     end
 
+    def mp_host
+      mp_domain = organ_domains.find(&:mp?) || organ_domains.create(kind: 'mp')
+      mp_domain.identifier
+    end
+
     def domains
       organ_domains.pluck(:identifier)
     end
