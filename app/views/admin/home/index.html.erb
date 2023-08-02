@@ -1,6 +1,15 @@
 <div class="columns">
   <div class="column">
-    <%= render partial: 'business', collection: @meta_businesses, as: :meta %>
+    <%= render 'factory_admin' if defined?(RailsFactory) %>
+    <%= render 'trade_admin' if defined?(RailsTrade) %>
+    <%= render 'wechat_admin' if defined?(RailsWechat) %>
+    <%= render 'crm_admin' if defined?(RailsCrm) %>
+    <%= render 'finance_admin' if defined?(RailsFinance) %>
+    <%= render 'profile_admin' if defined?(RailsProfile) %>
+    <%= render 'bench_admin' if defined?(RailsBench) %>
+    <%= render 'cms_admin' if defined?(RailsCms) %>
+    <%= render 'markdown_admin' if defined?(RailsMarkdown) %>
+    <%= render 'ship_admin' if defined?(RailsShip) %>
   </div>
   <div class="column">
     <div class="box">
