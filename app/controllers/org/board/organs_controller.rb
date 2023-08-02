@@ -15,6 +15,16 @@ module Org
       @accounts = current_user.accounts.each_with_object({}) { |k, h| h[k] = k.organs.where.not(id: current_user.created_organ_ids).default_where(q_params) }
     end
 
+    def create
+      @member = @organ.members.build(wechat_openid: current_authorized_token.uid, identity: current_authorized_token.identity)
+
+      if @organ.save
+        render 'create', locals: { model: @organ }
+      else
+        render :new, locals: { model: @organ }, status: :unprocessable_entity
+      end
+    end
+
     private
     def set_organ
       @organ = current_user.created_organs.find(params[:id])
