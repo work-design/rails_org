@@ -14,7 +14,7 @@ module Org
     def require_member
       return if current_member
 
-      redirect_to url_for(controller: 'org/board/organs', **params.permit(:auth_token))
+      redirect_to url_for(controller: 'org/board/organs', host: current_organ.provider.host, **params.permit(:auth_token)), allow_other_host: true
     end
 
   end
