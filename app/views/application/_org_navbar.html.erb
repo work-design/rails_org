@@ -27,7 +27,7 @@
   <% current_user.wechat_users.each do |oauth_user| %>
     <div class="navbar-item"><%= oauth_user.name.presence || oauth_user.uid %></div>
     <div class="navbar-divider"></div>
-    <% oauth_user.org_members.each do |member| %>
+    <% oauth_user.members.each do |member| %>
       <% if current_organ.self_and_ancestor_ids.include?(member.organ_id) %>
         <%= link_to({ controller: '/me/home', auth_token: current_authorized_token.id, **member.organ.admin_url_options(request) }, text: true, class: 'navbar-item is-active') do %>
           <span><%= member.organ.name %></span>

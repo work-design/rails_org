@@ -17,7 +17,7 @@ module Org
 
     private
     def set_organ
-      @organ = current_user.organs.find(params[:id])
+      @organ = current_user.created_organs.find(params[:id])
     end
 
     def set_new_organ
