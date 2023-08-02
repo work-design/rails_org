@@ -1,6 +1,11 @@
 zh:
   activerecord:
     enum:
+      organ_domain:
+        kind:
+          frontend: 网站
+          backend: 管理平台
+          mp: 小程序
       job_transfer:
         state:
           init: 申请
