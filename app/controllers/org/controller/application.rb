@@ -9,15 +9,11 @@ module Org
     def current_member
       return @current_member if defined?(@current_member)
 
-      if current_wechat_user
-        @current_member = current_wechat_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)
-      elsif current_account
-        @current_member = current_account.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)
-      elsif current_corp_user
-        @current_member = current_corp_user.member
-      elsif current_user
-        @current_member = current_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)
-      end
+      @current_member = current_wechat_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids) if current_wechat_user
+      @current_member = current_account.members.find_by(organ_id: current_organ&.self_and_ancestor_ids) if current_account && @current_member.blank?
+      @current_member = current_corp_user.member if current_corp_user && @current_member.blank?
+      @current_member = current_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids) if current_user && @current_member.blank?
+
       logger.debug "\e[35m  Login as member: #{@current_member&.id}  \e[0m"
       @current_member
     end
