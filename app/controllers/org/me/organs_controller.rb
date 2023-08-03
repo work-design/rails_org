@@ -4,7 +4,7 @@ module Org
     before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
     def destroy
-      if current_member.owned
+      if current_user.id == @organ.creator_id
         @organ.destroy
       end
     end
