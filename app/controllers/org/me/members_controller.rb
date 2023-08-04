@@ -19,7 +19,7 @@ module Org
     end
 
     def set_wechat_app
-      @wechat_app = current_organ.app || Wechat::App.inviting.take
+      @wechat_app = Wechat::PublicApp.inviting.take
     end
 
     def member_params
