@@ -29,6 +29,7 @@ module Org
         :logo,
         :official,
         :name_short,
+        :license,
         :parent_ancestors,
         :area_ancestors
       ]
