@@ -3,6 +3,10 @@
   <td><%= @organ.name %></td>
 </tr>
 <tr>
+  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:name_short) %></td>
+  <td><%= @organ.name_short %></td>
+</tr>
+<tr>
   <td class="has-text-right"><%= Org::Organ.human_attribute_name(:organ_uuid) %></td>
   <td><%= @organ.organ_uuid %></td>
 </tr>
