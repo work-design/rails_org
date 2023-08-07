@@ -30,6 +30,7 @@ module Org
         :default,
         :appid,
         :scheme,
+        :kind,
         :beian
       )
     end
