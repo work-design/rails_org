@@ -6,7 +6,7 @@
   <div class="navbar-dropdown is-right">
     <div class="navbar-item">
       <%= image_tag current_member.avatar if current_member && current_member.avatar.attached? %>
-      <span><%= current_member.name %></span>
+      <span><%= current_member&.name %></span>
     </div>
     <div class="navbar-divider"></div>
     <% current_user.organs.includes(:organ_domains).each do |organ| %>
