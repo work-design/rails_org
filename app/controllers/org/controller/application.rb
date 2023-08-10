@@ -3,7 +3,7 @@ module Org
     extend ActiveSupport::Concern
 
     included do
-      helper_method :current_organ, :current_member, :other_organs, :default_platform_params
+      helper_method :current_organ, :current_organ_domain, :current_member, :other_organs, :default_platform_params
     end
 
     def current_member
