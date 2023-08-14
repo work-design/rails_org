@@ -1,3 +1,4 @@
+
 module Org
   module Model::Member
     extend ActiveSupport::Concern
@@ -58,12 +59,11 @@ module Org
 
     def set_current_cart(organ_id)
       cart = carts.find_or_initialize_by(organ_id: organ_id)
-      cart.user = user
       cart.save if cart.persisted?
     end
 
     def admin?
-      user == organ.creator
+      account.user_ids.include?(organ.creator_id) if account
     end
 
     def grade
