@@ -97,5 +97,21 @@ module Org
       )
     end
 
+    def redirect_url
+      Rails.application.routes.url_for(
+        controller: redirect_controller,
+        action: redirect_action,
+        host: host
+      )
+    end
+
+    def mp_redirect_url
+      Rails.application.routes.url_for(
+        controller: redirect_controller,
+        action: redirect_action,
+        host: mp_host
+      )
+    end
+
   end
 end
