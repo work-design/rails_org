@@ -101,7 +101,8 @@ module Org
       Rails.application.routes.url_for(
         controller: redirect_controller,
         action: redirect_action,
-        host: options[:host] || host
+        host: options.delete(:host) || host,
+        **options
       )
     end
 
