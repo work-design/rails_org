@@ -97,11 +97,11 @@ module Org
       )
     end
 
-    def redirect_url
+    def redirect_url(**options)
       Rails.application.routes.url_for(
         controller: redirect_controller,
         action: redirect_action,
-        host: host
+        host: options[:host] || host
       )
     end
 
