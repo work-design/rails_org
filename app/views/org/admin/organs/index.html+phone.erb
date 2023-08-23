@@ -1,0 +1,7 @@
+<%= render 'top_bar' %>
+<%= render 'filter_form' %>
+
+<%= render layout: 'index_table' do %>
+  <%= render partial: 'current_tbody', layout: 'index_tr', locals: { model: current_organ } %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @organs, as: :model %>
+<% end %>
