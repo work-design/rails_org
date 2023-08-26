@@ -61,5 +61,13 @@ module Org
       r
     end
 
+    def url
+      URI::Generic.build(
+        host: host,
+        scheme: scheme,
+        port: port
+      ).to_s
+    end
+
   end
 end
