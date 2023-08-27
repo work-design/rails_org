@@ -1,10 +1,8 @@
-<div class="ui three cards">
-  <% @members.each do |member| %>
   <div class="card">
     <div class="content">
       <div>
         <i class="fa-regular fa-user"></i>
-        <span class="ui grey text"><%= member.name %></span>
+        <span class="ui grey text"><%= model.name %></span>
         <span class="ui green text"><%= member.identity %></span>
       </div>
     </div>
@@ -17,12 +15,3 @@
       </p>
     </div>
   </div>
-  <% end %>
-  <div class="card">
-    <div class="content">
-      <%= link_to new_board_organ_path, aria: { label: t('org.my.organs.new.title') } do %>
-        <i class="fa-solid fa-plus"></i>
-      <% end %>
-    </div>
-  </div>
-</div>

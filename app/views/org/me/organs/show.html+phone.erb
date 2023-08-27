@@ -1,5 +1,8 @@
 <%= render 'top_bar' %>
 
+
+
+<% if current_organ.creator_id == current_user.id %>
 <div class="weui-panel is-box">
   <div class="weui-panel__ft">
     <%= button_to({ action: 'destroy' }, method: :delete, class: 'button is-danger', form: { class: 'weui-cell weui-cell_access is-justify-content-center' }) do %>
@@ -8,3 +11,4 @@
     <% end %>
   </div>
 </div>
+<% end %>
