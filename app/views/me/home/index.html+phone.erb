@@ -1,10 +1,21 @@
+<%= render 'top_bar' %>
+
 <div class="weui-panel is-box is-borderless mt-3">
   <div class="weui-panel__bd">
     <%= render 'profile_item' %>
+  </div>
+  <div class="weui-panel__ft">
+    <div class="weui-navbar">
+      <%= link_to({ controller: '/admin/home' }, class: active_helper(controllers: 'admin/home', item: 'weui-navbar__item', active: 'weui-navbar__item weui-bar__item_on')) do %>
+        <i class="fa-solid fa-network-wired"></i>
+        <span><%= t('admin.home.index.title') %></span>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <%= render 'org_nav' %>
 <%= render 'crm_nav' %>
+<%= render 'bench_nav' if defined? RailsBench %>
 <%= render 'finance_nav' if defined? RailsFinance %>
 <%= render 'powered_by' %>
