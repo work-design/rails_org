@@ -3,6 +3,10 @@ module Org
     include Org::Layout::Me
     before_action :set_organ, only: [:show, :edit, :update, :destroy]
 
+    def index
+      @organs = current_organ.children
+    end
+
     def destroy
       if current_user.id == @organ.creator_id
         @organ.destroy
