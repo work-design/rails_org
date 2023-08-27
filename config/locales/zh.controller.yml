@@ -127,6 +127,8 @@ zh:
         qrcodes:
           title: 邀请同事
       organs:
+        index:
+          title: 组织列表
         show:
           title: 注销组织
         new:
