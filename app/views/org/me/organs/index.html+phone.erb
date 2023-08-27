@@ -2,6 +2,10 @@
 
 <div class="weui-panel is-box">
   <div class="weui-panel__bd">
+    <%= link_to({ controller: '/me/home' }, class: 'weui-cell weui-cell_access') do %>
+      <div class="weui-cell__bd"><%= current_organ.name %></div>
+      <div class="weui-cell__ft"></div>
+    <% end %>
     <%= render partial: 'organ', collection: @organs, as: :organ %>
   </div>
 </div>
