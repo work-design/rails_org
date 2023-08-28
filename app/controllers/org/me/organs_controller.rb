@@ -6,7 +6,7 @@ module Org
     def index
       @organs = current_organ.children
       if @organs.blank?
-        redirect_to controller: 'me/home'
+        redirect_to controller: '/me/home'
       end
     end
 
