@@ -53,7 +53,7 @@ module Org
       validates :identity, uniqueness: { scope: :organ_id }, allow_blank: true
 
       #before_save :sync_tutorials, if: -> { join_on_changed? }
-      before_save :sync_avatar_from_user, if: -> { identity_changed? && user }
+      #before_save :sync_avatar_from_user, if: -> { identity_changed? && user }
       #after_create :sync_member_roles, if: -> { owned? }
     end
 

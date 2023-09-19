@@ -2,6 +2,7 @@ module Org
   class Panel::MembersController < Panel::BaseController
     before_action :set_organ
     before_action :set_member, only: [:show, :edit, :update, :destroy]
+    before_action :set_new_member, only: [:new, :create]
 
     def index
       q_params = {}
@@ -17,6 +18,10 @@ module Org
 
     def set_member
       @member = @organ.members.find(params[:id])
+    end
+
+    def set_new_member
+      @member = @organ.members.build member_params
     end
 
     def member_params
