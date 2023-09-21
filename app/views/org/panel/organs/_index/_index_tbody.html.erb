@@ -8,7 +8,7 @@
   </div>
   <p class="has-text-grey"><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
 </td>
-<td><%= simple_format model.domains %></td>
+<td><%= model.creator&.name %></td>
 <td>
   <p><%= model.area&.full_name %></p>
   <p><%= model.address %></p>
