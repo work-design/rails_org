@@ -42,8 +42,6 @@ module Org
         :logo,
         :name_short,
         :address,
-        :redirect_controller,
-        :redirect_action,
         :service_url,
         :parent_ancestors,
         :area_ancestors

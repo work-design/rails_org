@@ -4,3 +4,5 @@
 <%= f.text_field :beian %>
 <%= f.select :scheme, options_for_select(Org::OrganDomain.options_i18n(:scheme), @organ_domain.scheme) %>
 <%= f.select :kind, options_for_select(Org::OrganDomain.options_i18n(:kind), @organ_domain.kind) %>
+<%= f.text_field :redirect_controller %>
+<%= f.text_field :redirect_action %>

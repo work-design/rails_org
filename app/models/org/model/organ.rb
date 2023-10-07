@@ -12,8 +12,6 @@ module Org
       attribute :code, :string
       attribute :license, :string
       attribute :service_url, :string, comment: '客服 url'
-      attribute :redirect_controller, :string, default: '/home'
-      attribute :redirect_action, :string, default: 'index', comment: '默认跳转'
 
       has_taxons :area
       belongs_to :area, class_name: 'Profiled::Area', optional: true
@@ -94,23 +92,6 @@ module Org
         controller: redirect_controller,
         action: redirect_action,
         only_path: true
-      )
-    end
-
-    def redirect_url(**options)
-      Rails.application.routes.url_for(
-        controller: redirect_controller,
-        action: redirect_action,
-        host: options.delete(:host) || host,
-        **options
-      )
-    end
-
-    def mp_redirect_url
-      Rails.application.routes.url_for(
-        controller: redirect_controller,
-        action: redirect_action,
-        host: mp_host
       )
     end
 

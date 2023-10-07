@@ -31,7 +31,9 @@ module Org
         :appid,
         :scheme,
         :kind,
-        :beian
+        :beian,
+        :redirect_controller,
+        :redirect_action,
       )
     end
 

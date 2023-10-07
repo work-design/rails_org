@@ -10,6 +10,8 @@ module Org
       attribute :identifier, :string
       attribute :default, :boolean, default: false
       attribute :beian, :string, comment: '备案号'
+      attribute :redirect_controller, :string, default: '/home'
+      attribute :redirect_action, :string, default: 'index', comment: '默认跳转'
 
       enum scheme: {
         http: 'http',
@@ -67,6 +69,15 @@ module Org
         scheme: scheme,
         port: port
       ).to_s
+    end
+
+    def redirect_url(**options)
+      Rails.application.routes.url_for(
+        controller: redirect_controller,
+        action: redirect_action,
+        host: options.delete(:host) || host,
+        **options
+      )
     end
 
   end
