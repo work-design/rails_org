@@ -86,6 +86,9 @@ Rails.application.routes.draw do
         end
       end
 
+      namespace :agent, defaults: { namespace: 'agent' } do
+      end
+
       namespace :admin, defaults: { namespace: 'admin' } do
         root 'home#index'
         controller :home do
