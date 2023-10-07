@@ -1,0 +1,8 @@
+<%= render layout: 'layouts/application_head' do %>
+  <%= render 'nav_bar' %>
+  <main class="columns is-multiline container">
+    <div class="column">
+      <%= yield %>
+    </div>
+  </main>
+<% end %>

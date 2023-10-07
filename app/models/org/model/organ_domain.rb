@@ -6,8 +6,8 @@ module Org
       attribute :subdomain, :string
       attribute :domain, :string, default: Rails.application.routes.default_url_options[:host]
       attribute :port, :string, default: Rails.application.routes.default_url_options[:port]
-      attribute :host, :string
-      attribute :identifier, :string, index: true
+      attribute :host, :string, index: true
+      attribute :identifier, :string
       attribute :default, :boolean, default: false
       attribute :beian, :string, comment: '备案号'
 
