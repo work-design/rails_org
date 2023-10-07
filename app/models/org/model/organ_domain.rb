@@ -21,7 +21,8 @@ module Org
       enum kind: {
         frontend: 'frontend',
         backend: 'backend',
-        mp: 'mp'
+        mp: 'mp',
+        agent: 'agent'
       }, _default: 'frontend'
 
       belongs_to :organ
