@@ -2,7 +2,9 @@
   <%= render 'nav_bar' %>
   <div id="alert"></div>
   <main class="container">
-    <%= render 'breadcrumb' %>
+    <div class="px-3 pt-3">
+      <%= render 'breadcrumb' %>
+    </div>
     <main class="columns">
       <div class="column">
         <%= yield %>
