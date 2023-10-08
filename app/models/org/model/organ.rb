@@ -88,9 +88,10 @@ module Org
     end
 
     def redirect_path
+      fronted = organ_domains.find(&:fronted?) || organ_domains.create
       Rails.application.routes.url_for(
-        controller: redirect_controller,
-        action: redirect_action,
+        controller: fronted.redirect_controller,
+        action: fronted.redirect_action,
         only_path: true
       )
     end
