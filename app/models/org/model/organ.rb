@@ -38,8 +38,11 @@ module Org
       "#{area&.full_name} #{address}"
     end
 
+    def domain
+      organ_domains.find(&:frontend?) || organ_domains.create
+    end
+
     def host
-      domain = organ_domains.find(&:frontend?) || organ_domains.create
       domain.identifier
     end
 
@@ -56,8 +59,11 @@ module Org
       {}
     end
 
+    def admin_domain
+      organ_domains.find(&:backend?) || organ_domains.create(kind: 'backend')
+    end
+
     def admin_host
-      admin_domain = organ_domains.find(&:backend?) || organ_domains.create(kind: 'backend')
       admin_domain.identifier
     end
 
@@ -74,8 +80,11 @@ module Org
       {}
     end
 
+    def mp_domain
+      organ_domains.find(&:mp?) || organ_domains.create(kind: 'mp')
+    end
+
     def mp_host
-      mp_domain = organ_domains.find(&:mp?) || organ_domains.create(kind: 'mp')
       mp_domain.identifier
     end
 
@@ -88,10 +97,9 @@ module Org
     end
 
     def redirect_path
-      fronted = organ_domains.find(&:fronted?) || organ_domains.create
       Rails.application.routes.url_for(
-        controller: fronted.redirect_controller,
-        action: fronted.redirect_action,
+        controller: domain.redirect_controller,
+        action: domain.redirect_action,
         only_path: true
       )
     end
