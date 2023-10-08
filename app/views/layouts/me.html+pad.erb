@@ -1,9 +1,12 @@
 <%= render layout: 'layouts/application_head' do %>
   <%= render 'nav_bar' %>
-  <main class="columns is-multiline container">
-    <div class="column">
-      <%= render 'breadcrumb' %>
-      <%= yield %>
-    </div>
+  <div id="alert"></div>
+  <main class="container">
+    <%= render 'breadcrumb' %>
+    <main class="columns">
+      <div class="column">
+        <%= yield %>
+      </div>
+    </main>
   </main>
 <% end %>
