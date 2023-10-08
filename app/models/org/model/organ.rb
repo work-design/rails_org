@@ -104,5 +104,13 @@ module Org
       )
     end
 
+    def redirect_url(**options)
+      Rails.application.routes.url_for(
+        controller: domain.redirect_controller,
+        action: domain.redirect_action,
+        **options
+      )
+    end
+
   end
 end
