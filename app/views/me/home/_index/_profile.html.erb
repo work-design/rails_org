@@ -1,6 +1,6 @@
-<table class="table is-borderless is-striped is-fullwidth">
+<table class="table as-show is-borderless is-fullwidth">
   <tr>
-    <th>组织角色</th>
+    <th class="has-text-right">组织角色</th>
     <td>
     <% current_organ.roles.each do |role| %>
       <span class="tag"><%= role.name %></span>
@@ -8,7 +8,7 @@
     </td>
   </tr>
   <tr>
-    <th>用户角色</th>
+    <th class="has-text-right">用户角色</th>
     <td>
     <% current_member.roles.each do |role| %>
       <span class="tag"><%= role.name %></span>
