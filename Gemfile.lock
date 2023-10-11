@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 98a195d511eab3744cdf04b836c7d5290bec21bb
+  revision: 2e719d55627057e36e4b400760dc1bfc7999621f
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 012800978600f2209627587c8d7561b30585a5bb
+  revision: 0c094b554fe878831b1aac95fd6ebe8982c4533b
   specs:
     rails_com (1.3.0)
       acme-client
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 3169282f9a0a982a03faa9923b77b2c502f590b4
+  revision: 45a4749982bd3713564f997716b9d9e2d2b11b29
   specs:
     rails_design (0.0.1)
       rails
@@ -46,14 +46,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 8398498f08259fc1035aa5b20cf00587b4210473
+  revision: c36abff6c66fdab1122336869e389bf9be338ce3
   specs:
     rails_notice (1.0.3)
       rails_extend
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: a94c7a4aff747fe721377d9bf2ac30d6b26feb42
+  revision: e4e33b2be3f4da75e37592bc7d7b7ba104deaf89
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
@@ -200,7 +200,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    loofah (2.21.3)
+    loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -216,7 +216,7 @@ GEM
     mutex_m (0.1.2)
     net-http (0.3.2)
       uri
-    net-imap (0.4.0)
+    net-imap (0.4.1)
       date
       net-protocol
     net-pop (0.1.2)
@@ -235,7 +235,7 @@ GEM
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    psych (5.1.0)
+    psych (5.1.1)
       stringio
     puma (6.4.0)
       nio4r (~> 2.0)
