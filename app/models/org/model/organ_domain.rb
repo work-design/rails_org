@@ -75,7 +75,9 @@ module Org
     def redirect_url(**options)
       x_options = {
         protocol: scheme,
-        host: host
+        host: host,
+        controller: 'home',
+        action: 'index'
       }
       x_options.merge! options
 
