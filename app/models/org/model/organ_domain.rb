@@ -76,12 +76,12 @@ module Org
       x_options = {
         protocol: scheme,
         host: host,
-        controller: 'home',
-        action: 'index'
+        controller: redirect_controller.presence || 'home',
+        action: redirect_action.presence || 'index'
       }
       x_options.merge! options
 
-      Rails.application.routes.url_for(controller: redirect_controller, action: redirect_action, **x_options)
+      Rails.application.routes.url_for(**x_options)
     end
 
     def redirect_path(**options)
