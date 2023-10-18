@@ -96,20 +96,12 @@ module Org
       official?
     end
 
-    def redirect_path
-      Rails.application.routes.url_for(
-        controller: domain.redirect_controller,
-        action: domain.redirect_action,
-        only_path: true
-      )
+    def redirect_path(**options)
+      domain.redirect_path(**options)
     end
 
     def redirect_url(**options)
-      Rails.application.routes.url_for(
-        controller: domain.redirect_controller,
-        action: domain.redirect_action,
-        **options
-      )
+      domain.redirect_url(**options)
     end
 
   end

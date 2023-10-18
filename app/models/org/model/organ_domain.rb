@@ -73,12 +73,17 @@ module Org
     end
 
     def redirect_url(**options)
-      Rails.application.routes.url_for(
-        controller: redirect_controller,
-        action: redirect_action,
-        host: options.delete(:host) || host,
-        **options
-      )
+      x_options = {
+        protocol: scheme,
+        host: host
+      }
+      x_options.merge! options
+
+      Rails.application.routes.url_for(controller: redirect_controller, action: redirect_action, **x_options)
+    end
+
+    def redirect_path(**options)
+      redirect_url(only_path: true, **options)
     end
 
   end
