@@ -1,6 +1,12 @@
 module Org
   module Model::OrganDomain
     extend ActiveSupport::Concern
+    KIND = {
+      'frontend' => 'org',
+      'backend' => 'admin',
+      'mp' => 'mp',
+      'agent' => 'agent'
+    }
 
     included do
       attribute :subdomain, :string
@@ -44,15 +50,7 @@ module Org
     end
 
     def init_subdomain
-      if backend?
-        self.subdomain = ['admin', organ_id].join('-')
-      elsif mp?
-        self.subdomain = ['mp', organ_id].join('-')
-      elsif agent?
-        self.subdomain = ['agent', organ_id].join('-')
-      else
-        self.subdomain = ['org', organ_id].join('-')
-      end
+      self.subdomain = [KIND[kind], organ_id].join('-')
       compute_identifier
     end
 
