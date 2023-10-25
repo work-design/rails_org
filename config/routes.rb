@@ -23,13 +23,6 @@ Rails.application.routes.draw do
       end
     end
 
-    namespace :admin, defaults: { namespace: 'admin' } do
-      root 'home#index' unless has_named_route? 'admin_root'
-      controller :home do
-        get :index
-      end
-    end
-
     namespace :mem, defaults: { namespace: 'mem' } do
       root 'home#index'
     end
