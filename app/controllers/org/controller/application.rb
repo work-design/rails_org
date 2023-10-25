@@ -9,9 +9,9 @@ module Org
     def current_member
       return @current_member if defined?(@current_member)
 
-      @current_member = (current_wechat_user && current_wechat_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)) ||
+      @current_member = (defined?(current_wechat_user) && current_wechat_user && current_wechat_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)) ||
         (current_account && current_account.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)) ||
-        current_corp_user&.member ||
+        defined?(current_corp_user) && current_corp_user&.member ||
         (current_user && current_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids))
 
       logger.debug "\e[35m  Login as member: #{@current_member&.id}  \e[0m"
