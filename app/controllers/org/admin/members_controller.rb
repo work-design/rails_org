@@ -75,7 +75,7 @@ module Org
     end
 
     def set_new_member
-      @member = current_organ.members.build
+      @member = current_organ.members.build(member_params)
     end
 
     def member_params
