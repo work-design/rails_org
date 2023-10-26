@@ -15,7 +15,7 @@
 </td>
 <td><%= model.code %></td>
 <td>
-  <p><%= model.area&.full_name %></p>
+  <p><%= model.area&.full_name if defined?(RailsProfile) %></p>
   <p><%= model.address %></p>
 </td>
 <td>

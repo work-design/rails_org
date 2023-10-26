@@ -7,7 +7,7 @@
     <%= node.name %>
   </td>
   <td>
-    <%= link_to t('.edit'), edit_admin_resign_reason_path(node), class: 'ui pink label' %>
-    <%= link_to t('.destroy'), admin_resign_reason_path(node), method: :delete, data: { turbo_confirm: t('.confirm') }, class: 'ui red label' %>
+    <%= link_to t('.edit.title'), edit_admin_resign_reason_path(node), class: 'ui pink label' %>
+    <%= link_to t('.destroy.title'), admin_resign_reason_path(node), method: :delete, data: { turbo_confirm: t('.confirm') }, class: 'ui red label' %>
   </td>
 </tr>

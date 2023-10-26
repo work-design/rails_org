@@ -13,8 +13,8 @@
 
       <td>
         <% if job_transfer.init? %>
-          <%= link_to t('.edit'), edit_my_job_transfer_path(job_transfer), class: 'ui pink label' %>
-          <%= link_to t('.destroy'), my_job_transfer_path(job_transfer), method: :delete, data: { turbo_confirm: t('.confirm') }, class: 'ui red label' %>
+          <%= link_to t('.edit.title'), edit_my_job_transfer_path(job_transfer), class: 'ui pink label' %>
+          <%= link_to t('.destroy.title'), my_job_transfer_path(job_transfer), method: :delete, data: { turbo_confirm: t('.confirm') }, class: 'ui red label' %>
         <% end %>
       </td>
     </tr>

@@ -47,7 +47,7 @@
     <tr><td></td>
       <td>
         <%= link_to 'Edit', edit_admin_job_transfer_path(@job_transfer), class: 'ui pink label' %>
-        <%= link_to t('.destroy'), admin_job_transfer_path(@job_transfer), method: :delete, data: { turbo_confirm: t('.confirm') }, class: 'ui red label' %>
+        <%= link_to t('.destroy.title'), admin_job_transfer_path(@job_transfer), method: :delete, data: { turbo_confirm: t('.confirm') }, class: 'ui red label' %>
       </td>
     </tr>
   </tbody>
