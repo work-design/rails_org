@@ -4,5 +4,6 @@ module Org
     include Model::Organ
     include Roled::Ext::Organ
     include Profiled::Ext::Organ if defined? RailsProfile
+    include Factory::Ext::Organ if defined? RailsFactory
   end
 end
