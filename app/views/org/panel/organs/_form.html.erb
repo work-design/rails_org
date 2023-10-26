@@ -2,5 +2,5 @@
 <%= f.text_field :name_short %>
 <%= f.file_field :logo %>
 <%= f.text_field :license %>
-<%= render partial: 'com/nodes/outer_select', locals: { f: f, outer: 'area', node: @organ.area } %>
+<%= render partial: 'com/nodes/outer_select', locals: { f: f, outer: 'area', node: @organ.area } if defined? RailsProfile %>
 <%= f.text_area :address %>

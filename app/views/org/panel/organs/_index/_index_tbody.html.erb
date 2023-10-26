@@ -10,7 +10,7 @@
 </td>
 <td><%= model.creator&.name || model.creator_id %></td>
 <td>
-  <p><%= model.area&.full_name %></p>
+  <p><%= defined?(RailsProfile) && model.area&.full_name %></p>
   <p><%= model.address %></p>
 </td>
 <td>

@@ -11,7 +11,7 @@ module Org
 
     def new
       @organ = Organ.new
-      @organ.area = Profiled::Area.root || Profiled::Area.new
+      @organ.area = Profiled::Area.root || Profiled::Area.new if defined? RailsProfile
     end
 
     def edit
