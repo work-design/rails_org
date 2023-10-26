@@ -1,6 +1,7 @@
 module Org
   class Admin::MembersController < Admin::BaseController
     before_action :set_member, only: [:show, :edit, :update, :mock, :profile, :token, :destroy]
+    before_action :set_new_member, only: [:new, :create, :options]
 
     def index
       q_params = {
@@ -31,34 +32,11 @@ module Org
     end
 
     def new
-      if current_organ
-        @member = current_organ.members.build
-      else
-        @member = Member.new
-      end
       @member.join_on ||= Date.today
       @member.member_departments.build(department_id: params[:department_id])
     end
 
-    def create
-      if current_organ
-        @member = current_organ.members.build
-      else
-        @member = Member.new
-      end
-      @member.assign_attributes member_params
-
-      unless @member.save
-        render :new, locals: { model: @member }, status: :unprocessable_entity
-      end
-    end
-
     def options
-      if current_organ
-        @member = current_organ.members.build
-      else
-        @member = Member.new
-      end
       @department = Department.find(params[:node_id]) if params[:node_id]
       @member_department = @member.member_departments.build(department_id: params[:node_id])
     end
@@ -94,6 +72,10 @@ module Org
     private
     def set_member
       @member = Member.find(params[:id])
+    end
+
+    def set_new_member
+      @member = current_organ.members.build
     end
 
     def member_params
