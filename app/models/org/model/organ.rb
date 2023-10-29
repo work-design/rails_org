@@ -67,17 +67,19 @@ module Org
       admin_domain.identifier
     end
 
-    def admin_url_options(request = nil)
+    def admin_url_options(request = nil, **options)
+      r = admin_domain.options
       if request.is_a? ActionDispatch::Request
-        cur = { host: request.host, protocol: request.scheme }
-        cur.merge! port: request.port.to_s unless request.port.to_s == '80'
-        return cur if organ_domains.map(&:options).include?(cur)
+        r.merge! protocol: request.scheme
+        r.merge! port: request.port.to_s unless request.port.to_s == '80'
+        #return cur if request.host == admin_domain.host
+
+        if options.key?(:auth_token) && request.host == admin_domain.host
+          options.delete(:auth_token)
+        end
       end
-
-      od = organ_domains.find(&:backend?) || organ_domains.create(kind: 'backend')
-      return od.options if od
-
-      {}
+      
+      r.merge!(options)
     end
 
     def mp_domain
