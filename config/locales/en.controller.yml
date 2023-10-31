@@ -9,7 +9,7 @@ en:
   org:
     title: Organ Admin
     admin:
-      title: Organations
+      title: Organizations
       home:
         index:
           title: 首页
@@ -73,11 +73,14 @@ en:
       organ_domains:
         index:
           title: Domains
+      members:
+        index:
+          title: Members
     our:
       title: 分支机构
       organs:
         show:
-          title: 首页
+          title: Organs
     board:
       title: Teams
       members:
