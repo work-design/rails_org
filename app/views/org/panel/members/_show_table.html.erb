@@ -24,26 +24,3 @@
   <% end %>
   </td>
 </tr>
-<tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:tutorials) %></td>
-  <td>
-    <table class="table">
-      <% @member.tutorials.each do |tutorial| %>
-        <tr>
-          <td><%= tutorial.id %></td>
-          <td><%= tutorial.kind_i18n %></td>
-          <td><%= tutorial.tutor&.name %></td>
-        </tr>
-      <% end %>
-      <tfoot>
-      <tr>
-        <td colspan="3">
-          <% Org::Tutorial.options_i18n(:kind).each do |text, value| %>
-            <%= link_to text, { controller: 'tutorials', action: 'new', kind: value, member_id: @member.id }, class: 'tag' %>
-          <% end %>
-        </td>
-      </tr>
-      </tfoot>
-    </table>
-  </td>
-</tr>
