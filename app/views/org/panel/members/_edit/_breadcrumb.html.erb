@@ -1,12 +1,3 @@
-<div class="breadcrumb has-succeeds-separator">
-  <ul>
-    <li><%= link_to 'Back', { controller: 'members' } %></li>
-    <li><%= link_to @member.name, { controller: 'members', action: 'show', id: @member.id } %></li>
-    <li class="is-active"><%= t('.title') %></li>
-  </ul>
-</div>
-
-<div class="ui bottom attached borderless menu">
-  <%= link_to 'Staff Info', edit_admin_member_path(@member), class: active_helper('hr/members': ['edit']) %>
-  <%= link_to 'Profile', edit_profile_admin_member_path(@member), class: active_helper('hr/members': ['edit_profile']) %>
-</div>
+<li><%= link_to 'Back', { controller: 'members' } %></li>
+<li><%= link_to @member.name, { controller: 'members', action: 'show', id: @member.id } %></li>
+<li class="is-active"><%= t('.title') %></li>

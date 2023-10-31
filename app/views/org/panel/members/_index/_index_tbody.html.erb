@@ -5,10 +5,12 @@
   </div>
   <p class="has-text-grey"><%= model.identity %></p>
 </td>
+<% if defined? RailsWechat %>
 <td>
   <p><%= model.wechat_openid %></p>
   <p><%= model.corp_userid %></p>
 </td>
+<% end %>
 <td><%= model.join_on %></td>
 <td>
   <div class="tags">
