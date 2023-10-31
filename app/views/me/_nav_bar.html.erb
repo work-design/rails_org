@@ -1,0 +1,19 @@
+<div class="is-flex is-justify-content-space-between" style="margin-left: -0.75rem; margin-right: -0.75rem; margin-bottom: 0.75rem">
+  <div class="has-background-light is-flex-grow-1 p-3">
+    <div class="breadcrumb has-succeeds-separator">
+      <ul>
+        <%= render 'breadcrumb' %>
+      </ul>
+    </div>
+  </div>
+  <nav class="navbar is-light" data-controller="navbar">
+    <div class="navbar-menu" data-navbar-target="menu">
+      <div class="navbar-end">
+        <%= render partial: 'locales' %>
+        <%= render partial: 'notice_navbar' if defined? RailsNotice %>
+        <%= render partial: 'org_navbar' if defined?(current_user) && current_user && defined?(RailsOrg) %>
+        <%= render partial: 'auth_navbar' %>
+      </div>
+    </div>
+  </nav>
+</div>
