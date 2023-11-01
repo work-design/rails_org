@@ -11,7 +11,7 @@
       <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, class: 'button is-small is-rounded is-light', form: { data: { turbo_confirm: t('.confirm') } }) do %>
         <i class="fa-solid fa-trash has-text-danger"></i>
       <% end %>
-      <%= button_to({ action: 'mock', id: model.id }, aria: { label: t('.mock.title') }, class: 'button is-small is-rounded is-light') do %>
+      <%= button_to({ action: 'mock', id: model.id }, aria: { label: t('.mock.title') }, data: { turbo: false }, class: 'button is-small is-rounded is-light', form: { target: '_blank' }) do %>
         <i class="fa-solid fa-hand-point-right has-text-success"></i>
       <% end %>
     </div>

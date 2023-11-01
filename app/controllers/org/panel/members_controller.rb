@@ -12,8 +12,7 @@ module Org
     end
 
     def mock
-      url = url_for controller: '/admin/home', host: @organ.admin_host, auth_token: @member.auth_token
-      render locals: { url: url }
+      redirect_to({ controller: '/admin/home', host: @organ.admin_host, auth_token: @member.auth_token }, allow_other_host: true)
     end
 
     private
