@@ -6,5 +6,6 @@ module Org
     include Profiled::Ext::Organ if defined? RailsProfile
     include Factory::Ext::Organ if defined? RailsFactory
     include Trade::Ext::Organ if defined? RailsTrade
+    include Ship::Ext::Organ if defined? RailsShip
   end
 end
