@@ -76,7 +76,11 @@ Rails.application.routes.draw do
         root 'home#index'
         resources :organs do
           resources :organ_domains
-          resources :members
+          resources :members do
+            member do
+              post :mock
+            end
+          end
         end
       end
 

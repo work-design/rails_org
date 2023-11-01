@@ -1,7 +1,7 @@
 module Org
   class Panel::MembersController < Panel::BaseController
     before_action :set_organ
-    before_action :set_member, only: [:show, :edit, :update, :destroy]
+    before_action :set_member, only: [:show, :edit, :update, :destroy, :actions, :mock]
     before_action :set_new_member, only: [:new, :create]
 
     def index
@@ -9,6 +9,11 @@ module Org
       q_params.merge! params.permit(:id, :identity, 'name-like', :enabled)
 
       @members = @organ.members.includes(:roles).default_where(q_params).order(id: :desc).page(params[:page])
+    end
+
+    def mock
+      url = url_for controller: '/admin/home', host: @organ.admin_host, auth_token: @member.auth_token
+      render locals: { url: url }
     end
 
     private

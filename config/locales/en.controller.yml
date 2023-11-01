@@ -69,13 +69,14 @@ en:
       organs:
         index:
           title: Organizations
-          mock: Become Admin
       organ_domains:
         index:
           title: Domains
       members:
         index:
           title: Members
+        mock:
+          title: Mock As
     our:
       title: 分支机构
       organs:
