@@ -23,6 +23,8 @@ module Org
       }, _default: 'init'
 
       belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
+      has_many :authorized_tokens, ->{ where(mock_member: true) }, class_name: 'Auth::AuthorizedToken', foreign_key: :identity, primary_key: :identity
+
       belongs_to :profile, ->(o){ where(organ_id: o.organ_id) }, class_name: 'Profiled::Profile', primary_key: :identity, foreign_key: :identity, optional: true
 
       belongs_to :organ, counter_cache: true, inverse_of: :members
@@ -34,7 +36,6 @@ module Org
       accepts_nested_attributes_for :member_departments, reject_if: :all_blank, allow_destroy: true
 
       has_many :inferior_member_departments, class_name: 'Org::MemberDepartment', foreign_key: :superior_id, primary_key: :department_ids
-      has_many :authorized_tokens, class_name: 'Auth::AuthorizedToken', foreign_key: :identity, primary_key: :identity
 
       has_one :resign
       has_one :tutorial, ->{ order(created_at: :desc) }, dependent: :nullify
@@ -138,6 +139,14 @@ module Org
         leading_departments = self.leading_departments.sort_by(&:depth)
       end
       leading_departments.first
+    end
+
+    def authorized_token
+      authorized_tokens.find(&:effective?) || authorized_tokens.create(mock_member: true)
+    end
+
+    def auth_token
+      authorized_token.id
     end
 
     def sync_member_roles
