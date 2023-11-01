@@ -14,7 +14,7 @@ module Org
         (current_account && current_account.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)) ||
         defined?(current_corp_user) && current_corp_user&.member ||
         (current_user && current_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)) ||
-        defined?(current_authorized_token) && current_authorized_token.mocked_member
+        defined?(current_authorized_token) && current_authorized_token&.mocked_member
 
       logger.debug "\e[35m  Login as member: #{@current_member&.id}  \e[0m"
       @current_member
