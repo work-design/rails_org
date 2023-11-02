@@ -6,5 +6,6 @@ module Org
     include Notice::Ext::Member if defined? RailsNotice
     include Notice::Ext::Setting if defined? RailsNotice
     include Crm::Ext::Member if defined? RailsCrm
+    include Trade::Ext::Member if defined? RailsTrade
   end
 end
