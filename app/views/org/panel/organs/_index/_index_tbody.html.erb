@@ -1,11 +1,13 @@
 <td>
-  <div class="is-several">
-    <%= image_tag model.logo.variant(resize_to_limit: [30, 30]) if model.logo.attached? %>
+  <%= image_tag model.logo.variant(resize_to_limit: [32, 32]), class: 'image is-32x32' if model.logo.attached? %>
+</td>
+<td>
+  <p>
     <span><%= model.name %></span>
     <% if model.name_short.present? %>
       <span class="has-text-grey">(<%= model.name_short %>)</span>
     <% end %>
-  </div>
+  </p>
   <p class="has-text-grey"><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
 </td>
 <td><%= model.creator&.name || model.creator_id %></td>
