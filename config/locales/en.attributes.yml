@@ -12,10 +12,9 @@ en:
         state: Status
       org/journal:
         name_short: Journal
-        editors: Managing Editor(s)
-        idatabases: Indexing
+        editors: Managing
       org/member:
-        join_on: Join date
+        join_on: Join Date
         on_time: Current work shift (on)
         off_time: Current work shift (off)
         next_on_time: Next work shift (on)
@@ -26,7 +25,7 @@ en:
       org/profile:
         real_name: Chinese name
         work_experience: Work Experience
-        birtheday_type: Gregorian/Lunar
+        birthday_type: Gregorian/Lunar
       org/resign:
         member: Employee
         leave_on: Final working day
