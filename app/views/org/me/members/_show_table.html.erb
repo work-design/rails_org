@@ -1,6 +1,6 @@
 <tr>
   <td class="has-text-right"><%= Org::Member.human_attribute_name(:avatar) %></td>
-  <td><%= image_tag @member.avatar, class: 'image is-64x64' %></td>
+  <td><%= image_tag @member.avatar, class: 'image is-64x64' if @member.avatar.attached? %></td>
 </tr>
 <tr>
   <td class="has-text-right"><%= Org::Member.human_attribute_name(:name) %></td>
