@@ -7,6 +7,10 @@
   <td><%= @member.display_name %></td>
 </tr>
 <tr>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:identity) %></td>
+  <td><%= @member.identity %></td>
+</tr>
+<tr>
   <td class="has-text-right"><%= Org::Member.human_attribute_name(:join_on) %></td>
   <td><%= @member.join_on %></td>
 </tr>
