@@ -2,7 +2,7 @@
   <a class="menu-label" data-action="menu#toggle">
     <i class="fa-solid fa-sitemap fa-fw"></i>
     <span><%= t('org.panel.title') %></span>
-    <i class="fa-solid dropdown"></i>
+    <i class="fa-solid fa-fw dropdown"></i>
   </a>
   <div class="menu-list" data-empty-target="content">
     <%= link_to t('org.panel.organs.index.title'), { controller: 'org/panel/organs' }, class: active_helper(controllers: 'organs', active: 'is-active') %>
