@@ -1,6 +1,5 @@
 <td>
-  <div class="is-several">
-    <span style="width: <%= model.depth * 1.43 %>em; display: inline-block"></span>
+  <div class="is-several pl-6">
     <% if !model.leaf? %>
       <i class="fa-solid fa-caret-down fa-fw" data-action="click->tree#collapse" style="cursor: pointer"></i>
     <% else %>
