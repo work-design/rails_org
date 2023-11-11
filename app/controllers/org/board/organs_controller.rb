@@ -16,7 +16,8 @@ module Org
     end
 
     def create
-      @member = @organ.members.build(wechat_openid: current_authorized_token.uid, identity: current_authorized_token.identity)
+      @member = @organ.members.build(identity: current_authorized_token.identity)
+      @member.wechat_openid = current_authorized_token.uid if @member.respond_to? :wechat_openid
 
       if @organ.save
         render 'create', locals: { model: @organ }
