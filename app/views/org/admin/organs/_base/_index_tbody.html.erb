@@ -18,12 +18,12 @@
   <p><%= model.address %></p>
 </td>
 <td>
-  <div class="tags">
+  <div class="tags mb-0">
     <% model.roles.pluck(:name).each do |role| %>
       <span class="tag"><%= role %></span>
     <% end %>
   </div>
-  <div>
+  <div class="mt-0">
     <%= button_to({ controller: 'roled/admin/whos', action: 'edit', who_type: 'Org::Organ', who_id: model.id }) do %>
       <i class="fa-solid fa-user-shield has-text-link"></i>
     <% end %>
