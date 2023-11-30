@@ -1,38 +1,38 @@
 <tr>
-  <td class="has-text-right"><%= Profiled::Profile.human_attribute_name(:real_name) %></td>
-  <td><%= @profile.real_name %></td>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:real_name) %></td>
+  <td><%= @member.real_name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Profiled::Profile.human_attribute_name(:gender) %></td>
-  <td><%= @profile.gender_i18n %></td>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:gender) %></td>
+  <td><%= @member.gender_i18n %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Profiled::Profile.human_attribute_name(:identity) %></td>
-  <td><%= @profile.identity %></td>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:identity) %></td>
+  <td><%= @member.identity %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Profiled::Profile.human_attribute_name(:birthday_type) %></td>
-  <td><%= @profile.birthday_type_i18n %></td>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:birthday_type) %></td>
+  <td><%= @member.birthday_type_i18n %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Profiled::Profile.human_attribute_name(:birthday) %></td>
-  <td><%= @profile.birthday %></td>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:birthday) %></td>
+  <td><%= @member.birthday %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Profiled::Profile.human_attribute_name(:major) %></td>
-  <td><%= @profile.major %></td>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:major) %></td>
+  <td><%= @member.major %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Profiled::Profile.human_attribute_name(:degree) %></td>
-  <td><%= @profile.degree %></td>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:degree) %></td>
+  <td><%= @member.degree %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Profiled::Profile.human_attribute_name(:work_experience) %></td>
-  <td><%= simple_format(@profile.work_experience) %></td>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:work_experience) %></td>
+  <td><%= simple_format(@member.work_experience) %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Profiled::Profile.human_attribute_name(:resume) %></td>
+  <td class="has-text-right"><%= Org::Member.human_attribute_name(:resume) %></td>
   <td>
-    <%= link_to @profile.resume.filename, rails_blob_path(@profile.resume), target: '_blank' if @profile.resume.attached? %>
+    <%= link_to @member.resume.filename, rails_blob_path(@member.resume), target: '_blank' if @member.resume.attached? %>
   </td>
 </tr>

@@ -139,7 +139,7 @@ Rails.application.routes.draw do
             get 'remove_item/:item' => :remove_item, as: :remove_item
           end
           member do
-            get :profile
+            match :profile, via: [:get, :post]
             get :token
             patch :mock
           end

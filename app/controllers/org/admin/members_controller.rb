@@ -42,7 +42,6 @@ module Org
     end
 
     def profile
-      @profile = @member.profile || @member.create_profile
     end
 
     def edit
