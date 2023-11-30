@@ -1,5 +1,5 @@
 module Org
-  class MemberExport
+  class MemberExport < ApplicationExport
     extend RailsData::Export
 
     config do
@@ -10,8 +10,8 @@ module Org
         Member.default_where(params)
       }
       column header: '姓名', field: ->(o) { o.name }
-      column header: '日期', field: ->(o) { o.created_at.to_s(:date) }
-      column header: '月度', field: ->(o) { o.created_at.to_s(:month) }, x_axis: true
+      column header: '日期', field: ->(o) { o.created_at.to_fs(:date) }
+      column header: '月度', field: ->(o) { o.created_at.to_fs(:month) }, x_axis: true
     end
   end
 end
