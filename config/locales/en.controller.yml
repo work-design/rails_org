@@ -49,9 +49,9 @@ en:
           profile: 简历
           mock: 以其身份
         new:
-          title: 添加成员
+          title: Add Member
         show:
-          title: 职员信息
+          title: Member Info
       resigns:
         index:
           title: 离职
