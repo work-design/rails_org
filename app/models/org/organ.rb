@@ -8,6 +8,5 @@ module Org
     include Trade::Ext::Organ if defined? RailsTrade
     include Ship::Ext::Organ if defined? RailsShip
     include Crm::Ext::Organ if defined? RailsCrm
-    include Notice::Ext::Organ if defined? RailsNotice
   end
 end
