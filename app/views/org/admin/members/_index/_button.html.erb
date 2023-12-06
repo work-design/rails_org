@@ -3,8 +3,8 @@
     <i class="fa-solid fa-plus"></i>
     <span class="pl-1"><%= t('.new.title') %></span>
   <% end %>
-  <%= button_to({ controller: 'datum/admin/table_lists', action: 'find', data_list_id: 'Org::MemberExport', **params.permit(:organ_id) }, class: 'button is-light') do %>
+  <%= button_to({ controller: 'datum/admin/table_lists', action: 'find', data_list_id: 'Org::MemberExport' }, class: 'button is-light') do %>
     <i class="fa-solid fa-file-excel"></i>
-    <span class="pl-1"><%= t('.export') %></span>
+    <span class="pl-1"><%= t('datum.admin.table_lists.find.title') %></span>
   <% end if defined? RailsData %>
 </div>
