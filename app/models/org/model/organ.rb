@@ -43,7 +43,7 @@ module Org
     end
 
     def host
-      domain.identifier
+      domain.host
     end
 
     def url_options(request = nil)
@@ -64,7 +64,7 @@ module Org
     end
 
     def admin_host
-      admin_domain.identifier
+      admin_domain.host
     end
 
     def admin_url_options(request = nil, **options)
@@ -78,7 +78,7 @@ module Org
           options.delete(:auth_token)
         end
       end
-      
+
       r.merge!(options)
     end
 
@@ -87,11 +87,11 @@ module Org
     end
 
     def mp_host
-      mp_domain.identifier
+      mp_domain.host
     end
 
     def domains
-      organ_domains.pluck(:identifier)
+      organ_domains.pluck(:host)
     end
 
     def admin?
