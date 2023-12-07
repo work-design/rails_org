@@ -3,10 +3,6 @@
   <td><%= @organ_domain.domain %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::OrganDomain.human_attribute_name(:port) %></td>
-  <td><%= @organ_domain.port %></td>
-</tr>
-<tr>
   <td class="has-text-right"><%= Org::OrganDomain.human_attribute_name(:subdomain) %></td>
   <td><%= @organ_domain.subdomain %></td>
 </tr>
@@ -15,6 +11,6 @@
   <td><%= @organ_domain.host %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::OrganDomain.human_attribute_name(:identifier) %></td>
-  <td><%= @organ_domain.identifier %></td>
+  <td class="has-text-right"><%= Org::OrganDomain.human_attribute_name(:scheme) %></td>
+  <td><%= @organ_domain.scheme %></td>
 </tr>

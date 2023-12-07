@@ -1,14 +1,4 @@
-<th>
-  <p><%= Org::OrganDomain.human_attribute_name(:subdomain) %></p>
-  <p><%= Org::OrganDomain.human_attribute_name(:domain) %></p>
-</th>
-<th>
-  <p>
-    <span><%= Org::OrganDomain.human_attribute_name(:host) %></span>
-    <span>:</span>
-    <span><%= Org::OrganDomain.human_attribute_name(:port) %></span>
-  </p>
-  <p><%= Org::OrganDomain.human_attribute_name(:kind) %></p>
-</th>
+<th><%= Org::OrganDomain.human_attribute_name(:host) %></th>
+<th><%= Org::OrganDomain.human_attribute_name(:kind) %></th>
 <th><%= Org::OrganDomain.human_attribute_name(:beian) %></th>
 <th><%= Org::OrganDomain.human_attribute_name(:default) %></th>
