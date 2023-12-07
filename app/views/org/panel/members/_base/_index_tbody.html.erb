@@ -1,6 +1,6 @@
 <td>
   <div class="is-several">
-    <%= image_tag model.avatar.variant(resize_to_limit: [35, 35]), class: 'image is-24x24' if model.avatar.attached? %>
+    <%= image_tag model.avatar.variant(resize_to_limit: [24, 24]), class: 'image is-24x24' if model.avatar.attached? %>
     <%= link_to model.display_name, { action: 'show', id: model } %>
   </div>
   <p class="has-text-grey"><%= model.identity %></p>
@@ -17,7 +17,7 @@
     <% model.roles.pluck(:name).each do |role| %>
       <span class="tag"><%= role %></span>
     <% end %>
-    <%= link_to({ controller: 'roled/panel/whos', action: 'edit', who_type: 'Org::Member', who_id: model.id }, data: { turbo_frame: 'modal' }) do %>
+    <%= button_to({ controller: 'roled/panel/whos', action: 'edit', who_type: 'Org::Member', who_id: model.id }) do %>
       <i class="fa-solid fa-user-shield"></i>
     <% end %>
   </div>
