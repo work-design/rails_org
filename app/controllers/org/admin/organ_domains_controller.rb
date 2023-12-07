@@ -24,7 +24,6 @@ module Org
     def organ_domain_params
       params.fetch(:organ_domain, {}).permit(
         :domain,
-        :port,
         :subdomain,
         :host,
         :default,
