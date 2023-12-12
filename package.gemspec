@@ -3,10 +3,8 @@ Gem::Specification.new do |s|
   s.version = '0.0.1'
   s.authors = ['Mingyuan Qin']
   s.email = ['mingyuan0715@foxmail.com']
-  s.homepage = 'https://github.com/work-design/rails_org'
   s.summary = 'understandable, simple auth logic for Rails'
   s.description = 'SaaS multi org with members module'
-  s.license = 'MIT'
 
   s.files = Dir[
     '{app,config,db,lib}/**/*',
