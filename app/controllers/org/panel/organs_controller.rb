@@ -4,7 +4,7 @@ module Org
 
     def index
       q_params = {}
-      q_params.merge! params.permit(:name)
+      q_params.merge! params.permit('name-like')
 
       @organs = Organ.roots.includes(:organ_domains).default_where(q_params).unscope(:order).order(id: :desc).page(params[:page])
     end
