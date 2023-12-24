@@ -47,7 +47,8 @@ Rails.application.routes.draw do
             get :qrcode
           end
         end
-        resources :organs, except: [:new, :create]
+        resource :organs, except: [:new, :create]
+        resource :resign
         resources :departments
         resources :tutorials do
           collection do
@@ -57,7 +58,6 @@ Rails.application.routes.draw do
             get :perform
           end
         end
-        resource :resign
         resources :job_transfers do
           get :departments, on: :collection
         end
