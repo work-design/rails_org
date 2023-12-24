@@ -64,7 +64,7 @@ module Org
     end
 
     def admin?
-      account.user_ids.include?(organ.creator_id) if account
+      account.user_id == organ.creator_id if account
     end
 
     def grade
