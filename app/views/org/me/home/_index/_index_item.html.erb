@@ -1,7 +1,14 @@
 <%= link_to({ controller: 'org/me/members', action: 'qrcodes' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-solid fa-fw fa-qrcode has-text-primary"></i>
-    <span class="pl-1"><%= t('org.me.members.qrcode.title') %></span>
+    <span class="pl-1"><%= t('org.me.members.qrcodes.title') %></span>
+  </div>
+  <div class="weui-cell__ft"></div>
+<% end %>
+<%= link_to({ controller: 'trade/me/home', action: 'qrcode' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
+  <div class="weui-cell__bd">
+    <i class="fa-solid fa-fw fa-qrcode has-text-success"></i>
+    <span class="pl-1"><%= t('trade.me.home.qrcode.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
