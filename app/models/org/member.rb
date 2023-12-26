@@ -7,5 +7,8 @@ module Org
     include Notice::Ext::Setting if defined? RailsNotice
     include Crm::Ext::Member if defined? RailsCrm
     include Trade::Ext::Member if defined? RailsTrade
+    include Finance::Ext::Member if defined? RailsFinance
+    include Bench::Ext::Member if defined? RailsBench
+    include Profiled::Ext::Member if defined? RailsProfile
   end
 end
