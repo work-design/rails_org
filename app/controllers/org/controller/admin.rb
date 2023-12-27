@@ -13,5 +13,17 @@ module Org
       end
     end
 
+    def current_oauth_app
+      return @current_oauth_app if defined? @current_oauth_app
+      if request.variant.include?(:work_wechat)
+        @current_oauth_app = current_organ.corps.where.not(agentid: nil).take
+      else
+        @current_oauth_app = current_organ.provider.app
+      end
+
+      logger.debug "\e[35m  Current Admin Oauth App: #{@current_oauth_app&.base_class_name}/#{@current_oauth_app&.id}  \e[0m"
+      @current_oauth_app
+    end
+
   end
 end
