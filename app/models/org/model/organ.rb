@@ -24,6 +24,7 @@ module Org
       has_many :members, dependent: :destroy_async
       has_many :super_job_titles, dependent: :destroy_async
       has_many :organ_domains, dependent: :destroy_async
+
       accepts_nested_attributes_for :members
 
       has_one_attached :logo
@@ -36,6 +37,10 @@ module Org
 
     def address_detail
       "#{area&.full_name} #{address}"
+    end
+
+    def ancestral_members
+      Member.where(organ_id: self_and_ancestor_ids)
     end
 
     def domain
