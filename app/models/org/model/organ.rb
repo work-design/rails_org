@@ -72,6 +72,14 @@ module Org
       admin_domain.host
     end
 
+    def agent_domain
+      organ_domains.find(&:agent?) || organ_domains.create(kind: 'agent')
+    end
+
+    def agent_host
+      agent_domain.host
+    end
+
     def admin_url_options(request = nil, **options)
       r = admin_domain.options
       if request.is_a? ActionDispatch::Request

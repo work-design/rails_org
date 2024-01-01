@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: f5ebbf2131753644a730d41796eab8d5e0ccfc80
+  revision: acfe055196d58f536a2730803cd78e8f32ac6829
   specs:
     rails_notice (1.0.3)
       rails_extend
