@@ -8,5 +8,6 @@ module Org
     include Trade::Ext::Organ if defined? RailsTrade
     include Ship::Ext::Organ if defined? RailsShip
     include Crm::Ext::Organ if defined? RailsCrm
+    include Wechat::Ext::Organ if defined? RailsWechat
   end
 end
