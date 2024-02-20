@@ -1,4 +1,4 @@
-<td><%= model.host %></td>
+<td><%= link_to model.host, model.redirect_url(port: request.port), target: '_blank' %></td>
 <td><%= model.kind_i18n %></td>
 <td><%= model.beian %></td>
 <td>
