@@ -8,6 +8,7 @@
 
 <%= render 'crm_nav' %>
 <%= render 'factory_nav' %>
+<%= render 'trade_nav' if defined? RailsTrade %>
 <%= render 'bench_nav' if defined? RailsBench %>
 <%= render 'finance_nav' if defined? RailsFinance %>
 <%= render 'powered_by' %>
