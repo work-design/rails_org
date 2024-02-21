@@ -1,7 +1,14 @@
+<%= link_to({ controller: 'org/me/members', action: 'show' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
+  <div class="weui-cell__bd">
+    <i class="fa-solid fa-fw fa-user-gear has-text-primary"></i>
+    <span class="pl-1"><%= t('.members.show.title') %></span>
+  </div>
+  <div class="weui-cell__ft"></div>
+<% end %>
 <%= link_to({ controller: 'org/me/members', action: 'qrcodes' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-solid fa-fw fa-qrcode has-text-primary"></i>
-    <span class="pl-1"><%= t('org.me.members.qrcodes.title') %></span>
+    <span class="pl-1"><%= t('.members.qrcodes.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
@@ -15,7 +22,7 @@
 <%= link_to({ controller: 'org/me/organs', action: 'show' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-solid fa-fw fa-sitemap has-text-danger"></i>
-    <span class="pl-1"><%= t('org.me.organs.show.title') %></span>
+    <span class="pl-1"><%= t('.organs.show.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
