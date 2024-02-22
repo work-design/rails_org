@@ -11,7 +11,7 @@ module Org
 
     private
     def set_app
-      @app = current_organ.provider.app
+      @app = current_organ.provider&.app
     end
 
     def set_member
