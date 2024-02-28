@@ -1,24 +1,28 @@
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:name) %></td>
+  <td><%= Org::Organ.human_attribute_name(:name) %></td>
   <td><%= @organ.name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:code) %></td>
+  <td><%= Org::Organ.human_attribute_name(:logo) %></td>
+  <td><%= image_tag @organ.logo, class: 'image is-36-h' if @organ.logo.attached? %></td>
+</tr>
+<tr>
+  <td><%= Org::Organ.human_attribute_name(:bar_logo) %></td>
+  <td><%= image_tag @organ.bar_logo, class: 'image is-36-h' if @organ.bar_logo.attached? %></td>
+</tr>
+<tr>
+  <td><%= Org::Organ.human_attribute_name(:code) %></td>
   <td><%= @organ.code %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:area_id) %></td>
+  <td><%= Org::Organ.human_attribute_name(:area_id) %></td>
   <td><%= @organ.area&.full_name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:redirect_controller) %></td>
-  <td><%= @organ.redirect_controller %></td>
+  <td><%= Org::Organ.human_attribute_name(:redirect_url) %></td>
+  <td><%= @organ.redirect_url %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:redirect_action) %></td>
-  <td><%= @organ.redirect_action %></td>
-</tr>
-<tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:service_url) %></td>
+  <td><%= Org::Organ.human_attribute_name(:service_url) %></td>
   <td><%= @organ.service_url %></td>
 </tr>

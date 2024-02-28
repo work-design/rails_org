@@ -1,37 +1,37 @@
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:real_name) %></td>
+  <td><%= Org::Member.human_attribute_name(:real_name) %></td>
   <td><%= @member.real_name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:gender) %></td>
+  <td><%= Org::Member.human_attribute_name(:gender) %></td>
   <td><%= @member.gender_i18n %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:identity) %></td>
+  <td><%= Org::Member.human_attribute_name(:identity) %></td>
   <td><%= @member.identity %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:birthday_type) %></td>
+  <td><%= Org::Member.human_attribute_name(:birthday_type) %></td>
   <td><%= @member.birthday_type_i18n %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:birthday) %></td>
+  <td><%= Org::Member.human_attribute_name(:birthday) %></td>
   <td><%= @member.birthday %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:major) %></td>
+  <td><%= Org::Member.human_attribute_name(:major) %></td>
   <td><%= @member.major %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:degree) %></td>
+  <td><%= Org::Member.human_attribute_name(:degree) %></td>
   <td><%= @member.degree %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:work_experience) %></td>
+  <td><%= Org::Member.human_attribute_name(:work_experience) %></td>
   <td><%= simple_format(@member.work_experience) %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:resume) %></td>
+  <td><%= Org::Member.human_attribute_name(:resume) %></td>
   <td>
     <%= link_to @member.resume.filename, rails_blob_path(@member.resume), target: '_blank' if @member.resume.attached? %>
   </td>

@@ -40,6 +40,7 @@ module Org
         :name,
         :code,
         :logo,
+        :bar_logo,
         :name_short,
         :address,
         :service_url,

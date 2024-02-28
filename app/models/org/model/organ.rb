@@ -28,6 +28,7 @@ module Org
       accepts_nested_attributes_for :members
 
       has_one_attached :logo
+      has_one_attached :bar_logo
 
       scope :official, -> { where(official: true) }
 

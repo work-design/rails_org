@@ -1,22 +1,22 @@
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:avatar) %></td>
+  <td><%= Org::Member.human_attribute_name(:avatar) %></td>
   <td><%= image_tag @member.avatar, class: 'image is-64x64' if @member.avatar.attached? %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:name) %></td>
+  <td><%= Org::Member.human_attribute_name(:name) %></td>
   <td><%= @member.display_name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:identity) %></td>
+  <td><%= Org::Member.human_attribute_name(:identity) %></td>
   <td><%= @member.identity %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:join_on) %></td>
+  <td><%= Org::Member.human_attribute_name(:join_on) %></td>
   <td><%= @member.join_on %></td>
 </tr>
 <% if @member.departments.present? %>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:department_id) %></td>
+  <td><%= Org::Member.human_attribute_name(:department_id) %></td>
   <td>
     <% @member.departments.each do |department| %>
       <p><%= department.full_name %></p>

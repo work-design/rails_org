@@ -1,13 +1,13 @@
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:leader) %></td>
+  <td><%= Org::Member.human_attribute_name(:leader) %></td>
   <td><%= @member.leader&.name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:identity) %></td>
+  <td><%= Org::Member.human_attribute_name(:identity) %></td>
   <td><%= @member.identity %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:department) %></td>
+  <td><%= Org::Member.human_attribute_name(:department) %></td>
   <td>
     <% @member.departments.each do |department| %>
       <p><%= link_to department.full_name, { controller: 'departments', action: 'show', id: department.id } %></p>
@@ -15,7 +15,7 @@
   </td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Member.human_attribute_name(:join_on) %></td>
+  <td><%= Org::Member.human_attribute_name(:join_on) %></td>
   <td>
   <% if @member.join_on %>
     <span><%= @member.join_on %></span>

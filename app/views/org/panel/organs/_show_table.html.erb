@@ -1,16 +1,16 @@
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:name) %></td>
+  <td><%= Org::Organ.human_attribute_name(:name) %></td>
   <td><%= @organ.name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:name_short) %></td>
+  <td><%= Org::Organ.human_attribute_name(:name_short) %></td>
   <td><%= @organ.name_short %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:area_id) %></td>
+  <td><%= Org::Organ.human_attribute_name(:area_id) %></td>
   <td><%= @organ.area&.full_name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Org::Organ.human_attribute_name(:license) %></td>
+  <td><%= Org::Organ.human_attribute_name(:license) %></td>
   <td><%= @organ.license %></td>
 </tr>
