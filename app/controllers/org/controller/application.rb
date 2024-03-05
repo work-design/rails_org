@@ -16,7 +16,11 @@ module Org
         (current_user && current_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)) ||
         defined?(current_authorized_token) && current_authorized_token&.mocked_member
 
-      logger.debug "\e[35m  Login as member: #{@current_member&.id}  \e[0m"
+      if @current_member
+        logger.debug "\e[35m  Login as member: #{@current_member.name}(#{@current_member.id})  \e[0m"
+      else
+        logger.debug "\e[35m  member is missing  \e[0m"
+      end
       @current_member
     end
 
