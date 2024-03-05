@@ -18,6 +18,10 @@ module Org
       @organ.area || @organ.build_area
     end
 
+    def children
+      @organs = @organ.children.page(params[:page])
+    end
+
     private
     def set_organ
       @organ = Organ.find params[:id]

@@ -78,6 +78,7 @@ Rails.application.routes.draw do
           resources :organ_domains
           resources :members do
             member do
+              get :children
               post :mock
             end
           end
