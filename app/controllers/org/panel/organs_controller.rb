@@ -1,6 +1,6 @@
 module Org
   class Panel::OrgansController < Panel::BaseController
-    before_action :set_organ, only: [:edit]
+    before_action :set_organ, only: [:show, :edit, :update, :children]
 
     def index
       q_params = {}
