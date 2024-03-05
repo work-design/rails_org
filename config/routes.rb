@@ -75,10 +75,12 @@ Rails.application.routes.draw do
       namespace :panel, defaults: { namespace: 'panel' } do
         root 'home#index'
         resources :organs do
+          member do
+            get :children
+          end
           resources :organ_domains
           resources :members do
             member do
-              get :children
               post :mock
             end
           end
