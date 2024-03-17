@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 8c67ad870e709fb0adf14f7f8e5a553f055b5272
+  revision: d805c6a3ad5d576f05bca87dea25f65feb254c24
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: a2dc926f18a667ac167e74f4a1d6ef04190c12ed
+  revision: 8398cf4be3a7d896c470901bbf03c5cdc7cb486d
   specs:
     rails_com (1.3.0)
       acme-client
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: ac82ea23dffcf945111902d42bc8ce777aff9cba
+  revision: 31f1e20ff13e5ef942102c947dc4ac47248341cf
   specs:
     rails_design (0.0.1)
       rails
@@ -236,7 +236,7 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.2)
+    nokogiri (1.16.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pg (1.5.6)
@@ -351,10 +351,10 @@ CHECKSUMS
   activestorage (7.1.3.2) sha256=283777f15a5ae2519ccf2a573968fa7afaea02d24b90cd6e0c23f77331069727
   activesupport (7.1.3.2) sha256=ad8445b7ae4a6d3acc5f88c8c5f437eb0b54062032aaf44856c7b6d3855b8b2e
   acts_as_list (1.1.0) sha256=06d4c4de6a1014a58b0eb2c832f51b7593df6ae547199e510a392205c31bab61
-  amazing_print (1.6.0)
+  amazing_print (1.6.0) sha256=9903e93daadc15411c854239f8ca1ca6ce78be279ed99d43fec2bd3b0aa37397
   base64 (0.2.0) sha256=0f25e9b21a02a0cc0cea8ef92b2041035d39350946e8789c562b2d1a3da01507
   bcrypt (3.1.20) sha256=8410f8c7b3ed54a3c00cd2456bf13917d695117f033218e2483b2e40b0784099
-  bigdecimal (3.1.7)
+  bigdecimal (3.1.7) sha256=e799b369a0005fc6d62eed7ef19139ac9bc319cc51470c637b9dcdf593600133
   builder (3.2.4) sha256=99caf08af60c8d7f3a6b004029c4c3c0bdaebced6c949165fe98f1db27fbbc10
   closure_tree (7.4.0) sha256=e39171bbe35de3c06898c3caf2d2949bba2d379aa78fc1a03c1c63f165c1d2b5
   concurrent-ruby (1.2.3) sha256=82fdd3f8a0816e28d513e637bb2b90a45d7b982bdf4f3a0511722d2e495801e2
@@ -373,10 +373,10 @@ CHECKSUMS
   http-2-next (1.0.3) sha256=7df55ef84e9a66f71b260c497414983a3ba787e0d92cc38391a70fe63f5d5fc5
   http-form_data (2.3.0) sha256=cc4eeb1361d9876821e31d7b1cf0b68f1cf874b201d27903480479d86448a5f3
   httpx (1.2.3) sha256=bff92313af0e0c47fd6e8aba89fa57d1825ed1d12d7a03833b225955d48f19cb
-  i18n (1.14.4)
+  i18n (1.14.4) sha256=c7deedead0866ea9102975a4eab7968f53de50793a0c211a37808f75dd187551
   image_processing (1.12.2) sha256=d3b9e9c5a1cc2607a5214cc28b90d317a03bdd06239584c97535dd73e46f62b8
   io-console (0.7.2) sha256=f0dccff252f877a4f60d04a4dc6b442b185ebffb4b320ab69212a92b48a7a221
-  irb (1.12.0)
+  irb (1.12.0) sha256=07634937fbb7d28d07e46da50d0aa43b4d2f7258174d08de4e32dfb57c10539d
   kaminari (1.2.2) sha256=c4076ff9adccc6109408333f87b5c4abbda5e39dc464bd4c66d06d9f73442a3e
   kaminari-actionview (1.2.2) sha256=1330f6fc8b59a4a4ef6a549ff8a224797289ebf7a3a503e8c1652535287cc909
   kaminari-activerecord (1.2.2) sha256=0dd3a67bab356a356f36b3b7236bcb81cef313095365befe8e98057dd2472430
@@ -387,9 +387,9 @@ CHECKSUMS
   mini_magick (4.12.0) sha256=67302fa84e63f1002b71416a8466968ed0f33d22f5d42962a0c09a9f1c3a906a
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
   mini_portile2 (2.8.5) sha256=7a37db8ae758086c3c3ac3a59c036704d331e965d5e106635e4a42d6e66089ce
-  minitest (5.22.3)
+  minitest (5.22.3) sha256=ea84676290cb5e2b4f31f25751af6050aa90d3e43e4337141c3e3e839611981e
   monetize (1.13.0) sha256=0c1f8ae28aa21bbf1a6d014138d9bb0a5ce756c1a99b8b7f7d409c258b01d3b3
-  money (6.19.0)
+  money (6.19.0) sha256=ec936fa1e42f2783719241ed9fd52725d0efa628f928feea1eb5c37d5de7daf3
   money-rails (1.15.0) sha256=cace7c3af76a0685747f57b96fdb321a4d966294e0a11b51f8e28c3ac08e4903
   mutex_m (0.2.0) sha256=b6ef0c6c842ede846f2ec0ade9e266b1a9dac0bc151682b04835e8ebd54840d5
   net-http (0.4.1) sha256=a96efc5ea18bcb9715e24dda4159d10f67ff0345c8a980d04630028055b2c282
@@ -398,7 +398,7 @@ CHECKSUMS
   net-protocol (0.2.2) sha256=aa73e0cba6a125369de9837b8d8ef82a61849360eba0521900e2c3713aa162a8
   net-smtp (0.4.0.1) sha256=098d28fab9d9bc280a2cfada77692cdca89c83c6789bdbb8d8429f97f1bf5a33
   nio4r (2.7.0) sha256=9586a685eca8246d6406e712a525e705d15bb88f709d78fc3f141e864df97276
-  nokogiri (1.16.2) sha256=68922ee5cde27497d995c46f2821957bae961947644eed2822d173daf7567f9c
+  nokogiri (1.16.3) sha256=498aa253ccd5b89a0fa5c4c82b346d22176fc865f4a12ef8da642064d1d3e248
   pg (1.5.6) sha256=4bc3ad2438825eea68457373555e3fd4ea1a82027b8a6be98ef57c0d57292b1c
   propshaft (0.8.0) sha256=cad3fa50f78ef59db4938e61e5edc9b6105838cd890f75b1ca4d7c9b5b662b68
   psych (5.1.2) sha256=337322f58fc2bf24827d2b9bd5ab595f6a72971867d151bb39980060ea40a368
@@ -429,7 +429,7 @@ CHECKSUMS
   stringio (3.1.0) sha256=c1f6263ae03a15025e51194ab19b06b15e06adcaaedb7f5f6c06ab60f5d67718
   thor (1.3.1) sha256=fa7e3471d4f6a27138e3d9c9b0d4daac9c3d7383927667ae83e9ab42ae7401ef
   timeout (0.4.1) sha256=6f1f4edd4bca28cffa59501733a94215407c6960bd2107331f0280d4abdebb9a
-  turbo-rails (2.0.5)
+  turbo-rails (2.0.5) sha256=cef775349c24734e52937997c2c4582a95966b3f81a173a9bcf037074a766229
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   uri (0.13.0) sha256=26553c2a9399762e1e8bebd4444b4361c4b21298cf1c864b22eeabc9c4998f24
   webrick (1.8.1) sha256=19411ec6912911fd3df13559110127ea2badd0c035f7762873f58afc803e158f
