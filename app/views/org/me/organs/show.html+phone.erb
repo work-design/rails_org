@@ -3,7 +3,7 @@
 
 
 <% if current_organ.creator_id == current_user.id %>
-<div class="weui-panel is-box">
+<div class="box mx-3">
   <div class="weui-panel__ft">
     <%= button_to({ action: 'destroy' }, method: :delete, class: 'button is-danger', form: { class: 'weui-cell weui-cell_access justify-content-center' }) do %>
       <i class="fa-solid fa-trash"></i>

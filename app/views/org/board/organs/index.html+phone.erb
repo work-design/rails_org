@@ -5,7 +5,7 @@
 </div>
 
 <% if @created_organs.present? %>
-<div class="weui-panel is-box">
+<div class="box mx-3">
   <div class="weui-panel__hd">我创建的</div>
   <div class="weui-panel__bd">
     <%= render partial: 'organ', collection: @created_organs, as: :organ %>
@@ -15,7 +15,7 @@
 
 <% @accounts.each do |account, organs| %>
   <% if organs.present? %>
-  <div class="weui-panel is-box">
+  <div class="box mx-3">
     <div class="weui-panel__hd has-block-space-between">
       <span>我加入的</span>
       <span class="has-text-grey size-7"><%= account.identity %></span>
@@ -27,7 +27,7 @@
   <% end %>
 <% end %>
 
-<div class="weui-panel is-box">
+<div class="box mx-3">
   <div class="weui-panel__bd">
   <% @roles.each do |role| %>
     <%= link_to({ controller: 'organs', action: 'new', role_id: role.id }, class: 'weui-cell weui-cell_access') do %>
