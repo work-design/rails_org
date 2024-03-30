@@ -1,7 +1,7 @@
-<%= link_to({ controller: '/auth/sign', action: 'logout' }, class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd">
+<%= link_to({ controller: '/auth/sign', action: 'logout' }, class: 'box-cell') do %>
+  <div class="box-cell-body">
     <i class="fa-solid fa-fw fa-right-from-bracket has-text-danger"></i>
     <span class="pl-1 has-text-grey"><%= t('auth.sign.logout.title') %></span>
   </div>
-  <div class="weui-cell__ft"></div>
+  <i class="fa-solid fa-chevron-right has-text-grey"></i>
 <% end %>

@@ -1,28 +1,28 @@
-<%= link_to({ controller: 'org/me/members', action: 'show' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd">
+<%= link_to({ controller: 'org/me/members', action: 'show' }, state: 'enter', class: 'box-cell') do %>
+  <div class="box-cell-body">
     <i class="fa-solid fa-fw fa-user-gear has-text-primary"></i>
     <span class="pl-1"><%= t('.members.show.title') %></span>
   </div>
-  <div class="weui-cell__ft"></div>
+  <div class="fa-solid fa-chevron-right has-text-grey"></div>
 <% end %>
-<%= link_to({ controller: 'org/me/members', action: 'qrcodes' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd">
+<%= link_to({ controller: 'org/me/members', action: 'qrcodes' }, state: 'enter', class: 'box-cell') do %>
+  <div class="box-cell-body">
     <i class="fa-solid fa-fw fa-qrcode has-text-primary"></i>
     <span class="pl-1"><%= t('.members.qrcodes.title') %></span>
   </div>
-  <div class="weui-cell__ft"></div>
+  <div class="fa-solid fa-chevron-right has-text-grey"></div>
 <% end %>
-<%= link_to({ controller: 'trade/me/home', action: 'qrcode' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd">
+<%= link_to({ controller: 'trade/me/home', action: 'qrcode' }, state: 'enter', class: 'box-cell') do %>
+  <div class="box-cell-body">
     <i class="fa-solid fa-fw fa-qrcode has-text-danger"></i>
     <span class="pl-1"><%= t('trade.me.home.qrcode.title') %></span>
   </div>
-  <div class="weui-cell__ft"></div>
+  <div class="fa-solid fa-chevron-right has-text-grey"></div>
 <% end %>
-<%= link_to({ controller: 'org/me/organs', action: 'show' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd">
+<%= link_to({ controller: 'org/me/organs', action: 'show' }, state: 'enter', class: 'box-cell') do %>
+  <div class="box-cell-body">
     <i class="fa-solid fa-fw fa-sitemap has-text-danger"></i>
     <span class="pl-1"><%= t('.organs.show.title') %></span>
   </div>
-  <div class="weui-cell__ft"></div>
+  <div class="fa-solid fa-chevron-right has-text-grey"></div>
 <% end %>
