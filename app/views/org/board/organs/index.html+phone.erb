@@ -1,13 +1,11 @@
-<div class="weui-panel is-box is-borderless mt-2">
-  <div class="weui-panel__bd">
-    <%= render 'profile_item' %>
-  </div>
+<div class="box is-padding-less mx-3 mt-3">
+  <%= render 'profile_item' %>
 </div>
 
 <% if @created_organs.present? %>
 <div class="box mx-3">
-  <div class="weui-panel__hd">我创建的</div>
-  <div class="weui-panel__bd">
+  <div class="box-header">我创建的</div>
+  <div class="box-body">
     <%= render partial: 'organ', collection: @created_organs, as: :organ %>
   </div>
 </div>
