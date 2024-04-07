@@ -1,38 +1,38 @@
-<tr>
-  <td><%= Profiled::Profile.human_attribute_name(:real_name) %></td>
-  <td><%= @profile.real_name %></td>
-</tr>
-<tr>
-  <td><%= Profiled::Profile.human_attribute_name(:gender) %></td>
-  <td><%= @profile.gender_i18n %></td>
-</tr>
-<tr>
-  <td><%= Profiled::Profile.human_attribute_name(:identity) %></td>
-  <td><%= @profile.identity %></td>
-</tr>
-<tr>
-  <td><%= Profiled::Profile.human_attribute_name(:birthday_type) %></td>
-  <td><%= @profile.birthday_type_i18n %></td>
-</tr>
-<tr>
-  <td><%= Profiled::Profile.human_attribute_name(:birthday) %></td>
-  <td><%= @profile.birthday %></td>
-</tr>
-<tr>
-  <td><%= Profiled::Profile.human_attribute_name(:major) %></td>
-  <td><%= @profile.major %></td>
-</tr>
-<tr>
-  <td><%= Profiled::Profile.human_attribute_name(:degree) %></td>
-  <td><%= @profile.degree %></td>
-</tr>
-<tr>
-  <td><%= Profiled::Profile.human_attribute_name(:work_experience) %></td>
-  <td><%= simple_format(@profile.work_experience) %></td>
-</tr>
-<tr>
-  <td><%= Profiled::Profile.human_attribute_name(:resume) %></td>
+<div>
+  <dt><%= Profiled::Profile.human_attribute_name(:real_name) %></dt>
+  <dd><%= @profile.real_name %></dd>
+</div>
+<div>
+  <dt><%= Profiled::Profile.human_attribute_name(:gender) %></dt>
+  <dd><%= @profile.gender_i18n %></dd>
+</div>
+<div>
+  <dt><%= Profiled::Profile.human_attribute_name(:identity) %></dt>
+  <dd><%= @profile.identity %></dd>
+</div>
+<div>
+  <dt><%= Profiled::Profile.human_attribute_name(:birthday_type) %></dt>
+  <dd><%= @profile.birthday_type_i18n %></dd>
+</div>
+<div>
+  <dt><%= Profiled::Profile.human_attribute_name(:birthday) %></dt>
+  <dd><%= @profile.birthday %></dd>
+</div>
+<div>
+  <dt><%= Profiled::Profile.human_attribute_name(:major) %></dt>
+  <dd><%= @profile.major %></dd>
+</div>
+<div>
+  <dt><%= Profiled::Profile.human_attribute_name(:degree) %></dt>
+  <dd><%= @profile.degree %></dd>
+</div>
+<div>
+  <dt><%= Profiled::Profile.human_attribute_name(:work_experience) %></dt>
+  <dt><%= simple_format(@profile.work_experience) %></dt>
+</div>
+<div>
+  <dt><%= Profiled::Profile.human_attribute_name(:resume) %></dt>
   <td>
     <%= link_to @profile.resume.filename, rails_blob_path(@profile.resume), target: '_blank' if @profile.resume.attached? %>
   </td>
-</tr>
+</div>

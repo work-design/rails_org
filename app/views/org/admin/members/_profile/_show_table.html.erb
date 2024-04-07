@@ -1,38 +1,38 @@
-<tr>
-  <td><%= Org::Member.human_attribute_name(:real_name) %></td>
-  <td><%= @member.real_name %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:gender) %></td>
-  <td><%= @member.gender_i18n %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:identity) %></td>
-  <td><%= @member.identity %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:birthday_type) %></td>
-  <td><%= @member.birthday_type_i18n %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:birthday) %></td>
-  <td><%= @member.birthday %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:major) %></td>
-  <td><%= @member.major %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:degree) %></td>
-  <td><%= @member.degree %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:work_experience) %></td>
-  <td><%= simple_format(@member.work_experience) %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:resume) %></td>
-  <td>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:real_name) %></dt>
+  <dd><%= @member.real_name %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:gender) %></dt>
+  <dd><%= @member.gender_i18n %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:identity) %></dt>
+  <dd><%= @member.identity %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:birthday_type) %></dt>
+  <dd><%= @member.birthday_type_i18n %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:birthday) %></dt>
+  <dd><%= @member.birthday %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:major) %></dt>
+  <dd><%= @member.major %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:degree) %></dt>
+  <dd><%= @member.degree %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:work_experience) %></dt>
+  <dt><%= simple_format(@member.work_experience) %></dt>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:resume) %></dt>
+  <dd>
     <%= link_to @member.resume.filename, rails_blob_path(@member.resume), target: '_blank' if @member.resume.attached? %>
-  </td>
-</tr>
+  </dd>
+</div>

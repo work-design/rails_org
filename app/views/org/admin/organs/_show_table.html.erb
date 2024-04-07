@@ -1,28 +1,28 @@
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:name) %></td>
-  <td><%= @organ.name %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:logo) %></td>
-  <td><%= image_tag @organ.logo, class: 'image is-36-h' if @organ.logo.attached? %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:bar_logo) %></td>
-  <td><%= image_tag @organ.bar_logo, class: 'image is-36-h' if @organ.bar_logo.attached? %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:code) %></td>
-  <td><%= @organ.code %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:area_id) %></td>
-  <td><%= @organ.area&.full_name %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:redirect_url) %></td>
-  <td><%= @organ.redirect_url %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:service_url) %></td>
-  <td><%= @organ.service_url %></td>
-</tr>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:name) %></dt>
+  <dd><%= @organ.name %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:logo) %></dt>
+  <dt><%= image_tag @organ.logo, class: 'image is-36-h' if @organ.logo.attached? %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:bar_logo) %></dt>
+  <dt><%= image_tag @organ.bar_logo, class: 'image is-36-h' if @organ.bar_logo.attached? %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:code) %></dt>
+  <dd><%= @organ.code %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:area_id) %></dt>
+  <dd><%= @organ.area&.full_name %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:redirect_url) %></dt>
+  <dd><%= @organ.redirect_url %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:service_url) %></dt>
+  <dd><%= @organ.service_url %></dd>
+</div>

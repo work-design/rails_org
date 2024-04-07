@@ -1,16 +1,16 @@
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:name) %></td>
-  <td><%= current_organ.name %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:code) %></td>
-  <td><%= current_organ.code %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:area_id) %></td>
-  <td><%= current_organ.area&.full_name %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:limit_wechat) %></td>
-  <td><%= current_organ.limit_wechat %></td>
-</tr>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:name) %></dt>
+  <dt><%= current_organ.name %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:code) %></dt>
+  <dt><%= current_organ.code %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:area_id) %></dt>
+  <dt><%= current_organ.area&.full_name %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:limit_wechat) %></dt>
+  <dt><%= current_organ.limit_wechat %></dd>
+</div>

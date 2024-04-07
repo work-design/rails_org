@@ -1,43 +1,43 @@
-<tr>
-  <td><%= Org::Member.human_attribute_name(:leader) %></td>
-  <td><%= @member.leader&.name %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:identity) %></td>
-  <td><%= @member.identity %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:department) %></td>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:leader) %></dt>
+  <dd><%= @member.leader&.name %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:identity) %></dt>
+  <dd><%= @member.identity %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:department) %></dt>
   <td>
     <% @member.departments.each do |department| %>
       <p><%= link_to department.full_name, { controller: 'departments', action: 'show', id: department.id } %></p>
     <% end %>
   </td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:join_on) %></td>
-  <td><%= @member.join_on %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:tutorials) %></td>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:join_on) %></dt>
+  <dd><%= @member.join_on %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:tutorials) %></dt>
   <td>
     <table class="table">
       <% @member.tutorials.each do |tutorial| %>
-        <tr>
-          <td><%= tutorial.id %></td>
-          <td><%= tutorial.kind_i18n %></td>
-          <td><%= tutorial.tutor&.name %></td>
-        </tr>
+        <div>
+          <dt><%= tutorial.id %></dd>
+          <dt><%= tutorial.kind_i18n %></dd>
+          <dt><%= tutorial.tutor&.name %></dd>
+        </div>
       <% end %>
       <tfoot>
-      <tr>
+      <div>
         <td colspan="3">
           <% Org::Tutorial.options_i18n(:kind).each do |text, value| %>
             <%= link_to text, { controller: 'tutorials', action: 'new', kind: value, member_id: @member.id }, class: 'tag' %>
           <% end %>
         </td>
-      </tr>
+      </div>
       </tfoot>
     </table>
   </td>
-</tr>
+</div>

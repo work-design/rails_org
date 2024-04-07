@@ -1,16 +1,16 @@
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:name) %></td>
-  <td><%= @organ.name %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:name_short) %></td>
-  <td><%= @organ.name_short %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:area_id) %></td>
-  <td><%= @organ.area&.full_name %></td>
-</tr>
-<tr>
-  <td><%= Org::Organ.human_attribute_name(:license) %></td>
-  <td><%= @organ.license %></td>
-</tr>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:name) %></dt>
+  <dd><%= @organ.name %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:name_short) %></dt>
+  <dd><%= @organ.name_short %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:area_id) %></dt>
+  <dd><%= @organ.area&.full_name %></dd>
+</div>
+<div>
+  <dt><%= Org::Organ.human_attribute_name(:license) %></dt>
+  <dd><%= @organ.license %></dd>
+</div>

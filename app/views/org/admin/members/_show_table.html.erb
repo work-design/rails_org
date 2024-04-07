@@ -1,32 +1,32 @@
-<tr>
-  <td><%= Org::Member.human_attribute_name(:leader) %></td>
-  <td><%= @member.leader&.name %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:identity) %></td>
-  <td><%= @member.identity %></td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:department) %></td>
-  <td>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:leader) %></dt>
+  <dd><%= @member.leader&.name %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:identity) %></dt>
+  <dd><%= @member.identity %></dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:department) %></dt>
+  <dd>
     <% @member.departments.each do |department| %>
       <p><%= link_to department.full_name, { controller: 'departments', action: 'show', id: department.id } %></p>
     <% end %>
-  </td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:join_on) %></td>
-  <td>
+  </dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:join_on) %></dt>
+  <dd>
   <% if @member.join_on %>
     <span><%= @member.join_on %></span>
   <% else %>
     <time data-controller="time"><%= @member.created_at.to_fs(:iso8601) %></time>
   <% end %>
-  </td>
-</tr>
-<tr>
-  <td><%= Org::Member.human_attribute_name(:tutorials) %></td>
-  <td>
+  </dd>
+</div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:tutorials) %></dt>
+  <dd>
     <table class="table">
       <% @member.tutorials.each do |tutorial| %>
         <tr>
@@ -45,5 +45,5 @@
       </tr>
       </tfoot>
     </table>
-  </td>
-</tr>
+  </dd>
+</div>

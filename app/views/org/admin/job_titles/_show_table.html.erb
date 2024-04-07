@@ -1,12 +1,12 @@
-<tr>
-  <td><%= Org::JobTitle.human_attribute_name(:department) %></td>
-  <td><%= @job_title.department.name %></td>
-</tr>
-<tr>
-  <td><%= Org::JobTitle.human_attribute_name(:name) %></td>
-  <td><%= @job_title.name %></td>
-</tr>
-<tr>
-  <td><%= Org::JobTitle.human_attribute_name(:grade) %></td>
-  <td><%= @job_title.grade %></td>
-</tr>
+<div>
+  <dt><%= Org::JobTitle.human_attribute_name(:department) %></dt>
+  <dd><%= @job_title.department.name %></dd>
+</div>
+<div>
+  <dt><%= Org::JobTitle.human_attribute_name(:name) %></dt>
+  <dd><%= @job_title.name %></dd>
+</div>
+<div>
+  <dt><%= Org::JobTitle.human_attribute_name(:grade) %></dt>
+  <dd><%= @job_title.grade %></dd>
+</div>
