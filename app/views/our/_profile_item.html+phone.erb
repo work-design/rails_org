@@ -1,12 +1,12 @@
 <%= link_to({ controller: 'auth/our/home' }, text: true, state: 'enter', class: 'weui-media-box weui-media-box_appmsg') do %>
-  <div class="weui-media-box__hd">
+  <div class="media-left">
   <% if current_client.organ.logo.attached? %>
-    <%= image_tag current_client.organ.logo, class: 'weui-media-box__thumb is-radius image is-64x64' %>
+    <%= image_tag current_client.organ.logo, class: 'image is-64x64 is-radius image is-64x64' %>
   <% else %>
-    <%= image_tag 'default_avatar.jpg', class: 'weui-media-box__thumb is-radius' %>
+    <%= image_tag 'default_avatar.jpg', class: 'image is-64x64 is-radius' %>
   <% end %>
   </div>
-  <div class="weui-media-box__bd">
+  <div class="media-content">
     <strong class="weui-media-box__title">
       <span><%= current_client.organ.name %></span>
     </strong>
