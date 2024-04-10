@@ -1,4 +1,4 @@
-<%= link_to({ controller: 'auth/board/home' }, state: 'enter', text: true, class: 'weui-media-box weui-media-box_appmsg') do %>
+<%= link_to({ controller: 'auth/board/home' }, state: 'enter', text: true, class: 'media') do %>
   <div class="media-left">
   <% if current_user.avatar.attached? %>
     <%= image_tag current_user.avatar, class: 'image is-64x64 is-radius' %>
