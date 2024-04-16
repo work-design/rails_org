@@ -3,7 +3,7 @@
 </div>
 
 <% if @created_organs.present? %>
-<div class="box mx-3">
+<div class="box is-padding-less mx-3">
   <div class="box-header">我创建的</div>
   <div class="box-body">
     <%= render partial: 'organ', collection: @created_organs, as: :organ %>
@@ -13,12 +13,12 @@
 
 <% @accounts.each do |account, organs| %>
   <% if organs.present? %>
-  <div class="box mx-3">
-    <div class="weui-panel__hd has-block-space-between">
+  <div class="box is-padding-less mx-3">
+    <div class="box-body">
       <span>我加入的</span>
       <span class="has-text-grey size-7"><%= account.identity %></span>
     </div>
-    <div class="weui-panel__bd">
+    <div class="box-body">
       <%= render partial: 'organ', collection: organs, as: :organ %>
     </div>
   </div>
@@ -26,12 +26,10 @@
 <% end %>
 
 <div class="box mx-3">
-  <div class="weui-panel__bd">
-  <% @roles.each do |role| %>
-    <%= link_to({ controller: 'organs', action: 'new', role_id: role.id }, class: 'weui-cell weui-cell_access') do %>
-      <i class="fa-solid fa-plus"></i>
-      <span class="pl-1"><%= role.tip %></span>
-    <% end %>
+<% @roles.each do |role| %>
+  <%= button_to({ controller: 'organs', action: 'new', role_id: role.id }, class: 'button is-fullwidth is-primary') do %>
+    <i class="fa-solid fa-plus"></i>
+    <span class="pl-1"><%= role.tip %></span>
   <% end %>
-  </div>
+<% end %>
 </div>

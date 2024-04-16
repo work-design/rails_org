@@ -3,9 +3,9 @@
     <div class="weui-cells__title">选择或搜索医院</div>
     <div class="weui-cells weui-cells_form">
       <%= f.hidden_field :organ_id, data: { member_target: 'value' } %>
-      <div class="weui-cell weui-cell_active">
-        <div class="weui-cell__hd"><%= Member.human_attribute_name(:organ_id) %></div>
-        <div class="weui-cell__bd">
+      <div class="media">
+        <div class="media-left"><%= Member.human_attribute_name(:organ_id) %></div>
+        <div class="media-content">
           <%= text_field_tag 'name-like', nil, data: { member_target: 'input', controller: 'typer', url: form_search_organs_path }, class: 'weui-input' %>
         </div>
       </div>
@@ -20,8 +20,8 @@
   <div class="weui-cells">
   <% @organs.each do |organ| %>
     <div class="weui-cell" data-action="click->member#choose" data-id="<%= organ.id %>" data-name="<%= organ.name %>">
-      <div class="weui-cell__hd"></div>
-      <div class="weui-cell__bd"><%= organ.name %></div>
+      <div class="media-left"></div>
+      <div class="media-content"><%= organ.name %></div>
     </div>
   <% end %>
   </div>

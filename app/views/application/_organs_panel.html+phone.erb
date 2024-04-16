@@ -7,16 +7,16 @@
     <div class="weui-media-box weui-media-box_small-appmsg">
       <div class="weui-cells">
       <% model[1].each do |member| %>
-        <%= link_to({ controller: 'org/board/members', action: 'qrcodes', id: member.id }, class: 'weui-cell weui-cell_access') do %>
-          <div class="weui-cell__hd"><%= t('org.board.members.qrcodes.title') %></div>
-          <div class="weui-cell__bd">
+        <%= link_to({ controller: 'org/board/members', action: 'qrcodes', id: member.id }, class: 'media') do %>
+          <div class="media-left"><%= t('org.board.members.qrcodes.title') %></div>
+          <div class="media-content">
             <p><%= member.departments.first&.full_name %></p>
             <p class="size-7">
               <%= member.name %>
               <%= member.identity %>
             </p>
           </div>
-          <div class="weui-cell__ft">
+          <div class="media-right">
             <i class="fa-solid fa-qrcode"></i>
           </div>
         <% end %>

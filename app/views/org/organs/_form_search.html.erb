@@ -4,8 +4,8 @@
 <div class="weui-cells">
   <% @organs.each do |organ| %>
     <div class="weui-cell" data-action="click->member#choose" data-id="<%= organ.id %>" data-name="<%= organ.name %>">
-      <div class="weui-cell__hd"></div>
-      <div class="weui-cell__bd"><%= organ.name %></div>
+      <div class="media-left"></div>
+      <div class="media-content"><%= organ.name %></div>
     </div>
   <% end %>
 </div>
