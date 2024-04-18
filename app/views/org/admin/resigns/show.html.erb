@@ -40,7 +40,7 @@
       <td></td>
       <td>
         <%= link_to 'Edit', edit_admin_resign_path(@resign), class: 'ui pink label' %>
-        <%= link_to 'Delete', admin_resign_path(@resign), method: :delete, data: { turbo_confirm: t('.confirm') }, class: 'ui red label' %>
+        <%= link_to 'Delete', admin_resign_path(@resign), method: :delete, data: { turbo_confirm: t('.destroy.confirm') }, class: 'ui red label' %>
       </td>
     </tr>
   </tbody>
