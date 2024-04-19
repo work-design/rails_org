@@ -1,4 +1,4 @@
-<div class="box mx-3">
+<div class="box is-padding-less mx-3">
   <%= render 'profile_item' %>
 </div>
 
@@ -25,7 +25,7 @@
   <% end %>
 <% end %>
 
-<div class="box mx-3">
+<div class="box mx-3 flex justify-content-space-around">
 <% @roles.each do |role| %>
   <%= button_to({ controller: 'organs', action: 'new', role_id: role.id }, class: 'button is-fullwidth is-primary') do %>
     <i class="fa-solid fa-plus"></i>
