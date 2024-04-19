@@ -5,8 +5,8 @@
 <% if @created_organs.present? %>
 <div class="box is-padding-less mx-3">
   <div class="box-header">我创建的</div>
-  <div class="box-body">
-    <%= render partial: 'organ', collection: @created_organs, as: :organ %>
+  <div id="tbody" class="box-body">
+    <%= render partial: 'index_item', layout: 'index_item_actions', collection: @created_organs, as: :model %>
   </div>
 </div>
 <% end %>
@@ -19,7 +19,7 @@
       <span class="has-text-grey size-7"><%= account.identity %></span>
     </div>
     <div class="box-body">
-      <%= render partial: 'organ', collection: organs, as: :organ %>
+      <%= render partial: 'index_item', layout: 'index_item_actions', collection: organs, as: :model %>
     </div>
   </div>
   <% end %>
