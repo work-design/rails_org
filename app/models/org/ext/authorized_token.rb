@@ -3,7 +3,7 @@ module Org
     extend ActiveSupport::Concern
 
     included do
-      attribute :mock_member, :boolean, default: false
+      attribute :mock_member, :boolean
 
       belongs_to :member, class_name: 'Org::Member', optional: true
       belongs_to :ident_member, class_name: 'Org::Member', foreign_key: :identity, primary_key: :identity, optional: true
