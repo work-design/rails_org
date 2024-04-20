@@ -1,8 +1,4 @@
 <%= f.text_field :name %>
 <%= f.text_field :identity %>
-<% if defined? RailsWechat %>
-  <%= f.text_field :wechat_openid %>
-  <%= f.text_field :corp_userid %>
-<% end %>
 <%= f.date_field :join_on %>
 <%= f.check_box :enabled %>
