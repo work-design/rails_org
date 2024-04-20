@@ -4,11 +4,9 @@
 
 <% if current_organ.creator_id == current_user.id %>
 <div class="box mx-3">
-  <div class="weui-panel__ft">
-    <%= button_to({ action: 'destroy' }, method: :delete, class: 'button is-danger', form: { class: 'weui-cell weui-cell_access justify-content-center' }) do %>
-      <i class="fa-solid fa-trash"></i>
-      <span class="pl-1"><%= t('org.me.organs.destroy.title') %></span>
-    <% end %>
-  </div>
+  <%= button_to({ action: 'destroy' }, method: :delete, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-fullwidth is-danger') do %>
+    <i class="fa-solid fa-trash"></i>
+    <span class="pl-1"><%= t('.destroy.title') %></span>
+  <% end %>
 </div>
 <% end %>
