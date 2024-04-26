@@ -64,7 +64,11 @@ module Org
     end
 
     def admin?
-      account.user_id == organ.creator_id if account
+      if account
+        account.user_id == organ.creator_id
+      elsif wechat_user
+        wechat_user.user_id == organ.creator_id
+      end
     end
 
     def grade
