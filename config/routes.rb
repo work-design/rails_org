@@ -75,6 +75,9 @@ Rails.application.routes.draw do
       namespace :panel, defaults: { namespace: 'panel' } do
         root 'home#index'
         resources :organs do
+          collection do
+            post :search
+          end
           member do
             get :children
           end

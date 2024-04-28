@@ -9,6 +9,10 @@ module Org
       @organs = Organ.roots.includes(:organ_domains).default_where(q_params).unscope(:order).order(id: :desc).page(params[:page])
     end
 
+    def search
+      @organs = Organ.default_where('name-like': params['name-like'])
+    end
+
     def new
       @organ = Organ.new
       @organ.area = Profiled::Area.root || Profiled::Area.new if defined? RailsProfile
