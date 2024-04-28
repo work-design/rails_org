@@ -23,7 +23,7 @@ module Org
       }, _default: 'init'
 
       belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
-      has_many :authorized_tokens, ->{ where(mock_member: true) }, class_name: 'Auth::AuthorizedToken'
+      has_many :authorized_tokens, ->(o){ where(identity: o.identity, mock_member: true) }, class_name: 'Auth::AuthorizedToken'
 
       belongs_to :profile, ->(o){ where(organ_id: o.organ_id) }, class_name: 'Profiled::Profile', primary_key: :identity, foreign_key: :identity, optional: true
 
