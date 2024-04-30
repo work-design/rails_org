@@ -3,21 +3,21 @@
   <td>
     <div data-show-target="item" class="visibility-hidden">
       <%= button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-solid fa-circle-info has-text-info"></i>
+        <i class="fa-solid fa-circle-info color-info"></i>
       <% end %>
       <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-solid fa-pencil has-text-link"></i>
+        <i class="fa-solid fa-pencil color-link"></i>
       <% end %>
       <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, class: 'button is-small is-rounded is-light', form: { data: { turbo_confirm: t('.destroy.confirm') } }) do %>
-        <i class="fa-solid fa-trash has-text-danger"></i>
+        <i class="fa-solid fa-trash color-danger"></i>
       <% end %>
     </div>
     <div data-show-target="item" class="visibility-hidden">
       <%= link_to({ controller: 'organ_domains', organ_id: model.id }, aria: { label: t('org.admin.organ_domains.index.title') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-solid fa-mobile has-text-info"></i>
+        <i class="fa-solid fa-mobile color-info"></i>
       <% end %>
       <%= link_to({ controller: '/admin/home', auth_token: current_authorized_token.id, host: model.host }, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light', target: '_blank') do %>
-        <i class="fa-solid fa-hand-point-right has-text-success"></i>
+        <i class="fa-solid fa-hand-point-right color-success"></i>
       <% end %>
     </div>
   </td>

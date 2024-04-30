@@ -5,7 +5,7 @@
     <span class="weui-badge"><%= current_client.organ.name %></span>
   </div>
   <div class="media-right">
-    <span class="has-text-grey has-text-weight-normal">切换</span>
+    <span class="color-grey has-text-weight-normal">切换</span>
   </div>
 <% end %>
 <%= link_to({ controller: 'org/me/members', action: 'show', host: current_client.organ.host, auth_token: current_account.auth_token }, state: 'enter', class: 'media') do %>

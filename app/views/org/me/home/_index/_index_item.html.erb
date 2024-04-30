@@ -18,7 +18,7 @@
 <% end %>
 <%= link_to({ controller: 'trade/me/home', action: 'qrcode' }, state: 'enter', class: 'media') do %>
   <div class="media-content">
-    <i class="fa-solid fa-fw fa-qrcode has-text-danger"></i>
+    <i class="fa-solid fa-fw fa-qrcode color-danger"></i>
     <span class="pl-1"><%= t('trade.me.home.qrcode.title') %></span>
   </div>
   <div class="media-right">
@@ -27,7 +27,7 @@
 <% end %>
 <%= link_to({ controller: 'org/me/organs', action: 'show' }, state: 'enter', class: 'media') do %>
   <div class="media-content">
-    <i class="fa-solid fa-fw fa-sitemap has-text-danger"></i>
+    <i class="fa-solid fa-fw fa-sitemap color-danger"></i>
     <span class="pl-1"><%= t('.organs.show.title') %></span>
   </div>
   <div class="media-right">
