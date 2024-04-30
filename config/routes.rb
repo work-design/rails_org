@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
   scope RailsCom.default_routes_scope do
-    namespace :me, defaults: { namespace: 'me' } do
-      root 'home#index' unless has_named_route? 'me_root'
-    end
-
     namespace :in, defaults: { namespace: 'in' } do
       root 'home#index'
       controller :home do
