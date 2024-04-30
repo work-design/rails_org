@@ -9,7 +9,6 @@ gem 'image_processing'
 gem 'propshaft'
 
 gem 'rails_com', github: 'work-design/rails_com'
-gem 'rails_extend', github: 'work-design/rails_extend'
 gem 'rails_audit', github: 'work-design/rails_audit'
 gem 'rails_auth', github: 'work-design/rails_auth'
 gem 'rails_profile', github: 'work-design/rails_profile'
