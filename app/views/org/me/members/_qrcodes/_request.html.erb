@@ -17,7 +17,6 @@
       <% end %>
     </h4>
     <p class="weui-media-box__desc">
-      <span><%= request.init_wechat_user_i18n %></span>
       <time data-controller="time" data-format="human"><%= request.wechat_user.created_at.to_fs(:iso8601) %></time>
     </p>
     <p class="weui-media-box__desc">
