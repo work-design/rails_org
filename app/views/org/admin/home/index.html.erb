@@ -1,5 +1,3 @@
-<aside class="menu-wrap is-dark">
-  <%= render 'brand_nav' %>
-  <%= render 'org_nav' %>
-  <%= render 'profile_nav' if defined? RailsProfile %>
-</aside>
+<div>
+  <%= image_tag QrcodeHelper.data_url(url_for(controller: '/my/home', host: current_organ.host)), class: 'image is-128x128' %>
+</div>
