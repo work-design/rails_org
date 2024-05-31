@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 01b0012fbf488d46f33a2a8b7888dd83672d475e
+  revision: 4973f70aa36a9e9d26c5df4115dde137d7928bfc
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 5aac4fda99f010e1ab50f7337b56a5399d772cdb
+  revision: d7f23fc0f44a3868a6918df663f558413dd377b6
   specs:
     rails_com (1.3.0)
       acme-client
@@ -28,12 +28,13 @@ GIT
       kaminari
       money-rails (~> 1.15)
       net-http
+      ostruct
       rails (~> 7.0)
       turbo-rails
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: bc8962742c3a545c46bf160f1f93e2b5a82b2f19
+  revision: ac7ae7f0e6cfa61de4edabba248e192ce54221eb
   specs:
     rails_design (0.0.1)
       rails
@@ -148,7 +149,7 @@ GEM
     closure_tree (7.4.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
-    concurrent-ruby (1.2.3)
+    concurrent-ruby (1.3.1)
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
@@ -230,6 +231,7 @@ GEM
     nokogiri (1.16.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+    ostruct (0.6.0)
     pg (1.5.6)
     propshaft (0.9.0)
       actionpack (>= 7.0.0)
@@ -281,7 +283,7 @@ GEM
     rake (13.2.1)
     rdoc (6.7.0)
       psych (>= 4.0.0)
-    reline (0.5.7)
+    reline (0.5.8)
       io-console (~> 0.5)
     rotp (6.3.0)
     ruby-vips (2.2.1)
@@ -305,7 +307,7 @@ GEM
     with_advisory_lock (5.1.0)
       activerecord (>= 6.1)
       zeitwerk (>= 2.6)
-    zeitwerk (2.6.14)
+    zeitwerk (2.6.15)
 
 PLATFORMS
   ruby
@@ -347,7 +349,7 @@ CHECKSUMS
   bigdecimal (3.1.8) sha256=a89467ed5a44f8ae01824af49cbc575871fa078332e8f77ea425725c1ffe27be
   builder (3.2.4) sha256=99caf08af60c8d7f3a6b004029c4c3c0bdaebced6c949165fe98f1db27fbbc10
   closure_tree (7.4.0) sha256=e39171bbe35de3c06898c3caf2d2949bba2d379aa78fc1a03c1c63f165c1d2b5
-  concurrent-ruby (1.2.3) sha256=82fdd3f8a0816e28d513e637bb2b90a45d7b982bdf4f3a0511722d2e495801e2
+  concurrent-ruby (1.3.1) sha256=c369f1d0875b42295fe0fabc321065f3cfeab8c32c526c01b6b05af1efc8b0ce
   connection_pool (2.4.1) sha256=0f40cf997091f1f04ff66da67eabd61a9fe0d4928b9a3645228532512fab62f4
   crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
   date (3.3.4) sha256=971f2cb66b945bcbea4ddd9c7908c9400b31a71bc316833cb42fa584b59d3291
@@ -389,6 +391,7 @@ CHECKSUMS
   net-smtp (0.5.0) sha256=5fc0415e6ea1cc0b3dfea7270438ec22b278ca8d524986a3ae4e5ae8d087b42a
   nio4r (2.7.3) sha256=54b94cdd4b8f9dc39aaad5f699e97afae13efb44f2b180a6e724df76105ff604
   nokogiri (1.16.5) sha256=ec36162c68984fa0a90a5c4ae7ab7759460639e716cc1ce75f34c3cb54158ad2
+  ostruct (0.6.0) sha256=3b1736c99f4d985de36bde1155be5e22aaf6e564b30ff9bd481e2ef7c2d9ba85
   pg (1.5.6) sha256=4bc3ad2438825eea68457373555e3fd4ea1a82027b8a6be98ef57c0d57292b1c
   propshaft (0.9.0) sha256=fe1d2e6368b1147f4de844a58bcd90a0d9d7bd2930aaf225c84d31c068346091
   psych (5.1.2) sha256=337322f58fc2bf24827d2b9bd5ab595f6a72971867d151bb39980060ea40a368
@@ -411,7 +414,7 @@ CHECKSUMS
   railties (7.1.3.3) sha256=fd87f22d653fb7ea246432ac7ed8391a39973f79dcff5e3424b2e3ed2361b10b
   rake (13.2.1) sha256=46cb38dae65d7d74b6020a4ac9d48afed8eb8149c040eccf0523bec91907059d
   rdoc (6.7.0) sha256=b17d5f0f57b0853d7b880d4360a32c7caf8dbb81f8503a36426df809e617f379
-  reline (0.5.7) sha256=1f632a0703fd7d5f3a29d0167395b13e1b59ffa78c2bda077f8b2f26f9b8341b
+  reline (0.5.8) sha256=467faa77616677035786819d7d2e6cfa048be64542c10d8eda81dacd939aea02
   rotp (6.3.0) sha256=75d40087e65ed0d8022c33055a6306c1c400d1c12261932533b5d6cbcd868854
   ruby-vips (2.2.1) sha256=a29841d601c5cfcad9b152964fe83ac8fc60dd94cf8d1fc5e69cfb90fe57cc7b
   sdoc (2.6.1) sha256=d78305be6fe9f81cb93787c24f8c2d47e418c2f1de2e7ff75c032d465fe3c5f8
@@ -425,7 +428,7 @@ CHECKSUMS
   websocket-driver (0.7.6) sha256=f69400be7bc197879726ad8e6f5869a61823147372fd8928836a53c2c741d0db
   websocket-extensions (0.1.5) sha256=1c6ba63092cda343eb53fc657110c71c754c56484aad42578495227d717a8241
   with_advisory_lock (5.1.0) sha256=0692cd82013b271c59aa5e1f603b741ab94926dbce098990fbace5dd5412fed7
-  zeitwerk (2.6.14) sha256=70d8acedc579d87c508f20c31f6e440753014019e0764fb2bf5f42e87054d92b
+  zeitwerk (2.6.15) sha256=b2e68622ba95680a357430c89e1777d6e6796d63c7c02e8790cc38f4c33822cf
 
 BUNDLED WITH
    2.5.3
