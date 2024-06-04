@@ -13,12 +13,14 @@
       <% end %>
     </div>
     <div data-show-target="item" class="visibility-hidden">
-      <%= link_to({ controller: 'organ_domains', organ_id: model.id }, aria: { label: t('org.admin.organ_domains.index.title') }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ controller: 'organ_domains', organ_id: model.id }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-mobile color-info"></i>
+        <span class="ml-1"><%= t('.organ_domains.index.title') %></span>
       <% end %>
-      <%= link_to({ controller: '/admin/home', auth_token: current_authorized_token.id, host: model.host }, aria: { label: t('.mock') }, class: 'button is-small is-rounded is-light', target: '_blank') do %>
+      <%= link_to({ controller: '/admin/home', auth_token: current_authorized_token.id, host: model.host }, class: 'button is-small is-rounded is-light', target: '_blank') do %>
         <i class="fa-solid fa-hand-point-right color-success"></i>
-      <% end %>
+        <span class="ml-1"><%= t('.mock') %></span>
+      <% end if model != current_organ %>
     </div>
   </td>
 </tr>

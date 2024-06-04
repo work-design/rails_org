@@ -11,6 +11,10 @@
   <dd><%= image_tag @organ.bar_logo, class: 'image is-36-h' if @organ.bar_logo.attached? %></dd>
 </div>
 <div>
+  <dt><%= Org::Organ.human_attribute_name(:bar_logo_invert) %></dt>
+  <dd><%= image_tag @organ.bar_logo_invert, class: 'image is-36-h' if @organ.bar_logo_invert.attached? %></dd>
+</div>
+<div>
   <dt><%= Org::Organ.human_attribute_name(:code) %></dt>
   <dd><%= @organ.code %></dd>
 </div>

@@ -29,6 +29,7 @@ module Org
 
       has_one_attached :logo
       has_one_attached :bar_logo
+      has_one_attached :bar_logo_invert
 
       scope :official, -> { where(official: true) }
 

@@ -3,6 +3,7 @@
 <%= f.text_field :code %>
 <%= f.file_field :logo %>
 <%= f.file_field :bar_logo %>
+<%= f.file_field :bar_logo_invert %>
 <%= render partial: 'com/nodes/outer_select', locals: { f: f, outer: 'area', node: @organ.area } %>
 <%= f.text_area :address %>
 <%= f.text_field :service_url %>
