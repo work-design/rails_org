@@ -41,6 +41,7 @@ module Org
         :code,
         :logo,
         :bar_logo,
+        :bar_logo_invert,
         :name_short,
         :address,
         :service_url,
