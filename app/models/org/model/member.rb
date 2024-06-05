@@ -16,7 +16,7 @@ module Org
       attribute :enabled, :boolean, default: true
       attribute :inviter, :boolean, default: false
 
-      enum state: {
+      enum :state, {
         init: 'init',
         pending_trial: 'pending_trial',
         approved: 'approved'

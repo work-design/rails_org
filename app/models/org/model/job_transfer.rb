@@ -16,7 +16,7 @@ module Org
       belongs_to :from_department, class_name: 'Department', optional: true
       belongs_to :from_job_title, class_name: 'JobTitle', optional: true
 
-      enum state: {
+      enum :state, {
         init: 'init',
         approved_sl: 'approved sl',
         approved_om: 'approved om',

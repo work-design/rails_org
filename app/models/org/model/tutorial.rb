@@ -26,25 +26,25 @@ module Org
       validates :tutor_id, uniqueness: { scope: [:member_id, :kind] }
       #validates :kind, presence: true
 
-      enum kind: {
+      enum :kind, {
         interning: 'interning',
         probation: 'probation',
         probation_2: 'probation_2'
       }
 
-      enum state: {
+      enum :state, {
         init: 'pending',
         accepted: 'approved',
         rejected: 'rejected'
       }
-      enum accepted_status: {
+      enum :accepted_status, {
         very_advance: 'very_advance',
         advance: 'advance',
         normal: 'normal',
         overdue: 'overdue',
         very_overdue: 'very_overdue'
       }
-      enum verified: {
+      enum :verified, {
         unverified: 'unverified',
         superior_approved: 'superior_approved',
         admin_approved: 'hr_approved',

@@ -17,12 +17,12 @@ module Org
       attribute :redirect_controller, :string, default: '/home'
       attribute :redirect_action, :string, default: 'index', comment: '默认跳转'
 
-      enum scheme: {
+      enum :scheme, {
         http: 'http',
         https: 'https'
       }, _default: Rails.application.routes.default_url_options[:protocol].presence || 'https'
 
-      enum kind: {
+      enum :kind, {
         frontend: 'frontend',
         backend: 'backend',
         mp: 'mp',

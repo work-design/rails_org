@@ -15,7 +15,7 @@ module Org
       has_many :resign_references
       has_many :resign_reasons, through: :resign_references
 
-      enum state: {
+      enum :state, {
         init: 'init',
         approved: 'approved',
         rejected: 'rejected'
