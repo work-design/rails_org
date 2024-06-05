@@ -20,7 +20,7 @@ module Org
         init: 'init',
         pending_trial: 'pending_trial',
         approved: 'approved'
-      }, _default: 'init'
+      }, default: 'init'
 
       belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
       has_many :authorized_tokens, ->(o){ where(identity: o.identity, uid: o.wechat_openid, mock_member: true) }, class_name: 'Auth::AuthorizedToken'

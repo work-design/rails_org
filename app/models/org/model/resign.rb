@@ -19,7 +19,7 @@ module Org
         init: 'init',
         approved: 'approved',
         rejected: 'rejected'
-      }, _default: 'init'
+      }, default: 'init'
 
       after_create_commit :send_notification
 

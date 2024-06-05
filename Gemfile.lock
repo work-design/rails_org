@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: f35266c2e8010cfab9c672bd5fa4ca44c353281c
+  revision: 02da85fd5f7c39f1859c5a73e86930a2b3045184
   specs:
     rails_audit (1.0.4)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 43f0f89736f0b538532d41d5cb5e935cd70697ea
+  revision: bf4389955beb7ef1d2ad4751b22d2e183755798c
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 1715b74505165d8a541b4b57cab8ce3ed5e33c32
+  revision: 7a4080bbad75059a76add3a706f087126fb46186
   specs:
     rails_com (1.3.0)
       acme-client
@@ -27,6 +27,7 @@ GIT
       httpx
       kaminari
       money-rails (~> 1.15)
+      mutex_m
       net-http
       ostruct
       rails (~> 7.0)
@@ -34,7 +35,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 6e02523ec7c2cfda86b52d02d4967613b63d0967
+  revision: a0d534c1adcdf227767c29f9b34100b318c6df71
   specs:
     rails_design (0.0.1)
       rails
@@ -48,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: f3089e42d513b3197ce24947e4e42933c68c453b
+  revision: b84907d6fe2030d6f1c96402cacedc6468d45fa5
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
@@ -139,8 +140,9 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    acts_as_list (1.1.0)
-      activerecord (>= 4.2)
+    acts_as_list (1.2.0)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     amazing_print (1.6.0)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -342,7 +344,7 @@ CHECKSUMS
   activerecord (7.1.3.3) sha256=3de333d49d84f7f03895de12f71e6e0a6e7df5fd9c80eea7e8b40ce04b4535c9
   activestorage (7.1.3.3) sha256=ba08fd11fea0ab0c72de6de3bb0f386feb8a45bfd969f630ba1da0ceaf02a142
   activesupport (7.1.3.3) sha256=f1147f1eedff05b7816b48d0aa89c912b83fed3f245d7ed3cf33a55ffbf3137d
-  acts_as_list (1.1.0) sha256=06d4c4de6a1014a58b0eb2c832f51b7593df6ae547199e510a392205c31bab61
+  acts_as_list (1.2.0)
   amazing_print (1.6.0) sha256=9903e93daadc15411c854239f8ca1ca6ce78be279ed99d43fec2bd3b0aa37397
   base64 (0.2.0) sha256=0f25e9b21a02a0cc0cea8ef92b2041035d39350946e8789c562b2d1a3da01507
   bcrypt (3.1.20) sha256=8410f8c7b3ed54a3c00cd2456bf13917d695117f033218e2483b2e40b0784099

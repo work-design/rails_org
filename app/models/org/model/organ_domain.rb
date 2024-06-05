@@ -20,14 +20,14 @@ module Org
       enum :scheme, {
         http: 'http',
         https: 'https'
-      }, _default: Rails.application.routes.default_url_options[:protocol].presence || 'https'
+      }, default: Rails.application.routes.default_url_options[:protocol].presence || 'https'
 
       enum :kind, {
         frontend: 'frontend',
         backend: 'backend',
         mp: 'mp',
         agent: 'agent'
-      }, _default: 'frontend'
+      }, default: 'frontend'
 
       belongs_to :organ
 
