@@ -14,6 +14,10 @@
   <dt><%= Org::Member.human_attribute_name(:join_on) %></dt>
   <dd><%= @member.join_on %></dd>
 </div>
+<div>
+  <dt><%= Org::Member.human_attribute_name(:auth_token) %></dt>
+  <dd><%= @member.auth_token %></dd>
+</div>
 <% if @member.departments.present? %>
 <div>
   <dt><%= Org::Member.human_attribute_name(:department_id) %></dt>
