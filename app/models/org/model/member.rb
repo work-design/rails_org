@@ -68,6 +68,8 @@ module Org
         account.user_id == organ.creator_id
       elsif wechat_user
         wechat_user.user_id == organ.creator_id
+      else
+        organ.member_ids.all?(id)
       end
     end
 
