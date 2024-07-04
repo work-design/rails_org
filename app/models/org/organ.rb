@@ -9,5 +9,7 @@ module Org
     include Ship::Ext::Organ if defined? RailsShip
     include Crm::Ext::Organ if defined? RailsCrm
     include Wechat::Ext::Organ if defined? RailsWechat
+
+    attribute :theme_settings, :json, default: {}
   end
 end

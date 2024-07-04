@@ -87,6 +87,9 @@ zh:
           title: 新人指导
     panel:
       title: 组织管理
+      home:
+        index:
+          title: 组织管理
       organs:
         index:
           title: 组织列表
