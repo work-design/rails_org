@@ -15,10 +15,14 @@ module Org
 
     def admin_theme
       r = theme_settings['admin_menu']
-      {
-        'admin-menu' => "hsl(#{r['hue']}, #{r['saturation']}%, #{r['lightness']}%)",
-        'admin-menu-darker' => "hsl(#{r['hue']}, #{r['saturation']}%, #{(r['lightness'].to_i * 0.8).round}%)"
-      }.compact_blank!.map(&->(k,v){ "--#{k}: #{v}" }).join('; ')
+      if r
+        {
+          'admin-menu' => "hsl(#{r['hue']}, #{r['saturation']}%, #{r['lightness']}%)",
+          'admin-menu-darker' => "hsl(#{r['hue']}, #{r['saturation']}%, #{(r['lightness'].to_i * 0.8).round}%)"
+        }.compact_blank!.map(&->(k,v){ "--#{k}: #{v}" }).join('; ')
+      else
+        ''
+      end
     end
   end
 end
