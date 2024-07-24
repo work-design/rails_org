@@ -12,6 +12,7 @@ module Org
       attribute :code, :string
       attribute :license, :string
       attribute :service_url, :string, comment: '客服 url'
+      attribute :theme_settings, :json, default: {}
 
       has_taxons :area
       belongs_to :area, class_name: 'Profiled::Area', optional: true
@@ -119,6 +120,30 @@ module Org
 
     def redirect_url(**options)
       domain.redirect_url(**options)
+    end
+
+    def admin_theme
+      r = theme_settings['admin_menu']
+      if r
+        {
+          'admin-menu' => "hsl(#{r['hue']}, #{r['saturation']}%, #{r['lightness']}%)",
+          'admin-menu-darker' => "hsl(#{r['hue']}, #{r['saturation']}%, #{(r['lightness'].to_i * 0.8).round}%)"
+        }.compact_blank!.map(&->(k,v){ "--#{k}: #{v}" }).join('; ')
+      else
+        ''
+      end
+    end
+
+    def panel_theme
+      r = theme_settings['panel_menu']
+      if r
+        {
+          'admin-menu' => "hsl(#{r['hue']}, #{r['saturation']}%, #{r['lightness']}%)",
+          'admin-menu-darker' => "hsl(#{r['hue']}, #{r['saturation']}%, #{(r['lightness'].to_i * 0.8).round}%)"
+        }.compact_blank!.map(&->(k,v){ "--#{k}: #{v}" }).join('; ')
+      else
+        ''
+      end
     end
 
   end
