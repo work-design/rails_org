@@ -14,7 +14,7 @@ module Org
 
       after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
 
-      acts_as_list column: :grade, scope: :organ_id
+      positioned on: :organ_id, column: :grade
     end
 
     def sync_grade_member_departments

@@ -22,7 +22,7 @@ module Org
       before_validation :init_department_root
       after_update_commit :sync_grade_member_departments, if: -> { saved_change_to_grade? }
 
-      acts_as_list column: :grade, scope: [:department_root_id]
+      positioned on: [:department_root_id], column: :grade
     end
 
     def init_department_root
