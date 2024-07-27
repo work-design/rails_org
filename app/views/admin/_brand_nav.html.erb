@@ -2,7 +2,7 @@
   <%= link_to({ controller: '/home' }) do %>
     <%= image_tag current_organ.logo, class: 'image' %>
   <% end if current_organ.logo.attached? %>
-  <%= link_to({ controller: '/admin/home' }, class: 'has-text-centered') do %>
+  <%= link_to({ controller: '/admin/home' }, class: 'text-centered') do %>
     <i class="fa-solid fa-grip"></i>
     <span><%= t('admin.home.index.title') %></span>
   <% end %>

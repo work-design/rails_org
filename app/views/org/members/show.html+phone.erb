@@ -1,17 +1,17 @@
 <table class="table is-hoverable is-fullwidth">
   <tbody>
     <tr>
-      <td class="has-text-right"><%= User.human_attribute_name(:avatar) %></td>
+      <td class="text-right"><%= User.human_attribute_name(:avatar) %></td>
       <td>
         <%= image_tag @member.avatar if @member.avatar.attached? %>
       </td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:join_on) %></td>
+      <td class="text-right"><%= Member.human_attribute_name(:join_on) %></td>
       <td><%= @member.join_on %></td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:department) %></td>
+      <td class="text-right"><%= Member.human_attribute_name(:department) %></td>
       <td>
         <% @member.departments.each do |department| %>
           <%= link_to department.name, member_path(department_id: department.id) %>

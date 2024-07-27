@@ -13,35 +13,35 @@
   </thead>
   <tbody>
     <tr>
-      <td class="has-text-right"><%= JobTransfer.human_attribute_name(:member) %></td>
+      <td class="text-right"><%= JobTransfer.human_attribute_name(:member) %></td>
       <td><%= @job_transfer.member.name %></td>
     </tr>
     <tr>
-      <td class="has-text-right">From</td>
+      <td class="text-right">From</td>
       <td><p><%= @job_transfer.from_office&.name %></p>
         <p><%= @job_transfer.from_department&.full_name %></p>
         <p><%= @job_transfer.from_job_title&.name %></p></td>
     </tr>
     <tr>
-      <td class="has-text-right">To</td>
+      <td class="text-right">To</td>
       <td><p><%= @job_transfer.to_office&.name %></p>
         <p><%= @job_transfer.to_department&.full_name %></p>
         <p><%= @job_transfer.to_job_title&.name %></p></td>
     </tr>
     <tr>
-      <td class="has-text-right">Detail</td>
+      <td class="text-right">Detail</td>
       <td><%= @job_transfer.reason_note %></td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= JobTransfer.human_attribute_name(:transfer_on) %></td>
+      <td class="text-right"><%= JobTransfer.human_attribute_name(:transfer_on) %></td>
       <td><%= @job_transfer.transfer_on %></td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= JobTransfer.human_attribute_name(:state) %></td>
+      <td class="text-right"><%= JobTransfer.human_attribute_name(:state) %></td>
       <td><%= @job_transfer.state_i18n %></td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= JobTransfer.human_attribute_name(:created_at) %></td>
+      <td class="text-right"><%= JobTransfer.human_attribute_name(:created_at) %></td>
       <td><time data-controller="time"><%= @job_transfer.created_at&.to_fs(:iso8601) %></time></td>
     </tr>
     <tr><td></td>

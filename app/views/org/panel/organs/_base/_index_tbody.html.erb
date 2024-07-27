@@ -5,10 +5,10 @@
   <p>
     <span><%= model.name %></span>
     <% if model.name_short.present? %>
-      <span class="color-grey">(<%= model.name_short %>)</span>
+      <span class="text-grey">(<%= model.name_short %>)</span>
     <% end %>
   </p>
-  <p class="color-grey"><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
+  <p class="text-grey"><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
 </td>
 <td><%= model.creator&.name || model.creator_id %></td>
 <td>
@@ -30,19 +30,19 @@
   </div>
   <div>
     <%= button_to({ controller: 'roled/panel/whos', action: 'edit', who_type: 'Org::Organ', who_id: model.id }, aria: { label: t('roled.panel.whos.edit.title') }) do %>
-      <i class="fa-solid fa-user-shield color-link"></i>
+      <i class="fa-solid fa-user-shield text-link"></i>
     <% end %>
   </div>
 </td>
 <td>
   <%= link_to({ controller: 'members', organ_id: model.id }, aria: { label: t('org.panel.members.index.title') }, class: 'button is-small is-rounded is-light') do %>
-    <i class="fa-solid fa-users color-info"></i>
+    <i class="fa-solid fa-users text-info"></i>
     <span class="pl-1"><%= model.members_count %></span>
   <% end %>
 </td>
 <td>
   <%= link_to({ action: 'children', id: model.id }, aria: { label: t('.children.index.title') }, class: 'button is-small is-rounded is-light') do %>
-    <i class="fa-solid fa-building-flag color-info"></i>
+    <i class="fa-solid fa-building-flag text-info"></i>
     <span class="pl-1"><%= model.children.count %></span>
   <% end %>
 </td>

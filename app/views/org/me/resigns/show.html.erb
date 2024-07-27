@@ -17,7 +17,7 @@
   <% if @resign.persisted? %>
   <tbody>
   <tr>
-    <td class="has-text-right"><%= Resign.human_attribute_name(:resign_reason) %></td>
+    <td class="text-right"><%= Resign.human_attribute_name(:resign_reason) %></td>
     <td class="ui labels">
       <% @resign.resign_reasons.each do |resign_reason| %>
         <span class="ui label"><%= resign_reason.name %></span>
@@ -25,19 +25,19 @@
     </td>
   </tr>
   <tr>
-    <td class="has-text-right"><%= Resign.human_attribute_name(:leave_on) %></td>
+    <td class="text-right"><%= Resign.human_attribute_name(:leave_on) %></td>
     <td><%= @resign.leave_on %></td>
   </tr>
   <tr>
-    <td class="has-text-right"><%= Resign.human_attribute_name(:reason_note) %></td>
+    <td class="text-right"><%= Resign.human_attribute_name(:reason_note) %></td>
     <td><%= simple_format @resign.reason_note %></td>
   </tr>
   <tr>
-    <td class="has-text-right"><%= Resign.human_attribute_name(:state) %></td>
+    <td class="text-right"><%= Resign.human_attribute_name(:state) %></td>
     <td><%= @resign.state_i18n %></td>
   </tr>
   <tr>
-    <td class="has-text-right"><%= Resign.human_attribute_name(:created_at) %></td>
+    <td class="text-right"><%= Resign.human_attribute_name(:created_at) %></td>
     <td><time data-controller="time"><%= @resign.created_at&.to_fs(:iso8601) %></time></td>
   </tr>
   </tbody>

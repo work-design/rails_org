@@ -1,7 +1,7 @@
 <table class="table is-hoverable is-fullwidth">
   <tbody>
     <tr>
-      <td class="has-text-right"><%= User.human_attribute_name(:avatar) %></td>
+      <td class="text-right"><%= User.human_attribute_name(:avatar) %></td>
       <td>
         <% if @member.user && @member.user.avatar.attached? %>
           <%= image_tag @member.user.avatar %>
@@ -11,15 +11,15 @@
       </td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:email) %></td>
+      <td class="text-right"><%= Member.human_attribute_name(:email) %></td>
       <td><%= @member.email %></td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:join_on) %></td>
+      <td class="text-right"><%= Member.human_attribute_name(:join_on) %></td>
       <td><%= @member.join_on %></td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:department) %></td>
+      <td class="text-right"><%= Member.human_attribute_name(:department) %></td>
       <td>
         <% @member.department&.self_and_ancestors&.reverse_each do |department| %>
           <%= link_to department.name, member_path(department_id: department.id) %>
@@ -28,11 +28,11 @@
       </td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Member.human_attribute_name(:skype) %></td>
+      <td class="text-right"><%= Member.human_attribute_name(:skype) %></td>
       <td><%= @member.skype %></td>
     </tr>
     <tr>
-      <td class="has-text-right"><%= Profile.human_attribute_name(:work_experience) %></td>
+      <td class="text-right"><%= Profile.human_attribute_name(:work_experience) %></td>
       <td><%= simple_format @member.profile&.work_experience %></td>
     </tr>
   </tbody>
