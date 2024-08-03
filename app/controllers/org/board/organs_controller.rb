@@ -1,7 +1,7 @@
 module Org
   class Board::OrgansController < Board::BaseController
     before_action :set_organ, only: [:show, :edit, :update, :destroy]
-    before_action :set_new_organ, only: [:new, :create]
+    before_action :set_new_organ, only: [:index, :new, :create]
     before_action :set_role, only: [:new]
     before_action :set_roles, only:[:index]
 
@@ -33,7 +33,9 @@ module Org
 
     def set_new_organ
       @organ = current_user.created_organs.build(organ_params)
-      @organ.who_roles.build(role_id: params[:role_id]) if params[:role_id].present?
+      if params[:role_id].present?
+        @organ.who_roles.build(role_id: params[:role_id])
+      end
     end
 
     def set_role
@@ -51,12 +53,14 @@ module Org
     end
 
     def organ_params
-      p = params.fetch(:organ, {}).permit(
+      _p = params.fetch(:organ, {}).permit(
         :name,
         :logo,
+        :invite_token,
         who_roles_attributes: {}
       )
-      p.merge! provider_id: current_organ&.id
+      _p.merge! provider_id: current_organ&.id
+      _p.with_defaults! params.permit(:invite_token)
     end
 
   end

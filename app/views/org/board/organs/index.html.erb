@@ -1,3 +1,5 @@
 <div class="hero-body">
-  <%= render partial: 'card', collection: @organs, as: :organ %>
+  <%= render partial: 'card', collection: @created_organs, as: :organ %>
 </div>
+
+<%= render 'new_form' %>
