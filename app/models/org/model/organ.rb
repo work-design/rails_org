@@ -15,7 +15,7 @@ module Org
       attribute :theme_settings, :json, default: {}
 
       has_taxons :area
-      belongs_to :area, class_name: 'Profiled::Area', optional: true
+      belongs_to :area, class_name: 'Ship::Area', optional: true
       belongs_to :creator, class_name: 'Auth::User', optional: true
       belongs_to :provider, class_name: 'Org::Organ', optional: true
 
