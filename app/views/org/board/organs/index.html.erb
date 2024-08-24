@@ -1,5 +1,7 @@
-<div class="hero-body">
-  <%= render partial: 'card', collection: @created_organs, as: :organ %>
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <%= render partial: 'card', collection: @created_organs, as: :organ %>
+  </div>
 </div>
 
 <%= render 'new_form' %>
