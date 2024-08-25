@@ -7,7 +7,7 @@ module Org
       return if current_organ && current_organ.self_and_ancestor_ids.include?(current_member&.organ_id)
 
       if current_authorized_token
-        render 'require_org_member', layout: 'application'
+        render 'require_org_member'
       else
         require_user(current_provider_app)
       end
