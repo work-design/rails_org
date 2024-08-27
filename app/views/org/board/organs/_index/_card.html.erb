@@ -1,11 +1,11 @@
-<div class="cell media is-middle is-boxed">
-  <div class="media-left">
+<div id="tr_<%= organ.id %>" class="cell card is-middle">
+  <div class="card-image">
     <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'image is-48x48' if organ.logo.attached? %>
   </div>
-  <div class="media-content">
+  <div class="card-content">
     <strong><%= organ.name %></strong>
   </div>
-  <div class="media-right">
+  <div class="card-footer">
     <%= link_to '我的', { controller: '/me/home', host: organ.host }, class: 'card-footer-item' %>
   </div>
 </div>
