@@ -1,6 +1,6 @@
 module Org
   class Board::OrgansController < Board::BaseController
-    before_action :set_organ, only: [:show, :edit, :update, :destroy]
+    before_action :set_organ, only: [:show, :edit, :update, :redirect, :destroy]
     before_action :set_new_organ, only: [:index, :new, :create]
     before_action :set_role, only: [:new]
     before_action :set_roles, only:[:index]
@@ -24,6 +24,11 @@ module Org
       else
         render :new, locals: { model: @organ }, status: :unprocessable_entity
       end
+    end
+
+    def redirect
+      member = current_user.members.find_by(organ_id: @organ.id)
+      redirect_to({ controller: '/me/home', host: @organ.admin_host, auth_token: member.auth_token }, allow_other_host: true)
     end
 
     private

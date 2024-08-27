@@ -6,6 +6,6 @@
     <strong><%= organ.name %></strong>
   </div>
   <div class="card-footer">
-    <%= link_to '我的', { controller: '/me/home', host: organ.host }, class: 'card-footer-item' %>
+    <%= button_to '我的', { action: 'redirect', id: organ.id }, form: { class: 'card-footer-item', target: '_blank' } %>
   </div>
 </div>

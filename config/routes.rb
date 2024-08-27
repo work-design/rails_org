@@ -60,7 +60,11 @@ Rails.application.routes.draw do
       end
 
       namespace :board, defaults: { namespace: 'board' } do
-        resources :organs
+        resources :organs do
+          member do
+            post :redirect
+          end
+        end
         resources :members, only: [:index, :new, :create] do
           collection do
             get :near
