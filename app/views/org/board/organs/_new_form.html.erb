@@ -1,7 +1,9 @@
 <%= form_with theme: 'line', model: @organ, url: { action: 'create' }, class: 'card' do |f| %>
-  <div class="card-content">
+  <div class="card-content has-column-left">
     <%= render 'error_messages', target: f.object %>
     <%= render partial: 'form', locals: { f: f } %>
+  </div>
+  <div class="card-footer py-2">
     <%= f.submit %>
   </div>
 <% end %>
