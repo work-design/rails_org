@@ -1,5 +1,7 @@
-<%= form_with model: @organ, url: { action: 'create' }, class: 'cell card' do |f| %>
-  <%= render 'error_messages', target: f.object %>
-  <%= render partial: 'form', locals: { f: f } %>
-  <%= f.submit %>
+<%= form_with theme: 'line', model: @organ, url: { action: 'create' }, class: 'cell card' do |f| %>
+  <div class="card-content">
+    <%= render 'error_messages', target: f.object %>
+    <%= render partial: 'form', locals: { f: f } %>
+    <%= f.submit %>
+  </div>
 <% end %>
