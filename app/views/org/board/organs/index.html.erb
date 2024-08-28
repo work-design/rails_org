@@ -1,6 +1,4 @@
-<div class="fixed-grid has-4-cols">
-  <div id="tbody" class="grid">
-    <%= render partial: 'card', collection: @created_organs, as: :organ %>
-    <%= render 'new_form' %>
-  </div>
+<div id="tbody" class="cards is-4">
+  <%= render partial: 'card', collection: @created_organs, as: :organ %>
+  <%= render 'new_form' %>
 </div>
