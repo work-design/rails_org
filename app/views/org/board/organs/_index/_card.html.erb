@@ -1,4 +1,4 @@
-<div id="tr_<%= organ.id %>" class="cell card is-middle">
+<div id="tr_<%= organ.id %>" class="card is-middle">
   <div class="card-image">
     <%= image_tag organ.logo.variant(resize_to_limit: [150, 150]), class: 'image' if organ.logo.attached? %>
   </div>
