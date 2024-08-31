@@ -1,4 +1,4 @@
-<%= link_to({ controller: 'org/me/members', action: 'show' }, state: 'enter', class: 'media') do %>
+<%= link_to({ controller: 'org/me/members', action: 'show' }, class: 'media') do %>
   <div class="media-content">
     <i class="fa-solid fa-fw fa-user-gear text-primary"></i>
     <span class="pl-1"><%= t('.members.show.title') %></span>
@@ -7,7 +7,7 @@
     <i class="fa-solid fa-chevron-right"></i>
   </div>
 <% end %>
-<%= link_to({ controller: 'org/me/members', action: 'qrcodes' }, state: 'enter', class: 'media') do %>
+<%= link_to({ controller: 'org/me/members', action: 'qrcodes' }, class: 'media') do %>
   <div class="media-content">
     <i class="fa-solid fa-fw fa-qrcode text-primary"></i>
     <span class="pl-1"><%= t('.members.qrcodes.title') %></span>
@@ -16,7 +16,7 @@
     <i class="fa-solid fa-chevron-right"></i>
   </div>
 <% end %>
-<%= link_to({ controller: 'trade/me/home', action: 'qrcode' }, state: 'enter', class: 'media') do %>
+<%= link_to({ controller: 'trade/me/home', action: 'qrcode' }, class: 'media') do %>
   <div class="media-content">
     <i class="fa-solid fa-fw fa-qrcode text-danger"></i>
     <span class="pl-1"><%= t('trade.me.home.qrcode.title') %></span>
@@ -25,7 +25,7 @@
     <i class="fa-solid fa-chevron-right"></i>
   </div>
 <% end %>
-<%= link_to({ controller: 'org/me/organs', action: 'show' }, state: 'enter', class: 'media') do %>
+<%= link_to({ controller: 'org/me/organs', action: 'show' }, class: 'media') do %>
   <div class="media-content">
     <i class="fa-solid fa-fw fa-sitemap text-danger"></i>
     <span class="pl-1"><%= t('.organs.show.title') %></span>
