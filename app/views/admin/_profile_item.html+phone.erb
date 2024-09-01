@@ -1,4 +1,4 @@
-<%= link_to({ controller: 'org/me/home' }, text: true, class: 'media') do %>
+<%= link_to({ controller: 'org/me/home' }, text: true, class: 'media is-boxed') do %>
   <div class="media-left">
   <% if current_member.avatar.attached? %>
     <%= image_tag current_member.avatar, class: 'image is-64x64 is-radius' %>
@@ -18,7 +18,7 @@
       <span class="text-weight-normal size-7"><%= current_organ.name %></span>
     </div>
   </div>
-  <div class="weui-media-box__ft pr-4 text-grey">
+  <div class="media-right text-grey">
     <i class="fa-solid fa-qrcode"></i>
     <i class="fa-solid fa-chevron-right pl-2"></i>
   </div>
