@@ -9,6 +9,7 @@ module Org
     include Bench::Ext::Organ if defined? RailsBench
     include Crm::Ext::Organ if defined? RailsCrm
     include Wechat::Ext::Organ if defined? RailsWechat
+    include JiaBo::Ext::Organ
 
   end
 end
