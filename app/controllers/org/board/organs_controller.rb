@@ -22,7 +22,7 @@ module Org
       @member.wechat_openid = current_authorized_token.uid if @member.respond_to? :wechat_openid
 
       if @organ.save
-        render 'create', locals: { model: @organ }
+        render :create, locals: { model: @organ }
       else
         render :new, locals: { model: @organ }, status: :unprocessable_entity
       end
