@@ -4,10 +4,12 @@ module Org
 
     included do
       has_many :created_organs, class_name: 'Org::Organ', foreign_key: :creator_id
-      has_many :members, class_name: 'Org::Member', through: :accounts
-      has_many :organs, class_name: 'Org::Organ', through: :members
 
       after_save :copy_avatar_to_members, if: -> { attachment_changes['avatar'].present? }
+    end
+
+    def members
+      Org::Member.where(identity: accounts.pluck(:identity)).or(Org::Member.where(wechat_openid: oauth_users.pluck(:uid)))
     end
 
     def available_account_identities
