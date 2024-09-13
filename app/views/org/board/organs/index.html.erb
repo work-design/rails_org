@@ -1,11 +1,4 @@
 <div id="tbody" class="cards is-4">
   <%= render partial: 'card', collection: @created_organs, as: :organ %>
-  <div id="new_card" class="card">
-    <div class="card-content has-column-centered">
-      <%= button_to({ action: 'new' }, class: 'button is-large is-borderless') do %>
-        <i class="fa-solid fa-2x fa-plus"></i>
-      <% end %>
-      <p><%= t('.new.title') %></p>
-    </div>
-  </div>
+  <%= render partial: 'new_card' %>
 </div>

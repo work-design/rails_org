@@ -32,8 +32,6 @@ module Org
         @current_organ = Organ.find r
       elsif current_organ_domain
         @current_organ = @current_organ_domain.organ
-      else
-        @current_organ = current_user && current_user.organs.take
       end
       logger.debug "\e[35m  Login as organ: #{@current_organ&.name}, ID: #{@current_organ&.id}  \e[0m"
       @current_organ
