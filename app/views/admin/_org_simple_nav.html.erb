@@ -1,4 +1,4 @@
-<div data-controller="menu empty" class="menu ex-accordion is-active">
+<div data-controller="menu" class="<%= role_permit?(business: 'org', namespace: 'admin') ? 'menu ex-accordion is-active' : 'display-none' %>">
   <div class="menu-label">
     <div>
       <i class="fa-solid fa-fw fa-sitemap"></i>
@@ -8,7 +8,7 @@
       <i class="fa-solid fa-cog"></i>
     <% end %>
   </div>
-  <div class="menu-list" data-empty-target="content">
+  <div class="menu-list">
     <%= link_to t('org.admin.organs.index.title'), { controller: 'org/admin/organs' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: ['organs', 'organ_domains'], active: 'is-active') %>
     <%= link_to t('org.admin.members.index.title'), { controller: 'org/admin/members' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: ['members'], active: 'is-active') %>
   </div>
