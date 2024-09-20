@@ -66,7 +66,7 @@ module Org
         :invite_token,
         who_roles_attributes: {}
       )
-      _p.merge! provider_id: current_organ&.id
+      _p.merge! provider_id: [current_organ.id, nil] if current_organ
       _p.with_defaults! params.permit(:invite_token)
     end
 
