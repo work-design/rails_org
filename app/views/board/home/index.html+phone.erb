@@ -1,11 +1,11 @@
-<div class="weui-panel is-borderless">
-  <div class="weui-panel__hd">选择身份进入</div>
+<div class="box is-padding-less mx-3">
+  <div class="box-header">选择身份进入</div>
 </div>
 
 <%= render partial: 'account', collection: @accounts, as: :account %>
 
-<div class="weui-panel" data-controller="empty">
-  <div class="weui-panel__hd">用户身份</div>
+<div class="box is-padding-less mx-3">
+  <div class="box-header">用户身份</div>
   <div class="weui-panel__bd">
     <div class="media is-boxed">
       <% if current_organ %>
