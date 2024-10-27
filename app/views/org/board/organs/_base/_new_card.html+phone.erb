@@ -1,4 +1,4 @@
-<div class="mx-3">
+<div class="cards mx-3">
   <div id="new_card">
   <% @roles.each do |role| %>
     <%= button_to({ controller: 'organs', action: 'new', role_id: role.id }, class: 'button is-fullwidth is-primary mt-3') do %>
