@@ -1,0 +1,8 @@
+<div id="new_card" class="box mx-3">
+  <% @roles.each do |role| %>
+    <%= button_to({ controller: 'organs', action: 'new', role_id: role.id }, class: 'button is-fullwidth is-primary mt-3') do %>
+      <i class="fa-solid fa-plus"></i>
+      <span class="pl-1"><%= role.tip %></span>
+    <% end %>
+  <% end %>
+</div>
