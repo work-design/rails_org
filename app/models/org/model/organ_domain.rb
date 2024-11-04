@@ -47,7 +47,7 @@ module Org
     end
 
     def init_subdomain
-      self.subdomain = [KIND[kind], organ_id].join('-')
+      self.subdomain = [organ_id, KIND[kind]].join('.')
       compute_host
     end
 
