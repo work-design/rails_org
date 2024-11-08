@@ -1,3 +1,12 @@
-<div>
-  <p>您不是该组织成员，请联系管理员</p>
-</div>
+<% if current_organ %>
+  <div class="has-column-centered">
+    <p>您不是该组织成员，请联系管理员</p>
+  </div>
+<% elsif request.subdomain == 'admin' %>
+  <div>
+    <p>您在以下组织存在账号，请选择账号登录</p>
+    <% current_account.members.each do |member| %>
+      <p><%= button_to member.organ.name, { controller: 'org/board/organs', action: 'login', id: member.organ_id }, class: 'text-link' %></p>
+    <% end %>
+  </div>
+<% end %>

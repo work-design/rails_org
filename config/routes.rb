@@ -63,6 +63,7 @@ Rails.application.routes.draw do
         resources :organs do
           member do
             post :redirect
+            post :login
           end
         end
         resources :members, only: [:index, :new, :create] do
