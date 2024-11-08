@@ -70,7 +70,7 @@ Rails.application.routes.draw do
             get :near
           end
           member do
-            post :login
+            match :login, via: [:get, :post]
           end
         end
       end

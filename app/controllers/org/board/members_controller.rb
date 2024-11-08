@@ -4,7 +4,7 @@ module Org
 
     def login
       current_authorized_token.update member_id: @member.id
-      redirect_to({ controller: '/me/home' })
+      refresh_or_redirect_to({ controller: '/me/home' })
     end
 
     private

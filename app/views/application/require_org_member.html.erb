@@ -6,7 +6,7 @@
   <div>
     <p>您在以下组织存在账号，请选择账号登录</p>
     <% current_account.members.each do |member| %>
-      <p><%= button_to member.organ.name, { controller: 'org/board/members', action: 'login', id: member.id }, class: 'text-link' %></p>
+      <p><%= link_to member.organ.name, { controller: 'org/board/members', action: 'login', id: member.id }, class: 'text-link' %></p>
     <% end %>
   </div>
 <% end %>
