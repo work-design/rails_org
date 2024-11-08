@@ -10,8 +10,7 @@ module Org
       return @current_member if defined?(@current_member)
 
       @current_member =
-        defined?(current_authorized_token) && current_authorized_token&.member ||
-        defined?(current_authorized_token) && current_authorized_token&.mocked_member ||
+        (defined?(current_authorized_token) && (current_authorized_token&.member || current_authorized_token&.mocked_member)) ||
         (defined?(current_wechat_user) && current_wechat_user && current_wechat_user.members.find_by(organ_id: current_domain_organ&.self_and_ancestor_ids)) ||
         (current_account && current_account.members.find_by(organ_id: current_domain_organ&.self_and_ancestor_ids)) ||
         defined?(current_corp_user) && current_corp_user&.member ||
