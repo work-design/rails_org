@@ -9,14 +9,12 @@ module Org
     def current_member
       return @current_member if defined?(@current_member)
 
-      if current_domain_organ
+      if request.subdomain == 'admin' && current_authorized_token
+        @current_member = current_authorized_token.member || current_authorized_token.mocked_member
+      elsif current_domain_organ
         @current_user = (defined?(current_wechat_user) && current_wechat_user && current_wechat_user.members.find_by(organ_id: current_domain_organ.self_and_ancestor_ids)) ||
           (current_account && current_account.members.find_by(organ_id: current_domain_organ.self_and_ancestor_ids)) ||
           defined?(current_corp_user) && current_corp_user&.member
-      else
-        if current_authorized_token
-          @current_member = current_authorized_token.member || current_authorized_token.mocked_member
-        end
       end
 
       if @current_member
