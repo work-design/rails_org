@@ -10,11 +10,12 @@ module Org
       return @current_member if defined?(@current_member)
 
       @current_member =
-        (defined?(current_wechat_user) && current_wechat_user && current_wechat_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)) ||
-        (current_account && current_account.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)) ||
+        defined?(current_authorized_token) && current_authorized_token&.member ||
+        defined?(current_authorized_token) && current_authorized_token&.mocked_member ||
+        (defined?(current_wechat_user) && current_wechat_user && current_wechat_user.members.find_by(organ_id: current_domain_organ&.self_and_ancestor_ids)) ||
+        (current_account && current_account.members.find_by(organ_id: current_domain_organ&.self_and_ancestor_ids)) ||
         defined?(current_corp_user) && current_corp_user&.member ||
-        (current_user && current_user.members.find_by(organ_id: current_organ&.self_and_ancestor_ids)) ||
-        defined?(current_authorized_token) && current_authorized_token&.mocked_member
+        (current_user && current_user.members.find_by(organ_id: current_domain_organ&.self_and_ancestor_ids))
 
       if @current_member
         logger.debug "\e[35m  Login as member: #{@current_member.name}(#{@current_member.id})  \e[0m"
@@ -27,14 +28,18 @@ module Org
     def current_organ
       return @current_organ if defined?(@current_organ)
 
-      if params[:org_id] && params[:org_id].start_with?('org_')
-        r = params[:org_id].delete_prefix('org_')
-        @current_organ = Organ.find r
-      elsif current_organ_domain
-        @current_organ = @current_organ_domain.organ
+      if current_organ_domain
+        @current_organ = current_organ_domain.organ
+      elsif current_member
+        @current_organ = current_member.organ
       end
       logger.debug "\e[35m  Login as organ: #{@current_organ&.name}, ID: #{@current_organ&.id}  \e[0m"
       @current_organ
+    end
+
+    def current_domain_organ
+      return @current_domain_organ if defined?(@current_domain_organ)
+      @current_domain_organ = current_organ_domain&.organ
     end
 
     def current_organ_domain
