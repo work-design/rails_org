@@ -9,7 +9,15 @@ module Org
     end
 
     def members
-      Org::Member.where(identity: accounts.pluck(:identity)).or(Org::Member.where(wechat_openid: oauth_users.pluck(:uid)))
+      identities = accounts.pluck(:identity)
+      uids = oauth_users.pluck(:uid)
+      if identities.blank?
+        Org::Member.where(wechat_openid: uids)
+      elsif uids.blank?
+        Org::Member.where(identity: identities)
+      else
+        Org::Member.where(identity: identities).or(Org::Member.where(wechat_openid: uids))
+      end
     end
 
     def available_account_identities

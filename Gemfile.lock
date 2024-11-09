@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: f606381c4808b22d89f157c9c9eb30bd8cfc5ef6
+  revision: 4525dae973a4df86e7e577d85727b742767e5652
   specs:
     rails_audit (1.0.4)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 30ec97d796be7dabc344cfb8fd7024cd9af4af93
+  revision: 99ae3a470bd3a84fd1b69dfee888823124ccaa46
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 1c1af5f8615f16b412b0987838fc9245133ccbba
+  revision: afd818a91c9521c8a0f556fd8e0eadaaac6f5141
   specs:
     rails_com (1.3.0)
       acme-client
@@ -39,14 +39,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 70d0e3d9c82bc371ecce4c6012aa6c353d47418b
+  revision: a578fab35ef6583fec74b3468f142968f37ef002
   specs:
     rails_design (0.0.1)
       rails
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 1d5017974c6d939510dd0544687959429557849c
+  revision: eff77a4597e2cd9d58f38c1938c0db311b85a660
   specs:
     rails_notice (1.0.3)
       rails_com
