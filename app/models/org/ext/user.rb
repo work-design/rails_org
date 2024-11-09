@@ -12,11 +12,11 @@ module Org
       identities = accounts.pluck(:identity)
       uids = oauth_users.pluck(:uid)
       if identities.blank?
-        Org::Member.where(wechat_openid: uids)
+        Org::Member.includes(:organ).where(wechat_openid: uids)
       elsif uids.blank?
-        Org::Member.where(identity: identities)
+        Org::Member.includes(:organ).where(identity: identities)
       else
-        Org::Member.where(identity: identities).or(Org::Member.where(wechat_openid: uids))
+        Org::Member.includes(:organ).where(identity: identities).or(Org::Member.where(wechat_openid: uids))
       end
     end
 
