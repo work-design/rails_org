@@ -8,6 +8,7 @@ module Org
 
       if current_authorized_token
         render 'require_org_member'
+        set_auth_token
       else
         require_user(current_provider_app)
       end
