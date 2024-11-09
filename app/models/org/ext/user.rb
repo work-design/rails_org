@@ -20,6 +20,10 @@ module Org
       end
     end
 
+    def organs
+      members.map(&:organ).uniq
+    end
+
     def available_account_identities
       accounts.where.not(identity: members.pluck(:identity)).confirmed
     end
