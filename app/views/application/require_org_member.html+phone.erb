@@ -3,10 +3,12 @@
     <p>您不是该组织成员，请联系管理员</p>
   </div>
 <% elsif current_account && request.subdomain == 'admin' %>
-  <div>
-    <p>您在以下组织存在账号，请选择账号登录</p>
+  <div class="panel background-white mx-3 mt-3">
+    <p class="p-3">您在以下组织存在账号，请选择账号登录</p>
     <% current_account.members.each do |member| %>
-      <p><%= link_to member.organ.name, { controller: 'org/board/members', action: 'login', id: member.id }, data: { turbo_frame: '_top' }, class: 'text-link' %></p>
+      <%= link_to({ controller: 'org/board/members', action: 'login', id: member.id }, data: { turbo_frame: '_top' }, class: 'panel-block') do %>
+        <span><%= member.organ.name %></span>
+      <% end %>
     <% end %>
   </div>
 <% elsif current_user && request.subdomain == 'admin' %>
