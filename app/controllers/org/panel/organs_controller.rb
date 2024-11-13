@@ -18,6 +18,10 @@ module Org
       @organ.area = Profiled::Area.root || Profiled::Area.new if defined? RailsProfile
     end
 
+    def show
+      @scene = @organ.invite_member!
+    end
+
     def edit
       @organ.area || @organ.build_area
     end

@@ -14,3 +14,9 @@
   <dt><%= Org::Organ.human_attribute_name(:license) %></dt>
   <dd><%= @organ.license %></dd>
 </div>
+<div>
+  <dt></dt>
+  <dd>
+    <%= image_tag @scene.qrcode_data_url, class: 'image' if @scene %>
+  </dd>
+</div>
