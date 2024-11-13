@@ -20,6 +20,7 @@ module Org
 
     def show
       @scene = @organ.invite_member!
+      render :show, locals: { model: @organ }
     end
 
     def edit
