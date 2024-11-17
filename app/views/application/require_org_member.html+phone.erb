@@ -6,7 +6,7 @@
   <div class="panel background-white mx-3 mt-3">
     <p class="p-3">您在以下组织存在账号，请选择账号登录</p>
     <% current_account.members.each do |member| %>
-      <%= link_to({ controller: 'org/board/members', action: 'login', id: member.id }, data: { turbo_frame: '_top' }, class: 'panel-block') do %>
+      <%= link_to({ controller: 'org/board/members', action: 'login', id: member.id }, class: 'panel-block') do %>
         <span><%= member.organ.name %></span>
       <% end %>
     <% end %>
@@ -15,7 +15,7 @@
   <div>
     <p>您在以下组织存在账号，请选择账号登录</p>
     <% current_user.members.each do |member| %>
-      <p><%= link_to member.organ.name, { controller: 'org/board/members', action: 'login', id: member.id }, data: { turbo_frame: '_top' }, class: 'text-link' %></p>
+      <p><%= link_to member.organ.name, { controller: 'org/board/members', action: 'login', id: member.id }, class: 'text-link' %></p>
     <% end %>
   </div>
 <% end %>
