@@ -2,7 +2,7 @@
   <div class="has-column-centered">
     <p>您不是该组织成员，请联系管理员</p>
   </div>
-<% elsif request.subdomain == 'admin' %>
+<% elsif current_account && request.subdomain == 'admin' %>
   <div>
     <p>您在以下组织存在账号，请选择账号登录</p>
     <% current_account.members.each do |member| %>
