@@ -36,12 +36,12 @@
 <td>
   <%= link_to({ controller: 'members', organ_id: model.id }, aria: { label: t('org.panel.members.index.title') }, class: 'button is-small is-rounded is-light') do %>
     <i class="fa-solid fa-users text-info"></i>
-    <span class="pl-1"><%= model.members_count %></span>
+    <span class="ml-1"><%= model.members_count %></span>
   <% end %>
 </td>
 <td>
   <%= link_to({ action: 'children', id: model.id }, aria: { label: t('.children.index.title') }, class: 'button is-small is-rounded is-light') do %>
     <i class="fa-solid fa-building-flag text-info"></i>
-    <span class="pl-1"><%= model.children.count %></span>
+    <span class="ml-1"><%= model.children.count %></span>
   <% end %>
 </td>
