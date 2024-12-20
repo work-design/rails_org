@@ -1,3 +1,0 @@
-class OutController < AdminController
-
-end
