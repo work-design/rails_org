@@ -68,6 +68,7 @@ Rails.application.routes.draw do
         resources :members, only: [:index, :new, :create] do
           collection do
             get :near
+            match :logout, via: [:get, :post]
           end
           member do
             match :login, via: [:get, :post]
