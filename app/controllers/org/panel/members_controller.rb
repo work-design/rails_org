@@ -1,7 +1,7 @@
 module Org
   class Panel::MembersController < Panel::BaseController
     before_action :set_organ
-    before_action :set_member, only: [:show, :edit, :update, :destroy, :actions, :mock]
+    before_action :set_member, only: [:show, :edit, :update, :destroy, :actions, :mock, :edit_roles]
     before_action :set_new_member, only: [:new, :create]
 
     def index
@@ -13,6 +13,10 @@ module Org
 
     def mock
       redirect_to({ controller: '/admin/home', host: @organ.admin_host, auth_token: @member.auth_token }, allow_other_host: true)
+    end
+
+    def edit_roles
+      @roles = Roled::MemberRole.visible
     end
 
     private

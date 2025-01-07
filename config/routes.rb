@@ -89,6 +89,7 @@ Rails.application.routes.draw do
           resources :members do
             member do
               post :mock
+              post :edit_roles
             end
           end
         end
