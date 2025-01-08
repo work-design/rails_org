@@ -1,0 +1,8 @@
+<%= form_with theme: 'modal', model: @member, url: { action: 'update' } do |f| %>
+  <%= render 'modal_header' %>
+  <div class="modal-card-body">
+    <%= render 'error_messages', target: @member %>
+    <%= f.collection_check_boxes :role_ids, @roles, :id, :name %>
+  </div>
+  <%= f.submit %>
+<% end %>

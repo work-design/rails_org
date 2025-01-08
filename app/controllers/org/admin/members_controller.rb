@@ -1,6 +1,6 @@
 module Org
   class Admin::MembersController < Admin::BaseController
-    before_action :set_member, only: [:show, :edit, :update, :mock, :profile, :token, :destroy]
+    before_action :set_member, only: [:show, :edit, :update, :mock, :edit_roles, :token, :destroy]
     before_action :set_new_member, only: [:new, :create, :options]
 
     def index
@@ -41,7 +41,8 @@ module Org
       @member_department = @member.member_departments.build(department_id: params[:node_id])
     end
 
-    def profile
+    def edit_roles
+      @roles = Roled::MemberRole.all
     end
 
     def edit
