@@ -66,13 +66,14 @@ zh:
           title: 成员管理
           enabled: 可用
           disabled: 禁用
-          role: 授权管理
           profile: 简历
           mock: 以其身份
         new:
           title: 添加成员
         show:
           title: 职员信息
+        edit_roles:
+          title: 授权管理
       resigns:
         index:
           title: 离职
