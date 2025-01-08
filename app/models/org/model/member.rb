@@ -25,8 +25,6 @@ module Org
       belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
       has_many :authorized_tokens, ->(o){ where(identity: o.identity, uid: o.wechat_openid, mock_member: true) }, class_name: 'Auth::AuthorizedToken'
 
-      belongs_to :profile, ->(o){ where(organ_id: o.organ_id) }, class_name: 'Profiled::Profile', primary_key: :identity, foreign_key: :identity, optional: true
-
       belongs_to :organ, counter_cache: true, inverse_of: :members
 
       has_many :member_departments, dependent: :delete_all
@@ -55,7 +53,6 @@ module Org
 
       #before_save :sync_tutorials, if: -> { join_on_changed? }
       #before_save :sync_avatar_from_user, if: -> { identity_changed? && user }
-      #after_create :sync_member_roles, if: -> { owned? }
     end
 
     def set_current_cart(organ_id)
