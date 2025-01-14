@@ -2,7 +2,9 @@
   <%= render 'modal_header' %>
   <div class="modal-card-body">
     <%= render 'error_messages', target: @member %>
-    <%= f.collection_check_boxes :role_ids, @roles, :id, :name %>
+    <% f.fields :role_who_attributes, model: @roles do |ef| %>
+      <%= ef.check_box :role_id %>
+    <% end %>
   </div>
   <%= f.submit %>
 <% end %>

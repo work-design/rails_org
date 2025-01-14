@@ -2,7 +2,9 @@
   <%= render 'modal_header' %>
   <div class="modal-card-body">
     <%= render 'error_messages', target: @member %>
-    <%= f.collection_check_boxes :role_ids, @roles, :id, :name %>
+    <% @roles.each_with_index do |role, index| %>
+      <%= check_box_tag "member[role_whos_attributes][#{index}][role_id]", role.id, @member.role_ids.include?(role.id) %>
+    <% end %>
   </div>
   <%= f.submit %>
 <% end %>
