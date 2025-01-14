@@ -84,6 +84,7 @@ Rails.application.routes.draw do
           end
           member do
             get :children
+            post :edit_roles
           end
           resources :organ_domains
           resources :members do
