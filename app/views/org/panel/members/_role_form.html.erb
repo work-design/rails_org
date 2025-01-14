@@ -2,8 +2,15 @@
   <%= render 'modal_header' %>
   <div class="modal-card-body">
     <%= render 'error_messages', target: @member %>
-    <% @roles.each_with_index do |role, index| %>
-      <%= check_box_tag "member[role_whos_attributes][#{index}][role_id]", role.id, @member.role_ids.include?(role.id) %>
+    <% @member.role_whos.each_with_index do |role_who, index| %>
+      <span>
+        <%= hidden_field_tag "member[role_whos_attributes][#{index}][id]", role_who.id %>
+        <%= hidden_field_tag "member[role_whos_attributes][#{index}][_destroy]", 1 %>
+        <%= check_box_tag "member[role_whos_attributes][#{index}][_destroy]", 0, true %>
+      </span>
+    <% end %>
+    <% @roles.where.not(id: @member.role_ids).each_with_index do |role, index| %>
+      <%= check_box_tag "member[role_whos_attributes][#{index}][role_id]", role.id %>
     <% end %>
   </div>
   <%= f.submit %>

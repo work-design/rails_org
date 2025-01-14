@@ -41,7 +41,7 @@ module Org
         :wechat_openid,
         :corp_userid,
         :avatar,
-        role_whos_attributes: [:role_id],
+        role_whos_attributes: [:id, :role_id, :_destroy],
         member_departments_attributes: {},
       )
     end
