@@ -1,6 +1,7 @@
+<% if role_permit?(business: 'org', namespace: 'admin') %>
 <div class="media">
   <figure class="media-left">
-    <%# image_tag meta[0].logo, class: 'image is-64x64' if meta[0].logo.present? %>
+    <%= image_tag 'org_logo.png', class: 'image is-64x64' %>
   </figure>
   <div class="media-content">
     <div class="content">
@@ -13,3 +14,4 @@
     </div>
   </div>
 </div>
+<% end %>
