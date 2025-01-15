@@ -42,7 +42,7 @@ module Org
     end
 
     def edit_roles
-      @roles = Roled::MemberRole.all
+      @roles = @member.visible_roles
     end
 
     def edit
