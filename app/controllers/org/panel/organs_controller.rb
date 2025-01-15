@@ -1,6 +1,6 @@
 module Org
   class Panel::OrgansController < Panel::BaseController
-    before_action :set_organ, only: [:show, :edit, :update, :children]
+    before_action :set_organ, only: [:show, :edit, :update, :edit_roles, :children]
 
     def index
       q_params = {}
@@ -44,7 +44,8 @@ module Org
         :name_short,
         :license,
         :parent_ancestors,
-        :area_ancestors
+        :area_ancestors,
+        role_whos_attributes: [:id, :role_id, :_destroy]
       ]
     end
 

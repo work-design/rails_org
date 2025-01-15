@@ -96,6 +96,8 @@ zh:
           title: 组织列表
         children:
           title: 下级组织
+        edit_roles:
+          title: 权限管理
       organ_domains:
         index:
           title: 组织域名
@@ -104,6 +106,8 @@ zh:
           title: 员工列表
         mock:
           title: 以其身份
+        edit_roles:
+          title: 权限管理
     our:
       title: 分支机构
       organs:

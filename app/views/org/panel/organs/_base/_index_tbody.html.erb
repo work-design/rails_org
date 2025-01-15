@@ -28,7 +28,7 @@
     <% end %>
   </div>
   <div>
-    <%= button_to({ controller: 'roled/panel/whos', action: 'edit', who_type: 'Org::Organ', who_id: model.id }, aria: { label: t('roled.panel.whos.edit.title') }) do %>
+    <%= button_to({ action: 'edit_roles', id: model.id }, aria: { label: t('.edit_roles.title') }) do %>
       <i class="fa-solid fa-user-shield text-link"></i>
     <% end %>
   </div>
