@@ -16,7 +16,7 @@ module Org
     end
 
     def edit_roles
-      @roles = Roled::MemberRole.visible
+      @roles = @member.visible_roles
     end
 
     private
