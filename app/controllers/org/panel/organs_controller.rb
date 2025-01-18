@@ -40,8 +40,8 @@ module Org
       @organ = Organ.find params[:id]
     end
 
-    def organ_permit_params
-      [
+    def organ_params
+      params.fetch(:organ, {}).permit(
         :name,
         :logo,
         :official,
@@ -50,7 +50,7 @@ module Org
         :parent_ancestors,
         :area_ancestors,
         role_whos_attributes: [:id, :role_id, :_destroy]
-      ]
+      )
     end
 
     def organ_limit_params
