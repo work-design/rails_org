@@ -2,14 +2,6 @@ zh:
   application:
     org_navbar:
       title: 团队
-  me:
-    home:
-      index:
-        title: 工作台
-  admin:
-    home:
-      index:
-        title: 管理
   in:
     home:
       index:
