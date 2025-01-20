@@ -2,6 +2,7 @@ module Org
   class Admin::JobTitlesController < Admin::BaseController
     before_action :set_department
     before_action :set_job_title, only: [:show, :edit, :update, :move_higher, :move_lower, :reorder, :destroy]
+    before_action :set_new_job_title, only: [:new, :create]
 
     def index
       q_params = {
@@ -13,18 +14,6 @@ module Org
       @job_titles = JobTitle.default_where(q_params)
       @selected_job_title_ids = JobTitle.where.not(super_job_title_id: nil).where(department_root_id: @department.root.id).pluck(:super_job_title_id)
       @super_job_titles = SuperJobTitle.default_where(default_params).where.not(id: @selected_job_title_ids)
-    end
-
-    def new
-      @job_title = @department.job_titles.build
-    end
-
-    def create
-      @job_title = @department.job_titles.build(job_title_params)
-
-      unless @job_title.save
-        render :new, locals: { model: @job_title }, status: :unprocessable_entity
-      end
     end
 
     def create_department
@@ -55,6 +44,10 @@ module Org
 
     def set_job_title
       @job_title = JobTitle.where(department_root_id: @department.root.id).find(params[:id])
+    end
+
+    def set_new_job_title
+      @job_title = @department.job_titles.build(job_title_params)
     end
 
     def job_title_params

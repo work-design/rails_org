@@ -7,24 +7,6 @@ module Org
       @authorized_tokens = @member.authorized_tokens
     end
 
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @authorized_token.assign_attributes(authorized_token_params)
-
-      unless @authorized_token.save
-        render :edit, locals: { model: @authorized_token }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @authorized_token.destroy
-    end
-
     private
     def set_member
       @member = Member.find params[:member_id]

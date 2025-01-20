@@ -27,6 +27,8 @@ module Org
 
       belongs_to :organ, counter_cache: true, inverse_of: :members
 
+      has_many :shortcuts
+
       has_many :member_departments, dependent: :delete_all
       has_many :departments, through: :member_departments
       has_many :job_titles, through: :member_departments

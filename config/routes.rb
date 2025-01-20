@@ -191,6 +191,7 @@ Rails.application.routes.draw do
             get :parents
           end
         end
+        resources :shortcuts
         scope ':record_class/:record_column' do
           resources :department_grants
         end

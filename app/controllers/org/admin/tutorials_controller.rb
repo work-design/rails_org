@@ -32,23 +32,6 @@ module Org
       end
     end
 
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @tutorial.assign_attributes(tutorial_params)
-
-      unless @tutorial.save
-        render :edit, locals: { model: @tutorial }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @tutorial.destroy
-    end
 
     private
     def set_tutorial

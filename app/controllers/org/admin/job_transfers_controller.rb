@@ -1,6 +1,7 @@
 module Org
   class Admin::JobTransfersController < Admin::BaseController
     before_action :set_job_transfer, only: [:show, :edit, :update, :trigger, :destroy]
+    before_action :set_new_job_transfer, only: [:new, :create]
 
     def index
       q_params = {}
@@ -31,18 +32,6 @@ module Org
       render :my, layout: 'my'
     end
 
-    def new
-      @job_transfer = JobTransfer.new
-    end
-
-    def create
-      @job_transfer = JobTransfer.new(job_transfer_params)
-
-      unless @job_transfer.save
-        render :new, locals: { model: @job_transfer }, status: :unprocessable_entity
-      end
-    end
-
     def update
       @job_transfer.assign_attributes(job_transfer_params)
       @job_transfer.to_department_id = @job_transfer.department_ancestors&.values.to_a.compact.last
@@ -60,6 +49,10 @@ module Org
     private
     def set_job_transfer
       @job_transfer = JobTransfer.find(params[:id])
+    end
+
+    def set_new_job_transfer
+      @job_transfer = JobTransfer.new(job_transfer_params)
     end
 
     def job_transfer_params
