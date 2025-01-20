@@ -152,10 +152,5 @@ module Org
       authorized_token.id
     end
 
-    def sync_member_roles
-      role = Roled::Role.default_where('who_types-any': 'Member', code: RailsOrg.config.super_role_code).take
-      who_roles.create(role_id: role.id) if role
-    end
-
   end
 end
