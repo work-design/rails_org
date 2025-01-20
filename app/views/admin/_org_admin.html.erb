@@ -7,10 +7,15 @@
     <div class="content">
       <strong><%= t('org.admin.title') %></strong>
     </div>
-    <div data-empty-target="content">
-      <%= link_to({ controller: 'org/admin/organs' }, class: 'tag') do %>
-        <span><%= t('org.admin.organs.index.title') %></span>
-      <% end %>
+    <div>
+      <div class="tags has-addons">
+        <%= link_to({ controller: 'org/admin/organs' }, class: 'tag is-link') do %>
+          <span><%= t('org.admin.organs.index.title') %></span>
+        <% end %>
+        <%= button_to({ controller: 'org/admin/shortcuts', action: 'create' }, params: { 'shortcut[controller]': 'org/admin/organs' }, form: { class: 'tag is-primary' }) do %>
+          <span><%= t('org.admin.shortcuts.create.title') %></span>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

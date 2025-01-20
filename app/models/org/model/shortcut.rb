@@ -4,7 +4,7 @@ module Org
 
     included do
       attribute :controller, :string
-      attribute :action, :integer
+      attribute :action, :string, default: 'index'
       attribute :business, :string
       attribute :namespace, :string
 

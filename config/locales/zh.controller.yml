@@ -78,6 +78,9 @@ zh:
       tutorials:
         index:
           title: 新人指导
+      shortcuts:
+        create:
+          title: 加入快捷
     panel:
       title: 组织管理
       home:
