@@ -3,6 +3,20 @@ module Org
     include Org::Layout::Me
     before_action :set_resign, only: [:show, :new, :create, :edit, :update, :destroy]
 
+    def index
+      if current_user.leading_office
+        q_params = {
+          'member.office_id': current_user.leading_office.id,
+          state: Resign::states[:init]
+        }
+
+        q_params.merge! params.permit!
+        @resigns = Resign.default_where(q_params).order(id: :desc).page(params[:page])
+      else
+        @resigns = Resign.none.page(params[:page])
+      end
+    end
+
     private
     def set_resign
       @resign = current_user.resign || current_user.build_resign

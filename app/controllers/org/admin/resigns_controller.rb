@@ -8,22 +8,6 @@ module Org
       @resigns = Resign.default_where(q_params).order(id: :desc).page(params[:page])
     end
 
-    def my
-      if current_user.leading_office
-        q_params = {
-          'member.office_id': current_user.leading_office.id,
-          state: Resign::states[:init]
-        }
-
-        q_params.merge! params.permit!
-        @resigns = Resign.default_where(q_params).order(id: :desc).page(params[:page])
-      else
-        @resigns = Resign.none.page(params[:page])
-      end
-
-      render :my, layout: 'my'
-    end
-
     def charts
       q_params = params.fetch(:q, {}).permit(:id, 'leave_on-gte', 'leave_on-lte')
       resigns = Resign.select(:id, :member_id).default_where(q_params)
