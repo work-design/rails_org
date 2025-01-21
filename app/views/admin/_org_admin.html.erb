@@ -7,20 +7,8 @@
     <div class="content">
       <strong><%= t('org.admin.title') %></strong>
     </div>
-    <div>
-      <div class="tags has-addons">
-        <%= link_to({ controller: 'org/admin/organs' }, class: 'tag is-link') do %>
-          <span><%= t('org.admin.organs.index.title') %></span>
-        <% end %>
-        <%= button_to(
-              { controller: 'org/admin/shortcuts', action: 'create' },
-              params: { 'shortcut[controller]': 'org/admin/organs' },
-              aria: { label: t('org.admin.shortcuts.create.title') },
-              form: { class: 'tag is-primary' }
-            ) do %>
-          <i class="fa-solid fa-star"></i>
-        <% end %>
-      </div>
+    <div class="field is-grouped is-grouped-multiline">
+      <%= render partial: 'admin_tag_link', collection: Com::MetaAction.admin_list('org'), as: :model %>
     </div>
   </div>
 </div>

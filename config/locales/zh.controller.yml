@@ -80,7 +80,9 @@ zh:
           title: 新人指导
       shortcuts:
         create:
-          title: 加入快捷
+          title: 设为快捷菜单
+        destroy:
+          title: 移除快捷菜单
     panel:
       title: 组织管理
       home:

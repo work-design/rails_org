@@ -146,6 +146,12 @@ module Org
       leading_departments.first
     end
 
+    def all_shortcuts
+      shortcuts.load.each_with_object({}) do |i, h|
+        h.merge! "#{i.controller}/#{i.action}" => i.id
+      end
+    end
+
     def authorized_token
       authorized_tokens.find(&:effective?) || authorized_tokens.create
     end
