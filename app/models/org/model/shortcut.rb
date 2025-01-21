@@ -11,5 +11,9 @@ module Org
       belongs_to :member
     end
 
+    def name
+      I18n.t "#{controller.tr('/', '.')}.#{action}.title", default: nil
+    end
+
   end
 end

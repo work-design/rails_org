@@ -1,0 +1,15 @@
+<div id="<%= "#{model.controller}/#{model.action}" %>" class="control">
+  <div class="tags has-addons">
+    <%= link_to({ controller: model.controller, action: model.action }, target: '_blank', class: 'tag') do %>
+      <span><%= model.name %></span>
+    <% end %>
+    <%= button_to(
+          { controller: 'org/admin/shortcuts', action: 'destroy', id: model.id },
+          method: :delete,
+          aria: { label: t('org.admin.shortcuts.destroy.title') },
+          form: { class: 'tag' }
+        ) do %>
+      <i class="fa-solid fa-star text-warning"></i>
+    <% end %>
+  </div>
+</div>
