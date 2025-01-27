@@ -124,6 +124,8 @@ zh:
           title: 我的组织
         new:
           title: 创建新组织
+        redirect:
+          title: 工作台
     me:
       title: 组织管理
       home:
