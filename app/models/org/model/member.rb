@@ -12,7 +12,7 @@ module Org
       attribute :organ_root_id, :integer
       attribute :name, :string
       attribute :number, :string
-      attribute :join_on, :date
+      attribute :join_on, :date, default: -> { Date.today }
       attribute :enabled, :boolean, default: true
       attribute :inviter, :boolean, default: false
 
