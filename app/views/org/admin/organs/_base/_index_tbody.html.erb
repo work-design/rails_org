@@ -14,7 +14,7 @@
 </td>
 <td><%= model.code %></td>
 <td>
-  <p><%= model.area&.full_name if defined?(RailsProfile) %></p>
+  <p><%= model.area&.full_name if defined?(RailsShip) %></p>
   <p><%= model.address %></p>
 </td>
 <td>
@@ -24,7 +24,7 @@
     <% end %>
   </div>
   <div class="mt-0">
-    <%= button_to({ controller: 'roled/admin/whos', action: 'edit', who_type: 'Org::Organ', who_id: model.id }) do %>
+    <%= button_to({ action: 'edit_roles', id: model.id }) do %>
       <i class="fa-solid fa-user-shield text-link"></i>
     <% end %>
   </div>

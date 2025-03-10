@@ -106,6 +106,9 @@ Rails.application.routes.draw do
           collection do
             get :all
           end
+          member do
+            post :edit_roles
+          end
           resources :organ_domains
         end
         resources :departments do
