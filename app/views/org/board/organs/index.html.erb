@@ -1,4 +1,17 @@
+<p class="size-7 text-grey">我创建的</p>
 <div id="tbody" class="cards is-4">
   <%= render partial: 'card', collection: @created_organs, as: :organ %>
   <%= render partial: 'button_card' %>
 </div>
+
+<% @accounts.each do |account, organs| %>
+  <% if organs.present? %>
+    <div class="text-grey size-7">
+      <span>我加入的</span>
+      <span><%= account.identity %></span>
+    </div>
+    <div class="cards">
+      <%= render partial: 'card', collection: organs, as: :organ %>
+    </div>
+  <% end %>
+<% end %>
