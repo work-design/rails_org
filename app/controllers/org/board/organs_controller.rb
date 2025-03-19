@@ -7,7 +7,7 @@ module Org
 
     def index
       q_params = {}
-      q_params.merge! provider_id: [current_organ.id, nil] if current_organ
+      #q_params.merge! provider_id: [current_organ.id, nil] if current_organ
       q_params.merge! 'who_roles.role_id' => params[:role_id] if params[:role_id].present?
 
       @created_organs = current_user.created_organs.includes(:organ_domains).default_where(q_params).order(id: :desc)
