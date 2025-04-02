@@ -53,7 +53,7 @@ module Org
       if params[:role_id].present?
         @roles = Roled::Role.visible.where(id: params[:role_id])
       else
-        @roles = Roled::Role.visible
+        @roles = Roled::Role.visible.where.not(tip: nil)
       end
     end
 
