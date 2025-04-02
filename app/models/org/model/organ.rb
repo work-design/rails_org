@@ -6,13 +6,13 @@ module Org
       attribute :name, :string
       attribute :name_short, :string
       attribute :address, :string
-      attribute :members_count, :integer, default: 0
       attribute :official, :boolean, default: false, comment: '是否官方'
       attribute :joinable, :boolean, default: false, comment: '是否可搜索并加入'
       attribute :code, :string
       attribute :license, :string
       attribute :service_url, :string, comment: '客服 url'
       attribute :theme_settings, :json, default: {}
+      attribute :members_count, :integer
 
       has_taxons :area
       belongs_to :area, class_name: 'Ship::Area', optional: true
