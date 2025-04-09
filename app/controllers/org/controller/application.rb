@@ -6,6 +6,7 @@ module Org
       helper_method :current_organ, :current_organ_domain, :current_member, :other_organs, :default_platform_params
     end
 
+    private
     def current_member
       return @current_member if defined?(@current_member)
 
