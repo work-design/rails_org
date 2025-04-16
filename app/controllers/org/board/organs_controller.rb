@@ -39,7 +39,7 @@ module Org
     def set_new_organ
       @organ = current_user.created_organs.build(organ_params)
       if params[:role_id].present?
-        @organ.who_roles.build(role_id: params[:role_id])
+        @organ.role_whos.build(role_id: params[:role_id])
       end
     end
 
@@ -62,7 +62,7 @@ module Org
         :name,
         :logo,
         :invite_token,
-        who_roles_attributes: {}
+        role_whos_attributes: {}
       )
       _p.merge! provider_id: [current_organ.id, nil] if current_organ
       _p.with_defaults! params.permit(:invite_token)
