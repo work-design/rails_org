@@ -1,5 +1,5 @@
 <%= f.hidden_field :invite_token %>
 <%= f.text_field :name, placeholder: Org::Organ.human_attribute_name(:name), autofocus: @created_organs.blank?, required: true, label: nil %>
-<%= f.fields :who_roles do |ef| %>
+<%= f.fields :role_whos do |ef| %>
   <%= ef.hidden_field :role_id %>
 <% end %>
