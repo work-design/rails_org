@@ -1,6 +1,6 @@
 <% if current_organ %>
   <div class="has-page-centered">
-    <p>您不是该组织成员，请联系管理员</p>
+    <p class="text-centered">您不是该组织成员，请联系管理员</p>
   </div>
 <% elsif current_account && request.subdomain == 'admin' %>
   <div class="panel background-white mx-3 mt-3">
