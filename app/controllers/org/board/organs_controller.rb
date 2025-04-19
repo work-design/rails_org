@@ -63,7 +63,7 @@ module Org
         :logo,
         role_whos_attributes: {}
       )
-      _p.merge! provider_id: [current_organ.id, nil] if current_organ
+      _p.merge! provider_id: current_organ.id if current_organ
     end
 
   end
