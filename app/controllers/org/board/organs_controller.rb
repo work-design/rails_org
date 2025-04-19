@@ -44,7 +44,7 @@ module Org
       @member = @organ.members.build(
         identity: current_authorized_token.identity,
         own: true,
-        role_whos_attributes: organ_params[:role_whos_attributes]
+        **organ_params.slice(:role_whos_attributes)
       )
       @member.wechat_openid = current_authorized_token.uid if @member.respond_to? :wechat_openid
     end
