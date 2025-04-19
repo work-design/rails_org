@@ -1,7 +1,8 @@
 module Org
   class Board::OrgansController < Board::BaseController
     before_action :set_organ, only: [:show, :edit, :update, :redirect, :destroy]
-    before_action :set_new_organ, only: [:index, :new, :create]
+    before_action :set_new_organ, only: [:index, :new]
+    before_action :set_create_organ, only: [:create]
     before_action :set_role, only: [:new]
     before_action :set_roles, only:[:index, :create]
 
@@ -16,7 +17,7 @@ module Org
     end
 
     def create
-      @member = @organ.members.build(identity: current_authorized_token.identity)
+      @member = @organ.members.build(identity: current_authorized_token.identity, own: true)
       @member.wechat_openid = current_authorized_token.uid if @member.respond_to? :wechat_openid
 
       if @organ.save
@@ -38,9 +39,11 @@ module Org
 
     def set_new_organ
       @organ = current_user.created_organs.build(organ_params)
-      if params[:role_id].present?
-        @organ.role_whos.build(role_id: params[:role_id])
-      end
+      @organ.role_whos.build(role_id: params[:role_id]) if params[:role_id].present?
+    end
+
+    def set_create_organ
+      
     end
 
     def set_role

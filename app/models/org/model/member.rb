@@ -15,6 +15,7 @@ module Org
       attribute :join_on, :date, default: -> { Date.today }
       attribute :enabled, :boolean, default: true
       attribute :inviter, :boolean, default: false
+      attribute :own, :boolean, default: false
 
       enum :state, {
         init: 'init',
