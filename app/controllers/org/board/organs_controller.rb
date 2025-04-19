@@ -17,9 +17,6 @@ module Org
     end
 
     def create
-      @member = @organ.members.build(identity: current_authorized_token.identity, own: true)
-      @member.wechat_openid = current_authorized_token.uid if @member.respond_to? :wechat_openid
-
       if @organ.save
         render :create, locals: { model: @organ }
       else
@@ -43,7 +40,9 @@ module Org
     end
 
     def set_create_organ
-      
+      @organ = current_user.created_organs.build(organ_params)
+      @member = @organ.members.build(identity: current_authorized_token.identity, own: true)
+      @member.wechat_openid = current_authorized_token.uid if @member.respond_to? :wechat_openid
     end
 
     def set_role
