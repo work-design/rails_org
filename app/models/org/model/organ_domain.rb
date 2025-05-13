@@ -31,7 +31,7 @@ module Org
 
       belongs_to :organ
 
-      validates :host, uniqueness: true
+      validates :host, uniqueness: { scope: :kind }
 
       after_initialize :init_subdomain, if: -> { new_record? && subdomain.nil? }
       before_validation :compute_host, if: -> { (changes.keys & ['domain', 'subdomain']).present? }
