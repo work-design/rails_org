@@ -71,6 +71,7 @@ Rails.application.routes.draw do
             match :logout, via: [:get, :post]
           end
           member do
+            match :user_login, via: [:get, :post]
             match :login, via: [:get, :post]
           end
         end

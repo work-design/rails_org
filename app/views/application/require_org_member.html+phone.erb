@@ -5,7 +5,7 @@
 <% elsif current_account && request.subdomain == 'admin' %>
   <div class="panel background-white mx-3 mt-3">
     <p class="p-3">您在以下组织存在账号，请选择账号登录</p>
-    <% current_account.members.each do |member| %>
+    <% current_account.members.includes(:organ).each do |member| %>
       <%= link_to({ controller: 'org/board/members', action: 'login', id: member.id }, class: 'panel-block') do %>
         <span><%= member.organ.name %></span>
       <% end %>
@@ -14,8 +14,8 @@
 <% elsif current_user && request.subdomain == 'admin' %>
   <div class="panel background-white mx-3 mt-3">
     <p class="p-3">您在以下组织存在账号，请选择账号登录</p>
-    <% current_user.members.each do |member| %>
-      <%= link_to({ controller: 'org/board/members', action: 'login', id: member.id }, class: 'panel-block') do %>
+    <% current_user.members.includes(:organ).each do |member| %>
+      <%= link_to({ controller: 'org/board/members', action: 'user_login', id: member.id }, class: 'panel-block') do %>
         <span><%= member.organ.name %></span>
       <% end %>
     <% end %>

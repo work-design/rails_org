@@ -1,8 +1,15 @@
 module Org
   class Board::MembersController < Board::BaseController
-    before_action :set_member, only: [:show, :edit, :update, :login]
+    before_action :set_member, only: [:show, :edit, :update]
 
     def login
+      @member = current_account.members.find(params[:id])
+      current_authorized_token.update member_id: @member.id
+      refresh_or_redirect_to({ controller: '/me/home' })
+    end
+
+    def user_login
+      @member = current_user.members.find(params[:id])
       current_authorized_token.update member_id: @member.id
       refresh_or_redirect_to({ controller: '/me/home' })
     end
