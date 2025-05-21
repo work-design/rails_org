@@ -24,7 +24,7 @@ module Org
       }, default: 'init'
 
       belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
-      has_many :authorized_tokens, ->(o){ where(identity: o.identity, uid: o.wechat_openid, mock_member: true) }, class_name: 'Auth::AuthorizedToken'
+      has_many :authorized_tokens, ->(o){ where(o.filter) }, class_name: 'Auth::AuthorizedToken'
 
       belongs_to :organ, counter_cache: true, inverse_of: :members
 
@@ -56,6 +56,12 @@ module Org
 
       #before_save :sync_tutorials, if: -> { join_on_changed? }
       #before_save :sync_avatar_from_user, if: -> { identity_changed? && user }
+    end
+
+    def filter
+      options = { identity: identity, mock_member: true }
+      options.merge! uid: wechat_openid if defined?(wechat_openid)
+      options
     end
 
     def set_current_cart(organ_id)
