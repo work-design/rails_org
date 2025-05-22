@@ -118,7 +118,7 @@ zh:
         new:
           title: 申请为职员
         logout:
-          title: 切换账号
+          title: 切换组织
       organs:
         index:
           title: 我的组织
