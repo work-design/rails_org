@@ -26,7 +26,12 @@ module Org
 
     def redirect
       member = current_user.members.find_by(organ_id: @organ.id)
-      redirect_to({ controller: '/me/home', host: @organ.admin_host, auth_token: member.auth_token }, allow_other_host: true)
+
+      if @organ.admin_host == request.host
+        redirect_to controller: 'admin/home'
+      else
+        redirect_to({ controller: '/me/home', host: @organ.admin_host, auth_token: member.auth_token }, allow_other_host: true)
+      end
     end
 
     private
