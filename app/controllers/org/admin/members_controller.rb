@@ -90,6 +90,7 @@ module Org
         :resume,
         role_ids: [],
         member_departments_attributes: {},
+        role_whos_attributes: {}
       )
     end
 
