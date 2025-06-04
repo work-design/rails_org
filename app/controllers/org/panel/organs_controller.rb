@@ -15,7 +15,7 @@ module Org
 
     def new
       @organ = Organ.new
-      @organ.area = Profiled::Area.root || Profiled::Area.new if defined? RailsProfile
+      @organ.area = Ship::Area.root || Ship::Area.new if defined? RailsShip
     end
 
     def show
@@ -24,7 +24,9 @@ module Org
     end
 
     def edit
-      @organ.area || @organ.build_area
+      if defined? RailsShip
+        @organ.area || @organ.build_area
+      end
     end
 
     def edit_roles
