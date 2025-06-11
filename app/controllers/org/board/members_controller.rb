@@ -17,7 +17,7 @@ module Org
     def logout
       current_authorized_token.update member_id: nil
 
-      if RailsOrg.independent && request.subdomain == 'admin'
+      if RailsOrg.config.independent && request.subdomain == 'admin'
         refresh_or_redirect_to({ controller: '/me/home' })
       else
         refresh_or_redirect_to({ controller: 'org/board/organs' })
