@@ -4,8 +4,6 @@ module Org
     extend ActiveSupport::Concern
 
     included do
-      has_taxons :department
-
       attribute :identity, :string, index: true
       attribute :experience, :string
       attribute :attendance_number, :string
@@ -23,7 +21,7 @@ module Org
         approved: 'approved'
       }, default: 'init'
 
-      belongs_to :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity, optional: true
+      has_one :account, -> { where(confirmed: true) }, class_name: 'Auth::Account', primary_key: :identity, foreign_key: :identity
       has_many :authorized_tokens, ->(o){ where(o.filter) }, class_name: 'Auth::AuthorizedToken'
 
       belongs_to :organ, counter_cache: true, inverse_of: :members
@@ -53,6 +51,8 @@ module Org
       scope :inviter, -> { where(inviter: true) }
 
       validates :identity, uniqueness: { scope: :organ_id }, allow_blank: true
+
+      has_taxons :department
 
       #before_save :sync_tutorials, if: -> { join_on_changed? }
       #before_save :sync_avatar_from_user, if: -> { identity_changed? && user }
