@@ -85,9 +85,7 @@ module Org
         :type,
         :join_on,
         :enabled,
-        :inviter,
         :avatar,
-        :resume,
         member_departments_attributes: {},
         role_whos_attributes: {}
       )
