@@ -47,7 +47,9 @@ module Org
     end
 
     def init_subdomain
-      self.subdomain = [organ_id, KIND[kind]].join('.')
+      if RailsOrg.config.independent
+        self.subdomain = [organ_id, KIND[kind]].join('.')
+      end
       compute_host
     end
 
