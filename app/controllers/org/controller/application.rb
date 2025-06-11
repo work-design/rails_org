@@ -10,7 +10,7 @@ module Org
     def current_member
       return @current_member if defined?(@current_member)
 
-      if request.subdomain == 'admin' && current_authorized_token
+      if (request.subdomain == 'admin' || !RailsOrg.config.independent) && current_authorized_token
         @current_member = current_authorized_token.member || current_authorized_token.mocked_member
       elsif current_domain_organ
         @current_member = current_authorized_token&.member ||
@@ -46,7 +46,9 @@ module Org
 
     def current_organ_domain
       return @current_organ_domain if defined?(@current_organ_domain)
-      @current_organ_domain = OrganDomain.annotate('get organ domain in org application').find_by(host: request.host)
+      if RailsOrg.config.independent
+        @current_organ_domain = OrganDomain.annotate('get organ domain in org application').find_by(host: request.host)
+      end
     end
 
     def other_organs

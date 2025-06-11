@@ -27,10 +27,11 @@ module Org
     def redirect
       member = current_user.members.find_by(organ_id: @organ.id)
 
-      if @organ.admin_host == request.host
-        redirect_to controller: 'admin/home'
-      else
+      if RailsOrg.config.independent
         redirect_to({ controller: '/me/home', host: @organ.admin_host, auth_token: member.auth_token }, allow_other_host: true)
+      else
+        current_authorized_token.update member_id: member.id
+        redirect_to controller: '/admin/home'
       end
     end
 
