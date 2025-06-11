@@ -88,7 +88,6 @@ module Org
         :inviter,
         :avatar,
         :resume,
-        role_ids: [],
         member_departments_attributes: {},
         role_whos_attributes: {}
       )
