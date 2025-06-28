@@ -9,10 +9,8 @@ module Org
       attribute :reason_note, :string, limit: 4096
 
       belongs_to :member
-      belongs_to :to_office, class_name: 'Office', optional: true
       belongs_to :to_department, class_name: 'Department', optional: true
       belongs_to :to_job_title, class_name: 'JobTitle', optional: true
-      belongs_to :from_office, class_name: 'Office', optional: true
       belongs_to :from_department, class_name: 'Department', optional: true
       belongs_to :from_job_title, class_name: 'JobTitle', optional: true
 

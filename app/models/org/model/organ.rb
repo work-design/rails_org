@@ -14,8 +14,10 @@ module Org
       attribute :theme_settings, :json, default: {}
       attribute :members_count, :integer
 
-      has_taxons :area
-      belongs_to :area, class_name: 'Ship::Area', optional: true
+      if defined? RailsShip
+        has_taxons :area
+        belongs_to :area, class_name: 'Ship::Area', optional: true
+      end
       belongs_to :creator, class_name: 'Auth::User', optional: true
       belongs_to :provider, class_name: 'Org::Organ', optional: true
 
