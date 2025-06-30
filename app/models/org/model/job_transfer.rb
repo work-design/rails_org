@@ -32,7 +32,7 @@ module Org
       end
       after_create_commit :send_notification
 
-      acts_as_notify :default, only: []
+      #acts_as_notify :default, only: []
     end
 
     def approve_config

@@ -23,7 +23,7 @@ module Org
 
       after_create_commit :send_notification
 
-      acts_as_notify only: [:reason_note, :leave_on]
+      #acts_as_notify only: [:reason_note, :leave_on]
     end
 
     def do_trigger(params = {})
