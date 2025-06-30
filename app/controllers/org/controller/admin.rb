@@ -8,8 +8,10 @@ module Org
       if current_authorized_token
         render 'require_org_member', layout: 'simple'
         set_auth_token
-      else
+      elsif defined? current_provider_app
         require_user(current_provider_app)
+      else
+        require_user
       end
     end
 
