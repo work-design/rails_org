@@ -70,6 +70,7 @@ module Org
     end
 
     def admin?
+      return true if own?
       if account
         account.user_id == organ.creator_id
       elsif wechat_user
